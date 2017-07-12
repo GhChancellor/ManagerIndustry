@@ -1,0 +1,110 @@
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package managerindustry.logic.structure;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ *
+ * @author lele
+ */
+public class StructureEngineeringRigs {
+    Map <String, Double > valueSecurityStatuses = new HashMap<>();
+    Map <String, Double > valueBonusRigs = new HashMap<>();
+    
+    private String nameRig;
+    private String sizeRig;
+    private String tech;
+    private String securityStatus;
+    private String appliesTo;
+    private int calibration;
+    
+    private Double materialEfficiency;
+    private Double timeEfficiency;          
+    private Double costBonus;          
+    private Double timeBonus;              
+    
+    public void initMap(){
+        
+        // value rigs
+        /*
+            // 43867 Standup M-Set Advanced Component Manufacturing Material Efficiency I
+
+            dgmAttributeTypes 
+            calibration rig 1153
+            
+            hiSecModifier 2355 1.0
+            lowSecModifier 2356 1.9
+            nullSecModifier 2357 2.1
+            securityModifier 2358 1.0
+            attributeEngRigTimeBonus 2593 0.0
+            attributeEngRigMatBonus 2594 -2.0
+            attributeEngRigCostBonus 2595 0.0
+        
+            raitaru '35825', '2339' structureServiceRoleBonus, NULL, '-25' 
+            Material bonus for Engineering Complexes Structures 2600 0.99 ( 1 - 0.99 = 0.1 )
+            Cost bonus for Engineering Complexes Structures 2601 null 0.97 ( 1 - 0.97 = 0.3 )
+            Time bonus for Engineering Complexes Structures 2602 null 0.85 ( 1 - 0.85 = 0.15 )
+            calibration  station 1132
+
+            Calcolo Manufactoring ME
+            materialReductionManufactoringBonusME_T1 = 2.0 / 100 = 2%
+            materialReductionManufactoringBonusME_T2 = 2.4 / 100 = 2,4%
+            
+            Calcolo Manufactoring TE
+            timeReductionManufactoringBonusTE_T1 = materialReductionManufactoringBonusME_T1 * 10 =  20%
+            timeReductionManufactoringBonusTE_T2 = materialReductionManufactoringBonusME_T2 * 10 = 24%
+        
+            Calcolo Cost Reduction
+            costReductionBonus_T1 = materialReductionManufactoringBonusME_T1 * 5 = 10%
+            costReductionBonus_T2 = materialReductionManufactoringBonusME_T1 * 6 = 12%
+        
+            Calcolo time reduction
+            timeReductionBonus_T1 = timeReductionManufactoringBonusTE_T1 = 20%
+            timeReductionBonus_T2 = timeReductionManufactoringBonusTE_T2 = 24%
+        */
+        
+        Double materialReductionManufactoringBonusME_T1 = 2.0 / 100; // 2%
+        Double materialReductionManufactoringBonusME_T2 = 2.4 / 100; // 2,4%
+    
+        Double timeReductionManufactoringBonusTE_T1 = materialReductionManufactoringBonusME_T1 * 10; // 20%
+        Double timeReductionManufactoringBonusTE_T2 = materialReductionManufactoringBonusME_T2 * 10; // 24%
+    
+        Double costReductionBonus_T1 = materialReductionManufactoringBonusME_T1 * 5; // 10%
+        Double costReductionBonus_T2 = materialReductionManufactoringBonusME_T1 * 6; // 12%
+        Double timeReductionBonus_T1 = timeReductionManufactoringBonusTE_T1; //20%
+        Double timeReductionBonus_T2 = timeReductionManufactoringBonusTE_T2; //24%
+
+        valueBonusRigs.put("materialReductionManufactoringBonusME_T1", materialReductionManufactoringBonusME_T1);
+        valueBonusRigs.put("materialReductionManufactoringBonusME_T2", materialReductionManufactoringBonusME_T2);
+        valueBonusRigs.put("timeReductionManufactoringBonusTE_T1", timeReductionManufactoringBonusTE_T1);
+        valueBonusRigs.put("timeReductionManufactoringBonusTE_T2", timeReductionManufactoringBonusTE_T2);
+        valueBonusRigs.put("costReductionBonus_T1", costReductionBonus_T1);
+        valueBonusRigs.put("costReductionBonus_T2", costReductionBonus_T2);
+        valueBonusRigs.put("timeReductionBonus_T1", timeReductionBonus_T1);
+        valueBonusRigs.put("timeReductionBonus_T2", timeReductionBonus_T2);
+        
+    SELECT invTypes.typeName, invTypes.description, dgmAttributeTypes.attributeID, dgmAttributeTypes.attributeName, dgmTypeAttributes.valueInt, dgmTypeAttributes.valueFloat
+    FROM invTypes, dgmTypeAttributes, dgmAttributeTypes where 
+    invTypes.typeID = dgmTypeAttributes.typeID and dgmTypeAttributes.attributeID = dgmAttributeTypes.attributeID and
+    invTypes.typeID=3398 and invTypes.published=1  and dgmAttributeTypes.attributeID=1982;
+
+    production
+    3380 440 Industry 
+    3388 1961 Advanced Industry
+
+    3395 1982 Advanced Small Ship Construction
+    3396 1982 Advanced Industrial Ship Construction
+    3397 1982 Advanced Medium Ship Construction
+    3398 1982 Advanced Large Ship Construction
+        
+    trade
+    16622 accounting reduce del 10%
+    3446 Broker Relations 0.1 x level
+        
