@@ -18,8 +18,21 @@ import managerindustry.logic.stading.Standing;
 public class tradeFormulas extends FormulasSkill{
     
     // Broker Relations skill
-    public void brokerFee(int levelSkill){
+    public void brokerFee(int brokerRelationsLevel, String station){
         
+        float initTax = 0.03f;
+        float initTaxCorparationStanding = 0.0002f;
+        float reduceFeePerLevel = 0.001f;
+        float factionStandingTax = 0.0003f;
+        
+        Standing standing = new Standing();
+                
+        float result = initTax - ( reduceFeePerLevel * brokerRelationsLevel ) - (factionStandingTax * standing.getFactionStanding()) 
+         - ( initTaxCorparationStanding * standing.getCorporationStanding());
+        
+        if (result < 100){
+            result = 100;
+        }
     }
     
     // Accounting" skill.
