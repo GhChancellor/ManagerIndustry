@@ -5,9 +5,7 @@
  */
 package managerindustry.logic.manager;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import managerindustry.logic.skill.Skill;
 
@@ -25,7 +23,7 @@ public class ManagerSkill {
         return instance;
     }
 
-    private boolean maxSkill(int level){
+    public boolean maxSkill(int level){
         if (level <= 5 ){
             return true;
         }
@@ -48,22 +46,24 @@ public class ManagerSkill {
         return this.skillMap.get(nameSkill);
     }
     
-    private float calculateLevelPerSkill(int level, float percente){
-        return level * percente;
-    }
+  
     
-    public float sottrazioneDalValoreOriginale(){
-        return 0f;
-    }
+    public float tradeSkillGeneric(String nameSkill, int level){
+        if ( maxSkill(level) == false)
+            return 0;
+        
+        Skill skill = getSkillMap(nameSkill);
+        return calculateLevelPerSkill(level, skill.getValueFloat());
+    } 
     
     public float production( String nameSkill, int level){
         if ( maxSkill(level) == false)
             return 0;
-        
-        
+
+
         Skill skill = getSkillMap(nameSkill);
         int tempValueInt = 0;
-        
+
         try {
             if ( tempValueInt < skill.getValueInt()){
                 return calculateLevelPerSkill(level, skill.getValueInt() );
@@ -75,17 +75,9 @@ public class ManagerSkill {
             return 0;
         }
     }
-    
-    public float tradeSkillGeneric(String nameSkill, int level){
-        if ( maxSkill(level) == false)
-            return 0;
         
-        Skill skill = getSkillMap(nameSkill);
-        return calculateLevelPerSkill(level, skill.getValueFloat());
-    } 
     
-    
-    
+        
     public void initSkill(){
         Skill skill = ManagerDB.getInstance().getInvTypeSkillValues(3380, true, 440);
         addSkillMap(skill.getName(), new Skill(skill.getName()) );
@@ -119,4 +111,13 @@ public class ManagerSkill {
         brokerRelations.setValueFloat(0.001f);
         addSkillMap(brokerRelations.getName(), accounting);
     }
+    
+    
+    private float calculateLevelPerSkill(int level, float percente){
+        return level * percente;
+    }
+    
+    public float sottrazioneDalValoreOriginale( float value, float levelForSkill){
+        return 0f;
+    } 
 }
