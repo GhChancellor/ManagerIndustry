@@ -29,7 +29,7 @@ public class FormulasSkill {
         return 0.0f;
     }
     
-    public float sottrazioneDalValoreOriginale( float initialValue, int levelSkill, float percente){
+    public float calculateResultWithSkill( float initialValue, int levelSkill, float percente){
         float result = calculateLevelPerSkill(levelSkill, percente);
         
         return initialValue * result;

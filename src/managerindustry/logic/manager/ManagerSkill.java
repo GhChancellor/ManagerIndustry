@@ -46,44 +46,9 @@ public class ManagerSkill {
         return this.skillMap.get(nameSkill);
     }
     
-  
-    
-    public float tradeSkillGeneric(String nameSkill, int level){
-        if ( maxSkill(level) == false)
-            return 0;
-        
-        Skill skill = getSkillMap(nameSkill);
-        return calculateLevelPerSkill(level, skill.getValueFloat());
-    } 
-    
-    public float production( String nameSkill, int level){
-        if ( maxSkill(level) == false)
-            return 0;
-
-
-        Skill skill = getSkillMap(nameSkill);
-        int tempValueInt = 0;
-
-        try {
-            if ( tempValueInt < skill.getValueInt()){
-                return calculateLevelPerSkill(level, skill.getValueInt() );
-            }else{
-                return calculateLevelPerSkill(level, skill.getValueFloat() );
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0;
-        }
-    }
-        
-    
-        
     public void initSkill(){
         Skill skill = ManagerDB.getInstance().getInvTypeSkillValues(3380, true, 440);
-        addSkillMap(skill.getName(), new Skill(skill.getName()) );
-        
-        System.out.println(""+ production("industry", 0));
-        
+        addSkillMap(skill.getName(), new Skill(skill.getName()) );                
         
 //        skill = ManagerDB.getInstance().getInvTypeSkillValues(3388, true, 1961);
 //        addSkillMap(skill.getName(), skill);
@@ -111,13 +76,5 @@ public class ManagerSkill {
         brokerRelations.setValueFloat(0.001f);
         addSkillMap(brokerRelations.getName(), accounting);
     }
-    
-    
-    private float calculateLevelPerSkill(int level, float percente){
-        return level * percente;
-    }
-    
-    public float sottrazioneDalValoreOriginale( float value, float levelForSkill){
-        return 0f;
-    } 
+
 }

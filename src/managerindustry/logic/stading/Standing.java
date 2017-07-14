@@ -13,6 +13,9 @@ public class Standing {
     private float corporationStanding = 7.24f;
     private float factionStanding = 3.0f;
 
+    public Standing(String station) {
+    }
+
     public float getCorporationStanding() {
         return corporationStanding;
     }
