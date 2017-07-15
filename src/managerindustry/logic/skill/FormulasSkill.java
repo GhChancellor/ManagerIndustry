@@ -16,18 +16,23 @@ import managerindustry.logic.exception.MaximumValueSkillexceededException;
 public class FormulasSkill {
        
     /**
-     * DGB Aggiungere eccezione
      * Calculate Level Per Skill
      * @param int level
      * @param float percente
      * @return float
      */
-    protected float calculateLevelPerSkill(int level, float percente) {
-        if ( level >= 0 && level <= 5){
-            return level * percente;
+    protected float calculateLevelPerSkill(int level, float percente)  {
+        try {
+            if ( level >= 0 && level <= 5){
+                return level * percente;
+            }else{
+                throw new MaximumValueSkillexceededException();
+            }
+        } catch (MaximumValueSkillexceededException ex) {
+            System.out.println(""+ex.getMessage());
+            return 0.0f;
         }
-        return 0.0f;
-    }
+}
     
     public float calculateResultWithSkill( float initialValue, int levelSkill, float percente){
         float result = calculateLevelPerSkill(levelSkill, percente);

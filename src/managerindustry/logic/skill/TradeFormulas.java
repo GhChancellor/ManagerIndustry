@@ -35,7 +35,14 @@ public class TradeFormulas extends FormulasSkill{
     }
     
     // Accounting" skill.
-    public float saleTax(int levelSkill, float percent){
-        return calculateLevelPerSkill(levelSkill, percent);
+    public float saleTax(int levelSkill){
+        float saleTransactionStart = 0.02f;
+        float reducedPrice = 0.01f;
+        
+        float temp01 = calculateLevelPerSkill(levelSkill, reducedPrice );
+        
+        System.out.println(""+ saleTransactionStart * temp01);
+        
+        return saleTransactionStart * calculateLevelPerSkill(levelSkill, reducedPrice );
     }
 }

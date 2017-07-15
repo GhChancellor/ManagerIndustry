@@ -14,21 +14,19 @@ import managerindustry.logic.manager.ManagerSkill;
 public class ProductionFormulas extends FormulasSkill{
     
     public float production( String nameSkill, int level){
-
         Skill skill = ManagerSkill.getInstance().getSkillMap(nameSkill);
-        int tempValueInt = 0;
-
         FormulasSkill formulasSkill = new FormulasSkill();
         
         try {
-            if ( tempValueInt < skill.getValueInt()){
-                return formulasSkill.calculateLevelPerSkill(level, skill.getValueInt() );
+            if (skill.getValueInt() == null ){
+                return formulasSkill.calculateLevelPerSkill(level, skill.getValueFloat());
             }else{
-                return formulasSkill.calculateLevelPerSkill(level, skill.getValueFloat() );
+                return formulasSkill.calculateLevelPerSkill(level, skill.getValueInt() );
             }
+            
         } catch (Exception e) {
             e.printStackTrace();
-            return 0;
+            return 0;            
         }
     }
     

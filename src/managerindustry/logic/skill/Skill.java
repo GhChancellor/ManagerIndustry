@@ -65,9 +65,9 @@ public class Skill {
 
     /**
      * Get Value Float
-     * @return float
+     * @return Float
      */
-    public float getValueFloat() {
+    public Float getValueFloat() {
         return valueFloat;
     }
 
@@ -81,9 +81,9 @@ public class Skill {
 
     /**
      * Get Value Int
-     * @return int
+     * @return Integer
      */
-    public int getValueInt() {
+    public Integer getValueInt() {
         return valueInt;
     }
 
