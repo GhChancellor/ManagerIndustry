@@ -7,7 +7,7 @@ package managerindustry;
 
 import managerindustry.logic.manager.ManagerDisplay;
 import managerindustry.logic.manager.ManagerFitter;
-import managerindustry.logic.prove.ProvaRicorsione;
+import managerindustry.logic.prove.ricorsione.ProvaRicorsione;
 
 /**
  *
@@ -22,7 +22,7 @@ public class ManagerIndustry {
 //        ProvaClass provaClass = new ProvaClass();
         
         ManagerDisplay managerDisplay = new ManagerDisplay();
-//        managerDisplay.buildItem();
+        managerDisplay.buildItem();
 //        managerDisplay.itemDescription();
 //        managerDisplay.displayValueRig();
 //        managerDisplay.engineeringComplex();

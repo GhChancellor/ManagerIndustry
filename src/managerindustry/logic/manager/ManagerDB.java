@@ -60,16 +60,6 @@ public class ManagerDB {
             if ( skills.isEmpty() ){
                 return null;
             }else{
-                
-//                Skill skill = new Skill();
-//                skill.setName( skills.get(0).getName() );
-                
-                
-//                skill.setDescription(skills.get(0).getDescription() );
-//                skill.setValueFloat(skills.get(0).getValueFloat() );
-//                skill.setValueInt(skills.get(0).getValueInt() );
-                
-                System.out.println("");
                 return skills.get(0);
             }            
             
@@ -77,6 +67,7 @@ public class ManagerDB {
             e.printStackTrace();
             return null;
         }            
+//        return null;
     }       
     
     

@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "InvTypes.findBySoundID", query = "SELECT i FROM InvTypes i WHERE i.soundID = :soundID")
     , @NamedQuery(name = "InvTypes.findByGraphicID", query = "SELECT i FROM InvTypes i WHERE i.graphicID = :graphicID")
     , @NamedQuery(name = "InvTypes.findByTypeId-Published-AttributeID",  query = 
-     "SELECT a.typeName, a.description, b.valueFloat, b.valueInt FROM InvTypes A, DgmTypeAttributes B, DgmAttributeTypes C where A.typeID = b.dgmTypeAttributesPK.typeID and B.dgmTypeAttributesPK.attributeID = C.attributeID AND A.typeID = :typeID AND A.published = :published AND c.attributeID = :attributeID ")
+     "SELECT NEW managerindustry.logic.skill ( a.typeName, a.description, b.valueFloat, b.valueInt ) FROM InvTypes A, DgmTypeAttributes B, DgmAttributeTypes C where A.typeID = b.dgmTypeAttributesPK.typeID and B.dgmTypeAttributesPK.attributeID = C.attributeID AND A.typeID = :typeID AND A.published = :published AND c.attributeID = :attributeID ")
 
 })
 public class InvTypes implements Serializable {

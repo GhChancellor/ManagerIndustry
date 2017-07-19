@@ -5,6 +5,8 @@
  */
 package managerindustry.logic.skill;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import managerindustry.logic.stading.Standing;
 
 /**
@@ -18,7 +20,13 @@ import managerindustry.logic.stading.Standing;
 public class TradeFormulas extends FormulasSkill{
     
     // Broker Relations skill
-    public float brokerFee(int brokerRelationsLevel, String station){
+    /**
+     * Calculate Broker Fee
+     * @param int brokerRelationsLevel
+     * @param String station
+     * @return float
+     */
+    public float calculateBrokerFee(int brokerRelationsLevel, String station){
         
         float initTax = 0.03f;
         float initTaxCorparationStanding = 0.0002f;
@@ -30,19 +38,21 @@ public class TradeFormulas extends FormulasSkill{
         float result = initTax - ( reduceFeePerLevel * brokerRelationsLevel ) -
          (factionStandingTax * standing.getFactionStanding()) -
          ( initTaxCorparationStanding * standing.getCorporationStanding());
- 
+
         return result;
     }
     
-    // Accounting" skill.
-    public float saleTax(int levelSkill){
+    // 
+    /**
+     * Calculate Sale Tax
+     * @param int levelSkill
+     * @return float
+     * Accounting" skill.
+     */
+    public float calculateSaleTax(int levelSkill){
         float saleTransactionStart = 0.02f;
-        float reducedPrice = 0.01f;
-        
-        float temp01 = calculateLevelPerSkill(levelSkill, reducedPrice );
-        
-        System.out.println(""+ saleTransactionStart * temp01);
-        
-        return saleTransactionStart * calculateLevelPerSkill(levelSkill, reducedPrice );
+        float reducedPrice = 0.01f;   
+        float result = saleTransactionStart * calculateLevelPerSkill(levelSkill, reducedPrice );
+        return result;
     }
 }

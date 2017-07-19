@@ -23,10 +23,18 @@ public class Skill {
         this.name = nameSkill;
     }
 
+    /**
+     * Get Starting Value
+     * @return int
+     */
     public int getStartingValue() {
         return startingValue;
     }
 
+    /**
+     * Set Starting Value
+     * @param int startingValue 
+     */
     public void setStartingValue(int startingValue) {
         this.startingValue = startingValue;
     }
@@ -94,6 +102,5 @@ public class Skill {
     public void setValueInt(int valueInt) {
         this.valueInt = valueInt;
     }
-
   
 }
