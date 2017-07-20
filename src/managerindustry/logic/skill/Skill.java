@@ -14,7 +14,7 @@ public class Skill {
     private String description;
     private float valueFloat;
     private int valueInt;
-    private int startingValue;
+    private float startingValue;
 
     public Skill() {
     }
@@ -25,9 +25,9 @@ public class Skill {
 
     /**
      * Get Starting Value
-     * @return int
+     * @return float
      */
-    public int getStartingValue() {
+    public float getStartingValue() {
         return startingValue;
     }
 
@@ -35,7 +35,7 @@ public class Skill {
      * Set Starting Value
      * @param int startingValue 
      */
-    public void setStartingValue(int startingValue) {
+    public void setStartingValue(float startingValue) {
         this.startingValue = startingValue;
     }
 

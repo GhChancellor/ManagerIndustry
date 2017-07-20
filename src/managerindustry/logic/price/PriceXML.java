@@ -5,17 +5,11 @@
  */
 package managerindustry.logic.price;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-
 /**
  *
  * @author lele
  */
 
-
-//@XmlRootElement(name = "type" )
 public class PriceXML {
     private String volume;
     private String avg;
@@ -25,7 +19,6 @@ public class PriceXML {
     private String median;
     private String percentile;
 
-//    @XmlAttribute
     public String getVolume() {
         return volume;
     }
@@ -34,7 +27,6 @@ public class PriceXML {
         this.volume = volume;
     }
 
-//    @XmlAttribute
     public String getAvg() {
         return avg;
     }
@@ -43,7 +35,6 @@ public class PriceXML {
         this.avg = avg;
     }
 
-//    @XmlAttribute
     public String getMax() {
         return max;
     }
@@ -52,7 +43,6 @@ public class PriceXML {
         this.max = max;
     }
 
-//    @XmlAttribute
     public String getMin() {
         return min;
     }
@@ -61,7 +51,6 @@ public class PriceXML {
         this.min = min;
     }
 
-//    @XmlAttribute
     public String getStddev() {
         return stddev;
     }
@@ -70,7 +59,6 @@ public class PriceXML {
         this.stddev = stddev;
     }
 
-//    @XmlAttribute
     public String getMedian() {
         return median;
     }
@@ -79,7 +67,6 @@ public class PriceXML {
         this.median = median;
     }
 
-//    @XmlAttribute
     public String getPercentile() {
         return percentile;
     }

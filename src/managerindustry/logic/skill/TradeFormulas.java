@@ -7,6 +7,8 @@ package managerindustry.logic.skill;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import managerindustry.logic.manager.ManagerSkill;
+import managerindustry.logic.skill.specificSkill.BrokerFee;
 import managerindustry.logic.stading.Standing;
 
 /**
@@ -27,13 +29,19 @@ public class TradeFormulas extends FormulasSkill{
      * @return float
      */
     public float calculateBrokerFee(int brokerRelationsLevel, String station){
-        
-        float initTax = 0.03f;
+        float initTax = 0.03f;  // starting value
         float initTaxCorparationStanding = 0.0002f;
-        float reduceFeePerLevel = 0.001f;
+        float reduceFeePerLevel = 0.001f; // valueFloat
         float factionStandingTax = 0.0003f;
         
         Standing standing = new Standing(station);
+        
+//        BrokerFee brokerFee = ( BrokerFee ) ManagerSkill.getInstance().getSkillMap("Broker Relations");
+        
+//        float initTax = brokerFee.getStartingValue(); // 0.03f;  // starting value
+//        float initTaxCorparationStanding =  brokerFee.getInitTaxCorparationStanding();  // 0.0002f;
+//        float reduceFeePerLevel = brokerFee.getValueFloat(); // 0.001f; // valueFloat
+//        float factionStandingTax = brokerFee.getFactionStandingTax();  // 0.0003f;
                 
         float result = initTax - ( reduceFeePerLevel * brokerRelationsLevel ) -
          (factionStandingTax * standing.getFactionStanding()) -
@@ -50,8 +58,14 @@ public class TradeFormulas extends FormulasSkill{
      * Accounting" skill.
      */
     public float calculateSaleTax(int levelSkill){
-        float saleTransactionStart = 0.02f;
-        float reducedPrice = 0.01f;   
+        float saleTransactionStart = 0.02f; // starting value
+        float reducedPrice = 0.01f; // valueFloat  
+        
+//        Skill skill = ManagerSkill.getInstance().getSkillMap("Accounting");
+//        
+//        float saleTransactionStart = skill.getStartingValue(); // starting value
+//        float reducedPrice = skill.getValueFloat(); // valueFloat  
+        
         float result = saleTransactionStart * calculateLevelPerSkill(levelSkill, reducedPrice );
         return result;
     }
