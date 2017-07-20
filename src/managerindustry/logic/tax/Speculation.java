@@ -32,30 +32,34 @@ public class Speculation{
         speculationByBuyOrder(sellOrder, buyOrder);        
         displaySpeculationByBuyOrder(sellOrder.getTotalPriceWithTax(), buyOrder.getTotalPriceWithTax());
         
-        sellOrder = new SellOrder(5, 5, "station", numberItem, 289999999);
-        speculationBySellOrder(sellOrder, 27999999);
+        sellOrder = new SellOrder(5, 5, "station", numberItem, 90000);
+        speculationBySellOrder(sellOrder, 100000);
         dispalySpeculationBySellOrder(sellOrder);
     }
 
     
     public void dispalySpeculationBySellOrder(SellOrder sellOrder){
-//        System.out.println("\nSpeculation By Sell Order:");
-//        System.out.println("Numer Item " + sellOrder.getItemsNumber() + 
-//        " - SellerPrice " + sellerPrice + " - My Price " + myPrice  +
-//        " - Free tax " + sellOrder.getTotalPriceWithoutTax() +
-//        "\nMin sell " + minSell + " - Gain item " + gainItem +
-//        "\nTotal gain " + totalGain + " - Total Investment " +totalInvestment );
+        System.out.println("\nSpeculation By Sell Order:");
+        System.out.println("Numer Item " + sellOrder.getItemsNumber() + 
+        " - SellerPrice " + sellerPrice + " - My Price " + myPrice  +
+        " - Free tax " + sellOrder.getTotalPriceWithoutTax() +
+        "\nMin sell " + minSell + " - Gain item " + gainItem +
+        "\nTotal gain " + totalGain + " - Total Investment " +totalInvestment );
     }
     
-    public void speculationBySellOrder(SellOrder sellOrder, float sellerPrice){
-        myPrice =  sellOrder.getItemSellPrice();
-        float myPrice02 =  sellOrder.conversioneInLetturaNormale( sellOrder.getItemSellPrice() ) ;
+    public void speculationBySellOrder(SellOrder sellOrder, float myPrice){
+        this.myPrice = myPrice;
+        this.sellerPrice = sellOrder.getItemSellPrice();
+        minSell = this.sellerPrice + sellOrder.getTotalItemTax();
+        gainItem = myPrice - minSell;
         
-        System.out.println(""+myPrice);
-        System.out.println(""+myPrice02);
+        totalInvestment = ( sellOrder.getItemsNumber() * sellerPrice ) + sellOrder.getTotalItemsTax();
+        totalGain = gainItem * sellOrder.getItemsNumber();        
         
+        
+//        myPrice =  sellOrder.getItemSellPrice();
 //        this.sellerPrice = sellerPrice;
-//        minSell = this.sellerPrice + sellOrder.getTotalItemsTax();
+//        minSell = this.sellerPrice + sellOrder.getTotalItemTax();
 //        gainItem = this.sellerPrice - minSell;
 //        totalInvestment = sellOrder.getItemsNumber() + sellOrder.getTotalItemsTax();
 //        totalGain = gainItem * sellOrder.getItemsNumber();
