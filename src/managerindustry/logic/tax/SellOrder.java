@@ -32,10 +32,10 @@ public class SellOrder extends Tax {
         
         float itemTaxSaleTax = getItemTaxSaleTax(saleTaxRate, sellPrice);
         
-        getTotalItemTax(itemTaxBrokerFee, itemTaxSaleTax);
+        calculateTotalItemTax(itemTaxBrokerFee, itemTaxSaleTax);
         
         setTotalPriceWithoutTax( getItemsNumber() * getItemSellPrice() );
-        getTotalItemsTax();
+        calculateTotalItemsTax();
                 
         calculateTotalPriceWithTax();
     }
@@ -46,9 +46,8 @@ public class SellOrder extends Tax {
      * @param float saleTax
      * @return float
      */
-    public float getTotalItemTax( float brokerFeeTax, float saleTax) {
+    public void calculateTotalItemTax( float brokerFeeTax, float saleTax) {
         this.totalItemTax = brokerFeeTax + saleTax;
-        return totalItemTax;
     }
 
     /**
@@ -68,11 +67,18 @@ public class SellOrder extends Tax {
     }
 
     /**
+     * Calculate Total Items Tax
+     * @return float
+     */
+    public void calculateTotalItemsTax() {
+        totalItemsTax = getItemsTaxBrokerFee() + getItemsTaxSaleTax();
+    }
+    
+    /** 
      * Get Total Items Tax
      * @return float
      */
     public float getTotalItemsTax() {
-        totalItemsTax = getItemsTaxBrokerFee() + getItemsTaxSaleTax();
         return totalItemsTax;
     }
 

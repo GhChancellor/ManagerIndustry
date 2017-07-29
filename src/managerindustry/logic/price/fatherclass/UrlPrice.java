@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.price;
+package managerindustry.logic.price.fatherclass;
 
 /**
  *
  * @author lele
  */
-public class MainPrice {
-    public static void main(String[] args) {
-        ManagerPrice.getInstance().init();
-    }
+public interface UrlPrice {
+    public String getUrl();
+    public String getUrlValue();
 }

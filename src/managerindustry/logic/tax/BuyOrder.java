@@ -26,7 +26,7 @@ public class BuyOrder extends Tax{
         // da controllare
         setItemTaxBrokerFee(brokerFeeIskPerItem);
         
-        getTotalItemTaxBuyOrder(brokerFeeIskPerItem, sellPrice);
+        calculateTotalItemTaxBuyOrder(brokerFeeIskPerItem, sellPrice);
         float resutTot = calculateTotalPriceWithTax();
 
     }
@@ -47,9 +47,8 @@ public class BuyOrder extends Tax{
         return totalItemTaxBuyOrder;
     }
 
-    public float getTotalItemTaxBuyOrder(float brokerFeeTax, float sellPrice) {
+    public void calculateTotalItemTaxBuyOrder(float brokerFeeTax, float sellPrice) {
         totalItemTaxBuyOrder = brokerFeeTax + sellPrice;
-        return totalItemTaxBuyOrder;
     }
 
     public void setTotalItemTaxBuyOrder(float totalItemTaxBuyOrder) {

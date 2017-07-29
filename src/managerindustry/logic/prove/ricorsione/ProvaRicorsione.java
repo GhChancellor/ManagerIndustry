@@ -67,7 +67,7 @@ public class ProvaRicorsione {
         
         if ( ! nameItemToBuild.isEmpty() ){
             for (IndustryActivityMaterials invTypeMaterialse :  nameItemToBuild) {
-                InvTypes invTypes = ManagerDB.getInstance().getInvTypesNameById(invTypeMaterialse.getMaterialTypeID());
+                InvTypes invTypes = ManagerDB.getInstance().getInvTypes_NameById(invTypeMaterialse.getMaterialTypeID());
                 
                 // get component
                 List < IndustryActivityMaterials > neededComponents = ManagerDB.getInstance().getMaterialNeedByName( invTypes.getTypeName() + " blueprint");
@@ -79,7 +79,7 @@ public class ProvaRicorsione {
 
                 if ( neededComponents != null){ 
                     for (IndustryActivityMaterials neededComponent : neededComponents) {
-                        invTypes = ManagerDB.getInstance().getInvTypesNameById(neededComponent.getMaterialTypeID());
+                        invTypes = ManagerDB.getInstance().getInvTypes_NameById(neededComponent.getMaterialTypeID());
                         
                         
 //                        MaterialForComponents materialForComponents = new MaterialForComponents( invTypes.getTypeID(),invTypes.getTypeName(), neededComponent.getQuantity()  );

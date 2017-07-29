@@ -38,7 +38,7 @@ public class StructureEngineeringRigs {
     
     public StructureEngineeringRigs(String name) {   
         
-        InvTypes invTypes = ManagerDB.getInstance().getInvTypesIdByName(name);
+        InvTypes invTypes = ManagerDB.getInstance().getInvTypes_IdByName(name);
 
         List < DgmTypeAttributes > dgmTypeAttributes = ManagerDB.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
         
@@ -153,7 +153,7 @@ public class StructureEngineeringRigs {
      */
     public void rigAttibutes(){
         String bpoName = "Standup M-Set Advanced Component Manufacturing Material Efficiency I";
-        InvTypes invTypes = ManagerDB.getInstance().getInvTypesIdByName(bpoName);
+        InvTypes invTypes = ManagerDB.getInstance().getInvTypes_IdByName(bpoName);
         
         List < DgmTypeAttributes > dgmTypeAttributes = ManagerDB.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
         System.out.println(""+ bpoName + " " + invTypes.getTypeID());

@@ -26,7 +26,7 @@ public class ManagerIndustry {
 //        managerDisplay.itemDescription();
 //        managerDisplay.displayValueRig();
 //        managerDisplay.engineeringComplex();
-//        managerDisplay.getStationID();
+//        managerDisplay.getSolarSystemID();
 
 //        ManagerFitter managerFitter = new ManagerFitter();
 //        managerFitter.initFitter();

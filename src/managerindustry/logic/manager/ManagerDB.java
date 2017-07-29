@@ -15,6 +15,8 @@ import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.db.entities.IndustryActivityMaterials;
 import managerindustry.db.entities.InvNames;
 import managerindustry.db.entities.InvTypes;
+import managerindustry.db.entities.MapRegions;
+import managerindustry.db.entities.MapSolarSystems;
 import managerindustry.logic.skill.Skill;
 
 
@@ -38,12 +40,39 @@ public class ManagerDB {
         }
         return instance;
     }    
+
+//    public MapSolarSystems getMapSolarSystems_SolarSystem(String name){
+//        try {
+//            EntityManager solarSystemEM = entityManager;
+//            TypedQuery < MapSolarSystems > solarSystemTQ = solarSystemEM.createNamedQuery(XXXX, MapSolarSystems.class);
+//            
+//            solarSystemTQ.setParameter(XXX, XXX);
+//            
+//            return solarSystemTQ.getSingleResult();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;            
+//        }
+//    }
+    
+//    public MapRegions getMapRegions_Region(int region){
+//        try {
+//            EntityManager regionEM = entityManager;
+//
+//            TypedQuery < MapRegions > regionTQ = regionEM.createNativeQuery(XXXX, MapRegions.class);
+//            regionTQ.setParameter(XXX, XXX);
+//            return regionTQ.getSingleResult();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;        
+//        }        
+//    }
     
     /**
      * Get value skill like description or name....
      * @return List <InvTypes>
      */
-    public Skill getInvTypeSkillValues(int typeID, boolean published, int attributeID){
+    public Skill getInvTypes_SkillValues(int typeID, boolean published, int attributeID){
         try {
             EntityManager getInvTypeGroupAndNameEM = entityManager;
             
@@ -76,16 +105,16 @@ public class ManagerDB {
      * @param String solarSystem
      * @return InvNames
      */
-    public InvNames getInvNamesSolarSystemID(String solarSystem){
+    public InvNames getInvNames_SolarSystemID(String solarSystem){
         try {
-            EntityManager getInvNamesSolarSystemID = entityManager;
+            EntityManager solarSystemID = entityManager;
             
-            TypedQuery < InvNames > typedQueryTQ = 
-             getInvNamesSolarSystemID.createNamedQuery("InvNames.findByItemName", InvNames.class);
+            TypedQuery < InvNames > solarSystemTQ = 
+             solarSystemID.createNamedQuery("InvNames.findByItemName", InvNames.class);
             
-            typedQueryTQ.setParameter("itemName", solarSystem);
+            solarSystemTQ.setParameter("itemName", solarSystem);
             
-            List < InvNames > invNameses = typedQueryTQ.getResultList();
+            List < InvNames > invNameses = solarSystemTQ.getResultList();
             
             if (invNameses.isEmpty()){
                 return null;
@@ -103,15 +132,15 @@ public class ManagerDB {
      * @param int name
      * @return InvTypes
      */    
-    public InvTypes getInvTypesNameById ( int typeID ){
+    public InvTypes getInvTypes_NameById ( int typeID ){
         try {
-            EntityManager getInvTypesNameEM = entityManager;             
+            EntityManager nameByIdEM = entityManager;             
 
-            TypedQuery < InvTypes > getInvTypesNameTQ = 
-             getInvTypesNameEM.createNamedQuery("InvTypes.findByTypeID", InvTypes.class);
+            TypedQuery < InvTypes > nameByIdTQ = 
+             nameByIdEM.createNamedQuery("InvTypes.findByTypeID", InvTypes.class);
             
-            getInvTypesNameTQ.setParameter("typeID", typeID);
-            List < InvTypes > invTypeses = getInvTypesNameTQ.getResultList();
+            nameByIdTQ.setParameter("typeID", typeID);
+            List < InvTypes > invTypeses = nameByIdTQ.getResultList();
             
             if ( invTypeses.isEmpty()){
                 return null;
@@ -128,15 +157,15 @@ public class ManagerDB {
      * @param String name
      * @return List < InvTypes >
      */   
-    public InvTypes getInvTypesIdByName(String name){
+    public InvTypes getInvTypes_IdByName(String name){
         try {
-            EntityManager getInvTypesEM = entityManager;
+            EntityManager idByNameEM = entityManager;
         
-            TypedQuery < InvTypes > getInvTypesTQ = 
-             getInvTypesEM.createNamedQuery("InvTypes.findByTypeName", InvTypes.class);
+            TypedQuery < InvTypes > idByNameTQ = 
+             idByNameEM.createNamedQuery("InvTypes.findByTypeName", InvTypes.class);
         
-            getInvTypesTQ.setParameter("typeName", name);
-            List < InvTypes > invTypeses = getInvTypesTQ.getResultList();
+            idByNameTQ.setParameter("typeName", name);
+            List < InvTypes > invTypeses = idByNameTQ.getResultList();
             
             if ( invTypeses.isEmpty() ){
                 return null ;
@@ -155,14 +184,14 @@ public class ManagerDB {
      */
     public DgmAttributeTypes getDgmAttributeTypes( int attributeID ){
         try {
-            EntityManager getDgmAttributeTypesEM = entityManager;
+            EntityManager dgmAttributeTypesEM = entityManager;
 
-            TypedQuery < DgmAttributeTypes > getDgmAttributeTypesTQ = 
-             getDgmAttributeTypesEM.createNamedQuery("DgmAttributeTypes.findByAttributeID", DgmAttributeTypes.class);
+            TypedQuery < DgmAttributeTypes > dgmAttributeTypesTQ = 
+             dgmAttributeTypesEM.createNamedQuery("DgmAttributeTypes.findByAttributeID", DgmAttributeTypes.class);
 
-            getDgmAttributeTypesTQ.setParameter("attributeID", attributeID);
+            dgmAttributeTypesTQ.setParameter("attributeID", attributeID);
             
-            List < DgmAttributeTypes > attributeTypeses = getDgmAttributeTypesTQ.getResultList();
+            List < DgmAttributeTypes > attributeTypeses = dgmAttributeTypesTQ.getResultList();
 
             if ( attributeTypeses.isEmpty() ){
                 return null;
@@ -182,13 +211,13 @@ public class ManagerDB {
      */
     public List < DgmTypeAttributes > getDgmTypeAttributes( int typeID ){
         try {
-            EntityManager getDgmTypeAttributesEM = entityManager;
+            EntityManager dgmTypeAttributesEM = entityManager;
 
-            TypedQuery < DgmTypeAttributes > getDgmTypeAttributesTQ =
-             getDgmTypeAttributesEM.createNamedQuery("DgmTypeAttributes.findByTypeID", DgmTypeAttributes.class);
+            TypedQuery < DgmTypeAttributes > dgmTypeAttributesTQ =
+             dgmTypeAttributesEM.createNamedQuery("DgmTypeAttributes.findByTypeID", DgmTypeAttributes.class);
 
-            getDgmTypeAttributesTQ.setParameter("typeID", typeID);
-            return getDgmTypeAttributesTQ.getResultList();        
+            dgmTypeAttributesTQ.setParameter("typeID", typeID);
+            return dgmTypeAttributesTQ.getResultList();        
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -204,15 +233,15 @@ public class ManagerDB {
     public List < IndustryActivityMaterials > getIndustryActivityMaterialsID( int typeID){
         
         try {
-            EntityManager getInvTypeMaterialsEM = entityManager;
+            EntityManager materialsEM = entityManager;
             
-            TypedQuery < IndustryActivityMaterials > getInvTypeMaterialsTQ = 
-             getInvTypeMaterialsEM.createNamedQuery("IndustryActivityMaterials.findByTypeID", IndustryActivityMaterials.class);
+            TypedQuery < IndustryActivityMaterials > materialsTQ = 
+             materialsEM.createNamedQuery("IndustryActivityMaterials.findByTypeID", IndustryActivityMaterials.class);
             
-            getInvTypeMaterialsTQ.setParameter("typeID", typeID);
-            getInvTypeMaterialsTQ.setParameter("activityID", 1);
+            materialsTQ.setParameter("typeID", typeID);
+            materialsTQ.setParameter("activityID", 1);
             
-            return getInvTypeMaterialsTQ.getResultList();
+            return materialsTQ.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -234,7 +263,7 @@ public class ManagerDB {
         */
         
 ////         Convert name to Id
-        InvTypes invTypes = ManagerDB.getInstance().getInvTypesIdByName(bpoName);
+        InvTypes invTypes = ManagerDB.getInstance().getInvTypes_IdByName(bpoName);
         
         if ( invTypes == null ){
             return null;
@@ -266,7 +295,7 @@ public class ManagerDB {
         */
 
         ////         Convert name to Id
-        InvTypes invTypes = ManagerDB.getInstance().getInvTypesIdByName(bpoName);
+        InvTypes invTypes = ManagerDB.getInstance().getInvTypes_IdByName(bpoName);
         
         if ( invTypes == null ){
             return null;
@@ -349,7 +378,7 @@ public class ManagerDB {
      */
     public List < IndustryActivityMaterials > getMaterialNeedById( IndustryActivityMaterials industryActivityMaterials){
         
-        InvTypes invTypes = ManagerDB.getInstance().getInvTypesNameById(industryActivityMaterials.getMaterialTypeID());
+        InvTypes invTypes = ManagerDB.getInstance().getInvTypes_NameById(industryActivityMaterials.getMaterialTypeID());
         
         industryActivityMaterials.setActivityID(1);
         

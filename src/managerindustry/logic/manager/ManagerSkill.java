@@ -52,22 +52,22 @@ public class ManagerSkill {
     }
     
     public void initSkill(){
-        Skill skill = ManagerDB.getInstance().getInvTypeSkillValues(3380, true, 440);
+        Skill skill = ManagerDB.getInstance().getInvTypes_SkillValues(3380, true, 440);
         addSkillMap(skill.getName(), new Skill(skill.getName()) );                
         
-        skill = ManagerDB.getInstance().getInvTypeSkillValues(3388, true, 1961);
+        skill = ManagerDB.getInstance().getInvTypes_SkillValues(3388, true, 1961);
         addSkillMap(skill.getName(), skill);
         
-        skill = ManagerDB.getInstance().getInvTypeSkillValues(3395, true, 1982);
+        skill = ManagerDB.getInstance().getInvTypes_SkillValues(3395, true, 1982);
         addSkillMap(skill.getName(), skill);
         
-        skill = ManagerDB.getInstance().getInvTypeSkillValues(3396, true, 1982);
+        skill = ManagerDB.getInstance().getInvTypes_SkillValues(3396, true, 1982);
         addSkillMap(skill.getName(), skill);
         
-        skill = ManagerDB.getInstance().getInvTypeSkillValues(3397, true, 1982);
+        skill = ManagerDB.getInstance().getInvTypes_SkillValues(3397, true, 1982);
         addSkillMap(skill.getName(), skill);
         
-        skill = ManagerDB.getInstance().getInvTypeSkillValues(3398, true, 1982);
+        skill = ManagerDB.getInstance().getInvTypes_SkillValues(3398, true, 1982);
         addSkillMap(skill.getName(), skill);
         
         manuallyAddedNames();

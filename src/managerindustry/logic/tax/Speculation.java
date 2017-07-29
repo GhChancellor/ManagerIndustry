@@ -59,9 +59,9 @@ public class Speculation{
         
 //        myPrice =  sellOrder.getItemSellPrice();
 //        this.sellerPrice = sellerPrice;
-//        minSell = this.sellerPrice + sellOrder.getTotalItemTax();
+//        minSell = this.sellerPrice + sellOrder.calculateTotalItemTax();
 //        gainItem = this.sellerPrice - minSell;
-//        totalInvestment = sellOrder.getItemsNumber() + sellOrder.getTotalItemsTax();
+//        totalInvestment = sellOrder.getItemsNumber() + sellOrder.calculateTotalItemsTax();
 //        totalGain = gainItem * sellOrder.getItemsNumber();
     }
 
