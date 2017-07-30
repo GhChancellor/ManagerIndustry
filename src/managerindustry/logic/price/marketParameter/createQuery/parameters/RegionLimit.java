@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.price.fatherclass.parameters;
+package managerindustry.logic.price.marketParameter.createQuery.parameters;
 
-import managerindustry.logic.price.fatherclass.UrlPrice;
+import managerindustry.logic.price.marketParameter.createQuery.CreateQuery;
+import managerindustry.logic.price.marketParameter.createQuery.UrlPrice;
 
 /**
  *
  * @author lele
  */
-public class RegionLimit implements UrlPrice{
+public class RegionLimit extends CreateQuery<RegionLimit>{
     private int regionlimit;
 
-    public RegionLimit(int regionlimit) {
-        this.regionlimit = regionlimit;
+    public RegionLimit(RegionLimit query) {
+        super(query);
     }
 
     public int getRegionlimit() {

@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.price.fatherclass.parameters;
+package managerindustry.logic.price.marketParameter.createQuery.parameters;
 
-import managerindustry.logic.price.fatherclass.UrlPrice;
+import managerindustry.logic.price.marketParameter.createQuery.CreateQuery;
+import managerindustry.logic.price.marketParameter.createQuery.UrlPrice;
 
 /**
  *
  * @author lele
  */
-public class MinQuantity implements UrlPrice{
+public class MinQuantity extends CreateQuery<MinQuantity>{
     private int minimunQuantity;
 
-    public MinQuantity(int minimunQuantity) {
-        this.minimunQuantity = minimunQuantity;
+    public MinQuantity(MinQuantity query) {
+        super(query);
     }
 
     public int getMinimunQuantity() {

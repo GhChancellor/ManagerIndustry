@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.price.fatherclass.parameters;
+package managerindustry.logic.price.marketParameter.createQuery.parameters;
 
-import managerindustry.logic.price.fatherclass.UrlPrice;
+import managerindustry.logic.price.marketParameter.createQuery.CreateQuery;
+import managerindustry.logic.price.marketParameter.createQuery.UrlPrice;
 
 /**
  *
  * @author lele
  */
-public class UseSystem implements UrlPrice{
+public class UseSystem extends CreateQuery<UseSystem>{
     private int usesystem;
 
-    public UseSystem(int usesystem) {
-        this.usesystem = usesystem;
+    public UseSystem(UseSystem query) {
+        super(query);
     }
 
     public int getUsesystem() {
