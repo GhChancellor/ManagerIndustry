@@ -6,17 +6,16 @@
 package managerindustry.logic.price.marketParameter.createQuery.parameters;
 
 import managerindustry.logic.price.marketParameter.createQuery.CreateQuery;
-import managerindustry.logic.price.marketParameter.createQuery.UrlPrice;
 
 /**
  *
  * @author lele
  */
-public class MinQuantity extends CreateQuery<MinQuantity>{
+public class MinQuantity extends CreateQuery{
     private int minimunQuantity;
 
-    public MinQuantity(MinQuantity query) {
-        super(query);
+    public MinQuantity(int minimunQuantity) {
+        this.minimunQuantity = minimunQuantity;
     }
 
     public int getMinimunQuantity() {

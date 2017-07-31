@@ -5,19 +5,19 @@
  */
 package managerindustry.logic.price.marketParameter.createQuery.parameters;
 
+import java.util.List;
 import managerindustry.logic.price.marketParameter.createQuery.CreateQuery;
 
 /**
  *
  * @author lele
  */
-public class TypeID extends CreateQuery<TypeID>{
+public class TypeID extends CreateQuery{
     private int typeID;
 
-    public TypeID(TypeID query) {
-        super(query);
+    public TypeID(int typeID) {
+        this.typeID = typeID;
     }
-
     
     public int getTypeID() {
         return typeID;

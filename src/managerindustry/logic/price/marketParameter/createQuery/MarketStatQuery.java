@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.price.marketParameter;
+package managerindustry.logic.price.marketParameter.createQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +30,45 @@ public class MarketStatQuery {
     private List<TypeID> typeIDs = new ArrayList<>();
     
     public MarketStatQuery() {
-        String url = queryStart.getQueryStart();
-    }
 
+    }
+    
+    public void display(){
+        String result = queryStart.getQueryStart();
+        
+        for (TypeID typeID : typeIDs) {
+            result += getQuery(typeID);
+        }
+        System.out.println(""+result);
+    }
 
     public String getQuery(CreateQuery createQuery){
-        return createQuery.getUrl() + "=" + createQuery.getUrlValue()+"&";
+        String result="";
+        return result += createQuery.getUrl() + "=" + createQuery.getUrlValue()+"&";
+    }    
+    
+    public void display02(){
+        String result = queryStart.getQueryStart();
+        
+        result += getQueries(typeIDs);
+        result += getQueries(regionLimits);
+        
+        System.out.println(""+result.substring(0, result.length()-1));
     }
+    
+    public String getQueries(List < ? extends  CreateQuery > createQuerys){
+        String result="";
+        if (!createQuerys.isEmpty()){
+            for (CreateQuery createQuery : createQuerys) {
+                result += createQuery.getUrl() + "=" + createQuery.getUrlValue()+"&";
+            }
+            return result;
+        }
+        return "";
+    }
+    
+    
+
 //    String minQQ = minQ == null ? "" :  minQ.getParameterToAsk() +"="+minQ.getValueToAsk()+"&";
     /**
      * Get minimun quantity

@@ -6,20 +6,18 @@
 package managerindustry.logic.price.marketParameter.createQuery.parameters;
 
 import managerindustry.logic.price.marketParameter.createQuery.CreateQuery;
-import managerindustry.logic.price.marketParameter.createQuery.UrlPrice;
 
 /**
  *
  * @author lele
  */
-public class Hour extends CreateQuery<Hour>{
+public class Hour extends CreateQuery{
     private int hour;
 
-    public Hour(Hour query) {
-        super(query);
+    public Hour(int hour) {
+        this.hour = hour;
     }
 
-    
     public int getHour() {
         return hour;
     }

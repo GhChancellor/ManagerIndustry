@@ -6,17 +6,16 @@
 package managerindustry.logic.price.marketParameter.createQuery.parameters;
 
 import managerindustry.logic.price.marketParameter.createQuery.CreateQuery;
-import managerindustry.logic.price.marketParameter.createQuery.UrlPrice;
 
 /**
  *
  * @author lele
  */
-public class RegionLimit extends CreateQuery<RegionLimit>{
+public class RegionLimit extends CreateQuery{
     private int regionlimit;
 
-    public RegionLimit(RegionLimit query) {
-        super(query);
+    public RegionLimit(int regionlimit) {
+        this.regionlimit = regionlimit;
     }
 
     public int getRegionlimit() {

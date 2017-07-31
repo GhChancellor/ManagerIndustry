@@ -6,18 +6,13 @@
 package managerindustry.logic.price.marketParameter.createQuery.parameters;
 
 import managerindustry.logic.price.marketParameter.createQuery.CreateQuery;
-import managerindustry.logic.price.marketParameter.createQuery.UrlPrice;
 
 /**
  *
  * @author lele
  */
-public class UseSystem extends CreateQuery<UseSystem>{
+public class UseSystem extends CreateQuery{
     private int usesystem;
-
-    public UseSystem(UseSystem query) {
-        super(query);
-    }
 
     public int getUsesystem() {
         return usesystem;

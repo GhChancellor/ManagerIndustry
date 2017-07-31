@@ -5,6 +5,8 @@
  */
 package managerindustry.logic.price.marketParameter.createQuery;
 
+import java.util.ArrayList;
+import java.util.List;
 import managerindustry.logic.price.marketParameter.createQuery.parameters.Hour;
 
 /**
@@ -12,21 +14,7 @@ import managerindustry.logic.price.marketParameter.createQuery.parameters.Hour;
  * @author lele
  * @param <T>
  */
-public abstract class CreateQuery < T >{
-    private T query;
-
-    public CreateQuery(T query) {
-        this.query = query;
-    }
-
-    public T getQuery() {
-        return query;
-    }
-
-    public void setQuery(T query) {
-        this.query = query;
-    }
-    
+public abstract class CreateQuery{            
     public abstract String getUrl();
     public abstract String getUrlValue();
 }
