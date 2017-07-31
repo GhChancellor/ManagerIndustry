@@ -43,8 +43,11 @@ public class MarketStatQuery {
     }
 
     public String getQuery(CreateQuery createQuery){
-        String result="";
-        return result += createQuery.getUrl() + "=" + createQuery.getUrlValue()+"&";
+        if (createQuery != null){
+            String result="";
+            return result += createQuery.getUrl() + "=" + createQuery.getUrlValue()+"&";            
+        }
+        return "";
     }    
     
     public void display02(){
@@ -52,16 +55,22 @@ public class MarketStatQuery {
         
         result += getQueries(typeIDs);
         result += getQueries(regionLimits);
-        
+        result += getQueries(hours);
+        result += getQuery(useSystem);
+        result += getQuery(minQuantity);
+                
         System.out.println(""+result.substring(0, result.length()-1));
     }
     
     public String getQueries(List < ? extends  CreateQuery > createQuerys){
-        String result="";
+
         if (!createQuerys.isEmpty()){
+            String result="";
+            
             for (CreateQuery createQuery : createQuerys) {
                 result += createQuery.getUrl() + "=" + createQuery.getUrlValue()+"&";
             }
+            
             return result;
         }
         return "";
