@@ -14,6 +14,10 @@ import managerindustry.logic.price.marketParameter.createQuery.CreateQuery;
 public class UseSystem extends CreateQuery{
     private int usesystem;
 
+    public UseSystem(int usesystem) {
+        this.usesystem = usesystem;
+    }
+
     public int getUsesystem() {
         return usesystem;
     }

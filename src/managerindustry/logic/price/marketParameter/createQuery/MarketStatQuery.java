@@ -50,7 +50,7 @@ public class MarketStatQuery {
         return "";
     }    
     
-    public void display02(){
+    public String getUrl(){
         String result = queryStart.getQueryStart();
         
         result += getQueries(typeIDs);
@@ -60,6 +60,7 @@ public class MarketStatQuery {
         result += getQuery(minQuantity);
                 
         System.out.println(""+result.substring(0, result.length()-1));
+        return result;
     }
     
     public String getQueries(List < ? extends  CreateQuery > createQuerys){
