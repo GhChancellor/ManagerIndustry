@@ -62,6 +62,7 @@ public class XmlUrl {
     
     
     public void prova001(String xxx){
+        xxx ="https://esi.tech.ccp.is/latest/industry/systems/?datasource=tranquility";
         try {
             URL url = new URL(xxx);
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));

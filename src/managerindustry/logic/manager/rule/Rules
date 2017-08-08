@@ -95,6 +95,16 @@ public class StructureEngineeringRigs {
     invTypes.typeID = dgmTypeAttributes.typeID and dgmTypeAttributes.attributeID = dgmAttributeTypes.attributeID and
     invTypes.typeID=3398 and invTypes.published=1  and dgmAttributeTypes.attributeID=1982;
 
+     SELECT industryActivityMaterials.typeID, industryActivityMaterials.materialTypeID,
+ (SELECT invTypes.typeName FROM eveschema.invTypes 
+  WHERE industryActivityMaterials.materialTypeID = invTypes.typeID) as 'materialName', industryActivityMaterials.quantity, invTypes.groupID,
+ (SELECT invGroups.groupName FROM eveschema.invGroups 
+  WHERE invTypes.groupID = invGroups.groupID) as 'groupName', invTypes.typeName 
+  FROM eveschema.industryActivityMaterials, eveschema.invTypes
+  WHERE industryActivityMaterials.typeID = invTypes.typeID  AND
+ invTypes.typeName = CONCAT((SELECT invTypes.typeName FROM eveschema.invTypes WHERE invTypes.typeID = "21023"), " Blueprint") 
+ AND industryActivityMaterials.activityID = "1";
+
     production
     3380 440 Industry 
     3388 1961 Advanced Industry

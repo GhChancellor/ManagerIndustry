@@ -1,0 +1,15 @@
+{"solar_system_id": 30020141, 
+ "cost_indices": [
+    {"activity": "manufacturing", "cost_index": 0.02119926972605299}, 
+    {"activity": "researching_time_efficiency", "cost_index": 0.011825645388723856}, 
+    {"activity": "researching_material_efficiency", "cost_index": 0.02307659535595766}, 
+    {"activity": "copying", "cost_index": 0.006783916556839193}],
+"solar_system_id": 30020142, 
+ "cost_indices": [
+    {"activity": "manufacturing", "cost_index": 1.02119926972605299}, 
+    {"activity": "researching_time_efficiency", "cost_index": 1.011825645388723856}, 
+    {"activity": "researching_material_efficiency", "cost_index": 1.02307659535595766}, 
+    {"activity": "copying", "cost_index": 1.006783916556839193}]
+
+
+}

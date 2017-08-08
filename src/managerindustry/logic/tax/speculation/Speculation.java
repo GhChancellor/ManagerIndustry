@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax;
+package managerindustry.logic.tax.speculation;
 
 import managerindustry.logic.skill.FormulasSkill;
 import managerindustry.logic.skill.TradeFormulas;
