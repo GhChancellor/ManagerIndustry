@@ -10,6 +10,8 @@ import com.google.gson.GsonBuilder;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -26,8 +28,9 @@ public class JsonProva {
             final String path = "/home/lele/NetBeansProjects/ManagerIndustry/src/managerindustry/logic/tax/jobInstallationFee/systemCostIndex/newfile.json";
             Reader reader = new FileReader(path);
           
-            final SolarSystem solarSystem = gson.fromJson(reader, SolarSystem.class);
-            System.out.println(""+solarSystem.getSolarSystem());
+            
+            SolarSystem solarSystem = gson.fromJson(reader, SolarSystem.class);
+            System.out.println("Solar system ID:"+solarSystem.getSolarSystem());
 
             CostIndex[] costIndexs = solarSystem.getCostIndexs();
             
@@ -36,6 +39,8 @@ public class JsonProva {
                 System.out.println(""+ costIndex.getActivity() + " " + costIndex.getCostIndex());
                 
             }
+            
+            
             
         } catch (Exception e) {
             e.printStackTrace();

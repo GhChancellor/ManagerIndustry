@@ -1,4 +1,34 @@
+https://esi.tech.ccp.is/legacy/industry/systems/?datasource=tranquility
 
+
+
+{"solar_system_id": 1, 
+ "cost_indices": [
+    {"activity": "manufacturing", "cost_index": 1.1}, 
+    {"activity": "researching_time_efficiency", "cost_index": 1.1}, 
+    {"activity": "researching_material_efficiency", "cost_index": 1.1}, 
+    {"activity": "copying", "cost_index": 1.1}],
+
+ "solar_system_id": 2, 
+ "cost_indices": [
+    {"activity": "manufacturing", "cost_index": 2.2}, 
+    {"activity": "researching_time_efficiency", "cost_index": 2.2}, 
+    {"activity": "researching_material_efficiency", "cost_index": 2.2}, 
+    {"activity": "copying", "cost_index": 2.2}], 
+
+ "solar_system_id": 3, 
+ "cost_indices": [
+    {"activity": "manufacturing", "cost_index": 3.3}, 
+    {"activity": "researching_time_efficiency", "cost_index": 3.3}, 
+    {"activity": "researching_material_efficiency", "cost_index": 3.3}, 
+    {"activity": "copying", "cost_index": 3.3}]
+
+}
+
+
+
+
+[
 {
     "solar_system_id": 30020141,
     "cost_indices": [
@@ -49,3 +79,4 @@
       }
     ]
   }
+]

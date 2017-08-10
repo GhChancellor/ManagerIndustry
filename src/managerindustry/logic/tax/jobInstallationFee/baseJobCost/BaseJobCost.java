@@ -14,15 +14,13 @@ import managerindustry.logic.manager.ManagerDB;
  * @author lele
  */
 public class BaseJobCost {
-    private BigDecimal basePriceCost;
+    /*
+    basecost = ( prezzo oggetto 1 * adjusted_price ) + ( prezzo oggetto 2 * adjusted_price ) ....  cosi?
+    
+    
+    */
 
-    public BaseJobCost(int typeId) {
-        InvTypes invTypes = ManagerDB.getInstance().getInvTypes_NameById(typeId);
-        basePriceCost = invTypes.getBasePrice();
-    }
 
-    public BigDecimal getBasePriceCost() {
-        return basePriceCost;
-    }
+    
     
 }

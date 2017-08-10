@@ -11,6 +11,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -30,6 +32,11 @@ public class SolarSystemDeserializer implements JsonDeserializer<SolarSystem>{
             SolarSystem solarSystem = new SolarSystem();
             solarSystem.setSolarSystem(solarSystemTemp);
             solarSystem.setCostIndexs(costIndexs);
+            
+            List < SolarSystem > solarSystems = new ArrayList<>();
+            solarSystems.add(solarSystem);
+            
+            
             return solarSystem;
         } catch (Exception e) {
             e.printStackTrace();

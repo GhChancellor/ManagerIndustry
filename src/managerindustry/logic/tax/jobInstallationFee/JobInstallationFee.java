@@ -17,12 +17,12 @@ public class JobInstallationFee {
     
     public JobInstallationFee( int typeId, int runs ) {
         try {
-            BaseJobCost basePrice = new BaseJobCost(typeId);
-
-            float baseJobCost = basePrice.getBasePriceCost().floatValue();
-            float systemCostIndex = 1;
-
-            this.jobFee = baseJobCost * systemCostIndex * runs;
+//            BaseJobCost basePrice = new BaseJobCost(typeId);
+//
+//            float baseJobCost = basePrice.getBasePriceCost().floatValue();
+//            float systemCostIndex = 1;
+//
+//            this.jobFee = baseJobCost * systemCostIndex * runs;
         } catch (Exception e) {
             e.printStackTrace();
         }
