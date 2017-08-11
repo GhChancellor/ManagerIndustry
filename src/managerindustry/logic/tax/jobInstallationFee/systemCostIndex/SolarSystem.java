@@ -10,7 +10,7 @@ package managerindustry.logic.tax.jobInstallationFee.systemCostIndex;
  * @author lele
  */
 public class SolarSystem {
-    private String solarSystem;
+    private String solar_system_id;
     private CostIndex[] costIndexs;
     
     public SolarSystem() {
@@ -25,11 +25,11 @@ public class SolarSystem {
     }
 
     public String getSolarSystem() {
-        return solarSystem;
+        return solar_system_id;
     }
 
     public void setSolarSystem(String SolarSystem) {
-        this.solarSystem = SolarSystem;
+        this.solar_system_id = SolarSystem;
     }
     
 }
