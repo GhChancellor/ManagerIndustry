@@ -31,12 +31,7 @@ public class SolarSystemDeserializer implements JsonDeserializer<SolarSystem>{
 
             SolarSystem solarSystem = new SolarSystem();
             solarSystem.setSolarSystem(solarSystemTemp);
-            solarSystem.setCostIndexs(costIndexs);
-            
-            List < SolarSystem > solarSystems = new ArrayList<>();
-            solarSystems.add(solarSystem);
-            
-            
+            solarSystem.setCostIndexs(costIndexs);                       
             return solarSystem;
         } catch (Exception e) {
             e.printStackTrace();

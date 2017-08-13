@@ -6,13 +6,17 @@
 package managerindustry.db.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
 
 /**
  *
@@ -26,27 +30,43 @@ public class XXSolarSystemEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String solarSystem;
+    
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date lastUsed;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List < XXCostIndexEntity > costIndex; 
 
-    public List<XXCostIndexEntity> getCostIndex() {
+    
+    public void qualcosa( Map<String, SolarSystem > solarSystemMap, String SolarSystemID, String activity ){
+        
+    }
+    
+    private List<XXCostIndexEntity> getCostIndex() {
         return costIndex;
     }
-
-    public void setCostIndex(List<XXCostIndexEntity> costIndex) {
+    
+    private void setCostIndex(List<XXCostIndexEntity> costIndex) {
         this.costIndex = costIndex;
     }
     
-    public void addCostIndex( XXCostIndexEntity costIndex) {
+    private void addCostIndex( XXCostIndexEntity costIndex) {
         this.costIndex.add(costIndex);
+    }
+
+    private Date getLastUsed() {
+        return lastUsed;
+    }
+
+    private void setLastUsed(Date lastUsed) {
+        this.lastUsed = lastUsed;
     }
     
     public String getSolarSystem() {
         return solarSystem;
     }
 
-    public void setSolarSystem(String solarSystem) {
+    private void setSolarSystem(String solarSystem) {
         this.solarSystem = solarSystem;
     }
     

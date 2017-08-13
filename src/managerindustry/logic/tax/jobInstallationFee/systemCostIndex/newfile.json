@@ -1,51 +1,51 @@
-
+[
 {
-    "solar_system_id": 30020141,
-    "cost_indices": [
-      {
+"solar_system_id": 30020141,
+        "cost_indices": [
+        {
         "activity": "manufacturing",
-        "cost_index": 0.021233629820712717
-      },
-      {
+                "cost_index": 0.02198720595305347
+        },
+        {
         "activity": "researching_time_efficiency",
-        "cost_index": 0.01323016257806346
-      },
-      {
+                "cost_index": 0.01330596042568494
+        },
+        {
         "activity": "researching_material_efficiency",
-        "cost_index": 0.01578943925237471
-      },
-      {
+                "cost_index": 0.016104720648757266
+        },
+        {
         "activity": "copying",
-        "cost_index": 0.0071303793107821015
-      },
-      {
+                "cost_index": 0.007163949940991156
+        },
+        {
         "activity": "invention",
-        "cost_index": 0.02758672262972137
-      }
-    ]
-  },
+                "cost_index": 0.028401381722423246
+        }
+        ]
+},
 {
-    "solar_system_id": 30035042,
-    "cost_indices": [
-      {
+"solar_system_id": 30035042,
+        "cost_indices": [
+        {
         "activity": "manufacturing",
-        "cost_index": 0.006503021734061641
-      },
-      {
+                "cost_index": 0.006673538917434411
+        },
+        {
         "activity": "researching_time_efficiency",
-        "cost_index": 0.021952059404578898
-      },
-      {
+                "cost_index": 0.021500295383815166
+        },
+        {
         "activity": "researching_material_efficiency",
-        "cost_index": 0.020679207963165996
-      },
-      {
+                "cost_index": 0.02042061280276704
+        },
+        {
         "activity": "copying",
-        "cost_index": 0.0033444967641273753
-      },
-      {
+                "cost_index": 0.0033216279402351312
+        },
+        {
         "activity": "invention",
-        "cost_index": 0.015099690614756502
-      }
-    ]
-  }
+                "cost_index": 0.015591363546165379
+        }
+        ]
+}]
