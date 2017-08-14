@@ -17,6 +17,7 @@ import managerindustry.db.entities.InvNames;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.db.entities.MapRegions;
 import managerindustry.db.entities.MapSolarSystems;
+import managerindustry.db.entities.solarSystemTax.TaxSolarSystemEntity;
 import managerindustry.logic.skill.Skill;
 
 
@@ -41,6 +42,33 @@ public class ManagerDB {
         return instance;
     }    
 
+    /**
+     * Check into DB if solar System exists
+     * @param solarSystemID
+     * @return 
+     */
+    public TaxSolarSystemEntity isSolarSystemExists(String solarSystemID){
+        try {
+            EntityManager taxSolarSystemEntityEM = entityManager;
+            TypedQuery < TaxSolarSystemEntity > taxSolarSystemEntityQT = 
+             taxSolarSystemEntityEM.createNamedQuery("TaxSolarSystemEntity.IsExists", TaxSolarSystemEntity.class);
+            
+            taxSolarSystemEntityQT.setParameter("solarSystemID", solarSystemID);
+            
+            List < TaxSolarSystemEntity > taxSolarSystemEntitys = taxSolarSystemEntityQT.getResultList();
+            
+            if ( taxSolarSystemEntitys.isEmpty()){
+                return null;
+            }else{
+                return taxSolarSystemEntitys.get(0);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
 //    public MapSolarSystems getMapSolarSystems_SolarSystem(String name){
 //        try {
 //            EntityManager solarSystemEM = entityManager;
@@ -340,7 +368,12 @@ public class ManagerDB {
         }
     }
     
-    
+    /**
+     * Write into Db Tax Solar System Entity
+     */
+    public void writeTaxSolarSystemEntity(){
+        
+    }
     
     
     

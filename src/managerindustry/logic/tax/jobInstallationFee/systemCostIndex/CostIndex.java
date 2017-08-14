@@ -16,18 +16,34 @@ public class CostIndex {
     public CostIndex() {
     }
 
+    /**
+     * Set Activity
+     * @return String
+     */
     public String getActivity() {
         return activity;
     }
 
+    /**
+     * Get Activity
+     * @param String activity 
+     */
     public void setActivity(String activity) {
         this.activity = activity;
     }
 
+    /**
+     * Get CostIndex
+     * @return String
+     */
     public String getCostIndex() {
         return costIndex;
     }
 
+    /**
+     * Set CostIndex
+     * @param String costIndex 
+     */
     public void setCostIndex(String costIndex) {
         this.costIndex = costIndex;
     }

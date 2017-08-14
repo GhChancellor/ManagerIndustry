@@ -20,26 +20,50 @@ public class BrokerFee extends Skill{
         super(nameSkill);
     }
   
+    /**
+     * 
+     * @return float
+     */
     public float getInitTaxCorparationStanding() {
         return initTaxCorparationStanding;
     }
 
+    /**
+     * 
+     * @param float initTaxCorparationStanding 
+     */
     public void setInitTaxCorparationStanding(float initTaxCorparationStanding) {
         this.initTaxCorparationStanding = initTaxCorparationStanding;
     }
 
+    /**
+     * 
+     * @return float
+     */
     public float getFactionStandingTax() {
         return factionStandingTax;
     }
 
+    /**
+     * 
+     * @param float factionStandingTax 
+     */
     public void setFactionStandingTax(float factionStandingTax) {
         this.factionStandingTax = factionStandingTax;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * 
+     * @param Stringname 
+     */
     public void setName(String name) {
         this.name = name;
     }

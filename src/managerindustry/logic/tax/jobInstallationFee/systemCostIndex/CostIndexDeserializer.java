@@ -18,6 +18,14 @@ import java.lang.reflect.Type;
  */
 public class CostIndexDeserializer implements JsonDeserializer<CostIndex>{
 
+    /**
+     * Deserialize CostIndex, get value activity and cost_index from json
+     * @param je
+     * @param type
+     * @param jdc
+     * @return
+     * @throws JsonParseException 
+     */
     @Override
     public CostIndex deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
         try {

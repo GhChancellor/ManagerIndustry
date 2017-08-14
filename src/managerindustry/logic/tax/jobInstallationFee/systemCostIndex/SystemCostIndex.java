@@ -25,6 +25,10 @@ import java.util.stream.Collectors;
  */
 public class SystemCostIndex {
 
+    /**
+     * Get value Solar System and CostIndexs value from Json
+     * @return Map<String, SolarSystem >
+     */
     public Map<String, SolarSystem > getSystemCostIndexs() {
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();

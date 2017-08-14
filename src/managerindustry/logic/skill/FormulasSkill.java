@@ -32,8 +32,15 @@ public class FormulasSkill {
             System.out.println(""+ex.getMessage());
             return 0.0f;
         }
-}
+    }
     
+    /**
+     * Calculate Result With Skill
+     * @param float initialValue
+     * @param int levelSkill
+     * @param float percente
+     * @return 
+     */
     public float calculateResultWithSkill( float initialValue, int levelSkill, float percente){
         float result = calculateLevelPerSkill(levelSkill, percente);
         return initialValue * result;

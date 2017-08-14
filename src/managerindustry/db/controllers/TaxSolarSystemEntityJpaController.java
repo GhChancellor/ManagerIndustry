@@ -14,15 +14,15 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import managerindustry.db.controllers.exceptions.NonexistentEntityException;
-import managerindustry.db.entities.XXCostIndexEntity;
+import managerindustry.db.entities.solarSystemTax.TaxSolarSystemEntity;
 
 /**
  *
  * @author lele
  */
-public class XXCostIndexEntityJpaController implements Serializable {
+public class TaxSolarSystemEntityJpaController implements Serializable {
 
-    public XXCostIndexEntityJpaController(EntityManagerFactory emf) {
+    public TaxSolarSystemEntityJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -31,12 +31,12 @@ public class XXCostIndexEntityJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(XXCostIndexEntity XXCostIndexEntity) {
+    public void create(TaxSolarSystemEntity taxSolarSystemEntity) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(XXCostIndexEntity);
+            em.persist(taxSolarSystemEntity);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -45,19 +45,19 @@ public class XXCostIndexEntityJpaController implements Serializable {
         }
     }
 
-    public void edit(XXCostIndexEntity XXCostIndexEntity) throws NonexistentEntityException, Exception {
+    public void edit(TaxSolarSystemEntity taxSolarSystemEntity) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            XXCostIndexEntity = em.merge(XXCostIndexEntity);
+            taxSolarSystemEntity = em.merge(taxSolarSystemEntity);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = XXCostIndexEntity.getId();
-                if (findXXCostIndexEntity(id) == null) {
-                    throw new NonexistentEntityException("The xXCostIndexEntity with id " + id + " no longer exists.");
+                Long id = taxSolarSystemEntity.getId();
+                if (findTaxSolarSystemEntity(id) == null) {
+                    throw new NonexistentEntityException("The taxSolarSystemEntity with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,14 +73,14 @@ public class XXCostIndexEntityJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            XXCostIndexEntity XXCostIndexEntity;
+            TaxSolarSystemEntity taxSolarSystemEntity;
             try {
-                XXCostIndexEntity = em.getReference(XXCostIndexEntity.class, id);
-                XXCostIndexEntity.getId();
+                taxSolarSystemEntity = em.getReference(TaxSolarSystemEntity.class, id);
+                taxSolarSystemEntity.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The XXCostIndexEntity with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The taxSolarSystemEntity with id " + id + " no longer exists.", enfe);
             }
-            em.remove(XXCostIndexEntity);
+            em.remove(taxSolarSystemEntity);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -89,19 +89,19 @@ public class XXCostIndexEntityJpaController implements Serializable {
         }
     }
 
-    public List<XXCostIndexEntity> findXXCostIndexEntityEntities() {
-        return findXXCostIndexEntityEntities(true, -1, -1);
+    public List<TaxSolarSystemEntity> findTaxSolarSystemEntityEntities() {
+        return findTaxSolarSystemEntityEntities(true, -1, -1);
     }
 
-    public List<XXCostIndexEntity> findXXCostIndexEntityEntities(int maxResults, int firstResult) {
-        return findXXCostIndexEntityEntities(false, maxResults, firstResult);
+    public List<TaxSolarSystemEntity> findTaxSolarSystemEntityEntities(int maxResults, int firstResult) {
+        return findTaxSolarSystemEntityEntities(false, maxResults, firstResult);
     }
 
-    private List<XXCostIndexEntity> findXXCostIndexEntityEntities(boolean all, int maxResults, int firstResult) {
+    private List<TaxSolarSystemEntity> findTaxSolarSystemEntityEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(XXCostIndexEntity.class));
+            cq.select(cq.from(TaxSolarSystemEntity.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -113,20 +113,20 @@ public class XXCostIndexEntityJpaController implements Serializable {
         }
     }
 
-    public XXCostIndexEntity findXXCostIndexEntity(Long id) {
+    public TaxSolarSystemEntity findTaxSolarSystemEntity(Long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(XXCostIndexEntity.class, id);
+            return em.find(TaxSolarSystemEntity.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getXXCostIndexEntityCount() {
+    public int getTaxSolarSystemEntityCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<XXCostIndexEntity> rt = cq.from(XXCostIndexEntity.class);
+            Root<TaxSolarSystemEntity> rt = cq.from(TaxSolarSystemEntity.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

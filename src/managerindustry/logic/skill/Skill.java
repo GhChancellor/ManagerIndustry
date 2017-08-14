@@ -19,6 +19,10 @@ public class Skill {
     public Skill() {
     }
     
+    /**
+     * Set name Skill
+     * @param String nameSkill 
+     */
     public Skill(String nameSkill){
         this.name = nameSkill;
     }

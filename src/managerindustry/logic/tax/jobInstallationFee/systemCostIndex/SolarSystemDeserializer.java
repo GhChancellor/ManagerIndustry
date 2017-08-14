@@ -20,6 +20,14 @@ import java.util.List;
  */
 public class SolarSystemDeserializer implements JsonDeserializer<SolarSystem>{
 
+    /**
+     * Deserialize SolarSystem, get value solar_system_id and cost_indices[] from json
+     * @param je
+     * @param type
+     * @param jdc
+     * @return
+     * @throws JsonParseException 
+     */
     @Override
     public SolarSystem deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
         try {

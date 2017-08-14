@@ -14,15 +14,15 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import managerindustry.db.controllers.exceptions.NonexistentEntityException;
-import managerindustry.db.entities.XXSolarSystemEntity;
+import managerindustry.db.entities.solarSystemTax.TaxCostIndexEntity;
 
 /**
  *
  * @author lele
  */
-public class XXSolarSystemEntityJpaController implements Serializable {
+public class TaxCostIndexEntityJpaController implements Serializable {
 
-    public XXSolarSystemEntityJpaController(EntityManagerFactory emf) {
+    public TaxCostIndexEntityJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -31,12 +31,12 @@ public class XXSolarSystemEntityJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(XXSolarSystemEntity XXSolarSystemEntity) {
+    public void create(TaxCostIndexEntity taxCostIndexEntity) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(XXSolarSystemEntity);
+            em.persist(taxCostIndexEntity);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -45,19 +45,19 @@ public class XXSolarSystemEntityJpaController implements Serializable {
         }
     }
 
-    public void edit(XXSolarSystemEntity XXSolarSystemEntity) throws NonexistentEntityException, Exception {
+    public void edit(TaxCostIndexEntity taxCostIndexEntity) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            XXSolarSystemEntity = em.merge(XXSolarSystemEntity);
+            taxCostIndexEntity = em.merge(taxCostIndexEntity);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = XXSolarSystemEntity.getId();
-                if (findXXSolarSystemEntity(id) == null) {
-                    throw new NonexistentEntityException("The xXSolarSystemEntity with id " + id + " no longer exists.");
+                Long id = taxCostIndexEntity.getId();
+                if (findTaxCostIndexEntity(id) == null) {
+                    throw new NonexistentEntityException("The taxCostIndexEntity with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,14 +73,14 @@ public class XXSolarSystemEntityJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            XXSolarSystemEntity XXSolarSystemEntity;
+            TaxCostIndexEntity taxCostIndexEntity;
             try {
-                XXSolarSystemEntity = em.getReference(XXSolarSystemEntity.class, id);
-                XXSolarSystemEntity.getId();
+                taxCostIndexEntity = em.getReference(TaxCostIndexEntity.class, id);
+                taxCostIndexEntity.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The XXSolarSystemEntity with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The taxCostIndexEntity with id " + id + " no longer exists.", enfe);
             }
-            em.remove(XXSolarSystemEntity);
+            em.remove(taxCostIndexEntity);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -89,19 +89,19 @@ public class XXSolarSystemEntityJpaController implements Serializable {
         }
     }
 
-    public List<XXSolarSystemEntity> findXXSolarSystemEntityEntities() {
-        return findXXSolarSystemEntityEntities(true, -1, -1);
+    public List<TaxCostIndexEntity> findTaxCostIndexEntityEntities() {
+        return findTaxCostIndexEntityEntities(true, -1, -1);
     }
 
-    public List<XXSolarSystemEntity> findXXSolarSystemEntityEntities(int maxResults, int firstResult) {
-        return findXXSolarSystemEntityEntities(false, maxResults, firstResult);
+    public List<TaxCostIndexEntity> findTaxCostIndexEntityEntities(int maxResults, int firstResult) {
+        return findTaxCostIndexEntityEntities(false, maxResults, firstResult);
     }
 
-    private List<XXSolarSystemEntity> findXXSolarSystemEntityEntities(boolean all, int maxResults, int firstResult) {
+    private List<TaxCostIndexEntity> findTaxCostIndexEntityEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(XXSolarSystemEntity.class));
+            cq.select(cq.from(TaxCostIndexEntity.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -113,20 +113,20 @@ public class XXSolarSystemEntityJpaController implements Serializable {
         }
     }
 
-    public XXSolarSystemEntity findXXSolarSystemEntity(Long id) {
+    public TaxCostIndexEntity findTaxCostIndexEntity(Long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(XXSolarSystemEntity.class, id);
+            return em.find(TaxCostIndexEntity.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getXXSolarSystemEntityCount() {
+    public int getTaxCostIndexEntityCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<XXSolarSystemEntity> rt = cq.from(XXSolarSystemEntity.class);
+            Root<TaxCostIndexEntity> rt = cq.from(TaxCostIndexEntity.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

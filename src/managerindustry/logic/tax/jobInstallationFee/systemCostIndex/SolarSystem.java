@@ -16,18 +16,34 @@ public class SolarSystem {
     public SolarSystem() {
     }
 
+    /**
+     * Get Cost Indexs
+     * @return costIndexs[]
+     */
     public CostIndex[] getCostIndexs() {
         return costIndexs;
     }
 
+    /**
+     * Set Cost Indexs
+     * @param costIndexs[]  costIndexs
+     */
     public void setCostIndexs(CostIndex[] costIndexs) {
         this.costIndexs = costIndexs;
     }
 
+    /**
+     * Get SolarSystem
+     * @return String
+     */
     public String getSolarSystem() {
         return solar_system_id;
     }
 
+    /**
+     * Set SolarSystem
+     * @param String SolarSystem 
+     */
     public void setSolarSystem(String SolarSystem) {
         this.solar_system_id = SolarSystem;
     }
