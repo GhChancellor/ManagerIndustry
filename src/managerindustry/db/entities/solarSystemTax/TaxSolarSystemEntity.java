@@ -39,61 +39,32 @@ public class TaxSolarSystemEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String solarSystemID;
-    
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date lastUsed;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List < TaxCostIndexEntity > costIndices; 
+    private List < TaxCostIndexEntity > taxCostIndexEntityies; 
 
-    
-    public void isExists( Map<String, SolarSystem > solarSystemMap, String SolarSystemID, String activity ){
-        if (ManagerDB.getInstance().isSolarSystemExists(SolarSystemID) == null){
-            addSolarSystem(solarSystemMap, SolarSystemID);
-        }
+    public List<TaxCostIndexEntity> getTaxCostIndexEntityies() {
+        return taxCostIndexEntityies;
+    }
+
+    public void setTaxCostIndexEntityies(List<TaxCostIndexEntity> taxCostIndexEntityies) {
+        this.taxCostIndexEntityies = taxCostIndexEntityies;
+    }
+
+    public void addCostIndex( TaxCostIndexEntity costIndex) {
+        this.taxCostIndexEntityies.add(costIndex);
+    }
+
+    public void deleteTaxCostIndexEntityies(){
+        taxCostIndexEntityies.removeAll(taxCostIndexEntityies);
     }
     
-    
-    /**
-     * Seondo me ha problema di null pointer, devo controllare
-     * @param solarSystemMap
-     * @param solarSystemID 
-     */
-    private void addSolarSystem(Map<String, SolarSystem > solarSystemMap, String solarSystemID){
-        SolarSystem solarSystem = solarSystemMap.get(solarSystemID);
-        
-        setSolarSystemID(solarSystem.getSolarSystem());
-        
-        
-        TaxCostIndexEntity taxCostIndexEntity = new TaxCostIndexEntity();
-        
-        List < CostIndex > costIndexs = Arrays.asList(solarSystem.getCostIndexs());
-
-        for (CostIndex costIndex : costIndexs) {
-            taxCostIndexEntity.setActivity(costIndex.getActivity());
-            taxCostIndexEntity.setCostIndex(costIndex.getCostIndex());
-            costIndices.add(taxCostIndexEntity);
-        }
-        
-    }
-
-    public List<TaxCostIndexEntity> getCostIndices() {
-        return costIndices;
-    }
-
-    public void setCostIndices(List<TaxCostIndexEntity> costIndices) {
-        this.costIndices = costIndices;
-    }
-
-    private void addCostIndex( TaxCostIndexEntity costIndex) {
-        this.costIndices.add(costIndex);
-    }
-
-    private Date getLastUsed() {
+    public Date getLastUsed() {
         return lastUsed;
     }
 
-    private void setLastUsed(Date lastUsed) {
+    public void setLastUsed(Date lastUsed) {
         this.lastUsed = lastUsed;
     }
     
@@ -101,7 +72,7 @@ public class TaxSolarSystemEntity implements Serializable {
         return solarSystemID;
     }
 
-    private void setSolarSystemID(String solarSystemID) {
+    public void setSolarSystemID(String solarSystemID) {
         this.solarSystemID = solarSystemID;
     }
     

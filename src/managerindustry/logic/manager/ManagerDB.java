@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import managerindustry.db.controllers.TaxSolarSystemEntityJpaController;
 import managerindustry.db.entities.DgmAttributeTypes;
 import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.db.entities.IndustryActivityMaterials;
@@ -35,6 +36,12 @@ public class ManagerDB {
     private static ManagerDB instance = null;
     private EntityManager entityManager = Persistence.createEntityManagerFactory("ManagerIndustryPU").createEntityManager();
     
+    
+    private TaxSolarSystemEntityJpaController taxSolarSystemEntityJpaController = 
+     new TaxSolarSystemEntityJpaController (Persistence.createEntityManagerFactory("ManagerIndustryPU"));
+    
+    
+    
     public static ManagerDB getInstance (){
         if ( instance == null ){
             instance = new ManagerDB();
@@ -42,6 +49,45 @@ public class ManagerDB {
         return instance;
     }    
 
+    /**
+     * Add new solar system in DB
+     * @param TaxSolarSystemEntity taxSolarSystemEntity 
+     */
+    public void addTaxSolarSystemEntity(TaxSolarSystemEntity taxSolarSystemEntity){
+        try {
+            taxSolarSystemEntityJpaController.create(taxSolarSystemEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+    }
+    
+    /**
+     * Update solar system in DB
+     * @param TaxSolarSystemEntity taxSolarSystemEntity 
+     */
+    public void updateTaxSolarSystemEntity(TaxSolarSystemEntity taxSolarSystemEntity){
+        try {
+            taxSolarSystemEntityJpaController.edit(taxSolarSystemEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+    }
+    
+    /**
+     * Delete solar system in DB
+     * @param taxSolarSystemEntity 
+     */
+    public void deleteTaxSolarSystemEntity(TaxSolarSystemEntity taxSolarSystemEntity){
+        try {
+            taxSolarSystemEntityJpaController.destroy(taxSolarSystemEntity.getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+    }
+    
     /**
      * Check into DB if solar System exists
      * @param solarSystemID
