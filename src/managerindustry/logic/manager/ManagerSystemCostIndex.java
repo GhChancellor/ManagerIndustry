@@ -24,18 +24,7 @@ public class ManagerSystemCostIndex {
     public ManagerSystemCostIndex
      ( Map<String, SolarSystem > solarSystemMap, String SolarSystemID, String activity ) {
          isExists(solarSystemMap, SolarSystemID, activity);
-         
      }
-    
-    
-    
-    public static void main(String[] args) {
-        SystemCostIndex systemCostIndex = new SystemCostIndex();
-        
-        Map<String, SolarSystem > solarSystemMap = systemCostIndex.getSystemCostIndexs();
-    
-        
-    }
     
     /**
      * Check if exists a specific solar system
@@ -75,8 +64,8 @@ public class ManagerSystemCostIndex {
     }
     
     private void updateSolarSystem(Map<String, SolarSystem > solarSystemMap, 
-     String solarSystemID, TaxSolarSystemEntity taxSolarSystemEntity_ ){
-        taxSolarSystemEntity_.deleteTaxCostIndexEntityies();
+     String solarSystemID, TaxSolarSystemEntity taxSolarSystemEntity ){
+        taxSolarSystemEntity.deleteTaxCostIndexEntityies();
         
         SolarSystem solarSystem = solarSystemMap.get(solarSystemID);
         
@@ -86,9 +75,9 @@ public class ManagerSystemCostIndex {
         for (CostIndex costIndex : costIndexs) {
             taxCostIndexEntity.setActivity(costIndex.getActivity());
             taxCostIndexEntity.setCostIndex(costIndex.getCostIndex());
-            taxSolarSystemEntity.addCostIndex(taxCostIndexEntity);
+            this.taxSolarSystemEntity.addCostIndex(taxCostIndexEntity);
         }   
-        ManagerDB.getInstance().updateTaxSolarSystemEntity(taxSolarSystemEntity);
+        ManagerDB.getInstance().updateTaxSolarSystemEntity(this.taxSolarSystemEntity);
 
     }
 }
