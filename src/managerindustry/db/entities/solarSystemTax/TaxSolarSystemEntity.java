@@ -31,6 +31,7 @@ import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
 @Entity
 @NamedQueries({
 @NamedQuery(name = "TaxSolarSystemEntity.IsExists", query = "SELECT a FROM TaxSolarSystemEntity a WHERE a.solarSystemID = :solarSystemID"),
+@NamedQuery(name = "TaxSolarSystemEntity.getAll", query = "SELECT a FROM TaxSolarSystemEntity a"),
 })
 public class TaxSolarSystemEntity implements Serializable {
 
@@ -39,25 +40,26 @@ public class TaxSolarSystemEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String solarSystemID;
-    private Date lastUsed;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date lastUsed = null;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List < TaxCostIndexEntity > taxCostIndexEntityies; 
+    private List < TaxCostIndexEntity > taxCostIndexEntities = new ArrayList<>(); 
 
-    public List<TaxCostIndexEntity> getTaxCostIndexEntityies() {
-        return taxCostIndexEntityies;
+    public List<TaxCostIndexEntity> getTaxCostIndexEntities() {
+        return taxCostIndexEntities;
     }
 
-    public void setTaxCostIndexEntityies(List<TaxCostIndexEntity> taxCostIndexEntityies) {
-        this.taxCostIndexEntityies = taxCostIndexEntityies;
+    public void setTaxCostIndexEntities(List<TaxCostIndexEntity> taxCostIndexEntities) {
+        this.taxCostIndexEntities = taxCostIndexEntities;
     }
 
-    public void addCostIndex( TaxCostIndexEntity costIndex) {
-        this.taxCostIndexEntityies.add(costIndex);
+    public void addTaxCostIndexEntity( TaxCostIndexEntity costIndex) {
+        this.taxCostIndexEntities.add(costIndex);
     }
 
     public void deleteTaxCostIndexEntityies(){
-        taxCostIndexEntityies.removeAll(taxCostIndexEntityies);
+        taxCostIndexEntities.clear();
     }
     
     public Date getLastUsed() {

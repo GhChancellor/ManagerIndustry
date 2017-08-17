@@ -50,6 +50,26 @@ public class ManagerDB {
     }    
 
     /**
+     * Get All Tax Solar System Entity
+     * @return List < TaxSolarSystemEntity >
+     */
+    public List < TaxSolarSystemEntity > getAllTaxSolarSystemEntity(){
+        try {
+            EntityManager allTaxSolarSystemEntityEM = entityManager;
+        
+            TypedQuery < TaxSolarSystemEntity > allTaxSolarSystemEntityTQ = 
+             allTaxSolarSystemEntityEM.createNamedQuery("TaxSolarSystemEntity.getAll", TaxSolarSystemEntity.class );
+
+            return allTaxSolarSystemEntityTQ.getResultList();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+    
+    /**
      * Add new solar system in DB
      * @param TaxSolarSystemEntity taxSolarSystemEntity 
      */
@@ -114,6 +134,10 @@ public class ManagerDB {
             return null;
         }
     }
+    
+    
+    
+    // -------------------------------------------------
     
 //    public MapSolarSystems getMapSolarSystems_SolarSystem(String name){
 //        try {

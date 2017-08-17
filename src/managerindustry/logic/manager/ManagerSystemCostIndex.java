@@ -23,9 +23,17 @@ public class ManagerSystemCostIndex {
     
     public ManagerSystemCostIndex
      ( Map<String, SolarSystem > solarSystemMap, String SolarSystemID, String activity ) {
+         
+         initSystemCostIndexDB();
          isExists(solarSystemMap, SolarSystemID, activity);
      }
     
+    public void initSystemCostIndexDB(){
+        if (ManagerDB.getInstance().getAllTaxSolarSystemEntity() == null ){
+            ManagerDB.getInstance().addTaxSolarSystemEntity(taxSolarSystemEntity);
+        }
+    }
+     
     /**
      * Check if exists a specific solar system
      * @param solarSystemMap
@@ -53,12 +61,13 @@ public class ManagerSystemCostIndex {
         taxSolarSystemEntity.setSolarSystemID(solarSystemID);
         
         List < CostIndex > costIndexs = Arrays.asList(solarSystem.getCostIndexs());
-        TaxCostIndexEntity taxCostIndexEntity = new TaxCostIndexEntity();
+        
         
         for (CostIndex costIndex : costIndexs) {
+            TaxCostIndexEntity taxCostIndexEntity = new TaxCostIndexEntity();
             taxCostIndexEntity.setActivity(costIndex.getActivity());
             taxCostIndexEntity.setCostIndex(costIndex.getCostIndex());
-            taxSolarSystemEntity.addCostIndex(taxCostIndexEntity);
+            taxSolarSystemEntity.addTaxCostIndexEntity(taxCostIndexEntity);
         }
         ManagerDB.getInstance().addTaxSolarSystemEntity(taxSolarSystemEntity);
     }
@@ -75,7 +84,7 @@ public class ManagerSystemCostIndex {
         for (CostIndex costIndex : costIndexs) {
             taxCostIndexEntity.setActivity(costIndex.getActivity());
             taxCostIndexEntity.setCostIndex(costIndex.getCostIndex());
-            this.taxSolarSystemEntity.addCostIndex(taxCostIndexEntity);
+            this.taxSolarSystemEntity.addTaxCostIndexEntity(taxCostIndexEntity);
         }   
         ManagerDB.getInstance().updateTaxSolarSystemEntity(this.taxSolarSystemEntity);
 
