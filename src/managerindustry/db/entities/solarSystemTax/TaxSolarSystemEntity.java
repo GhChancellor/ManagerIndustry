@@ -30,8 +30,13 @@ import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
  */
 @Entity
 @NamedQueries({
+// Get a specific solar system
 @NamedQuery(name = "TaxSolarSystemEntity.IsExists", query = "SELECT a FROM TaxSolarSystemEntity a WHERE a.solarSystemID = :solarSystemID"),
+// Get all solar system
 @NamedQuery(name = "TaxSolarSystemEntity.getAll", query = "SELECT a FROM TaxSolarSystemEntity a"),
+// Get All Except Specific SolarSysem 
+@NamedQuery(name = "TaxSolarSystemEntity.getAllExceptSpecificSolarSysem",
+  query = "SELECT a FROM TaxSolarSystemEntity a WHERE a.solarSystemID <> :solarSystemID")
 })
 public class TaxSolarSystemEntity implements Serializable {
 

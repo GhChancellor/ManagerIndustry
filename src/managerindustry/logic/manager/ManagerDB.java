@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import managerindustry.db.controllers.TaxCostIndexEntityJpaController;
 import managerindustry.db.controllers.TaxSolarSystemEntityJpaController;
 import managerindustry.db.entities.DgmAttributeTypes;
 import managerindustry.db.entities.DgmTypeAttributes;
@@ -18,6 +19,7 @@ import managerindustry.db.entities.InvNames;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.db.entities.MapRegions;
 import managerindustry.db.entities.MapSolarSystems;
+import managerindustry.db.entities.solarSystemTax.TaxCostIndexEntity;
 import managerindustry.db.entities.solarSystemTax.TaxSolarSystemEntity;
 import managerindustry.logic.skill.Skill;
 
@@ -40,8 +42,9 @@ public class ManagerDB {
     private TaxSolarSystemEntityJpaController taxSolarSystemEntityJpaController = 
      new TaxSolarSystemEntityJpaController (Persistence.createEntityManagerFactory("ManagerIndustryPU"));
     
-    
-    
+    private TaxCostIndexEntityJpaController taxCostIndexEntityJpaController = 
+     new TaxCostIndexEntityJpaController (Persistence.createEntityManagerFactory("ManagerIndustryPU"));
+        
     public static ManagerDB getInstance (){
         if ( instance == null ){
             instance = new ManagerDB();
@@ -49,6 +52,25 @@ public class ManagerDB {
         return instance;
     }    
 
+    /**
+     * Get All value Except Specific Solar Sysem
+     * @param solarSystem
+     * @return List < TaxSolarSystemEntity >
+     */
+    public List < TaxSolarSystemEntity > getAllExceptSpecificSolarSysem( String solarSystem){
+        try {
+            EntityManager allExceptSpecificSolarSysemEM = entityManager;
+            TypedQuery < TaxSolarSystemEntity > allExceptSpecificSolarSysemQT = 
+             allExceptSpecificSolarSysemEM.createNamedQuery("TaxSolarSystemEntity.getAllExceptSpecificSolarSysem", TaxSolarSystemEntity.class);
+            
+            allExceptSpecificSolarSysemQT.setParameter("solarSystemID", solarSystem);
+            return allExceptSpecificSolarSysemQT.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     /**
      * Get All Tax Solar System Entity
      * @return List < TaxSolarSystemEntity >
@@ -96,6 +118,19 @@ public class ManagerDB {
     }
     
     /**
+     * Update Tax Cost Index
+     * @param TaxCostIndexEntity taxCostIndexEntity 
+     */
+    public void updateTaxCostIndex(TaxCostIndexEntity taxCostIndexEntity){
+        try {
+            taxCostIndexEntityJpaController.edit(taxCostIndexEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;            
+        }
+    }
+    
+    /**
      * Delete solar system in DB
      * @param taxSolarSystemEntity 
      */
@@ -113,7 +148,7 @@ public class ManagerDB {
      * @param solarSystemID
      * @return 
      */
-    public TaxSolarSystemEntity isSolarSystemExists(String solarSystemID){
+    public TaxSolarSystemEntity solarSystemExists(String solarSystemID){
         try {
             EntityManager taxSolarSystemEntityEM = entityManager;
             TypedQuery < TaxSolarSystemEntity > taxSolarSystemEntityQT = 

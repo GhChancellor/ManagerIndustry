@@ -1,51 +1,77 @@
 [
 {
-"solar_system_id": 30020141,
+"solar_system_id": 1,
         "cost_indices": [
         {
         "activity": "manufacturing",
-                "cost_index": 0.02198720595305347
+                "cost_index": 1
         },
         {
         "activity": "researching_time_efficiency",
-                "cost_index": 0.01330596042568494
+                "cost_index": 1
         },
         {
         "activity": "researching_material_efficiency",
-                "cost_index": 0.016104720648757266
+                "cost_index": 1
         },
         {
         "activity": "copying",
-                "cost_index": 0.007163949940991156
+                "cost_index": 1
         },
         {
         "activity": "invention",
-                "cost_index": 0.028401381722423246
+                "cost_index": 1
         }
         ]
 },
 {
-"solar_system_id": 30035042,
+"solar_system_id": 2,
         "cost_indices": [
         {
         "activity": "manufacturing",
-                "cost_index": 0.006673538917434411
+                "cost_index": 2
         },
         {
         "activity": "researching_time_efficiency",
-                "cost_index": 0.021500295383815166
+                "cost_index": 2
         },
         {
         "activity": "researching_material_efficiency",
-                "cost_index": 0.02042061280276704
+                "cost_index": 2
         },
         {
         "activity": "copying",
-                "cost_index": 0.0033216279402351312
+                "cost_index": 2
         },
         {
         "activity": "invention",
-                "cost_index": 0.015591363546165379
+                "cost_index": 2
         }
         ]
-}]
+},
+{
+"solar_system_id": 3,
+        "cost_indices": [
+        {
+        "activity": "manufacturing",
+                "cost_index": 3
+        },
+        {
+        "activity": "researching_time_efficiency",
+                "cost_index": 3
+        },
+        {
+        "activity": "researching_material_efficiency",
+                "cost_index": 3
+        },
+        {
+        "activity": "copying",
+                "cost_index": 3
+        },
+        {
+        "activity": "invention",
+                "cost_index": 3
+        }
+        ]
+}
+]

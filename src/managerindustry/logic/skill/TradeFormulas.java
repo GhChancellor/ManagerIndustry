@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import managerindustry.logic.manager.ManagerSkill;
 import managerindustry.logic.skill.specificSkill.BrokerFee;
-import managerindustry.logic.stading.Standing;
+import managerindustry.logic.standing.Standing;
 
 /**
  * https://support.eveonline.com/hc/en-us/articles/203218962-Broker-Fee-and-Sales-Tax

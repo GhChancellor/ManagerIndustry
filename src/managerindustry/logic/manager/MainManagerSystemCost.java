@@ -19,6 +19,12 @@ public class MainManagerSystemCost {
         Map<String, SolarSystem > solarSystemMap = systemCostIndex.getSystemCostIndexs();
         
         ManagerSystemCostIndex managerSystemCostIndex = 
-         new ManagerSystemCostIndex(solarSystemMap, "30020141", "manufacturing");
+         new ManagerSystemCostIndex(solarSystemMap, "1", "manufacturing");
+
+        ManagerSystemCostIndex managerSystemCostIndex2 = 
+         new ManagerSystemCostIndex(solarSystemMap, "2", "manufacturing");
+
+        ManagerSystemCostIndex managerSystemCostIndex3 = 
+         new ManagerSystemCostIndex(solarSystemMap, "3", "manufacturing");
     }
 }
