@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import managerindustry.db.entities.solarSystemTax.TaxCostIndexEntity;
 import managerindustry.db.entities.solarSystemTax.TaxSolarSystemEntity;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.CostIndex;
@@ -29,6 +30,9 @@ public class ManagerSystemCostIndex {
          initIfExists(solarSystemMap, SolarSystemID, activity);
      }
     
+    /**
+     * Create the database
+     */
     private void initSystemCostIndexDB(){
         if (ManagerDB.getInstance().getAllTaxSolarSystemEntity() == null ){
             ManagerDB.getInstance().addTaxSolarSystemEntity(taxSolarSystemEntity);
@@ -45,12 +49,14 @@ public class ManagerSystemCostIndex {
         TaxSolarSystemEntity tempTaxSolarSystemEntity = 
          ManagerDB.getInstance().solarSystemExists(SolarSystemID);
         
+
         if ( tempTaxSolarSystemEntity == null){
             addSolarSystem(solarSystemMap, SolarSystemID);
         }else{
-            updateSolarSystem(solarSystemMap, SolarSystemID, tempTaxSolarSystemEntity );
+            // updateSolarSystem(solarSystemMap, SolarSystemID, tempTaxSolarSystemEntity );
+            updateSolarSystem02(solarSystemMap, SolarSystemID, taxSolarSystemEntity, true);
         }
-        updateAllSolarSystem(solarSystemMap, SolarSystemID);
+        updateAllSolarSystem(solarSystemMap, SolarSystemID);  
     }
     
     /**
@@ -118,16 +124,20 @@ public class ManagerSystemCostIndex {
         SolarSystem solarSystem = solarSystemMap.get(solarSystemID);
         
         // "activity": "manufacturing"....  di uno specifico sistema preso da Json
-        List < CostIndex > costIndexs = Arrays.asList(solarSystem.getCostIndexs());
-        
+        List < CostIndex > costIndexs = Arrays.asList(solarSystem.getCostIndexs());        
+        Map < String, CostIndex > costIndexMap = 
+         costIndexs.stream().collect(Collectors.toMap(CostIndex::getActivity, CostIndex -> CostIndex));
+
         // "activity": "manufacturing".... preso dal DB
         List < TaxCostIndexEntity > taxCostIndexEntity = taxSolarSystemEntity.getTaxCostIndexEntities();   
         
-        for (TaxCostIndexEntity taxCostIndex : taxCostIndexEntity) {
-            for (CostIndex costIndex : costIndexs) {
-                taxCostIndex.setCostIndex(costIndex.getCostIndex());
-                ManagerDB.getInstance().updateTaxCostIndex(taxCostIndex);
-            } 
+        for (TaxCostIndexEntity taxCostIndexEntity1 : taxCostIndexEntity) {
+            CostIndex costIndex = costIndexMap.get(taxCostIndexEntity1.getActivity());
+            taxCostIndexEntity1.setCostIndex(costIndex.getCostIndex());
+            ManagerDB.getInstance().updateTaxCostIndex(taxCostIndexEntity1);
+//            if ( valueBool ){
+//                ManagerDB.getInstance().updateTaxSolarSystemEntity(taxSolarSystemEntity);
+//            }
         }
         
 /*
@@ -148,7 +158,8 @@ public class ManagerSystemCostIndex {
          ManagerDB.getInstance().getAllExceptSpecificSolarSysem(solarSystemID);
         
         for (TaxSolarSystemEntity taxSolarSystemEntity : tempTaxSolarSystemEntity) {
-            updateSolarSystem(solarSystemMap, solarSystemID, taxSolarSystemEntity);
+            // updateSolarSystem2(solarSystemMap, solarSystemID, taxSolarSystemEntity);           
+            updateSolarSystem02(solarSystemMap, taxSolarSystemEntity.getSolarSystemID(), taxSolarSystemEntity, false);
         }
     }    
 }

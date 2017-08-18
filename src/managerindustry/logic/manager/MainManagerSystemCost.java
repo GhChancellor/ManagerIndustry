@@ -21,10 +21,10 @@ public class MainManagerSystemCost {
         ManagerSystemCostIndex managerSystemCostIndex = 
          new ManagerSystemCostIndex(solarSystemMap, "1", "manufacturing");
 
-        ManagerSystemCostIndex managerSystemCostIndex2 = 
-         new ManagerSystemCostIndex(solarSystemMap, "2", "manufacturing");
-
-        ManagerSystemCostIndex managerSystemCostIndex3 = 
-         new ManagerSystemCostIndex(solarSystemMap, "3", "manufacturing");
+//        ManagerSystemCostIndex managerSystemCostIndex2 = 
+//         new ManagerSystemCostIndex(solarSystemMap, "2", "manufacturing");
+//
+//        ManagerSystemCostIndex managerSystemCostIndex3 = 
+//         new ManagerSystemCostIndex(solarSystemMap, "3", "manufacturing");
     }
 }
