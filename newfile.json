@@ -4,23 +4,23 @@
         "cost_indices": [
         {
         "activity": "manufacturing",
-                "cost_index": 11
+                "cost_index": 111
         },
         {
         "activity": "researching_time_efficiency",
-                "cost_index": 11
+                "cost_index": 111
         },
         {
         "activity": "researching_material_efficiency",
-                "cost_index": 11
+                "cost_index": 111
         },
         {
         "activity": "copying",
-                "cost_index": 11
+                "cost_index": 111
         },
         {
         "activity": "invention",
-                "cost_index": 11
+                "cost_index": 111
         }
         ]
 },
@@ -29,23 +29,23 @@
         "cost_indices": [
         {
         "activity": "manufacturing",
-                "cost_index": 22
+                "cost_index": 2
         },
         {
         "activity": "researching_time_efficiency",
-                "cost_index": 22
+                "cost_index": 2
         },
         {
         "activity": "researching_material_efficiency",
-                "cost_index": 22
+                "cost_index": 2
         },
         {
         "activity": "copying",
-                "cost_index": 22
+                "cost_index": 2
         },
         {
         "activity": "invention",
-                "cost_index": 22
+                "cost_index": 2
         }
         ]
 },

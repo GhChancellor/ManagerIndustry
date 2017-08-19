@@ -14,7 +14,6 @@ import managerindustry.db.entities.solarSystemTax.TaxCostIndexEntity;
 import managerindustry.db.entities.solarSystemTax.TaxSolarSystemEntity;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.CostIndex;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostIndex;
 
 /**
  *
@@ -23,11 +22,17 @@ import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostIn
 public class ManagerSystemCostIndex {
     private TaxSolarSystemEntity taxSolarSystemEntity = new TaxSolarSystemEntity();
     
+    /**
+     * Manager System Cost Index
+     * @param Map<String, SolarSystem > solarSystemMap form json server EVe
+     * @param String SolarSystemID
+     * @param String activity 
+     */
     public ManagerSystemCostIndex
-     ( Map<String, SolarSystem > solarSystemMap, String SolarSystemID, String activity ) {
+     ( Map<String, SolarSystem > solarSystemMap, String solarSystemID, String activity ) {
          
          initSystemCostIndexDB();
-         initIfExists(solarSystemMap, SolarSystemID, activity);
+         initIfExists(solarSystemMap, solarSystemID, activity);
      }
     
     /**
@@ -53,8 +58,7 @@ public class ManagerSystemCostIndex {
         if ( tempTaxSolarSystemEntity == null){
             addSolarSystem(solarSystemMap, SolarSystemID);
         }else{
-            // updateSolarSystem(solarSystemMap, SolarSystemID, tempTaxSolarSystemEntity );
-            updateSolarSystem02(solarSystemMap, SolarSystemID, taxSolarSystemEntity, true);
+            updateSolarSystem(solarSystemMap, SolarSystemID, tempTaxSolarSystemEntity, true);
         }
         updateAllSolarSystem(solarSystemMap, SolarSystemID);  
     }
@@ -84,35 +88,13 @@ public class ManagerSystemCostIndex {
     }
     
     /**
-     * DBG da migliorare in efficienza Una mappa che data una stringa 
-     * con il nome dele activity di cost index ritorni direttamente la 
-     * corrispettiva taxcostindexentity
+     * Update Solar System
      * @param Map<String, SolarSystem > solarSystemMap
      * @param String solarSystemID
      * @param TaxSolarSystemEntity taxSolarSystemEntity 
-     */
+     * @param boolean valueBoo
+     */    
     private void updateSolarSystem(Map<String, SolarSystem > solarSystemMap, 
-     String solarSystemID, TaxSolarSystemEntity taxSolarSystemEntity ){
-        Date nowPresent = new Date( new Date().getTime());
-        
-        taxSolarSystemEntity.setLastUsed(nowPresent);
-        
-        SolarSystem solarSystem = solarSystemMap.get(solarSystemID);
-
-        List < CostIndex > costIndexs = Arrays.asList(solarSystem.getCostIndexs());
-        List < TaxCostIndexEntity > taxCostIndexEntity = taxSolarSystemEntity.getTaxCostIndexEntities();
-
-        for (TaxCostIndexEntity taxCostIndex : taxCostIndexEntity) {
-            for (CostIndex costIndex : costIndexs) {
-                if ( taxCostIndex.getActivity().equals(costIndex.getActivity())){
-                    taxCostIndex.setCostIndex(costIndex.getCostIndex());
-                    ManagerDB.getInstance().updateTaxCostIndex(taxCostIndex);
-                }
-            } 
-        }
-    }
-    
-    private void updateSolarSystem02(Map<String, SolarSystem > solarSystemMap, 
      String solarSystemID, TaxSolarSystemEntity taxSolarSystemEntity, boolean valueBool){
         
         if (valueBool){
@@ -120,33 +102,27 @@ public class ManagerSystemCostIndex {
             taxSolarSystemEntity.setLastUsed(nowPresent);            
         }
         
-        // valore preso dai Json di eve
+        // Solar systems From Json ( eve server )
         SolarSystem solarSystem = solarSystemMap.get(solarSystemID);
         
-        // "activity": "manufacturing"....  di uno specifico sistema preso da Json
+        // Convert Arrays to Costindexs
         List < CostIndex > costIndexs = Arrays.asList(solarSystem.getCostIndexs());        
+
         Map < String, CostIndex > costIndexMap = 
          costIndexs.stream().collect(Collectors.toMap(CostIndex::getActivity, CostIndex -> CostIndex));
 
-        // "activity": "manufacturing".... preso dal DB
+        // "activity": "manufacturing"....From DB
         List < TaxCostIndexEntity > taxCostIndexEntity = taxSolarSystemEntity.getTaxCostIndexEntities();   
         
         for (TaxCostIndexEntity taxCostIndexEntity1 : taxCostIndexEntity) {
             CostIndex costIndex = costIndexMap.get(taxCostIndexEntity1.getActivity());
             taxCostIndexEntity1.setCostIndex(costIndex.getCostIndex());
             ManagerDB.getInstance().updateTaxCostIndex(taxCostIndexEntity1);
-//            if ( valueBool ){
-//                ManagerDB.getInstance().updateTaxSolarSystemEntity(taxSolarSystemEntity);
-//            }
+            if ( valueBool ){
+                ManagerDB.getInstance().updateTaxSolarSystemEntity(taxSolarSystemEntity);
+            }
         }
-        
-/*
-            Map<String, SolarSystem > solarSystemMap = 
-             solarSystems.stream().collect(Collectors.toMap(SolarSystem::getSolarSystem, SolarSystem -> SolarSystem));        
-        */        
-        
     }
-
     
     /**
      * Update All Solar System
@@ -158,8 +134,7 @@ public class ManagerSystemCostIndex {
          ManagerDB.getInstance().getAllExceptSpecificSolarSysem(solarSystemID);
         
         for (TaxSolarSystemEntity taxSolarSystemEntity : tempTaxSolarSystemEntity) {
-            // updateSolarSystem2(solarSystemMap, solarSystemID, taxSolarSystemEntity);           
-            updateSolarSystem02(solarSystemMap, taxSolarSystemEntity.getSolarSystemID(), taxSolarSystemEntity, false);
+            updateSolarSystem(solarSystemMap, taxSolarSystemEntity.getSolarSystemID(), taxSolarSystemEntity, false);
         }
     }    
 }
