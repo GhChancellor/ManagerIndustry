@@ -54,13 +54,14 @@ public class ManagerSystemCostIndex {
         TaxSolarSystemEntity tempTaxSolarSystemEntity = 
          ManagerDB.getInstance().solarSystemExists(SolarSystemID);
         
-
         if ( tempTaxSolarSystemEntity == null){
             addSolarSystem(solarSystemMap, SolarSystemID);
         }else{
             updateSolarSystem(solarSystemMap, SolarSystemID, tempTaxSolarSystemEntity, true);
         }
-        updateAllSolarSystem(solarSystemMap, SolarSystemID);  
+
+        updateAllSolarSystem(solarSystemMap, SolarSystemID);
+//        deleteSolarSystem(SolarSystemID);
     }
     
     /**
@@ -136,5 +137,24 @@ public class ManagerSystemCostIndex {
         for (TaxSolarSystemEntity taxSolarSystemEntity : tempTaxSolarSystemEntity) {
             updateSolarSystem(solarSystemMap, taxSolarSystemEntity.getSolarSystemID(), taxSolarSystemEntity, false);
         }
-    }    
+    }
+
+    private void deleteSolarSystem(String SolarSystemID){
+        long monthInSecond = 2592000l;
+        Date nowPresent = new Date( new Date().getTime());
+        List < TaxSolarSystemEntity > solarSystemEntitys =
+         ManagerDB.getInstance().getAllExceptSpecificSolarSysem(SolarSystemID);
+        
+        for (TaxSolarSystemEntity solarSystemEntity : solarSystemEntitys) {
+            Date lastUsed = solarSystemEntity.getLastUsed();
+            long timePassed = nowPresent.getTime() - lastUsed.getTime();
+            
+            ManagerDB.getInstance().deleteTaxSolarSystemEntity(solarSystemEntity);
+            
+//            if ( timePassed >  monthInSecond ){
+//                ManagerDB.getInstance().deleteTaxSolarSystemEntity(taxSolarSystemEntity);
+//            }
+        }
+        
+    }
 }

@@ -7,6 +7,8 @@ package managerindustry.logic.manager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
@@ -129,20 +131,7 @@ public class ManagerDB {
             return;            
         }
     }
-    
-    /**
-     * Delete solar system in DB
-     * @param taxSolarSystemEntity 
-     */
-    public void deleteTaxSolarSystemEntity(TaxSolarSystemEntity taxSolarSystemEntity){
-        try {
-            taxSolarSystemEntityJpaController.destroy(taxSolarSystemEntity.getId());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;
-        }
-    }
-    
+        
     /**
      * Check into DB if solar System exists
      * @param solarSystemID
@@ -170,6 +159,38 @@ public class ManagerDB {
         }
     }
     
+    /**
+     * Delete solar system in DB
+     * @param taxSolarSystemEntity 
+     */
+    public void deleteTaxSolarSystemEntity(TaxSolarSystemEntity taxSolarSystemEntity){
+        try {
+            unlinkCostIndex(taxSolarSystemEntity);
+            taxSolarSystemEntityJpaController.destroy(taxSolarSystemEntity.getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Unlink CostIndex from SolarSystemEntity and delete it
+     * @param TaxSolarSystemEntity taxSolarSystemEntity 
+     */
+    private void unlinkCostIndex(TaxSolarSystemEntity taxSolarSystemEntity){
+        
+        try {
+            List < TaxCostIndexEntity > costIndexEntitys = taxSolarSystemEntity.getTaxCostIndexEntities();
+            for (TaxCostIndexEntity costIndexEntity : costIndexEntitys) {
+
+                costIndexEntity.setActivity(null);
+                costIndexEntity.setCostIndex(null);
+                taxCostIndexEntityJpaController.edit(costIndexEntity);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
     
     // -------------------------------------------------
