@@ -61,7 +61,7 @@ public class ManagerSystemCostIndex {
         }
 
         updateAllSolarSystem(solarSystemMap, SolarSystemID);
-//        deleteSolarSystem(SolarSystemID);
+        deleteSolarSystem(SolarSystemID);
     }
     
     /**
@@ -140,7 +140,7 @@ public class ManagerSystemCostIndex {
     }
 
     private void deleteSolarSystem(String SolarSystemID){
-        long monthInSecond = 2592000l;
+        long monthInSecond = 1l; // 2592000l;
         Date nowPresent = new Date( new Date().getTime());
         List < TaxSolarSystemEntity > solarSystemEntitys =
          ManagerDB.getInstance().getAllExceptSpecificSolarSysem(SolarSystemID);
@@ -148,12 +148,12 @@ public class ManagerSystemCostIndex {
         for (TaxSolarSystemEntity solarSystemEntity : solarSystemEntitys) {
             Date lastUsed = solarSystemEntity.getLastUsed();
             long timePassed = nowPresent.getTime() - lastUsed.getTime();
+
             
-            ManagerDB.getInstance().deleteTaxSolarSystemEntity(solarSystemEntity);
-            
-//            if ( timePassed >  monthInSecond ){
-//                ManagerDB.getInstance().deleteTaxSolarSystemEntity(taxSolarSystemEntity);
-//            }
+            if ( timePassed >  monthInSecond ){
+                System.out.println("passed");
+                ManagerDB.getInstance().deleteTaxSolarSystemEntity(taxSolarSystemEntity);
+            }
         }
         
     }

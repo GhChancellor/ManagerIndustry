@@ -7,7 +7,7 @@ package managerindustry.logic.tax.jobInstallationFee;
 
 import java.math.BigDecimal;
 import java.util.Map;
-import managerindustry.logic.tax.jobInstallationFee.baseJobCost.BaseJobCost;
+import managerindustry.logic.tax.jobInstallationFee.baseJobCost.JobCost;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostIndex;
 
@@ -24,7 +24,7 @@ public class JobInstallationFee {
             Map<String, SolarSystem > solarSystemMap = systemCostIndex.getSystemCostIndexs();
             
             
-//            BaseJobCost basePrice = new BaseJobCost(typeId);
+//            JobCost basePrice = new JobCost(typeId);
 //
 //            float baseJobCost = basePrice.getBasePriceCost().floatValue();
 //            float systemCostIndex = 1;
@@ -39,7 +39,7 @@ public class JobInstallationFee {
 }
 
 /*
-BaseJobCost
+JobCost
  recupero id (string)
  
 systemCostIndex

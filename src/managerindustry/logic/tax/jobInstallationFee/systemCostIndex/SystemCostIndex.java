@@ -31,6 +31,7 @@ public class SystemCostIndex {
     
     /**
      * Get value Solar System and CostIndexs value from Json
+     * DBG Aggiungere collegamento alla rete
      * @return Map<String, SolarSystem >
      */
     public Map<String, SolarSystem > getSystemCostIndexs() {
@@ -40,7 +41,8 @@ public class SystemCostIndex {
             gsonBuilder.registerTypeAdapter(CostIndex.class, new CostIndexDeserializer());
             Gson gson = gsonBuilder.create();
 
-            final String path = "./newfile.json";
+            // Lettura da file, 
+            final String path = "./SystemCostIndex.json";
             Reader reader = new FileReader(path);
 
             Type type = new TypeToken< ArrayList< SolarSystem > >() {}.getType();

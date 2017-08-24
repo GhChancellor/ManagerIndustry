@@ -16,11 +16,18 @@ public class AdjustedPrice {
     private String average_price;
     private String type_id;
 
+    public AdjustedPrice() {
+    }
+
     /**
      * Set TypeId and get adjusted_price or average_price
+     * @param String adjusted_price
+     * @param String average_price
      * @param String type_id 
      */
-    public AdjustedPrice(String type_id) {
+    public AdjustedPrice(String adjusted_price, String average_price, String type_id) {
+        this.adjusted_price = adjusted_price;
+        this.average_price = average_price;
         this.type_id = type_id;
     }
     

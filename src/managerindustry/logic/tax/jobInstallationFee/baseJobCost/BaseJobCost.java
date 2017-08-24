@@ -5,22 +5,22 @@
  */
 package managerindustry.logic.tax.jobInstallationFee.baseJobCost;
 
-import java.math.BigDecimal;
-import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.manager.ManagerDB;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author lele
  */
 public class BaseJobCost {
-    /*
-    basecost = ( prezzo oggetto 1 * adjusted_price ) + ( prezzo oggetto 2 * adjusted_price ) ....  cosi?
+    private Map < String, JobCost > jobCostMap = new HashMap<>();
     
+    public Map<String, JobCost> getJobCostMap() {
+        return jobCostMap;
+    }
     
-    */
-
-
-    
+    public void setJobCostMap(Map<String, JobCost> jobCostMap) {
+        this.jobCostMap = jobCostMap;
+    }
     
 }

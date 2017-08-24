@@ -34,9 +34,7 @@ public class CostIndexDeserializer implements JsonDeserializer<CostIndex>{
             String activityTemp = jsonObject.get("activity").getAsString();
             String costIndexTemp = jsonObject.get("cost_index").getAsString();
 
-            CostIndex costIndex = new CostIndex();
-            costIndex.setActivity(activityTemp);
-            costIndex.setCostIndex(costIndexTemp);
+            CostIndex costIndex = new CostIndex(activityTemp, costIndexTemp);
             return costIndex;
         } catch (Exception e) {
             e.printStackTrace();

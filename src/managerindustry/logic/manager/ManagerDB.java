@@ -56,16 +56,16 @@ public class ManagerDB {
 
     /**
      * Get All value Except Specific Solar Sysem
-     * @param solarSystem
+     * @param solarSystemID
      * @return List < TaxSolarSystemEntity >
      */
-    public List < TaxSolarSystemEntity > getAllExceptSpecificSolarSysem( String solarSystem){
+    public List < TaxSolarSystemEntity > getAllExceptSpecificSolarSysem( String solarSystemID){
         try {
             EntityManager allExceptSpecificSolarSysemEM = entityManager;
             TypedQuery < TaxSolarSystemEntity > allExceptSpecificSolarSysemQT = 
              allExceptSpecificSolarSysemEM.createNamedQuery("TaxSolarSystemEntity.getAllExceptSpecificSolarSysem", TaxSolarSystemEntity.class);
             
-            allExceptSpecificSolarSysemQT.setParameter("solarSystemID", solarSystem);
+            allExceptSpecificSolarSysemQT.setParameter("solarSystemID", solarSystemID);
             return allExceptSpecificSolarSysemQT.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
@@ -179,17 +179,24 @@ public class ManagerDB {
     private void unlinkCostIndex(TaxSolarSystemEntity taxSolarSystemEntity){
         
         try {
-            List < TaxCostIndexEntity > costIndexEntitys = taxSolarSystemEntity.getTaxCostIndexEntities();
-            for (TaxCostIndexEntity costIndexEntity : costIndexEntitys) {
-
-                costIndexEntity.setActivity(null);
-                costIndexEntity.setCostIndex(null);
-                taxCostIndexEntityJpaController.edit(costIndexEntity);
-            }
-            
+            taxSolarSystemEntity.getTaxCostIndexEntities().clear();
+            taxSolarSystemEntityJpaController.edit(taxSolarSystemEntity);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+//        try {
+//            List < TaxCostIndexEntity > costIndexEntitys = taxSolarSystemEntity.getTaxCostIndexEntities();
+//            for (TaxCostIndexEntity costIndexEntity : costIndexEntitys) {
+//
+//                costIndexEntity.setActivity(null);
+//                costIndexEntity.setCostIndex(null);
+//                taxCostIndexEntityJpaController.edit(costIndexEntity);
+//            }
+//            
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
     
     

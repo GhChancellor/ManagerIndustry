@@ -12,6 +12,11 @@ package managerindustry.logic.tax.jobInstallationFee.systemCostIndex;
 public class CostIndex {
     private String activity;
     private String costIndex;
+
+    public CostIndex(String activity, String costIndex) {
+        this.activity = activity;
+        this.costIndex = costIndex;
+    }
     
     public CostIndex() {
     }
