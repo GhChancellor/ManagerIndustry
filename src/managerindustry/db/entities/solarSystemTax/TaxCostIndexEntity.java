@@ -25,18 +25,34 @@ public class TaxCostIndexEntity implements Serializable {
     private String activity;
     private String costIndex;
 
+    /**
+     * Get Activity
+     * @return String
+     */
     public String getActivity() {
         return activity;
     }
 
+    /**
+     * Set Activity
+     * @param String activity 
+     */
     public void setActivity(String activity) {
         this.activity = activity;
     }
 
+    /**
+     * Get Cost Index
+     * @return String
+     */
     public String getCostIndex() {
         return costIndex;
     }
 
+    /**
+     * Set Cost Index
+     * @param String costIndex 
+     */
     public void setCostIndex(String costIndex) {
         this.costIndex = costIndex;
     }    

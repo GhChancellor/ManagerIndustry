@@ -47,38 +47,80 @@ public class TaxSolarSystemEntity implements Serializable {
     private String solarSystemID;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date lastUsed = null;
-
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date lastTwentyFourHours;
+    
     @OneToMany(cascade = CascadeType.ALL)
     private List < TaxCostIndexEntity > taxCostIndexEntities = new ArrayList<>(); 
 
+    /**
+     * Get Tax Cost Index Entities
+     * @return List<TaxCostIndexEntity>
+     */
     public List<TaxCostIndexEntity> getTaxCostIndexEntities() {
         return taxCostIndexEntities;
     }
 
+    /**
+     * Set Tax Cost Index Entities
+     * @param List<TaxCostIndexEntity> taxCostIndexEntities 
+     */
     public void setTaxCostIndexEntities(List<TaxCostIndexEntity> taxCostIndexEntities) {
         this.taxCostIndexEntities = taxCostIndexEntities;
     }
 
+    /**
+     * Add Tax Cost Index Entity
+     * @param TaxCostIndexEntity costIndex 
+     */
     public void addTaxCostIndexEntity( TaxCostIndexEntity costIndex) {
         this.taxCostIndexEntities.add(costIndex);
     }
-
-    public void deleteTaxCostIndexEntityies(){
-        taxCostIndexEntities.clear();
-    }
     
+    /**
+     * Get LastUsed
+     * @return Date
+     */
     public Date getLastUsed() {
         return lastUsed;
     }
 
+    /**
+     * Set LastUsed
+     * @param Date lastUsed 
+     */
     public void setLastUsed(Date lastUsed) {
         this.lastUsed = lastUsed;
     }
     
+    /**
+     * Get Last Twenty Four Hours
+     * @return Date
+     */
+    public Date getLastTwentyFourHours() {
+        return lastTwentyFourHours;
+    }
+
+    /**
+     * Set Last Twenty Four Hours
+     * @param Date lastTwentyFourHours 
+     */
+    public void setLastTwentyFourHours(Date lastTwentyFourHours) {
+        this.lastTwentyFourHours = lastTwentyFourHours;
+    }    
+    
+    /**
+     * Get Solar System ID
+     * @return String
+     */
     public String getSolarSystemID() {
         return solarSystemID;
     }
 
+    /**
+     * Set Solar System ID
+     * @param String solarSystemID 
+     */
     public void setSolarSystemID(String solarSystemID) {
         this.solarSystemID = solarSystemID;
     }
