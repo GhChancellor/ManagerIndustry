@@ -7,7 +7,7 @@ package managerindustry.logic.tax.jobInstallationFee.baseJobCost;
 
 import java.math.BigDecimal;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.manager.ManagerDB;
+import managerindustry.logic.manager.rule.ManagerDB.ManagerDB;
 
 /**
  *

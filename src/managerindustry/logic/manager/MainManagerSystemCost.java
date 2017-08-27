@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.manager;
 
+import managerindustry.logic.manager.rule.ManagerCache.ManagerSystemCostIndex;
 import java.util.Map;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostIndex;

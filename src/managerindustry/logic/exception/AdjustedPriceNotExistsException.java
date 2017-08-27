@@ -9,8 +9,10 @@ package managerindustry.logic.exception;
  *
  * @author lele
  */
-public class SolarSystemNotExists extends Exception{
-    public SolarSystemNotExists(){
-        super("Solar system not exists");
+public class AdjustedPriceNotExistsException extends Exception{
+
+    public AdjustedPriceNotExistsException() {
+        super("Adjusted Price Not Exists");
     }
+    
 }

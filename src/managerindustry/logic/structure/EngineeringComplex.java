@@ -8,7 +8,7 @@ package managerindustry.logic.structure;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import managerindustry.db.entities.DgmTypeAttributes;
-import managerindustry.logic.manager.ManagerDB;
+import managerindustry.logic.manager.rule.ManagerDB.ManagerDB;
 
 /**
  *

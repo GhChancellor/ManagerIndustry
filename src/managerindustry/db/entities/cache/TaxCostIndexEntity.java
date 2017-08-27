@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.db.entities.solarSystemTax;
+package managerindustry.db.entities.cache;
 
 import java.io.Serializable;
 import javax.persistence.Entity;

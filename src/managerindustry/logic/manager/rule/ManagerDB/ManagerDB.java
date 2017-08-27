@@ -3,26 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager;
+package managerindustry.logic.manager.rule.ManagerDB;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import managerindustry.db.controllers.TaxCostIndexEntityJpaController;
-import managerindustry.db.controllers.TaxSolarSystemEntityJpaController;
 import managerindustry.db.entities.DgmAttributeTypes;
 import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.db.entities.IndustryActivityMaterials;
 import managerindustry.db.entities.InvNames;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.db.entities.MapRegions;
-import managerindustry.db.entities.MapSolarSystems;
-import managerindustry.db.entities.solarSystemTax.TaxCostIndexEntity;
-import managerindustry.db.entities.solarSystemTax.TaxSolarSystemEntity;
 import managerindustry.logic.skill.Skill;
 
 
@@ -39,13 +30,6 @@ import managerindustry.logic.skill.Skill;
 public class ManagerDB {
     private static ManagerDB instance = null;
     private EntityManager entityManager = Persistence.createEntityManagerFactory("ManagerIndustryPU").createEntityManager();
-    
-    
-    private TaxSolarSystemEntityJpaController taxSolarSystemEntityJpaController = 
-     new TaxSolarSystemEntityJpaController (Persistence.createEntityManagerFactory("ManagerIndustryPU"));
-    
-    private TaxCostIndexEntityJpaController taxCostIndexEntityJpaController = 
-     new TaxCostIndexEntityJpaController (Persistence.createEntityManagerFactory("ManagerIndustryPU"));
         
     public static ManagerDB getInstance (){
         if ( instance == null ){
@@ -54,151 +38,7 @@ public class ManagerDB {
         return instance;
     }    
 
-    /**
-     * Get All value Except Specific Solar Sysem
-     * @param solarSystemID
-     * @return List < TaxSolarSystemEntity >
-     */
-    public List < TaxSolarSystemEntity > getAllExceptSpecificSolarSysem( String solarSystemID){
-        try {
-            EntityManager allExceptSpecificSolarSysemEM = entityManager;
-            TypedQuery < TaxSolarSystemEntity > allExceptSpecificSolarSysemQT = 
-             allExceptSpecificSolarSysemEM.createNamedQuery("TaxSolarSystemEntity.getAllExceptSpecificSolarSysem", TaxSolarSystemEntity.class);
-            
-            allExceptSpecificSolarSysemQT.setParameter("solarSystemID", solarSystemID);
-            return allExceptSpecificSolarSysemQT.getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-    
-    /**
-     * Get All Tax Solar System Entity
-     * @return List < TaxSolarSystemEntity >
-     */
-    public List < TaxSolarSystemEntity > getAllTaxSolarSystemEntity(){
-        try {
-            EntityManager allTaxSolarSystemEntityEM = entityManager;
-        
-            TypedQuery < TaxSolarSystemEntity > allTaxSolarSystemEntityTQ = 
-             allTaxSolarSystemEntityEM.createNamedQuery("TaxSolarSystemEntity.getAll", TaxSolarSystemEntity.class );
 
-            return allTaxSolarSystemEntityTQ.getResultList();
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-
-    }
-    
-    /**
-     * Add new solar system in DB
-     * @param TaxSolarSystemEntity taxSolarSystemEntity 
-     */
-    public void addTaxSolarSystemEntity(TaxSolarSystemEntity taxSolarSystemEntity){
-        try {
-            taxSolarSystemEntityJpaController.create(taxSolarSystemEntity);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;
-        }
-    }
-    
-    /**
-     * Update solar system in DB
-     * @param TaxSolarSystemEntity taxSolarSystemEntity 
-     */
-    public void updateTaxSolarSystemEntity(TaxSolarSystemEntity taxSolarSystemEntity){
-        try {
-            taxSolarSystemEntityJpaController.edit(taxSolarSystemEntity);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;
-        }
-    }
-    
-    /**
-     * Update Tax Cost Index
-     * @param TaxCostIndexEntity taxCostIndexEntity 
-     */
-    public void updateTaxCostIndex(TaxCostIndexEntity taxCostIndexEntity){
-        try {
-            taxCostIndexEntityJpaController.edit(taxCostIndexEntity);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;            
-        }
-    }
-        
-    /**
-     * Check into DB if solar System exists
-     * @param solarSystemID
-     * @return 
-     */
-    public TaxSolarSystemEntity solarSystemExists(String solarSystemID){
-        try {
-            EntityManager taxSolarSystemEntityEM = entityManager;
-            TypedQuery < TaxSolarSystemEntity > taxSolarSystemEntityQT = 
-             taxSolarSystemEntityEM.createNamedQuery("TaxSolarSystemEntity.IsExists", TaxSolarSystemEntity.class);
-            
-            taxSolarSystemEntityQT.setParameter("solarSystemID", solarSystemID);
-            
-            List < TaxSolarSystemEntity > taxSolarSystemEntitys = taxSolarSystemEntityQT.getResultList();
-            
-            if ( taxSolarSystemEntitys.isEmpty()){
-                return null;
-            }else{
-                return taxSolarSystemEntitys.get(0);
-            }
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-    
-    /**
-     * Delete solar system in DB
-     * @param taxSolarSystemEntity 
-     */
-    public void deleteTaxSolarSystemEntity(TaxSolarSystemEntity taxSolarSystemEntity){
-        try {
-            unlinkCostIndex(taxSolarSystemEntity);
-            taxSolarSystemEntityJpaController.destroy(taxSolarSystemEntity.getId());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Unlink CostIndex from SolarSystemEntity and delete it
-     * @param TaxSolarSystemEntity taxSolarSystemEntity 
-     */
-    private void unlinkCostIndex(TaxSolarSystemEntity taxSolarSystemEntity){
-        
-        try {
-            taxSolarSystemEntity.getTaxCostIndexEntities().clear();
-            taxSolarSystemEntityJpaController.edit(taxSolarSystemEntity);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-//        try {
-//            List < TaxCostIndexEntity > costIndexEntitys = taxSolarSystemEntity.getTaxCostIndexEntities();
-//            for (TaxCostIndexEntity costIndexEntity : costIndexEntitys) {
-//
-//                costIndexEntity.setActivity(null);
-//                costIndexEntity.setCostIndex(null);
-//                taxCostIndexEntityJpaController.edit(costIndexEntity);
-//            }
-//            
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-    }
-    
     
     // -------------------------------------------------
     

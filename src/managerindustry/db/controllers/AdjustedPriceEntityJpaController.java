@@ -14,15 +14,15 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import managerindustry.db.controllers.exceptions.NonexistentEntityException;
-import managerindustry.db.entities.cache.TaxCostIndexEntity;
+import managerindustry.db.entities.cache.AdjustedPriceEntity;
 
 /**
  *
  * @author lele
  */
-public class TaxCostIndexEntityJpaController implements Serializable {
+public class AdjustedPriceEntityJpaController implements Serializable {
 
-    public TaxCostIndexEntityJpaController(EntityManagerFactory emf) {
+    public AdjustedPriceEntityJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -31,12 +31,12 @@ public class TaxCostIndexEntityJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(TaxCostIndexEntity taxCostIndexEntity) {
+    public void create(AdjustedPriceEntity adjustedPriceEntity) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(taxCostIndexEntity);
+            em.persist(adjustedPriceEntity);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -45,19 +45,19 @@ public class TaxCostIndexEntityJpaController implements Serializable {
         }
     }
 
-    public void edit(TaxCostIndexEntity taxCostIndexEntity) throws NonexistentEntityException, Exception {
+    public void edit(AdjustedPriceEntity adjustedPriceEntity) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            taxCostIndexEntity = em.merge(taxCostIndexEntity);
+            adjustedPriceEntity = em.merge(adjustedPriceEntity);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = taxCostIndexEntity.getId();
-                if (findTaxCostIndexEntity(id) == null) {
-                    throw new NonexistentEntityException("The taxCostIndexEntity with id " + id + " no longer exists.");
+                Long id = adjustedPriceEntity.getId();
+                if (findAdjustedPriceEntity(id) == null) {
+                    throw new NonexistentEntityException("The adjustedPriceEntity with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,14 +73,14 @@ public class TaxCostIndexEntityJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            TaxCostIndexEntity taxCostIndexEntity;
+            AdjustedPriceEntity adjustedPriceEntity;
             try {
-                taxCostIndexEntity = em.getReference(TaxCostIndexEntity.class, id);
-                taxCostIndexEntity.getId();
+                adjustedPriceEntity = em.getReference(AdjustedPriceEntity.class, id);
+                adjustedPriceEntity.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The taxCostIndexEntity with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The adjustedPriceEntity with id " + id + " no longer exists.", enfe);
             }
-            em.remove(taxCostIndexEntity);
+            em.remove(adjustedPriceEntity);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -89,19 +89,19 @@ public class TaxCostIndexEntityJpaController implements Serializable {
         }
     }
 
-    public List<TaxCostIndexEntity> findTaxCostIndexEntityEntities() {
-        return findTaxCostIndexEntityEntities(true, -1, -1);
+    public List<AdjustedPriceEntity> findAdjustedPriceEntityEntities() {
+        return findAdjustedPriceEntityEntities(true, -1, -1);
     }
 
-    public List<TaxCostIndexEntity> findTaxCostIndexEntityEntities(int maxResults, int firstResult) {
-        return findTaxCostIndexEntityEntities(false, maxResults, firstResult);
+    public List<AdjustedPriceEntity> findAdjustedPriceEntityEntities(int maxResults, int firstResult) {
+        return findAdjustedPriceEntityEntities(false, maxResults, firstResult);
     }
 
-    private List<TaxCostIndexEntity> findTaxCostIndexEntityEntities(boolean all, int maxResults, int firstResult) {
+    private List<AdjustedPriceEntity> findAdjustedPriceEntityEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(TaxCostIndexEntity.class));
+            cq.select(cq.from(AdjustedPriceEntity.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -113,20 +113,20 @@ public class TaxCostIndexEntityJpaController implements Serializable {
         }
     }
 
-    public TaxCostIndexEntity findTaxCostIndexEntity(Long id) {
+    public AdjustedPriceEntity findAdjustedPriceEntity(Long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(TaxCostIndexEntity.class, id);
+            return em.find(AdjustedPriceEntity.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getTaxCostIndexEntityCount() {
+    public int getAdjustedPriceEntityCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<TaxCostIndexEntity> rt = cq.from(TaxCostIndexEntity.class);
+            Root<AdjustedPriceEntity> rt = cq.from(AdjustedPriceEntity.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

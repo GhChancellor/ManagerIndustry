@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.manager;
 
+import managerindustry.logic.manager.rule.ManagerDB.ManagerDB;
 import java.util.HashMap;
 import java.util.Map;
 import managerindustry.logic.skill.Skill;

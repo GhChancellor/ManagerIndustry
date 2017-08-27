@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.manager;
 
+import managerindustry.logic.manager.rule.ManagerDB.ManagerDB;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.DgmAttributeTypes;

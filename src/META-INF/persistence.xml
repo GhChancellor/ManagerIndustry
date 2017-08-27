@@ -14,8 +14,9 @@
     <class>managerindustry.db.entities.InvNames</class>
     <class>managerindustry.db.entities.MapRegions</class>
     <class>managerindustry.db.entities.MapSolarSystems</class>
-    <class>managerindustry.db.entities.solarSystemTax.TaxCostIndexEntity</class>
-    <class>managerindustry.db.entities.solarSystemTax.TaxSolarSystemEntity</class>
+    <class>managerindustry.db.entities.cache.AdjustedPriceEntity</class>
+    <class>managerindustry.db.entities.cache.TaxCostIndexEntity</class>
+    <class>managerindustry.db.entities.cache.TaxSolarSystemEntity</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/industryDB?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
