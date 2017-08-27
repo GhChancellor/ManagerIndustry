@@ -4,23 +4,23 @@
         "cost_indices": [
         {
         "activity": "manufacturing",
-                "cost_index": 1
+                "cost_index": 11
         },
         {
         "activity": "researching_time_efficiency",
-                "cost_index": 1
+                "cost_index": 11
         },
         {
         "activity": "researching_material_efficiency",
-                "cost_index": 1
+                "cost_index": 11
         },
         {
         "activity": "copying",
-                "cost_index": 1
+                "cost_index": 11
         },
         {
         "activity": "invention",
-                "cost_index": 1
+                "cost_index": 11
         }
         ]
 },

@@ -18,13 +18,16 @@ public class MainManagerSystemCost {
         SystemCostIndex systemCostIndex = new SystemCostIndex();
         Map<String, SolarSystem > solarSystemMap = systemCostIndex.getSystemCostIndexs();
         
-//        ManagerSystemCostIndex managerSystemCostIndex = 
-//         new ManagerSystemCostIndex(solarSystemMap, "111", "manufacturing");
-
+        ManagerSystemCostIndex managerSystemCostIndex = 
+         new ManagerSystemCostIndex(solarSystemMap, "1");
+        System.out.println(""+ managerSystemCostIndex.getCostIndex("1", "manufacturing"));
+        
         ManagerSystemCostIndex managerSystemCostIndex2 = 
-         new ManagerSystemCostIndex(solarSystemMap, "2", "manufacturing");
+         new ManagerSystemCostIndex(solarSystemMap, "2");
+        System.out.println(""+managerSystemCostIndex2.getCostIndex("2", "researching_time_efficiency"));
 
-//        ManagerSystemCostIndex managerSystemCostIndex3 = 
-//         new ManagerSystemCostIndex(solarSystemMap, "3", "manufacturing");
+        ManagerSystemCostIndex managerSystemCostIndex3 = 
+         new ManagerSystemCostIndex(solarSystemMap, "3" );
+        System.out.println(""+ managerSystemCostIndex3.getCostIndex("3", "copying"));
     }
 }

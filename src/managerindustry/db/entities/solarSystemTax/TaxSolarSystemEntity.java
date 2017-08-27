@@ -47,8 +47,8 @@ public class TaxSolarSystemEntity implements Serializable {
     private String solarSystemID;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date lastUsed = null;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date lastTwentyFourHours;
+//    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+//    private Date lastTwentyFourHours;
     
     @OneToMany(cascade = CascadeType.ALL)
     private List < TaxCostIndexEntity > taxCostIndexEntities = new ArrayList<>(); 
@@ -93,21 +93,21 @@ public class TaxSolarSystemEntity implements Serializable {
         this.lastUsed = lastUsed;
     }
     
-    /**
-     * Get Last Twenty Four Hours
-     * @return Date
-     */
-    public Date getLastTwentyFourHours() {
-        return lastTwentyFourHours;
-    }
-
-    /**
-     * Set Last Twenty Four Hours
-     * @param Date lastTwentyFourHours 
-     */
-    public void setLastTwentyFourHours(Date lastTwentyFourHours) {
-        this.lastTwentyFourHours = lastTwentyFourHours;
-    }    
+//    /**
+//     * Get Last Twenty Four Hours
+//     * @return Date
+//     */
+//    public Date getLastTwentyFourHours() {
+//        return lastTwentyFourHours;
+//    }
+//
+//    /**
+//     * Set Last Twenty Four Hours
+//     * @param Date lastTwentyFourHours 
+//     */
+//    public void setLastTwentyFourHours(Date lastTwentyFourHours) {
+//        this.lastTwentyFourHours = lastTwentyFourHours;
+//    }    
     
     /**
      * Get Solar System ID
