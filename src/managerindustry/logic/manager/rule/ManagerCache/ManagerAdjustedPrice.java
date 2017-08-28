@@ -7,6 +7,7 @@ package managerindustry.logic.manager.rule.ManagerCache;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.cache.AdjustedPriceEntity;
 import managerindustry.logic.exception.AdjustedPriceNotExistsException;
@@ -45,13 +46,13 @@ public class ManagerAdjustedPrice {
      * Init If Exists
      */
     private void initIfExists(){
-        AdjustedPriceEntity adjustedPriceEntity = 
+        adjustedPriceEntity = 
          ManagerDBCache.getInstance().getAdjustedPriceEntity(typeId);
         
         if (adjustedPriceEntity == null){
             addAdjustedPrice();
         }else{
-            updateAdjustedPrice();
+            updateAdjustedPrice(true);
         }
         updateAllAdjustedPrice();
         deleteAllAdjustedPrice();
@@ -75,25 +76,77 @@ public class ManagerAdjustedPrice {
             return;
         }
         
+        this.adjustedPriceEntity = new AdjustedPriceEntity();
         this.adjustedPriceEntity.setLastUsed(nowPresent);
         this.adjustedPriceEntity.setAverage_price(adjustedPrice.getAdjusted_price());
         this.adjustedPriceEntity.setAdjusted_price(adjustedPrice.getAdjusted_price());
         ManagerDBCache.getInstance().addAdjustedPriceEntity(adjustedPriceEntity);
     }
     
-    private void updateAdjustedPrice(){
+    /**
+     * Add Adjusted Price
+     * @param adjustedPriceMap
+     * @param typeId 
+     */
+    private void addAdjustedPrice(Map<String, AdjustedPrice > adjustedPriceMap, String typeId){
+        this.typeId = typeId;
+        this.adjustedPriceMap = adjustedPriceMap;
+        addAdjustedPrice();
+    }
+    
+    /**
+     * Update Adjusted Price
+     * @param boolean valueBool 
+     */
+    private void updateAdjustedPrice(boolean valueBool ){
+        if (valueBool){
+            Date nowPresent = new Date( new Date().getTime());
+            adjustedPriceEntity.setLastUsed(nowPresent);            
+        }
         
+        // Adjusted Price From Json ( eve server )
+        AdjustedPrice adjustedPrice = this.adjustedPriceMap.get(this.typeId);
+        adjustedPriceEntity.setAdjusted_price(adjustedPrice.getAdjusted_price());
+        adjustedPriceEntity.setAverage_price(adjustedPrice.getAverage_price());
+        
+        ManagerDBCache.getInstance().updateTaxAdjustedPriceEntity(adjustedPriceEntity);
     }
     
     private void updateAllAdjustedPrice(){
+        List < AdjustedPriceEntity > adjustedPriceEntitys = 
+         ManagerDBCache.getInstance().getAllExceptSpecificAdjustedPriceEntity(typeId);
         
+        if (adjustedPriceEntitys.isEmpty())
+            return;
+        
+        for (AdjustedPriceEntity adjustedPriceEntity1 : adjustedPriceEntitys) {
+            this.typeId = adjustedPriceEntity1.getType_id();
+            this.adjustedPriceEntity = adjustedPriceEntity1;
+            updateAdjustedPrice(false);
+        }
     }
     
     private void deleteAllAdjustedPrice(){
         
     }
     
-    public AdjustedPriceEntity getAdjustedPriceEntity(String typePrice) {
+    public AdjustedPriceEntity getAdjustedPriceEntity(String typePrice, Map<String, AdjustedPrice > adjustedPriceMap ) {
+        AdjustedPriceEntity adjustedPriceEntity = 
+         ManagerDBCache.getInstance().getAdjustedPriceEntity(typePrice);
+        
+        if ( adjustedPriceEntity == null ){
+            addAdjustedPrice(adjustedPriceMap, typePrice);
+            adjustedPriceEntity = ManagerDBCache.getInstance().getAdjustedPriceEntity(typePrice);
+            
+            try {
+                throw new AdjustedPriceNotExistsException();
+            } catch (Exception e) {
+                System.out.println(""+e.getMessage());
+                return null;                
+            }
+        }
+        
+        
         return adjustedPriceEntity;
     }
 

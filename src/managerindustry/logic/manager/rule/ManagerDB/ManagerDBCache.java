@@ -246,4 +246,36 @@ public class ManagerDBCache {
             return null;            
         }
     }
+    
+    /**
+     * Get All Except Specific Adjusted Price Entity
+     * @param typeID
+     * @return List < AdjustedPriceEntity >
+     */
+    public List < AdjustedPriceEntity > getAllExceptSpecificAdjustedPriceEntity( String typeID){
+        try {
+            EntityManager allExceptSpecificAdjustedEM = entityManager;
+            TypedQuery < AdjustedPriceEntity > allExceptSpecificAdjustedQT = 
+             allExceptSpecificAdjustedEM.createNamedQuery("AdjustedPriceEntity.getAllExceptSpecificTypeID", AdjustedPriceEntity.class);
+            
+            allExceptSpecificAdjustedQT.setParameter("type_id", typeID);
+            return allExceptSpecificAdjustedQT.getResultList();             
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;             
+        }
+    }
+    
+    /**
+     * Update Tax Adjusted Price Entity
+     * @param AdjustedPriceEntity adjustedPriceEntity 
+     */
+    public void updateTaxAdjustedPriceEntity(AdjustedPriceEntity adjustedPriceEntity){
+        try {
+           adjustedPriceEntityJpaController.edit(adjustedPriceEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+    }
 }
