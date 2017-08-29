@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager.rule.ManagerDB;
+package managerindustry.logic.manager.ManagerDB;
 
 import java.util.List;
 import javax.persistence.EntityManager;

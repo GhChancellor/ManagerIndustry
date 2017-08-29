@@ -23,9 +23,9 @@ import java.util.stream.Collectors;
  *
  * @author lele
  */
-public class SystemCostIndex {
+public class SystemCostFetch {
 
-    public SystemCostIndex() {
+    public SystemCostFetch() {
     
     }
     
@@ -34,7 +34,7 @@ public class SystemCostIndex {
      * DBG Aggiungere collegamento alla rete
      * @return Map<String, SolarSystem >
      */
-    public Map<String, SolarSystem > getSystemCostIndexs() {
+    public static Map<String, SolarSystem > getSystemCostIndexs() {
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();
             gsonBuilder.registerTypeAdapter(SolarSystem.class, new SolarSystemDeserializer());

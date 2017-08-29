@@ -6,9 +6,12 @@
 package managerindustry.logic.prove.cache;
 
 import java.util.Map;
-import managerindustry.logic.manager.rule.ManagerCache.ManagerPrice;
+import managerindustry.logic.manager.ManagerCache.ManagerPrice;
+import managerindustry.logic.manager.ManagerCache.ManagerSystemCostIndex;
 import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.Price;
-import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.XXXPrice;
+import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.PriceFetch;
+import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
+import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFetch;
 
 /**
  *
@@ -16,12 +19,12 @@ import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.XXXPrice;
  */
 public class MainManagerCache {
     public static void main(String[] args) {
-//        SystemCostIndex systemCostIndex = new SystemCostIndex();
-//        Map<String, SolarSystem > solarSystemMap = systemCostIndex.getSystemCostIndexs();
+//        SystemCostFetch systemCostIndex = new SystemCostFetch();
+        Map<String, SolarSystem > solarSystemMap = SystemCostFetch.getSystemCostIndexs();
         
-//        ManagerSystemCostIndex managerSystemCostIndex = 
-//         new ManagerSystemCostIndex(solarSystemMap, "1");
-//        System.out.println(""+ managerSystemCostIndex.getCostIndex(solarSystemMap, "1", "manufacturing"));
+        ManagerSystemCostIndex managerSystemCostIndex = 
+         new ManagerSystemCostIndex(solarSystemMap, "1");
+        System.out.println(""+ managerSystemCostIndex.getCostIndex(solarSystemMap, "1", "manufacturing"));
 //        
 //        ManagerSystemCostIndex managerSystemCostIndex2 = 
 //         new ManagerSystemCostIndex(solarSystemMap, "2");
@@ -32,8 +35,8 @@ public class MainManagerCache {
 //        System.out.println(""+ managerSystemCostIndex3.getCostIndex(solarSystemMap, "3", "copying"));
     
     
-        XXXPrice price = new XXXPrice();
-        Map<String, Price > priceMap = price.getPrice();
+//        PriceFetch price = new PriceFetch();
+        Map<String, Price > priceMap = PriceFetch.getPrice();
         
         ManagerPrice managerAdjustedPrice = new ManagerPrice("32780", priceMap);
         System.out.println(""+managerAdjustedPrice.getAdjustedPriceEntity("32780", priceMap));

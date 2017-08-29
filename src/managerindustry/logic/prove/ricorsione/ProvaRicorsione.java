@@ -12,7 +12,7 @@ import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.buiild.ComponentX;
 import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.manager.ManagerComponentX;
-import managerindustry.logic.manager.rule.ManagerDB.ManagerDB;
+import managerindustry.logic.manager.ManagerDB.ManagerDBEve;
 
 /**
  *
@@ -63,14 +63,14 @@ public class ProvaRicorsione {
         System.out.println(""+bpoName);
         
         // get item to build
-        List < IndustryActivityMaterials > nameItemToBuild = ManagerDB.getInstance().getMaterialNeedByName(bpoName);
+        List < IndustryActivityMaterials > nameItemToBuild = ManagerDBEve.getInstance().getMaterialNeedByName(bpoName);
         
         if ( ! nameItemToBuild.isEmpty() ){
             for (IndustryActivityMaterials invTypeMaterialse :  nameItemToBuild) {
-                InvTypes invTypes = ManagerDB.getInstance().getInvTypes_NameById(invTypeMaterialse.getMaterialTypeID());
+                InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_NameById(invTypeMaterialse.getMaterialTypeID());
                 
                 // get component
-                List < IndustryActivityMaterials > neededComponents = ManagerDB.getInstance().getMaterialNeedByName( invTypes.getTypeName() + " blueprint");
+                List < IndustryActivityMaterials > neededComponents = ManagerDBEve.getInstance().getMaterialNeedByName( invTypes.getTypeName() + " blueprint");
                 
                 ComponentX componentX = new ComponentX();
                 
@@ -79,7 +79,7 @@ public class ProvaRicorsione {
 
                 if ( neededComponents != null){ 
                     for (IndustryActivityMaterials neededComponent : neededComponents) {
-                        invTypes = ManagerDB.getInstance().getInvTypes_NameById(neededComponent.getMaterialTypeID());
+                        invTypes = ManagerDBEve.getInstance().getInvTypes_NameById(neededComponent.getMaterialTypeID());
                         
                         
 //                        MaterialForComponents materialForComponents = new MaterialForComponents( invTypes.getTypeID(),invTypes.getTypeName(), neededComponent.getQuantity()  );

@@ -9,7 +9,7 @@ import java.util.List;
 import managerindustry.db.entities.DgmAttributeTypes;
 import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.manager.rule.ManagerDB.ManagerDB;
+import managerindustry.logic.manager.ManagerDB.ManagerDBEve;
 
 /**
  *
@@ -38,9 +38,9 @@ public class StructureEngineeringRigs {
     
     public StructureEngineeringRigs(String name) {   
         
-        InvTypes invTypes = ManagerDB.getInstance().getInvTypes_IdByName(name);
+        InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(name);
 
-        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDB.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
+        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
         
 //        System.out.println(""+ invTypes.getTypeName());
         
@@ -50,7 +50,7 @@ public class StructureEngineeringRigs {
         for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
            
             DgmAttributeTypes dgmAttributeTypes = 
-             ManagerDB.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
+             ManagerDBEve.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
 
 
             float bonusRig = getBonusRig(dgmTypeAttribute);
@@ -153,15 +153,15 @@ public class StructureEngineeringRigs {
      */
     public void rigAttibutes(){
         String bpoName = "Standup M-Set Advanced Component Manufacturing Material Efficiency I";
-        InvTypes invTypes = ManagerDB.getInstance().getInvTypes_IdByName(bpoName);
+        InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(bpoName);
         
-        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDB.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
+        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
         System.out.println(""+ bpoName + " " + invTypes.getTypeID());
         
         for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
            
             DgmAttributeTypes dgmAttributeTypes = 
-             ManagerDB.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
+             ManagerDBEve.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
 
             System.out.println("" + dgmAttributeTypes.getAttributeName() + " " + dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID() 
              + " " + dgmTypeAttribute.getValueFloat() );           

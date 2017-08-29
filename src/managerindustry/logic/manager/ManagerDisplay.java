@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.manager;
 
-import managerindustry.logic.manager.rule.ManagerDB.ManagerDB;
+import managerindustry.logic.manager.ManagerDB.ManagerDBEve;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.DgmAttributeTypes;
@@ -39,15 +39,15 @@ public class ManagerDisplay {
         System.out.println(""+bpoName);
         
         // get item to build
-        List < IndustryActivityMaterials > nameItemToBuild = ManagerDB.getInstance().getMaterialNeedByName(bpoName);
+        List < IndustryActivityMaterials > nameItemToBuild = ManagerDBEve.getInstance().getMaterialNeedByName(bpoName);
  
         
         if ( ! nameItemToBuild.isEmpty() ){
             for (IndustryActivityMaterials invTypeMaterialse :  nameItemToBuild) {
-                InvTypes invTypes = ManagerDB.getInstance().getInvTypes_NameById(invTypeMaterialse.getMaterialTypeID());
+                InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_NameById(invTypeMaterialse.getMaterialTypeID());
                 
                 // get component
-                List < IndustryActivityMaterials > neededComponents = ManagerDB.getInstance().getMaterialNeedByName( invTypes.getTypeName() + " blueprint");
+                List < IndustryActivityMaterials > neededComponents = ManagerDBEve.getInstance().getMaterialNeedByName( invTypes.getTypeName() + " blueprint");
                 
                 ComponentX componentX = new ComponentX();
                 componentX.setName(invTypes.getTypeName());
@@ -56,7 +56,7 @@ public class ManagerDisplay {
                 if ( neededComponents != null){                    
                     for (IndustryActivityMaterials neededComponent : neededComponents) { 
                         
-                        invTypes = ManagerDB.getInstance().getInvTypes_NameById(neededComponent.getMaterialTypeID());
+                        invTypes = ManagerDBEve.getInstance().getInvTypes_NameById(neededComponent.getMaterialTypeID());
                         
                         MaterialForComponents materialForComponents = new MaterialForComponents
                          ( invTypes.getTypeID(), invTypes.getTypeName(), neededComponent.getQuantity());
@@ -133,15 +133,15 @@ public class ManagerDisplay {
     public void itemDescription(){
         // 43867 Standup M-Set Advanced Component Manufacturing Material Efficiency I
         String bpoName = "raitaru";
-        InvTypes invTypes = ManagerDB.getInstance().getInvTypes_IdByName(bpoName);
+        InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(bpoName);
         
-        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDB.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
+        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
         
         System.out.println(""+ bpoName);
         for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
            
             DgmAttributeTypes dgmAttributeTypes = 
-             ManagerDB.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
+             ManagerDBEve.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
             
 //            if (dgmTypeAttribute.getValueInt() == null) {
 //                System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  +
@@ -171,7 +171,7 @@ public class ManagerDisplay {
     }
     
     public void getSolarSystemID(){
-        InvNames invNames = ManagerDB.getInstance().getInvNames_SolarSystemID("Jita");
+        InvNames invNames = ManagerDBEve.getInstance().getInvNames_SolarSystemID("Jita");
         
         System.out.println(""+invNames.getItemID());
     }
@@ -185,21 +185,21 @@ public class ManagerDisplay {
 //        System.out.println(""+bpoName);
 //        
 //        // get item to build
-//        List < IndustryActivityMaterials > objectToBuild = ManagerDB.getInstance().getMaterialNeedByName(bpoName);
+//        List < IndustryActivityMaterials > objectToBuild = ManagerDBEve.getInstance().getMaterialNeedByName(bpoName);
 //        
 //        if ( ! objectToBuild.isEmpty() ){
 //            for (IndustryActivityMaterials invTypeMaterialse :  objectToBuild) {
-//                InvTypes invTypes = ManagerDB.getInstance().getInvTypes_NameById(invTypeMaterialse.getMaterialTypeID());
+//                InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_NameById(invTypeMaterialse.getMaterialTypeID());
 //                
 //                // get component
-//                List < IndustryActivityMaterials > neededComponents = ManagerDB.getInstance().getMaterialNeedByName( invTypes.getTypeName() + " blueprint");
+//                List < IndustryActivityMaterials > neededComponents = ManagerDBEve.getInstance().getMaterialNeedByName( invTypes.getTypeName() + " blueprint");
 //                ComponentX componentX = new ComponentX();
 //                componentX.setName(invTypes);
 //                componentX.setQuanity(invTypeMaterialse.getQuantity());
 //                
 //                if ( neededComponents != null){                    
 //                    for (IndustryActivityMaterials neededComponent : neededComponents) {                                            
-//                        invTypes = ManagerDB.getInstance().getInvTypes_NameById(neededComponent.getMaterialTypeID());
+//                        invTypes = ManagerDBEve.getInstance().getInvTypes_NameById(neededComponent.getMaterialTypeID());
 //                        
 //                        MaterialForComponents materialForComponents = new MaterialForComponents( invTypes, neededComponent);
 //                        componentX.addMaterialForComponents(materialForComponents);   

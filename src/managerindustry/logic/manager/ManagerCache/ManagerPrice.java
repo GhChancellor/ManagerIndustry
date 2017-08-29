@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager.rule.ManagerCache;
+package managerindustry.logic.manager.ManagerCache;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.cache.PriceEntity;
 import managerindustry.logic.exception.PriceNotExistsException;
-import managerindustry.logic.manager.rule.ManagerDB.ManagerDBCache;
+import managerindustry.logic.manager.ManagerDB.ManagerDBCache;
 import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.Price;
 
 /**
@@ -51,7 +51,7 @@ public class ManagerPrice {
          ManagerDBCache.getInstance().getPriceEntity(typeId);
         
         if (priceEntity == null){
-            addPrice();
+            addPriceIfexists();
         }else{
             updatePrice(true);
         }
@@ -62,7 +62,7 @@ public class ManagerPrice {
     /**
      * Add Adjusted Price
      */
-    private void addPrice(){
+    private void addPriceIfexists(){
         Date nowPresent = new Date( new Date().getTime());
         
         Price price = 
@@ -94,7 +94,7 @@ public class ManagerPrice {
     private void addPrice(Map<String, Price > priceMap, String typeId){
         this.typeId = typeId;
         this.priceMap = priceMap;
-        addPrice();
+        addPriceIfexists();
     }
     
     /**

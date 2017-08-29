@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager.rule.ManagerDB;
+package managerindustry.logic.manager.ManagerDB;
 
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -27,13 +27,13 @@ import managerindustry.logic.skill.Skill;
  * industryActivityMaterials.activityID = "1";
  * @author lele
  */
-public class ManagerDB {
-    private static ManagerDB instance = null;
+public class ManagerDBEve {
+    private static ManagerDBEve instance = null;
     private EntityManager entityManager = Persistence.createEntityManagerFactory("ManagerIndustryPU").createEntityManager();
         
-    public static ManagerDB getInstance (){
+    public static ManagerDBEve getInstance (){
         if ( instance == null ){
-            instance = new ManagerDB();
+            instance = new ManagerDBEve();
         }
         return instance;
     }    
@@ -264,7 +264,7 @@ public class ManagerDB {
         */
         
 ////         Convert name to Id
-        InvTypes invTypes = ManagerDB.getInstance().getInvTypes_IdByName(bpoName);
+        InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(bpoName);
         
         if ( invTypes == null ){
             return null;
@@ -273,7 +273,7 @@ public class ManagerDB {
         }
         
         // convert name ( from InvTypes ) to Materials Needed ( from  IndustryActivityMaterials )
-        List < IndustryActivityMaterials > invTypeMaterialses  = ManagerDB.getInstance().getIndustryActivityMaterialsID( invTypes.getTypeID() );
+        List < IndustryActivityMaterials > invTypeMaterialses  = ManagerDBEve.getInstance().getIndustryActivityMaterialsID( invTypes.getTypeID() );
         if ( invTypeMaterialses.isEmpty() ){
             return null;
         }
@@ -296,14 +296,14 @@ public class ManagerDB {
         */
 
         ////         Convert name to Id
-        InvTypes invTypes = ManagerDB.getInstance().getInvTypes_IdByName(bpoName);
+        InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(bpoName);
         
         if ( invTypes == null ){
             return null;
         }
         
         DgmTypeAttributes  dgmTypeAttributes = 
-         ManagerDB.getInstance().getValueStation(invTypes.getTypeID(), attributeID );
+         ManagerDBEve.getInstance().getValueStation(invTypes.getTypeID(), attributeID );
         
         if ( dgmTypeAttributes == null){
             return null;
@@ -384,7 +384,7 @@ public class ManagerDB {
      */
     public List < IndustryActivityMaterials > getMaterialNeedById( IndustryActivityMaterials industryActivityMaterials){
         
-        InvTypes invTypes = ManagerDB.getInstance().getInvTypes_NameById(industryActivityMaterials.getMaterialTypeID());
+        InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_NameById(industryActivityMaterials.getMaterialTypeID());
         
         industryActivityMaterials.setActivityID(1);
         

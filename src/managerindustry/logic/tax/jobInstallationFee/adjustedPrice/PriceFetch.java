@@ -21,8 +21,8 @@ import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
  * DBG Aggiungere collegamento alla rete
  * @author lele
  */
-public class XXXPrice {
-    public Map<String, Price > getPrice(){
+public class PriceFetch {
+    public static Map<String, Price > getPrice(){
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();
             gsonBuilder.registerTypeAdapter

@@ -8,7 +8,7 @@ package managerindustry.logic.structure;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import managerindustry.db.entities.DgmTypeAttributes;
-import managerindustry.logic.manager.rule.ManagerDB.ManagerDB;
+import managerindustry.logic.manager.ManagerDB.ManagerDBEve;
 
 /**
  *
@@ -49,21 +49,21 @@ public class EngineeringComplex {
         
         // float roundOff = Math.round(value * 100.0) / 100.0;
         // Math.floor(value * 100) / 100;
-        DgmTypeAttributes dgmTypeAttributes = ManagerDB.getInstance().getItemDescription(nameEngineeringComplex, 2600);
+        DgmTypeAttributes dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, 2600);
         reductionManufacturingMaterial = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
         
         
-        dgmTypeAttributes = ManagerDB.getInstance().getItemDescription(nameEngineeringComplex, 2601);
+        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, 2601);
         reductionManufacturingScienceJobIskCost = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
         
-        dgmTypeAttributes = ManagerDB.getInstance().getItemDescription(nameEngineeringComplex, 2602);
+        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, 2602);
         
         reductionManufacturingScienceJobTime = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
         
-        dgmTypeAttributes = ManagerDB.getInstance().getItemDescription(nameEngineeringComplex, 2339);
+        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, 2339);
         reductionFuelConsumption = dgmTypeAttributes.getValueFloat();
         
-        dgmTypeAttributes = ManagerDB.getInstance().getItemDescription(nameEngineeringComplex, 1132);
+        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, 1132);
         maxCalibrationComplex = dgmTypeAttributes.getValueFloat();
         
         this.nameEngineeringComplex = nameEngineeringComplex;

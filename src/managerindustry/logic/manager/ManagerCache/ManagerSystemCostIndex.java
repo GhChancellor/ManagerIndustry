@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager.rule.ManagerCache;
+package managerindustry.logic.manager.ManagerCache;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import managerindustry.db.entities.cache.TaxCostIndexEntity;
 import managerindustry.db.entities.cache.TaxSolarSystemEntity;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
-import managerindustry.logic.manager.rule.ManagerDB.ManagerDBCache;
+import managerindustry.logic.manager.ManagerDB.ManagerDBCache;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.CostIndex;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
 
@@ -72,7 +72,7 @@ public class ManagerSystemCostIndex {
         
                 
         if ( taxSolarSystemEntity == null){
-            addSolarSystem();
+            addSolarSystemIfExists();
         }else{
             updateSolarSystem(true);
         }
@@ -120,7 +120,7 @@ public class ManagerSystemCostIndex {
     /**
      * Add new solar system
      */
-    private void addSolarSystem(){
+    private void addSolarSystemIfExists(){
         Date nowPresent = new Date( new Date().getTime());
         
         SolarSystem solarSystem = this.solarSystemMap.get(this.solarSystemID);
@@ -159,7 +159,7 @@ public class ManagerSystemCostIndex {
     private void addSolarSystem(Map<String, SolarSystem > solarSystemMap, String solarSystemID){
         this.solarSystemID = solarSystemID;
         this.solarSystemMap = solarSystemMap;
-        addSolarSystem();
+        addSolarSystemIfExists();
     }
     
     /**

@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.Map;
 import managerindustry.logic.tax.jobInstallationFee.baseJobCost.JobCost;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostIndex;
+import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFetch;
 
 /**
  * jobFee = baseJobCost ∗ systemCostIndex ∗ runs
@@ -20,8 +20,8 @@ public class JobInstallationFee {
     
     public JobInstallationFee( int typeId, int runs ) {
         try {
-            SystemCostIndex systemCostIndex = new SystemCostIndex();
-            Map<String, SolarSystem > solarSystemMap = systemCostIndex.getSystemCostIndexs();
+            SystemCostFetch systemCostIndex = new SystemCostFetch();
+            Map<String, SolarSystem > solarSystemMap = SystemCostFetch.getSystemCostIndexs();
             
             
 //            JobCost basePrice = new JobCost(typeId);
