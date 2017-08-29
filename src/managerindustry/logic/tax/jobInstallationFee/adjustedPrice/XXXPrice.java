@@ -21,12 +21,12 @@ import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
  * DBG Aggiungere collegamento alla rete
  * @author lele
  */
-public class XXXAdjustedPrice {
-    public Map<String, AdjustedPrice > getAdjustedPrice(){
+public class XXXPrice {
+    public Map<String, Price > getPrice(){
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();
             gsonBuilder.registerTypeAdapter
-             (AdjustedPrice.class, new AdjustedPriceDeserializer());
+             (Price.class, new PriceDeserializer());
             
             Gson gson = gsonBuilder.create();
             
@@ -34,19 +34,19 @@ public class XXXAdjustedPrice {
             final String path = "./AdjustedPrice.json";
             Reader reader = new FileReader(path);
             
-            Type type = new TypeToken< ArrayList <AdjustedPrice> >() {}.getType();
-            List < AdjustedPrice > adjustedPrices = 
-             (List < AdjustedPrice >) gson.fromJson(reader, type);
+            Type type = new TypeToken< ArrayList <Price> >() {}.getType();
+            List < Price > adjustedPrices = 
+             (List < Price >) gson.fromJson(reader, type);
             
-            Map<String, AdjustedPrice > adjustedPriceMap = 
+            Map<String, Price > adjustedPriceMap = 
              adjustedPrices.stream().collect(Collectors.toMap
-              (AdjustedPrice::getAdjusted_price, AdjustedPrice -> AdjustedPrice ) );
+              (Price::getType_id, AdjustedPrice -> AdjustedPrice ) );
             
 //            adjustedPriceMap.putAll( adjustedPrices.stream().collect(Collectors.toMap
-//             (AdjustedPrice::getAverage_price, AdjustedPrice -> AdjustedPrice)) );
+//             (Price::getAverage_price, Price -> Price)) );
 //            
 //            adjustedPriceMap.putAll( adjustedPrices.stream().collect(Collectors.toMap
-//             (AdjustedPrice::getType_id, AdjustedPrice -> AdjustedPrice)));
+//             (Price::getType_id, Price -> Price)));
             return adjustedPriceMap;
         } catch (Exception e) {
             e.printStackTrace();

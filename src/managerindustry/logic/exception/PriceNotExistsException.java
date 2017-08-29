@@ -9,10 +9,10 @@ package managerindustry.logic.exception;
  *
  * @author lele
  */
-public class AdjustedPriceNotExistsException extends Exception{
+public class PriceNotExistsException extends Exception{
 
-    public AdjustedPriceNotExistsException() {
-        super("Adjusted Price Not Exists");
+    public PriceNotExistsException() {
+        super("Price Not Exists");
     }
     
 }

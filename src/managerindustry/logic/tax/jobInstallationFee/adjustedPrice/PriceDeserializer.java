@@ -16,9 +16,9 @@ import java.lang.reflect.Type;
  *
  * @author lele
  */
-public class AdjustedPriceDeserializer implements JsonDeserializer<AdjustedPrice>{
+public class PriceDeserializer implements JsonDeserializer<Price>{
     @Override
-    public AdjustedPrice deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
+    public Price deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
         try {
             JsonObject jsonObject = je.getAsJsonObject();
             
@@ -26,7 +26,7 @@ public class AdjustedPriceDeserializer implements JsonDeserializer<AdjustedPrice
             String average_price = jsonObject.get("average_price").getAsString();
             String type_id = jsonObject.get("type_id").getAsString();
             
-            AdjustedPrice adjustedPrice = new AdjustedPrice(adjusted_price, average_price, type_id);
+            Price adjustedPrice = new Price(adjusted_price, average_price, type_id);
             return adjustedPrice;
         } catch (Exception e) {
             e.printStackTrace();

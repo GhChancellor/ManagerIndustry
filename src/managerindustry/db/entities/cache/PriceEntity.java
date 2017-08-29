@@ -22,14 +22,14 @@ import javax.persistence.Temporal;
 @Entity
 @NamedQueries({
 // Get a specific type ID ( price )
-@NamedQuery(name = "AdjustedPriceEntity.getTypeId", query = "SELECT a FROM AdjustedPriceEntity a WHERE a.type_id = :type_id"),  
+@NamedQuery(name = "PriceEntity.getTypeId", query = "SELECT a FROM PriceEntity a WHERE a.type_id = :type_id"),  
 // Get all typeID
-@NamedQuery(name = "AdjustedPriceEntity.getAll", query = "SELECT a FROM AdjustedPriceEntity a"),
+@NamedQuery(name = "PriceEntity.getAll", query = "SELECT a FROM PriceEntity a"),
 // Get All Except Specific typeID
-@NamedQuery(name = "AdjustedPriceEntity.getAllExceptSpecificTypeID", query = "SELECT a FROM AdjustedPriceEntity a WHERE a.type_id <> :type_id"),
+@NamedQuery(name = "PriceEntity.getAllExceptSpecificTypeID", query = "SELECT a FROM PriceEntity a WHERE a.type_id <> :type_id"),
     
 })
-public class AdjustedPriceEntity implements Serializable {
+public class PriceEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,7 +41,7 @@ public class AdjustedPriceEntity implements Serializable {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date lastUsed = null;
 
-    public AdjustedPriceEntity() {
+    public PriceEntity() {
     }
     /**
      * Get LastUsed
@@ -125,10 +125,10 @@ public class AdjustedPriceEntity implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AdjustedPriceEntity)) {
+        if (!(object instanceof PriceEntity)) {
             return false;
         }
-        AdjustedPriceEntity other = (AdjustedPriceEntity) object;
+        PriceEntity other = (PriceEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

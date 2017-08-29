@@ -9,14 +9,14 @@ package managerindustry.logic.tax.jobInstallationFee.adjustedPrice;
  *
  * @author lele
  */
-public class AdjustedPrice {
+public class Price {
     // adjustedPrice = https://esi.tech.ccp.is/latest/markets/prices/?datasource=tranquility
     
     private String adjusted_price;
     private String average_price;
     private String type_id;
 
-    public AdjustedPrice() {
+    public Price() {
     }
 
     /**
@@ -25,7 +25,7 @@ public class AdjustedPrice {
      * @param String average_price
      * @param String type_id 
      */
-    public AdjustedPrice(String adjusted_price, String average_price, String type_id) {
+    public Price(String adjusted_price, String average_price, String type_id) {
         this.adjusted_price = adjusted_price;
         this.average_price = average_price;
         this.type_id = type_id;

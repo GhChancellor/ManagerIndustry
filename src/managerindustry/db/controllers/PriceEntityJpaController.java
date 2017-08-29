@@ -14,15 +14,15 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import managerindustry.db.controllers.exceptions.NonexistentEntityException;
-import managerindustry.db.entities.cache.AdjustedPriceEntity;
+import managerindustry.db.entities.cache.PriceEntity;
 
 /**
  *
  * @author lele
  */
-public class AdjustedPriceEntityJpaController implements Serializable {
+public class PriceEntityJpaController implements Serializable {
 
-    public AdjustedPriceEntityJpaController(EntityManagerFactory emf) {
+    public PriceEntityJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -31,12 +31,12 @@ public class AdjustedPriceEntityJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(AdjustedPriceEntity adjustedPriceEntity) {
+    public void create(PriceEntity priceEntity) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(adjustedPriceEntity);
+            em.persist(priceEntity);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -45,19 +45,19 @@ public class AdjustedPriceEntityJpaController implements Serializable {
         }
     }
 
-    public void edit(AdjustedPriceEntity adjustedPriceEntity) throws NonexistentEntityException, Exception {
+    public void edit(PriceEntity priceEntity) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            adjustedPriceEntity = em.merge(adjustedPriceEntity);
+            priceEntity = em.merge(priceEntity);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = adjustedPriceEntity.getId();
-                if (findAdjustedPriceEntity(id) == null) {
-                    throw new NonexistentEntityException("The adjustedPriceEntity with id " + id + " no longer exists.");
+                Long id = priceEntity.getId();
+                if (findPriceEntity(id) == null) {
+                    throw new NonexistentEntityException("The priceEntity with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,14 +73,14 @@ public class AdjustedPriceEntityJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            AdjustedPriceEntity adjustedPriceEntity;
+            PriceEntity priceEntity;
             try {
-                adjustedPriceEntity = em.getReference(AdjustedPriceEntity.class, id);
-                adjustedPriceEntity.getId();
+                priceEntity = em.getReference(PriceEntity.class, id);
+                priceEntity.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The adjustedPriceEntity with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The priceEntity with id " + id + " no longer exists.", enfe);
             }
-            em.remove(adjustedPriceEntity);
+            em.remove(priceEntity);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -89,19 +89,19 @@ public class AdjustedPriceEntityJpaController implements Serializable {
         }
     }
 
-    public List<AdjustedPriceEntity> findAdjustedPriceEntityEntities() {
-        return findAdjustedPriceEntityEntities(true, -1, -1);
+    public List<PriceEntity> findPriceEntityEntities() {
+        return findPriceEntityEntities(true, -1, -1);
     }
 
-    public List<AdjustedPriceEntity> findAdjustedPriceEntityEntities(int maxResults, int firstResult) {
-        return findAdjustedPriceEntityEntities(false, maxResults, firstResult);
+    public List<PriceEntity> findPriceEntityEntities(int maxResults, int firstResult) {
+        return findPriceEntityEntities(false, maxResults, firstResult);
     }
 
-    private List<AdjustedPriceEntity> findAdjustedPriceEntityEntities(boolean all, int maxResults, int firstResult) {
+    private List<PriceEntity> findPriceEntityEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(AdjustedPriceEntity.class));
+            cq.select(cq.from(PriceEntity.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -113,20 +113,20 @@ public class AdjustedPriceEntityJpaController implements Serializable {
         }
     }
 
-    public AdjustedPriceEntity findAdjustedPriceEntity(Long id) {
+    public PriceEntity findPriceEntity(Long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(AdjustedPriceEntity.class, id);
+            return em.find(PriceEntity.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getAdjustedPriceEntityCount() {
+    public int getPriceEntityCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<AdjustedPriceEntity> rt = cq.from(AdjustedPriceEntity.class);
+            Root<PriceEntity> rt = cq.from(PriceEntity.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

@@ -5,13 +5,10 @@
  */
 package managerindustry.logic.prove.cache;
 
-import managerindustry.logic.manager.rule.ManagerCache.ManagerSystemCostIndex;
 import java.util.Map;
-import managerindustry.logic.manager.rule.ManagerCache.ManagerAdjustedPrice;
-import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.AdjustedPrice;
-import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.XXXAdjustedPrice;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostIndex;
+import managerindustry.logic.manager.rule.ManagerCache.ManagerPrice;
+import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.Price;
+import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.XXXPrice;
 
 /**
  *
@@ -35,10 +32,11 @@ public class MainManagerCache {
 //        System.out.println(""+ managerSystemCostIndex3.getCostIndex(solarSystemMap, "3", "copying"));
     
     
-        XXXAdjustedPrice adjustedPrice = new XXXAdjustedPrice();
-        Map<String, AdjustedPrice > adjustedPriceMap = adjustedPrice.getAdjustedPrice();
+        XXXPrice price = new XXXPrice();
+        Map<String, Price > priceMap = price.getPrice();
         
-        ManagerAdjustedPrice managerAdjustedPrice = new ManagerAdjustedPrice("32780", adjustedPriceMap);
-        System.out.println(""+managerAdjustedPrice.getAdjustedPriceEntity("32780", adjustedPriceMap));
+        ManagerPrice managerAdjustedPrice = new ManagerPrice("32780", priceMap);
+        System.out.println(""+managerAdjustedPrice.getAdjustedPriceEntity("32780", priceMap));
+        
     }
 }

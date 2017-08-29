@@ -9,10 +9,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import managerindustry.db.controllers.AdjustedPriceEntityJpaController;
+import managerindustry.db.controllers.PriceEntityJpaController;
+
 import managerindustry.db.controllers.TaxCostIndexEntityJpaController;
 import managerindustry.db.controllers.TaxSolarSystemEntityJpaController;
-import managerindustry.db.entities.cache.AdjustedPriceEntity;
+import managerindustry.db.entities.cache.PriceEntity;
 import managerindustry.db.entities.cache.TaxCostIndexEntity;
 import managerindustry.db.entities.cache.TaxSolarSystemEntity;
 
@@ -25,8 +26,8 @@ public class ManagerDBCache {
     
     private EntityManager entityManager = Persistence.createEntityManagerFactory("ManagerIndustryPU").createEntityManager();
     
-    private AdjustedPriceEntityJpaController adjustedPriceEntityJpaController =
-     new AdjustedPriceEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));
+    private PriceEntityJpaController priceEntityJpaController =
+     new PriceEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));
     
     private TaxSolarSystemEntityJpaController taxSolarSystemEntityJpaController = 
      new TaxSolarSystemEntityJpaController (Persistence.createEntityManagerFactory("ManagerIndustryPU"));
@@ -189,12 +190,12 @@ public class ManagerDBCache {
     // ----------------------------------------------------------------------
     
     /**
-     * Add Adjusted Price Entity
-     * @param AdjustedPriceEntity adjustedPriceEntity 
+     * Add Price Entity
+     * @param priceEntity adjustedPriceEntity
      */
-    public void addAdjustedPriceEntity( AdjustedPriceEntity adjustedPriceEntity){
+    public void addPriceEntity( PriceEntity priceEntity ){
         try {
-            adjustedPriceEntityJpaController.create(adjustedPriceEntity);
+            priceEntityJpaController.create(priceEntity);
         } catch (Exception e) {
             e.printStackTrace();
             return;        
@@ -202,17 +203,17 @@ public class ManagerDBCache {
     }
     
     /**
-     * Get All Adjusted Price Entity
-     * @return AdjustedPriceEntity
+     * Get All Price Entity
+     * @return PriceEntity
      */
-    public List < AdjustedPriceEntity > getAllAdjustedPriceEntity(){
+    public List < PriceEntity > getAllPriceEntity(){
         try {
-            EntityManager allAdjustedPriceEntityEM = entityManager;
+            EntityManager allPriceEntityEM = entityManager;
             
-            TypedQuery < AdjustedPriceEntity > allAdjustedPriceEntityTQ =
-             allAdjustedPriceEntityEM.createNamedQuery("AdjustedPriceEntity.getAll", AdjustedPriceEntity.class);
+            TypedQuery < PriceEntity > allPriceEntityTQ =
+             allPriceEntityEM.createNamedQuery("PriceEntity.getAll", PriceEntity.class);
             
-            return allAdjustedPriceEntityTQ.getResultList();
+            return allPriceEntityTQ.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
             return null;            
@@ -220,26 +221,26 @@ public class ManagerDBCache {
     }
     
     /**
-     * Get Adjusted Price Entity
+     * Get Price Entity
      * @param typeId
-     * @return AdjustedPriceEntity
+     * @return PriceEntity
      */
-    public AdjustedPriceEntity getAdjustedPriceEntity(String typeId){
+    public PriceEntity getPriceEntity(String typeId){
         try {
-            EntityManager adjustedPriceEntityEM = entityManager;
+            EntityManager priceEntityEM = entityManager;
             
-            TypedQuery < AdjustedPriceEntity > adjustedPriceEntityTQ = 
-             adjustedPriceEntityEM.createNamedQuery("AdjustedPriceEntity.getTypeId", AdjustedPriceEntity.class);
+            TypedQuery < PriceEntity > priceEntityTQ = 
+             priceEntityEM.createNamedQuery("PriceEntity.getTypeId", PriceEntity.class);
              
-            adjustedPriceEntityTQ.setParameter("type_id", typeId);
+            priceEntityTQ.setParameter("type_id", typeId);
             
-            List < AdjustedPriceEntity > adjustedPriceEntitys = 
-             adjustedPriceEntityTQ.getResultList();
+            List < PriceEntity > priceEntitys = 
+             priceEntityTQ.getResultList();
             
-            if (adjustedPriceEntitys.isEmpty()){
+            if (priceEntitys.isEmpty()){
                 return null;
             }else{
-                return adjustedPriceEntitys.get(0);
+                return priceEntitys.get(0);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -248,18 +249,18 @@ public class ManagerDBCache {
     }
     
     /**
-     * Get All Except Specific Adjusted Price Entity
+     * Get All Except Specific Price Entity
      * @param typeID
-     * @return List < AdjustedPriceEntity >
+     * @return List < PriceEntity >
      */
-    public List < AdjustedPriceEntity > getAllExceptSpecificAdjustedPriceEntity( String typeID){
+    public List < PriceEntity > getAllExceptSpecificPriceEntity( String typeID){
         try {
-            EntityManager allExceptSpecificAdjustedEM = entityManager;
-            TypedQuery < AdjustedPriceEntity > allExceptSpecificAdjustedQT = 
-             allExceptSpecificAdjustedEM.createNamedQuery("AdjustedPriceEntity.getAllExceptSpecificTypeID", AdjustedPriceEntity.class);
+            EntityManager allExceptSpecificEM = entityManager;
+            TypedQuery < PriceEntity > allExceptSpecificQT = 
+             allExceptSpecificEM.createNamedQuery("PriceEntity.getAllExceptSpecificTypeID", PriceEntity.class);
             
-            allExceptSpecificAdjustedQT.setParameter("type_id", typeID);
-            return allExceptSpecificAdjustedQT.getResultList();             
+            allExceptSpecificQT.setParameter("type_id", typeID);
+            return allExceptSpecificQT.getResultList();             
         } catch (Exception e) {
             e.printStackTrace();
             return null;             
@@ -267,12 +268,12 @@ public class ManagerDBCache {
     }
     
     /**
-     * Update Tax Adjusted Price Entity
+     * Update Tax Price Entity
      * @param AdjustedPriceEntity adjustedPriceEntity 
      */
-    public void updateTaxAdjustedPriceEntity(AdjustedPriceEntity adjustedPriceEntity){
+    public void updateTaxPriceEntity(PriceEntity priceEntity){
         try {
-           adjustedPriceEntityJpaController.edit(adjustedPriceEntity);
+           priceEntityJpaController.edit(priceEntity);
         } catch (Exception e) {
             e.printStackTrace();
             return;

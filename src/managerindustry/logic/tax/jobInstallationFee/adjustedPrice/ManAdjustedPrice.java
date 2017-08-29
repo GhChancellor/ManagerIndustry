@@ -2,7 +2,7 @@ package managerindustry.logic.tax.jobInstallationFee.adjustedPrice;
 
 
 import java.util.Map;
-import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.XXXAdjustedPrice;
+import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.XXXPrice;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,9 +17,9 @@ import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.XXXAdjustedPri
 public class ManAdjustedPrice {
 
     public static void main(String[] args) {
-        XXXAdjustedPrice adjustedPrice = new XXXAdjustedPrice();
+        XXXPrice adjustedPrice = new XXXPrice();
         
-        Map<String, AdjustedPrice > map = adjustedPrice.getAdjustedPrice();
+        Map<String, Price > map = adjustedPrice.getPrice();
         
         map.forEach((k,v) -> System.out.println(""+v.getType_id() + " " 
          + v.getAverage_price() + " " + v.getAdjusted_price()  ));
