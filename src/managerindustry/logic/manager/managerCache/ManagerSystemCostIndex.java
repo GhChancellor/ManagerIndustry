@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager.ManagerCache;
+package managerindustry.logic.manager.managerCache;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import managerindustry.db.entities.cache.TaxCostIndexEntity;
 import managerindustry.db.entities.cache.TaxSolarSystemEntity;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
-import managerindustry.logic.manager.ManagerDB.ManagerDBCache;
+import managerindustry.logic.manager.managerDB.ManagerDBCache;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.CostIndex;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
 
@@ -34,7 +34,7 @@ public class ManagerSystemCostIndex {
         
         ManagerSystemCostIndex managerSystemCostIndex = 
          new ManagerSystemCostIndex(solarSystemMap, "1");
-        System.out.println(""+ managerSystemCostIndex.getCostIndex("1", "manufacturing"));
+        System.out.println(""+ managerSystemCostIndex.getCostIndexEntity("1", "manufacturing"));
     */
     /**
      * Manager System Cost Index
@@ -42,7 +42,7 @@ public class ManagerSystemCostIndex {
      * @param solarSystemID 
      */
     public ManagerSystemCostIndex
-     ( Map<String, SolarSystem > solarSystemMap, String solarSystemID ) {
+     ( Map<String, SolarSystem > solarSystemMap, String solarSystemID ) throws SolarSystemNotExistsException {
          this.solarSystemMap = solarSystemMap;
          this.solarSystemID = solarSystemID;
          
@@ -66,7 +66,7 @@ public class ManagerSystemCostIndex {
     /**
      * Check if exists a specific solar system
      */
-    private void initIfExists(){
+    private void initIfExists() throws SolarSystemNotExistsException{
          this.taxSolarSystemEntity = 
          ManagerDBCache.getInstance().getSolarSystem(this.solarSystemID);
         
@@ -77,8 +77,8 @@ public class ManagerSystemCostIndex {
             updateSolarSystem(true);
         }
 
-        updateAllSolarSystem();
-        deleteSolarSystem();
+//        updateAllSolarSystem();
+//        deleteSolarSystem();
     }
     
     /**
@@ -87,7 +87,7 @@ public class ManagerSystemCostIndex {
      * @param activity
      * @return String
      */
-    public String getCostIndex(Map<String, SolarSystem > solarSystemMap, String solarSystemID, String activity){
+    public String getCostIndexEntity(Map<String, SolarSystem > solarSystemMap, String solarSystemID, String activity) throws SolarSystemNotExistsException{
         TaxSolarSystemEntity taxSolarSystemEntity = ManagerDBCache.getInstance().getSolarSystem(solarSystemID);
   
         
@@ -95,13 +95,9 @@ public class ManagerSystemCostIndex {
             addSolarSystem(solarSystemMap, solarSystemID);
             
             taxSolarSystemEntity = ManagerDBCache.getInstance().getSolarSystem(solarSystemID);
-            try {
-                if ( taxSolarSystemEntity == null){
-                    throw new SolarSystemNotExistsException();
-                }
-            } catch (SolarSystemNotExistsException e) {
-                System.out.println(""+e.getMessage());
-                return null;
+            
+            if ( taxSolarSystemEntity == null){
+                throw new SolarSystemNotExistsException();
             }
         }
         
@@ -120,19 +116,13 @@ public class ManagerSystemCostIndex {
     /**
      * Add new solar system
      */
-    private void addSolarSystemIfExists(){
-        Date nowPresent = new Date( new Date().getTime());
+    private void addSolarSystemIfExists() throws SolarSystemNotExistsException{
+        Date nowPresent = new Date();
         
         SolarSystem solarSystem = this.solarSystemMap.get(this.solarSystemID);
         
-        try {
-            
-            if ( solarSystem == null){
-                throw new SolarSystemNotExistsException();
-            }
-        } catch (SolarSystemNotExistsException e) {
-            System.out.println(""+e.getMessage());
-            return;
+        if ( solarSystem == null){
+            throw new SolarSystemNotExistsException();
         }
         
         taxSolarSystemEntity = new TaxSolarSystemEntity();
@@ -156,7 +146,7 @@ public class ManagerSystemCostIndex {
      * @param Map<String, SolarSystem > solarSystemMap
      * @param String solarSystemID 
      */        
-    private void addSolarSystem(Map<String, SolarSystem > solarSystemMap, String solarSystemID){
+    private void addSolarSystem(Map<String, SolarSystem > solarSystemMap, String solarSystemID) throws SolarSystemNotExistsException{
         this.solarSystemID = solarSystemID;
         this.solarSystemMap = solarSystemMap;
         addSolarSystemIfExists();
@@ -170,7 +160,7 @@ public class ManagerSystemCostIndex {
     private void updateSolarSystem(boolean valueBool){
         
         if (valueBool){
-            Date nowPresent = new Date( new Date().getTime());
+            Date nowPresent = new Date();
             taxSolarSystemEntity.setLastUsed(nowPresent);            
         }
         
@@ -213,7 +203,6 @@ public class ManagerSystemCostIndex {
             this.solarSystemID = taxSolarSystemEntity.getSolarSystemID();
             this.taxSolarSystemEntity = taxSolarSystemEntity;
             updateSolarSystem(false);
-//            updateSolarSystem(taxSolarSystemEntity, false);
         }
     }
 
@@ -223,7 +212,7 @@ public class ManagerSystemCostIndex {
      */    
     private void deleteSolarSystem(){
         System.out.println("DBG deleteSolarSystem da errore nella eliminazione dei fati");
-        long monthInSecond = 1l; // 2592000l;
+        long monthInSecond = 3600l; // 2592000l;
         Date nowPresent = new Date( new Date().getTime());
         List < TaxSolarSystemEntity > solarSystemEntitys =
          ManagerDBCache.getInstance().getAllExceptSpecificSolarSysem(this.solarSystemID);
@@ -235,9 +224,8 @@ public class ManagerSystemCostIndex {
             Date lastUsed = solarSystemEntity.getLastUsed();
             long timePassed = nowPresent.getTime() - lastUsed.getTime();
 
-            
             if ( timePassed >  monthInSecond ){
-//                ManagerDB.getInstance().deleteTaxSolarSystemEntity(taxSolarSystemEntity);
+                ManagerDBCache.getInstance().deleteTaxSolarSystemEntity(taxSolarSystemEntity);
             }
         }
         

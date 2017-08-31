@@ -9,7 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ *  
+ * basecost = ( BaseQuantity * adjusted_price ) + ( prezzo oggetto 2 * adjusted_price )
  * @author lele
  */
 public class BaseJobCost {

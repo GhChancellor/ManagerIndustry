@@ -12,7 +12,7 @@ import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.buiild.ComponentX;
 import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.manager.ManagerComponentX;
-import managerindustry.logic.manager.ManagerDB.ManagerDBEve;
+import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
 /**
  *

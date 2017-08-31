@@ -9,7 +9,7 @@ import java.util.List;
 import managerindustry.db.entities.DgmAttributeTypes;
 import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.manager.ManagerDB.ManagerDBEve;
+import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
 /**
  *

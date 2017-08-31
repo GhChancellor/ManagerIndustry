@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.manager;
 
-import managerindustry.logic.manager.ManagerDB.ManagerDBEve;
+import managerindustry.logic.manager.managerDB.ManagerDBEve;
 import java.util.HashMap;
 import java.util.Map;
 import managerindustry.logic.skill.Skill;

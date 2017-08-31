@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager.ManagerCache;
+package managerindustry.logic.manager.managerCache;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.cache.PriceEntity;
 import managerindustry.logic.exception.PriceNotExistsException;
-import managerindustry.logic.manager.ManagerDB.ManagerDBCache;
+import managerindustry.logic.manager.managerDB.ManagerDBCache;
 import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.Price;
 
 /**
@@ -23,7 +23,7 @@ public class ManagerPrice {
     private Map<String, Price > priceMap = new HashMap<>();
     private String typeId = null;
 
-    public ManagerPrice(String typeId, Map<String, Price > adjustedPriceMap) {
+    public ManagerPrice(String typeId, Map<String, Price > adjustedPriceMap) throws PriceNotExistsException {
         this.priceMap = adjustedPriceMap;
         this.typeId = typeId;
         
@@ -46,7 +46,7 @@ public class ManagerPrice {
     /**
      * Put value in the DB
      */
-    private void initValue(){
+    private void initValue() throws PriceNotExistsException{
         priceEntity = 
          ManagerDBCache.getInstance().getPriceEntity(typeId);
         
@@ -56,26 +56,21 @@ public class ManagerPrice {
             updatePrice(true);
         }
         updateAllPrice();
-        deleteAllPrice();
+//        deleteAllPrice();
     }
     
     /**
      * Add Adjusted Price
      */
-    private void addPriceIfexists(){
-        Date nowPresent = new Date( new Date().getTime());
+    private void addPriceIfexists() throws PriceNotExistsException{
+        Date nowPresent = new Date();
         
         Price price = 
          this.priceMap.get(this.typeId);
-                 
-        try {
-            if ( price == null){
-                throw new PriceNotExistsException();
-            }
-        } catch (Exception e) {
-            System.out.println(""+e.getMessage());
-            return;
-        }
+
+        if (price == null) {
+            throw new PriceNotExistsException();
+        }        
         
         this.priceEntity = new PriceEntity();
         this.priceEntity.setType_id(price.getType_id());
@@ -91,7 +86,7 @@ public class ManagerPrice {
      * @param priceMap
      * @param typeId 
      */
-    private void addPrice(Map<String, Price > priceMap, String typeId){
+    private void addPrice(Map<String, Price > priceMap, String typeId) throws PriceNotExistsException{
         this.typeId = typeId;
         this.priceMap = priceMap;
         addPriceIfexists();
@@ -103,7 +98,7 @@ public class ManagerPrice {
      */
     private void updatePrice(boolean valueBool ){
         if (valueBool){
-            Date nowPresent = new Date( new Date().getTime());
+            Date nowPresent = new Date();
             priceEntity.setLastUsed(nowPresent);            
         }
         
@@ -142,7 +137,7 @@ public class ManagerPrice {
      * @param Map<String, Price > priceMap priceMap
      * @return String
      */
-    public String getAdjustedPriceEntity(String typePrice, Map<String, Price > priceMap ) {
+    public String getAdjustedPriceEntity(String typePrice, Map<String, Price > priceMap ) throws PriceNotExistsException {
         return getValueAdjusted_AveragePrice(typePrice, priceMap).getAdjusted_price();
     }
 
@@ -152,7 +147,7 @@ public class ManagerPrice {
      * @param Map<String, Price > priceMap priceMap
      * @return String
      */
-    public String getAveragePriceEntity(String typePrice, Map<String, Price > adjustedPriceMap ) {
+    public String getAveragePriceEntity(String typePrice, Map<String, Price > adjustedPriceMap ) throws PriceNotExistsException {
         return getValueAdjusted_AveragePrice(typePrice, adjustedPriceMap).getAverage_price();
     }
     
@@ -162,7 +157,7 @@ public class ManagerPrice {
      * @param Map<String, Price > priceMap priceMap
      * @return PriceEntity
      */    
-    private PriceEntity getValueAdjusted_AveragePrice(String typePrice, Map<String, Price > adjustedPriceMap){
+    private PriceEntity getValueAdjusted_AveragePrice(String typePrice, Map<String, Price > adjustedPriceMap) throws PriceNotExistsException{
         PriceEntity priceEntity = 
          ManagerDBCache.getInstance().getPriceEntity(typePrice);
         
@@ -170,13 +165,9 @@ public class ManagerPrice {
             addPrice(adjustedPriceMap, typePrice);
             priceEntity = ManagerDBCache.getInstance().getPriceEntity(typePrice);
             
-            try {
-                throw new PriceNotExistsException();
-            } catch (Exception e) {
-                System.out.println(""+e.getMessage());
-                return null;                
-            }
-        }
+            if (priceEntity == null)
+                throw new PriceNotExistsException();                
+         }
         return priceEntity;
     }
     

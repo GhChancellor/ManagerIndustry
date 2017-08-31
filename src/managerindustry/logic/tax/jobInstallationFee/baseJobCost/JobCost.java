@@ -7,16 +7,14 @@ package managerindustry.logic.tax.jobInstallationFee.baseJobCost;
 
 import java.math.BigDecimal;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.manager.ManagerDB.ManagerDBEve;
+import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
 /**
  *
  * @author lele
  */
 public class JobCost {
-    /*
-        basecost = ( BaseQuantity * adjusted_price ) + ( prezzo oggetto 2 * adjusted_price ) ....  cosi?
-    */
+
     private String nameObject;
     private int baseQuantity;
     private Integer adjusted_price;
@@ -24,7 +22,7 @@ public class JobCost {
     public JobCost(String nameObject, int baseQuantity, Integer adjusted_price) {
         this.nameObject = nameObject;
         this.baseQuantity = baseQuantity;
-        this.adjusted_price = Integer.valueOf(adjusted_price);
+        this.adjusted_price = adjusted_price; 
     }
 
 }
