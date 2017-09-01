@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry;
+package managerindustry.logic.runMain;
 
 import managerindustry.logic.manager.ManagerDisplay;
 import managerindustry.logic.manager.ManagerFitter;

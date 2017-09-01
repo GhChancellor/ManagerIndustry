@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.skill;
+package managerindustry.logic.runMain;
 
-import managerindustry.ManagerIndustry;
+import managerindustry.logic.runMain.ManagerIndustry;
 import managerindustry.logic.manager.ManagerSkill;
 
 /**

@@ -5,8 +5,11 @@
  */
 package managerindustry.logic.tax.jobInstallationFee.baseJobCost;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import managerindustry.logic.buiild.TotalCalculatedComponentX;
 
 /**
  *  
@@ -14,14 +17,28 @@ import java.util.Map;
  * @author lele
  */
 public class BaseJobCost {
-    private Map < String, JobCost > jobCostMap = new HashMap<>();
+
+    private List < JobCostTotalItem > jobCostTotalItems = new ArrayList<>();
     
-    public Map<String, JobCost> getJobCostMap() {
-        return jobCostMap;
+    private JobCost jobCost = new JobCost();
+    
+    public int getJobCost(Map<String, TotalCalculatedComponentX> totalCalculatedComponentXMap, Integer adjusted_price){
+        
+        for (Map.Entry<String, TotalCalculatedComponentX> entry : totalCalculatedComponentXMap.entrySet()) {
+            String key = entry.getKey();
+            TotalCalculatedComponentX value = entry.getValue();
+            
+        }
+        
+//        jobCost.setAdjusted_price(adjusted_price);
+//        jobCost.setBaseQuantity(totalCalculatedComponentXMap.);
+//        jobCost.setNameItem(nameObject);
+        
+
+        return  sumJobCost();
     }
     
-    public void setJobCostMap(Map<String, JobCost> jobCostMap) {
-        this.jobCostMap = jobCostMap;
+    public int sumJobCost(){
+        return 0;
     }
-    
 }

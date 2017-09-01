@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.cache;
+package managerindustry.logic.runMain;
 
 import java.util.Map;
+import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.managerCache.ManagerPrice;
 import managerindustry.logic.manager.managerCache.ManagerSystemCostIndex;
@@ -19,22 +20,15 @@ import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFe
  * @author lele
  */
 public class MainManagerCache {
-    public static void main(String[] args) throws SolarSystemNotExistsException {
-//        SystemCostFetch systemCostIndex = new SystemCostFetch();
-        Map<String, SolarSystem > solarSystemMap = SystemCostFetch.getSystemCostIndexs();
-        
-//        ManagerSystemCostIndex managerSystemCostIndex = 
-//         new ManagerSystemCostIndex(solarSystemMap, "1");
-//        System.out.println(""+ managerSystemCostIndex.getCostIndexEntity(solarSystemMap, "1", "manufacturing"));
-//        
-        ManagerSystemCostIndex managerSystemCostIndex2 = 
-         new ManagerSystemCostIndex(solarSystemMap, "2");
-        System.out.println(""+managerSystemCostIndex2.getCostIndexEntity(solarSystemMap, "2", "researching_time_efficiency"));
+    public static void main(String[] args) throws SolarSystemNotExistsException, PriceNotExistsException {
 
-        ManagerSystemCostIndex managerSystemCostIndex3 = 
-         new ManagerSystemCostIndex(solarSystemMap, "3" );
-        System.out.println(""+ managerSystemCostIndex3.getCostIndexEntity(solarSystemMap, "3", "copying"));
-    
+        ManagerSystemCostIndex managerSystemCostIndex = new ManagerSystemCostIndex();
+        ManagerSystemCostIndex.getInstance().getCostIndexEntity("1", "manufacturing");
+//        ManagerSystemCostIndex.getInstance().getCostIndexEntity("2", "researching_time_efficiency");
+//        ManagerSystemCostIndex.getInstance().getCostIndexEntity("3", "copying");
+        
+//        ManagerPrice managerPrice = new ManagerPrice();
+//        ManagerPrice.getInstance().getAdjustedPriceEntity("32780");
     
 //        PriceFetch price = new PriceFetch();
 //        Map<String, Price > priceMap = PriceFetch.getPrice();

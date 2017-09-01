@@ -1,7 +1,9 @@
-package managerindustry.logic.tax.jobInstallationFee.adjustedPrice;
+package managerindustry.logic.runMain;
 
 
 import java.util.Map;
+import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.Price;
+import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.PriceFetch;
 import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.PriceFetch;
 
 /*
@@ -14,7 +16,7 @@ import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.PriceFetch;
  *
  * @author lele
  */
-public class ManAdjustedPrice {
+public class ManiAdjustedPrice {
 
     public static void main(String[] args) {
         PriceFetch adjustedPrice = new PriceFetch();

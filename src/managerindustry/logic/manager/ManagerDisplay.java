@@ -132,12 +132,13 @@ public class ManagerDisplay {
     
     public void itemDescription(){
         // 43867 Standup M-Set Advanced Component Manufacturing Material Efficiency I
-        String bpoName = "raitaru";
+        String bpoName = "Tritanium";
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(bpoName);
         
         List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
         
-        System.out.println(""+ bpoName);
+        System.out.println(""+ bpoName + " ID " + invTypes.getTypeID() );
+        
         for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
            
             DgmAttributeTypes dgmAttributeTypes = 

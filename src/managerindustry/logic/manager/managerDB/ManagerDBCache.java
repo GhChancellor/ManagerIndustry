@@ -72,7 +72,7 @@ public class ManagerDBCache {
      * Update Tax Cost Index
      * @param TaxCostIndexEntity taxCostIndexEntity 
      */
-    public void updateTaxCostIndex(TaxCostIndexEntity taxCostIndexEntity){
+    public void updateTaxCostIndexEntity(TaxCostIndexEntity taxCostIndexEntity){
         try {
             taxCostIndexEntityJpaController.edit(taxCostIndexEntity);
         } catch (Exception e) {
@@ -86,7 +86,7 @@ public class ManagerDBCache {
      * @param solarSystemID
      * @return 
      */
-    public TaxSolarSystemEntity getSolarSystem(String solarSystemID){
+    public TaxSolarSystemEntity getSolarSystemEntity(String solarSystemID){
         try {
             EntityManager taxSolarSystemEntityEM = entityManager;
             TypedQuery < TaxSolarSystemEntity > taxSolarSystemEntityQT = 
@@ -113,7 +113,7 @@ public class ManagerDBCache {
      * @param solarSystemID
      * @return List < TaxSolarSystemEntity >
      */
-    public List < TaxSolarSystemEntity > getAllExceptSpecificSolarSysem( String solarSystemID){
+    public List < TaxSolarSystemEntity > getAllExceptSpecificSolarSysemEntity( String solarSystemID){
         try {
             EntityManager allExceptSpecificSolarSysemEM = entityManager;
             TypedQuery < TaxSolarSystemEntity > allExceptSpecificSolarSysemQT = 

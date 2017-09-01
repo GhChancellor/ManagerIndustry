@@ -36,7 +36,4 @@ public class MaterialForComponents extends NameBase {
         super.setQuanity(amount);
     }    
     
-   private void prova(){
-       
-   }
 }

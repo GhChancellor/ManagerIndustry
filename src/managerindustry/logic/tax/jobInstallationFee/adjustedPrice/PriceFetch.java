@@ -22,6 +22,11 @@ import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
  * @author lele
  */
 public class PriceFetch {
+    /**
+     * Get Json from Server
+     * DBG Aggiungere collegamento alla rete
+     * @return Map<String, Price >
+     */
     public static Map<String, Price > getPrice(){
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();
@@ -40,7 +45,7 @@ public class PriceFetch {
             
             Map<String, Price > adjustedPriceMap = 
              adjustedPrices.stream().collect(Collectors.toMap
-              (Price::getType_id, AdjustedPrice -> AdjustedPrice ) );
+              (Price::getType_id, Price -> Price ) );
             
 //            adjustedPriceMap.putAll( adjustedPrices.stream().collect(Collectors.toMap
 //             (Price::getAverage_price, Price -> Price)) );

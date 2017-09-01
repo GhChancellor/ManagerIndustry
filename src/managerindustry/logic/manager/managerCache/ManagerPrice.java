@@ -13,6 +13,7 @@ import managerindustry.db.entities.cache.PriceEntity;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.manager.managerDB.ManagerDBCache;
 import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.Price;
+import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.PriceFetch;
 
 /**
  *
@@ -22,18 +23,18 @@ public class ManagerPrice {
     private PriceEntity priceEntity = new PriceEntity();
     private Map<String, Price > priceMap = new HashMap<>();
     private String typeId = null;
-
-    public ManagerPrice(String typeId, Map<String, Price > adjustedPriceMap) throws PriceNotExistsException {
-        this.priceMap = adjustedPriceMap;
-        this.typeId = typeId;
-        
-        if ( this.priceMap.isEmpty() )
-            return;
-        
-        initPriceDB();
-        initValue();
+    private static ManagerPrice instance = null;
+    
+    public static ManagerPrice getInstance() throws PriceNotExistsException{
+        if ( instance == null )
+            instance = new ManagerPrice();
+        return instance;        
     }
 
+    public ManagerPrice() throws PriceNotExistsException {
+        initPriceDB();
+    }
+    
     /**
      * Init Price DB
      */
@@ -41,57 +42,52 @@ public class ManagerPrice {
         if ( ManagerDBCache.getInstance().getAllPriceEntity() == null){
             ManagerDBCache.getInstance().addPriceEntity(priceEntity);
         }
-    }
-    
-    /**
-     * Put value in the DB
-     */
-    private void initValue() throws PriceNotExistsException{
-        priceEntity = 
-         ManagerDBCache.getInstance().getPriceEntity(typeId);
-        
-        if (priceEntity == null){
-            addPriceIfexists();
-        }else{
-            updatePrice(true);
-        }
-        updateAllPrice();
-//        deleteAllPrice();
-    }
-    
+    }    
+
     /**
      * Add Adjusted Price
      */
-    private void addPriceIfexists() throws PriceNotExistsException{
+    private void addPrice() throws PriceNotExistsException{
         Date nowPresent = new Date();
         
-        Price price = 
-         this.priceMap.get(this.typeId);
+        Price price = this.priceMap.get(this.typeId);
 
         if (price == null) {
-            throw new PriceNotExistsException();
+            this.priceMap = PriceFetch.getPrice();
+            price = this.priceMap.get(this.typeId);
+            
+            if (price == null) {
+                throw new PriceNotExistsException();                
+            }
         }        
         
         this.priceEntity = new PriceEntity();
         this.priceEntity.setType_id(price.getType_id());
         this.priceEntity.setLastUsed(nowPresent);
-        this.priceEntity.setAverage_price(price.getAdjusted_price());
+        this.priceEntity.setAverage_price(price.getAverage_price());
         this.priceEntity.setAdjusted_price(price.getAdjusted_price());
         
         ManagerDBCache.getInstance().addPriceEntity(priceEntity);
     }
     
     /**
-     * Add Price
-     * @param priceMap
-     * @param typeId 
+     * Init All
+     * @param priceID
+     * @throws String SolarSystemNotExistsException 
      */
-    private void addPrice(Map<String, Price > priceMap, String typeId) throws PriceNotExistsException{
-        this.typeId = typeId;
-        this.priceMap = priceMap;
-        addPriceIfexists();
+    private void initAll(String priceID) throws PriceNotExistsException{
+        priceEntity = ManagerDBCache.getInstance().getPriceEntity(priceID);
+        this.typeId = priceID;
+        
+        if (priceEntity == null){
+            addPrice();
+        }else{
+            updatePrice(true);
+        }
+        updateAllPrice();
+//        deleteAllPrice();        
     }
-    
+
     /**
      * Update Price
      * @param boolean valueBool 
@@ -108,7 +104,7 @@ public class ManagerPrice {
         priceEntity.setAverage_price(adjustedPrice.getAverage_price());
         
         ManagerDBCache.getInstance().updateTaxPriceEntity(priceEntity);
-    }
+    }    
     
     /**
      * Update All Price
@@ -126,7 +122,7 @@ public class ManagerPrice {
             updatePrice(false);
         }
     }
-    
+
     private void deleteAllPrice(){
         
     }
@@ -137,8 +133,8 @@ public class ManagerPrice {
      * @param Map<String, Price > priceMap priceMap
      * @return String
      */
-    public String getAdjustedPriceEntity(String typePrice, Map<String, Price > priceMap ) throws PriceNotExistsException {
-        return getValueAdjusted_AveragePrice(typePrice, priceMap).getAdjusted_price();
+    public String getAdjustedPriceEntity(String typePrice ) throws PriceNotExistsException {
+        return getValueAdjusted_AveragePrice(typePrice).getAdjusted_price();
     }
 
     /**
@@ -147,8 +143,8 @@ public class ManagerPrice {
      * @param Map<String, Price > priceMap priceMap
      * @return String
      */
-    public String getAveragePriceEntity(String typePrice, Map<String, Price > adjustedPriceMap ) throws PriceNotExistsException {
-        return getValueAdjusted_AveragePrice(typePrice, adjustedPriceMap).getAverage_price();
+    public String getAveragePriceEntity(String typePrice) throws PriceNotExistsException {
+        return getValueAdjusted_AveragePrice(typePrice).getAverage_price();
     }
     
     /**
@@ -157,58 +153,66 @@ public class ManagerPrice {
      * @param Map<String, Price > priceMap priceMap
      * @return PriceEntity
      */    
-    private PriceEntity getValueAdjusted_AveragePrice(String typePrice, Map<String, Price > adjustedPriceMap) throws PriceNotExistsException{
-        PriceEntity priceEntity = 
-         ManagerDBCache.getInstance().getPriceEntity(typePrice);
+    private PriceEntity getValueAdjusted_AveragePrice(String typePrice) throws PriceNotExistsException{
         
-        if ( priceEntity == null ){
-            addPrice(adjustedPriceMap, typePrice);
-            priceEntity = ManagerDBCache.getInstance().getPriceEntity(typePrice);
-            
-            if (priceEntity == null)
-                throw new PriceNotExistsException();                
-         }
+        initAll(typePrice);   
+        priceEntity = ManagerDBCache.getInstance().getPriceEntity(typePrice);     
+
+        if ( priceEntity == null)
+            throw new PriceNotExistsException();        
+        
+//        PriceEntity priceEntity = 
+//         ManagerDBCache.getInstance().getPriceEntity(typePrice);
+//        
+//        if ( priceEntity == null ){
+//            initAll(typePrice);   
+//            priceEntity = ManagerDBCache.getInstance().getPriceEntity(typePrice);     
+//            
+//            if ( priceEntity == null)
+//                throw new PriceNotExistsException();
+//        }
+        
         return priceEntity;
     }
     
-    /**
-     * Set Price Map
-     * @param AdjustedPriceEntity priceEntity 
-     */
-    private void setPriceEntity(PriceEntity priceEntity) {
-        this.priceEntity = priceEntity;
-    }
-
-    /**
-     * Get Price Map
-     * @return Map<String, Price>
-     */
-    private Map<String, Price> getPriceMap() {
-        return priceMap;
-    }
-
-    /**
-     * Set Price Map
-     * @param Map<String, Price> priceMap 
-     */
-    private void setPriceMap(Map<String, Price> priceMap) {
-        this.priceMap = priceMap;
-    }
-
-    /**
-     * Get TypeId
-     * @return String
-     */
-    private String getTypeId() {
-        return typeId;
-    }
-
-    /**
-     * Set TypeId
-     * @param typeId 
-     */
-    private void setTypeId(String typeId) {
-        this.typeId = typeId;
-    }
+//    /**
+//     * Set Price Map
+//     * @param AdjustedPriceEntity priceEntity 
+//     */
+//    private void setPriceEntity(PriceEntity priceEntity) {
+//        this.priceEntity = priceEntity;
+//    }
+//
+//    /**
+//     * Get Price Map
+//     * @return Map<String, Price>
+//     */
+//    private Map<String, Price> getPriceMap() {
+//        return priceMap;
+//    }
+//
+//    /**
+//     * Set Price Map
+//     * @param Map<String, Price> priceMap 
+//     */
+//    private void setPriceMap(Map<String, Price> priceMap) {
+//        this.priceMap = priceMap;
+//    }
+//
+//    /**
+//     * Get TypeId
+//     * @return String
+//     */
+//    private String getTypeId() {
+//        return typeId;
+//    }
+//
+//    /**
+//     * Set TypeId
+//     * @param typeId 
+//     */
+//    private void setTypeId(String typeId) {
+//        this.typeId = typeId;
+//    }
 
 }
