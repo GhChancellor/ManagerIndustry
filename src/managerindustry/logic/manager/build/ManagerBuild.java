@@ -24,7 +24,7 @@ public class ManagerBuild {
     /**
      * Inizio da qui
      */
-    public void buildItem(String bpoName){
+    public void buildItem(String bpoName, int meBPO, int job, int run, int meComponet ){
         // Errore nella produzione capital "Concord 25000mm Steel Plate"
         
         // VALORE NULLO
@@ -32,10 +32,10 @@ public class ManagerBuild {
         
         baseMaterial(bpoName);
         
-        int job = 1;
-        int run = 1;
-        int meBPO = 0;
-        int meComponet = 0;
+//        int job = 1;
+//        int run = 1;
+//        int meBPO = 0;
+//        int meComponet = 0;
         System.out.println("job " + job + " run "+ run + " me "+ meBPO);
         List < ComponentX > componentXs = ManagerComponentX.getInstance().getBaseComponentXs();
         for (ComponentX componentX : componentXs) {

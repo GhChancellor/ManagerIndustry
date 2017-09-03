@@ -7,8 +7,12 @@ package managerindustry.logic.tax.jobInstallationFee;
 
 import java.math.BigDecimal;
 import java.util.Map;
+import managerindustry.logic.buiild.TotalCalculatedComponentX;
+import managerindustry.logic.manager.managerCache.ManagerPrice;
+import managerindustry.logic.manager.managerCache.ManagerSystemCostIndex;
+import managerindustry.logic.tax.jobInstallationFee.baseJobCost.BaseJobCost;
 import managerindustry.logic.tax.jobInstallationFee.baseJobCost.JobCost;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
+import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystemCost;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFetch;
 
 /**
@@ -18,29 +22,33 @@ import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFe
 public class JobInstallationFee {
     private float jobFee ;
     
-    public JobInstallationFee( int typeId, int runs ) {
+    public JobInstallationFee( String solarSystemID, String actvity, Map<String,TotalCalculatedComponentX> totalCalculatedComponentXMap ) {
+    // Il runs viene GIÀ calcolato in ManagerBuild > buildItem
+    // int firstStep = MaterialCalc.calculateMaterialEfficiency(job, run, componentX.getQuanity(), meBPO);
+        int runs = 1; 
+        
         try {
-            SystemCostFetch systemCostIndex = new SystemCostFetch();
-            Map<String, SolarSystem > solarSystemMap = SystemCostFetch.getSystemCostIndexs();
+            // get value from DB
+            ManagerSystemCostIndex managerSystemCostIndex = new ManagerSystemCostIndex();
+            float systemCostIndex = ManagerSystemCostIndex.getInstance().getCostIndexEntity(solarSystemID, actvity);
+            BaseJobCost baseJobCost = new BaseJobCost();
             
-            
-//            JobCost basePrice = new JobCost(typeId);
-//
-//            float baseJobCost = basePrice.getBasePriceCost().floatValue();
-//            float systemCostIndex = 1;
-//
-//            this.jobFee = baseJobCost * systemCostIndex * runs;
+            float baseJobCostFlt = baseJobCost.getBaseJobCost(totalCalculatedComponentXMap);
+
+            this.jobFee = baseJobCostFlt * systemCostIndex * runs;
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    
+    public float getJobInstallationFee(){
+        return this.jobFee;
+    }
 }
 
 /*
 JobCost
  recupero id (string)
- 
+ 0
 systemCostIndex
 */

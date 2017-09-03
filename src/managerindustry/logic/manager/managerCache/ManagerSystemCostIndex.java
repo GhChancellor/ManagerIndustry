@@ -16,7 +16,7 @@ import managerindustry.db.entities.cache.TaxSolarSystemEntity;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.managerDB.ManagerDBCache;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.CostIndex;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
+import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystemCost;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFetch;
 
 /**
@@ -26,7 +26,7 @@ import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFe
 
 /*
         SystemCostIndex systemCostIndex = new SystemCostIndex();
-        Map<String, SolarSystem > solarSystemMap = systemCostIndex.getSystemCostIndexs();
+        Map<String, SolarSystemCost > solarSystemMap = systemCostIndex.getSystemCostIndexs();
         
         ManagerSystemCostIndex managerSystemCostIndex = 
          new ManagerSystemCostIndex(solarSystemMap, "1");
@@ -34,7 +34,7 @@ import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFe
 */
 public class ManagerSystemCostIndex {
     private TaxSolarSystemEntity taxSolarSystemEntity = new TaxSolarSystemEntity();
-    private Map<String, SolarSystem > solarSystemMap = new HashMap<>();
+    private Map<String, SolarSystemCost > solarSystemMap = new HashMap<>();
     private String solarSystemID = null;
     private static ManagerSystemCostIndex instance = null;
 
@@ -58,21 +58,36 @@ public class ManagerSystemCostIndex {
     }
     
     /**
-     * Add new solar system
+     * Get Solar System Map if null get SystemCostFetch.getSystemCostIndexs();
+     * @return SolarSystemCost
+     * @throws SolarSystemNotExistsException 
      */
-    private void addSolarSystem() throws SolarSystemNotExistsException{
-        Date nowPresent = new Date();
-        
-        SolarSystem solarSystem = this.solarSystemMap.get(this.solarSystemID);
+    private SolarSystemCost getSolarSystemMap() throws SolarSystemNotExistsException{
+        SolarSystemCost solarSystem = this.solarSystemMap.get(this.solarSystemID);
         
         if ( solarSystem == null){
             this.solarSystemMap = SystemCostFetch.getSystemCostIndexs();
             
             solarSystem = this.solarSystemMap.get(this.solarSystemID);
-            if ( solarSystem == null )
+            if ( solarSystem == null ){
                 throw new SolarSystemNotExistsException();
-        }
-        
+            }else{
+                return solarSystem;
+            }    
+        }else{
+            return solarSystem;
+        }        
+    }
+    
+    
+    /**
+     * Add new solar system
+     */
+    private void addSolarSystem() throws SolarSystemNotExistsException{
+        Date nowPresent = new Date();
+  
+        SolarSystemCost solarSystem = getSolarSystemMap();
+                
         taxSolarSystemEntity = new TaxSolarSystemEntity();
         taxSolarSystemEntity.setSolarSystemID(this.solarSystemID);
         taxSolarSystemEntity.setLastUsed(nowPresent);
@@ -116,7 +131,7 @@ public class ManagerSystemCostIndex {
      * @param TaxSolarSystemEntity taxSolarSystemEntity
      * @param boolean valueBool 
      */
-    private void updateSolarSystem(boolean valueBool){
+    private void updateSolarSystem(boolean valueBool) throws SolarSystemNotExistsException{
         
         if (valueBool){
             Date nowPresent = new Date();
@@ -124,7 +139,9 @@ public class ManagerSystemCostIndex {
         }
         
         // Solar systems From Json ( eve server )
-        SolarSystem solarSystem = this.solarSystemMap.get(this.solarSystemID);
+        
+        SolarSystemCost solarSystem = getSolarSystemMap();
+//        SolarSystemCost solarSystem = this.solarSystemMap.get(this.solarSystemID);
         
         // Convert Arrays to Costindexs
         List < CostIndex > costIndexs = Arrays.asList(solarSystem.getCostIndexs());        
@@ -149,7 +166,7 @@ public class ManagerSystemCostIndex {
     /**
      * Update All Solar System
      */
-    private void updateAllSolarSystem(){
+    private void updateAllSolarSystem() throws SolarSystemNotExistsException{
         
         List < TaxSolarSystemEntity > tempTaxSolarSystemEntity = 
          ManagerDBCache.getInstance().getAllExceptSpecificSolarSysemEntity(this.solarSystemID);
@@ -196,7 +213,7 @@ public class ManagerSystemCostIndex {
      * @return String
      * @throws SolarSystemNotExistsException 
      */
-    public String getCostIndexEntity(String solarSystemID, String activity) throws SolarSystemNotExistsException{
+    public float getCostIndexEntity(String solarSystemID, String activity) throws SolarSystemNotExistsException{
         initAll(solarSystemID);
 
         if (taxSolarSystemEntity == null)
@@ -209,24 +226,23 @@ public class ManagerSystemCostIndex {
 //            
 //            if (taxSolarSystemEntity == null)
 //                throw new SolarSystemNotExistsException();
-//        }
-        
-        
+//        }        
             
         List < TaxCostIndexEntity > taxCostIndexEntitys = taxSolarSystemEntity.getTaxCostIndexEntities();
         if (taxCostIndexEntitys.isEmpty()){
 //            this.solarSystemMap.clear();
-            return null;
+            return 0f;
         }
             
         
         for (TaxCostIndexEntity taxCostIndexEntity : taxCostIndexEntitys) {
             if ( taxCostIndexEntity.getActivity().equals(activity)){
 //                this.solarSystemMap.clear();
-                return taxCostIndexEntity.getCostIndex();
+
+                return Float.parseFloat(taxCostIndexEntity.getCostIndex());
             }
         }
 //        this.solarSystemMap.clear();
-        return null;        
+        return 0f;        
     }
 }

@@ -1,77 +1,25 @@
-[
-{
-"solar_system_id": 1,
-        "cost_indices": [
-        {
+ [ {
+    "solar_system_id": 30001369,
+    "cost_indices": [
+      {
         "activity": "manufacturing",
-                "cost_index": 11
-        },
-        {
+        "cost_index": 0.010773266565005414
+      },
+      {
         "activity": "researching_time_efficiency",
-                "cost_index": 11
-        },
-        {
+        "cost_index": 0.034550604650550834
+      },
+      {
         "activity": "researching_material_efficiency",
-                "cost_index": 11
-        },
-        {
+        "cost_index": 0.0352803038052086
+      },
+      {
         "activity": "copying",
-                "cost_index": 11
-        },
-        {
+        "cost_index": 0.030532393147624792
+      },
+      {
         "activity": "invention",
-                "cost_index": 11
-        }
-        ]
-},
-{
-"solar_system_id": 2,
-        "cost_indices": [
-        {
-        "activity": "manufacturing",
-                "cost_index": 2
-        },
-        {
-        "activity": "researching_time_efficiency",
-                "cost_index": 2
-        },
-        {
-        "activity": "researching_material_efficiency",
-                "cost_index": 2
-        },
-        {
-        "activity": "copying",
-                "cost_index": 2
-        },
-        {
-        "activity": "invention",
-                "cost_index": 2
-        }
-        ]
-},
-{
-"solar_system_id": 3,
-        "cost_indices": [
-        {
-        "activity": "manufacturing",
-                "cost_index": 3
-        },
-        {
-        "activity": "researching_time_efficiency",
-                "cost_index": 3
-        },
-        {
-        "activity": "researching_material_efficiency",
-                "cost_index": 3
-        },
-        {
-        "activity": "copying",
-                "cost_index": 3
-        },
-        {
-        "activity": "invention",
-                "cost_index": 3
-        }
-        ]
-}
-]
+        "cost_index": 0.005847142625683984
+      }
+    ]
+  }]

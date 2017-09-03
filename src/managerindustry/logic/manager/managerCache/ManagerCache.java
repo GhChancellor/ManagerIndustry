@@ -12,7 +12,7 @@ import managerindustry.logic.manager.ManagerComponentX;
 import managerindustry.logic.manager.build.ManagerBuild;
 import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.Price;
 import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.PriceFetch;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
+import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystemCost;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFetch;
 
 /**
@@ -22,14 +22,14 @@ import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFe
 public class ManagerCache {
 
     public ManagerCache() {
-        Map<String, SolarSystem > solarSystemMap = SystemCostFetch.getSystemCostIndexs();
+        Map<String, SolarSystemCost > solarSystemMap = SystemCostFetch.getSystemCostIndexs();
         Map<String, Price > priceFetchMap = PriceFetch.getPrice();
         
-        ManagerBuild managerBuild = new ManagerBuild();
-        managerBuild.buildItem("scimitar Blueprint");
-        
-        List<ComponentX> componentXs =
-         ManagerComponentX.getInstance().getBaseComponentXs();
+//        ManagerBuild managerBuild = new ManagerBuild();
+//        managerBuild.buildItem("scimitar Blueprint");
+//        
+//        List<ComponentX> componentXs =
+//         ManagerComponentX.getInstance().getBaseComponentXs();
         
     }
     

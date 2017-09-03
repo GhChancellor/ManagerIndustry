@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.buiild.TotalCalculatedComponentX;
+import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
 /**
  *  
@@ -17,28 +20,21 @@ import managerindustry.logic.buiild.TotalCalculatedComponentX;
  * @author lele
  */
 public class BaseJobCost {
+    private float sumJobcost = 0f;   
 
-    private List < JobCostTotalItem > jobCostTotalItems = new ArrayList<>();
+    public BaseJobCost() {
     
-    private JobCost jobCost = new JobCost();
-    
-    public int getJobCost(Map<String, TotalCalculatedComponentX> totalCalculatedComponentXMap, Integer adjusted_price){
-        
-        for (Map.Entry<String, TotalCalculatedComponentX> entry : totalCalculatedComponentXMap.entrySet()) {
-            String key = entry.getKey();
-            TotalCalculatedComponentX value = entry.getValue();
-            
-        }
-        
-//        jobCost.setAdjusted_price(adjusted_price);
-//        jobCost.setBaseQuantity(totalCalculatedComponentXMap.);
-//        jobCost.setNameItem(nameObject);
-        
-
-        return  sumJobCost();
     }
-    
-    public int sumJobCost(){
-        return 0;
+        
+    public float getBaseJobCost(Map<String, TotalCalculatedComponentX> totalCalculatedComponentXMap) throws PriceNotExistsException{
+        for (Map.Entry<String, TotalCalculatedComponentX> entry : totalCalculatedComponentXMap.entrySet()) {
+//            String key = entry.getKey();
+            TotalCalculatedComponentX value = entry.getValue();
+            InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(value.getName());
+                    
+            JobCost jobCost = new JobCost(value.getQuanity(), String.valueOf(invTypes.getTypeID()));
+            sumJobcost += jobCost.getJobCost();
+        }
+        return sumJobcost;
     }
 }

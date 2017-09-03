@@ -15,10 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
+import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystemCost;
 
 /**
  * DBG Aggiungere collegamento alla rete
+ * // adjustedPrice = https://esi.tech.ccp.is/latest/markets/prices/?datasource=tranquility
  * @author lele
  */
 public class PriceFetch {

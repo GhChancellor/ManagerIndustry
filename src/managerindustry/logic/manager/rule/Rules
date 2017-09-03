@@ -117,4 +117,9 @@ public class StructureEngineeringRigs {
     trade
     16622 accounting reduce del 10%
     3446 Broker Relations 0.1 x level
-        
+
+
+    (baseCost * SystemCostIndex) * facilityBonus * ((100 + Facilitytax) / 100)
+    se le vuoi separate                        
+    (baseCost * SystemCostIndex) * facilityBonus = LAVORO 
+    facilityBonus * ((100 + Facilitytax) / 100) = TAX facility       

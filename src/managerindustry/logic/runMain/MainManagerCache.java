@@ -8,22 +8,24 @@ package managerindustry.logic.runMain;
 import java.util.Map;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
+import managerindustry.logic.manager.build.ManagerBuild;
 import managerindustry.logic.manager.managerCache.ManagerPrice;
 import managerindustry.logic.manager.managerCache.ManagerSystemCostIndex;
 import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.Price;
 import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.PriceFetch;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystem;
+import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystemCost;
 import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFetch;
 
 /**
- *
+ * 1MN Civilian Afterburner Blueprint 1 = 3ISK, 2 = 7Isk  
+ * Sotrentaira 
  * @author lele
  */
 public class MainManagerCache {
     public static void main(String[] args) throws SolarSystemNotExistsException, PriceNotExistsException {
-
-        ManagerSystemCostIndex managerSystemCostIndex = new ManagerSystemCostIndex();
-        ManagerSystemCostIndex.getInstance().getCostIndexEntity("1", "manufacturing");
+        
+//        ManagerSystemCostIndex managerSystemCostIndex = new ManagerSystemCostIndex();
+//        ManagerSystemCostIndex.getInstance().getCostIndexEntity("1", "manufacturing");
 //        ManagerSystemCostIndex.getInstance().getCostIndexEntity("2", "researching_time_efficiency");
 //        ManagerSystemCostIndex.getInstance().getCostIndexEntity("3", "copying");
         

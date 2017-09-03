@@ -156,7 +156,7 @@ public class ManagerDBEve {
     /**
      * Get Types Name, convert name to ID like Drake ID 24698
      * @param String name
-     * @return List < InvTypes >
+     * @return InvTypes 
      */   
     public InvTypes getInvTypes_IdByName(String name){
         try {

@@ -18,10 +18,10 @@ import java.util.List;
  *
  * @author lele
  */
-public class SolarSystemDeserializer implements JsonDeserializer<SolarSystem>{
+public class SolarSystemDeserializer implements JsonDeserializer<SolarSystemCost>{
 
     /**
-     * Deserialize SolarSystem, get value solar_system_id and cost_indices[] from json
+     * Deserialize SolarSystemCost, get value solar_system_id and cost_indices[] from json
      * @param je
      * @param type
      * @param jdc
@@ -29,7 +29,7 @@ public class SolarSystemDeserializer implements JsonDeserializer<SolarSystem>{
      * @throws JsonParseException 
      */
     @Override
-    public SolarSystem deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
+    public SolarSystemCost deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
         try {
             JsonObject jsonObject = je.getAsJsonObject();
             String solarSystemTemp = jsonObject.get("solar_system_id").getAsString();
@@ -37,7 +37,7 @@ public class SolarSystemDeserializer implements JsonDeserializer<SolarSystem>{
             CostIndex[] costIndexs = 
              jdc.deserialize(jsonObject.get("cost_indices"), CostIndex[].class);
 
-            SolarSystem solarSystem = new SolarSystem();
+            SolarSystemCost solarSystem = new SolarSystemCost();
             solarSystem.setSolarSystem(solarSystemTemp);
             solarSystem.setCostIndexs(costIndexs);                       
             return solarSystem;

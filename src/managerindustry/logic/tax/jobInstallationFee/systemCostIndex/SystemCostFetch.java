@@ -20,7 +20,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- *
+ * DBG da collegare alla rete
+ * https://esi.tech.ccp.is/legacy/industry/systems/?datasource=tranquility
  * @author lele
  */
 public class SystemCostFetch {
@@ -32,12 +33,12 @@ public class SystemCostFetch {
     /**
      * Get value Solar System and CostIndexs value from Json
      * DBG Aggiungere collegamento alla rete
-     * @return Map<String, SolarSystem >
+     * @return Map<String, SolarSystemCost >
      */
-    public static Map<String, SolarSystem > getSystemCostIndexs() {
+    public static Map<String, SolarSystemCost > getSystemCostIndexs() {
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();
-            gsonBuilder.registerTypeAdapter(SolarSystem.class, new SolarSystemDeserializer());
+            gsonBuilder.registerTypeAdapter(SolarSystemCost.class, new SolarSystemDeserializer());
             gsonBuilder.registerTypeAdapter(CostIndex.class, new CostIndexDeserializer());
             Gson gson = gsonBuilder.create();
 
@@ -45,11 +46,11 @@ public class SystemCostFetch {
             final String path = "./SystemCostIndex.json";
             Reader reader = new FileReader(path);
 
-            Type type = new TypeToken< ArrayList< SolarSystem > >() {}.getType();
-            List<SolarSystem> solarSystems = (List<SolarSystem>) gson.fromJson(reader, type);
+            Type type = new TypeToken< ArrayList< SolarSystemCost > >() {}.getType();
+            List<SolarSystemCost> solarSystems = (List<SolarSystemCost>) gson.fromJson(reader, type);
 
-            Map<String, SolarSystem > solarSystemMap = 
-             solarSystems.stream().collect(Collectors.toMap(SolarSystem::getSolarSystem, SolarSystem -> SolarSystem));
+            Map<String, SolarSystemCost > solarSystemMap = 
+             solarSystems.stream().collect(Collectors.toMap(SolarSystemCost::getSolarSystem, SolarSystem -> SolarSystem));
             
             return solarSystemMap;
         } catch (Exception e) {

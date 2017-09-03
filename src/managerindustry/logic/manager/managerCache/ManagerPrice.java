@@ -44,22 +44,30 @@ public class ManagerPrice {
         }
     }    
 
-    /**
-     * Add Adjusted Price
-     */
-    private void addPrice() throws PriceNotExistsException{
-        Date nowPresent = new Date();
-        
+    private Price getPriceMap() throws PriceNotExistsException{
         Price price = this.priceMap.get(this.typeId);
-
+        
         if (price == null) {
             this.priceMap = PriceFetch.getPrice();
             price = this.priceMap.get(this.typeId);
             
             if (price == null) {
                 throw new PriceNotExistsException();                
+            }else{
+                return price;
             }
-        }        
+        }else{
+            return price;
+        }
+    }
+    
+    /**
+     * Add Adjusted Price
+     */
+    private void addPrice() throws PriceNotExistsException{
+        Date nowPresent = new Date();
+        
+        Price price = getPriceMap();     
         
         this.priceEntity = new PriceEntity();
         this.priceEntity.setType_id(price.getType_id());
@@ -92,16 +100,17 @@ public class ManagerPrice {
      * Update Price
      * @param boolean valueBool 
      */
-    private void updatePrice(boolean valueBool ){
+    private void updatePrice(boolean valueBool ) throws PriceNotExistsException{
         if (valueBool){
             Date nowPresent = new Date();
             priceEntity.setLastUsed(nowPresent);            
         }
         
         // Adjusted Price From Json ( eve server )
-        Price adjustedPrice = this.priceMap.get(this.typeId);
-        priceEntity.setAdjusted_price(adjustedPrice.getAdjusted_price());
-        priceEntity.setAverage_price(adjustedPrice.getAverage_price());
+        Price price = getPriceMap();       
+                
+        priceEntity.setAdjusted_price(price.getAdjusted_price());
+        priceEntity.setAverage_price(price.getAverage_price());
         
         ManagerDBCache.getInstance().updateTaxPriceEntity(priceEntity);
     }    
@@ -109,7 +118,7 @@ public class ManagerPrice {
     /**
      * Update All Price
      */
-    private void updateAllPrice(){
+    private void updateAllPrice() throws PriceNotExistsException{
         List < PriceEntity > priceEntitys = 
          ManagerDBCache.getInstance().getAllExceptSpecificPriceEntity(typeId);
         
