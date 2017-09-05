@@ -22,8 +22,8 @@ public class ManagerIndustry {
 //        ProvaClass provaClass = new ProvaClass();
         
         ManagerDisplay managerDisplay = new ManagerDisplay();
-        managerDisplay.buildItem();
-//        managerDisplay.itemDescription();
+//        managerDisplay.buildItem();
+        managerDisplay.itemDescription();
 //        managerDisplay.displayValueRig();
 //        managerDisplay.engineeringComplex();
 //        managerDisplay.getSolarSystemID();

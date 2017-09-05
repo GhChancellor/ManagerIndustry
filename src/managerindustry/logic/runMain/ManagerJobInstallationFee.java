@@ -28,19 +28,19 @@ public class ManagerJobInstallationFee {
         String solarSystemID = String.valueOf( SolarSystem.getSolarSystemID("Sotrentaira") );
         System.out.println("Id Solar system "+ solarSystemID);
         // String item = "1MN Civilian Afterburner";
-        String item = "Brutix";
+        String item = "Ferox";
         
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(item);
         System.out.println(""+ item + " " +invTypes.getTypeID());
         
         ManagerBuild managerBuild = new ManagerBuild();
-        managerBuild.buildItem(item + " blueprint", 10, 1,1, 0);
+        managerBuild.buildItem(item + " blueprint", 10, 1,10, 0);
         Map<String,TotalCalculatedComponentX> totalCalculatedComponentXMap =
          ManagerComponentX.getInstance().getTotalcalculatedComponentXMap();
         
         System.out.println("-------------------------------");
 //        
-//        JobInstallationFee jobInstallationFee = new JobInstallationFee(solarSystemID, "manufacturing", totalCalculatedComponentXMap);
-//        System.out.println(""+ jobInstallationFee.getJobInstallationFee());
+        JobInstallationFee jobInstallationFee = new JobInstallationFee(solarSystemID, "manufacturing", totalCalculatedComponentXMap);
+        System.out.println(""+ jobInstallationFee.getJobInstallationFee());
     }
 }

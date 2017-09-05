@@ -132,7 +132,7 @@ public class ManagerDisplay {
     
     public void itemDescription(){
         // 43867 Standup M-Set Advanced Component Manufacturing Material Efficiency I
-        String bpoName = "Tritanium";
+        String bpoName = "Isogen";
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(bpoName);
         
         List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
