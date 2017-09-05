@@ -38,7 +38,7 @@ public class ManagerSystemCostIndex {
     private String solarSystemID = null;
     private static ManagerSystemCostIndex instance = null;
 
-    public ManagerSystemCostIndex() throws SolarSystemNotExistsException {
+    private ManagerSystemCostIndex() throws SolarSystemNotExistsException {
         initSystemCostIndexDB();        
     }
     
@@ -123,7 +123,7 @@ public class ManagerSystemCostIndex {
         }
 
         updateAllSolarSystem();
-//        deleteSolarSystem();        
+        deleteSolarSystem();        
     }
     
     /**
@@ -171,8 +171,8 @@ public class ManagerSystemCostIndex {
         List < TaxSolarSystemEntity > tempTaxSolarSystemEntity = 
          ManagerDBCache.getInstance().getAllExceptSpecificSolarSysemEntity(this.solarSystemID);
         
-        if (tempTaxSolarSystemEntity.isEmpty())
-            return;
+        if (tempTaxSolarSystemEntity== null && tempTaxSolarSystemEntity.isEmpty())
+            throw new SolarSystemNotExistsException(solarSystemID);
         
         for (TaxSolarSystemEntity taxSolarSystemEntity : tempTaxSolarSystemEntity) {
             this.solarSystemID = taxSolarSystemEntity.getSolarSystemID();
@@ -188,9 +188,9 @@ public class ManagerSystemCostIndex {
     private void deleteSolarSystem(){
         System.out.println("DBG deleteSolarSystem da errore nella eliminazione dei fati");
         long monthInSecond = 3600l; // 2592000l;
-        Date nowPresent = new Date( new Date().getTime());
+        Date nowPresent = new Date();
         List < TaxSolarSystemEntity > solarSystemEntitys =
-         ManagerDBCache.getInstance().getAllExceptSpecificSolarSysemEntity(this.solarSystemID);
+        ManagerDBCache.getInstance().getAllExceptSpecificSolarSysemEntity(this.solarSystemID);
         
         if (solarSystemEntitys.isEmpty())
             return;        

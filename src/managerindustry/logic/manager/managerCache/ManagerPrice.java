@@ -31,7 +31,7 @@ public class ManagerPrice {
         return instance;        
     }
 
-    public ManagerPrice() throws PriceNotExistsException {
+    private ManagerPrice() throws PriceNotExistsException {
         initPriceDB();
     }
     
