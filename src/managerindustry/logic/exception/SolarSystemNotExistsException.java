@@ -13,4 +13,8 @@ public class SolarSystemNotExistsException extends Exception{
     public SolarSystemNotExistsException(){
         super("Solar system not exists");
     }
+
+    public SolarSystemNotExistsException(String solarSystemID){
+        super("Solar system "+ solarSystemID + " doesn't exists");
+    }
 }

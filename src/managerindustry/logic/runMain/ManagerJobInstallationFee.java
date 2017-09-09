@@ -15,8 +15,8 @@ import managerindustry.logic.manager.build.ManagerBuild;
 import managerindustry.logic.manager.managerCache.ManagerSystemCostIndex;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
 import managerindustry.logic.solarSystem.SolarSystem;
-import managerindustry.logic.tax.jobInstallationFee.JobInstallationFee;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystemCost;
+import managerindustry.logic.tax.jobInstallationCost.JobInstallationCost;
+import managerindustry.logic.tax.formulas.json.systemCostIndices.SolarSystemCost;
 
 /**
  * MN Civilian Afterburner 1 = 3ISK, 2 = 7Isk  
@@ -40,7 +40,7 @@ public class ManagerJobInstallationFee {
         
         System.out.println("-------------------------------");
 //        
-        JobInstallationFee jobInstallationFee = new JobInstallationFee(solarSystemID, "manufacturing", totalCalculatedComponentXMap);
+        JobInstallationCost jobInstallationFee = new JobInstallationCost(solarSystemID, "manufacturing", totalCalculatedComponentXMap);
         System.out.println(""+ jobInstallationFee.getJobInstallationFee());
     }
 }

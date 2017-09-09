@@ -3,33 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax.jobInstallationFee;
+package managerindustry.logic.tax.jobInstallationCost;
 
 import java.math.BigDecimal;
 import java.util.Map;
 import managerindustry.logic.buiild.TotalCalculatedComponentX;
 import managerindustry.logic.manager.managerCache.ManagerPrice;
 import managerindustry.logic.manager.managerCache.ManagerSystemCostIndex;
-import managerindustry.logic.tax.jobInstallationFee.baseJobCost.BaseJobCost;
-import managerindustry.logic.tax.jobInstallationFee.baseJobCost.JobCost;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystemCost;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFetch;
+import managerindustry.logic.tax.formulas.baseJobCost.BaseJobCost;
+import managerindustry.logic.tax.formulas.baseJobCost.JobCost;
+import managerindustry.logic.tax.formulas.json.systemCostIndices.SolarSystemCost;
+import managerindustry.logic.tax.formulas.json.systemCostIndices.SystemCostFetch;
 
 /**
  * jobFee = baseJobCost ∗ systemCostIndex ∗ runs
  * @author lele
  */
-public class JobInstallationFee {
+public class JobInstallationCost {
     private float jobFee ;
     
-    public JobInstallationFee( String solarSystemID, String actvity, Map<String,TotalCalculatedComponentX> totalCalculatedComponentXMap ) {
+    public JobInstallationCost( String solarSystemID, String actvity, Map<String,TotalCalculatedComponentX> totalCalculatedComponentXMap ) {
     // Il runs viene GIÀ calcolato in ManagerBuild > buildItem
     // int firstStep = MaterialCalc.calculateMaterialEfficiency(job, run, componentX.getQuanity(), meBPO);
         int runs = 1; 
         
         try {
             // get value from DB
-            ManagerSystemCostIndex managerSystemCostIndex = new ManagerSystemCostIndex();
             float systemCostIndex = ManagerSystemCostIndex.getInstance().getCostIndexEntity(solarSystemID, actvity);
             BaseJobCost baseJobCost = new BaseJobCost();
             

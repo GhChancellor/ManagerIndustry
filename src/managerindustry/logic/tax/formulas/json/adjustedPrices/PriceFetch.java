@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax.jobInstallationFee.adjustedPrice;
+package managerindustry.logic.tax.formulas.json.adjustedPrices;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystemCost;
+import managerindustry.logic.tax.formulas.json.systemCostIndices.SolarSystemCost;
 
 /**
  * DBG Aggiungere collegamento alla rete

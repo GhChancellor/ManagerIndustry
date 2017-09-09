@@ -2,9 +2,9 @@ package managerindustry.logic.runMain;
 
 
 import java.util.Map;
-import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.Price;
-import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.PriceFetch;
-import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.PriceFetch;
+import managerindustry.logic.tax.formulas.json.adjustedPrices.Price;
+import managerindustry.logic.tax.formulas.json.adjustedPrices.PriceFetch;
+import managerindustry.logic.tax.formulas.json.adjustedPrices.PriceFetch;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

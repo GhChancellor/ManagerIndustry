@@ -12,8 +12,8 @@ import java.util.Map;
 import managerindustry.db.entities.cache.PriceEntity;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.manager.managerDB.ManagerDBCache;
-import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.Price;
-import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.PriceFetch;
+import managerindustry.logic.tax.formulas.json.adjustedPrices.Price;
+import managerindustry.logic.tax.formulas.json.adjustedPrices.PriceFetch;
 
 /**
  *

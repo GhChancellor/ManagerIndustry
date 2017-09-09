@@ -10,10 +10,10 @@ import java.util.Map;
 import managerindustry.logic.buiild.ComponentX;
 import managerindustry.logic.manager.ManagerComponentX;
 import managerindustry.logic.manager.build.ManagerBuild;
-import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.Price;
-import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.PriceFetch;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystemCost;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFetch;
+import managerindustry.logic.tax.formulas.json.adjustedPrices.Price;
+import managerindustry.logic.tax.formulas.json.adjustedPrices.PriceFetch;
+import managerindustry.logic.tax.formulas.json.systemCostIndices.SolarSystemCost;
+import managerindustry.logic.tax.formulas.json.systemCostIndices.SystemCostFetch;
 
 /**
  *

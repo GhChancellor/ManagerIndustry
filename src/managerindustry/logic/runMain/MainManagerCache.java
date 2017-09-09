@@ -11,10 +11,10 @@ import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.build.ManagerBuild;
 import managerindustry.logic.manager.managerCache.ManagerPrice;
 import managerindustry.logic.manager.managerCache.ManagerSystemCostIndex;
-import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.Price;
-import managerindustry.logic.tax.jobInstallationFee.adjustedPrice.PriceFetch;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SolarSystemCost;
-import managerindustry.logic.tax.jobInstallationFee.systemCostIndex.SystemCostFetch;
+import managerindustry.logic.tax.formulas.json.adjustedPrices.Price;
+import managerindustry.logic.tax.formulas.json.adjustedPrices.PriceFetch;
+import managerindustry.logic.tax.formulas.json.systemCostIndices.SolarSystemCost;
+import managerindustry.logic.tax.formulas.json.systemCostIndices.SystemCostFetch;
 
 /**
  * 1MN Civilian Afterburner Blueprint 1 = 3ISK, 2 = 7Isk  

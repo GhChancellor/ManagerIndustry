@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax.jobInstallationFee.baseJobCost;
+package managerindustry.logic.tax.formulas.baseJobCost;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,21 +20,28 @@ import managerindustry.logic.manager.managerDB.ManagerDBEve;
  * @author lele
  */
 public class BaseJobCost {
-    private float sumJobcost = 0f;   
 
     public BaseJobCost() {
     
     }
         
+    /**
+     * Get Base Job Cost
+     * @param totalCalculatedComponentXMap
+     * @return float
+     * @throws PriceNotExistsException 
+     */
     public float getBaseJobCost(Map<String, TotalCalculatedComponentX> totalCalculatedComponentXMap) throws PriceNotExistsException{
+        float sumJobcost = 0f;
+        
         for (Map.Entry<String, TotalCalculatedComponentX> entry : totalCalculatedComponentXMap.entrySet()) {
 //            String key = entry.getKey();
             TotalCalculatedComponentX value = entry.getValue();
             InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(value.getName());
-                    
-            JobCost jobCost = new JobCost(value.getQuanity(), String.valueOf(invTypes.getTypeID()));
-            sumJobcost += jobCost.getJobCost();
+
+            sumJobcost += JobCost.getJobCost(value.getQuanity(), String.valueOf(invTypes.getTypeID()));
         }
         return sumJobcost;
     }
+
 }
