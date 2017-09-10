@@ -15,8 +15,9 @@ import managerindustry.logic.manager.build.ManagerBuild;
 import managerindustry.logic.manager.managerCache.ManagerSystemCostIndex;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
 import managerindustry.logic.solarSystem.SolarSystem;
-import managerindustry.logic.tax.jobInstallationCost.JobInstallationCost;
-import managerindustry.logic.tax.formulas.json.systemCostIndices.SolarSystemCost;
+import managerindustry.logic.tax.formulas.itemcost.MainItemCost;
+import managerindustry.logic.tax.formulas.vecchio.jobInstallationCost.JobInstallationCost;
+import managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices.SolarSystemCost;
 
 /**
  * MN Civilian Afterburner 1 = 3ISK, 2 = 7Isk  
@@ -28,7 +29,7 @@ public class ManagerJobInstallationFee {
         String solarSystemID = String.valueOf( SolarSystem.getSolarSystemID("Sotrentaira") );
         System.out.println("Id Solar system "+ solarSystemID);
         // String item = "1MN Civilian Afterburner";
-        String item = "Ferox";
+        String item = "drake";
         
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(item);
         System.out.println(""+ item + " " +invTypes.getTypeID());
@@ -39,8 +40,12 @@ public class ManagerJobInstallationFee {
          ManagerComponentX.getInstance().getTotalcalculatedComponentXMap();
         
         System.out.println("-------------------------------");
-//        
-        JobInstallationCost jobInstallationFee = new JobInstallationCost(solarSystemID, "manufacturing", totalCalculatedComponentXMap);
-        System.out.println(""+ jobInstallationFee.getJobInstallationFee());
+//      
+
+        MainItemCost mainItemCost = new MainItemCost();
+        mainItemCost.calculateJobInstallationCost(totalCalculatedComponentXMap, solarSystemID, "manufacturing", 0.1f);
+
+//        JobInstallationCost jobInstallationFee = new JobInstallationCost(solarSystemID, "manufacturing", totalCalculatedComponentXMap);
+//        System.out.println(""+ jobInstallationFee.getJobInstallationFee());
     }
 }

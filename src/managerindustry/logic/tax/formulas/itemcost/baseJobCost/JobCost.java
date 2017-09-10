@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax.formulas.baseJobCost;
+package managerindustry.logic.tax.formulas.itemcost.baseJobCost;
 
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.manager.managerCache.ManagerPrice;

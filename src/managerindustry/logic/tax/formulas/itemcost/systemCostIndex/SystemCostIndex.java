@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax.formulas.systemCostIndex;
+package managerindustry.logic.tax.formulas.itemcost.systemCostIndex;
 
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.managerCache.ManagerSystemCostIndex;

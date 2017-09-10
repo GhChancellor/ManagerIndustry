@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax.jobInstallationCost;
+package managerindustry.logic.tax.formulas.vecchio.jobInstallationCost;
 
 import java.math.BigDecimal;
 import java.util.Map;
 import managerindustry.logic.buiild.TotalCalculatedComponentX;
 import managerindustry.logic.manager.managerCache.ManagerPrice;
 import managerindustry.logic.manager.managerCache.ManagerSystemCostIndex;
-import managerindustry.logic.tax.formulas.baseJobCost.BaseJobCost;
-import managerindustry.logic.tax.formulas.baseJobCost.JobCost;
-import managerindustry.logic.tax.formulas.json.systemCostIndices.SolarSystemCost;
-import managerindustry.logic.tax.formulas.json.systemCostIndices.SystemCostFetch;
+import managerindustry.logic.tax.formulas.itemcost.baseJobCost.BaseJobCost;
+import managerindustry.logic.tax.formulas.itemcost.baseJobCost.JobCost;
+import managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices.SolarSystemCost;
+import managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices.SystemCostFetch;
 
 /**
  * jobFee = baseJobCost ∗ systemCostIndex ∗ runs
