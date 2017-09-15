@@ -170,17 +170,6 @@ public class ManagerPrice {
         if ( priceEntity == null)
             throw new PriceNotExistsException();        
         
-//        PriceEntity priceEntity = 
-//         ManagerDBCache.getInstance().getPriceEntity(typePrice);
-//        
-//        if ( priceEntity == null ){
-//            initAll(typePrice);   
-//            priceEntity = ManagerDBCache.getInstance().getPriceEntity(typePrice);     
-//            
-//            if ( priceEntity == null)
-//                throw new PriceNotExistsException();
-//        }
-        
         return priceEntity;
     }
     

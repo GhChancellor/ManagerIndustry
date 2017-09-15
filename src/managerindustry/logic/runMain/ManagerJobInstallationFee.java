@@ -26,16 +26,18 @@ import managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices.SolarS
  */
 public class ManagerJobInstallationFee {
     public static void main(String[] args) throws SolarSystemNotExistsException, PriceNotExistsException {
-        String solarSystemID = String.valueOf( SolarSystem.getSolarSystemID("Sotrentaira") );
+        String solarSystemID = String.valueOf( SolarSystem.getSolarSystemID("Isanamo") ); // Sotrentaira 30001369// Isanamo 30001389
         System.out.println("Id Solar system "+ solarSystemID);
+        
         // String item = "1MN Civilian Afterburner";
-        String item = "drake";
+        String item = "dominix";
         
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(item);
         System.out.println(""+ item + " " +invTypes.getTypeID());
         
         ManagerBuild managerBuild = new ManagerBuild();
-        managerBuild.buildItem(item + " blueprint", 10, 1,10, 0);
+                                // String         , Me, Job, Runs  MeComponet
+        managerBuild.buildItem(item + " blueprint", 10, 1   , 10  , 0);
         Map<String,TotalCalculatedComponentX> totalCalculatedComponentXMap =
          ManagerComponentX.getInstance().getTotalcalculatedComponentXMap();
         

@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.tax.formulas.itemcost.baseJobCost;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +21,8 @@ import managerindustry.logic.manager.managerDB.ManagerDBEve;
  * @author lele
  */
 public class BaseJobCost {
-
+    private List < Float > sumOfEachJobcosts = new ArrayList<>();
+    
     public BaseJobCost() {
     
     }
@@ -32,16 +34,43 @@ public class BaseJobCost {
      * @throws PriceNotExistsException 
      */
     public float getBaseJobCost(Map<String, TotalCalculatedComponentX> totalCalculatedComponentXMap) throws PriceNotExistsException{
-        float sumJobcost = 0f;
+        Float sumJobcost = 0f;
         
         for (Map.Entry<String, TotalCalculatedComponentX> entry : totalCalculatedComponentXMap.entrySet()) {
 //            String key = entry.getKey();
             TotalCalculatedComponentX value = entry.getValue();
             InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(value.getName());
-
-            sumJobcost += JobCost.getJobCost(value.getQuanity(), String.valueOf(invTypes.getTypeID()));
+            
+            Float tempSumJobcost = JobCost.getJobCost(value.getQuanity(), String.valueOf(invTypes.getTypeID()));
+            sumJobcost += tempSumJobcost; 
+            
+            sumOfEachJobcosts.add(tempSumJobcost);
         }
+
         return sumJobcost;
     }
 
+    /**
+     * Get sum Of Each Job costs
+     * @return List < Float >
+     */
+    public List < Float > getsumOfEachJobcosts(){
+        float x = 0f;
+        for (Float sumOfEachJobcost : sumOfEachJobcosts) {
+            x += sumOfEachJobcost;
+            
+        }
+        System.out.printf("sumOfEachJobcost %f ", x);
+        return sumOfEachJobcosts;
+    }
+    
+//    /**
+//     * Add Sum Of Each Job cost
+//     * @param float sumJobcost 
+//     */
+//    private void addSumOfEachJobcost(float sumJobcost){
+//        sumOfEachJobcosts.add(sumJobcost);
+//    }
 }
+
+

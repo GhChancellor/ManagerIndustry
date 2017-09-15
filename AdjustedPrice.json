@@ -2,36 +2,36 @@
   {
     "type_id": 34,
     "average_price": 5.50,
-    "adjusted_price": 3.92
+    "adjusted_price": 4.49
   },
   {
     "type_id": 35,
     "average_price": 5.51,
-    "adjusted_price": 4.22
+    "adjusted_price": 4.82
   },
   {
     "type_id": 36,
     "average_price": 5.52,
-    "adjusted_price": 31.98
+    "adjusted_price": 30.14
   },
  {
     "type_id": 37,
     "average_price": 5.53,
-    "adjusted_price": 48.47
+    "adjusted_price": 50.82
   },
   {
     "type_id": 38,
     "average_price": 5.54,
-    "adjusted_price": 327.86
+    "adjusted_price": 339.62
   },
   {
     "type_id": 39,
     "average_price": 5.55,
-    "adjusted_price": 562.58
+    "adjusted_price": 572.52
   },
   {
     "type_id": 40,
     "average_price": 5.56,
-    "adjusted_price": 779.27
+    "adjusted_price": 914.83
   }
 ]
