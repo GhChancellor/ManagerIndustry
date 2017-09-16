@@ -27,7 +27,7 @@ public class MainItemCost {
         ItemCost itemCost = new ItemCost(totalCalculatedComponentXMap, solarSystemID, actvity);
  
         jobFee = itemCost.getJobInstallationCost();
-        this.facilityTax = itemCost.getFacilityTax(facilityTax);
+        this.facilityTax = itemCost.getFacilityTaxes(facilityTax);
         totalcostjob = itemCost.getTotalInstallationCost(jobFee, this.facilityTax);
         
         System.out.printf("jobFee %f\n", jobFee);

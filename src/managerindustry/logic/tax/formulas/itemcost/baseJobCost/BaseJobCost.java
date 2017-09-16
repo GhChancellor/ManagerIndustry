@@ -55,12 +55,6 @@ public class BaseJobCost {
      * @return List < Float >
      */
     public List < Float > getsumOfEachJobcosts(){
-        float x = 0f;
-        for (Float sumOfEachJobcost : sumOfEachJobcosts) {
-            x += sumOfEachJobcost;
-            
-        }
-        System.out.printf("sumOfEachJobcost %f ", x);
         return sumOfEachJobcosts;
     }
     

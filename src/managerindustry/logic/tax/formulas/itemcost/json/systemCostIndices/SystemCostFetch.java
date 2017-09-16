@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
 import java.net.URL;
@@ -37,36 +38,7 @@ public class SystemCostFetch {
      * @return Map<String, SolarSystemCost >
      */
     public static Map<String, SolarSystemCost > getSystemCostIndexs() {
-       return getSystemCostIndexsDBG();
        
-//        try {
-//            GsonBuilder gsonBuilder = new GsonBuilder();
-//            gsonBuilder.registerTypeAdapter(SolarSystemCost.class, new SolarSystemDeserializer());
-//            gsonBuilder.registerTypeAdapter(CostIndex.class, new CostIndexDeserializer());
-//            Gson gson = gsonBuilder.create();
-//
-//            // Lettura da file, 
-//            final String path = "./SystemCostIndex.json";
-//            Reader reader = new FileReader(path);
-//
-////            URL reader = new URL("https://esi.tech.ccp.is/legacy/industry/systems/?datasource=tranquility");
-//
-//            Type type = new TypeToken< ArrayList< SolarSystemCost > >() {}.getType();
-//            List<SolarSystemCost> solarSystems = (List<SolarSystemCost>) gson.fromJson(reader, type);
-//
-//            
-//            Map<String, SolarSystemCost > solarSystemMap = 
-//             solarSystems.stream().collect(Collectors.toMap(SolarSystemCost::getSolarSystem, SolarSystem -> SolarSystem));
-//            
-//            return solarSystemMap;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-
-    }
-    
-    private static Map<String, SolarSystemCost > getSystemCostIndexsDBG() {
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();
             gsonBuilder.registerTypeAdapter(SolarSystemCost.class, new SolarSystemDeserializer());
@@ -77,8 +49,10 @@ public class SystemCostFetch {
             final String path = "./SystemCostIndex.json";
             Reader reader = new FileReader(path);
 
-//            URL reader = new URL("https://esi.tech.ccp.is/legacy/industry/systems/?datasource=tranquility");
-
+//            URL url = new URL("https://esi.tech.ccp.is/legacy/industry/systems/?datasource=tranquility");
+//            InputStreamReader reader = new InputStreamReader(url.openStream());
+            
+// InputStreamReader reader = new InputStreamReader(url.openStream());
             Type type = new TypeToken< ArrayList< SolarSystemCost > >() {}.getType();
             List<SolarSystemCost> solarSystems = (List<SolarSystemCost>) gson.fromJson(reader, type);
 
@@ -90,9 +64,9 @@ public class SystemCostFetch {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
-        }        
-    }
+        }
 
+    }
 }
 
 /*

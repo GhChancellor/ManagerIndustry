@@ -65,12 +65,15 @@ public class ItemCost {
      * @param double taxRate
      * @return double
      */
-    public float getFacilityTax(float taxRate){
+    public float getFacilityTaxes(float taxRate){
         float jobfee = 0f;
         
         for (Float sumOfEachJobcost : sumOfEachJobcosts) {
             jobfee += sumOfEachJobcost * taxRate / 100;
+            float xxx = sumOfEachJobcost * taxRate / 100;
+            System.out.printf("jobfee %f\n", xxx);
         }
+        System.out.printf("Tot jobfee %f\n", jobfee);
         return jobfee;
     }
     

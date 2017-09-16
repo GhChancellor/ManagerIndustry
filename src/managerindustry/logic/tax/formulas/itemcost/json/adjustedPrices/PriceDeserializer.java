@@ -23,7 +23,9 @@ public class PriceDeserializer implements JsonDeserializer<Price>{
             JsonObject jsonObject = je.getAsJsonObject();
             
             String adjusted_price = jsonObject.get("adjusted_price").getAsString();
-            String average_price = jsonObject.get("average_price").getAsString();
+            
+            // DBG null pointer SOLO nel file online perché?
+            String average_price = ""; // jsonObject.get("average_price").getAsString();
             String type_id = jsonObject.get("type_id").getAsString();
             
             Price adjustedPrice = new Price(adjusted_price, average_price, type_id);

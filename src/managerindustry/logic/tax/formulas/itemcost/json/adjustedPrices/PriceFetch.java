@@ -9,13 +9,15 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices.SolarSystemCost;
 
 /**
  * DBG Aggiungere collegamento alla rete
@@ -39,7 +41,10 @@ public class PriceFetch {
             // Lettura da file, 
             final String path = "./AdjustedPrice.json";
             Reader reader = new FileReader(path);
-            
+
+//            URL url = new URL("https://esi.tech.ccp.is/latest/markets/prices/?datasource=tranquility");
+//            InputStreamReader reader = new InputStreamReader(url.openStream());
+
             Type type = new TypeToken< ArrayList <Price> >() {}.getType();
             List < Price > adjustedPrices = 
              (List < Price >) gson.fromJson(reader, type);
