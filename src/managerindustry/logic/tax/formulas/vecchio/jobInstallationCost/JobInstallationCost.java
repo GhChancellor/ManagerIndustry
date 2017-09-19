@@ -17,10 +17,12 @@ import managerindustry.logic.tax.formulas.itemcost.baseJobCost.BaseJobCost;
 public class JobInstallationCost {
     private float jobFee ;
     
-    public JobInstallationCost( String solarSystemID, String actvity, Map<String,SingleCalculatedComponentX> singleCalculatedComponentXMap ) {
-    // Il runs viene GIÀ calcolato in ManagerBuild > buildItem
+    public JobInstallationCost( String solarSystemID, String actvity, 
+      Map<String, SingleCalculatedComponentX> singleCalculatedComponentXMap, 
+      int runs, int jobs ) {
+
     // int firstStep = MaterialCalc.calculateMaterialEfficiency(job, run, componentX.getQuanity(), meBPO);
-        int runs = 1; 
+
         
         try {
             // get value from DB
@@ -29,7 +31,7 @@ public class JobInstallationCost {
             
             float baseJobCostFlt = baseJobCost.getBaseJobCost(singleCalculatedComponentXMap);
 
-            this.jobFee = baseJobCostFlt * systemCostIndex * runs;
+            this.jobFee = baseJobCostFlt * systemCostIndex * runs * jobs;
         } catch (Exception e) {
             e.printStackTrace();
         }

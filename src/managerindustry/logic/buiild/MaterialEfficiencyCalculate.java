@@ -35,20 +35,20 @@ public class MaterialEfficiencyCalculate {
     /**
      * Init - Calculate Material Efficiency
      * job * Math.ceil( ((quantityBaseMarial * run) * materialEfficiencyRate) * platformModifier );
-     * @param job
-     * @param run
-     * @param quantityBaseMarial
-     * @param bpoME 
-     */    
+     * @param int run
+     * @param int job
+     * @param int bpoME or componentMe 
+     * @param int quantityBaseMarial 
+     */
     public MaterialEfficiencyCalculate( int run, int job, int bpoME, int quantityBaseMarial ) {
         float materialEfficiencyRate = new MaterialEfficiency(bpoME).getRateBpo();
                 
-        // quando il valore è 1 non si fanno calcoli su ME
-        // WHen value is 1 not calculated ME
-        if ( quantityBaseMarial == 1 && job == 1){
-            singleItemMaterial = quantityBaseMarial;
-            totalItemsMaterials = job * singleItemMaterial * run;
-        }
+//        // quando il valore è 1 non si fanno calcoli su ME
+//        // WHen value is 1 not calculated ME
+//        if ( quantityBaseMarial == 1 && job == 1){
+//            singleItemMaterial = quantityBaseMarial;
+//            totalItemsMaterials = job * singleItemMaterial * run;
+//        }
         
         // Calculate ME by One Object
         Double itemMaterialDbl = Math.ceil(quantityBaseMarial * materialEfficiencyRate * platformModifier);

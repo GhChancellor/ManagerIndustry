@@ -13,9 +13,10 @@ public abstract class Efficiency {
     private String name;
     private float ratePercent;
     private Integer level;
-    private final float baseValue = 1; 
+    private final float baseValue = 1f; 
 
     public Efficiency() {
+    
     }
 
     /**

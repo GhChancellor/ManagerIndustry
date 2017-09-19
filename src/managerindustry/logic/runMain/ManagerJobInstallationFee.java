@@ -27,14 +27,20 @@ public class ManagerJobInstallationFee {
         System.out.println("Id Solar system "+ solarSystemID);
         
         // String item = "1MN Civilian Afterburner";
-        String item = "Dominix";
+//        String item = "Plasma Thruster";
+        String item = "scimitar";
         
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(item);
-        System.out.println(""+ item + " " +invTypes.getTypeID());
+        System.out.println(""+ item + " ID: " +invTypes.getTypeID());
+        
+        int run = 1;
+        int job = 1;
+        int bpoME = 0;
+        int componentMe = 10;
         
         ManagerBuild managerBuild = new ManagerBuild();
                                                 //  run Job  meBPO  MeComponent
-        managerBuild.buildItem(item + " blueprint", 10, 10  , 10  ,  0);
+        managerBuild.buildItem(item + " blueprint", run, job  , bpoME  ,  componentMe);
         Map<String, SingleCalculatedComponentX> singleCalculatedComponentXMap =
          ManagerComponentX.getInstance().getSingleCalculatedComponentXMap();
         
@@ -44,7 +50,7 @@ public class ManagerJobInstallationFee {
 //        MainItemCost mainItemCost = new MainItemCost();
 //        mainItemCost.calculateJobInstallationCost(totalCalculatedComponentXMap, solarSystemID, "manufacturing", 0.1f);
 
-        JobInstallationCost jobInstallationFee = new JobInstallationCost(solarSystemID, "manufacturing", singleCalculatedComponentXMap);
-        System.out.println(""+ jobInstallationFee.getJobInstallationFee());
+//        JobInstallationCost jobInstallationFee = new JobInstallationCost(solarSystemID, "manufacturing", singleCalculatedComponentXMap, run, Job);
+//        System.out.println(""+ String.format("%.0f", jobInstallationFee.getJobInstallationFee()));
     }
 }
