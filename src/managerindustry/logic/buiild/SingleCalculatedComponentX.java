@@ -11,16 +11,15 @@ import managerindustry.logic.buiild.fatherclass.NameBase;
  *
  * @author lele
  */
-public class TotalCalculatedComponentX extends NameBase{
-
-    /** 
-     * Put Total Calculated Components
-     * @param String name
-     * @param float quantity 
+public class SingleCalculatedComponentX extends NameBase{
+    /**
+     * // Put single Calculated Component
+     * @param name
+     * @param quantity 
      */
-    public TotalCalculatedComponentX(String name, float quantity) {
+    public SingleCalculatedComponentX(String name, int quantity) {
         super.setName(name);
-        super.setQuanityFlt(quantity);
+        super.setQuanityInt(quantity);        
     }
     
 }

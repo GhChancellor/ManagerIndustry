@@ -5,12 +5,10 @@
  */
 package managerindustry.logic.tax.formulas.itemcost;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.buiild.TotalCalculatedComponentX;
+import managerindustry.logic.buiild.SingleCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.formulas.itemcost.baseJobCost.BaseJobCost;
@@ -30,7 +28,7 @@ public class ItemCost {
 //    private float jobFee = 0f;
     private List < Float > sumOfEachJobcosts = new ArrayList();
     
-    public ItemCost(Map<String, TotalCalculatedComponentX> totalCalculatedComponentXMap, 
+    public ItemCost(Map<String, SingleCalculatedComponentX>  singleCalculatedComponentXMap, 
             String solarSystemID, 
             String actvity) throws SolarSystemNotExistsException, PriceNotExistsException {
         
@@ -39,7 +37,7 @@ public class ItemCost {
         this.systemCostIndex = SystemCostIndex.SystemCostIndex(solarSystemID, actvity);
         
         BaseJobCost baseJobCost = new BaseJobCost();
-        this.baseJobCost = baseJobCost.getBaseJobCost(totalCalculatedComponentXMap);
+        this.baseJobCost = baseJobCost.getBaseJobCost(singleCalculatedComponentXMap);
         sumOfEachJobcosts = baseJobCost.getsumOfEachJobcosts();
 
         System.out.println("");

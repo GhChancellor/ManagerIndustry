@@ -5,9 +5,8 @@
  */
 package managerindustry.logic.tax.formulas.itemcost;
 
-import java.math.BigDecimal;
 import java.util.Map;
-import managerindustry.logic.buiild.TotalCalculatedComponentX;
+import managerindustry.logic.buiild.SingleCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 
@@ -21,10 +20,10 @@ public class MainItemCost {
     private float totalcostjob = 0f;
     
     
-    public void calculateJobInstallationCost(Map<String, TotalCalculatedComponentX> totalCalculatedComponentXMap, 
+    public void calculateJobInstallationCost(Map<String, SingleCalculatedComponentX>  singleCalculatedComponentXMap, 
             String solarSystemID, 
             String actvity, float facilityTax) throws SolarSystemNotExistsException, PriceNotExistsException{
-        ItemCost itemCost = new ItemCost(totalCalculatedComponentXMap, solarSystemID, actvity);
+        ItemCost itemCost = new ItemCost(singleCalculatedComponentXMap, solarSystemID, actvity);
  
         jobFee = itemCost.getJobInstallationCost();
         this.facilityTax = itemCost.getFacilityTaxes(facilityTax);

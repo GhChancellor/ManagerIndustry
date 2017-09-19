@@ -7,17 +7,14 @@ package managerindustry.logic.runMain;
 
 import java.util.Map;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.buiild.TotalCalculatedComponentX;
+import managerindustry.logic.buiild.SingleCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.ManagerComponentX;
-import managerindustry.logic.manager.build.ManagerBuild;
-import managerindustry.logic.manager.managerCache.ManagerSystemCostIndex;
+import managerindustry.logic.manager.ManagerBuild;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
 import managerindustry.logic.solarSystem.SolarSystem;
-import managerindustry.logic.tax.formulas.itemcost.MainItemCost;
 import managerindustry.logic.tax.formulas.vecchio.jobInstallationCost.JobInstallationCost;
-import managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices.SolarSystemCost;
 
 /**
  * MN Civilian Afterburner 1 = 3ISK, 2 = 7Isk  
@@ -30,24 +27,24 @@ public class ManagerJobInstallationFee {
         System.out.println("Id Solar system "+ solarSystemID);
         
         // String item = "1MN Civilian Afterburner";
-        String item = "dominix";
+        String item = "Dominix";
         
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(item);
         System.out.println(""+ item + " " +invTypes.getTypeID());
         
         ManagerBuild managerBuild = new ManagerBuild();
-                                // String         , Me, Job, Runs  MeComponet
-        managerBuild.buildItem(item + " blueprint", 10, 1   , 10  , 0);
-        Map<String,TotalCalculatedComponentX> totalCalculatedComponentXMap =
-         ManagerComponentX.getInstance().getTotalcalculatedComponentXMap();
+                                                //  run Job  meBPO  MeComponent
+        managerBuild.buildItem(item + " blueprint", 10, 10  , 10  ,  0);
+        Map<String, SingleCalculatedComponentX> singleCalculatedComponentXMap =
+         ManagerComponentX.getInstance().getSingleCalculatedComponentXMap();
         
         System.out.println("-------------------------------");
 //      
 
-        MainItemCost mainItemCost = new MainItemCost();
-        mainItemCost.calculateJobInstallationCost(totalCalculatedComponentXMap, solarSystemID, "manufacturing", 0.1f);
+//        MainItemCost mainItemCost = new MainItemCost();
+//        mainItemCost.calculateJobInstallationCost(totalCalculatedComponentXMap, solarSystemID, "manufacturing", 0.1f);
 
-//        JobInstallationCost jobInstallationFee = new JobInstallationCost(solarSystemID, "manufacturing", totalCalculatedComponentXMap);
-//        System.out.println(""+ jobInstallationFee.getJobInstallationFee());
+        JobInstallationCost jobInstallationFee = new JobInstallationCost(solarSystemID, "manufacturing", singleCalculatedComponentXMap);
+        System.out.println(""+ jobInstallationFee.getJobInstallationFee());
     }
 }

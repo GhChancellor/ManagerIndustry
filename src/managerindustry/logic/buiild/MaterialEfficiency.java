@@ -6,25 +6,29 @@
 package managerindustry.logic.buiild;
 
 import managerindustry.logic.buiild.fatherclass.Efficiency;
+import managerindustry.logic.buiild.fatherclass.Efficiency;
 
 /**
  *
  * @author lele
  */
-public class MaterialEfficiency extends Efficiency{
+public class MaterialEfficiency extends Efficiency {
 
+    /**
+     * init MaterialEfficiencyX1
+     * @param int bpoLevel 
+     */
     public MaterialEfficiency(int bpoLevel) {
         setLevel(bpoLevel);
     }
     
-    @Override
     /**
-     * Calculate ME BPO
-     * 1% = 0.99, 2% = 0.98 ..... 
-     * 1 ( valore fisso ) - ( BPO level / 100 )
+     * calculateRateBpo
+     * @return float
      */
-    public double calculateRateBpo() {        
-        return getBaseValue() - ( getLevel().doubleValue() / 100 )  ;
+    @Override
+    protected float calculateRateBpo() {
+        return getBaseValue() - ( getLevel() / 100 )  ;
     }
     
 }

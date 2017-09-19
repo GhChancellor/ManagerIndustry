@@ -66,7 +66,7 @@ public class ItemCostX1 {
      */
     private void calculateJobInstallationCost(){
         jobFee = baseJobCost * systemCostIndex * runs;
-        calculateFacilityTax();
+        calculateFacilityTaxes();
         calculateTotalInstallationCost();
     }
     
@@ -84,11 +84,20 @@ public class ItemCostX1 {
      * The taxRate is 10 for NPC Stations and can be set for each facility 
      * individually for corporation owned
      */
-    public void  calculateFacilityTax(){
+    private void calculateFacilityTaxes(){
         for (SingleJobCost singleJobCost : singleJobCosts) {            
-            facilityTax = jobFee * taxRate / 100;
+            facilityTax += jobFee * taxRate / 100;
         }
     }    
+    
+    // per calcolare ogni facilitytax per singono materiale
+    private void calculateFacilityTax(){
+        for (SingleJobCost singleJobCost : singleJobCosts) {            
+//            facilityTax = jobFee * taxRate / 100;
+        }
+    }    
+    
+    
     
     /**
      * Calculate Copying Fees

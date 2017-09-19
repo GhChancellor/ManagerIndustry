@@ -29,7 +29,7 @@ public class BaseJobCostX1 {
         TotalCalculatedComponentX value = entry.getValue();
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(value.getName());
 
-        float singleJobCost = getSingleJobCost( String.valueOf(value.getId()) , value.getQuanity());
+        float singleJobCost = getSingleJobCost( String.valueOf(value.getId()) , value.getQuanityInt());
         
         SingleJobCost singleJobCostX1 = new SingleJobCost(value.getName(), singleJobCost );
 

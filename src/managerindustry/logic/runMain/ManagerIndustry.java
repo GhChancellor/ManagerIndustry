@@ -23,7 +23,7 @@ public class ManagerIndustry {
         
         ManagerDisplay managerDisplay = new ManagerDisplay();
 //        managerDisplay.buildItem();
-        managerDisplay.itemDescription();
+//        managerDisplay.itemDescription();
 //        managerDisplay.displayValueRig();
 //        managerDisplay.engineeringComplex();
 //        managerDisplay.getSolarSystemID();
@@ -36,9 +36,7 @@ public class ManagerIndustry {
 //        provaRicorsione.baseMaterial("scimitar blueprint");
 //        provaRicorsione.baseMaterial("CONCORD 25000mm Steel Plates Blueprint");
 //        provaRicorsione.Display();
-
-
-
+       
 
 //        System.out.println("Scrivi qualcosa");
 //        Scanner keyboard = new Scanner(System.in);

@@ -75,7 +75,7 @@ public class ProvaRicorsione {
                 ComponentX componentX = new ComponentX();
                 
                 componentX.setName(invTypes.getTypeName());
-                componentX.setQuanity(invTypeMaterialse.getQuantity());
+                componentX.setQuanityInt(invTypeMaterialse.getQuantity());
 
                 if ( neededComponents != null){ 
                     for (IndustryActivityMaterials neededComponent : neededComponents) {
@@ -113,7 +113,7 @@ public class ProvaRicorsione {
     
 
     private void ricorsione(ComponentX componentX, String tab){
-        System.out.println(tab + componentX.getName() + " " + componentX.getQuanity());
+        System.out.println(tab + componentX.getName() + " " + componentX.getQuanityInt());
         tab += tab;
         
         for (MaterialForComponents materialForComponents : componentX.getMaterialForComponents()){

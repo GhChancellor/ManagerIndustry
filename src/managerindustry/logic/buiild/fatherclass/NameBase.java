@@ -12,7 +12,8 @@ package managerindustry.logic.buiild.fatherclass;
 public class NameBase {
     private int id;
     private String name;
-    private int quanity;
+    private int quanityInt;
+    private float quanityFlt;
 
     /**
      * Get Id
@@ -48,18 +49,36 @@ public class NameBase {
 
     /**
      * Get Quanity
-     * @return int quanity
+     * @return int quanityInt
      */
-    public int getQuanity() {
-        return quanity;
+    public int getQuanityInt() {
+        return quanityInt;
     }
 
     /**
      * Set Quanity
-     * @param quanity 
+     * @param quanityInt 
      */
-    public void setQuanity(int quanity) {
-        this.quanity = quanity;
+    public void setQuanityInt(int quanityInt) {
+        this.quanityInt = quanityInt;
     }
-        
+
+    /**
+     * Get Quanity Float
+     * @return float
+     */
+    public float getQuanityFlt() {
+        return quanityFlt;
+    }
+
+    /**
+     * Set Quanity Float
+     * @param Float quanityFlt 
+     */
+    public void setQuanityFlt(float quanityFlt) {
+        this.quanityFlt = quanityFlt;
+    }
+
+    
+    
 }

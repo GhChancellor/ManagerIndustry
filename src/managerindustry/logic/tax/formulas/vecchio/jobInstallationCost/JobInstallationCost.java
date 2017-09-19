@@ -5,15 +5,10 @@
  */
 package managerindustry.logic.tax.formulas.vecchio.jobInstallationCost;
 
-import java.math.BigDecimal;
 import java.util.Map;
-import managerindustry.logic.buiild.TotalCalculatedComponentX;
-import managerindustry.logic.manager.managerCache.ManagerPrice;
+import managerindustry.logic.buiild.SingleCalculatedComponentX;
 import managerindustry.logic.manager.managerCache.ManagerSystemCostIndex;
 import managerindustry.logic.tax.formulas.itemcost.baseJobCost.BaseJobCost;
-import managerindustry.logic.tax.formulas.itemcost.baseJobCost.JobCost;
-import managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices.SolarSystemCost;
-import managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices.SystemCostFetch;
 
 /**
  * jobFee = baseJobCost ∗ systemCostIndex ∗ runs
@@ -22,7 +17,7 @@ import managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices.System
 public class JobInstallationCost {
     private float jobFee ;
     
-    public JobInstallationCost( String solarSystemID, String actvity, Map<String,TotalCalculatedComponentX> totalCalculatedComponentXMap ) {
+    public JobInstallationCost( String solarSystemID, String actvity, Map<String,SingleCalculatedComponentX> singleCalculatedComponentXMap ) {
     // Il runs viene GIÀ calcolato in ManagerBuild > buildItem
     // int firstStep = MaterialCalc.calculateMaterialEfficiency(job, run, componentX.getQuanity(), meBPO);
         int runs = 1; 
@@ -32,7 +27,7 @@ public class JobInstallationCost {
             float systemCostIndex = ManagerSystemCostIndex.getInstance().getCostIndexEntity(solarSystemID, actvity);
             BaseJobCost baseJobCost = new BaseJobCost();
             
-            float baseJobCostFlt = baseJobCost.getBaseJobCost(totalCalculatedComponentXMap);
+            float baseJobCostFlt = baseJobCost.getBaseJobCost(singleCalculatedComponentXMap);
 
             this.jobFee = baseJobCostFlt * systemCostIndex * runs;
         } catch (Exception e) {

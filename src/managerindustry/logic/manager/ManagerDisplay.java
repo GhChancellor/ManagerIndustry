@@ -15,10 +15,10 @@ import managerindustry.db.entities.InvNames;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.buiild.ComponentX;
-import managerindustry.logic.buiild.MaterialCalc;
+import managerindustry.logic.buiild.MaterialEfficiencyCalculate;
+import managerindustry.logic.buiild.SingleCalculatedComponentX;
 import managerindustry.logic.buiild.TotalCalculatedComponentX;
 import managerindustry.logic.structure.EngineeringComplex;
-import managerindustry.logic.structure.StructureEngineeringRigs;
 
 /**
  *
@@ -32,16 +32,97 @@ public class ManagerDisplay {
  
     }    
     
+     /**
+     * Build Item
+     * DBG potrebbe avere piccole imprecisioni con Dra 10 run, 10 job, 10 ME
+     * @param bpoName
+     * @param run
+     * @param job
+     * @param meBPO
+     * @param meComponent 
+     */
+    public void buildItem(String bpoName, int run, int job, int meBPO, int meComponent ){
+        // Errore nella produzione capital "Concord 25000mm Steel Plate"
+        // ci vuole la ricorsione per le T3
+        
+        System.out.println(bpoName + ": run " + run + ", Job " + job + ", meBPO " + meBPO + ", meComponent " + meComponent );
+
+        baseMaterial(bpoName);
+        
+        // get value base from DB
+        List < ComponentX > componentXs = ManagerComponentX.getInstance().getBaseComponentXs();
+        
+        for (ComponentX componentX : componentXs) {
+            // calculate materialEfficiencyCalculate
+            MaterialEfficiencyCalculate materialEfficiencyCalculate = new MaterialEfficiencyCalculate(run, job, meBPO , componentX.getQuanityInt() );
+            
+            // value of the single item
+            int firstStepSingleMaterial = materialEfficiencyCalculate.getSingleItemMaterial();
+            
+            // values of the total item
+            float firstStepTotalMaterials = materialEfficiencyCalculate.getTotalItemsMaterials();
+            
+            System.out.println(""+ componentX.getName() + ": " + firstStepSingleMaterial + " ---> " + String.format("%.0f", firstStepTotalMaterials)  );
+            
+            
+            // Put Total Calculated Components
+            TotalCalculatedComponentX totalCalculatedComponentX_X1 = 
+                new TotalCalculatedComponentX(componentX.getName(), firstStepTotalMaterials);
+            
+            // Put single Calculated Component
+            SingleCalculatedComponentX singleCalculatedComponentX1 = 
+                new SingleCalculatedComponentX(componentX.getName(), firstStepSingleMaterial);
+            
+            // add values of the items to map 
+            ManagerComponentX.getInstance().addTotalcalculatedComponentX(totalCalculatedComponentX_X1);
+            
+            // add value of the single item to map
+            ManagerComponentX.getInstance().addSingleCalculatedComponentXMap(singleCalculatedComponentX1);
+            
+            // get Value for compoenents T2
+            List < MaterialForComponents > materialForComponents =  componentX.getMaterialForComponents();
+            
+            for (MaterialForComponents materialForComponent : materialForComponents) {
+                // calculate materialEfficiencyCalculate
+                materialEfficiencyCalculate = new MaterialEfficiencyCalculate(job, firstStepSingleMaterial, materialForComponent.getQuanityInt(), meComponent);
+                
+                // value of the single item
+                int secondStepSingleMaterial = materialEfficiencyCalculate.getSingleItemMaterial();
+                
+                // values of the total item
+                float secondStepTotalMaterials = materialEfficiencyCalculate.getTotalItemsMaterials();
+                
+                // Put Total Calculated Components
+                totalCalculatedComponentX_X1 = new TotalCalculatedComponentX(materialForComponent.getName(), secondStepTotalMaterials );
+                
+                // Put single Calculated Component
+                singleCalculatedComponentX1 = new SingleCalculatedComponentX(materialForComponent.getName(), secondStepSingleMaterial);
+
+                // add values of the items to map 
+                ManagerComponentX.getInstance().addTotalcalculatedComponentX(totalCalculatedComponentX_X1);
+                
+                // add value of the single item to map
+                ManagerComponentX.getInstance().addSingleCalculatedComponentXMap(singleCalculatedComponentX1);
+                
+//                System.out.println("\t\t"+ materialForComponent.getName() + " " + 
+//                 materialForComponent.getQuanityInt() + " --> " + secondStepSingleMaterial + " --> " + secondStepTotalMaterials );
+
+                System.out.println("\t\t"+ materialForComponent.getName() + ": "
+                 + secondStepSingleMaterial + " --> " + String.format("%.0f", secondStepTotalMaterials )  );
+            }
+            
+        }
+    }
+
     /**
      * Get from DB all materail to build an object 
-     */
+    */
     private void baseMaterial(String bpoName){     
         System.out.println(""+bpoName);
         
         // get item to build
         List < IndustryActivityMaterials > nameItemToBuild = ManagerDBEve.getInstance().getMaterialNeedByName(bpoName);
- 
-        
+         
         if ( ! nameItemToBuild.isEmpty() ){
             for (IndustryActivityMaterials invTypeMaterialse :  nameItemToBuild) {
                 InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_NameById(invTypeMaterialse.getMaterialTypeID());
@@ -51,7 +132,7 @@ public class ManagerDisplay {
                 
                 ComponentX componentX = new ComponentX();
                 componentX.setName(invTypes.getTypeName());
-                componentX.setQuanity(invTypeMaterialse.getQuantity());
+                componentX.setQuanityInt(invTypeMaterialse.getQuantity());
                 
                 if ( neededComponents != null){                    
                     for (IndustryActivityMaterials neededComponent : neededComponents) { 
@@ -66,62 +147,15 @@ public class ManagerDisplay {
                 ManagerComponentX.getInstance().addComponentXs(componentX); 
             }             
         }         
-    }
-    
-    
-    /**
-     * Inizio da qui
-     */
-    public void buildItem(){
-        // Errore nella produzione capital "Concord 25000mm Steel Plate"
-        
-        // VALORE NULLO
-        IndustryActivityMaterials industryActivityMaterials = new IndustryActivityMaterials();
-        
-        String bpoName = "scimitar Blueprint";
-        InvTypes invTypes = new InvTypes();
-        invTypes.setTypeName(bpoName);
-        
-        baseMaterial(bpoName);
-        
-        int job = 1;
-        int run = 1;
-        int meBPO = 0;
-        int meComponet = 0;
-        System.out.println("job " + job + " run "+ run + " me "+ meBPO);
-        List < ComponentX > componentXs = ManagerComponentX.getInstance().getBaseComponentXs();
-        for (ComponentX componentX : componentXs) {
-                        
-            int firstStep = MaterialCalc.calculateMaterialEfficiency(job, run, componentX.getQuanity(), meBPO);
-            System.out.println(""+componentX.getName() + " " + componentX.getQuanity() + " --> " + firstStep );
-            
-            TotalCalculatedComponentX calculatedComponentX = new TotalCalculatedComponentX(componentX.getName(), firstStep);
-            
-            ManagerComponentX.getInstance().addTotalcalculatedComponentX(calculatedComponentX);
-            
-            List < MaterialForComponents > materialForComponents =  componentX.getMaterialForComponents();
-            
-            for (MaterialForComponents materialForComponent : materialForComponents)  {
-                
-                int secondStep = MaterialCalc.calculateMaterialEfficiency(job, firstStep, materialForComponent.getQuanity(), meComponet);
-                calculatedComponentX = new TotalCalculatedComponentX(materialForComponent.getName(), secondStep);
-                ManagerComponentX.getInstance().addTotalcalculatedComponentX(calculatedComponentX);
-                
-                
-                System.out.println("\t\t"+ materialForComponent.getName() + " " + materialForComponent.getQuanity() + " --> " + secondStep);
-            }
-        }
-        
-        getTotalMaterial(bpoName);
-    }
+    } 
     
     private void getTotalMaterial(String bpoName){
-        Map < String, TotalCalculatedComponentX > calculatedComponentXMap = ManagerComponentX.getInstance().getTotalcalculatedComponentXMap();
+        Map < String, TotalCalculatedComponentX > calculatedComponentXMap = ManagerComponentX.getInstance().getTotalCalculatedComponentXMap();
         System.out.println("Total material to build "+ bpoName);
         for (Map.Entry<String, TotalCalculatedComponentX> entry : calculatedComponentXMap.entrySet()) {
             String key = entry.getKey();
             TotalCalculatedComponentX value = entry.getValue();
-            System.out.println(""+ key + " " + value.getQuanity());
+            System.out.println(""+ key + " " + value.getQuanityInt());
         }    
         
 //        for (String key : calculatedComponentXMap.keySet()) {
@@ -218,12 +252,12 @@ public class ManagerDisplay {
 //        List < ComponentX > componentXs = ManagerComponentX.getInstance().getBaseComponentXs();
 //        for (ComponentX componentX : componentXs) {
 //            
-//            int firstStep = new MaterialCalc().calculateMaterialEfficiency(job, run, componentX.getQuanity(), meBPO);
+//            int firstStep = new MaterialEfficiencyCalculate().calculateMaterialEfficiency(job, run, componentX.getQuanity(), meBPO);
 //            System.out.println(""+componentX.getName() + " " + componentX.getQuanity() + " --> " + firstStep );
 //            
 //            List < MaterialForComponents > materialForComponents =  componentX.getMaterialForComponents();
 //            for (MaterialForComponents materialForComponent : materialForComponents)  {
-//                int secondStep = new MaterialCalc().calculateMaterialEfficiency(job, firstStep, materialForComponent.getQuanity(), meComponet);
+//                int secondStep = new MaterialEfficiencyCalculate().calculateMaterialEfficiency(job, firstStep, materialForComponent.getQuanity(), meComponet);
 //                
 //                System.out.println("\t\t"+ materialForComponent.getName() + " " + materialForComponent.getQuanity() + " --> " + secondStep);
 //            }

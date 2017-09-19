@@ -42,7 +42,7 @@ public class ComponentX extends NameBase{
 
     public ComponentX(int typeID, String typeName, int amount ) {
         super.setName(typeName);
-        super.setQuanity(amount);
+        super.setQuanityInt(amount);
         super.setId(typeID);
     }
 
@@ -55,8 +55,8 @@ public class ComponentX extends NameBase{
         super.setName(typeName);
     }
     
-    public void setQuanity(int amount){
-        super.setQuanity(amount);
+    public void setQuanityInt(int amount){
+        super.setQuanityInt(amount);
     }
 
     public void setId(int typeID){

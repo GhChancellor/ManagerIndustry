@@ -5,13 +5,11 @@
  */
 package managerindustry.logic.tax.formulas.itemcost.baseJobCost;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.buiild.TotalCalculatedComponentX;
+import managerindustry.logic.buiild.SingleCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
@@ -29,19 +27,19 @@ public class BaseJobCost {
         
     /**
      * Get Base Job Cost
-     * @param totalCalculatedComponentXMap
+     * @param singleCalculatedComponentXMap
      * @return float
      * @throws PriceNotExistsException 
      */
-    public float getBaseJobCost(Map<String, TotalCalculatedComponentX> totalCalculatedComponentXMap) throws PriceNotExistsException{
+    public float getBaseJobCost(Map<String, SingleCalculatedComponentX>  singleCalculatedComponentXMap) throws PriceNotExistsException{
         Float sumJobcost = 0f;
         
-        for (Map.Entry<String, TotalCalculatedComponentX> entry : totalCalculatedComponentXMap.entrySet()) {
+        for (Map.Entry<String, SingleCalculatedComponentX> entry : singleCalculatedComponentXMap.entrySet()) {
 //            String key = entry.getKey();
-            TotalCalculatedComponentX value = entry.getValue();
-            InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(value.getName());
+            SingleCalculatedComponentX singleCalculatedComponent = entry.getValue();
+            InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(singleCalculatedComponent.getName());
             
-            Float tempSumJobcost = JobCost.getJobCost(value.getQuanity(), String.valueOf(invTypes.getTypeID()));
+            Float tempSumJobcost = JobCost.getJobCost(singleCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
             sumJobcost += tempSumJobcost; 
             
             sumOfEachJobcosts.add(tempSumJobcost);

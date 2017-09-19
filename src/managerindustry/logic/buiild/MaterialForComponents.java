@@ -33,7 +33,7 @@ public class MaterialForComponents extends NameBase {
     public MaterialForComponents(int typeID, String typeName, int amount) {
         super.setId(typeID);
         super.setName(typeName);
-        super.setQuanity(amount);
+        super.setQuanityInt(amount);
     }    
     
 }

@@ -11,9 +11,9 @@ package managerindustry.logic.buiild.fatherclass;
  */
 public abstract class Efficiency {
     private String name;
-    private double ratePercent;
+    private float ratePercent;
     private Integer level;
-    private double baseValue = 1; 
+    private final float baseValue = 1; 
 
     public Efficiency() {
     }
@@ -21,9 +21,9 @@ public abstract class Efficiency {
     /**
      * DBG non come chiamarlo per il momento
      * Di base è 1
-     * @return double
+     * @return float
      */
-    public double getBaseValue() {
+    public float getBaseValue() {
         return baseValue;
     }
         
@@ -45,17 +45,17 @@ public abstract class Efficiency {
 
     /**
      * Get Rate Percent
-     * @return Double
+     * @return float
      */
-    public Double getRatePercent() {
+    public float getRatePercent() {
         return ratePercent;
     }
 
     /**
      * Set Rate Percent
-     * @param Double ratePercent 
+     * @param float ratePercent 
      */
-    public void setRatePercent(Double ratePercent) {
+    public void setRatePercent(float ratePercent) {
         this.ratePercent = ratePercent;
     }
 
@@ -75,5 +75,9 @@ public abstract class Efficiency {
         this.level = level;
     }
 
-    public abstract double calculateRateBpo();
+    public float getRateBpo(){
+        return calculateRateBpo();
+    }
+
+    protected abstract float calculateRateBpo(); 
 }
