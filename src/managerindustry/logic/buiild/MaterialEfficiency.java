@@ -27,7 +27,7 @@ public class MaterialEfficiency extends Efficiency {
      * @return float
      */
     @Override
-    protected float calculateRateBpo() {
+    protected double calculateRateBpo() {
         return getBaseValue() - ( getLevel().floatValue() / 100 )  ;
     }
     

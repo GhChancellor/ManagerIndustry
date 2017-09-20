@@ -13,7 +13,7 @@ public class NameBase {
     private int id;
     private String name;
     private int quanityInt;
-    private float quanityFlt;
+    private double quanityDbl;
 
     /**
      * Get Id
@@ -65,20 +65,17 @@ public class NameBase {
 
     /**
      * Get Quanity Float
-     * @return float
+     * @return double
      */
-    public float getQuanityFlt() {
-        return quanityFlt;
+    public double getQuanityDbl() {
+        return quanityDbl;
     }
 
     /**
      * Set Quanity Float
-     * @param Float quanityFlt 
+     * @param Float quanityDbl 
      */
-    public void setQuanityFlt(float quanityFlt) {
-        this.quanityFlt = quanityFlt;
-    }
-
-    
-    
+    public void setQuanityDbl(double quanityDbl) {
+        this.quanityDbl = quanityDbl;
+    }    
 }

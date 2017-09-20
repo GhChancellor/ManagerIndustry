@@ -14,7 +14,7 @@ import managerindustry.logic.buiild.MaterialEfficiency;
 public class MaterialEfficiencyCalculate {
     private static final float platformModifier = 1;    
     private int singleItemMaterial;
-    private float totalItemsMaterials;
+    private double totalItemsMaterials;
   
     /**
      * Get Single Item Material
@@ -28,7 +28,7 @@ public class MaterialEfficiencyCalculate {
      * Get Total Item Material
      * @return float
      */
-    public float getTotalItemsMaterials(){
+    public double getTotalItemsMaterials(){
         return totalItemsMaterials;
     }
 
@@ -41,14 +41,15 @@ public class MaterialEfficiencyCalculate {
      * @param int quantityBaseMarial 
      */
     public MaterialEfficiencyCalculate( int run, int job, int bpoME, int quantityBaseMarial ) {
-        float materialEfficiencyRate = new MaterialEfficiency(bpoME).getRateBpo();
+        double materialEfficiencyRate = new MaterialEfficiency(bpoME).getRateBpo();
                 
 //        // quando il valore è 1 non si fanno calcoli su ME
 //        // WHen value is 1 not calculated ME
-//        if ( quantityBaseMarial == 1 && job == 1){
-//            singleItemMaterial = quantityBaseMarial;
-//            totalItemsMaterials = job * singleItemMaterial * run;
-//        }
+        if ( quantityBaseMarial == 1 ){
+            singleItemMaterial = quantityBaseMarial;
+            totalItemsMaterials = job * singleItemMaterial * run;
+            return;
+        }
         
         // Calculate ME by One Object
         Double itemMaterialDbl = Math.ceil(quantityBaseMarial * materialEfficiencyRate * platformModifier);
@@ -56,7 +57,6 @@ public class MaterialEfficiencyCalculate {
         
         // Calculate ME all items
         itemMaterialDbl = job * Math.ceil( ((quantityBaseMarial * run) * materialEfficiencyRate) * platformModifier );
-        totalItemsMaterials = itemMaterialDbl.floatValue();        
-        
+        totalItemsMaterials = itemMaterialDbl;        
     }
 }

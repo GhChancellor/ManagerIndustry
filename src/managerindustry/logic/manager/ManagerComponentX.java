@@ -73,18 +73,17 @@ public class ManagerComponentX {
     /**
      * Add Calculated ComponetXs, component processed
      * @param nameMaterial
-     * @param calculatedComponentX 
+     * @param totalCalculatedComponentX 
      */
-    public void addTotalcalculatedComponentX(TotalCalculatedComponentX calculatedComponentX) {
-        String nameMaterial = calculatedComponentX.getName();
+    public void addTotalcalculatedComponentX(TotalCalculatedComponentX totalCalculatedComponentX) {
+        String nameMaterial = totalCalculatedComponentX.getName();
         
-        if ( totalCalculatedComponentXMap.containsKey(nameMaterial)){
-            int value = totalCalculatedComponentXMap.get(nameMaterial).getQuanityInt() + calculatedComponentX.getQuanityInt();
-            calculatedComponentX.setQuanityInt(value);
-            
-            totalCalculatedComponentXMap.put(nameMaterial, calculatedComponentX );
+        if ( totalCalculatedComponentXMap.containsKey(nameMaterial)){           
+            double value = (totalCalculatedComponentXMap.get(nameMaterial).getQuanityDbl() + totalCalculatedComponentX.getQuanityDbl());
+            totalCalculatedComponentX.setQuanityDbl(value);           
+            totalCalculatedComponentXMap.put(nameMaterial, totalCalculatedComponentX );
         }else{           
-            totalCalculatedComponentXMap.put(nameMaterial, calculatedComponentX );
+            totalCalculatedComponentXMap.put(nameMaterial, totalCalculatedComponentX );
         }        
     }
 
@@ -112,6 +111,7 @@ public class ManagerComponentX {
         String nameMaterial = singleCalculatedComponentX.getName();
         
         if ( singleCalculatedComponentXMap.containsKey(nameMaterial)){
+            // ????? xè lo hai fatto?
             int value = singleCalculatedComponentXMap.get(nameMaterial).getQuanityInt() + singleCalculatedComponentX.getQuanityInt();
             singleCalculatedComponentX.setQuanityInt(value);
             

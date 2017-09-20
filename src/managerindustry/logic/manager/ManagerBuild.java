@@ -23,11 +23,11 @@ import managerindustry.logic.manager.managerDB.ManagerDBEve;
 public class ManagerBuild {    
     private void displayTotalMaterial(String bpoName){
         Map < String, TotalCalculatedComponentX > calculatedComponentXMap = ManagerComponentX.getInstance().getTotalCalculatedComponentXMap();
-        System.out.println("Total material to build "+ bpoName);
+        System.out.println("\nTotal material to build "+ bpoName);
         for (Map.Entry<String, TotalCalculatedComponentX> entry : calculatedComponentXMap.entrySet()) {
             String key = entry.getKey();
             TotalCalculatedComponentX value = entry.getValue();
-            System.out.println(""+ key + " --> " +  String.format("%.0f", value.getQuanityFlt()) );
+            System.out.println(""+ key + " --> " +  String.format("%.0f", value.getQuanityDbl()) );
         }    
                 
         
@@ -65,8 +65,7 @@ public class ManagerBuild {
             int firstStepSingleMaterial = materialEfficiencyCalculate.getSingleItemMaterial();
             
             // values of the total item
-            float firstStepTotalMaterials = materialEfficiencyCalculate.getTotalItemsMaterials();
-            
+            double firstStepTotalMaterials = materialEfficiencyCalculate.getTotalItemsMaterials();            
             System.out.println(""+ componentX.getName() + ": B: " + componentX.getQuanityInt() + " --> " + 
              firstStepSingleMaterial + " --> " + 
              String.format("%.0f", firstStepTotalMaterials)  );
@@ -99,7 +98,7 @@ public class ManagerBuild {
                 int secondStepSingleMaterial = materialEfficiencyCalculate.getSingleItemMaterial();
                 
                 // values of the total item
-                float secondStepTotalMaterials = materialEfficiencyCalculate.getTotalItemsMaterials();
+                double secondStepTotalMaterials = materialEfficiencyCalculate.getTotalItemsMaterials();
                 
                 // Put Total Calculated Components
                 totalCalculatedComponentX = new TotalCalculatedComponentX(materialForComponent.getName(), secondStepTotalMaterials );
@@ -115,7 +114,7 @@ public class ManagerBuild {
                 ManagerComponentX.getInstance().addSingleCalculatedComponentXMap(singleCalculatedComponentX);
 
                 System.out.println("\t\t"+ materialForComponent.getName() + ": Mat: " 
-                 + singleCalculatedComponentX.getQuanityInt() + " --> " + String.format("%.0f", totalCalculatedComponentX.getQuanityFlt()) );
+                 + singleCalculatedComponentX.getQuanityInt() + " --> " + String.format("%.0f", totalCalculatedComponentX.getQuanityDbl()) );
             }            
         }
         displayTotalMaterial(bpoName);

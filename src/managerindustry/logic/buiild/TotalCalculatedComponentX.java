@@ -18,9 +18,9 @@ public class TotalCalculatedComponentX extends NameBase{
      * @param String name
      * @param float quantity 
      */
-    public TotalCalculatedComponentX(String name, float quantity) {
+    public TotalCalculatedComponentX(String name, double quantity) {
         super.setName(name);
-        super.setQuanityFlt(quantity);
+        super.setQuanityDbl(quantity);
     }
     
 }

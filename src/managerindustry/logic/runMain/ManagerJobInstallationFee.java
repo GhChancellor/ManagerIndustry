@@ -27,15 +27,16 @@ public class ManagerJobInstallationFee {
         System.out.println("Id Solar system "+ solarSystemID);
         
         // String item = "1MN Civilian Afterburner";
-//        String item = "Plasma Thruster";
-        String item = "scimitar";
+
+//        String item = "Oscillator Capacitor Unit";
+        String item = "Astarte";
         
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(item);
         System.out.println(""+ item + " ID: " +invTypes.getTypeID());
         
         int run = 1;
         int job = 1;
-        int bpoME = 0;
+        int bpoME = 10;
         int componentMe = 10;
         
         ManagerBuild managerBuild = new ManagerBuild();

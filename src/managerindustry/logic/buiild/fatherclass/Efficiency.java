@@ -13,7 +13,7 @@ public abstract class Efficiency {
     private String name;
     private float ratePercent;
     private Integer level;
-    private final float baseValue = 1f; 
+    private final double baseValue = 1f; 
 
     public Efficiency() {
     
@@ -24,7 +24,7 @@ public abstract class Efficiency {
      * Di base è 1
      * @return float
      */
-    public float getBaseValue() {
+    public double getBaseValue() {
         return baseValue;
     }
         
@@ -76,9 +76,9 @@ public abstract class Efficiency {
         this.level = level;
     }
 
-    public float getRateBpo(){
+    public double getRateBpo(){
         return calculateRateBpo();
     }
 
-    protected abstract float calculateRateBpo(); 
+    protected abstract double calculateRateBpo(); 
 }
