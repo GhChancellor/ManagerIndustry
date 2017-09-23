@@ -47,7 +47,7 @@ public class ManagerBuild {
      * @param componentMe 
      */
     public void buildItem(String bpoName, int run, int job, int bpoME, int componentMe ){
-        // Errore nella produzione capital "Concord 25000mm Steel Plate"
+        // Errore nella produzione capital "CONCORD 25000mm Steel Plates"
         // ci vuole la ricorsione per le T3
         
         System.out.println(bpoName + ": run " + run + ", Job " + job + ", meBPO " + bpoME + ", meComponent " + componentMe );
@@ -83,7 +83,7 @@ public class ManagerBuild {
             ManagerComponentX.getInstance().addTotalcalculatedComponentX(totalCalculatedComponentX);
             
             // add value of the single item to map
-            ManagerComponentX.getInstance().addSingleCalculatedComponentXMap(singleCalculatedComponentX);
+//            ManagerComponentX.getInstance().addSingleCalculatedComponentXMap(singleCalculatedComponentX);
             
             // get Value for compoenents T2
             List < MaterialForComponents > materialForComponents =  componentX.getMaterialForComponents();
@@ -111,7 +111,7 @@ public class ManagerBuild {
                 ManagerComponentX.getInstance().addTotalcalculatedComponentX(totalCalculatedComponentX);
                 
                 // add value of the single item to map
-                ManagerComponentX.getInstance().addSingleCalculatedComponentXMap(singleCalculatedComponentX);
+//                ManagerComponentX.getInstance().addSingleCalculatedComponentXMap(singleCalculatedComponentX);
 
                 System.out.println("\t\t"+ materialForComponent.getName() + ": Mat: " 
                  + singleCalculatedComponentX.getQuanityInt() + " --> " + String.format("%.0f", totalCalculatedComponentX.getQuanityDbl()) );

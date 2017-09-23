@@ -64,26 +64,26 @@ public class TestModel {
 
     }
 
-    public static void fetchEveComponent(EveComponent eve) {
-
-        List<NeededEveComponent> neededComponent = getNeededComponentFromDB(eve);
-        if(neededComponent==null){
-            return;
-        }
-        eve.setNeededEveComponent(neededComponent);
-
-        for (NeededEveComponent neededEve : neededComponent) {
-            fetchEveComponent(neededEve.getEveComponent());
-        }
-
-    }
-
-    private static List<NeededEveComponent> getNeededComponentFromDB(EveComponent eve) {
-        
-        List<NeededEveComponent> result = new ArrayList<>();
-        
-        //DA IMPLEMENTARE DAL DATABASE
-        return result;
-    }
+//    public static void fetchEveComponent(EveComponent eve) {
+//
+//        List<NeededEveComponent> neededComponent = getNeededComponentFromDB(eve);
+//        if(neededComponent==null){
+//            return;
+//        }
+//        eve.setNeededEveComponent(neededComponent);
+//
+//        for (NeededEveComponent neededEve : neededComponent) {
+//            fetchEveComponent(neededEve.getEveComponent());
+//        }
+//
+//    }
+//
+//    private static List<NeededEveComponent> getNeededComponentFromDB(EveComponent eve) {
+//        
+//        List<NeededEveComponent> result = new ArrayList<>();
+//        
+//        //DA IMPLEMENTARE DAL DATABASE
+//        return result;
+//    }
 
 }

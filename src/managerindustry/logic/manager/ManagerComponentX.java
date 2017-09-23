@@ -21,7 +21,7 @@ public class ManagerComponentX {
     private static ManagerComponentX instance = null;
     private List < ComponentX> baseComponentXs = new ArrayList<>();
     private Map < String, TotalCalculatedComponentX > totalCalculatedComponentXMap = new HashMap<>();
-    private Map < String, SingleCalculatedComponentX > singleCalculatedComponentXMap = new HashMap<>();
+//    private Map < String, SingleCalculatedComponentX > singleCalculatedComponentXMap = new HashMap<>();
     
     public static ManagerComponentX getInstance(){
         if ( instance == null ){
@@ -87,38 +87,38 @@ public class ManagerComponentX {
         }        
     }
 
-    /**
-     * Get Single Calculated ComponentX Map
-     * @return Map<String, SingleCalculatedComponentX>
-     */
-    public Map<String, SingleCalculatedComponentX> getSingleCalculatedComponentXMap() {
-        return singleCalculatedComponentXMap;
-    }
-
-    /**
-     * Set Single Calculated ComponentX Map
-     * @param singleCalculatedComponentXMap 
-     */
-    public void setSingleCalculatedComponentXMap(Map<String, SingleCalculatedComponentX> singleCalculatedComponentXMap) {
-        this.singleCalculatedComponentXMap = singleCalculatedComponentXMap;
-    }
-    
-    /**
-     * Add Single Calculated ComponentX Map
-     * @param SingleCalculatedComponent singleCalculatedComponentX 
-     */
-    public void addSingleCalculatedComponentXMap(SingleCalculatedComponentX singleCalculatedComponentX) {
-        String nameMaterial = singleCalculatedComponentX.getName();
-        
-        if ( singleCalculatedComponentXMap.containsKey(nameMaterial)){
-            // ????? xè lo hai fatto?
-            int value = singleCalculatedComponentXMap.get(nameMaterial).getQuanityInt() + singleCalculatedComponentX.getQuanityInt();
-            singleCalculatedComponentX.setQuanityInt(value);
-            
-            singleCalculatedComponentXMap.put(nameMaterial, singleCalculatedComponentX );
-        }else{           
-            singleCalculatedComponentXMap.put(nameMaterial, singleCalculatedComponentX );
-                
-        }
-    }
+//    /**
+//     * Get Single Calculated ComponentX Map
+//     * @return Map<String, SingleCalculatedComponentX>
+//     */
+//    public Map<String, SingleCalculatedComponentX> getSingleCalculatedComponentXMap() {
+//        return singleCalculatedComponentXMap;
+//    }
+//
+//    /**
+//     * Set Single Calculated ComponentX Map
+//     * @param singleCalculatedComponentXMap 
+//     */
+//    public void setSingleCalculatedComponentXMap(Map<String, SingleCalculatedComponentX> singleCalculatedComponentXMap) {
+//        this.singleCalculatedComponentXMap = singleCalculatedComponentXMap;
+//    }
+//    
+//    /**
+//     * Add Single Calculated ComponentX Map
+//     * @param SingleCalculatedComponent singleCalculatedComponentX 
+//     */
+//    public void addSingleCalculatedComponentXMap(SingleCalculatedComponentX singleCalculatedComponentX) {
+//        String nameMaterial = singleCalculatedComponentX.getName();
+//        
+//        if ( singleCalculatedComponentXMap.containsKey(nameMaterial)){
+//            // ????? xè lo hai fatto?
+//            int value = singleCalculatedComponentXMap.get(nameMaterial).getQuanityInt() + singleCalculatedComponentX.getQuanityInt();
+//            singleCalculatedComponentX.setQuanityInt(value);
+//            
+//            singleCalculatedComponentXMap.put(nameMaterial, singleCalculatedComponentX );
+//        }else{           
+//            singleCalculatedComponentXMap.put(nameMaterial, singleCalculatedComponentX );
+//                
+//        }
+//    }
 }

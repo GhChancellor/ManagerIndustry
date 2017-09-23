@@ -42,8 +42,8 @@ public class ManagerJobInstallationFee {
         ManagerBuild managerBuild = new ManagerBuild();
                                                 //  run Job  meBPO  MeComponent
         managerBuild.buildItem(item + " blueprint", run, job  , bpoME  ,  componentMe);
-        Map<String, SingleCalculatedComponentX> singleCalculatedComponentXMap =
-         ManagerComponentX.getInstance().getSingleCalculatedComponentXMap();
+//        Map<String, SingleCalculatedComponentX> singleCalculatedComponentXMap =
+//         ManagerComponentX.getInstance().getSingleCalculatedComponentXMap();
         
         System.out.println("-------------------------------");
 //      
