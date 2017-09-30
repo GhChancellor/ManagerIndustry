@@ -15,9 +15,7 @@ import managerindustry.db.entities.InvNames;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.buiild.ComponentX;
-import managerindustry.logic.buiild.MaterialEfficiencyCalculate;
-import managerindustry.logic.buiild.SingleCalculatedComponentX;
-import managerindustry.logic.buiild.TotalCalculatedComponentX;
+import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.structure.EngineeringComplex;
 
 /**
@@ -66,15 +64,15 @@ public class ManagerDisplay {
 //            
 //            
 //            // Put Total Calculated Components
-//            TotalCalculatedComponentX totalCalculatedComponentX_X1 = 
-//                new TotalCalculatedComponentX(componentX.getName(), firstStepTotalMaterials);
+//            ReportCalculatedComponentX totalCalculatedComponentX_X1 = 
+//                new ReportCalculatedComponentX(componentX.getName(), firstStepTotalMaterials);
 //            
 //            // Put single Calculated Component
 //            SingleCalculatedComponentX singleCalculatedComponentX1 = 
 //                new SingleCalculatedComponentX(componentX.getName(), firstStepSingleMaterial);
 //            
 //            // add values of the items to map 
-//            ManagerComponentX.getInstance().addTotalcalculatedComponentX(totalCalculatedComponentX_X1);
+//            ManagerComponentX.getInstance().sumReportCalculatedComponentXMap(totalCalculatedComponentX_X1);
 //            
 //            // add value of the single item to map
 //            ManagerComponentX.getInstance().addSingleCalculatedComponentXMap(singleCalculatedComponentX1);
@@ -93,13 +91,13 @@ public class ManagerDisplay {
 //                float secondStepTotalMaterials = materialEfficiencyCalculate.getTotalItemsMaterials();
 //                
 //                // Put Total Calculated Components
-//                totalCalculatedComponentX_X1 = new TotalCalculatedComponentX(materialForComponent.getName(), secondStepTotalMaterials );
+//                totalCalculatedComponentX_X1 = new ReportCalculatedComponentX(materialForComponent.getName(), secondStepTotalMaterials );
 //                
 //                // Put single Calculated Component
 //                singleCalculatedComponentX1 = new SingleCalculatedComponentX(materialForComponent.getName(), secondStepSingleMaterial);
 //
 //                // add values of the items to map 
-//                ManagerComponentX.getInstance().addTotalcalculatedComponentX(totalCalculatedComponentX_X1);
+//                ManagerComponentX.getInstance().sumReportCalculatedComponentXMap(totalCalculatedComponentX_X1);
 //                
 //                // add value of the single item to map
 //                ManagerComponentX.getInstance().addSingleCalculatedComponentXMap(singleCalculatedComponentX1);
@@ -150,16 +148,16 @@ public class ManagerDisplay {
     } 
     
     private void getTotalMaterial(String bpoName){
-        Map < String, TotalCalculatedComponentX > calculatedComponentXMap = ManagerComponentX.getInstance().getTotalCalculatedComponentXMap();
+        Map < String, ReportCalculatedComponentX > calculatedComponentXMap = ManagerComponentX.getInstance().getReportCalculatedComponentXMap();
         System.out.println("Total material to build "+ bpoName);
-        for (Map.Entry<String, TotalCalculatedComponentX> entry : calculatedComponentXMap.entrySet()) {
+        for (Map.Entry<String, ReportCalculatedComponentX> entry : calculatedComponentXMap.entrySet()) {
             String key = entry.getKey();
-            TotalCalculatedComponentX value = entry.getValue();
+            ReportCalculatedComponentX value = entry.getValue();
             System.out.println(""+ key + " " + value.getQuanityInt());
         }    
         
 //        for (String key : calculatedComponentXMap.keySet()) {
-//            TotalCalculatedComponentX value = calculatedComponentXMap.get(key);
+//            ReportCalculatedComponentX value = calculatedComponentXMap.get(key);
 //            System.out.println(""+ key + " " + value.getQuanity());
 //        }
     }

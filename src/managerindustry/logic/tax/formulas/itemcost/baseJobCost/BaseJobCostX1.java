@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.buiild.TotalCalculatedComponentX;
+import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.manager.managerCache.ManagerPrice;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
@@ -21,12 +21,12 @@ import managerindustry.logic.manager.managerDB.ManagerDBEve;
 public class BaseJobCostX1 {
     private List < SingleJobCost > singleJobCosts = new ArrayList<>();
 
-    public float getBaseJobCost(Map<String, TotalCalculatedComponentX> totalCalculatedComponentXMap) throws PriceNotExistsException{
+    public float getBaseJobCost(Map<String, ReportCalculatedComponentX> totalCalculatedComponentXMap) throws PriceNotExistsException{
         float totSumJobcost = 0f;
 
-    for (Map.Entry<String, TotalCalculatedComponentX> entry : totalCalculatedComponentXMap.entrySet()) {
+    for (Map.Entry<String, ReportCalculatedComponentX> entry : totalCalculatedComponentXMap.entrySet()) {
 //            String key = entry.getKey();
-        TotalCalculatedComponentX value = entry.getValue();
+        ReportCalculatedComponentX value = entry.getValue();
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(value.getName());
 
         float singleJobCost = getSingleJobCost( String.valueOf(value.getId()) , value.getQuanityInt());

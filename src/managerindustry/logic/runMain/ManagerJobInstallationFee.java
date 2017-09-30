@@ -7,14 +7,14 @@ package managerindustry.logic.runMain;
 
 import java.util.Map;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.buiild.SingleCalculatedComponentX;
+import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.ManagerComponentX;
-import managerindustry.logic.manager.ManagerBuild;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.ManagerBuild;
 import managerindustry.logic.solarSystem.SolarSystem;
-import managerindustry.logic.tax.formulas.vecchio.jobInstallationCost.JobInstallationCost;
+import managerindustry.logic.tax.formulas.itemcost.MainItemCost;
 
 /**
  * MN Civilian Afterburner 1 = 3ISK, 2 = 7Isk  
@@ -29,29 +29,31 @@ public class ManagerJobInstallationFee {
         // String item = "1MN Civilian Afterburner";
 
 //        String item = "Oscillator Capacitor Unit";
-        String item = "Astarte";
+        String item = "scimitar";
         
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(item);
         System.out.println(""+ item + " ID: " +invTypes.getTypeID());
         
-        int run = 1;
+        int run = 10;
         int job = 1;
         int bpoME = 10;
         int componentMe = 10;
         
-        ManagerBuild managerBuild = new ManagerBuild();
-                                                //  run Job  meBPO  MeComponent
-        managerBuild.buildItem(item + " blueprint", run, job  , bpoME  ,  componentMe);
-//        Map<String, SingleCalculatedComponentX> singleCalculatedComponentXMap =
-//         ManagerComponentX.getInstance().getSingleCalculatedComponentXMap();
+        ManagerBuild managerBuildX1 = 
+                new ManagerBuild(item, run, job, bpoME, componentMe);
         
-        System.out.println("-------------------------------");
-//      
-
+        
+//        ManagerBuildOLD managerBuild = new ManagerBuildOLD();
+//                                                //  run Job  meBPO  MeComponent
+//        managerBuild.buildItem(item + " blueprint", run, job  , bpoME  ,  componentMe);
+// 
+//        System.out.println("-------------------------------");        
+        
+//        Map < String, ReportCalculatedComponentX > totalCalculatedComponentX = ManagerComponentX.getInstance().getTotalCalculatedComponentXMap();
+//
 //        MainItemCost mainItemCost = new MainItemCost();
-//        mainItemCost.calculateJobInstallationCost(totalCalculatedComponentXMap, solarSystemID, "manufacturing", 0.1f);
+//        mainItemCost.calculateJobInstallationCost(totalCalculatedComponentX, solarSystemID, "manufacturing", 0.1f, run);
 
-//        JobInstallationCost jobInstallationFee = new JobInstallationCost(solarSystemID, "manufacturing", singleCalculatedComponentXMap, run, Job);
-//        System.out.println(""+ String.format("%.0f", jobInstallationFee.getJobInstallationFee()));
+
     }
 }

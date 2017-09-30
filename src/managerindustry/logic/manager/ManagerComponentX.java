@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import managerindustry.logic.buiild.CalculatedComponentX;
 import managerindustry.logic.buiild.ComponentX;
-import managerindustry.logic.buiild.SingleCalculatedComponentX;
-import managerindustry.logic.buiild.TotalCalculatedComponentX;
+import managerindustry.logic.buiild.ReportCalculatedComponentX;
 
 /**
  *
@@ -20,8 +20,11 @@ import managerindustry.logic.buiild.TotalCalculatedComponentX;
 public class ManagerComponentX {
     private static ManagerComponentX instance = null;
     private List < ComponentX> baseComponentXs = new ArrayList<>();
-    private Map < String, TotalCalculatedComponentX > totalCalculatedComponentXMap = new HashMap<>();
+    private List < CalculatedComponentX > calculatedComponentXs = new ArrayList<>();
+    
+    private Map < String, ReportCalculatedComponentX > reportCalculatedComponentXMap = new HashMap<>();
 //    private Map < String, SingleCalculatedComponentX > singleCalculatedComponentXMap = new HashMap<>();
+    
     
     public static ManagerComponentX getInstance(){
         if ( instance == null ){
@@ -55,37 +58,65 @@ public class ManagerComponentX {
     }
     
     /**
-     * Get Totalcalculated ComponentX Map
-     * @return Map<String, TotalCalculatedComponentX>
+     * Get report calculated ComponentX Map
+     * @return Map<String, ReportCalculatedComponentX>
      */
-    public Map<String, TotalCalculatedComponentX> getTotalCalculatedComponentXMap() {
-        return totalCalculatedComponentXMap;
+    public Map<String, ReportCalculatedComponentX> getReportCalculatedComponentXMap() {
+        return reportCalculatedComponentXMap;
     }
 
     /**
-     * Set Calculated ComponetXs, component processed
-     * @param Map<String, TotalCalculatedComponentX>
+     * Set report calculated ComponetXs, component processed
+     * @param Map<String, ReportCalculatedComponentX>
      */
-    public void setTotalCalculatedComponentXMap(Map<String, TotalCalculatedComponentX> totalCalculatedComponentXMap) {
-        this.totalCalculatedComponentXMap = totalCalculatedComponentXMap;
+    private void setReportCalculatedComponentXMap(Map<String, ReportCalculatedComponentX> reportCalculatedComponentXMap) {
+        this.reportCalculatedComponentXMap = reportCalculatedComponentXMap;
     }
     
     /**
-     * Add Calculated ComponetXs, component processed
-     * @param nameMaterial
-     * @param totalCalculatedComponentX 
+     * Sum all values Calculated ComponetXs, component processed
+     * @param TotalCalculatedComponentX totalCalculatedComponentX 
      */
-    public void addTotalcalculatedComponentX(TotalCalculatedComponentX totalCalculatedComponentX) {
-        String nameMaterial = totalCalculatedComponentX.getName();
+    public void sumReportCalculatedComponentXMap(ReportCalculatedComponentX reportCalculatedComponentX) {
+        String nameMaterial = reportCalculatedComponentX.getName();
         
-        if ( totalCalculatedComponentXMap.containsKey(nameMaterial)){           
-            double value = (totalCalculatedComponentXMap.get(nameMaterial).getQuanityDbl() + totalCalculatedComponentX.getQuanityDbl());
-            totalCalculatedComponentX.setQuanityDbl(value);           
-            totalCalculatedComponentXMap.put(nameMaterial, totalCalculatedComponentX );
+        if ( this.reportCalculatedComponentXMap.containsKey(nameMaterial)){           
+            double value = (this.reportCalculatedComponentXMap.get(nameMaterial).getQuanityDbl() + reportCalculatedComponentX.getQuanityDbl());
+            reportCalculatedComponentX.setQuanityDbl(value);           
+            this.reportCalculatedComponentXMap.put(nameMaterial, reportCalculatedComponentX );
         }else{           
-            totalCalculatedComponentXMap.put(nameMaterial, totalCalculatedComponentX );
+            this.reportCalculatedComponentXMap.put(nameMaterial, reportCalculatedComponentX );
         }        
     }
+    
+    /**
+     * Get Calculated ComponentXs
+     * @return List<CalculatedComponentX>
+     */
+    public List<CalculatedComponentX> getCalculatedComponentXs() {
+        return calculatedComponentXs;
+    }
+
+    /**
+     * Set Calculated ComponentXs
+     * @param List<CalculatedComponentX> calculatedComponentXs 
+     */
+    public void setCalculatedComponentXs(List<CalculatedComponentX> calculatedComponentXs) {
+        this.calculatedComponentXs = calculatedComponentXs;
+    }
+
+    /**
+     * Add Calculated ComponentXs
+     * @param CalculatedComponentX calculatedComponentXs 
+     */
+    public void addCalculatedComponentXs( CalculatedComponentX calculatedComponentXs) {
+        this.calculatedComponentXs.add(calculatedComponentXs);
+    }
+
+
+
+    
+    
 
 //    /**
 //     * Get Single Calculated ComponentX Map
@@ -121,4 +152,5 @@ public class ManagerComponentX {
 //                
 //        }
 //    }
+
 }

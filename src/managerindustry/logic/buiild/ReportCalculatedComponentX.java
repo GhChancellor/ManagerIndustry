@@ -8,18 +8,21 @@ package managerindustry.logic.buiild;
 import managerindustry.logic.buiild.fatherclass.NameBase;
 
 /**
- * Put single Calculated Component
+ *
  * @author lele
  */
-public class SingleCalculatedComponentX extends NameBase{
-    /**
-     * Put single Calculated Component
-     * @param name
-     * @param quantity 
+public class ReportCalculatedComponentX extends NameBase{
+
+    /** 
+     * Put report Calculated ComponentX
+     * @param String name
+     * @param float quantity 
      */
-    public SingleCalculatedComponentX(String name, int quantity) {
+    public ReportCalculatedComponentX(String name, int singleMaterial, double quantity) {
         super.setName(name);
-        super.setQuanityInt(quantity);        
+        super.setQuanityDbl(quantity);
+        super.setQuanityInt(singleMaterial);
+
     }
     
 }

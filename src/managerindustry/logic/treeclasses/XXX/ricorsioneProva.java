@@ -18,24 +18,24 @@ public class ricorsioneProva {
     public static void main(String[] args) {
         RicorsioneBaseMaterial ricorsioneBaseMaterial = new RicorsioneBaseMaterial();
         ricorsioneBaseMaterial.initBPO();
-        
-        
-        
-        List < IndustryActivityMaterials > tree = new ArrayList<>();
-        
-        
-        
-        IndustryActivityMaterials m1 = new IndustryActivityMaterials(1);
-        IndustryActivityMaterials m2 = new IndustryActivityMaterials(2);
-        
-        tree.add(m1);
-        tree.add(m2);
-        
-        ComponentX xx  = new ComponentX(0, "PADRE", 0);
-        ricorsioneBaseMaterial.ricorsioneLuca(tree, "",xx);
-        
-        System.out.println("xx"+xx);
-        
+//        
+//        
+//        
+//        List < IndustryActivityMaterials > tree = new ArrayList<>();
+//        
+//        
+//        
+//        IndustryActivityMaterials m1 = new IndustryActivityMaterials(1);
+//        IndustryActivityMaterials m2 = new IndustryActivityMaterials(2);
+//        
+//        tree.add(m1);
+//        tree.add(m2);
+//        
+//        ComponentX xx  = new ComponentX(0, "PADRE", 0);
+//        ricorsioneBaseMaterial.ricorsioneLuca(tree, "",xx);
+//        
+//        System.out.println("xx"+xx);
+//        
         
         
         

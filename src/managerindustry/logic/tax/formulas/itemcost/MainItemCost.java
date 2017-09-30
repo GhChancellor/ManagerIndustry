@@ -6,7 +6,7 @@
 package managerindustry.logic.tax.formulas.itemcost;
 
 import java.util.Map;
-import managerindustry.logic.buiild.SingleCalculatedComponentX;
+import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 
@@ -16,28 +16,30 @@ import managerindustry.logic.exception.SolarSystemNotExistsException;
  */
 public class MainItemCost {
     private float jobFee = 0f;
-    private float facilityTax = 0f;
+    private float totalFacilityTax = 0f;
     private float totalcostjob = 0f;
     
     
-    public void calculateJobInstallationCost(Map<String, SingleCalculatedComponentX>  singleCalculatedComponentXMap, 
-            String solarSystemID, 
-            String actvity, float facilityTax) throws SolarSystemNotExistsException, PriceNotExistsException{
-        ItemCost itemCost = new ItemCost(singleCalculatedComponentXMap, solarSystemID, actvity);
+    public void calculateJobInstallationCost(
+     Map<String, ReportCalculatedComponentX>  totalCalculatedComponentXMap, 
+     String solarSystemID, String actvity, float facilityTax, int run)
+     throws SolarSystemNotExistsException, PriceNotExistsException{
+        
+        ItemCost itemCost = new ItemCost(totalCalculatedComponentXMap, solarSystemID, actvity);
  
-        jobFee = itemCost.getJobInstallationCost();
-        this.facilityTax = itemCost.getFacilityTaxes(facilityTax);
-        totalcostjob = itemCost.getTotalInstallationCost(jobFee, this.facilityTax);
+        jobFee = itemCost.getJobInstallationCost(run);
+        this.totalFacilityTax = itemCost.getFacilityTaxesPerItem(facilityTax);
+        totalcostjob = itemCost.getTotalInstallationCost(jobFee, this.totalFacilityTax);
         
         System.out.printf("jobFee %f\n", jobFee);
-        System.out.printf("facilityTax %f\n", this.facilityTax);
+        System.out.printf("Total facilityTax %f\n", this.totalFacilityTax);
         System.out.printf("Tot cost job %f\n", totalcostjob);
         
-        float total = this.facilityTax + totalcostjob;
+        float total = this.totalFacilityTax + totalcostjob;
         System.out.printf("Total Installation Cost %f ", total );
         
         System.out.println("");
-        double aggiustamento = (total * 0.1152681) + total; // 0.1152681
+        double aggiustamento = (total * 1.1) + total; // 0.1152681
         System.out.printf("Con aggiustamento %f\n", aggiustamento);
     }
 }

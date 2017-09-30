@@ -8,7 +8,7 @@ package managerindustry.logic.tax.formulas.itemcost;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.buiild.SingleCalculatedComponentX;
+import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.formulas.itemcost.baseJobCost.BaseJobCost;
@@ -28,7 +28,7 @@ public class ItemCost {
 //    private float jobFee = 0f;
     private List < Float > sumOfEachJobcosts = new ArrayList();
     
-    public ItemCost(Map<String, SingleCalculatedComponentX>  singleCalculatedComponentXMap, 
+    public ItemCost(Map<String, ReportCalculatedComponentX>  totalCalculatedComponentXMap, 
             String solarSystemID, 
             String actvity) throws SolarSystemNotExistsException, PriceNotExistsException {
         
@@ -37,7 +37,7 @@ public class ItemCost {
         this.systemCostIndex = SystemCostIndex.SystemCostIndex(solarSystemID, actvity);
         
         BaseJobCost baseJobCost = new BaseJobCost();
-        this.baseJobCost = baseJobCost.getBaseJobCost(singleCalculatedComponentXMap);
+        this.baseJobCost = baseJobCost.getBaseJobCost(totalCalculatedComponentXMap);
         sumOfEachJobcosts = baseJobCost.getsumOfEachJobcosts();
 
         System.out.println("");
@@ -46,33 +46,41 @@ public class ItemCost {
     /**
      * Get job Installation Cost ( jobfee )
      * jobFee = baseJobCost ∗ systemCostIndex ∗ runs
+     * baseJobCost = drake ( tritanium 30 isk + pyerite 50 isk + mexallon 25 isk )
      * @return double
      */
-    public float getJobInstallationCost(){
-    // Il runs viene GIÀ calcolato in ManagerBuild > buildItem
-    // int firstStep = MaterialCalc.calculateMaterialEfficiency(job, run, componentX.getQuanity(), meBPO);
-        int run = 1;        
+    public float getJobInstallationCost(int run){       
         return baseJobCost * systemCostIndex * run;
     }
     
     /**
-     * Get Facility Tax ( jobfee )
+     * Get Facility Tax ( jobfee ) 
      * facilityTax = jobFee ∗ taxRate / 100
      * The taxRate is 10 for NPC Stations and can be set for each facility 
      * individually for corporation owned
-     * @param double taxRate
-     * @return double
+     * @param float taxRate
+     * @return float
      */
-    public float getFacilityTaxes(float taxRate){
-        float jobfee = 0f;
-        
+    public float getFacilityTaxesPerItem(float taxRate){
+        float jobfee = 0f;       
         for (Float sumOfEachJobcost : sumOfEachJobcosts) {
             jobfee += sumOfEachJobcost * taxRate / 100;
-            float xxx = sumOfEachJobcost * taxRate / 100;
-            System.out.printf("jobfee %f\n", xxx);
         }
-        System.out.printf("Tot jobfee %f\n", jobfee);
         return jobfee;
+    }
+
+    /**
+     * Get Facility Taxes Per Each Item
+     * @param float taxRate
+     * @return List < Float >
+     */
+    public List < Float > getFacilityTaxesPerEachItem(float taxRate){
+        List < Float > jobfees = new ArrayList<>();
+                
+        for (Float sumOfEachJobcost : sumOfEachJobcosts) {
+            jobfees.add( sumOfEachJobcost * taxRate / 100 ) ;
+        }
+        return jobfees;
     }
     
     /**

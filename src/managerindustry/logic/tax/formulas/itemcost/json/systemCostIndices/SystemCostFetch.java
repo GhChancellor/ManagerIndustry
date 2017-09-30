@@ -49,10 +49,9 @@ public class SystemCostFetch {
             final String path = "./SystemCostIndex.json";
             Reader reader = new FileReader(path);
 
-//            URL url = new URL("https://esi.tech.ccp.is/legacy/industry/systems/?datasource=tranquility");
-//            InputStreamReader reader = new InputStreamReader(url.openStream());
-            
-// InputStreamReader reader = new InputStreamReader(url.openStream());
+//          URL url = new URL("https://esi.tech.ccp.is/legacy/industry/systems/?datasource=tranquility");
+//          InputStreamReader reader = new InputStreamReader(url.openStream());            
+
             Type type = new TypeToken< ArrayList< SolarSystemCost > >() {}.getType();
             List<SolarSystemCost> solarSystems = (List<SolarSystemCost>) gson.fromJson(reader, type);
 

@@ -14,6 +14,9 @@ import managerindustry.logic.buiild.fatherclass.NameBase;
 public class MaterialForComponents extends NameBase {
     private ComponentX componentX; 
 
+    public MaterialForComponents() {
+    }
+
     public MaterialForComponents(ComponentX componentX) {
         this.componentX = componentX;
     }

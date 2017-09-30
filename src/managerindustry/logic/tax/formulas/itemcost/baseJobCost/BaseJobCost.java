@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.buiild.SingleCalculatedComponentX;
+import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
@@ -27,19 +27,22 @@ public class BaseJobCost {
         
     /**
      * Get Base Job Cost
-     * @param singleCalculatedComponentXMap
+     * tot = tritanium 30 isk + pyerite 50 isk + mexallon 25 isk
+     * @param totalCalculatedComponentXMap
      * @return float
      * @throws PriceNotExistsException 
      */
-    public float getBaseJobCost(Map<String, SingleCalculatedComponentX>  singleCalculatedComponentXMap) throws PriceNotExistsException{
+    public float getBaseJobCost(Map<String, ReportCalculatedComponentX>  totalCalculatedComponentXMap) throws PriceNotExistsException{
         Float sumJobcost = 0f;
         
-        for (Map.Entry<String, SingleCalculatedComponentX> entry : singleCalculatedComponentXMap.entrySet()) {
+        for (Map.Entry<String, ReportCalculatedComponentX> entry : totalCalculatedComponentXMap.entrySet()) {
 //            String key = entry.getKey();
-            SingleCalculatedComponentX singleCalculatedComponent = entry.getValue();
-            InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(singleCalculatedComponent.getName());
+            ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
+            InvTypes invTypes = 
+             ManagerDBEve.getInstance().getInvTypes_IdByName(totalCalculatedComponent.getName());
             
-            Float tempSumJobcost = JobCost.getJobCost(singleCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
+            Float tempSumJobcost = 
+             JobCost.getJobCost(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
             sumJobcost += tempSumJobcost; 
             
             sumOfEachJobcosts.add(tempSumJobcost);
@@ -49,20 +52,17 @@ public class BaseJobCost {
     }
 
     /**
-     * Get sum Of Each Job costs
+     * Get sum Each Job costs
+     * Mette in lista tutti i materiali per sapere ogni singolo costo 
+     * tritanium 30 isk 
+     * pyerite 50 isk 
+     * mexallon 25 isk 
      * @return List < Float >
      */
     public List < Float > getsumOfEachJobcosts(){
         return sumOfEachJobcosts;
     }
-    
-//    /**
-//     * Add Sum Of Each Job cost
-//     * @param float sumJobcost 
-//     */
-//    private void addSumOfEachJobcost(float sumJobcost){
-//        sumOfEachJobcosts.add(sumJobcost);
-//    }
+
 }
 
 
