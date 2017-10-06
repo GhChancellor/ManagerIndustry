@@ -23,23 +23,25 @@ import managerindustry.logic.tax.formulas.itemcost.MainItemCost;
  */
 public class ManagerJobInstallationFee {
     public static void main(String[] args) throws SolarSystemNotExistsException, PriceNotExistsException {
-        String solarSystemID = String.valueOf( SolarSystem.getSolarSystemID("Isanamo") ); // Sotrentaira 30001369// Isanamo 30001389
+        String solarSystemID = String.valueOf( SolarSystem.getSolarSystemID("Sobaseki") ); // Sotrentaira 30001369// Isanamo 30001389
         System.out.println("Id Solar system "+ solarSystemID);
         
         // String item = "1MN Civilian Afterburner";
 
 //        String item = "Oscillator Capacitor Unit";
-        String item = "Astarte";
+        String item = "drake";
         
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(item);
         System.out.println(""+ item + " ID: " +invTypes.getTypeID());
         
-        int run = 4;
+        int run = 1;
         int job = 1;
-        int bpoME = 1;
-        int componentMe = 10;
-        float taxRateStation = 10f;
-        
+        int bpoME = 10;
+        int componentMe = 0;
+        float taxRateStation = 0.1f;
+        int runPerCopy = 1;
+        int startLevel = 0;
+        int finishLevel = 10;
         ManagerBuild managerBuildX1 = 
                 new ManagerBuild(item, run, job, bpoME, componentMe);
         
@@ -55,7 +57,8 @@ public class ManagerJobInstallationFee {
 //
         MainItemCost mainItemCost = new MainItemCost();
         mainItemCost.calculateJobInstallationCost(reportCalculatedComponentXMap, solarSystemID, "manufacturing", run, taxRateStation);
-
+        mainItemCost.calculateCopingFee(reportCalculatedComponentXMap, solarSystemID, "copying", run, taxRateStation, runPerCopy);
+        // mainItemCost.calculateResearchCosts(reportCalculatedComponentXMap, solarSystemID, "researching_material_efficiency", startLevel, finishLevel);
 
     }
 }

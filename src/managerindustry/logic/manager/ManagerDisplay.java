@@ -164,7 +164,7 @@ public class ManagerDisplay {
     
     public void itemDescription(){
         // 43867 Standup M-Set Advanced Component Manufacturing Material Efficiency I
-        String bpoName = "Crystalline Carbonide";
+        String bpoName = "Hammerhead I Blueprint copy";
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(bpoName);
         
         List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(invTypes.getTypeID());

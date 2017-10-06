@@ -26,7 +26,22 @@ public class BaseJobCost {
     }
 
     public float getBaseJobCostDBG(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap) throws PriceNotExistsException{
-        return 0f;
+        Float sumJobcost = 0f;
+        
+        for (Map.Entry<String, ReportCalculatedComponentX> entry : reportCalculatedComponentXMap.entrySet()) {
+//            String key = entry.getKey();
+            ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
+            InvTypes invTypes = 
+             ManagerDBEve.getInstance().getInvTypes_IdByName(totalCalculatedComponent.getName());
+            
+            Float jobCost = 
+             JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
+            
+            sumJobcost += jobCost;            
+            sumOfEachJobcosts.add(jobCost);
+        }
+
+        return sumJobcost;
     }
     
     /**
@@ -45,11 +60,11 @@ public class BaseJobCost {
             InvTypes invTypes = 
              ManagerDBEve.getInstance().getInvTypes_IdByName(totalCalculatedComponent.getName());
             
-//            Float jobCost = 
-//             JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
-            
             Float jobCost = 
-             JobCost.getJobCost(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
+             JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
+            
+//            Float jobCost = 
+//             JobCost.getJobCost(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
             
             sumJobcost += jobCost;            
             sumOfEachJobcosts.add(jobCost);
@@ -57,7 +72,7 @@ public class BaseJobCost {
 
         return sumJobcost;
     }
-
+    
     /**
      * Get sum Each Job costs
      * Mette in lista tutti i materiali per sapere ogni singolo costo 
