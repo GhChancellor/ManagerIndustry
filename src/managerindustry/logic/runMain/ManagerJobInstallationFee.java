@@ -29,15 +29,16 @@ public class ManagerJobInstallationFee {
         // String item = "1MN Civilian Afterburner";
 
 //        String item = "Oscillator Capacitor Unit";
-        String item = "scimitar";
+        String item = "Astarte";
         
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(item);
         System.out.println(""+ item + " ID: " +invTypes.getTypeID());
         
-        int run = 10;
+        int run = 4;
         int job = 1;
-        int bpoME = 10;
+        int bpoME = 1;
         int componentMe = 10;
+        float taxRateStation = 10f;
         
         ManagerBuild managerBuildX1 = 
                 new ManagerBuild(item, run, job, bpoME, componentMe);
@@ -49,10 +50,11 @@ public class ManagerJobInstallationFee {
 // 
 //        System.out.println("-------------------------------");        
         
-//        Map < String, ReportCalculatedComponentX > totalCalculatedComponentX = ManagerComponentX.getInstance().getTotalCalculatedComponentXMap();
+        Map < String, ReportCalculatedComponentX > reportCalculatedComponentXMap = 
+         ManagerComponentX.getInstance().getReportCalculatedComponentXMap();
 //
-//        MainItemCost mainItemCost = new MainItemCost();
-//        mainItemCost.calculateJobInstallationCost(totalCalculatedComponentX, solarSystemID, "manufacturing", 0.1f, run);
+        MainItemCost mainItemCost = new MainItemCost();
+        mainItemCost.calculateJobInstallationCost(reportCalculatedComponentXMap, solarSystemID, "manufacturing", run, taxRateStation);
 
 
     }

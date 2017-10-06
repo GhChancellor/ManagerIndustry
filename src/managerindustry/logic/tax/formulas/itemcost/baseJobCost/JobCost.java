@@ -5,11 +5,10 @@
  */
 package managerindustry.logic.tax.formulas.itemcost.baseJobCost;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
+import managerindustry.db.entities.cache.PriceEntity;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.manager.managerCache.ManagerPrice;
-import java.text.DecimalFormatSymbols;
+import managerindustry.logic.manager.managerDB.ManagerDBCache;
 
 /**
  * Get Job Cost
@@ -20,6 +19,13 @@ import java.text.DecimalFormatSymbols;
 public class JobCost {
     public static float getJobCost(int baseQuantity, String typeId) throws PriceNotExistsException {
         String adjustedPrice = ManagerPrice.getInstance().getAdjustedPriceEntity(typeId);
+        return Float.valueOf(adjustedPrice) * baseQuantity;
+    }  
+
+    public static float getJobCostDBG(int baseQuantity, String typeId) throws PriceNotExistsException {
+        PriceEntity priceEntity = ManagerDBCache.getInstance().getPriceEntity(typeId); 
+        String adjustedPrice = priceEntity.getAdjusted_price();
+        
         return Float.valueOf(adjustedPrice) * baseQuantity;
     }  
 }    

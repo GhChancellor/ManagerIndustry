@@ -23,4 +23,8 @@ public class SystemCostIndex {
     public static float SystemCostIndex(String solarSystemID, String actvity) throws SolarSystemNotExistsException{
         return ManagerSystemCostIndex.getInstance().getCostIndexEntity(solarSystemID, actvity);
     }
+
+    public static float SystemCostIndexDBG(String solarSystemID, String actvity) throws SolarSystemNotExistsException{
+        return ManagerSystemCostIndex.getInstance().getCostIndexEntityDBG(solarSystemID, actvity, false);
+    }
 }

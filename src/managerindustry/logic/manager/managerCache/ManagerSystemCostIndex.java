@@ -33,6 +33,8 @@ import managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices.System
         System.out.println(""+ managerSystemCostIndex.getCostIndexEntity("1", "manufacturing"));
 */
 public class ManagerSystemCostIndex {
+    boolean DBG_flag = true;
+    
     private TaxSolarSystemEntity taxSolarSystemEntity = new TaxSolarSystemEntity();
     private Map<String, SolarSystemCost > solarSystemMap = new HashMap<>();
     private String solarSystemID = null;
@@ -66,9 +68,9 @@ public class ManagerSystemCostIndex {
         SolarSystemCost solarSystem = this.solarSystemMap.get(this.solarSystemID);
         
         if ( solarSystem == null){
-            this.solarSystemMap = SystemCostFetch.getSystemCostIndexs();
+                this.solarSystemMap = SystemCostFetch.getSystemCostIndexs();
+                solarSystem = this.solarSystemMap.get(this.solarSystemID);               
             
-            solarSystem = this.solarSystemMap.get(this.solarSystemID);
             if ( solarSystem == null ){
                 throw new SolarSystemNotExistsException();
             }else{
@@ -206,6 +208,13 @@ public class ManagerSystemCostIndex {
         
     }
 
+    public float getCostIndexEntityDBG(String solarSystemID, String activity, boolean flag) throws SolarSystemNotExistsException{
+        DBG_flag = flag;
+        this.taxSolarSystemEntity = 
+         ManagerDBCache.getInstance().getSolarSystemEntity(solarSystemID);
+        return getCostIndexEntity(solarSystemID, activity);
+    }
+    
     /**
      * Get Cost Index Entity
      * @param String solarSystemID
@@ -214,35 +223,25 @@ public class ManagerSystemCostIndex {
      * @throws SolarSystemNotExistsException 
      */
     public float getCostIndexEntity(String solarSystemID, String activity) throws SolarSystemNotExistsException{
-        initAll(solarSystemID);
+        
+        // DBG esclude i valori presi da EVe Server
+        if ( DBG_flag ){
+            initAll(solarSystemID);
+        }           
 
         if (taxSolarSystemEntity == null)
-            throw new SolarSystemNotExistsException();        
-        
-//        TaxSolarSystemEntity taxSolarSystemEntity = ManagerDBCache.getInstance().getSolarSystemEntity(solarSystemID);
-//  
-//        if ( taxSolarSystemEntity == null){
-//            initAll(solarSystemID);
-//            
-//            if (taxSolarSystemEntity == null)
-//                throw new SolarSystemNotExistsException();
-//        }        
+            throw new SolarSystemNotExistsException();            
             
         List < TaxCostIndexEntity > taxCostIndexEntitys = taxSolarSystemEntity.getTaxCostIndexEntities();
         if (taxCostIndexEntitys.isEmpty()){
-//            this.solarSystemMap.clear();
             return 0f;
-        }
-            
+        }           
         
         for (TaxCostIndexEntity taxCostIndexEntity : taxCostIndexEntitys) {
             if ( taxCostIndexEntity.getActivity().equals(activity)){
-//                this.solarSystemMap.clear();
-
                 return Float.parseFloat(taxCostIndexEntity.getCostIndex());
             }
         }
-//        this.solarSystemMap.clear();
         return 0f;        
     }
 }

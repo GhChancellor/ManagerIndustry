@@ -23,7 +23,7 @@ public class ManagerIndustry {
         
         ManagerDisplay managerDisplay = new ManagerDisplay();
 //        managerDisplay.buildItem();
-//        managerDisplay.itemDescription();
+        managerDisplay.itemDescription();
 //        managerDisplay.displayValueRig();
 //        managerDisplay.engineeringComplex();
 //        managerDisplay.getSolarSystemID();

@@ -24,28 +24,35 @@ public class BaseJobCost {
     public BaseJobCost() {
     
     }
-        
+
+    public float getBaseJobCostDBG(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap) throws PriceNotExistsException{
+        return 0f;
+    }
+    
     /**
      * Get Base Job Cost
      * tot = tritanium 30 isk + pyerite 50 isk + mexallon 25 isk
-     * @param totalCalculatedComponentXMap
+     * @param reportCalculatedComponentXMap
      * @return float
      * @throws PriceNotExistsException 
      */
-    public float getBaseJobCost(Map<String, ReportCalculatedComponentX>  totalCalculatedComponentXMap) throws PriceNotExistsException{
+    public float getBaseJobCost(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap) throws PriceNotExistsException{
         Float sumJobcost = 0f;
         
-        for (Map.Entry<String, ReportCalculatedComponentX> entry : totalCalculatedComponentXMap.entrySet()) {
+        for (Map.Entry<String, ReportCalculatedComponentX> entry : reportCalculatedComponentXMap.entrySet()) {
 //            String key = entry.getKey();
             ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
             InvTypes invTypes = 
              ManagerDBEve.getInstance().getInvTypes_IdByName(totalCalculatedComponent.getName());
             
-            Float tempSumJobcost = 
-             JobCost.getJobCost(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
-            sumJobcost += tempSumJobcost; 
+//            Float jobCost = 
+//             JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
             
-            sumOfEachJobcosts.add(tempSumJobcost);
+            Float jobCost = 
+             JobCost.getJobCost(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
+            
+            sumJobcost += jobCost;            
+            sumOfEachJobcosts.add(jobCost);
         }
 
         return sumJobcost;
