@@ -35,12 +35,13 @@ public class ResearchCosts extends ItemCost{
      * @throws PriceNotExistsException 
      */
     public ResearchCosts(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
-        String solarSystemID, String actvity, int startLevel, int finishLevel ) throws SolarSystemNotExistsException, PriceNotExistsException {
+        String solarSystemID, String actvity, float facilityTax, int startLevel, int finishLevel ) throws SolarSystemNotExistsException, PriceNotExistsException {
         
         setReportCalculatedComponentX(reportCalculatedComponentXMap);
         setSolarSystemID(solarSystemID);
         setActvity(actvity);
         setRun(startLevel);
+        setTaxRate(facilityTax);
         this.finishLevel = finishLevel;
         
 // ManagerSystemCostIndex > SolarSystemCost > getCostIndexEntity() 
@@ -67,18 +68,34 @@ public class ResearchCosts extends ItemCost{
         levels.add(0); levels.add(105); levels.add(250); levels.add(595);
         levels.add(1414); levels.add(3360); levels.add(8000); levels.add(19000);
         levels.add(45255); levels.add(107700); levels.add(256000);
+        // float xxx = getBaseJobCost() * getSystemCostIndex() * getPercent() * levels.get(finishLevel);
         
-        if ( getRun() > this.finishLevel && 
-                levels.size() <= this.finishLevel){
-            setJobFee( getBaseJobCost() * getSystemCostIndex() * getPercent() * levels.get(finishLevel) );
-        }
+        float tempJobFee = getBaseJobCost() * getSystemCostIndex() * getPercent() * levels.get(finishLevel) / 105;
+//        for (int i = 0; i < this.finishLevel; i++) {
+//           tempJobFee += getBaseJobCost() * getSystemCostIndex() * getPercent() * levels.get(finishLevel);
+//        }
+        setJobFee( tempJobFee );
+        
     }
+
+    @Override
+    public void calculateFacilityTaxes(List<Float> sumOfEachJobcosts) {
+        float facilityTaxes = 0f;
+                
+        for (Float sumOfEachJobcost : sumOfEachJobcosts) {
+            facilityTaxes += ( sumOfEachJobcost * getSystemCostIndex() * getAdjustment() * getRun() ) * getTaxRate(); // / 100;
+        }
+        
+        System.out.println("");
+    }
+    
+    
     
     /**
      * Get Research Costs
      * @return float
      */
     public float getResearchCosts(){
-        return getResearchCosts();
+        return getJobFee();
     }
 }

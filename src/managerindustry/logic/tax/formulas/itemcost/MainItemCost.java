@@ -75,8 +75,8 @@ public class MainItemCost {
      * @throws PriceNotExistsException 
      */    
     public void calculateResearchCosts(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
-        String solarSystemID, String actvity, int startLevel, int finishLevel) throws SolarSystemNotExistsException, PriceNotExistsException{
-        ResearchCosts researchCosts = new ResearchCosts(reportCalculatedComponentXMap, solarSystemID, actvity, startLevel, finishLevel);
+        String solarSystemID, String actvity, float facilityTax, int startLevel, int finishLevel) throws SolarSystemNotExistsException, PriceNotExistsException{
+        ResearchCosts researchCosts = new ResearchCosts(reportCalculatedComponentXMap, solarSystemID, actvity, facilityTax, startLevel, finishLevel);
         
         System.out.println("\nRESEARCH COST");
         System.out.printf("Research cost / JobFee %f\n", researchCosts.getResearchCosts());

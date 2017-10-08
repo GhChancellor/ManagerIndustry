@@ -37,12 +37,12 @@ public class JobInstallationCosts extends ItemCost{
         setReportCalculatedComponentX(reportCalculatedComponentXMap);
         setSolarSystemID(solarSystemID);
         setActvity(actvity);
-        setRun(run);
         setTaxRate(taxRate);
-        
+
+        setRun(run);
         // ManagerSystemCostIndex > SolarSystemCost > getCostIndexEntity() 
          setSystemCostIndex( SystemCostIndex.SystemCostIndexDBG(solarSystemID, actvity) );
-//        setSystemCostIndex( SystemCostIndex.SystemCostIndex(solarSystemID, actvity) );
+       // setSystemCostIndex( SystemCostIndex.SystemCostIndex(solarSystemID, actvity) );
         
         BaseJobCost baseJobCost = new BaseJobCost();
         
