@@ -23,7 +23,7 @@ import managerindustry.logic.tax.formulas.itemcost.MainItemCost;
  */
 public class ManagerJobInstallationFee {
     public static void main(String[] args) throws SolarSystemNotExistsException, PriceNotExistsException {
-        String solarSystemID = String.valueOf( SolarSystem.getSolarSystemID("Isanamo") ); // Sotrentaira 30001369// Isanamo 30001389
+        String solarSystemID = String.valueOf( SolarSystem.getSolarSystemID("Sobaseki") ); // Sotrentaira 30001369// Isanamo 30001389
         System.out.println("Id Solar system "+ solarSystemID);
         
         // String item = "1MN Civilian Afterburner";
@@ -41,7 +41,7 @@ public class ManagerJobInstallationFee {
         float taxRateStation = 0.1f;
         int runPerCopy = 1;
         int startLevel = 0;
-        int finishLevel = 1;
+        int finishLevel = 10;
         ManagerBuild managerBuildX1 = 
                 new ManagerBuild(item, run, job, bpoME, componentMe);
                         
@@ -49,8 +49,22 @@ public class ManagerJobInstallationFee {
          ManagerComponentX.getInstance().getReportCalculatedComponentXMap();
 
         MainItemCost mainItemCost = new MainItemCost();
-        mainItemCost.calculateJobInstallationCost(reportCalculatedComponentXMap, solarSystemID, "manufacturing", run, taxRateStation);
-        mainItemCost.calculateCopingFee(reportCalculatedComponentXMap, solarSystemID, "copying", run, taxRateStation, runPerCopy);
+        
+        mainItemCost.calculateJobInstallationCost
+         (reportCalculatedComponentXMap, solarSystemID, "manufacturing",
+          run, taxRateStation);
+        mainItemCost.calculateCopingFee
+         (reportCalculatedComponentXMap, solarSystemID, "copying", 
+          run, taxRateStation, runPerCopy);
+        
+        mainItemCost.calculateResearchCosts
+         (reportCalculatedComponentXMap, solarSystemID, "researching_material_efficiency", 
+          run, taxRateStation, startLevel, finishLevel);
+        
+        mainItemCost.calculateResearchCosts
+         (reportCalculatedComponentXMap, solarSystemID, "researching_time_efficiency", 
+          run, taxRateStation, startLevel, finishLevel);
+        
 
     }
 }

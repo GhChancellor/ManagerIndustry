@@ -21,12 +21,26 @@ public class ResearchCosts extends ItemCost{
     int startLevel;
     int finishLevel;
     
+    /**
+     * 
+     * @param Map<String, ReportCalculatedComponentX> reportCalculatedComponentXMap
+     * @param String solarSystemID
+     * @param String actvity
+     * @param int run
+     * @param float facilityTax
+     * @param int startLevel
+     * @param int finishLevel
+     * @throws SolarSystemNotExistsException
+     * @throws PriceNotExistsException 
+     */    
     public ResearchCosts(Map<String, ReportCalculatedComponentX> reportCalculatedComponentXMap, 
      String solarSystemID, String actvity, int run, float facilityTax,
      int startLevel, int finishLevel)
       throws SolarSystemNotExistsException, PriceNotExistsException {
         
         super(reportCalculatedComponentXMap, solarSystemID, actvity, run, facilityTax);
+        this.startLevel = startLevel;
+        this.finishLevel = finishLevel;
         
         calculateResearchCosts();
         calculateFacilityTaxes( getSumOfEachJobcosts() );
@@ -41,28 +55,17 @@ public class ResearchCosts extends ItemCost{
         levels.add(0); levels.add(105); levels.add(250); levels.add(595);
         levels.add(1414); levels.add(3360); levels.add(8000); levels.add(19000);
         levels.add(45255); levels.add(107700); levels.add(256000);
-        // float xxx = getBaseJobCost() * getSystemCostIndex() * getPercent() * levels.get(finishLevel);
         
-        float tempJobFee = getBaseJobCost() * getSystemCostIndex() * getPercent() * levels.get(finishLevel) / 105;
-//        for (int i = 0; i < this.finishLevel; i++) {
-//           tempJobFee += getBaseJobCost() * getSystemCostIndex() * getPercent() * levels.get(finishLevel);
-//        }
+        float tempJobFee = getBaseJobCost() * getSystemCostIndex() * getPercent() * getAdjustment() * levels.get(finishLevel) / 105;
+
         setJobFee( tempJobFee );
         
     }
 
     @Override
     public void calculateFacilityTaxes(List<Float> sumOfEachJobcosts) {
-        float facilityTaxes = 0f;
-                
-        for (Float sumOfEachJobcost : sumOfEachJobcosts) {
-            facilityTaxes += ( sumOfEachJobcost * getSystemCostIndex() * getAdjustment() * getRun() ) * getTaxRate(); // / 100;
-        }
-        
-        System.out.println("");
+        setFacilityTaxes( getJobFee() * getTaxRate() );
     }
-    
-    
     
     /**
      * Get Research Costs

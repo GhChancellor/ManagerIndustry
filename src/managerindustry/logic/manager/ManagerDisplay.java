@@ -164,7 +164,7 @@ public class ManagerDisplay {
     
     public void itemDescription(){
         // 43867 Standup M-Set Advanced Component Manufacturing Material Efficiency I
-        String bpoName = "Hammerhead I Blueprint copy";
+        String bpoName = "drake Blueprint"; // Nighthawk Blueprint 
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(bpoName);
         
         List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
@@ -176,22 +176,22 @@ public class ManagerDisplay {
             DgmAttributeTypes dgmAttributeTypes = 
              ManagerDBEve.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
             
-//            if (dgmTypeAttribute.getValueInt() == null) {
-//                System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  +
-//                " " + dgmTypeAttribute.getValueFloat() + "\n");
-//            }
-//            
-//            if (dgmTypeAttribute.getValueFloat() == null) {
-//                System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  + " " + dgmTypeAttribute.getValueInt() + "\n");                
-//            }
-//            
-//            if (dgmAttributeTypes.getDisplayName() == null ){
-//                System.out.println(""+ dgmAttributeTypes.getDescription()  + " " + dgmTypeAttribute.getValueInt() + " " + dgmTypeAttribute.getValueFloat() + "\n");
-//            }
-//            
-//            if ( dgmAttributeTypes.getDescription() == null ){
-//                System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmTypeAttribute.getValueInt() + " " + dgmTypeAttribute.getValueFloat() + "\n");                
-//            }
+            if (dgmTypeAttribute.getValueInt() == null) {
+                System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  +
+                " " + dgmTypeAttribute.getValueFloat() + "\n");
+            }
+            
+            if (dgmTypeAttribute.getValueFloat() == null) {
+                System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  + " " + dgmTypeAttribute.getValueInt() + "\n");                
+            }
+            
+            if (dgmAttributeTypes.getDisplayName() == null ){
+                System.out.println(""+ dgmAttributeTypes.getDescription()  + " " + dgmTypeAttribute.getValueInt() + " " + dgmTypeAttribute.getValueFloat() + "\n");
+            }
+            
+            if ( dgmAttributeTypes.getDescription() == null ){
+                System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmTypeAttribute.getValueInt() + " " + dgmTypeAttribute.getValueFloat() + "\n");                
+            }
             
             System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  + " " +
              + dgmAttributeTypes.getAttributeID() + " " + dgmTypeAttribute.getValueInt() + " " + dgmTypeAttribute.getValueFloat() + "\n");

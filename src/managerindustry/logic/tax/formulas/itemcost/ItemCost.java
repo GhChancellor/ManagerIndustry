@@ -21,7 +21,8 @@ import managerindustry.logic.tax.formulas.itemcost.systemCostIndex.SystemCostInd
  *
  * @author lele
  */
-public class ItemCost {    
+public class ItemCost {
+    // https://community.eveonline.com/news/dev-blogs/eve-industry-all-you-want-to-know/
     private final float adjustment = 1.1f;
     private final float percent = 0.02f; // 2%
     private float systemCostIndex = 0f;
@@ -51,8 +52,8 @@ public class ItemCost {
 
         BaseJobCost baseJobCost = new BaseJobCost();
         // BaseJobCost > getBaseJobCostDBG 
-        this.baseJobCost = baseJobCost.getBaseJobCostDBG(this.reportCalculatedComponentXMap);
-        // this.baseJobCost = baseJobCost.getBaseJobCost(this.reportCalculatedComponentXMap);
+         this.baseJobCost = baseJobCost.getBaseJobCostDBG(this.reportCalculatedComponentXMap);
+//        this.baseJobCost = baseJobCost.getBaseJobCost(this.reportCalculatedComponentXMap);
         
         this.sumOfEachJobcosts = baseJobCost.getsumOfEachJobcosts();
     }
