@@ -9,12 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
+import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.exception.SolarSystemNotExistsException;
+import managerindustry.logic.manager.managerCache.ManagerSystemCostIndex;
+import managerindustry.logic.tax.formulas.itemcost.baseJobCost.BaseJobCost;
+import managerindustry.logic.tax.formulas.itemcost.systemCostIndex.SystemCostIndex;
+
+
 
 /**
  *
  * @author lele
  */
-public class ItemCost {
+public class ItemCost {    
     private final float adjustment = 1.1f;
     private final float percent = 0.02f; // 2%
     private float systemCostIndex = 0f;
@@ -25,24 +32,45 @@ public class ItemCost {
     private float facilityTaxes = 0f;
     private float totalInstallationCost = 0f;
     private List < Float > sumOfEachJobcosts = new ArrayList();     
-    private Map<String, ReportCalculatedComponentX>  reportCalculatedComponentX;
+    private Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap;
     private String solarSystemID;
     private String actvity;
 
+    public ItemCost(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
+        String solarSystemID, String actvity, int run, float facilityTax) throws SolarSystemNotExistsException, PriceNotExistsException {
+        
+        this.reportCalculatedComponentXMap = reportCalculatedComponentXMap;
+        this.solarSystemID = solarSystemID;
+        this.actvity = actvity;
+        this.run = run;
+        this.taxRate = facilityTax;
+        
+        // ManagerSystemCostIndex > SolarSystemCost > getCostIndexEntity() 
+        this.systemCostIndex = SystemCostIndex.SystemCostIndexDBG(solarSystemID, actvity);
+//        this.systemCostIndex = SystemCostIndex.SystemCostIndex(solarSystemID, actvity);
+
+        BaseJobCost baseJobCost = new BaseJobCost();
+        // BaseJobCost > getBaseJobCostDBG 
+        this.baseJobCost = baseJobCost.getBaseJobCostDBG(this.reportCalculatedComponentXMap);
+        // this.baseJobCost = baseJobCost.getBaseJobCost(this.reportCalculatedComponentXMap);
+        
+        this.sumOfEachJobcosts = baseJobCost.getsumOfEachJobcosts();
+    }
+    
     /**
      * Get Report Calculated ComponentX
      * @return Map<String, ReportCalculatedComponentX>
      */
-    public Map<String, ReportCalculatedComponentX> getReportCalculatedComponentX() {
-        return reportCalculatedComponentX;
+    public Map<String, ReportCalculatedComponentX> getReportCalculatedComponentXMap() {
+        return reportCalculatedComponentXMap;
     }
 
     /**
      * Set Report Calculated ComponentX
-     * @param Map<String, ReportCalculatedComponentX> reportCalculatedComponentX 
+     * @param Map<String, ReportCalculatedComponentX> reportCalculatedComponentXMap 
      */
-    public void setReportCalculatedComponentX(Map<String, ReportCalculatedComponentX> reportCalculatedComponentX) {
-        this.reportCalculatedComponentX = reportCalculatedComponentX;
+    public void setReportCalculatedComponentXMap(Map<String, ReportCalculatedComponentX> reportCalculatedComponentXMap) {
+        this.reportCalculatedComponentXMap = reportCalculatedComponentXMap;
     }
 
     /**

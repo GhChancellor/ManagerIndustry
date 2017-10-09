@@ -5,58 +5,38 @@
  */
 package managerindustry.logic.tax.formulas.itemcost.jobInstallationCosts;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.formulas.itemcost.ItemCost;
-import managerindustry.logic.tax.formulas.itemcost.baseJobCost.BaseJobCost;
-import managerindustry.logic.tax.formulas.itemcost.systemCostIndex.SystemCostIndex;
+import managerindustry.logic.tax.formulas.itemcost.ItemCost;
 
 /**
- *Job Installation Costs
+ *
  * @author lele
  */
-public class JobInstallationCosts extends ItemCost{   
+public class JobInstallationCosts extends ItemCost{
+
     /**
      * Calculate Job Installation Cost
-     * @param Map<String, ReportCalculatedComponentX> totalCalculatedComponentXMap
-     * @param String solarSystemID
-     * @param String actvity
-     * @param int run
-     * @param float facilityTax
+     * @param reportCalculatedComponentXMap
+     * @param solarSystemID
+     * @param actvity
+     * @param run
+     * @param taxRate
      * @throws SolarSystemNotExistsException
      * @throws PriceNotExistsException 
-     */    
+     */
     public JobInstallationCosts(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
-        String solarSystemID, String actvity, int run ,float taxRate) 
-         throws SolarSystemNotExistsException, PriceNotExistsException {
-
-        setReportCalculatedComponentX(reportCalculatedComponentXMap);
-        setSolarSystemID(solarSystemID);
-        setActvity(actvity);
-        setTaxRate(taxRate);
-
-        setRun(run);
-        // ManagerSystemCostIndex > SolarSystemCost > getCostIndexEntity() 
-         setSystemCostIndex( SystemCostIndex.SystemCostIndexDBG(solarSystemID, actvity) );
-       // setSystemCostIndex( SystemCostIndex.SystemCostIndex(solarSystemID, actvity) );
+        String solarSystemID, String actvity, int run ,float taxRate) throws SolarSystemNotExistsException, PriceNotExistsException {
+        super(reportCalculatedComponentXMap, solarSystemID, actvity, run, taxRate);
         
-        BaseJobCost baseJobCost = new BaseJobCost();
-        
-        // BaseJobCost > getBaseJobCostDBG
-        setBaseJobCost( baseJobCost.getBaseJobCostDBG(reportCalculatedComponentXMap) );        
-//        setBaseJobCost( baseJobCost.getBaseJobCost(reportCalculatedComponentXMap) );
-
-
-        setSumOfEachJobcosts( baseJobCost.getsumOfEachJobcosts() );
         calculateJobInstallationCost();
         calculateFacilityTaxes( getSumOfEachJobcosts() );
         calculateTotalInstallationCost();
     }
-    
+
     /**
      * Calculate Job Installation Cost
      */

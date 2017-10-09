@@ -12,54 +12,27 @@ import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.formulas.itemcost.ItemCost;
-import managerindustry.logic.tax.formulas.itemcost.baseJobCost.BaseJobCost;
-import managerindustry.logic.tax.formulas.itemcost.systemCostIndex.SystemCostIndex;
 
 /**
- * Research Costs
+ *
  * @author lele
  */
 public class ResearchCosts extends ItemCost{
     int startLevel;
     int finishLevel;
     
-    /**
-     * Research Costs
-     * Map<String, ReportCalculatedComponentX>
-     * @param reportCalculatedComponentXMap
-     * @param String solarSystemID
-     * @param String actvity
-     * @param int startLevel
-     * @param int finishLevel
-     * @throws SolarSystemNotExistsException
-     * @throws PriceNotExistsException 
-     */
-    public ResearchCosts(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
-        String solarSystemID, String actvity, float facilityTax, int startLevel, int finishLevel ) throws SolarSystemNotExistsException, PriceNotExistsException {
+    public ResearchCosts(Map<String, ReportCalculatedComponentX> reportCalculatedComponentXMap, 
+     String solarSystemID, String actvity, int run, float facilityTax,
+     int startLevel, int finishLevel)
+      throws SolarSystemNotExistsException, PriceNotExistsException {
         
-        setReportCalculatedComponentX(reportCalculatedComponentXMap);
-        setSolarSystemID(solarSystemID);
-        setActvity(actvity);
-        setRun(startLevel);
-        setTaxRate(facilityTax);
-        this.finishLevel = finishLevel;
+        super(reportCalculatedComponentXMap, solarSystemID, actvity, run, facilityTax);
         
-// ManagerSystemCostIndex > SolarSystemCost > getCostIndexEntity() 
-         setSystemCostIndex( SystemCostIndex.SystemCostIndexDBG(solarSystemID, actvity) );
-//        setSystemCostIndex( SystemCostIndex.SystemCostIndex(solarSystemID, actvity) );
-        
-        BaseJobCost baseJobCost = new BaseJobCost();
-        
-        // BaseJobCost > getBaseJobCostDBG
-        setBaseJobCost( baseJobCost.getBaseJobCostDBG(reportCalculatedComponentXMap) );        
-//        setBaseJobCost( baseJobCost.getBaseJobCost(reportCalculatedComponentXMap) );
-
-        setSumOfEachJobcosts( baseJobCost.getsumOfEachJobcosts() );
         calculateResearchCosts();
         calculateFacilityTaxes( getSumOfEachJobcosts() );
-        calculateTotalInstallationCost();
+        calculateTotalInstallationCost();        
     }
-    
+
     /**
      * Calculate Research Costs
      */
@@ -97,5 +70,5 @@ public class ResearchCosts extends ItemCost{
      */
     public float getResearchCosts(){
         return getJobFee();
-    }
+    }    
 }

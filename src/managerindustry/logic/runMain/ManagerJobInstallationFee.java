@@ -44,21 +44,13 @@ public class ManagerJobInstallationFee {
         int finishLevel = 1;
         ManagerBuild managerBuildX1 = 
                 new ManagerBuild(item, run, job, bpoME, componentMe);
-        
-        
-//        ManagerBuildOLD managerBuild = new ManagerBuildOLD();
-//                                                //  run Job  meBPO  MeComponent
-//        managerBuild.buildItem(item + " blueprint", run, job  , bpoME  ,  componentMe);
-// 
-//        System.out.println("-------------------------------");        
-        
+                        
         Map < String, ReportCalculatedComponentX > reportCalculatedComponentXMap = 
          ManagerComponentX.getInstance().getReportCalculatedComponentXMap();
-//
+
         MainItemCost mainItemCost = new MainItemCost();
-//        mainItemCost.calculateJobInstallationCost(reportCalculatedComponentXMap, solarSystemID, "manufacturing", run, taxRateStation);
-//        mainItemCost.calculateCopingFee(reportCalculatedComponentXMap, solarSystemID, "copying", run, taxRateStation, runPerCopy);
-         mainItemCost.calculateResearchCosts(reportCalculatedComponentXMap, solarSystemID, "researching_material_efficiency", taxRateStation, startLevel, finishLevel);
+        mainItemCost.calculateJobInstallationCost(reportCalculatedComponentXMap, solarSystemID, "manufacturing", run, taxRateStation);
+        mainItemCost.calculateCopingFee(reportCalculatedComponentXMap, solarSystemID, "copying", run, taxRateStation, runPerCopy);
 
     }
 }

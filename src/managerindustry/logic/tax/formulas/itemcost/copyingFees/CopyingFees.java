@@ -10,11 +10,9 @@ import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.formulas.itemcost.ItemCost;
-import managerindustry.logic.tax.formulas.itemcost.baseJobCost.BaseJobCost;
-import managerindustry.logic.tax.formulas.itemcost.systemCostIndex.SystemCostIndex;
 
 /**
- * Copying Fees
+ *
  * @author lele
  */
 public class CopyingFees extends ItemCost{
@@ -30,39 +28,21 @@ public class CopyingFees extends ItemCost{
      * @param int runPerCopy
      * @throws SolarSystemNotExistsException
      * @throws PriceNotExistsException 
-     */    
-    public CopyingFees(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
-        String solarSystemID, String actvity, int run ,float taxRate, int runPerCopy) 
-         throws SolarSystemNotExistsException, PriceNotExistsException {
-        
-        setReportCalculatedComponentX(reportCalculatedComponentXMap);
-        setSolarSystemID(solarSystemID);
-        setActvity(actvity);
-        setRun(run);
-        setTaxRate(taxRate);
+     */      
+    public CopyingFees(Map<String, ReportCalculatedComponentX> reportCalculatedComponentXMap, 
+        String solarSystemID, String actvity, int run, float facilityTax, int runPerCopy) throws SolarSystemNotExistsException, PriceNotExistsException {
+        super(reportCalculatedComponentXMap, solarSystemID, actvity, run, facilityTax);
         this.runPerCopy = runPerCopy;
         
-        // ManagerSystemCostIndex > SolarSystemCost > getCostIndexEntity() 
-         setSystemCostIndex( SystemCostIndex.SystemCostIndexDBG(solarSystemID, actvity) );
-//        setSystemCostIndex( SystemCostIndex.SystemCostIndex(solarSystemID, actvity) );
-        
-        BaseJobCost baseJobCost = new BaseJobCost();
-        
-        // BaseJobCost > getBaseJobCostDBG
-        setBaseJobCost( baseJobCost.getBaseJobCostDBG(reportCalculatedComponentXMap) );        
-//        setBaseJobCost( baseJobCost.getBaseJobCost(reportCalculatedComponentXMap) );   
-
-        setSumOfEachJobcosts( baseJobCost.getsumOfEachJobcosts() );
         calculateCopyingFee();
         calculateFacilityTaxes( getSumOfEachJobcosts() );
-        calculateTotalInstallationCost();
+        calculateTotalInstallationCost();        
     }
-    
     /**
      * Calculate Copying Fee
      */
     public void calculateCopyingFee(){
-        setJobFee( getBaseJobCost() * getSystemCostIndex() * getRun() * getPercent() * runPerCopy  );
+        setJobFee( getBaseJobCost() * getSystemCostIndex() * getRun() * getPercent() * this.runPerCopy  );
     }
     
     /**
@@ -71,9 +51,5 @@ public class CopyingFees extends ItemCost{
      */
     public float getCopingFee(){
         return getJobFee();
-    }
-    // Copying fees
-    // jobF ee = baseJobCost ∗ systemCostIndex ∗ 0.02 ∗ runs ∗ runsPerCopy
-    
-    
+    }    
 }
