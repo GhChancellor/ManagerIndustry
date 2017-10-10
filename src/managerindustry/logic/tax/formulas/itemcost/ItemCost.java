@@ -37,6 +37,9 @@ public class ItemCost {
     private String solarSystemID;
     private String actvity;
 
+    public ItemCost() {
+    }
+
     public ItemCost(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
         String solarSystemID, String actvity, int run, float facilityTax) throws SolarSystemNotExistsException, PriceNotExistsException {
         

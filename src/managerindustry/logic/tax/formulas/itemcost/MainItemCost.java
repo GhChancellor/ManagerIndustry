@@ -74,9 +74,25 @@ public class MainItemCost{
         ResearchCosts researchCosts = new ResearchCosts(reportCalculatedComponentXMap, solarSystemID, actvity, run, taxRate, startLevel, finishLevel);
         
         System.out.println("\nRESEARCH COST ");
+        System.out.println("Start Level");
+//        researchCosts.xxx(0);
+        
         System.out.printf("researching_material_efficiency / researching_time_efficiency %f\n", researchCosts.getResearchCosts());
         System.out.printf("Total facilityTax %f\n", researchCosts.getFacilityTaxes() );
-        System.out.printf("Tot cost job %f\n", researchCosts.getTotalInstallationCost());         
+        System.out.printf("Tot cost job %f\n", researchCosts.getTotalInstallationCost());            
+
+        System.out.println("\nFinish Level");
+        researchCosts.xxx(1);        
+
+        System.out.printf("researching_material_efficiency / researching_time_efficiency %f\n", researchCosts.getResearchCosts());
+        System.out.printf("Total facilityTax %f\n", researchCosts.getFacilityTaxes() );
+        System.out.printf("Tot cost job %f\n", researchCosts.getTotalInstallationCost());    
+        
+        System.out.println("\nDifferent");
+        researchCosts.xxx2();
+        System.out.printf("researching_material_efficiency / researching_time_efficiency %f\n", researchCosts.getResearchCosts());
+        System.out.printf("Total facilityTax %f\n", researchCosts.getFacilityTaxes() );
+        System.out.printf("Tot cost job %f\n", researchCosts.getTotalInstallationCost());          
     
     }
 }

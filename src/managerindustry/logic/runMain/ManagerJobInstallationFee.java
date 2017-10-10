@@ -29,18 +29,18 @@ public class ManagerJobInstallationFee {
         // String item = "1MN Civilian Afterburner";
 
 //        String item = "Hammerhead I";
-        String item = "Hammerhead I";
+        String item = "Punisher";
         
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(item);
         System.out.println(""+ item + " ID: " +invTypes.getTypeID());
         
-        int run = 1;
+        int run = 662;
         int job = 1;
-        int bpoME = 10;
+        int bpoME = 5;
         int componentMe = 0;
         float taxRateStation = 0.1f;
-        int runPerCopy = 1;
-        int startLevel = 0;
+        int runPerCopy = 5;
+        int startLevel = 5;
         int finishLevel = 10;
         ManagerBuild managerBuildX1 = 
                 new ManagerBuild(item, run, job, bpoME, componentMe);
@@ -53,18 +53,18 @@ public class ManagerJobInstallationFee {
         mainItemCost.calculateJobInstallationCost
          (reportCalculatedComponentXMap, solarSystemID, "manufacturing",
           run, taxRateStation);
+        
         mainItemCost.calculateCopingFee
          (reportCalculatedComponentXMap, solarSystemID, "copying", 
           run, taxRateStation, runPerCopy);
         
         mainItemCost.calculateResearchCosts
-         (reportCalculatedComponentXMap, solarSystemID, "researching_material_efficiency", 
-          run, taxRateStation, startLevel, finishLevel);
-        
-        mainItemCost.calculateResearchCosts
          (reportCalculatedComponentXMap, solarSystemID, "researching_time_efficiency", 
           run, taxRateStation, startLevel, finishLevel);
-        
+
+        mainItemCost.calculateResearchCosts
+         (reportCalculatedComponentXMap, solarSystemID, "researching_material_efficiency", 
+          run, taxRateStation, startLevel, finishLevel);
 
     }
 }
