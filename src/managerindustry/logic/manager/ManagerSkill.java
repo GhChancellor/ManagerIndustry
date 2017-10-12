@@ -12,7 +12,12 @@ import managerindustry.logic.skill.Skill;
 import managerindustry.logic.skill.specificSkill.BrokerFee;
 
 /**
- *
+ *  SELECT invTypes.typeName, invTypes.typeID, invTypes.description, dgmTypeAttributes.valueFloat, dgmTypeAttributes.valueInt, dgmAttributeTypes.attributeName,
+  dgmAttributeTypes.attributeID  
+  FROM invTypes, dgmTypeAttributes, dgmAttributeTypes 
+  WHERE invTypes.typeName="Advanced Industrial Ship Construction"   and invTypes.typeID=dgmTypeAttributes.typeID and invTypes.typeID=dgmTypeAttributes.typeID 
+  and dgmTypeAttributes.attributeID = dgmAttributeTypes.attributeID;
+ * https://wiki.eveuniversity.org/Skills:Production#Advanced_Industrial_Ship_Construction
  * @author lele
  */
 public class ManagerSkill {
@@ -52,6 +57,9 @@ public class ManagerSkill {
         return this.skillMap.get(nameSkill);
     }
     
+    /**
+     *   SELECT * FROM invTypes where invTypes.groupID=268;
+     */
     public void initSkill(){
         Skill skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3380, true, 440);
         addSkillMap(skill.getName(), new Skill(skill.getName()) );                

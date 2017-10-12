@@ -50,9 +50,10 @@ public class ItemCost {
         this.taxRate = facilityTax;
         
         // ManagerSystemCostIndex > SolarSystemCost > getCostIndexEntity() 
-        this.systemCostIndex = SystemCostIndex.SystemCostIndexDBG(solarSystemID, actvity);
-//        this.systemCostIndex = SystemCostIndex.SystemCostIndex(solarSystemID, actvity);
+//        this.systemCostIndex = SystemCostIndex.SystemCostIndexDBG(solarSystemID, actvity);
+        this.systemCostIndex = SystemCostIndex.SystemCostIndex(solarSystemID, actvity);
 
+        System.out.println("");
         BaseJobCost baseJobCost = new BaseJobCost();
         // BaseJobCost > getBaseJobCostDBG 
          this.baseJobCost = baseJobCost.getBaseJobCostDBG(this.reportCalculatedComponentXMap);

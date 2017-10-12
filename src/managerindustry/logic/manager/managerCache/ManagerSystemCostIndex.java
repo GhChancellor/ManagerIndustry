@@ -15,9 +15,9 @@ import managerindustry.db.entities.cache.TaxCostIndexEntity;
 import managerindustry.db.entities.cache.TaxSolarSystemEntity;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.managerDB.ManagerDBCache;
-import managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices.CostIndex;
-import managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices.SolarSystemCost;
-import managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices.SystemCostFetch;
+import managerindustry.logic.json.tax.json.systemCostIndices.CostIndex;
+import managerindustry.logic.json.tax.json.systemCostIndices.SolarSystemCost;
+import managerindustry.logic.json.tax.json.systemCostIndices.SystemCostFetch;
 
 /**
  * Update, create and delete all Solar system
@@ -177,6 +177,7 @@ public class ManagerSystemCostIndex {
             throw new SolarSystemNotExistsException(solarSystemID);
         
         for (TaxSolarSystemEntity taxSolarSystemEntity : tempTaxSolarSystemEntity) {
+            // qui
             this.solarSystemID = taxSolarSystemEntity.getSolarSystemID();
             this.taxSolarSystemEntity = taxSolarSystemEntity;
             updateSolarSystem(false);

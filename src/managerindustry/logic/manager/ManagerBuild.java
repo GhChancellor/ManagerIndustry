@@ -14,7 +14,6 @@ import managerindustry.logic.buiild.ComponentX;
 import managerindustry.logic.buiild.MaterialEfficiencyCalculate;
 import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
-import managerindustry.logic.manager.ManagerComponentX;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
 /**

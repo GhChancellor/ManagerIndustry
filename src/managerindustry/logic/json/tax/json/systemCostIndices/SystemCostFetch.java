@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax.formulas.itemcost.json.systemCostIndices;
+package managerindustry.logic.json.tax.json.systemCostIndices;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
