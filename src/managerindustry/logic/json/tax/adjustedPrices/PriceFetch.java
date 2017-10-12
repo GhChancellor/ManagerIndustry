@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.json.tax.json.adjustedPrices;
+package managerindustry.logic.json.tax.adjustedPrices;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

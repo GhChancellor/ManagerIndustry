@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Map;
 import managerindustry.logic.buiild.ComponentX;
 import managerindustry.logic.manager.ManagerComponentX;
-import managerindustry.logic.json.tax.json.adjustedPrices.Price;
-import managerindustry.logic.json.tax.json.adjustedPrices.PriceFetch;
-import managerindustry.logic.json.tax.json.systemCostIndices.SolarSystemCost;
-import managerindustry.logic.json.tax.json.systemCostIndices.SystemCostFetch;
+import managerindustry.logic.json.tax.adjustedPrices.Price;
+import managerindustry.logic.json.tax.adjustedPrices.PriceFetch;
+import managerindustry.logic.json.tax.systemCostIndices.SolarSystemCost;
+import managerindustry.logic.json.tax.systemCostIndices.SystemCostFetch;
 
 /**
  *

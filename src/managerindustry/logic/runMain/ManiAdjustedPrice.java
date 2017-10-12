@@ -2,9 +2,9 @@ package managerindustry.logic.runMain;
 
 
 import java.util.Map;
-import managerindustry.logic.json.tax.json.adjustedPrices.Price;
-import managerindustry.logic.json.tax.json.adjustedPrices.PriceFetch;
-import managerindustry.logic.json.tax.json.adjustedPrices.PriceFetch;
+import managerindustry.logic.json.tax.adjustedPrices.Price;
+import managerindustry.logic.json.tax.adjustedPrices.PriceFetch;
+import managerindustry.logic.json.tax.adjustedPrices.PriceFetch;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
