@@ -13,41 +13,31 @@ import java.util.List;
  * @author lele
  */
 public class SkillX {
-    private String skills;
+
     private String total_sp;
-    private List < Parameter > parameters = new ArrayList<>();
-    
-    public SkillX(String skills, String total_sp) {
-        this.skills = skills;
+    private Skills[] skills;
+
+    public SkillX(Skills[] skills, String total_sp) {
         this.total_sp = total_sp;
+        this.skills = skills;
     }
 
-    public String getSkills() {
+    
+    
+    public Skills[] getSkills() {
         return skills;
     }
 
-    public void setSkills(String skills) {
+    public void setSkills(Skills[] skills) {
         this.skills = skills;
     }
-
+    
     public String getTotal_sp() {
         return total_sp;
     }
 
     public void setTotal_sp(String total_sp) {
         this.total_sp = total_sp;
-    }
-
-    public List<Parameter> getParameters() {
-        return parameters;
-    }
-
-    public void setParameters(List<Parameter> parameters) {
-        this.parameters = parameters;
-    }
-    
-    public void addParameters( Parameter parameter) {
-        this.parameters.add(parameter);
     }
     
     

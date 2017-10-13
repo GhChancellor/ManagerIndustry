@@ -9,21 +9,21 @@ package managerindustry.logic.skill;
  *
  * @author lele
  */
-public class Skill {
+public class SkillXXX {
     private String name;
     private String description;
     private float valueFloat;
     private int valueInt;
     private float startingValue;
 
-    public Skill() {
+    public SkillXXX() {
     }
     
     /**
      * Set name Skill
      * @param String nameSkill 
      */
-    public Skill(String nameSkill){
+    public SkillXXX(String nameSkill){
         this.name = nameSkill;
     }
 

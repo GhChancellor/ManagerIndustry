@@ -14,7 +14,7 @@ import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.db.entities.IndustryActivityMaterials;
 import managerindustry.db.entities.InvNames;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.skill.Skill;
+import managerindustry.logic.skill.SkillXXX;
 
 
 /**
@@ -73,19 +73,19 @@ public class ManagerDBEve {
      * Get value skill like description or name....
      * @return List <InvTypes>
      */
-    public Skill getInvTypes_SkillValues(int typeID, boolean published, int attributeID){
+    public SkillXXX getInvTypes_SkillValues(int typeID, boolean published, int attributeID){
         try {
             EntityManager getInvTypeGroupAndNameEM = entityManager;
             
-            // Devo recupareare i valori misti di più taballe e metterle nella lista Skill
-            TypedQuery < Skill > typedQueryTQ = 
-              getInvTypeGroupAndNameEM.createNamedQuery("InvTypes.findByTypeId-Published-AttributeID", Skill.class);
+            // Devo recupareare i valori misti di più taballe e metterle nella lista SkillXXX
+            TypedQuery < SkillXXX > typedQueryTQ = 
+              getInvTypeGroupAndNameEM.createNamedQuery("InvTypes.findByTypeId-Published-AttributeID", SkillXXX.class);
             
             typedQueryTQ.setParameter("typeID", typeID);
             typedQueryTQ.setParameter("published", published);
             typedQueryTQ.setParameter("attributeID", attributeID);
             
-            List < Skill > skills = typedQueryTQ.getResultList();
+            List < SkillXXX > skills = typedQueryTQ.getResultList();
             
             if ( skills.isEmpty() ){
                 return null;

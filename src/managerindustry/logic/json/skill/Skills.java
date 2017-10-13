@@ -9,12 +9,12 @@ package managerindustry.logic.json.skill;
  *
  * @author lele
  */
-public class Parameter {
+public class Skills {
     private String current_skill_level;
     private String skill_id;
     private String skillpoints_in_skill;
 
-    public Parameter(String current_skill_level, String skill_id, String skillpoints_in_skill) {
+    public Skills(String current_skill_level, String skill_id, String skillpoints_in_skill) {
         this.current_skill_level = current_skill_level;
         this.skill_id = skill_id;
         this.skillpoints_in_skill = skillpoints_in_skill;

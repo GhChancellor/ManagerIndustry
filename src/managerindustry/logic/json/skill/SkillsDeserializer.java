@@ -16,17 +16,17 @@ import java.lang.reflect.Type;
  *
  * @author lele
  */
-public class ParameterDeserializer implements JsonDeserializer<Parameter> {
+public class SkillsDeserializer implements JsonDeserializer<Skills> {
 
     @Override
-    public Parameter deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
+    public Skills deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
         JsonObject jsonObject = je.getAsJsonObject();
         String current_skill_level = jsonObject.get("current_skill_level").getAsString();
         String skill_id = jsonObject.get("skill_id").getAsString();
         String skillpoints_in_skill = jsonObject.get("skillpoints_in_skill").getAsString();
         
-        Parameter parameter = new Parameter(current_skill_level, skill_id, skillpoints_in_skill);
-        return parameter;
+        Skills skills = new Skills(current_skill_level, skill_id, skillpoints_in_skill);
+        return skills;
     }
     
 }
