@@ -18,10 +18,10 @@ import managerindustry.logic.tax.formulas.itemcost.ItemCost;
  * @author lele
  */
 public class ResearchCosts extends ItemCost{
-    List < Integer > values = new ArrayList<>();
-    List < ItemCost > itemCosts = new ArrayList<>();
-    int startLevel;
-    int finishLevel;
+    private List < Integer > values = new ArrayList<>();
+    private List < ItemCost > itemCosts = new ArrayList<>();
+    private int startLevel;
+    private int finishLevel;
 
     /**
      * 
@@ -102,10 +102,10 @@ public class ResearchCosts extends ItemCost{
         return getJobFee();
     }
 
-    public void xxx(int value){
-        setJobFee( itemCosts.get(value).getJobFee() );
-        setFacilityTaxes( itemCosts.get(value).getFacilityTaxes() );
-        setTotalInstallationCost( itemCosts.get(value).getTotalInstallationCost()  );
+    public void xxx(int i){
+        setJobFee( itemCosts.get(i).getJobFee() );
+        setFacilityTaxes( itemCosts.get(i).getFacilityTaxes() );
+        setTotalInstallationCost( itemCosts.get(i).getTotalInstallationCost()  );
     }
     
     public void xxx2(){

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.json.skill;
+package managerindustry.logic.ApiEsiJson.skill.characterSkills;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -16,16 +16,16 @@ import java.lang.reflect.Type;
  *
  * @author lele
  */
-public class SkillsDeserializer implements JsonDeserializer<Skills> {
+public class SkillRawDeserializer implements JsonDeserializer<SkillRaw> {
 
     @Override
-    public Skills deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
+    public SkillRaw deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
         JsonObject jsonObject = je.getAsJsonObject();
         String current_skill_level = jsonObject.get("current_skill_level").getAsString();
         String skill_id = jsonObject.get("skill_id").getAsString();
         String skillpoints_in_skill = jsonObject.get("skillpoints_in_skill").getAsString();
         
-        Skills skills = new Skills(current_skill_level, skill_id, skillpoints_in_skill);
+        SkillRaw skills = new SkillRaw(current_skill_level, skill_id, skillpoints_in_skill);
         return skills;
     }
     

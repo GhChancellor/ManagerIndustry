@@ -13,11 +13,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import managerindustry.db.entities.cache.TaxCostIndexEntity;
 import managerindustry.db.entities.cache.TaxSolarSystemEntity;
+import managerindustry.logic.ApiEsiJson.ApiEsi;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.managerDB.ManagerDBCache;
-import managerindustry.logic.json.tax.systemCostIndices.CostIndex;
-import managerindustry.logic.json.tax.systemCostIndices.SolarSystemCost;
-import managerindustry.logic.json.tax.systemCostIndices.SystemCostFetch;
+import managerindustry.logic.ApiEsiJson.industry.listSolarSystemCostIndices.CostIndex;
+import managerindustry.logic.ApiEsiJson.industry.listSolarSystemCostIndices.SolarSystemCost;
 
 /**
  * Update, create and delete all Solar system
@@ -26,7 +26,7 @@ import managerindustry.logic.json.tax.systemCostIndices.SystemCostFetch;
 
 /*
         SystemCostIndex systemCostIndex = new SystemCostIndex();
-        Map<String, SolarSystemCost > solarSystemMap = systemCostIndex.getSystemCostIndexs();
+        Map<String, SolarSystemCost > solarSystemMap = systemCostIndex.getSolarSystemCost();
         
         ManagerSystemCostIndex managerSystemCostIndex = 
          new ManagerSystemCostIndex(solarSystemMap, "1");
@@ -60,7 +60,7 @@ public class ManagerSystemCostIndex {
     }
     
     /**
-     * Get Solar System Map if null get SystemCostFetch.getSystemCostIndexs();
+     * Get Solar System Map if null get ListSolarSystemCostIndices.getSolarSystemCost();
      * @return SolarSystemCost
      * @throws SolarSystemNotExistsException 
      */
@@ -68,7 +68,9 @@ public class ManagerSystemCostIndex {
         SolarSystemCost solarSystem = this.solarSystemMap.get(this.solarSystemID);
         
         if ( solarSystem == null){
-                this.solarSystemMap = SystemCostFetch.getSystemCostIndexs();
+                this.solarSystemMap = 
+                    ApiEsi.getInstance().industryJson().getListSolarSystemCostIndices().getSolarSystemCost();
+ 
                 solarSystem = this.solarSystemMap.get(this.solarSystemID);               
             
             if ( solarSystem == null ){

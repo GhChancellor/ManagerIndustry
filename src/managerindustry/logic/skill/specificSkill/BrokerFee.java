@@ -5,13 +5,13 @@
  */
 package managerindustry.logic.skill.specificSkill;
 
-import managerindustry.logic.skill.SkillXXX;
+import managerindustry.logic.skill.SkillV;
 
 /**
  *
  * @author lele
  */
-public class BrokerFee extends SkillXXX{
+public class BrokerFee extends SkillV{
     private float initTaxCorparationStanding;
     private float factionStandingTax;
     private String name;

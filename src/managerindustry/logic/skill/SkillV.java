@@ -5,25 +5,27 @@
  */
 package managerindustry.logic.skill;
 
+import managerindustry.logic.ApiEsiJson.skill.characterSkills.SkillRaw;
+
 /**
  *
  * @author lele
  */
-public class SkillXXX {
+public class SkillV extends SkillRaw{
     private String name;
     private String description;
     private float valueFloat;
-    private int valueInt;
     private float startingValue;
-
-    public SkillXXX() {
+    private int valueInt;
+    
+    public SkillV() {
     }
     
     /**
      * Set name Skill
      * @param String nameSkill 
      */
-    public SkillXXX(String nameSkill){
+    public SkillV(String nameSkill){
         this.name = nameSkill;
     }
 
@@ -101,7 +103,7 @@ public class SkillXXX {
 
     /**
      * Set Value Int
-     * @param int valueInt 
+     * @param Int valueInt 
      */
     public void setValueInt(int valueInt) {
         this.valueInt = valueInt;

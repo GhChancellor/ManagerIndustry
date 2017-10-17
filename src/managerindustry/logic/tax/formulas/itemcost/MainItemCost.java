@@ -22,7 +22,7 @@ public class MainItemCost{
     public MainItemCost() {
     }
     
-    public void calculateJobInstallationCost(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
+    public static void calculateJobInstallationCost(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
         String solarSystemID, String actvity, int run ,float taxRate) throws SolarSystemNotExistsException, PriceNotExistsException{ 
         
         JobInstallationCosts buildItem = new JobInstallationCosts(reportCalculatedComponentXMap, solarSystemID, actvity, run, taxRate);
@@ -43,7 +43,7 @@ public class MainItemCost{
      * @throws SolarSystemNotExistsException
      * @throws PriceNotExistsException 
      */
-    public void calculateCopingFee(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
+    public static void calculateCopingFee(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
         String solarSystemID, String actvity, int run ,float taxRate, int runPerCopy) 
             throws SolarSystemNotExistsException, PriceNotExistsException{
         
@@ -68,7 +68,7 @@ public class MainItemCost{
      * @throws SolarSystemNotExistsException
      * @throws PriceNotExistsException 
      */     
-    public void calculateResearchCosts(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
+    public static void calculateResearchCosts(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
         String solarSystemID, String actvity, int run ,float taxRate, int startLevel, int finishLevel) throws SolarSystemNotExistsException, PriceNotExistsException{
         
         ResearchCosts researchCosts = new ResearchCosts(reportCalculatedComponentXMap, solarSystemID, actvity, run, taxRate, startLevel, finishLevel);

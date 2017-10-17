@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.json.tax.systemCostIndices;
+package managerindustry.logic.ApiEsiJson.industry.listSolarSystemCostIndices;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,9 +26,9 @@ import java.util.stream.Collectors;
  * https://esi.tech.ccp.is/legacy/industry/systems/?datasource=tranquility
  * @author lele
  */
-public class SystemCostFetch {
+public class ListSolarSystemCostIndices {
 
-    public SystemCostFetch() {
+    public ListSolarSystemCostIndices() {
     
     }
     
@@ -37,7 +37,7 @@ public class SystemCostFetch {
      * DBG Aggiungere collegamento alla rete
      * @return Map<String, SolarSystemCost >
      */
-    public static Map<String, SolarSystemCost > getSystemCostIndexs() {
+    public Map<String, SolarSystemCost > getSolarSystemCost() {
        
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();
@@ -49,7 +49,7 @@ public class SystemCostFetch {
 //            final String path = "./SystemCostIndex.json";
 //            Reader reader = new FileReader(path);
 
-          URL url = new URL("https://esi.tech.ccp.is/legacy/industry/systems/?datasource=tranquility");
+          URL url = new URL("https://esi.tech.ccp.is/latest/industry/systems/?datasource=tranquility");
           InputStreamReader reader = new InputStreamReader(url.openStream());            
 
             Type type = new TypeToken< ArrayList< SolarSystemCost > >() {}.getType();

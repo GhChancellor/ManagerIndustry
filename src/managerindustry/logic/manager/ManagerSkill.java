@@ -8,7 +8,7 @@ package managerindustry.logic.manager;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
 import java.util.HashMap;
 import java.util.Map;
-import managerindustry.logic.skill.SkillXXX;
+import managerindustry.logic.skill.SkillV;
 import managerindustry.logic.skill.specificSkill.BrokerFee;
 
 /**
@@ -22,7 +22,7 @@ import managerindustry.logic.skill.specificSkill.BrokerFee;
  */
 public class ManagerSkill {
     private static ManagerSkill instance = null;
-    private Map < String, SkillXXX > skillMap = new HashMap<>();
+    private Map < String, SkillV > skillMap = new HashMap<>();
 
     public static ManagerSkill getInstance (){
         if ( instance == null )
@@ -41,19 +41,19 @@ public class ManagerSkill {
         return false;
     }
     
-    public Map<String, SkillXXX> getSkillMap() {
+    public Map<String, SkillV> getSkillMap() {
         return skillMap;
     }
 
-    public void setSkillMap(Map<String, SkillXXX> skillMap) {
+    public void setSkillMap(Map<String, SkillV> skillMap) {
         this.skillMap = skillMap;
     }
 
-    public void addSkillMap( String nameSkill, SkillXXX skill) {
+    public void addSkillMap( String nameSkill, SkillV skill) {
         this.skillMap.put(nameSkill, skill);
     }
 
-    public SkillXXX getSkillMap(String nameSkill) {
+    public SkillV getSkillMap(String nameSkill) {
         return this.skillMap.get(nameSkill);
     }
     
@@ -61,8 +61,8 @@ public class ManagerSkill {
      *   SELECT * FROM invTypes where invTypes.groupID=268;
      */
     public void initSkill(){
-        SkillXXX skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3380, true, 440);
-        addSkillMap(skill.getName(), new SkillXXX(skill.getName()) );                
+        SkillV skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3380, true, 440);
+        addSkillMap(skill.getName(), new SkillV(skill.getName()) );                
         
         skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3388, true, 1961);
         addSkillMap(skill.getName(), skill);
@@ -84,7 +84,7 @@ public class ManagerSkill {
     }
     
     private void manuallyAddedNames(){
-        SkillXXX accounting = new SkillXXX("Accounting");
+        SkillV accounting = new SkillV("Accounting");
         accounting.setValueFloat(0.1f);
         accounting.setStartingValue(0.02f);
         addSkillMap(accounting.getName(), accounting);

@@ -47,24 +47,29 @@ public class ManagerJobInstallationFee {
                         
         Map < String, ReportCalculatedComponentX > reportCalculatedComponentXMap = 
          ManagerComponentX.getInstance().getReportCalculatedComponentXMap();
-
-        MainItemCost mainItemCost = new MainItemCost();
-        
-        mainItemCost.calculateJobInstallationCost
+               
+        MainItemCost.calculateJobInstallationCost
          (reportCalculatedComponentXMap, solarSystemID, "manufacturing",
           run, taxRateStation);
         
-        mainItemCost.calculateCopingFee
+        MainItemCost.calculateCopingFee
          (reportCalculatedComponentXMap, solarSystemID, "copying", 
           run, taxRateStation, runPerCopy);
         
-        mainItemCost.calculateResearchCosts
+        MainItemCost.calculateResearchCosts
          (reportCalculatedComponentXMap, solarSystemID, "researching_time_efficiency", 
           run, taxRateStation, startLevel, finishLevel);
 
-        mainItemCost.calculateResearchCosts
+        MainItemCost.calculateResearchCosts
          (reportCalculatedComponentXMap, solarSystemID, "researching_material_efficiency", 
           run, taxRateStation, startLevel, finishLevel);
 
     }
 }
+
+/*
+        Map<String, Price > map = adjustedPrice.getPrice();
+        
+        map.forEach((k,v) -> System.out.println(""+v.getType_id() + " " 
+         + v.getAverage_price() + " " + v.getAdjusted_price()  ));
+*/

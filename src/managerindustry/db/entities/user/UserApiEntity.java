@@ -38,11 +38,24 @@ public class UserApiEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private String nameCharacter = null;    
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private List < ContractEntity > contractEntitys = new ArrayList<>();
+    
+//    @OneToOne(cascade = CascadeType.ALL)
+//    private ContractEntity contractEntity;
+    
+    // https://esi.tech.ccp.is/latest/characters/USERID/skills/?datasource=tranquility
+    
+    private String url = "https://esi.tech.ccp.is/latest/characters/";
+    private String urlCharacterId = null;
+    private String nameCharacter = null;
+    
+    private String urlContactIndex = "Contracts.xml.aspx?";
+    private String urlKeyIdString = "keyID=";
     private String urlKeyIdValue = null;
-
-//    @Column(unique = true)
-//    private String urlVerificationCodeValue = null;
+    private String urlVerificationCodeString = "&vCode=";
+    @Column(unique = true)
+    private String urlVerificationCodeValue = null;
     private boolean userEnable;
 
     /**
@@ -60,13 +73,45 @@ public class UserApiEntity implements Serializable {
     public void setUserEnable(boolean userEnable) {
         this.userEnable = userEnable;
     }
-            
+    
+//    /**
+//     * Get all contract Entitys
+//     * @return List < ContractEntity >
+//     */
+//    public List<ContractEntity> getAllContractEntitys() {
+//        return contractEntitys;
+//    }
+//
+//    /**
+//     * unused
+//     * @param List<ContractEntity> contractEntitys 
+//     */
+//    public void setContractEntitys(List<ContractEntity> contractEntitys) {
+//        this.contractEntitys = contractEntitys;
+//    }
+
+//    /**
+//     * Add Contract Entitys
+//     * @param contractEntity 
+//     */
+//    public void addContractEntitys (ContractEntity contractEntity) {
+//        this.contractEntitys.add(contractEntity);
+//    }
+    
+//    public ContractEntity getContractEntity() {
+//        return contractEntity;
+//    }
+//
+//    public void setContractEntity(ContractEntity contractEntitys) {
+//        this.contractEntity = contractEntitys;
+//    }
+    
     /**
      * Get Short Report
      * @return String
      */
     public String getShortReport(){
-        String shortReport = this.nameCharacter +  " - " + this.urlKeyIdValue; // +  " - " + this.urlVerificationCodeValue;
+        String shortReport = this.nameCharacter +  " - " + this.urlKeyIdValue +  " - " + this.urlVerificationCodeValue;
         return shortReport;
     }    
     
@@ -82,26 +127,42 @@ public class UserApiEntity implements Serializable {
      */
     public UserApiEntity( String urlKeyIdValue, String urlVerificationCode, String nameCharacter, boolean userEnable) {
         this.urlKeyIdValue = urlKeyIdValue;
-//        this.urlVerificationCodeValue = urlVerificationCode;    
+        this.urlVerificationCodeValue = urlVerificationCode;    
         this.nameCharacter = nameCharacter;
         this.userEnable = userEnable;
-    }        
+    }    
     
-//  /**
-//     * Get Url Verification Code Value
-//     * @return String
-//     */
-//    public String getUrlVerificationCodeValue() {
-//        return urlVerificationCodeValue;
-//    }
-//
-//    /**
-//     * Set Url Verification Code Value
-//     * @param urlVerificationCodeValue 
-//     */
-//    public void setUrlVerificationCodeValue(String urlVerificationCodeValue) {
-//        this.urlVerificationCodeValue = urlVerificationCodeValue;
-//    }
+    /**
+     * Get Contract Index
+     * @return String
+     */
+    public String getUrlContactIndex() {
+        return urlContactIndex;
+    }
+
+    /**
+     * Set Contract Index
+     * @param contractIndex 
+     */
+    public void setUrlContactIndex(String contractIndex) {
+        this.urlContactIndex = contractIndex;
+    }       
+    
+  /**
+     * Get Url Verification Code Value
+     * @return String
+     */
+    public String getUrlVerificationCodeValue() {
+        return urlVerificationCodeValue;
+    }
+
+    /**
+     * Set Url Verification Code Value
+     * @param urlVerificationCodeValue 
+     */
+    public void setUrlVerificationCodeValue(String urlVerificationCodeValue) {
+        this.urlVerificationCodeValue = urlVerificationCodeValue;
+    }
 
     /**
      * Get Name Character
@@ -120,6 +181,54 @@ public class UserApiEntity implements Serializable {
     }
 
     /**
+     * Get Url
+     * @return String
+     */
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * Set Url
+     * @param url 
+     */
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    /**
+     * Get Character
+     * @return String
+     */
+    public String getUrlCharacterId() {
+        return urlCharacterId;
+    }
+
+    /**
+     * Set Character
+     * @param urlCharacterId 
+     */
+    public void setUrlCharacterId(String urlCharacterId) {
+        this.urlCharacterId = urlCharacterId;
+    }
+
+    /**
+     * Get Key Id String
+     * @return String
+     */
+    public String getUrlKeyIdString() {
+        return urlKeyIdString;
+    }
+
+    /**
+     * Set Key Id String
+     * @param urlKeyIdString 
+     */
+    public void setUrlKeyIdString(String urlKeyIdString) {
+        this.urlKeyIdString = urlKeyIdString;
+    }
+
+    /**
      * Get Key Id Value
      * @return String
      */
@@ -133,7 +242,23 @@ public class UserApiEntity implements Serializable {
      */
     public void setUrlKeyIdValue(String urlKeyIdValue) {
         this.urlKeyIdValue = urlKeyIdValue;
-    }      
+    }
+
+    /**
+     * Get urlVerificationCodeString
+     * @return String
+     */
+    public String getUrlVerificationCodeString() {
+        return urlVerificationCodeString;
+    }
+
+    /**
+     * Set urlVerificationCodeString
+     * @param urlVerificationCodeString 
+     */
+    public void setUrlVerificationCodeString(String urlVerificationCodeString) {
+        this.urlVerificationCodeString = urlVerificationCodeString;
+    }       
     
     public Long getId() {
         return id;
