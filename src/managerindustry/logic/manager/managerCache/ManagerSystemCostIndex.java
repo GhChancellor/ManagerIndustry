@@ -13,11 +13,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import managerindustry.db.entities.cache.TaxCostIndexEntity;
 import managerindustry.db.entities.cache.TaxSolarSystemEntity;
-import managerindustry.logic.ApiEsiJson.ApiEsi;
+import managerindustry.logic.apiEsiJson.ApiEsi;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.managerDB.ManagerDBCache;
-import managerindustry.logic.ApiEsiJson.industry.listSolarSystemCostIndices.CostIndex;
-import managerindustry.logic.ApiEsiJson.industry.listSolarSystemCostIndices.SolarSystemCost;
+import managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices.CostIndex;
+import managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices.SolarSystemCost;
 
 /**
  * Update, create and delete all Solar system

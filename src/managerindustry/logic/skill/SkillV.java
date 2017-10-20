@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.skill;
 
-import managerindustry.logic.ApiEsiJson.skill.characterSkills.SkillRaw;
+import managerindustry.logic.apiEsiJson.skill.characterSkills.SkillRaw;
 
 /**
  *

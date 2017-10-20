@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.ApiEsiJson.tax.adjustedPrices;
+package managerindustry.logic.apiEsiJson.market.listMarketPrices;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;

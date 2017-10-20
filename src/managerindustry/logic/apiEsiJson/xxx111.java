@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.ApiEsiJson;
+package managerindustry.logic.apiEsiJson;
 
 import managerindustry.db.entities.user.UserApiEntity;
 
@@ -16,9 +16,10 @@ public class xxx111 {
     
     public xxx111(UserApiEntity userApiEntity) {
 
-        ApiEsi.getInstance().skillJson(userApiEntity).getCharacterSkills();
+        ApiEsi.getInstance().skillJson().getCharacterSkills(userApiEntity);
+        
         ApiEsi.getInstance().industryJson().getListSolarSystemCostIndices();
-
+        ApiEsi.getInstance().marketJSon().getListMarketPrices().getListMarketPrices();
     }
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.ApiEsiJson.industry.listSolarSystemCostIndices;
+package managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,8 +49,8 @@ public class ListSolarSystemCostIndices {
 //            final String path = "./SystemCostIndex.json";
 //            Reader reader = new FileReader(path);
 
-          URL url = new URL("https://esi.tech.ccp.is/latest/industry/systems/?datasource=tranquility");
-          InputStreamReader reader = new InputStreamReader(url.openStream());            
+            URL url = new URL("https://esi.tech.ccp.is/latest/industry/systems/?datasource=tranquility");
+            InputStreamReader reader = new InputStreamReader(url.openStream());            
 
             Type type = new TypeToken< ArrayList< SolarSystemCost > >() {}.getType();
             List<SolarSystemCost> solarSystems = (List<SolarSystemCost>) gson.fromJson(reader, type);

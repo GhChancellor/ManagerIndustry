@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.ApiEsiJson.industry;
+package managerindustry.logic.apiEsiJson.industry;
 
-import managerindustry.logic.ApiEsiJson.industry.listSolarSystemCostIndices.ListSolarSystemCostIndices;
+import managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices.ListSolarSystemCostIndices;
 
 /**
  *

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.ApiEsiJson.tax.adjustedPrices;
+package managerindustry.logic.apiEsiJson.market.listMarketPrices;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -24,13 +24,13 @@ import java.util.stream.Collectors;
  * // adjustedPrice = https://esi.tech.ccp.is/latest/markets/prices/?datasource=tranquility
  * @author lele
  */
-public class PriceFetch {
+public class ListMarketPrices {
     /**
      * Get Json from Server
      * DBG Aggiungere collegamento alla rete
      * @return Map<String, Price >
      */
-    public static Map<String, Price > getPrice(){
+    public Map<String, Price > getListMarketPrices(){
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();
             gsonBuilder.registerTypeAdapter

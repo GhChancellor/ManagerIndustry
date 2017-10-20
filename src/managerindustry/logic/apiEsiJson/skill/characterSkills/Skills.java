@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.ApiEsiJson.skill.characterSkills;
+package managerindustry.logic.apiEsiJson.skill.characterSkills;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,36 +13,35 @@ import java.util.List;
  * @author lele
  */
 public class Skills {
-
+    private SkillRaw[] skillsRaws;
     private String total_sp;
-    private SkillRaw[] skills;
-    
+
     /**
-     * Init skills
-     * @param SkillRaw[] skills
-     * @param total_sp 
+     * Init skillsRaws
+     * @param SkillRaw[] skillsRaws
+     * @param String total_sp 
      */
     public Skills(SkillRaw[] skills, String total_sp) {
+        this.skillsRaws = skills;
         this.total_sp = total_sp;
-        this.skills = skills;
     }
-    
+
     /**
      * Get Skills
      * @return SkillRaw[]
      */
-    public SkillRaw[] getSkills() {
-        return skills;
+    public SkillRaw[] getSkillsRaws() {
+        return skillsRaws;
     }
 
     /**
      * Set Skills
-     * @param SkillRaw[] skills 
+     * @param skillsRaws 
      */
-    public void setSkillsRaw(SkillRaw[] skills) {
-        this.skills = skills;
+    public void setSkillsRaws(SkillRaw[] skillsRaws) {
+        this.skillsRaws = skillsRaws;
     }
-    
+
     /**
      * Get Total_sp
      * @return String

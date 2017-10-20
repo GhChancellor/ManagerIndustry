@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.ApiEsiJson;
+package managerindustry.logic.apiEsiJson;
 
 import managerindustry.db.entities.user.UserApiEntity;
-import managerindustry.logic.ApiEsiJson.industry.Industry;
-import managerindustry.logic.ApiEsiJson.skill.SkillJson;
+import managerindustry.logic.apiEsiJson.industry.Industry;
+import managerindustry.logic.apiEsiJson.market.Market;
+import managerindustry.logic.apiEsiJson.skill.SkillJson;
 
 /**
  *
@@ -25,8 +26,8 @@ public class ApiEsi {
         return instance;
     }
     
-    public SkillJson skillJson(UserApiEntity userApiEntity) {
-        SkillJson skillJson = new SkillJson(userApiEntity);
+    public SkillJson skillJson() {
+        SkillJson skillJson = new SkillJson();
         return skillJson;
     }
     
@@ -34,5 +35,9 @@ public class ApiEsi {
         Industry industry = new Industry();
         return industry;
     }
-        
+   
+    public Market marketJSon(){
+        Market market = new Market();
+        return market;
+    }
 }

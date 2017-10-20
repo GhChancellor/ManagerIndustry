@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.ApiEsiJson.industry.listSolarSystemCostIndices;
+package managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices;
 
 /**
  *

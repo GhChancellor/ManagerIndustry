@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.ApiEsiJson.skill.characterSkills;
+package managerindustry.logic.apiEsiJson.skill.characterSkills;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
