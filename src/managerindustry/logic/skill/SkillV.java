@@ -11,22 +11,15 @@ import managerindustry.logic.apiEsiJson.skill.characterSkills.SkillRaw;
  *
  * @author lele
  */
-public class SkillV extends SkillRaw{
+public class SkillV{
     private String name;
     private String description;
     private float valueFloat;
     private float startingValue;
     private int valueInt;
-    
-    public SkillV() {
-    }
-    
-    /**
-     * Set name Skill
-     * @param String nameSkill 
-     */
-    public SkillV(String nameSkill){
-        this.name = nameSkill;
+
+    public SkillV(String name) {
+        this.name = name;
     }
 
     /**

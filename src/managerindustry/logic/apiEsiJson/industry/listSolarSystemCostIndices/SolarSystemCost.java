@@ -16,6 +16,11 @@ public class SolarSystemCost {
     public SolarSystemCost() {
     }
 
+    public SolarSystemCost(String solar_system_id, CostIndex[] costIndexs) {
+        this.solar_system_id = solar_system_id;
+        this.costIndexs = costIndexs;
+    }    
+    
     /**
      * Get Cost Indexs
      * @return costIndexs[]

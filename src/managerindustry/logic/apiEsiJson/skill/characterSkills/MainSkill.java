@@ -5,8 +5,6 @@
  */
 package managerindustry.logic.apiEsiJson.skill.characterSkills;
 
-import java.util.List;
-import java.util.Map;
 import managerindustry.db.entities.user.UserApiEntity;
 import managerindustry.logic.apiEsiJson.ApiEsi;
 
@@ -15,20 +13,20 @@ import managerindustry.logic.apiEsiJson.ApiEsi;
  * @author lele
  */
 public class MainSkill {
+    
     public static void main(String[] args) {
         UserApiEntity userApiEntity = new UserApiEntity();
         userApiEntity.setNameCharacter("asss");
-        Map < String, Skills > map = ApiEsi.getInstance().skillJson().getCharacterSkills(userApiEntity);
+        Skills skills = ApiEsi.getInstance().skillJson().getCharacterSkills(userApiEntity);
                 
-        for (Map.Entry<String, Skills> entry : map.entrySet()) {
-            String key = entry.getKey();
-            Skills value = entry.getValue();
-            
-            SkillRaw[] skillRaws = value.getSkillsRaws();
-            
-            for (int i = 0; i < skillRaws.length; i++) {
-                System.out.println("" +skillRaws[i].getCurrent_skill_level());
-            }
+        System.out.println("Total skill" + skills.getTotal_sp());
+        SkillRaw[] skillRaws = skills.getSkillsRaws();
+        
+        for (SkillRaw skillRaw : skillRaws) {
+            System.out.println("getCurrent_skill_level "+ skillRaw.getCurrent_skill_level());
+            System.out.println("getSkillpoints_in_skill "+ skillRaw.getSkillpoints_in_skill());
+            System.out.println("getSkill_id "+ skillRaw.getSkill_id());
+            System.out.println("");
         }
             
     }

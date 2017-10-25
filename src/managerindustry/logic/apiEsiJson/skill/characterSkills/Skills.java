@@ -16,16 +16,14 @@ public class Skills {
     private SkillRaw[] skillsRaws;
     private String total_sp;
 
-    /**
-     * Init skillsRaws
-     * @param SkillRaw[] skillsRaws
-     * @param String total_sp 
-     */
-    public Skills(SkillRaw[] skills, String total_sp) {
-        this.skillsRaws = skills;
-        this.total_sp = total_sp;
+    public Skills() {
     }
 
+    public Skills(SkillRaw[] skillsRaws, String total_sp) {
+        this.skillsRaws = skillsRaws;
+        this.total_sp = total_sp;
+    }
+    
     /**
      * Get Skills
      * @return SkillRaw[]

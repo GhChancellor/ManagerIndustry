@@ -37,9 +37,9 @@ public class SolarSystemDeserializer implements JsonDeserializer<SolarSystemCost
             CostIndex[] costIndexs = 
              jdc.deserialize(jsonObject.get("cost_indices"), CostIndex[].class);
 
-            SolarSystemCost solarSystem = new SolarSystemCost();
-            solarSystem.setSolarSystem(solarSystemTemp);
-            solarSystem.setCostIndexs(costIndexs);                       
+            SolarSystemCost solarSystem = new SolarSystemCost(solarSystemTemp, costIndexs);
+//            solarSystem.setSolarSystem(solarSystemTemp);
+//            solarSystem.setCostIndexs(costIndexs);                       
             return solarSystem;
         } catch (Exception e) {
             e.printStackTrace();

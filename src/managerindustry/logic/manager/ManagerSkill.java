@@ -62,7 +62,7 @@ public class ManagerSkill {
      */
     public void initSkill(){
         SkillV skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3380, true, 440);
-        addSkillMap(skill.getName(), new SkillV(skill.getName()) );                
+//        addSkillMap(skill.getName(), new SkillV(skill.getName()) );                
         
         skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3388, true, 1961);
         addSkillMap(skill.getName(), skill);
@@ -84,17 +84,17 @@ public class ManagerSkill {
     }
     
     private void manuallyAddedNames(){
-        SkillV accounting = new SkillV("Accounting");
-        accounting.setValueFloat(0.1f);
-        accounting.setStartingValue(0.02f);
-        addSkillMap(accounting.getName(), accounting);
-        
-        BrokerFee brokerRelations = new BrokerFee("Broker Relations");
-        brokerRelations.setStartingValue(0.03f); // starting value
-        brokerRelations.setInitTaxCorparationStanding(0.0002f);
-        brokerRelations.setValueFloat(0.001f);  // reduceFeePerLevel
-        brokerRelations.setFactionStandingTax(0.0003f);
-        addSkillMap(brokerRelations.getName(), brokerRelations);
+//        SkillV accounting = new SkillV("Accounting");
+//        accounting.setValueFloat(0.1f);
+//        accounting.setStartingValue(0.02f);
+//        addSkillMap(accounting.getName(), accounting);
+//        
+//        BrokerFee brokerRelations = new BrokerFee("Broker Relations");
+//        brokerRelations.setStartingValue(0.03f); // starting value
+//        brokerRelations.setInitTaxCorparationStanding(0.0002f);
+//        brokerRelations.setValueFloat(0.001f);  // reduceFeePerLevel
+//        brokerRelations.setFactionStandingTax(0.0003f);
+//        addSkillMap(brokerRelations.getName(), brokerRelations);
         
     }
 

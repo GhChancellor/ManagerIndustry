@@ -14,21 +14,12 @@ public class SkillRaw {
     private String skill_id;
     private String skillpoints_in_skill;
 
-    public SkillRaw() {
-    }
-    
-    /**
-     * Init Skill Raw
-     * @param String current_skill_level
-     * @param String skill_id
-     * @param String skillpoints_in_skill 
-     */
     public SkillRaw(String current_skill_level, String skill_id, String skillpoints_in_skill) {
         this.current_skill_level = current_skill_level;
         this.skill_id = skill_id;
         this.skillpoints_in_skill = skillpoints_in_skill;
     }
-    
+
     /**
      * Get Current_skill_level
      * @return String 
@@ -75,6 +66,5 @@ public class SkillRaw {
      */
     public void setSkillpoints_in_skill(String skillpoints_in_skill) {
         this.skillpoints_in_skill = skillpoints_in_skill;
-    }
-    
+    }    
 }

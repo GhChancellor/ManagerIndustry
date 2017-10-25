@@ -8,13 +8,21 @@ package managerindustry.logic.apiEsiJson.skill.characterSkills;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import java.awt.Desktop;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.FileReader;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.lang.reflect.Type;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import javax.net.ssl.HttpsURLConnection;
 import managerindustry.db.entities.user.UserApiEntity;
 
 /**
@@ -28,21 +36,22 @@ public class CharacterSkills {
      * @param userApiEntity
      * @return Map < String, Skills >
      */
-    public Map < String, Skills > getCharacterSkills(UserApiEntity userApiEntity){
+    public Skills getCharacterSkills(UserApiEntity userApiEntity){
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();
-            gsonBuilder.registerTypeAdapter(Skills.class, new SkillsDeserializer() );
+            gsonBuilder.registerTypeAdapter(SkillRaw.class, new SkillRawDeserializer() );           
+            gsonBuilder.registerTypeAdapter(Skills.class, new SkillsDeserializer() );  
             Gson gson = gsonBuilder.create();
-
-            URL url = new URL("https://esi.tech.ccp.is/latest/characters/xxxx/skills/?datasource=tranquility");
-            InputStreamReader reader = new InputStreamReader(url.openStream());
-
-            Type type = new TypeToken< ArrayList<Skills> >() {}.getType();
-            List < Skills > skillses = (List < Skills >) gson.fromJson(reader, type);
+            // /home/lele/Documenti/Programmi/EveDoc/eveobject/skill.json
             
-            Map < String, Skills > skillsMap = 
-                skillses.stream().collect(Collectors.toMap(Skills::getTotal_sp, Skills -> Skills) );
-            return skillsMap;
+            final String path = "/home/lele/Documenti/Programmi/EveDoc/eveobject/skill.json";
+            Reader reader = new FileReader(path);
+            
+//            URL url = new URL("https://login.eveonline.com/oauth/token/");
+//            InputStreamReader reader = new InputStreamReader(url.openStream());
+
+            Skills skills = ( Skills ) gson.fromJson(reader, Skills.class);
+            return skills;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

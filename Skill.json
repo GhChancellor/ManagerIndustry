@@ -1,0 +1,15 @@
+{
+  "skills": [
+    {
+      "skill_id": 22536,
+      "skillpoints_in_skill": 12000,
+      "current_skill_level": 5
+    },
+    {
+      "skill_id": 23566,
+      "skillpoints_in_skill": 0,
+      "current_skill_level": 0
+    }
+  ],
+  "total_sp": 100000
+}
