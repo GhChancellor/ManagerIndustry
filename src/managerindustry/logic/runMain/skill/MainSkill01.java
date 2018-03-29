@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.runMain;
+package managerindustry.logic.runMain.skill;
 
 import managerindustry.logic.runMain.ManagerIndustry;
 import managerindustry.logic.manager.ManagerSkill;
@@ -12,8 +12,8 @@ import managerindustry.logic.manager.ManagerSkill;
  *
  * @author lele
  */
-public class MainSkill {
+public class MainSkill01 {
     public static void main(String[] args) {
-        ManagerSkill.getInstance().initSkill();
+        ManagerSkill.getInstance().getSkillMap();
     }
 }

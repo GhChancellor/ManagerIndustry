@@ -39,9 +39,19 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "InvTypes.findByMarketGroupID", query = "SELECT i FROM InvTypes i WHERE i.marketGroupID = :marketGroupID")
     , @NamedQuery(name = "InvTypes.findByIconID", query = "SELECT i FROM InvTypes i WHERE i.iconID = :iconID")
     , @NamedQuery(name = "InvTypes.findBySoundID", query = "SELECT i FROM InvTypes i WHERE i.soundID = :soundID")
-    , @NamedQuery(name = "InvTypes.findByGraphicID", query = "SELECT i FROM InvTypes i WHERE i.graphicID = :graphicID")
+    , @NamedQuery(name = "InvTypes.findByGraphicID", query = "SELECT i FROM InvTypes i WHERE i.graphicID = :graphicID")   
+        
     , @NamedQuery(name = "InvTypes.findByTypeId-Published-AttributeID",  query = 
-     "SELECT NEW managerindustry.logic.skill.Skill ( a.typeName, a.description, b.valueFloat, b.valueInt ) FROM InvTypes A, DgmTypeAttributes B, DgmAttributeTypes C where A.typeID = b.dgmTypeAttributesPK.typeID and B.dgmTypeAttributesPK.attributeID = C.attributeID AND A.typeID = :typeID AND A.published = :published AND c.attributeID = :attributeID ")
+     "SELECT NEW managerindustry.logic.skill.SkillV ( a.typeName, a.description, b.valueFloat, b.valueInt ) "
+    + "FROM InvTypes a, DgmTypeAttributes b, DgmAttributeTypes c "
+    + "WHERE a.typeID = b.dgmTypeAttributesPK.typeID and "
+    + "b.dgmTypeAttributesPK.attributeID = c.attributeID AND "
+    + "a.typeID = :typeID AND "
+    + "a.published = :published AND "
+    + "c.attributeID = :attributeID"),
+    
+    
+    
 
 })
 public class InvTypes implements Serializable {

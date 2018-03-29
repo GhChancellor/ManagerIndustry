@@ -44,7 +44,7 @@ public class CharacterSkills {
             Gson gson = gsonBuilder.create();
             // /home/lele/Documenti/Programmi/EveDoc/eveobject/skill.json
             
-            final String path = "/home/lele/Documenti/Programmi/EveDoc/eveobject/skill.json";
+            final String path = "/home/lele/Documenti/programmi/EveDoc/eveobject/skill.json";
             Reader reader = new FileReader(path);
             
 //            URL url = new URL("https://login.eveonline.com/oauth/token/");

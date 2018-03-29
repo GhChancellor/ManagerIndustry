@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "IndustryActivityMaterials.findByQuantity", query = "SELECT i FROM IndustryActivityMaterials i WHERE i.quantity = :quantity")
     , @NamedQuery(name = "IndustryActivityMaterials.findByIdd", query = "SELECT i FROM IndustryActivityMaterials i WHERE i.idd = :idd")
     , @NamedQuery(name = "IndustryActivityMaterials.findByTypeID", 
-        query = "SELECT i FROM IndustryActivityMaterials i WHERE i.typeID = :typeID and i.activityID= :activityID") 
+      query = "SELECT i FROM IndustryActivityMaterials i WHERE i.typeID = :typeID and i.activityID= :activityID") 
 /**
     , @NamedQuery(name = "IndustryActivityMaterials.findByTypeName", 
         query = "SELECT iam FROM IndustryActivityMaterials iam, InvTypes inv WHERE "

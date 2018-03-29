@@ -8,7 +8,7 @@ package managerindustry.logic.manager;
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.logic.structure.EngineeringComplex;
-import managerindustry.logic.structure.StructureEngineeringRigs;
+import managerindustry.logic.structure.StructureEngineeringRigsOLD;
 
 /**
  *
@@ -21,8 +21,8 @@ public class ManagerFitter {
         currentCalibartionComplex = 0;
         
         EngineeringComplex engineeringComplex = new EngineeringComplex("Raitaru");
-        StructureEngineeringRigs structureEngineeringRigs = new 
-         StructureEngineeringRigs("Standup M-Set Blueprint Copy Cost Optimization II");
+        StructureEngineeringRigsOLD structureEngineeringRigs = new 
+         StructureEngineeringRigsOLD("Standup M-Set Blueprint Copy Cost Optimization II");
         
         addRigToStation(engineeringComplex, structureEngineeringRigs);
         
@@ -31,8 +31,8 @@ public class ManagerFitter {
          "currentCalibartionComplex " + currentCalibartionComplex);
         
         System.out.println("---------------------\n");
-        StructureEngineeringRigs structureEngineeringRigs02 = 
-         new StructureEngineeringRigs("Standup M-Set Advanced Component Manufacturing Material Efficiency II");
+        StructureEngineeringRigsOLD structureEngineeringRigs02 = 
+         new StructureEngineeringRigsOLD("Standup M-Set Advanced Component Manufacturing Material Efficiency II");
         
         addRigToStation(engineeringComplex, structureEngineeringRigs02);
         
@@ -41,8 +41,8 @@ public class ManagerFitter {
          "currentCalibartionComplex " + currentCalibartionComplex);
                 
         System.out.println("---------------------\n");
-        StructureEngineeringRigs structureEngineeringRigs03 = 
-         new StructureEngineeringRigs("Standup M-Set ME Research Accelerator II");
+        StructureEngineeringRigsOLD structureEngineeringRigs03 = 
+         new StructureEngineeringRigsOLD("Standup M-Set ME Research Accelerator II");
         
         System.out.println("" + engineeringComplex.getNameEngineeringComplex() + "\n" +
          structureEngineeringRigs03.getNameRig() + " " + structureEngineeringRigs03.getCalibration() + "\n" +
@@ -54,7 +54,7 @@ public class ManagerFitter {
         
     }
     
-    public void addRigToStation(EngineeringComplex engineeringComplex, StructureEngineeringRigs structureEngineeringRigs ){
+    public void addRigToStation(EngineeringComplex engineeringComplex, StructureEngineeringRigsOLD structureEngineeringRigs ){
         
         if ( currentCalibartionComplex == 0){ // is empty add now
             currentCalibartionComplex += structureEngineeringRigs.getCalibration();

@@ -12,90 +12,66 @@ import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
 /**
- *
+ * dgmAttributeTypes Securiy status 
+ * hiSecModifier 2355 null 1.0
+ * lowSecModifier 2356 null 1.9
+ * nullSecModifier 2357 null 2.1
+ * securityModifier 2358 null 1.0  
  * @author lele
  */
 public class StructureEngineeringRigs {
-    // unused
-    private String nameRig;
-//    private String sizeRig;
-//    private String tech;
-//    private String securityStatus;
-//    private String appliesTo;
-    // ---------------------------
-    
+    protected enum RULE_BONUS{
+        HI_SEC(2355), // 
+        LOW_SEC(2356),
+        NULL_SEC(2357),
+        RIG_TIME_EFFICIENCY(2593),
+        RIG_MATERIAL_EFFICIENCY(2594),
+        RIG_COST_BONUS(2595),
+        CALIBRATION(1153);
+        
+        private final int code;
+        
+        private RULE_BONUS rule_bonus;
+
+        private RULE_BONUS(int code) {
+            this.code = code;
+        }
+
+        private int getCode() {
+            return code;
+        }
+    }    
     
     private float calibration;
-    private float securityStatusBonus;    
+    private Float securityStatusBonus;    
     private float materialEfficiency;
     private float timeEfficiency;          
     private float costBonus;          
-    private float timeBonus;                 
-    
-    public StructureEngineeringRigs(){
-        
-    }
-    
-    public StructureEngineeringRigs(String name) {   
-        
-        InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(name);
+    private float timeBonus;
+    private String nameRig;
 
-        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
-        
-//        System.out.println(""+ invTypes.getTypeName());
-        
-        nameRig = invTypes.getTypeName();
-        
-        // DBG NON mi piace creare una cache con una mappa        
-        for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
-           
-            DgmAttributeTypes dgmAttributeTypes = 
-             ManagerDBEve.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
-
-
-            float bonusRig = getBonusRig(dgmTypeAttribute);
-            float bonusSecurityStatus = getSecurityStatus(dgmTypeAttribute, 2357);
-            float calibration = getCalibration(dgmTypeAttribute);
-                    
-            if ( bonusRig != 0)
-//                System.out.println(""+ dgmAttributeTypes.getDisplayName() + " "  + bonusRig);
-            
-            if ( bonusSecurityStatus != 0 ){
-//                System.out.println(""+ dgmAttributeTypes.getDisplayName() + " "  + bonusSecurityStatus);
-            }
-            
-            if ( calibration != 0 ){
-//                System.out.println(""+ dgmAttributeTypes.getDisplayName() + " "  + calibration);
-            }
-
-        }          
-    }                   
-    
-    /**
-     * Get Security Status
-     * @param DgmTypeAttributes dgmTypeAttribute
-     * @param Int idSecurity
-     * @return float
-     */
-    private float getSecurityStatus(DgmTypeAttributes dgmTypeAttribute, int idSecurity){
-        /*
-        dgmAttributeTypes
-        hiSecModifier 2355 null 1.0
-        lowSecModifier 2356 null 1.9
-        nullSecModifier 2357 null 2.1
-        securityModifier 2358 null 1.0        
-        */
+    private float getBonusRig(DgmTypeAttributes dgmTypeAttribute){
         int attributeID = dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID();
         
-        
-        if ( idSecurity == attributeID ){
-            securityStatusBonus = dgmTypeAttribute.getValueFloat();
-            return securityStatusBonus;
+        if ( dgmTypeAttribute.getValueFloat() != 0.0 ){
+            if ( attributeID == RULE_BONUS.RIG_TIME_EFFICIENCY.code ){ // 2593
+                timeEfficiency = dgmTypeAttribute.getValueFloat();
+                return timeEfficiency;
+            }
+            
+            if ( attributeID == RULE_BONUS.RIG_MATERIAL_EFFICIENCY.code ){ // 2594
+                materialEfficiency = dgmTypeAttribute.getValueFloat();
+                return materialEfficiency;
+            }
+            
+            if ( attributeID == RULE_BONUS.RIG_COST_BONUS.code ){ // 2595
+                costBonus = dgmTypeAttribute.getValueFloat();
+                return costBonus;
+            }            
         }
-        return 0;       
-
+        return 0;
     }
-    
+     
     /**
      * Get Calibration from DB
      * @param dgmTypeAttribute
@@ -107,51 +83,53 @@ public class StructureEngineeringRigs {
         dgmAttributeTypes 
         calibration 1153
         */
-        if ( dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID() == 1153 ){
+        if ( dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID() == 
+                RULE_BONUS.CALIBRATION.code ){ // 1153
             calibration =  dgmTypeAttribute.getValueFloat();
             return calibration;
         }
         return 0;
-    }
+    }    
     
     /**
-     * Get Bonus Rig
-     * @param dgmTypeAttribute
+     * Get Security Status
+     * @param DgmTypeAttributes dgmTypeAttribute
+     * @param Int idSecurity
      * @return float
      */
-    private float getBonusRig(DgmTypeAttributes dgmTypeAttribute){
-    /*
-        // secondo me ne manca uno il time bonus
-        attributeEngRigTimeBonus 2593 
-        attributeEngRigMatBonus 2594
-        attributeEngRigCostBonus 2595
-    */
-        
+    private float getSecurityStatus(DgmTypeAttributes dgmTypeAttribute, RULE_BONUS idSecurity){
+        /*
+        dgmAttributeTypes
+        hiSecModifier 2355 null 1.0
+        lowSecModifier 2356 null 1.9
+        nullSecModifier 2357 null 2.1
+        securityModifier 2358 null 1.0        
+        */
         int attributeID = dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID();
-        
-        if ( dgmTypeAttribute.getValueFloat() != 0.0 ){
-            if ( attributeID == 2593 ){
-                timeEfficiency = dgmTypeAttribute.getValueFloat();
-                return timeEfficiency;
-            }
-            
-            if ( attributeID == 2594 ){
-                materialEfficiency = dgmTypeAttribute.getValueFloat();
-                return materialEfficiency;
-            }
-            
-            if ( attributeID == 2595 ){
-                costBonus = dgmTypeAttribute.getValueFloat();
-                return costBonus;
-            }
+
+        if ( idSecurity.getCode() == attributeID ){
+            securityStatusBonus = dgmTypeAttribute.getValueFloat();
+            return securityStatusBonus;
         }
-        return 0;
+        return 0;       
+    }    
+    
+    
+    public StructureEngineeringRigs() {
+        displayAllValue();
+    }
+    
+    private void displayValue(){
+        if ( securityStatusBonus != null ){
+            System.out.println("Sicurity status " + securityStatusBonus);
+        }
+        
     }
     
     /**
-     * DBG
+     * Display all value of the rig
      */
-    public void rigAttibutes(){
+    private void displayAllValue(){
         String bpoName = "Standup M-Set Advanced Component Manufacturing Material Efficiency I";
         InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(bpoName);
         
@@ -166,8 +144,7 @@ public class StructureEngineeringRigs {
             System.out.println("" + dgmAttributeTypes.getAttributeName() + " " + dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID() 
              + " " + dgmTypeAttribute.getValueFloat() );           
         }
-    }
-    
+    }    
     
     /**
      * Get Cost Bonus
@@ -279,121 +256,5 @@ public class StructureEngineeringRigs {
      */
     public void setNameRig(String nameRig) {
         this.nameRig = nameRig;
-    } 
-    
-//   /**
-//     * Set Applies To
-//     * @return String
-//     */
-//    public String getAppliesTo() {
-//        return appliesTo;
-//    }
-//
-//    /**
-//     * Get Applies To
-//     * @param String appliesTo 
-//     */
-//    public void setAppliesTo(String appliesTo) {
-//        this.appliesTo = appliesTo;
-//    }
-//   
-//    
-//    /**
-//     * Get Tech
-//     * @return String
-//     */
-//    public String getTech() {
-//        return tech;
-//    }
-//
-//    /**
-//     * Set Tech
-//     * @param String tech 
-//     */
-//    private void setTech(String tech) {
-//        this.tech = tech;
-//    }    
-//    
-//    /**
-//     * Get Size Rig
-//     * @return String
-//     */
-//    public String getSizeRig() {
-//        return sizeRig;
-//    }
-//
-//    /**
-//     * Set Size Rig
-//     * @param String sizeRig 
-//     */
-//    public void setSizeRig(String sizeRig) {
-//        this.sizeRig = sizeRig;
-//    }
-//
-//    /**
-//     * Get Security Bonus
-//     * @return String
-//     */
-//    public String getSecurityStatus() {
-//        return securityStatus;
-//    }
-//
-//    /**
-//     * Set Security Bonus
-//     * @param String securityStatus 
-//     */
-//    public void setSecurityStatus(String securityStatus) {
-//        this.securityStatus = securityStatus;
-//    }
-    
+    }     
 }
-
-       // value rigs
-        /*
-            // 43867 Standup M-Set Advanced Component Manufacturing Material Efficiency I
-            hiSecModifier 2355 1.0
-            lowSecModifier 2356 1.9
-            nullSecModifier 2357 2.1
-            securityModifier 2358 1.0
-            attributeEngRigTimeBonus 2593 0.0
-            attributeEngRigMatBonus 2594 -2.0
-            attributeEngRigCostBonus 2595 0.0
-            invCategories Category 66 - invGroups Structure Engineering Rig
-        
-            Standup M-Set Advanced Component Manufacturing Material Efficiency I 
-            Standup M-Set Advanced Component Manufacturing Material Efficiency II 
-
-            Standup M-Set Advanced Component Manufacturing Time Efficiency I
-            Standup M-Set Advanced Component Manufacturing Time Efficiency II 
-
-            Standup M-Set Blueprint Copy Accelerator I
-            Standup M-Set Blueprint Copy Accelerator II 
-
-            Standup M-Set Blueprint Copy Cost Optimization I 
-            Standup M-Set Blueprint Copy Cost Optimization II 
-
-            Standup M-Set ME Research Accelerator I  
-            Standup M-Set ME Research Accelerator II 
-
-            Standup M-Set TE Research Accelerator I 
-            Standup M-Set TE Research Accelerator II 
-
-            Standup M-Set Invention Accelerator I 
-            Standup M-Set Invention Accelerator II
-
-            Calcolo Manufactoring ME
-            materialReductionManufactoringBonusME_T1 = 2.0 / 100 = 2%
-            materialReductionManufactoringBonusME_T2 = 2.4 / 100 = 2,4%
-            
-            Calcolo Manufactoring TE
-            timeReductionManufactoringBonusTE_T1 = materialReductionManufactoringBonusME_T1 * 10 =  20%
-            timeReductionManufactoringBonusTE_T2 = materialReductionManufactoringBonusME_T2 * 10 = 24%
-        
-            Calcolo Cost Reduction
-            costReductionBonus_T1 = materialReductionManufactoringBonusME_T1 * 5 = 10%
-            costReductionBonus_T2 = materialReductionManufactoringBonusME_T1 * 6 = 12%
-        
-            Calcolo time reduction
-            timeReductionBonus_T1 = timeReductionManufactoringBonusTE_T1 = 20%
-            timeReductionBonus_T2 = timeReductionManufactoringBonusTE_T2 = 24%
-        */

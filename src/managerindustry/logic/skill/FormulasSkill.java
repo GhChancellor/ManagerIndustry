@@ -5,8 +5,6 @@
  */
 package managerindustry.logic.skill;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import managerindustry.logic.exception.MaximumValueSkillexceededException;
 
 /**

@@ -11,19 +11,41 @@ import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
 /**
- *
+ * raitaru '35825', '2339' structureServiceRoleBonus, NULL, '-25' 
+ *  
+ * Material bonus for Engineering Complexes Structures 2600 0.99 ( 1 - 0.99 = 0.1 )
+ * 1% reduction in manufacturing job required materials 2600
+ * 
+ * Cost bonus for Engineering Complexes Structures 2601 null 0.97 ( 1 - 0.97 = 0.3 )
+ * 3% reduction in manufacturing and science job required ISK cost 2601
+ * 
+ * Time bonus for Engineering Complexes Structures 2602 null 0.85 ( 1 - 0.85 = 0.15 )
+ * 15% reduction in manufacturing and science job required time 2602 
+ * 
+ * 25% reduction in Engineering Service Module fuel consumption 2339
+ * 
+ * Calibration station 1132
  * @author lele
  */
 public class EngineeringComplex {
-    /* 
-    raitaru '35825', '2339' structureServiceRoleBonus, NULL, '-25' 
-    Material bonus for Engineering Complexes Structures 2600 0.99 ( 1 - 0.99 = 0.1 )
-    Cost bonus for Engineering Complexes Structures 2601 null 0.97 ( 1 - 0.97 = 0.3 )
-    Time bonus for Engineering Complexes Structures 2602 null 0.85 ( 1 - 0.85 = 0.15 )
-    25% reduction in Engineering Service Module fuel consumption 2339
-    Calibration station 1132
-    */
     
+    public enum RULE_BONUS{
+        MANUFACTURING_MATERIAL(2600), // 1% reduction in manufacturing job required materials 2600
+        MANUFACTURING_SCIENCE_JOB_TIME(2602), // 15% reduction in manufacturing and science job required time 2602
+        MANUFACTURING_SCIENCE_JOB_ISK_COST(2601), // 3% reduction in manufacturing and science job required ISK cost 2601
+        FUEL_CONSUMPTIOM(2339), // 25% reduction in Engineering Service Module fuel consumption 2339
+        MAX_CALIBRATION_COMPLEX(1132); // Calibration station 1132// Calibration station 1132
+                
+        private int code;
+        
+        private RULE_BONUS(int code){
+            this.code = code;
+        }
+        
+        public int getCode() {
+            return code;
+        }    
+    }   
     
     private String nameEngineeringComplex;
     // DBG il Double è più che suffiencente
@@ -31,51 +53,35 @@ public class EngineeringComplex {
     private float reductionManufacturingScienceJobTime; // 2602
     private float reductionManufacturingScienceJobIskCost; // 2601
     private float reductionFuelConsumption; // 2339
-    private float maxCalibrationComplex; // 2339
+    private float maxCalibrationComplex; // 1132
     private final float baseValue = 1.0f;
     
     public EngineeringComplex() {
     }
 
     public EngineeringComplex(String nameEngineeringComplex){
-        /*
-        1% reduction in manufacturing job required materials 2600
-        15% reduction in manufacturing and science job required time 2602 ?????
-        3% reduction in manufacturing and science job required ISK cost 2601
-        25% reduction in Engineering Service Module fuel consumption 2339
-        Calibration station 1132
-        */
-        
         
         // float roundOff = Math.round(value * 100.0) / 100.0;
         // Math.floor(value * 100) / 100;
-        DgmTypeAttributes dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, 2600);
+        DgmTypeAttributes dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.MANUFACTURING_MATERIAL.code); // 2600
         reductionManufacturingMaterial = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
         
-        
-        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, 2601);
+        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.MANUFACTURING_SCIENCE_JOB_ISK_COST.code); // 2601
         reductionManufacturingScienceJobIskCost = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
         
-        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, 2602);
+        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.MANUFACTURING_SCIENCE_JOB_TIME.code); // 2602
         
         reductionManufacturingScienceJobTime = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
         
-        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, 2339);
+        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.FUEL_CONSUMPTIOM.code); // 2339
         reductionFuelConsumption = dgmTypeAttributes.getValueFloat();
         
-        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, 1132);
+        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.MAX_CALIBRATION_COMPLEX.code); // 1132
         maxCalibrationComplex = dgmTypeAttributes.getValueFloat();
         
         this.nameEngineeringComplex = nameEngineeringComplex;
-//        
-//        System.out.println("nameEngineeringComplex " + this.nameEngineeringComplex);
-//        System.out.println("reductionManufacturingMaterial " + reductionManufacturingMaterial);
-//        System.out.println("reductionManufacturingScienceJobIskCost " + reductionManufacturingScienceJobIskCost);
-//        System.out.println("reductionManufacturingScienceJobTime " + reductionManufacturingScienceJobTime);
-//        System.out.println("reductionFuelConsumption " + reductionFuelConsumption);
-//        System.out.println("maxCalibrationComplex " + maxCalibrationComplex);
-//        
-//        System.out.println("");
+        
+//         displayValue();
     } 
     
     private static BigDecimal truncateDecimal(float x, int numberofDecimals) {
@@ -87,6 +93,17 @@ public class EngineeringComplex {
             return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_CEILING);
         }
         
+    }
+    
+    private void displayValue(){
+        System.out.println("nameEngineeringComplex " + this.nameEngineeringComplex);
+        System.out.println("reductionManufacturingMaterial " + reductionManufacturingMaterial);
+        System.out.println("reductionManufacturingScienceJobIskCost " + reductionManufacturingScienceJobIskCost);
+        System.out.println("reductionManufacturingScienceJobTime " + reductionManufacturingScienceJobTime);
+        System.out.println("reductionFuelConsumption " + reductionFuelConsumption);
+        System.out.println("maxCalibrationComplex " + maxCalibrationComplex);
+        
+        System.out.println("");
     }
     
     /**
@@ -183,7 +200,5 @@ public class EngineeringComplex {
      */
     private void setReductionFuelConsumption(float reductionFuelConsumption) {
         this.reductionFuelConsumption = reductionFuelConsumption;
-    }
-    
-    
+    }  
 }

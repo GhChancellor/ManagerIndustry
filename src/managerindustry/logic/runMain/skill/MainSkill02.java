@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.apiEsiJson.skill.characterSkills;
+package managerindustry.logic.runMain.skill;
 
 import managerindustry.db.entities.user.UserApiEntity;
 import managerindustry.logic.apiEsiJson.ApiEsi;
+import managerindustry.logic.apiEsiJson.skill.characterSkills.SkillRaw;
+import managerindustry.logic.apiEsiJson.skill.characterSkills.Skills;
 
 /**
  *
  * @author lele
  */
-public class MainSkill {
+public class MainSkill02 {
     
     public static void main(String[] args) {
         UserApiEntity userApiEntity = new UserApiEntity();

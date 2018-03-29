@@ -30,6 +30,7 @@ public class ManagerSQLUser {
     private EntityManagerFactory entityManagerFactoryEMF =
      Persistence.createEntityManagerFactory("ManagerIndustryPU");    
     
+    // a che serve? Viene utilizzata?
     private UserApiEntityJpaController 
      userKeyIDJpaController = new UserApiEntityJpaController
      (Persistence.createEntityManagerFactory("ManagerIndustryPU"));
@@ -83,7 +84,7 @@ public class ManagerSQLUser {
      * Add User Api Inde xEntity
      * @param userApiEntity 
      */
-    public void addUserApiEntity(UserApiEntity userApiEntity ){
+    public void addUserApiEntity(UserApiEntity userApiEntity){
         try {
             UserApiEntityJpaController userApiEntityJpaController = new UserApiEntityJpaController(entityManagerFactoryEMF);            
             userApiEntityJpaController.create(userApiEntity);        
@@ -141,12 +142,12 @@ public class ManagerSQLUser {
             if ( userApiEntitys.isEmpty()){
                 return null;
             }else{
-                userApiEntitys.get(0);
+                return userApiEntitys.get(0);
             }
         } catch (Exception e) {
             e.printStackTrace();
             return null;            
         }
-        return null;
+
     }    
 }

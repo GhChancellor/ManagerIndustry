@@ -73,20 +73,20 @@ public class ManagerDBEve {
      * Get value skill like description or name....
      * @return List <InvTypes>
      */
-    public SkillV getInvTypes_SkillValues(int typeID, boolean published, int attributeID){
+    public SkillV getInvTypes_SkillValues(int typeID, Boolean published, int attributeID){
         try {
             EntityManager getInvTypeGroupAndNameEM = entityManager;
             
             // Devo recupareare i valori misti di più taballe e metterle nella lista SkillV
             TypedQuery < SkillV > typedQueryTQ = 
               getInvTypeGroupAndNameEM.createNamedQuery("InvTypes.findByTypeId-Published-AttributeID", SkillV.class);
-            
+
             typedQueryTQ.setParameter("typeID", typeID);
             typedQueryTQ.setParameter("published", published);
             typedQueryTQ.setParameter("attributeID", attributeID);
-            
-            List < SkillV > skills = typedQueryTQ.getResultList();
-            
+
+            List < SkillV > skills = typedQueryTQ.setMaxResults(10).getResultList();
+                        
             if ( skills.isEmpty() ){
                 return null;
             }else{

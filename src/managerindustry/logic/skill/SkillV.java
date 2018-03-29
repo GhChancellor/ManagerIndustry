@@ -12,12 +12,20 @@ import managerindustry.logic.apiEsiJson.skill.characterSkills.SkillRaw;
  * @author lele
  */
 public class SkillV{
+    // se usi nel DB new select ..... usa sempre Integer, Double, Float 
+    private Float valueFloat; 
+    private Integer valueInt;
+    
     private String name;
     private String description;
-    private float valueFloat;
-    private float startingValue;
-    private int valueInt;
-
+    private float startingValue;  
+    public SkillV(String name, String description, Float valueFloat, Integer valueInt) {
+        this.name = name;
+        this.description = description;
+        this.valueFloat = valueFloat;
+        this.valueInt = valueInt;
+    }
+    
     public SkillV(String name) {
         this.name = name;
     }

@@ -30,7 +30,7 @@ public class ManagerSkill {
         return instance;
     }
 
-    public ManagerSkill() {
+    private ManagerSkill() {
         initSkill();
     }
 
@@ -60,26 +60,26 @@ public class ManagerSkill {
     /**
      *   SELECT * FROM invTypes where invTypes.groupID=268;
      */
-    public void initSkill(){
+    private final void initSkill(){
         SkillV skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3380, true, 440);
-//        addSkillMap(skill.getName(), new SkillV(skill.getName()) );                
-        
-        skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3388, true, 1961);
-        addSkillMap(skill.getName(), skill);
-        
+        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
+                
+//        SkillV skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3380, true, 440);
+//        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
+//        
         skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3395, true, 1982);
-        addSkillMap(skill.getName(), skill);
-        
+        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
+//        
         skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3396, true, 1982);
-        addSkillMap(skill.getName(), skill);
+        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
         
         skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3397, true, 1982);
-        addSkillMap(skill.getName(), skill);
+        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
         
         skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3398, true, 1982);
-        addSkillMap(skill.getName(), skill);
-        
-        manuallyAddedNames();
+        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
+            
+//        manuallyAddedNames();
         
     }
     
@@ -89,12 +89,12 @@ public class ManagerSkill {
 //        accounting.setStartingValue(0.02f);
 //        addSkillMap(accounting.getName(), accounting);
 //        
-//        BrokerFee brokerRelations = new BrokerFee("Broker Relations");
-//        brokerRelations.setStartingValue(0.03f); // starting value
-//        brokerRelations.setInitTaxCorparationStanding(0.0002f);
-//        brokerRelations.setValueFloat(0.001f);  // reduceFeePerLevel
-//        brokerRelations.setFactionStandingTax(0.0003f);
-//        addSkillMap(brokerRelations.getName(), brokerRelations);
+        BrokerFee brokerRelations = new BrokerFee("Broker Relations");
+        brokerRelations.setStartingValue(0.03f); // starting value
+        brokerRelations.setInitTaxCorparationStanding(0.0002f);
+        brokerRelations.setValueFloat(0.001f);  // reduceFeePerLevel
+        brokerRelations.setFactionStandingTax(0.0003f);
+        addSkillMap(brokerRelations.getName(), brokerRelations);
         
     }
 

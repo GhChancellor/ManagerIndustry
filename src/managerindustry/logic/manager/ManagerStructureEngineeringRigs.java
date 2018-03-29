@@ -7,14 +7,14 @@ package managerindustry.logic.manager;
 
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.logic.structure.StructureEngineeringRigs;
+import managerindustry.logic.structure.StructureEngineeringRigsOLD;
 
 /**
  *
  * @author lele
  */
 public class ManagerStructureEngineeringRigs {
-    private List < StructureEngineeringRigs > engineeringRigses = new ArrayList<>();
+    private List < StructureEngineeringRigsOLD > engineeringRigses = new ArrayList<>();
     private static ManagerStructureEngineeringRigs instance = null;    
     
     public static ManagerStructureEngineeringRigs getInstace(){
@@ -27,59 +27,8 @@ public class ManagerStructureEngineeringRigs {
     public ManagerStructureEngineeringRigs() {
     }
     
-    /**
-     * Get Engineering Rigses
-     * @return List<StructureEngineeringRigs>
-     */
-    public List<StructureEngineeringRigs> getEngineeringRigses() {
-        return engineeringRigses;
-    }
-
-    /**
-     * Set Engineering Rigses
-     * @param List<StructureEngineeringRigs> engineeringRigses 
-     */
-    private void setEngineeringRigses(List<StructureEngineeringRigs> engineeringRigses) {
-        this.engineeringRigses = engineeringRigses;
-    }
-    
-    /**
-     * Add Engineering Rigses and avoid duplicate
-     * @param StructureEngineeringRigs engineeringRigs 
-     */
-    public boolean addEngineeringRigses( StructureEngineeringRigs engineeringRigs) {
-        
-        // if list is empty add now
-        if ( this.engineeringRigses.isEmpty() ){
-            this.engineeringRigses.add(engineeringRigs);
-            return true;
-                   
-        }else if ( avoidDuplicateRigsAdd(engineeringRigs) ){  // avoid Duplicate Rigs         
-            this.engineeringRigses.add(engineeringRigs);
-            return true;            
-        }
-        return false;
-
-    }
-    
-    /**
-     * Avoid dudplicate Engineerings 
-     * @param structureEngineeringRigs 
-     */
-    private boolean avoidDuplicateRigsAdd( StructureEngineeringRigs structureEngineeringRigs ){
-        for (int i = 0; i < engineeringRigses.size(); i++) {
-            if (engineeringRigses.get(i).getNameRig() == structureEngineeringRigs.getNameRig()){
-                System.out.println("ManagerStructureEngineeringRigs avoidDuplicateRigsAdd: Nn puoi inserire lo stesso rig "
-                + structureEngineeringRigs.getNameRig() );
-                return false;
-            }
-        }
-        return true;
-    }    
-    
-    
     public void initStructureEngineeringRigs(String nameRig){
-        StructureEngineeringRigs structureEngineeringRigs = new StructureEngineeringRigs(nameRig);
+        StructureEngineeringRigsOLD structureEngineeringRigs = new StructureEngineeringRigsOLD(nameRig);
         avoidDuplicateRigsAdd(structureEngineeringRigs);
         
 //            Standup M-Set Equipment Manufacturing Material Efficiency I
@@ -110,10 +59,60 @@ public class ManagerStructureEngineeringRigs {
 //            Standup XL-Set Equipment and Consumable Manufacturing Efficiency II 
                     
             
+    }    
+    
+    /**
+     * Get Engineering Rigses
+     * @return List<StructureEngineeringRigs>
+     */
+    public List<StructureEngineeringRigsOLD> getEngineeringRigses() {
+        return engineeringRigses;
+    }
+
+    /**
+     * Set Engineering Rigses
+     * @param List<StructureEngineeringRigs> engineeringRigses 
+     */
+    private void setEngineeringRigses(List<StructureEngineeringRigsOLD> engineeringRigses) {
+        this.engineeringRigses = engineeringRigses;
     }
     
+    /**
+     * Add Engineering Rigses and avoid duplicate
+     * @param StructureEngineeringRigs engineeringRigs 
+     */
+    public boolean addEngineeringRigses( StructureEngineeringRigsOLD engineeringRigs) {
+        
+        // if list is empty add now
+        if ( this.engineeringRigses.isEmpty() ){
+            this.engineeringRigses.add(engineeringRigs);
+            return true;
+                   
+        }else if ( avoidDuplicateRigsAdd(engineeringRigs) ){  // avoid Duplicate Rigs         
+            this.engineeringRigses.add(engineeringRigs);
+            return true;            
+        }
+        return false;
+
+    }
+    
+    /**
+     * Avoid dudplicate Engineerings 
+     * @param structureEngineeringRigs 
+     */
+    private boolean avoidDuplicateRigsAdd( StructureEngineeringRigsOLD structureEngineeringRigs ){
+        for (int i = 0; i < engineeringRigses.size(); i++) {
+            if (engineeringRigses.get(i).getNameRig() == structureEngineeringRigs.getNameRig()){
+                System.out.println("ManagerStructureEngineeringRigs avoidDuplicateRigsAdd: Nn puoi inserire lo stesso rig "
+                + structureEngineeringRigs.getNameRig() );
+                return false;
+            }
+        }
+        return true;
+    }    
+    
     public double getRate() {
-        StructureEngineeringRigs structureEngineeringRigs = new StructureEngineeringRigs();
+        StructureEngineeringRigsOLD structureEngineeringRigs = new StructureEngineeringRigsOLD();
         structureEngineeringRigs.setSecurityStatusBonus(0.0f);
         
         for (int i = 0; i < engineeringRigses.size(); i++) {
