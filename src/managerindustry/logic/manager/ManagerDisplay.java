@@ -25,8 +25,8 @@ import managerindustry.logic.structure.EngineeringComplex;
 public class ManagerDisplay {
 
     public void displayValueRig(){
-       ManagerStructureEngineeringRigs managerStructureEngineeringRigs = new ManagerStructureEngineeringRigs();
-       managerStructureEngineeringRigs.initStructureEngineeringRigs("Standup XL-Set Laboratory Optimization I");
+//       ManagerStructureEngineeringRigs managerStructureEngineeringRigs = new ManagerStructureEngineeringRigs();
+//       managerStructureEngineeringRigs.initStructureEngineeringRigs("Standup XL-Set Laboratory Optimization I");
  
     }    
     

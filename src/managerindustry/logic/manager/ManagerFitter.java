@@ -7,79 +7,96 @@ package managerindustry.logic.manager;
 
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.logic.structure.EngineeringComplex;
-import managerindustry.logic.structure.StructureEngineeringRigsOLD;
+import managerindustry.logic.structure.StructureEngineeringRigs;
 
 /**
  *
  * @author lele
  */
 public class ManagerFitter {
-    private float currentCalibartionComplex;
-    
+    private List < StructureEngineeringRigs > engineeringRigses = new ArrayList<>();
+    private float currentCalibartionComplex = 0;
+
     public ManagerFitter() {
-        currentCalibartionComplex = 0;
-        
-        EngineeringComplex engineeringComplex = new EngineeringComplex("Raitaru");
-        StructureEngineeringRigsOLD structureEngineeringRigs = new 
-         StructureEngineeringRigsOLD("Standup M-Set Blueprint Copy Cost Optimization II");
-        
-        addRigToStation(engineeringComplex, structureEngineeringRigs);
-        
-        System.out.println("" + engineeringComplex.getNameEngineeringComplex() + "\n" +
-         structureEngineeringRigs.getNameRig() + " " + structureEngineeringRigs.getCalibration() + "\n" +
-         "currentCalibartionComplex " + currentCalibartionComplex);
-        
-        System.out.println("---------------------\n");
-        StructureEngineeringRigsOLD structureEngineeringRigs02 = 
-         new StructureEngineeringRigsOLD("Standup M-Set Advanced Component Manufacturing Material Efficiency II");
-        
-        addRigToStation(engineeringComplex, structureEngineeringRigs02);
-        
-        System.out.println("" + engineeringComplex.getNameEngineeringComplex() + "\n" +
-         structureEngineeringRigs02.getNameRig() + " " + structureEngineeringRigs02.getCalibration() + "\n" +
-         "currentCalibartionComplex " + currentCalibartionComplex);
-                
-        System.out.println("---------------------\n");
-        StructureEngineeringRigsOLD structureEngineeringRigs03 = 
-         new StructureEngineeringRigsOLD("Standup M-Set ME Research Accelerator II");
-        
-        System.out.println("" + engineeringComplex.getNameEngineeringComplex() + "\n" +
-         structureEngineeringRigs03.getNameRig() + " " + structureEngineeringRigs03.getCalibration() + "\n" +
-         "currentCalibartionComplex " + currentCalibartionComplex);
-        
-    }
-
-    public void initFitter(){
-        
     }
     
-    public void addRigToStation(EngineeringComplex engineeringComplex, StructureEngineeringRigsOLD structureEngineeringRigs ){
+    /**
+    * Add Engineering Rigses and avoid duplicate
+    * @param StructureEngineeringRigs engineeringRigs 
+    */
+    private boolean addEngineeringRigses( StructureEngineeringRigs engineeringRigs) {
         
-        if ( currentCalibartionComplex == 0){ // is empty add now
-            currentCalibartionComplex += structureEngineeringRigs.getCalibration();
-            ManagerStructureEngineeringRigs.getInstace().addEngineeringRigses(structureEngineeringRigs);
-            return;
-        }else if(currentCalibartionComplex > engineeringComplex.getMaxCalibrationComplex() ){ // non sarà mai vera
-            System.out.println("ManagerFItter > addRigToStation   Calibration complex superata ");
-            return;
-        }else if (currentCalibartionComplex < engineeringComplex.getMaxCalibrationComplex()){ // currentCalibartionComplex < 400
-            
-            float tempCurrentCalibationComplex = 0;
-            tempCurrentCalibationComplex = currentCalibartionComplex + structureEngineeringRigs.getCalibration();
-            
-            if ( tempCurrentCalibationComplex < engineeringComplex.getMaxCalibrationComplex() ) // currentCalibartionComplex < 400
-            
-                if ( ManagerStructureEngineeringRigs.getInstace().addEngineeringRigses(structureEngineeringRigs) ){
-                    currentCalibartionComplex = tempCurrentCalibationComplex;
-            }
-        }        
-    }    
+        // if list is empty add now
+        if ( this.engineeringRigses.isEmpty() ){
+            this.engineeringRigses.add(engineeringRigs);
+            return true;
+                   
+        }else if ( avoidDuplicateRigsAdd(engineeringRigs) ){  // avoid Duplicate Rigs         
+            this.engineeringRigses.add(engineeringRigs);
+            return true;            
+        }
+        return false;
 
+    }
+    
+    /**
+     * Avoid dudplicate Engineerings 
+     * @param structureEngineeringRigs 
+     */
+    private boolean avoidDuplicateRigsAdd( StructureEngineeringRigs structureEngineeringRigs ){
+        for (int i = 0; i < engineeringRigses.size(); i++) {
+            if (engineeringRigses.get(i).getNameRig() == structureEngineeringRigs.getNameRig()){
+                System.out.println("ManagerStructureEngineeringRigs avoidDuplicateRigsAdd: Nn puoi inserire lo stesso rig "
+                + structureEngineeringRigs.getNameRig() );
+                return false;
+            }
+        }
+        return true;
+    }    
+    /**
+     * Get Engineering Rigses
+     * @return List<StructureEngineeringRigs>
+     */
+    private List<StructureEngineeringRigs> getEngineeringRigses() {
+        return engineeringRigses;
+    }
+
+    /**
+     * Set Engineering Rigses
+     * @param List<StructureEngineeringRigs> engineeringRigses 
+     */
+    private void setEngineeringRigses(List<StructureEngineeringRigs> engineeringRigses) {
+        this.engineeringRigses = engineeringRigses;
+    }    
+    
+    
 }
+
 /*
-    stazione
-        valori stazione
-            valori rig
-    controllo dei valori
+//            Standup M-Set Equipment Manufacturing Material Efficiency I
+//            Standup M-Set Equipment Manufacturing Material Efficiency II
+        
+//            Standup M-Set Advanced Component Manufacturing Material Efficiency I 
+//            Standup M-Set Advanced Component Manufacturing Material Efficiency II 
+//
+//            Standup M-Set Advanced Component Manufacturing Time Efficiency I
+//            Standup M-Set Advanced Component Manufacturing Time Efficiency II 
+//
+//            Standup M-Set Blueprint Copy Accelerator I
+//            Standup M-Set Blueprint Copy Accelerator II 
+//
+//            Standup M-Set Blueprint Copy Cost Optimization I 
+//            Standup M-Set Blueprint Copy Cost Optimization II 
+//
+//            Standup M-Set ME Research Accelerator I  
+//            Standup M-Set ME Research Accelerator II 
+//
+//            Standup M-Set TE Research Accelerator I 
+//            Standup M-Set TE Research Accelerator II 
+//
+//            Standup M-Set Invention Accelerator I 
+//            Standup M-Set Invention Accelerator II     
+                    
+//            Standup XL-Set Equipment and Consumable Manufacturing Efficiency I 
+//            Standup XL-Set Equipment and Consumable Manufacturing Efficiency II
 */

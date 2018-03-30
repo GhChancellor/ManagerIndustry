@@ -11,6 +11,7 @@ import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
 /**
+ * https://community.eveonline.com/news/dev-blogs/building-dreams-introducing-engineering-complexes/
  * raitaru '35825', '2339' structureServiceRoleBonus, NULL, '-25' 
  *  
  * Material bonus for Engineering Complexes Structures 2600 0.99 ( 1 - 0.99 = 0.1 )

@@ -6,7 +6,7 @@
 package managerindustry.logic.runMain;
 
 import managerindustry.logic.manager.ManagerDisplay;
-import managerindustry.logic.manager.ManagerFitter;
+import managerindustry.logic.manager.ManagerFitterOLD;
 import managerindustry.logic.prove.ricorsione.ProvaRicorsione;
 
 /**
@@ -28,7 +28,7 @@ public class ManagerIndustry {
 //        managerDisplay.engineeringComplex();
 //        managerDisplay.getSolarSystemID();
 
-//        ManagerFitter managerFitter = new ManagerFitter();
+//        ManagerFitterOLD managerFitter = new ManagerFitterOLD();
 //        managerFitter.initFitter();
 
         
