@@ -14,7 +14,7 @@ import managerindustry.logic.structure.StructureEngineeringRigs;
  *
  * @author lele
  */
-public class MainGenerico {
+public class MainRigs {
 //    public static void main(String[] args) {
 ////        EngineeringComplex engineeringComplex = new EngineeringComplex("Raitaru");
 ////          StructureEngineeringRigs engineeringRigs0 = new StructureEngineeringRigs();

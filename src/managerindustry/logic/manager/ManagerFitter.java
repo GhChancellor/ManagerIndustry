@@ -7,6 +7,9 @@ package managerindustry.logic.manager;
 
 import java.util.ArrayList;
 import java.util.List;
+import managerindustry.logic.enumName.SecurityStatusEnum;
+import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.structure.EngineeringComplex;
 import managerindustry.logic.structure.StructureEngineeringRigs;
 
 /**
@@ -16,39 +19,82 @@ import managerindustry.logic.structure.StructureEngineeringRigs;
 public class ManagerFitter {
     private List < StructureEngineeringRigs > engineeringRigses = new ArrayList<>();
     private float currentCalibartionComplex = 0;
+    private EngineeringComplex engineeringComplex;
+    
+    /**
+     * DBG con "Standup M-Set Blueprint Copy Cost Optimization II", SecurityStatusEnum.NULL_SEC
+     * calcolaValoriSecurityStatusConRig() da -25.19 al posto di -25,2  arrotodamento sbagliato
+     * @throws ErrorExeption 
+     */
+    public ManagerFitter() throws ErrorExeption  { // <----- DBG ATTENZIONE TRY CATCH DA FARE GESTIRE ALLA GUI
+        
+        engineeringComplex = new EngineeringComplex("Raitaru");
+        StructureEngineeringRigs structureEngineeringRigs01 = new 
+            StructureEngineeringRigs("Standup M-Set Blueprint Copy Cost Optimization II", SecurityStatusEnum.NULL_SEC);
 
-    public ManagerFitter() {
+        addEngineeringRigses(structureEngineeringRigs01);
+
+        System.out.println("" + engineeringComplex.getNameEngineeringComplex() + "\n" +
+         structureEngineeringRigs01.getNameRig() + " " + structureEngineeringRigs01.getCalibration() + "\n" +
+         "currentCalibartionComplex " + currentCalibartionComplex);        
+
+        StructureEngineeringRigs structureEngineeringRigs02 = new 
+            StructureEngineeringRigs("Standup M-Set Blueprint Copy Cost Optimization II", SecurityStatusEnum.NULL_SEC);
+
+        addEngineeringRigses(structureEngineeringRigs02);
+
+        System.out.println("" + engineeringComplex.getNameEngineeringComplex() + "\n" +
+         structureEngineeringRigs02.getNameRig() + " " + structureEngineeringRigs02.getCalibration() + "\n" +
+         "currentCalibartionComplex " + currentCalibartionComplex); 
+     
+        
+        
     }
     
     /**
     * Add Engineering Rigses and avoid duplicate
     * @param StructureEngineeringRigs engineeringRigs 
     */
-    private boolean addEngineeringRigses( StructureEngineeringRigs engineeringRigs) {
-        
+    private void addEngineeringRigses( StructureEngineeringRigs structureEngineeringRigs ) throws ErrorExeption {
         // if list is empty add now
         if ( this.engineeringRigses.isEmpty() ){
-            this.engineeringRigses.add(engineeringRigs);
-            return true;
-                   
-        }else if ( avoidDuplicateRigsAdd(engineeringRigs) ){  // avoid Duplicate Rigs         
-            this.engineeringRigses.add(engineeringRigs);
-            return true;            
-        }
-        return false;
-
+            this.engineeringRigses.add(structureEngineeringRigs);
+            currentCalibartionComplex = structureEngineeringRigs.getCalibration();
+            return;
+            
+        }else if ( avoidDuplicateRigsAdd(structureEngineeringRigs ) ){
+            calculateCurrentCalibartionComplex(structureEngineeringRigs);
+            this.engineeringRigses.add(structureEngineeringRigs);             
+        }  
+  
     }
+
+    private void calculateCurrentCalibartionComplex(StructureEngineeringRigs structureEngineeringRigs) throws ErrorExeption {
+        float maxCalibration = engineeringComplex.getMaxCalibrationComplex();
+        float tempCurrentCalibartionComplex = 0;
+        
+        if (currentCalibartionComplex <= maxCalibration){
+            tempCurrentCalibartionComplex = 
+                currentCalibartionComplex + structureEngineeringRigs.getCalibration();
+            
+            if ( tempCurrentCalibartionComplex <= maxCalibration){
+                currentCalibartionComplex = tempCurrentCalibartionComplex;
+                return;
+            }
+        }
+        throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.MAX_CALIBRATION);
+    }        
     
     /**
      * Avoid dudplicate Engineerings 
      * @param structureEngineeringRigs 
      */
-    private boolean avoidDuplicateRigsAdd( StructureEngineeringRigs structureEngineeringRigs ){
+    private boolean avoidDuplicateRigsAdd( StructureEngineeringRigs structureEngineeringRigs ) throws ErrorExeption{
         for (int i = 0; i < engineeringRigses.size(); i++) {
             if (engineeringRigses.get(i).getNameRig() == structureEngineeringRigs.getNameRig()){
                 System.out.println("ManagerStructureEngineeringRigs avoidDuplicateRigsAdd: Nn puoi inserire lo stesso rig "
                 + structureEngineeringRigs.getNameRig() );
-                return false;
+                throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.DUPLICATE_RIGS);
             }
         }
         return true;

@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.structure;
 
+import java.math.BigDecimal;
 import java.util.List;
 import managerindustry.db.entities.DgmAttributeTypes;
 import managerindustry.db.entities.DgmTypeAttributes;
@@ -84,15 +85,28 @@ public class StructureEngineeringRigs {
      */
     public void calcolaValoriSecurityStatusConRig(){
         if ( materialEfficiency != 0)
-            materialEfficiencyAndSecurityStatus = materialEfficiency * securityStatusBonus;
+            materialEfficiencyAndSecurityStatus = truncateDecimal(materialEfficiency * securityStatusBonus, 1).floatValue() ;
+//            materialEfficiencyAndSecurityStatus = materialEfficiency * securityStatusBonus;
         
         if ( timeEfficiency != 0)
-            timeEfficiencyAndSecurityStatus = timeEfficiency * securityStatusBonus;
+            timeEfficiencyAndSecurityStatus = truncateDecimal(timeEfficiency * securityStatusBonus, 1).floatValue() ;
+//            timeEfficiencyAndSecurityStatus = timeEfficiency * securityStatusBonus;
         
         if ( costBonus != 0)
-            costBonusAndSecurityStatus = costBonus * securityStatusBonus;
+            costBonusAndSecurityStatus = truncateDecimal(costBonus * securityStatusBonus, 1).floatValue();
+//            costBonusAndSecurityStatus = costBonus * securityStatusBonus;
     }
 
+    private static BigDecimal truncateDecimal(float x, int numberofDecimals) {
+//        return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_HALF_UP);
+        if (x > 0) {
+            return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_HALF_UP);
+        } else {
+            return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_CEILING);
+        }
+    }
+    
+    
     /**
      * dbg
      * Converte un enum security status ( generico ) in un valore leggibile per la classe
@@ -166,6 +180,7 @@ public class StructureEngineeringRigs {
     }
     
     private void displayAllValueCalculated(){
+        System.out.println("StructureEngineeringRigs > displayAllValueCalculated()");
         if ( materialEfficiencyAndSecurityStatus != 0)
             System.out.println("materialEfficiencyAndSecurityStatus " + materialEfficiencyAndSecurityStatus);
 
