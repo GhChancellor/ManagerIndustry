@@ -16,7 +16,7 @@ import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.buiild.ComponentX;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
-import managerindustry.logic.structure.EngineeringComplex;
+import managerindustry.logic.unused.structure.UNUSED_EngineeringComplex;
 
 /**
  *
@@ -200,7 +200,7 @@ public class ManagerDisplay {
 
     public void engineeringComplex(){
         String bpoName = "AZBEL";
-        EngineeringComplex engineeringComplex = new EngineeringComplex(bpoName);
+        UNUSED_EngineeringComplex engineeringComplex = new UNUSED_EngineeringComplex(bpoName);
     }
     
     public void getSolarSystemID(){

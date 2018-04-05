@@ -6,7 +6,6 @@
 package managerindustry.logic.runMain;
 
 import managerindustry.logic.manager.ManagerDisplay;
-import managerindustry.logic.manager.ManagerFitterOLD;
 import managerindustry.logic.prove.ricorsione.ProvaRicorsione;
 
 /**

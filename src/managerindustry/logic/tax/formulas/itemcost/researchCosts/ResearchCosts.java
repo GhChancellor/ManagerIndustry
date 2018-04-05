@@ -40,6 +40,7 @@ public class ResearchCosts extends ItemCost{
      int startLevel, int finishLevel)
       throws SolarSystemNotExistsException, PriceNotExistsException {
         
+        // DBG controllare questa funzione
         super(reportCalculatedComponentXMap, solarSystemID, actvity, run, facilityTax);
         this.startLevel = startLevel;
         this.finishLevel = finishLevel;

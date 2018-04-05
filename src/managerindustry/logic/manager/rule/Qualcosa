@@ -1,0 +1,10 @@
+
+
+
+SELECT * from invCategories where invCategories.categoryID=7; module ( ship module )
+
+SELECT * from invGroups where invGroups.groupID=38;
+
+SELECT * FROM invTypes where invTypes.typeID=380;
+
+Ship Equipment > invMarketGroups > marketGroupID 9

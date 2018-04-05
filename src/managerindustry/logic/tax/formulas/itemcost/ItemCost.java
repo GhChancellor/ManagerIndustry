@@ -18,11 +18,10 @@ import managerindustry.logic.tax.formulas.itemcost.systemCostIndex.SystemCostInd
 
 
 /**
- *
+ * https://community.eveonline.com/news/dev-blogs/eve-industry-all-you-want-to-know/
  * @author lele
  */
-public class ItemCost {
-    // https://community.eveonline.com/news/dev-blogs/eve-industry-all-you-want-to-know/
+public class ItemCost {   
     private final float adjustment = 1.1f;
     private final float percent = 0.02f; // 2%
     private float systemCostIndex = 0f;

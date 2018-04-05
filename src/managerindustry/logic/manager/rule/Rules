@@ -70,25 +70,6 @@ public class StructureEngineeringRigs {
             timeReductionBonus_T2 = timeReductionManufactoringBonusTE_T2 = 24%
         */
         
-        Double materialReductionManufactoringBonusME_T1 = 2.0 / 100; // 2%
-        Double materialReductionManufactoringBonusME_T2 = 2.4 / 100; // 2,4%
-    
-        Double timeReductionManufactoringBonusTE_T1 = materialReductionManufactoringBonusME_T1 * 10; // 20%
-        Double timeReductionManufactoringBonusTE_T2 = materialReductionManufactoringBonusME_T2 * 10; // 24%
-    
-        Double costReductionBonus_T1 = materialReductionManufactoringBonusME_T1 * 5; // 10%
-        Double costReductionBonus_T2 = materialReductionManufactoringBonusME_T1 * 6; // 12%
-        Double timeReductionBonus_T1 = timeReductionManufactoringBonusTE_T1; //20%
-        Double timeReductionBonus_T2 = timeReductionManufactoringBonusTE_T2; //24%
-
-        valueBonusRigs.put("materialReductionManufactoringBonusME_T1", materialReductionManufactoringBonusME_T1);
-        valueBonusRigs.put("materialReductionManufactoringBonusME_T2", materialReductionManufactoringBonusME_T2);
-        valueBonusRigs.put("timeReductionManufactoringBonusTE_T1", timeReductionManufactoringBonusTE_T1);
-        valueBonusRigs.put("timeReductionManufactoringBonusTE_T2", timeReductionManufactoringBonusTE_T2);
-        valueBonusRigs.put("costReductionBonus_T1", costReductionBonus_T1);
-        valueBonusRigs.put("costReductionBonus_T2", costReductionBonus_T2);
-        valueBonusRigs.put("timeReductionBonus_T1", timeReductionBonus_T1);
-        valueBonusRigs.put("timeReductionBonus_T2", timeReductionBonus_T2);
         
     SELECT invTypes.typeName, invTypes.description, dgmAttributeTypes.attributeID, dgmAttributeTypes.attributeName, dgmTypeAttributes.valueInt, dgmTypeAttributes.valueFloat
     FROM invTypes, dgmTypeAttributes, dgmAttributeTypes where 
@@ -123,3 +104,102 @@ public class StructureEngineeringRigs {
     se le vuoi separate                        
     (baseCost * SystemCostIndex) * facilityBonus = LAVORO 
     facilityBonus * ((100 + Facilitytax) / 100) = TAX facility       
+
+    Categoria oggetti
+
+Standup M-Set Equipment Manufacturing Time Efficiency I 37160 / 37161
+Standup M-Set Equipment Manufacturing Material Efficiency I 43920 / 43921
+
+Standup M-Set Ammunition Manufacturing Time Efficiency I 37150 / 37151
+Standup M-Set Ammunition Manufacturing Material Efficiency I 37158 / ????
+
+Standup M-Set Drone and Fighter Manufacturing Time Efficiency I 37148 / 37149
+Standup M-Set Drone and Fighter Manufacturing Material Efficiency I 37156 / 37157
+
+Standup M-Set Basic Small Ship Manufacturing Material Efficiency I 37154 / 37155
+Standup M-Set Basic Small Ship Manufacturing Time Efficiency I 37162 / 37163
+
+Standup M-Set basic medium ship manufacturing material efficiency I 37146 / 37147
+Standup M-Set Basic Medium Ship Manufacturing Time Efficiency I 43919 / 37153
+    groupID 419 Battlecruiser Drake
+    groupID 631 cruiser shythe
+    groupID 28 industrial Bestower
+    groupID 463 mining bardges
+
+Standup M-Set Basic Large Ship Manufacturing Material Efficiency I 43732 / 37152
+Standup M-Set Basic Large Ship Manufacturing Time Efficiency I 43733 / 43734
+    groupID 941 Industrial Command Ship orca
+    groupID 27 Battleship raven
+    groupID 513 Freighter charon
+
+Standup M-Set Advanced Small Ship Manufacturing Material Efficiency I 43855 / 43854
+Standup M-Set Advanced Small Ship Manufacturing Time Efficiency I 43856 / 43857
+
+Standup M-Set Advanced Medium Ship Manufacturing Material Efficiency I 43858 / 43859
+Standup M-Set Advanced Medium Ship Manufacturing Time Efficiency I 43860 / 43861
+
+Standup M-Set Advanced Large Ship Manufacturing Material Efficiency I 43862 / 43863
+Standup M-Set Advanced Large Ship Manufacturing Time Efficiency I 43865 / 43864
+
+Standup M-Set Advanced Component Manufacturing Material Efficiency I 43867 / 43866
+Standup M-Set Advanced Component Manufacturing Time Efficiency I 43869 / 43868
+
+Standup M-Set Basic Capital Component Manufacturing Material Efficiency I 43870 / 43871
+Standup M-Set Basic Capital Component Manufacturing Time Efficiency I 43872 / 43873
+
+Standup M-Set Structure Manufacturing Material Efficiency I 43875 / 43874
+Standup M-Set Structure Manufacturing Time Efficiency I 43876 / 43877
+
+Standup M-Set Invention Cost Optimization I 43879 / 43878
+Standup M-Set Invention Accelerator I 43880 / 43881
+
+Standup M-Set ME Research Accelerator I 43883 / 43882
+Standup M-Set ME Research Cost Optimization I 43885 / 43884
+
+Standup M-Set Blueprint Copy Cost Optimization I 43891 / 43890
+Standup M-Set Blueprint Copy Accelerator I 43893 / 43892
+
+
+Standup L-Set Equipment Manufacturing Efficiency I 37170 / 37171
+
+Standup L-Set Ammunition Manufacturing Efficiency I 37164 / 37165
+
+Standup L-Set Drone and Fighter Manufacturing Efficiency I 43712 / 43713
+
+Standup L-Set Basic Small Ship Manufacturing Efficiency I 43714 / 43715
+
+Standup L-Set Basic Medium Ship Manufacturing Efficiency I 43716 / 43717
+
+Standup L-Set Basic Large Ship Manufacturing Efficiency I 37166 / 37167
+
+Standup L-Set Advanced Small Ship Manufacturing Efficiency I 43707 / 43708
+
+Standup L-Set Advanced Medium Ship Manufacturing Efficiency I 43709 / 43711
+
+Standup L-Set Advanced Large Ship Manufacturing Efficiency I 37168 / 37169
+
+Standup L-Set Capital Ship Manufacturing Efficiency I 37173 / 37172
+
+Standup L-Set Advanced Component Manufacturing Efficiency I 37174 / 37175
+
+Standup L-Set Basic Capital Component Manufacturing Efficiency I 43718 / 43719
+
+Standup L-Set Structure Manufacturing Efficiency I 43720 / 43721
+
+Standup L-Set Invention Optimization I 43722 / 43723
+
+Standup L-Set ME Research Optimization I 43724 / 43725
+
+Standup L-Set TE Research Optimization I 43726 / 43727
+
+Standup L-Set Blueprint Copy Optimization I 43729 / 43730
+
+
+Standup XL-Set Equipment and Consumable Manufacturing Efficiency I 37178 / 37179
+
+Standup XL-Set Ship Manufacturing Efficiency I 37180 / 37181
+
+Standup XL-Set Structure and Component Manufacturing Efficiency I 43704 / 43705
+
+Standup XL-Set Laboratory Optimization I 37183 / 37182
+

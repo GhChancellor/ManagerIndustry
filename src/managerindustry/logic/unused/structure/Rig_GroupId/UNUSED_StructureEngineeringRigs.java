@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.structure;
+package managerindustry.logic.unused.structure.Rig_GroupId;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import managerindustry.db.entities.DgmAttributeTypes;
 import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.enumName.SecurityStatusEnum;
-import managerindustry.logic.enumName.Tier;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
 /**
@@ -26,10 +24,8 @@ import managerindustry.logic.manager.managerDB.ManagerDBEve;
  * attributeEngRigCostBonus 2595 0.0
  * @author lele
  */
-public class StructureEngineeringRigs {
+public class UNUSED_StructureEngineeringRigs {
     protected enum RULE_BONUS{
-        T1(0),
-        T2(0),
         HI_SEC(2355), 
         LOW_SEC(2356),
         NULL_SEC(2357),
@@ -40,6 +36,8 @@ public class StructureEngineeringRigs {
         
         private final int code;
         
+        private RULE_BONUS rule_bonus;
+
         private RULE_BONUS(int code) {
             this.code = code;
         }
@@ -47,9 +45,7 @@ public class StructureEngineeringRigs {
         private int getCode() {
             return code;
         }
-    }         
-    
-    private List<Integer> dbBackups = new ArrayList<>();
+    }    
     
     private float calibration;
     private float securityStatusBonus;    
@@ -59,13 +55,14 @@ public class StructureEngineeringRigs {
     private float materialEfficiencyAndSecurityStatus;
     private float timeEfficiencyAndSecurityStatus;
     private float costBonusAndSecurityStatus;
-//    private String nameRig;
+    private String nameRig;
     
-   
-    public StructureEngineeringRigs(Tier tier, SecurityStatusEnum securityStatusEnum) {
-        int valueRig = getDbBackup( getTier(tier) );
+
+    public UNUSED_StructureEngineeringRigs(String name, SecurityStatusEnum securityStatusEnum) {
+        InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(name);
+        nameRig = invTypes.getTypeName();
         
-        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(valueRig);
+        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
         
         // DBG NON mi piace creare una cache con una mappa        
         for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
@@ -78,7 +75,7 @@ public class StructureEngineeringRigs {
             setCalibration(dgmTypeAttribute);
 
         } 
-        calculedSecuryStatusWithRig();
+        calcolaValoriSecurityStatusConRig();
 //        displayAllValueCalculated();
         displayValue();
     }
@@ -86,7 +83,7 @@ public class StructureEngineeringRigs {
     /**
      * DBG
      */
-    public void calculedSecuryStatusWithRig(){
+    public void calcolaValoriSecurityStatusConRig(){
         if ( materialEfficiency != 0)
             materialEfficiencyAndSecurityStatus = truncateDecimal(materialEfficiency * securityStatusBonus, 1).floatValue() ;
         
@@ -174,7 +171,7 @@ public class StructureEngineeringRigs {
         }
     }        
     
-    public StructureEngineeringRigs() {
+    public UNUSED_StructureEngineeringRigs() {
         displayAllValue();
     }
     
@@ -229,77 +226,6 @@ public class StructureEngineeringRigs {
              + " " + dgmTypeAttribute.getValueFloat() );           
         }
     }    
-    
-    private RULE_BONUS getBonus(RULE_BONUS bonus){
-        switch (bonus){
-            case RIG_MATERIAL_EFFICIENCY:
-                return bonus;
-            case RIG_TIME_EFFICIENCY:
-                return bonus;
-            case RIG_COST_BONUS:
-                return bonus;
-        }
-        
-        
-        if ( bonus == bonus.RIG_MATERIAL_EFFICIENCY)
-        
-        return tierX;
-    }
-    
-    /**
-     * Chooce tier ( T1 or T2 )
-     * @param tier
-     * @return RULE_BONUS
-     */
-    private RULE_BONUS getTier(Tier tier){
-        RULE_BONUS tierX;
-        
-        if (tier == Tier.T1){
-            tierX = RULE_BONUS.T1;
-        }else{
-            tierX = RULE_BONUS.T2;
-        }
-        return tierX;
-    }
-    
-    /**
-     * Take a value of rig t1 or t2
-     * @param rule_bonus
-     * @return int
-     */
-    private int getDbBackup(RULE_BONUS rule_bonus){
-        int count = 0;
-        Integer idType;
-        
-        dbBackups.add(37160); // 0 - T1 
-        dbBackups.add(37161); // 1 - T2
-        dbBackups.add(43872); // 2 - T1 backup
-        dbBackups.add(43873); // 3 - T2 backup
-
-        // choose if T1 or T2
-        if ( rule_bonus == RULE_BONUS.T1){
-            count = 0;
-        }else{
-            count = 1;
-        }
-        
-        // if object doesn't exit then take the backup
-        if ( ManagerDBEve.getInstance().getInvTypes_NameById
-            ( dbBackups.get(count) ) == null ){
-            
-            if ( rule_bonus == RULE_BONUS.T1 ) {
-                count = 2;
-            }else{
-                count = 3;
-            }            
-        }
-            
-        idType = ManagerDBEve.getInstance().getInvTypes_NameById
-            ( dbBackups.get(count) ).getTypeID() ;    
-                
-        return idType; 
-    
-    }
     
     /**
      * Get Cost Bonus without security status
@@ -360,12 +286,12 @@ public class StructureEngineeringRigs {
         return costBonusAndSecurityStatus;
     }
 
-//    /**
-//     * Get Name Rig
-//     * @return String
-//     */
-//    public String getNameRig() {
-//        return nameRig;
-//    }
+    /**
+     * Get Name Rig
+     * @return String
+     */
+    public String getNameRig() {
+        return nameRig;
+    }
 
 }

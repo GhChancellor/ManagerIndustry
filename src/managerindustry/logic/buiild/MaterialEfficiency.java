@@ -9,7 +9,7 @@ import managerindustry.logic.buiild.fatherclass.Efficiency;
 import managerindustry.logic.buiild.fatherclass.Efficiency;
 
 /**
- *
+ * https://community.eveonline.com/news/dev-blogs/eve-industry-all-you-want-to-know/
  * @author lele
  */
 public class MaterialEfficiency extends Efficiency {

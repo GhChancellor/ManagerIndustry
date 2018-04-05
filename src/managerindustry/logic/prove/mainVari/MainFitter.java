@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.vari;
+package managerindustry.logic.prove.mainVari;
 
 import managerindustry.logic.exception.ErrorExeption;
-import managerindustry.logic.manager.ManagerFitter;
+import managerindustry.logic.unused.structure.UNUSED_ManagerFitter;
 
 /**
  *
@@ -14,6 +14,6 @@ import managerindustry.logic.manager.ManagerFitter;
  */
 public class MainFitter {
     public static void main(String[] args) throws ErrorExeption {
-        ManagerFitter managerFitter = new ManagerFitter();
+        
     }
 }

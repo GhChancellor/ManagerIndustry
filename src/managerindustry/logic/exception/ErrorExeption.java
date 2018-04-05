@@ -13,12 +13,18 @@ public class ErrorExeption extends Exception{
     private ErrorExeptionEnum errorEnum;
 
     public ErrorExeption(ErrorExeptionEnum errorEnum) {
+        super();
         this.errorEnum = errorEnum;
+    }
+
+    public ErrorExeptionEnum getErrorEnum() {
+        return errorEnum;
     }
     
     public enum ErrorExeptionEnum{
         MAX_CALIBRATION,
-        DUPLICATE_RIGS;
-    }
-    
+        DUPLICATE_RIGS,
+        MAX_VALUE_SKILL_EXCEEDED,
+        PRICE_NOT_EXISTS;
+    }    
 }

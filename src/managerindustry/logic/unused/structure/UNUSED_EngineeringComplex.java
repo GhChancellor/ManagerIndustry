@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.structure;
+package managerindustry.logic.unused.structure;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -28,7 +28,7 @@ import managerindustry.logic.manager.managerDB.ManagerDBEve;
  * Calibration station 1132
  * @author lele
  */
-public class EngineeringComplex {
+public class UNUSED_EngineeringComplex {
     
     public enum RULE_BONUS{
         MANUFACTURING_MATERIAL(2600), // 1% reduction in manufacturing job required materials 2600
@@ -57,10 +57,10 @@ public class EngineeringComplex {
     private float maxCalibrationComplex; // 1132
     private final float baseValue = 1.0f;
     
-    public EngineeringComplex() {
+    public UNUSED_EngineeringComplex() {
     }
 
-    public EngineeringComplex(String nameEngineeringComplex){
+    public UNUSED_EngineeringComplex(String nameEngineeringComplex){
         
         // float roundOff = Math.round(value * 100.0) / 100.0;
         // Math.floor(value * 100) / 100;

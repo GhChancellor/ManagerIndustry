@@ -11,7 +11,9 @@ package managerindustry.logic.enumName;
  */
 public enum ErrorMessage {
     MAX_CALIBRATION("Max Calibration"),
-    DUPLICATE_RIGS("Duplicate Rigs");
+    DUPLICATE_RIGS("Duplicate Rigs"),
+    MAX_VALUE_SKILL_EXCEEDED("Maximun value skill exceeded"),
+    PRICE_NOT_EXISTS("Price Not Exists");
     
     private String errorMessage;
 

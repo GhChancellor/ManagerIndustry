@@ -3,49 +3,56 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager;
+package managerindustry.logic.unused.structure;
 
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.exception.ErrorExeption;
-import managerindustry.logic.structure.EngineeringComplex;
-import managerindustry.logic.structure.StructureEngineeringRigs;
+import managerindustry.logic.manager.ManagerErrorExecption;
+import managerindustry.logic.unused.structure.UNUSED_EngineeringComplex;
+import managerindustry.logic.unused.structure.Rig_GroupId.UNUSED_StructureEngineeringRigs;
 
 /**
  *
  * @author lele
  */
-public class ManagerFitter {
-    private List < StructureEngineeringRigs > engineeringRigses = new ArrayList<>();
+public class UNUSED_ManagerFitter {
+    private List < UNUSED_StructureEngineeringRigs > engineeringRigses = new ArrayList<>();
     private float currentCalibartionComplex = 0;
-    private EngineeringComplex engineeringComplex;
+    private UNUSED_EngineeringComplex engineeringComplex;
     
     /**
      * DBG con "Standup M-Set Blueprint Copy Cost Optimization II", SecurityStatusEnum.NULL_SEC
      * calcolaValoriSecurityStatusConRig() da -25.19 al posto di -25,2  arrotodamento sbagliato
      * @throws ErrorExeption 
      */
-    public ManagerFitter() throws ErrorExeption  { // <----- DBG ATTENZIONE TRY CATCH DA FARE GESTIRE ALLA GUI
+    public UNUSED_ManagerFitter() throws ErrorExeption  { // <----- DBG ATTENZIONE TRY CATCH DA FARE GESTIRE ALLA GUI
+        SecurityStatusEnum securityStatusEnum = SecurityStatusEnum.HI_SEC;
         
-        engineeringComplex = new EngineeringComplex("Raitaru");
-        StructureEngineeringRigs structureEngineeringRigs01 = new 
-            StructureEngineeringRigs("Standup M-Set Blueprint Copy Cost Optimization II", SecurityStatusEnum.NULL_SEC);
+        try {
+            engineeringComplex = new UNUSED_EngineeringComplex("Raitaru");
+            UNUSED_StructureEngineeringRigs structureEngineeringRigs01 = new 
+                UNUSED_StructureEngineeringRigs("Standup M-Set Blueprint Copy Cost Optimization II",   securityStatusEnum );
 
-        addEngineeringRigses(structureEngineeringRigs01);
+            addEngineeringRigses(structureEngineeringRigs01);
 
-        System.out.println("" + engineeringComplex.getNameEngineeringComplex() + "\n" +
-         structureEngineeringRigs01.getNameRig() + " " + structureEngineeringRigs01.getCalibration() + "\n" +
-         "currentCalibartionComplex " + currentCalibartionComplex);        
+            System.out.println("" + engineeringComplex.getNameEngineeringComplex() + "\n" +
+             structureEngineeringRigs01.getNameRig() + " " + structureEngineeringRigs01.getCalibration() + "\n" +
+             "currentCalibartionComplex " + currentCalibartionComplex);        
 
-        StructureEngineeringRigs structureEngineeringRigs02 = new 
-            StructureEngineeringRigs("Standup M-Set Blueprint Copy Cost Optimization II", SecurityStatusEnum.NULL_SEC);
+            UNUSED_StructureEngineeringRigs structureEngineeringRigs02 = new 
+                UNUSED_StructureEngineeringRigs("Standup M-Set Blueprint Copy Cost Optimization II", securityStatusEnum );
 
-        addEngineeringRigses(structureEngineeringRigs02);
+            addEngineeringRigses(structureEngineeringRigs02);
 
-        System.out.println("" + engineeringComplex.getNameEngineeringComplex() + "\n" +
-         structureEngineeringRigs02.getNameRig() + " " + structureEngineeringRigs02.getCalibration() + "\n" +
-         "currentCalibartionComplex " + currentCalibartionComplex); 
+            System.out.println("" + engineeringComplex.getNameEngineeringComplex() + "\n" +
+             structureEngineeringRigs02.getNameRig() + " " + structureEngineeringRigs02.getCalibration() + "\n" +
+             "currentCalibartionComplex " + currentCalibartionComplex);             
+        } catch (ErrorExeption e) {
+            System.out.println(""+ ManagerErrorExecption.getErrorExecption(e.getErrorEnum()));
+        }
+
      
         
         
@@ -55,7 +62,7 @@ public class ManagerFitter {
     * Add Engineering Rigses and avoid duplicate
     * @param StructureEngineeringRigs engineeringRigs 
     */
-    private void addEngineeringRigses( StructureEngineeringRigs structureEngineeringRigs ) throws ErrorExeption {
+    private void addEngineeringRigses( UNUSED_StructureEngineeringRigs structureEngineeringRigs ) throws ErrorExeption {
         // if list is empty add now
         if ( this.engineeringRigses.isEmpty() ){
             this.engineeringRigses.add(structureEngineeringRigs);
@@ -69,7 +76,7 @@ public class ManagerFitter {
   
     }
 
-    private void calculateCurrentCalibartionComplex(StructureEngineeringRigs structureEngineeringRigs) throws ErrorExeption {
+    private void calculateCurrentCalibartionComplex(UNUSED_StructureEngineeringRigs structureEngineeringRigs) throws ErrorExeption {
         float maxCalibration = engineeringComplex.getMaxCalibrationComplex();
         float tempCurrentCalibartionComplex = 0;
         
@@ -89,7 +96,7 @@ public class ManagerFitter {
      * Avoid dudplicate Engineerings 
      * @param structureEngineeringRigs 
      */
-    private boolean avoidDuplicateRigsAdd( StructureEngineeringRigs structureEngineeringRigs ) throws ErrorExeption{
+    private boolean avoidDuplicateRigsAdd( UNUSED_StructureEngineeringRigs structureEngineeringRigs ) throws ErrorExeption{
         for (int i = 0; i < engineeringRigses.size(); i++) {
             if (engineeringRigses.get(i).getNameRig() == structureEngineeringRigs.getNameRig()){
                 System.out.println("ManagerStructureEngineeringRigs avoidDuplicateRigsAdd: Nn puoi inserire lo stesso rig "
@@ -103,7 +110,7 @@ public class ManagerFitter {
      * Get Engineering Rigses
      * @return List<StructureEngineeringRigs>
      */
-    private List<StructureEngineeringRigs> getEngineeringRigses() {
+    private List<UNUSED_StructureEngineeringRigs> getEngineeringRigses() {
         return engineeringRigses;
     }
 
@@ -111,7 +118,7 @@ public class ManagerFitter {
      * Set Engineering Rigses
      * @param List<StructureEngineeringRigs> engineeringRigses 
      */
-    private void setEngineeringRigses(List<StructureEngineeringRigs> engineeringRigses) {
+    private void setEngineeringRigses(List<UNUSED_StructureEngineeringRigs> engineeringRigses) {
         this.engineeringRigses = engineeringRigses;
     }    
     

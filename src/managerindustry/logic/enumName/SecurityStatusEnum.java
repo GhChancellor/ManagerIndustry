@@ -16,7 +16,7 @@ public enum SecurityStatusEnum {
     
     private String securityStatus;
     private SecurityStatusEnum securityStatusEnum;
-
+ 
     private SecurityStatusEnum(SecurityStatusEnum securityStatusEnum) {
         this.securityStatusEnum = securityStatusEnum;
     }        
