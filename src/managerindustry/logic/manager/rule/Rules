@@ -86,6 +86,11 @@ public class StructureEngineeringRigs {
  invTypes.typeName = CONCAT((SELECT invTypes.typeName FROM eveschema.invTypes WHERE invTypes.typeID = "21023"), " Blueprint") 
  AND industryActivityMaterials.activityID = "1";
 
+da specifiche del rig
+ SELECT * FROM  dgmAttributeTypes, dgmTypeAttributes 
+ where dgmTypeAttributes.typeID= "37146" and
+ dgmTypeAttributes.attributeID = dgmAttributeTypes.attributeID;
+
     production
     3380 440 Industry 
     3388 1961 Advanced Industry
@@ -107,14 +112,14 @@ public class StructureEngineeringRigs {
 
     Categoria oggetti
 
-Standup M-Set Equipment Manufacturing Time Efficiency I 37160 / 37161
 Standup M-Set Equipment Manufacturing Material Efficiency I 43920 / 43921
+Standup M-Set Equipment Manufacturing Time Efficiency I 37160 / 37161
 
-Standup M-Set Ammunition Manufacturing Time Efficiency I 37150 / 37151
 Standup M-Set Ammunition Manufacturing Material Efficiency I 37158 / ????
+Standup M-Set Ammunition Manufacturing Time Efficiency I 37150 / 37151
 
-Standup M-Set Drone and Fighter Manufacturing Time Efficiency I 37148 / 37149
 Standup M-Set Drone and Fighter Manufacturing Material Efficiency I 37156 / 37157
+Standup M-Set Drone and Fighter Manufacturing Time Efficiency I 37148 / 37149
 
 Standup M-Set Basic Small Ship Manufacturing Material Efficiency I 37154 / 37155
 Standup M-Set Basic Small Ship Manufacturing Time Efficiency I 37162 / 37163
@@ -150,14 +155,14 @@ Standup M-Set Basic Capital Component Manufacturing Time Efficiency I 43872 / 43
 Standup M-Set Structure Manufacturing Material Efficiency I 43875 / 43874
 Standup M-Set Structure Manufacturing Time Efficiency I 43876 / 43877
 
-Standup M-Set Invention Cost Optimization I 43879 / 43878
-Standup M-Set Invention Accelerator I 43880 / 43881
+Standup M-Set Invention Cost Optimization I 43879 / 43878 ( Cost Reduction Bonus )
+Standup M-Set Invention Accelerator I 43880 / 43881 ( Time Reduction Bonus )
 
-Standup M-Set ME Research Accelerator I 43883 / 43882
-Standup M-Set ME Research Cost Optimization I 43885 / 43884
+Standup M-Set ME Research Cost Optimization I 43885 / 43884 ( Cost Reduction Bonus )
+Standup M-Set ME Research Accelerator I 43883 / 43882 ( Time Reduction Bonus )
 
-Standup M-Set Blueprint Copy Cost Optimization I 43891 / 43890
-Standup M-Set Blueprint Copy Accelerator I 43893 / 43892
+Standup M-Set Blueprint Copy Cost Optimization I 43891 / 43890 ( Cost Reduction Bonus )
+Standup M-Set Blueprint Copy Accelerator I 43893 / 43892 ( Time Reduction Bonus )
 
 
 Standup L-Set Equipment Manufacturing Efficiency I 37170 / 37171

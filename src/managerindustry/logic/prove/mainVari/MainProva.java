@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.prove.mainVari;
 
+import managerindustry.logic.enumName.RuleBonus;
 import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.enumName.Tier;
 import managerindustry.logic.prove.riv_v2.RIG_V2;
@@ -18,6 +19,6 @@ import managerindustry.logic.unused.structure.Rig_GroupId.UNUSED_Rig_GroupId;
  */
 public class MainProva {
     public static void main(String[] args) {
-        StructureEngineeringRigs structureEngineeringRigs = new StructureEngineeringRigs(Tier.T2, SecurityStatusEnum.HI_SEC);
+        StructureEngineeringRigs engineeringRigs = new StructureEngineeringRigs(Tier.T1, RuleBonus.HI_SEC, SecurityStatusEnum.HI_SEC);
     }
 }
