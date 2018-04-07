@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.treeclasses;
+package managerindustry.logic.prove.ricorsione.treeclasses;
 
 /**
  *

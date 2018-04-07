@@ -13,7 +13,5 @@ import managerindustry.logic.unused.structure.UNUSED_ManagerFitter;
  * @author lele
  */
 public class MainFitter {
-    public static void main(String[] args) throws ErrorExeption {
-        
-    }
+
 }

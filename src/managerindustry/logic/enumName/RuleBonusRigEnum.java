@@ -6,7 +6,6 @@
 package managerindustry.logic.enumName;
 
 /**
- * /**
  * dgmAttributeTypes Securiy status 
  * hiSecModifier 2355 null 1.0
  * lowSecModifier 2356 null 1.9
@@ -16,22 +15,24 @@ package managerindustry.logic.enumName;
  * attributeEngRigMatBonus 2594 -2.0
  * attributeEngRigCostBonus 2595 0.0
  * calibration 1153
+ * maxGroupFitted 1544
  * @author lele
  */
-public enum RuleBonus {
+public enum RuleBonusRigEnum {
     T1(0),
     T2(0),
     HI_SEC(2355), 
     LOW_SEC(2356),
     NULL_SEC(2357),
-    RIG_TIME_EFFICIENCY(2593),
     RIG_MATERIAL_EFFICIENCY(2594),
+    RIG_TIME_EFFICIENCY(2593),
     RIG_COST_BONUS(2595),
-    CALIBRATION(1153);
+    CALIBRATION(1153),
+    MAX_GROUP_FITTED(1544);
 
     private final int code;
 
-    private RuleBonus(int code) {
+    private RuleBonusRigEnum(int code) {
         this.code = code;
     }
 

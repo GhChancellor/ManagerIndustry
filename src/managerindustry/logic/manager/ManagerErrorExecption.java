@@ -21,6 +21,8 @@ public class ManagerErrorExecption {
                 return ErrorMessage.DUPLICATE_RIGS.getErrorMessage();
             case MAX_CALIBRATION:
                 return ErrorMessage.MAX_CALIBRATION.getErrorMessage();
+            case MAX_SLOT_RIGS:
+                return ErrorMessage.MAX_SLOT_RIGS.getErrorMessage();
             default:
                 System.out.println("errore");
                 return "";

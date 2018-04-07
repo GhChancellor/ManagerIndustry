@@ -25,6 +25,8 @@ public class ErrorExeption extends Exception{
         MAX_CALIBRATION,
         DUPLICATE_RIGS,
         MAX_VALUE_SKILL_EXCEEDED,
-        PRICE_NOT_EXISTS;
+        PRICE_NOT_EXISTS,
+        SECURITY_STATUS_ERROR,
+        MAX_SLOT_RIGS;
     }    
 }

@@ -9,7 +9,7 @@ import managerindustry.logic.structure.rigbackup.RigBackUp;
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.enumName.Tier;
+import managerindustry.logic.enumName.TierEnum;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
 /**
@@ -44,7 +44,7 @@ public class RIG_V2 {
     public RIG_V2() {
         initDbBackUp();
         
-        int value = getDbBackup(Tier.T1, RULE_BONUS.RIG_COST_BONUS);
+        int value = getDbBackup(TierEnum.T1, RULE_BONUS.RIG_COST_BONUS);
         System.out.println(""+ value);
     }
     
@@ -56,25 +56,25 @@ public class RIG_V2 {
     */
     private void initDbBackUp(){
 //        // Manufacturing Material Efficiency T1
-//        rigCouples.add(new RigBackUp(43920, 37156, Tier.T1, RULE_BONUS.RIG_MATERIAL_EFFICIENCY));        
+//        rigCouples.add(new RigBackUp(43920, 37156, TierEnum.T1, RULE_BONUS.RIG_MATERIAL_EFFICIENCY));        
 //        // Manufacturing Material Efficiency T2
-//        rigCouples.add(new RigBackUp(43921, 37156, Tier.T2, RULE_BONUS.RIG_MATERIAL_EFFICIENCY));
+//        rigCouples.add(new RigBackUp(43921, 37156, TierEnum.T2, RULE_BONUS.RIG_MATERIAL_EFFICIENCY));
 //        
 //        // Manufacturing Time Efficiency T1
-//        rigCouples.add(new RigBackUp(37160, 37148, Tier.T1, RULE_BONUS.RIG_TIME_EFFICIENCY));        
+//        rigCouples.add(new RigBackUp(37160, 37148, TierEnum.T1, RULE_BONUS.RIG_TIME_EFFICIENCY));        
 //        // Manufacturing Time Efficiency T2
-//        rigCouples.add(new RigBackUp(37161, 37149, Tier.T2, RULE_BONUS.RIG_TIME_EFFICIENCY)) ;
+//        rigCouples.add(new RigBackUp(37161, 37149, TierEnum.T2, RULE_BONUS.RIG_TIME_EFFICIENCY)) ;
 //        
 //        // Cost Optimization T1
-//        rigCouples.add(new RigBackUp(43891, 43885, Tier.T1, RULE_BONUS.RIG_COST_BONUS));         
+//        rigCouples.add(new RigBackUp(43891, 43885, TierEnum.T1, RULE_BONUS.RIG_COST_BONUS));         
 //        // Cost Optimization T2
-//        rigCouples.add(new RigBackUp(43884, 43890, Tier.T2, RULE_BONUS.RIG_COST_BONUS));         
+//        rigCouples.add(new RigBackUp(43884, 43890, TierEnum.T2, RULE_BONUS.RIG_COST_BONUS));         
     }
     
     /**
      * Take a value of rig t1 or t2
      */
-    private int getDbBackup(Tier tier, RULE_BONUS typeBonus){
+    private int getDbBackup(TierEnum tier, RULE_BONUS typeBonus){
 //        for (RigBackUp rigCouple : rigCouples) {
 //            if ( rigCouple.getTier() == tier && rigCouple.getRule_bonus() == typeBonus ){
 //                InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_NameById(rigCouple.getId());

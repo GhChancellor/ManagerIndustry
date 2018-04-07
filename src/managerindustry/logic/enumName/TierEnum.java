@@ -9,18 +9,18 @@ package managerindustry.logic.enumName;
  *
  * @author lele
  */
-public enum Tier {
+public enum TierEnum {
     T1("T1"),
     T2("T2");
     
     private String tier;
-    private Tier tierX;
+    private TierEnum tierX;
 
-    private Tier(Tier tierX) {
+    private TierEnum(TierEnum tierX) {
         this.tierX = tierX;
     }
     
-    private Tier(String tier) {
+    private TierEnum(String tier) {
         this.tier = tier;
     }
 

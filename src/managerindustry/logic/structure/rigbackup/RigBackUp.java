@@ -5,8 +5,8 @@
  */
 package managerindustry.logic.structure.rigbackup;
 
-import managerindustry.logic.enumName.RuleBonus;
-import managerindustry.logic.enumName.Tier;
+import managerindustry.logic.enumName.RuleBonusRigEnum;
+import managerindustry.logic.enumName.TierEnum;
 
 /**
  *
@@ -15,32 +15,32 @@ import managerindustry.logic.enumName.Tier;
 public class RigBackUp {
     private int id;
     private int idBackUp;
-    private Tier tier;
-    private RuleBonus rule_bonus;
+    private TierEnum tier;
+    private RuleBonusRigEnum rule_bonus;
     
     public RigBackUp() {
     }
 
-    public RigBackUp(int id, int idBackUp, Tier tier, RuleBonus rule_bonus) {
+    public RigBackUp(int id, int idBackUp, TierEnum tier, RuleBonusRigEnum rule_bonus) {
         this.id = id;
         this.idBackUp = idBackUp;
         this.tier = tier;
         this.rule_bonus = rule_bonus;
     }
 
-    public RuleBonus getRule_bonus() {
+    public RuleBonusRigEnum getRule_bonus() {
         return rule_bonus;
     }
 
-    public void setRule_bonus(RuleBonus rule_bonus) {
+    public void setRule_bonus(RuleBonusRigEnum rule_bonus) {
         this.rule_bonus = rule_bonus;
     }
 
-    public Tier getTier() {
+    public TierEnum getTier() {
         return tier;
     }
 
-    public void setTier(Tier tier) {
+    public void setTier(TierEnum tier) {
         this.tier = tier;
     }
     

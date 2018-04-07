@@ -13,7 +13,9 @@ public enum ErrorMessage {
     MAX_CALIBRATION("Max Calibration"),
     DUPLICATE_RIGS("Duplicate Rigs"),
     MAX_VALUE_SKILL_EXCEEDED("Maximun value skill exceeded"),
-    PRICE_NOT_EXISTS("Price Not Exists");
+    PRICE_NOT_EXISTS("Price Not Exists"),
+    SECURITY_STATUS_ERROR("Security status error"),
+    MAX_SLOT_RIGS("Max slot rig");
     
     private String errorMessage;
 

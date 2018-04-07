@@ -11,9 +11,11 @@ import java.util.List;
 import managerindustry.db.entities.DgmAttributeTypes;
 import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.enumName.RuleBonus;
+import managerindustry.logic.enumName.RuleBonusRigEnum;
 import managerindustry.logic.enumName.SecurityStatusEnum;
-import managerindustry.logic.enumName.Tier;
+import managerindustry.logic.enumName.TierEnum;
+import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.manager.ManagerErrorExecption;
 import managerindustry.logic.manager.managerDB.ManagerDBEve;
 import managerindustry.logic.structure.rigbackup.RigBackUp;
 
@@ -26,73 +28,81 @@ import managerindustry.logic.structure.rigbackup.RigBackUp;
  * attributeEngRigTimeBonus 2593 0.0
  * attributeEngRigMatBonus 2594 -2.0
  * attributeEngRigCostBonus 2595 0.0
+ * maxGroupFitted 1544
  * @author lele
  */
 public class StructureEngineeringRigs {
-//    protected enum RuleBonus{
-//        T1(0),
-//        T2(0),
-//        HI_SEC(2355), 
-//        LOW_SEC(2356),
-//        NULL_SEC(2357),
-//        RIG_TIME_EFFICIENCY(2593),
-//        RIG_MATERIAL_EFFICIENCY(2594),
-//        RIG_COST_BONUS(2595),
-//        CALIBRATION(1153);
-//        
-//        private final int code;
-//        
-//        private RuleBonus(int code) {
-//            this.code = code;
-//        }
-//
-//        private int getCode() {
-//            return code;
-//        }
-//    }         
-    
     private List<RigBackUp> rigCouples = new ArrayList<>();   
     
     private float calibration;
     private float securityStatusBonus;    
-    private float materialEfficiency; // RIG_MATERIAL_EFFICIENCY(2594),
-    private float timeEfficiency; // RIG_TIME_EFFICIENCY(2593),     
-    private float costBonus; // RIG_COST_BONUS(2595),          
+    private float materialEfficiency; // RIG_MATERIAL_EFFICIENCY(2594)
+    private float timeEfficiency; // RIG_TIME_EFFICIENCY(2593)
+    private float costBonus; // RIG_COST_BONUS(2595)      
     private float materialEfficiencyAndSecurityStatus;
     private float timeEfficiencyAndSecurityStatus;
     private float costBonusAndSecurityStatus;
+    private int typeID;
+    private float maxGroupFitted; // MAX_GROUP_FITTED(1544)
+    boolean bonusRigBln = true;
+    boolean securityStatusBln = true;
+    boolean calibrationBln = true;
+    boolean maxGroupFittedBln = true;    
 //    private String nameRig;
     
-   
-    public StructureEngineeringRigs(Tier tier, RuleBonus ruleBonus, SecurityStatusEnum securityStatusEnum) {
+    /**
+     * DBG DA OTTIMIZZARE
+     * @param TierEnum tier
+     * @param RuleBonusRigEnum materialTimeCostBonus
+     * @param SecurityStatusEnum securityStatusEnum 
+     */
+    public StructureEngineeringRigs(TierEnum tier, RuleBonusRigEnum materialTimeCostBonus, SecurityStatusEnum securityStatusEnum) {
         initDbBackUp();
         
-        int valueRig = getDbBackup( getTier(tier), RuleBonus.T1);
+        typeID = getDbBackup( tier, materialTimeCostBonus);
+               
+        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(typeID);
         
-//        int valueRig = getDbBackup( getTier(tier),  );
-        
-        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(valueRig);
-        
-        // DBG NON mi piace creare una cache con una mappa        
         for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
            
             DgmAttributeTypes dgmAttributeTypes = 
              ManagerDBEve.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
-
-            setBonusRig(dgmTypeAttribute);
-            setSecurityStatus(dgmTypeAttribute, securityStatus(securityStatusEnum));
-            setCalibration(dgmTypeAttribute);
-
+            
+            if ( bonusRigBln )
+                setBonusRig(dgmTypeAttribute);
+            
+            if ( securityStatusBln )
+                setSecurityStatus(dgmTypeAttribute, securityStatus(securityStatusEnum));
+            
+            if ( calibrationBln )
+                setCalibration(dgmTypeAttribute);
+            
+            if ( maxGroupFittedBln )
+                setMaxGroupFitted(dgmTypeAttribute);
         } 
+
         calculedSecuryStatusWithRig();
-        displayAllValueCalculated();
+//        displayAllValueCalculated();
         displayValue();
     }
 
     /**
-     * DBG
+     * Set Max Group Fitted
+     * @param DgmTypeAttributes dgmTypeAttribute 
      */
-    public void calculedSecuryStatusWithRig(){
+    private void setMaxGroupFitted(DgmTypeAttributes dgmTypeAttribute){
+        int attributeID = dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID();
+        
+        if (attributeID == RuleBonusRigEnum.MAX_GROUP_FITTED.getCode()){
+            this.maxGroupFitted = dgmTypeAttribute.getValueFloat();
+            maxGroupFittedBln = false;
+        }
+    }
+    
+    /**
+     * Calculed Secury Status With Rig
+     */
+    private void calculedSecuryStatusWithRig(){
         if ( materialEfficiency != 0)
             materialEfficiencyAndSecurityStatus = truncateDecimal(materialEfficiency * securityStatusBonus, 1).floatValue() ;
         
@@ -115,68 +125,74 @@ public class StructureEngineeringRigs {
     /**
      * dbg
      * Converte un enum security status ( generico ) in un valore leggibile per la classe
-     * @param securityStatusEnum
-     * @return 
+     * @param SecurityStatusEnum securityStatusEnum
+     * @return RuleBonusRigEnum
      */
-    public RuleBonus securityStatus(SecurityStatusEnum securityStatusEnum){
+    public RuleBonusRigEnum securityStatus(SecurityStatusEnum securityStatusEnum){
         switch ( securityStatusEnum ){
             case HI_SEC:
-                return RuleBonus.HI_SEC;
+                return RuleBonusRigEnum.HI_SEC;
             case LOW_SEC:
-                return RuleBonus.LOW_SEC;
+                return RuleBonusRigEnum.LOW_SEC;
             case NULL_SEC:
-                return RuleBonus.NULL_SEC;
+                return RuleBonusRigEnum.NULL_SEC;
             default:
-                System.out.println("qualcosa non va RULE_BONUS securityStatus(SecurityStatusEnum securityStatusEnum)");
+                ManagerErrorExecption.getErrorExecption(ErrorExeption.ErrorExeptionEnum.SECURITY_STATUS_ERROR);
                 return null;
         }
     }
     
     /**
      * Get Calibration from DB
-     * @param dgmTypeAttribute
-     * @param typeId
+     * @param DgmTypeAttributes dgmTypeAttribute
      */
     private void setBonusRig(DgmTypeAttributes dgmTypeAttribute){
         int attributeID = dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID();
         
         if ( dgmTypeAttribute.getValueFloat() != 0.0 ){
-            if ( attributeID == RuleBonus.RIG_TIME_EFFICIENCY.getCode() ){ // 2593
+            if ( attributeID == RuleBonusRigEnum.RIG_TIME_EFFICIENCY.getCode() ){ // 2593
                 timeEfficiency = dgmTypeAttribute.getValueFloat();
+                bonusRigBln = false;
+                return;
             }
             
-            if ( attributeID == RuleBonus.RIG_MATERIAL_EFFICIENCY.getCode() ){ // 2594
+            if ( attributeID == RuleBonusRigEnum.RIG_MATERIAL_EFFICIENCY.getCode() ){ // 2594
                 materialEfficiency = dgmTypeAttribute.getValueFloat();
+                bonusRigBln = false;
+                return;
             }
             
-            if ( attributeID == RuleBonus.RIG_COST_BONUS.getCode() ){ // 2595
+            if ( attributeID == RuleBonusRigEnum.RIG_COST_BONUS.getCode() ){ // 2595
                 costBonus = dgmTypeAttribute.getValueFloat();
+                bonusRigBln = false;
+                return;
             }            
         }
     }
      
     /**
      * Get Calibration from DB
-     * @param dgmTypeAttribute
-     * @param typeId
+     * @param DgmTypeAttributes dgmTypeAttribute
      */
     private void setCalibration(DgmTypeAttributes dgmTypeAttribute){
         if ( dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID() == 
-                RuleBonus.CALIBRATION.getCode() ){ // 1153
+                RuleBonusRigEnum.CALIBRATION.getCode() ){ // 1153
             calibration =  dgmTypeAttribute.getValueFloat();
+            calibrationBln = false;
         }
     }    
     
     /**
      * Get Security Status
      * @param DgmTypeAttributes dgmTypeAttribute
-     * @param Int idSecurity
+     * @param RuleBonusRigEnum idSecurity
      */
-    private void setSecurityStatus(DgmTypeAttributes dgmTypeAttribute, RuleBonus idSecurity){
+    private void setSecurityStatus(DgmTypeAttributes dgmTypeAttribute, RuleBonusRigEnum idSecurity){
         int attributeID = dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID();
 
         if ( idSecurity.getCode() == attributeID ){
             securityStatusBonus = dgmTypeAttribute.getValueFloat();
+            securityStatusBln = false;
         }
     }        
     
@@ -197,7 +213,6 @@ public class StructureEngineeringRigs {
     }
     
     private void displayValue(){
-
         if ( materialEfficiency != 0)
             System.out.println("materialEfficiency " + materialEfficiency);
 
@@ -213,7 +228,9 @@ public class StructureEngineeringRigs {
 
         if ( calibration != 0 ){
             System.out.println("calibration " + calibration);
-        }      
+        }
+        
+        System.out.println("Max Group Fitted " + maxGroupFitted);
     }
     
     /**
@@ -236,21 +253,21 @@ public class StructureEngineeringRigs {
         }
     }    
     
-    /**
-     * Chooce tier ( T1 or T2 )
-     * @param tier
-     * @return RuleBonus
-     */
-    private RuleBonus getTier(Tier tier){
-        RuleBonus tierX;
-        
-        if (tier == Tier.T1){
-            tierX = RuleBonus.T1;
-        }else{
-            tierX = RuleBonus.T2;
-        }
-        return tierX;
-    }
+//    /**
+//     * Chooce tier ( T1 or T2 )
+//     * @param TierEnum tier
+//     * @return RuleBonusRigEnum
+//     */
+//    private RuleBonusRigEnum getTier(TierEnum tier){
+//        RuleBonusRigEnum tierX;
+//        
+//        if (tier == TierEnum.T1){
+//            tierX = RuleBonusRigEnum.T1;
+//        }else{
+//            tierX = RuleBonusRigEnum.T2;
+//        }
+//        return tierX;
+//    }
     
     /**
     * Create DB
@@ -260,25 +277,28 @@ public class StructureEngineeringRigs {
     */
     private void initDbBackUp(){
         // Manufacturing Material Efficiency T1
-        rigCouples.add(new RigBackUp(43920, 37156, Tier.T1, RuleBonus.RIG_MATERIAL_EFFICIENCY));        
+        rigCouples.add(new RigBackUp(43920, 37156, TierEnum.T1, RuleBonusRigEnum.RIG_MATERIAL_EFFICIENCY));        
         // Manufacturing Material Efficiency T2
-        rigCouples.add(new RigBackUp(43921, 37156, Tier.T2, RuleBonus.RIG_MATERIAL_EFFICIENCY));
+        rigCouples.add(new RigBackUp(43921, 37156, TierEnum.T2, RuleBonusRigEnum.RIG_MATERIAL_EFFICIENCY));
         
         // Manufacturing Time Efficiency T1
-        rigCouples.add(new RigBackUp(37160, 37148, Tier.T1, RuleBonus.RIG_TIME_EFFICIENCY));        
+        rigCouples.add(new RigBackUp(37160, 37148, TierEnum.T1, RuleBonusRigEnum.RIG_TIME_EFFICIENCY));        
         // Manufacturing Time Efficiency T2
-        rigCouples.add(new RigBackUp(37161, 37149, Tier.T2, RuleBonus.RIG_TIME_EFFICIENCY)) ;
+        rigCouples.add(new RigBackUp(37161, 37149, TierEnum.T2, RuleBonusRigEnum.RIG_TIME_EFFICIENCY)) ;
         
         // Cost Optimization T1
-        rigCouples.add(new RigBackUp(43891, 43885, Tier.T1, RuleBonus.RIG_COST_BONUS));         
+        rigCouples.add(new RigBackUp(43891, 43885, TierEnum.T1, RuleBonusRigEnum.RIG_COST_BONUS));         
         // Cost Optimization T2
-        rigCouples.add(new RigBackUp(43884, 43890, Tier.T2, RuleBonus.RIG_COST_BONUS));         
+        rigCouples.add(new RigBackUp(43884, 43890, TierEnum.T2, RuleBonusRigEnum.RIG_COST_BONUS));         
     }
     
     /**
      * Take a value of rig t1 or t2
+     * @param TierEnum tier
+     * @param RuleBonusRigEnum typeBonus
+     * @return 
      */
-    private int getDbBackup(Tier tier, RuleBonus typeBonus){
+    private int getDbBackup(TierEnum tier, RuleBonusRigEnum typeBonus){
         for (RigBackUp rigCouple : rigCouples) {
             if ( rigCouple.getTier() == tier && rigCouple.getRule_bonus() == typeBonus ){
                 InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_NameById(rigCouple.getId());
@@ -295,7 +315,7 @@ public class StructureEngineeringRigs {
     
     /**
      * Get Cost Bonus without security status
-     * @return Double
+     * @return float
      */
     public float getCostBonus() {
         return costBonus;
@@ -352,12 +372,20 @@ public class StructureEngineeringRigs {
         return costBonusAndSecurityStatus;
     }
 
-//    /**
-//     * Get Name Rig
-//     * @return String
-//     */
-//    public String getNameRig() {
-//        return nameRig;
-//    }
+    /**
+    * Get Type ID
+    * @return int
+    */
+    public int getTypeID() {
+        return typeID;
+    }
+
+    /**
+     * Get max number of rig of the same type that can be installed
+     * @return int
+     */
+    public float getMaxGroupFitted() {
+        return maxGroupFitted;
+    }
 
 }
