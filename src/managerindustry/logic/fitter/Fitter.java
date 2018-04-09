@@ -55,6 +55,27 @@ public class Fitter {
         
             ADD_RIGS addRig = maxGroupFitted(structureEngineeringRigs);
             
+            switch (addRig){
+                case ADD_ANOTHER:
+                    int tempCurrentRig = 
+                        maxGroupFittedMap.get(structureEngineeringRigs).getCurrentRigFitted();
+                                                
+                    maxGroupFittedMap.put(structureEngineeringRigs.getTypeID(),
+                        new DuplicateRig(structureEngineeringRigs.getTypeID(),
+                        tempCurrentRig++, 
+                        structureEngineeringRigs.getMaxGroupFitted()));
+                    break;
+                case DONT_ADD:
+                    throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.DUPLICATE_RIGS);
+                case NEW:
+                    maxGroupFittedMap.put(structureEngineeringRigs.getTypeID(), new DuplicateRig
+                        ( structureEngineeringRigs.getTypeID(), 
+                          structureEngineeringRigs.getMaxGroupFitted()) );
+                    break;
+                default:
+                    throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.UNKNOW_ERROR);
+            }
+            
         }else{
             throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.MAX_SLOT_RIGS);
         }
@@ -68,16 +89,18 @@ public class Fitter {
      */
     private ADD_RIGS maxGroupFitted(StructureEngineeringRigs structureEngineeringRigs){
         if ( maxGroupFittedMap.containsKey(structureEngineeringRigs.getTypeID())){
-            DuplicateRig duplicateRig = maxGroupFittedMap.get(structureEngineeringRigs.getTypeID());
             
-            if (du)
-
+            DuplicateRig duplicateRig = 
+                maxGroupFittedMap.get(structureEngineeringRigs.getTypeID());
+            
+                int tempRigFitted = duplicateRig.getCurrentRigFitted();
+                
+                if (tempRigFitted++ <= duplicateRig.getMaxGroupFitted() )
+                    return ADD_RIGS.ADD_ANOTHER;
+                else
+                    return ADD_RIGS.DONT_ADD;
         }else{
             return ADD_RIGS.NEW;
-        }
-
-//            if (duplicateRig.getMaxGroupFitted() < structureEngineeringRigs.getMaxGroupFitted())
-//                return true;        
-        
+        }           
     }
 }

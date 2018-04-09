@@ -27,6 +27,7 @@ public class ErrorExeption extends Exception{
         MAX_VALUE_SKILL_EXCEEDED,
         PRICE_NOT_EXISTS,
         SECURITY_STATUS_ERROR,
-        MAX_SLOT_RIGS;
+        MAX_SLOT_RIGS,
+        UNKNOW_ERROR;
     }    
 }

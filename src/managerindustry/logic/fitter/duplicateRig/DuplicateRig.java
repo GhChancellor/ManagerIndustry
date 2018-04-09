@@ -12,14 +12,20 @@ package managerindustry.logic.fitter.duplicateRig;
 public class DuplicateRig {
     private int typeId;
     private float maxGroupFitted;
-    private int numberRigFitted = 0;
+    private int currentRigFitted = 0;
     
     public DuplicateRig(int rigID, float maxGroupFitted) {
         this.typeId = rigID;
         this.maxGroupFitted = maxGroupFitted;
-        numberRigFitted++;
+        currentRigFitted++;
     }
 
+    public DuplicateRig(int rigID, int currentRigFitted, float maxGroupFitted) {
+        this.typeId = rigID;
+        this.maxGroupFitted = maxGroupFitted;
+        this.currentRigFitted = currentRigFitted;
+    }    
+    
     public int getTypeId() {
         return typeId;
     }
@@ -36,12 +42,12 @@ public class DuplicateRig {
         this.maxGroupFitted = maxGroupFitted;
     }
 
-    public int getNumberRigFitted() {
-        return numberRigFitted;
+    public int getCurrentRigFitted() {
+        return currentRigFitted;
     }
 
-    public void setNumberRigFitted(int numberRigFitted) {
-        this.numberRigFitted = numberRigFitted;
+    public void setCurrentRigFitted(int currentRigFitted) {
+        this.currentRigFitted = currentRigFitted;
     }
 
 }

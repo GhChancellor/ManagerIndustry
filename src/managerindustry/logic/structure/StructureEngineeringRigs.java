@@ -20,6 +20,7 @@ import managerindustry.logic.manager.managerDB.ManagerDBEve;
 import managerindustry.logic.structure.rigbackup.RigBackUp;
 
 /**
+ * https://community.eveonline.com/news/dev-blogs/building-dreams-introducing-engineering-complexes/
  * dgmAttributeTypes Securiy status 
  * hiSecModifier 2355 null 1.0
  * lowSecModifier 2356 null 1.9
