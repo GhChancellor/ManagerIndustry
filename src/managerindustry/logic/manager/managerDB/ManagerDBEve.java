@@ -12,6 +12,7 @@ import javax.persistence.TypedQuery;
 import managerindustry.db.entities.DgmAttributeTypes;
 import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.db.entities.IndustryActivityMaterials;
+import managerindustry.db.entities.InvMarketGroups;
 import managerindustry.db.entities.InvNames;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.skill.SkillV;
@@ -99,7 +100,6 @@ public class ManagerDBEve {
         }            
 //        return null;
     }       
-    
     
     /**
      * Get solar system ID
@@ -404,4 +404,42 @@ public class ManagerDBEve {
         }
     }    
     
+    public InvMarketGroups getInvMarketGroups_marketGroupID(int id){
+        try {
+            EntityManager marketGroupEM = entityManager;
+            
+            TypedQuery < InvMarketGroups > marketGroupEMTQ = 
+             marketGroupEM.createNamedQuery("InvMarketGroups.findByMarketGroupID", InvMarketGroups.class);
+            
+            marketGroupEMTQ.setParameter("marketGroupID", id);
+            
+            List < InvMarketGroups > groupses = marketGroupEMTQ.getResultList();
+            
+            if ( groupses.isEmpty()){
+                return null;
+            }else{
+                return groupses.get(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;        
+        }
+    }    
+    
+    public List < InvMarketGroups > getInvMarketGroups_parentGroupID(int id){
+        try {
+            EntityManager parentGroupID_EM = entityManager;
+
+            TypedQuery< InvMarketGroups > typedQueryTQ = 
+                parentGroupID_EM.createNamedQuery("InvMarketGroups.findByParentGroupID", InvMarketGroups.class);            
+
+            typedQueryTQ.setParameter("parentGroupID", id);
+
+            return typedQueryTQ.getResultList();
+       
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }      
 }

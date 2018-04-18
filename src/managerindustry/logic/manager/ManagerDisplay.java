@@ -15,6 +15,7 @@ import managerindustry.db.entities.InvNames;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.buiild.ComponentX;
+import managerindustry.logic.buiild.MaterialEfficiencyCalculate;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.unused.structure.UNUSED_EngineeringComplex;
 
@@ -30,15 +31,15 @@ public class ManagerDisplay {
  
     }    
     
-//     /**
-//     * Build Item
-//     * DBG potrebbe avere piccole imprecisioni con Dra 10 run, 10 job, 10 ME
-//     * @param bpoName
-//     * @param run
-//     * @param job
-//     * @param meBPO
-//     * @param meComponent 
-//     */
+     /**
+     * Build Item
+     * DBG potrebbe avere piccole imprecisioni con Dra 10 run, 10 job, 10 ME
+     * @param bpoName
+     * @param run
+     * @param job
+     * @param meBPO
+     * @param meComponent 
+     */
 //    public void buildItem(String bpoName, int run, int job, int meBPO, int meComponent ){
 //        // Errore nella produzione capital "Concord 25000mm Steel Plate"
 //        // ci vuole la ricorsione per le T3
