@@ -98,7 +98,6 @@ public class ManagerDBEve {
             e.printStackTrace();
             return null;
         }            
-//        return null;
     }       
     
     /**
@@ -207,7 +206,7 @@ public class ManagerDBEve {
     
     /**
      * Get value typeID, AttributedId, ValueInt and ValueFloat
-     * @param invTypes
+     * @param int typeID
      * @return List < DgmTypeAttributes >
      */
     public List < DgmTypeAttributes > getDgmTypeAttributes( int typeID ){
