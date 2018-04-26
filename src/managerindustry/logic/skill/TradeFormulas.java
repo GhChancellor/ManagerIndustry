@@ -7,7 +7,7 @@ package managerindustry.logic.skill;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import managerindustry.logic.manager.ManagerSkill;
+import managerindustry.logic.manager.old.ManagerSkill;
 import managerindustry.logic.skill.specificSkill.BrokerFee;
 import managerindustry.logic.standing.Standing;
 

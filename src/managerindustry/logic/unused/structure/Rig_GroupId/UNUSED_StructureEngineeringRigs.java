@@ -11,7 +11,7 @@ import managerindustry.db.entities.DgmAttributeTypes;
 import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.enumName.SecurityStatusEnum;
-import managerindustry.logic.manager.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
 
 /**
  * dgmAttributeTypes Securiy status 

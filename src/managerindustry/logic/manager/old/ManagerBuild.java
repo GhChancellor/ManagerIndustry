@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager;
+package managerindustry.logic.manager.old;
 
 import java.util.List;
 import java.util.Map;
@@ -14,7 +14,9 @@ import managerindustry.logic.buiild.ComponentX;
 import managerindustry.logic.buiild.MaterialEfficiencyCalculate;
 import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
-import managerindustry.logic.manager.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.ManagerComponentX;
+
+import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
 
 /**
  * @author lele

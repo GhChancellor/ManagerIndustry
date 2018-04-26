@@ -8,7 +8,7 @@ package managerindustry.logic.unused.structure.Rig_GroupId;
 import java.util.HashMap;
 import java.util.Map;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.manager.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
 
 /**
  *

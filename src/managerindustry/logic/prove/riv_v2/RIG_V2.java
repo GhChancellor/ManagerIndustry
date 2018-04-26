@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.enumName.TierEnum;
-import managerindustry.logic.manager.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
 
 /**
  *

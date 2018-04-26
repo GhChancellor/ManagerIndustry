@@ -11,8 +11,8 @@ import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.ManagerComponentX;
-import managerindustry.logic.manager.managerDB.ManagerDBEve;
-import managerindustry.logic.manager.ManagerBuild;
+import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.old.ManagerBuild;
 import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.tax.formulas.itemcost.MainItemCost;
 

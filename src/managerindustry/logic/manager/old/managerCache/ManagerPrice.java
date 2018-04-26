@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager.managerCache;
+package managerindustry.logic.manager.old.managerCache;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import java.util.Map;
 import managerindustry.db.entities.cache.PriceEntity;
 import managerindustry.logic.apiEsiJson.ApiEsi;
 import managerindustry.logic.exception.PriceNotExistsException;
-import managerindustry.logic.manager.managerDB.ManagerDBCache;
+import managerindustry.logic.manager.old.managerDB.ManagerDBCache;
 import managerindustry.logic.apiEsiJson.market.listMarketPrices.Price;
 import managerindustry.logic.apiEsiJson.market.listMarketPrices.ListMarketPrices;
 

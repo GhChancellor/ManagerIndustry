@@ -6,7 +6,7 @@
 package managerindustry.logic.runMain.skill;
 
 import managerindustry.logic.runMain.ManagerIndustry;
-import managerindustry.logic.manager.ManagerSkill;
+import managerindustry.logic.manager.old.ManagerSkill;
 
 /**
  *

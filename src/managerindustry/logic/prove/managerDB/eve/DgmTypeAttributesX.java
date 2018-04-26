@@ -29,7 +29,7 @@ public class DgmTypeAttributesX {
      * @param int typeID
      * @return List < DgmTypeAttributes >
      */
-    public List < DgmTypeAttributes > getDgmTypeAttributes( int typeID ){
+    public List < DgmTypeAttributes > getTypeAttributes( int typeID ){
         try {
             EntityManager dgmTypeAttributesEM = entityManager;
 

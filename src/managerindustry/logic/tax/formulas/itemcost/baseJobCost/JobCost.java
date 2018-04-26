@@ -7,8 +7,8 @@ package managerindustry.logic.tax.formulas.itemcost.baseJobCost;
 
 import managerindustry.db.entities.cache.PriceEntity;
 import managerindustry.logic.exception.PriceNotExistsException;
-import managerindustry.logic.manager.managerCache.ManagerPrice;
-import managerindustry.logic.manager.managerDB.ManagerDBCache;
+import managerindustry.logic.manager.old.managerCache.ManagerPrice;
+import managerindustry.logic.manager.old.managerDB.ManagerDBCache;
 
 /**
  * Get Job Cost

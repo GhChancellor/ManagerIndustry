@@ -7,7 +7,7 @@ package managerindustry.logic.prove.invMarketGroups;
 
 import java.util.List;
 import managerindustry.db.entities.InvMarketGroups;
-import managerindustry.logic.manager.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
 
 /**
  *

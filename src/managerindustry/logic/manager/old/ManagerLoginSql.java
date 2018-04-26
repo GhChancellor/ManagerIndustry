@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager;
+package managerindustry.logic.manager.old;
 
 import java.util.List;
 import managerindustry.db.entities.user.UserApiEntity;
-import managerindustry.logic.manager.managerDB.ManagerSQLUser;
+
+
+import managerindustry.logic.manager.old.managerDB.ManagerSQLUser;
 
 
 /**

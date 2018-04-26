@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.skill;
 
-import managerindustry.logic.manager.ManagerSkill;
+import managerindustry.logic.manager.old.ManagerSkill;
 
 /**
  *

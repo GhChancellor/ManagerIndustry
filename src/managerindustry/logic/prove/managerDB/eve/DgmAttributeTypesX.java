@@ -26,7 +26,7 @@ public class DgmAttributeTypesX {
      * @param DgmTypeAttributesPK dgmTypeAttributesPK
      * @return DgmAttributeTypes 
      */
-    public DgmAttributeTypes getDgmAttributeTypes( int attributeID ){
+    public DgmAttributeTypes getAttributeTypes( int attributeID ){
         try {
             EntityManager dgmAttributeTypesEM = entityManager;
 

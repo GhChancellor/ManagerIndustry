@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager.managerDB;
+package managerindustry.logic.manager.old.managerDB;
 
 import java.util.List;
 import java.util.logging.Level;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager.managerCache;
+package managerindustry.logic.manager.old.managerCache;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -15,7 +15,7 @@ import managerindustry.db.entities.cache.TaxCostIndexEntity;
 import managerindustry.db.entities.cache.TaxSolarSystemEntity;
 import managerindustry.logic.apiEsiJson.ApiEsi;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
-import managerindustry.logic.manager.managerDB.ManagerDBCache;
+import managerindustry.logic.manager.old.managerDB.ManagerDBCache;
 import managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices.CostIndex;
 import managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices.SolarSystemCost;
 

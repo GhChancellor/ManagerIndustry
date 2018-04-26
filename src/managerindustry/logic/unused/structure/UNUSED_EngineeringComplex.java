@@ -8,7 +8,7 @@ package managerindustry.logic.unused.structure;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import managerindustry.db.entities.DgmTypeAttributes;
-import managerindustry.logic.manager.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
 
 /**
  * https://community.eveonline.com/news/dev-blogs/building-dreams-introducing-engineering-complexes/

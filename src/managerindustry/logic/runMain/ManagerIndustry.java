@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.runMain;
 
-import managerindustry.logic.manager.ManagerDisplay;
+import managerindustry.logic.manager.old.ManagerDisplay;
 import managerindustry.logic.prove.ricorsione.ProvaRicorsione;
 
 /**

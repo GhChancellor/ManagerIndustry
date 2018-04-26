@@ -10,9 +10,11 @@ import managerindustry.logic.enumName.PlatformEnum;
 import managerindustry.logic.enumName.RuleBonusRigEnum;
 import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.enumName.TierEnum;
-import managerindustry.logic.manager.ManagerDisplay;
+import managerindustry.logic.manager.old.ManagerDisplay;
 import managerindustry.logic.manager.ManagerFitter;
 import managerindustry.logic.prove.invMarketGroups.Groups;
+import managerindustry.logic.prove.managerDB.GenericManager.ManagerBuildX;
+import managerindustry.logic.prove.managerDB.GenericManager.ManagerDisplayX;
 import managerindustry.logic.prove.managerDB.ManagerDBX;
 import managerindustry.logic.prove.riv_v2.RIG_V2;
 import managerindustry.logic.structure.EngineeringComplex;
@@ -29,7 +31,6 @@ public class MainProva {
 //        StructureEngineeringRigs structureEngineeringRigs = new StructureEngineeringRigs(TierEnum.T2, RuleBonusRigEnum.RIG_TIME_EFFICIENCY, SecurityStatusEnum.HI_SEC);
 //        EngineeringComplex engineeringComplex = new EngineeringComplex(PlatformEnum.RAITARU);
 //        Groups groups = new Groups();
-        InvTypes idByName = ManagerDBX.getInstance().invTypes().getIdByName("drake");
-        System.out.println(""+idByName);
+        ManagerBuildX managerBuildX = new ManagerBuildX("drake", 1, 1, 0, 0);
     }
 }

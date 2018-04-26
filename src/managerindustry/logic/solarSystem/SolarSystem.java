@@ -6,7 +6,7 @@
 package managerindustry.logic.solarSystem;
 
 import managerindustry.db.entities.InvNames;
-import managerindustry.logic.manager.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
 
 /**
  *
