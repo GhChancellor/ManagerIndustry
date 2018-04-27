@@ -25,23 +25,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "industryActivityMaterials")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "IndustryActivityMaterials.findAll", query = "SELECT i FROM IndustryActivityMaterials i")
+    @NamedQuery(name = "IndustryActivityMaterials.findAll", query = "SELECT i FROM IndustryActivityMaterials i")    
     , @NamedQuery(name = "IndustryActivityMaterials.findByActivityID", query = "SELECT i FROM IndustryActivityMaterials i WHERE i.activityID = :activityID")
     , @NamedQuery(name = "IndustryActivityMaterials.findByMaterialTypeID", query = "SELECT i FROM IndustryActivityMaterials i WHERE i.materialTypeID = :materialTypeID")
     , @NamedQuery(name = "IndustryActivityMaterials.findByQuantity", query = "SELECT i FROM IndustryActivityMaterials i WHERE i.quantity = :quantity")
-    , @NamedQuery(name = "IndustryActivityMaterials.findByIdd", query = "SELECT i FROM IndustryActivityMaterials i WHERE i.idd = :idd")
+    , @NamedQuery(name = "IndustryActivityMaterials.findByFakeID", query = "SELECT i FROM IndustryActivityMaterials i WHERE i.fakeID = :fakeID")
+    // , @NamedQuery(name = "IndustryActivityMaterials.findByTypeID", query = "SELECT i FROM IndustryActivityMaterials i WHERE i.typeID = :typeID")    
     , @NamedQuery(name = "IndustryActivityMaterials.findByTypeID", 
       query = "SELECT i FROM IndustryActivityMaterials i WHERE i.typeID = :typeID and i.activityID= :activityID") 
-/**
-    , @NamedQuery(name = "IndustryActivityMaterials.findByTypeName", 
-        query = "SELECT iam FROM IndustryActivityMaterials iam, InvTypes inv WHERE "
-        + "iam.activityID= :activityID and iam.typeID = inv.typeID and "
-        + "iam.activityID = :activityID and"
-        + "  " )    
-     */   
+
 })
-
-
 public class IndustryActivityMaterials implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,14 +49,14 @@ public class IndustryActivityMaterials implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDD")
-    private Integer idd;
+    @Column(name = "fakeID")
+    private Integer fakeID;
 
     public IndustryActivityMaterials() {
     }
 
-    public IndustryActivityMaterials(Integer idd) {
-        this.idd = idd;
+    public IndustryActivityMaterials(Integer fakeID) {
+        this.fakeID = fakeID;
     }
 
     public Integer getTypeID() {
@@ -98,18 +91,18 @@ public class IndustryActivityMaterials implements Serializable {
         this.quantity = quantity;
     }
 
-    public Integer getIdd() {
-        return idd;
+    public Integer getFakeID() {
+        return fakeID;
     }
 
-    public void setIdd(Integer idd) {
-        this.idd = idd;
+    public void setFakeID(Integer fakeID) {
+        this.fakeID = fakeID;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idd != null ? idd.hashCode() : 0);
+        hash += (fakeID != null ? fakeID.hashCode() : 0);
         return hash;
     }
 
@@ -120,7 +113,7 @@ public class IndustryActivityMaterials implements Serializable {
             return false;
         }
         IndustryActivityMaterials other = (IndustryActivityMaterials) object;
-        if ((this.idd == null && other.idd != null) || (this.idd != null && !this.idd.equals(other.idd))) {
+        if ((this.fakeID == null && other.fakeID != null) || (this.fakeID != null && !this.fakeID.equals(other.fakeID))) {
             return false;
         }
         return true;
@@ -128,7 +121,7 @@ public class IndustryActivityMaterials implements Serializable {
 
     @Override
     public String toString() {
-        return "managerindustry.db.entities.IndustryActivityMaterials[ idd=" + idd + " ]";
+        return "managerindustry.db.entities.IndustryActivityMaterials[ fakeID=" + fakeID + " ]";
     }
     
 }

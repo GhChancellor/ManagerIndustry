@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import managerindustry.db.entities.IndustryActivityMaterials;
 import managerindustry.db.entities.InvTypes;
+import managerindustry.logic.enumName.RamActivitiesEnum;
 //import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
 /**
@@ -31,7 +32,7 @@ public class IndustryActivityMaterialsX {
      * @param int invType
      * @return List < InvTypeMaterials >
      */
-    public List < IndustryActivityMaterials > materialsID( int typeID){
+    public List < IndustryActivityMaterials > materialsID( int typeID, RamActivitiesEnum activitiesEnum){
         
         try {
             EntityManager materialsEM = entityManager;
@@ -40,7 +41,7 @@ public class IndustryActivityMaterialsX {
              materialsEM.createNamedQuery("IndustryActivityMaterials.findByTypeID", IndustryActivityMaterials.class);
             
             materialsTQ.setParameter("typeID", typeID);
-            materialsTQ.setParameter("activityID", 1);
+            materialsTQ.setParameter("activityID", activitiesEnum.getCode());
             
             return materialsTQ.getResultList();
         } catch (Exception e) {
@@ -55,7 +56,7 @@ public class IndustryActivityMaterialsX {
      * @param String nameBPO
      * @return < IndustryActivityMaterials >
      */
-    public List < IndustryActivityMaterials > getMaterialNeedByName(String bpoName){
+    public List < IndustryActivityMaterials > getMaterialNeedByName(String bpoName, RamActivitiesEnum activitiesEnum){
         /*
          SELECT * FROM industryDB.industryActivityMaterials, industryDB.invTypes
         WHERE industryActivityMaterials.typeID = invTypes.typeID  AND
@@ -75,7 +76,7 @@ public class IndustryActivityMaterialsX {
         
         // convert name ( from InvTypes ) to Materials Needed ( from  IndustryActivityMaterials )
         List < IndustryActivityMaterials > invTypeMaterialses = 
-           ManagerDBX.getInstance().industryActivityMaterials().materialsID(invTypes.getTypeID());
+           ManagerDBX.getInstance().industryActivityMaterials().materialsID(invTypes.getTypeID(), activitiesEnum );
         // ManagerDBEve.getInstance().getIndustryActivityMaterialsID( invTypes.getTypeID() );
         if ( invTypeMaterialses.isEmpty() ){
             return null;

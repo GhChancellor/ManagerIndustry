@@ -9,10 +9,6 @@ import java.util.List;
 import managerindustry.db.entities.user.UserApiEntity;
 import managerindustry.logic.prove.managerDB.ManagerDBX;
 
-
-//import managerindustry.logic.manager.managerDB.ManagerSQLUser;
-
-
 /**
  * DBG Forse da cancellare
  * @author lele
@@ -39,7 +35,6 @@ public class ManagerLoginSqlX {
     public List < UserApiEntity > getUserApiEntities(){
         List < UserApiEntity > userApiEntities = 
           ManagerDBX.getInstance().sqlUserX().getUserApiEntities();
-//         ManagerSQLUser.getInstance().getUserApiEntities();
 
         return userApiEntities;     
     }
@@ -50,7 +45,6 @@ public class ManagerLoginSqlX {
     public List < UserApiEntity > getAllUserApiEntities(){
         List < UserApiEntity > userApiEntities =
           ManagerDBX.getInstance().sqlUserX().getUserApiEntities();
-//         ManagerSQLUser.getInstance().getUserApiEntities();
 
         return userApiEntities;     
     }
@@ -61,7 +55,6 @@ public class ManagerLoginSqlX {
      */
     public void addUserApiIndex(UserApiEntity userApiEntity){
           ManagerDBX.getInstance().sqlUserX().addUserApiEntity(userApiEntity);
-//        ManagerSQLUser.getInstance().addUserApiEntity(userApiEntity);
     }
     
     /**
@@ -70,7 +63,6 @@ public class ManagerLoginSqlX {
      */
     public void deleteUserApi(UserApiEntity userApiEntity){
         ManagerDBX.getInstance().sqlUserX().deleteUserApiEntity(userApiEntity);
-//        ManagerSQLUser.getInstance().deleteUserApiEntity(userApiEntity);
     }
     
     /**
@@ -79,6 +71,5 @@ public class ManagerLoginSqlX {
      */
     public void updateUserApiEntity(UserApiEntity userApiEntity){
           ManagerDBX.getInstance().sqlUserX().updateUserApiEntity(userApiEntity);
-//        ManagerSQLUser.getInstance().updateUserApiEntity(userApiEntity);
     }
 }

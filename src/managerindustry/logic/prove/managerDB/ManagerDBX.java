@@ -7,7 +7,7 @@ package managerindustry.logic.prove.managerDB;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import managerindustry.logic.prove.managerDB.cache.Cache;
+import managerindustry.logic.prove.managerDB.cache.taxCostIndex.TaxSolarSystem;
 import managerindustry.logic.prove.managerDB.eve.DgmAttributeTypesX;
 import managerindustry.logic.prove.managerDB.eve.DgmTypeAttributesX;
 import managerindustry.logic.prove.managerDB.eve.IndustryActivityMaterialsX;
@@ -96,10 +96,10 @@ public class ManagerDBX {
     
     /**
      * Get all values of the Cache ( entities )
-     * @return Cache
+     * @return TaxSolarSystem
      */    
-    public Cache cache(){
-        Cache cache = new Cache(entityManager);
-        return cache;
+    public TaxSolarSystem taxSolarSystem(){
+        TaxSolarSystem taxSolarSystem = new TaxSolarSystem(entityManager);
+        return taxSolarSystem;
     }
 }

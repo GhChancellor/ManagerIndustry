@@ -15,6 +15,7 @@ import managerindustry.logic.buiild.ComponentX;
 import managerindustry.logic.buiild.MaterialEfficiencyCalculate;
 import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
+import managerindustry.logic.enumName.RamActivitiesEnum;
 import managerindustry.logic.prove.managerDB.ManagerDBX;
 
 //import managerindustry.logic.manager.managerDB.ManagerDBEve;
@@ -26,6 +27,7 @@ public class ManagerBuildX {
    
     public ManagerBuildX(String bpoName, int run, int job, int bpoME, 
         int componentMe) {
+        RamActivitiesEnum activitiesEnum = RamActivitiesEnum.MANUFACTURING;
         
         // CONCORD 25000mm Steel Plates
 
@@ -33,14 +35,10 @@ public class ManagerBuildX {
         System.out.println("" + bpoName);
         
         List< IndustryActivityMaterials> nameItemToBuild = 
-         ManagerDBX.getInstance().industryActivityMaterials().getMaterialNeedByName(bpoName);
-                
-//        ManagerDBEve.getInstance().getMaterialNeedByName(bpoName); 
-
-                
+         ManagerDBX.getInstance().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
         
         ComponentX componentX = new ComponentX();
-        baseMaterial(nameItemToBuild, componentX);
+        baseMaterial(nameItemToBuild, componentX, activitiesEnum );
         
         List < MaterialForComponents > materials = componentX.getMaterialForComponents();
         
@@ -139,12 +137,10 @@ public class ManagerBuildX {
     }        
     
     private void baseMaterial(List< IndustryActivityMaterials> nameItemToBuild,
-     ComponentX dad){   
+     ComponentX dad, RamActivitiesEnum activitiesEnum){   
         for (IndustryActivityMaterials nameItemToBuild1 : nameItemToBuild) {
             InvTypes invTypes =
               ManagerDBX.getInstance().invTypes().getNameById(nameItemToBuild1.getMaterialTypeID());
-//              ManagerDBEve.getInstance().getInvTypes_NameById(nameItemToBuild1.getMaterialTypeID());
-
 //            System.out.println(tab + invTypes.getTypeID() + " " + invTypes.getTypeName() + " " + nameItemToBuild1.getQuantity());
 
             ComponentX componentX = new ComponentX();
@@ -152,13 +148,13 @@ public class ManagerBuildX {
             componentX.setQuanityInt(nameItemToBuild1.getQuantity());
 
             List< IndustryActivityMaterials> neededComponents = 
-              ManagerDBX.getInstance().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint");
+              ManagerDBX.getInstance().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
 //             ManagerDBEve.getInstance().getMaterialNeedByName(invTypes.getTypeName() + " blueprint");
             
             dad.addMaterialForComponents(new MaterialForComponents(componentX));  
             
             if (neededComponents != null)
-                baseMaterial(neededComponents, componentX);
+                baseMaterial(neededComponents, componentX, activitiesEnum);
 
         }
     }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.managerDB.cache;
+package managerindustry.logic.prove.managerDB.cache.taxCostIndex;
 
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -20,7 +20,7 @@ import managerindustry.db.entities.cache.TaxSolarSystemEntity;
  *
  * @author lele
  */
-public class Cache {
+public class TaxSolarSystem {
     private EntityManager entityManager;
 
     private PriceEntityJpaController priceEntityJpaController =
@@ -32,7 +32,7 @@ public class Cache {
     private TaxCostIndexEntityJpaController taxCostIndexEntityJpaController = 
      new TaxCostIndexEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));
     
-    public Cache(EntityManager entityManager) {
+    public TaxSolarSystem(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
     

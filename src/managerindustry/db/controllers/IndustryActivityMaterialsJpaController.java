@@ -55,7 +55,7 @@ public class IndustryActivityMaterialsJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = industryActivityMaterials.getIdd();
+                Integer id = industryActivityMaterials.getFakeID();
                 if (findIndustryActivityMaterials(id) == null) {
                     throw new NonexistentEntityException("The industryActivityMaterials with id " + id + " no longer exists.");
                 }
@@ -76,7 +76,7 @@ public class IndustryActivityMaterialsJpaController implements Serializable {
             IndustryActivityMaterials industryActivityMaterials;
             try {
                 industryActivityMaterials = em.getReference(IndustryActivityMaterials.class, id);
-                industryActivityMaterials.getIdd();
+                industryActivityMaterials.getFakeID();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The industryActivityMaterials with id " + id + " no longer exists.", enfe);
             }

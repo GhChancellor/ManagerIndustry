@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.managerDB.price;
+package managerindustry.logic.prove.managerDB.cache.price;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -14,7 +14,6 @@ import managerindustry.logic.apiEsiJson.ApiEsi;
 import managerindustry.logic.apiEsiJson.market.listMarketPrices.Price;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.prove.managerDB.ManagerDBX;
-// import managerindustry.logic.manager.managerDB.ManagerDBCache;
 
 /**
  *
@@ -41,13 +40,9 @@ public class PriceX {
      * Init Price DB
      */
     private void initPriceDB(){
-        if ( ManagerDBX.getInstance().cache().getAllPriceEntity() == null){
-            ManagerDBX.getInstance().cache().addPriceEntity(priceEntity);
+        if ( ManagerDBX.getInstance().taxSolarSystem().getAllPriceEntity() == null){
+            ManagerDBX.getInstance().taxSolarSystem().addPriceEntity(priceEntity);
         }
-        
-//        if ( ManagerDBCache.getInstance().getAllPriceEntity() == null){
-//            ManagerDBCache.getInstance().addPriceEntity(priceEntity);
-//        }
     }    
 
     private Price getPriceMap() throws PriceNotExistsException{
@@ -82,8 +77,7 @@ public class PriceX {
         this.priceEntity.setAverage_price(price.getAverage_price());
         this.priceEntity.setAdjusted_price(price.getAdjusted_price());
         
-        ManagerDBX.getInstance().cache().addPriceEntity(priceEntity);
-//        ManagerDBCache.getInstance().addPriceEntity(priceEntity);
+        ManagerDBX.getInstance().taxSolarSystem().addPriceEntity(priceEntity);
     }
     
     /**
@@ -92,8 +86,7 @@ public class PriceX {
      * @throws String SolarSystemNotExistsException 
      */
     private void initAll(String priceID) throws PriceNotExistsException{
-        priceEntity = ManagerDBX.getInstance().cache().getPriceEntity(typeId);
-//        ManagerDBCache.getInstance().getPriceEntity(priceID);
+        priceEntity = ManagerDBX.getInstance().taxSolarSystem().getPriceEntity(typeId);
 
         this.typeId = priceID;
         
@@ -122,8 +115,7 @@ public class PriceX {
         priceEntity.setAdjusted_price(price.getAdjusted_price());
         priceEntity.setAverage_price(price.getAverage_price());
         
-        ManagerDBX.getInstance().cache().updateTaxPriceEntity(priceEntity);
-//        ManagerDBCache.getInstance().updateTaxPriceEntity(priceEntity);
+        ManagerDBX.getInstance().taxSolarSystem().updateTaxPriceEntity(priceEntity);
     }    
     
     /**
@@ -131,8 +123,8 @@ public class PriceX {
      */
     private void updateAllPrice() throws PriceNotExistsException{
         List < PriceEntity > priceEntitys = 
-         ManagerDBX.getInstance().cache().getAllExceptSpecificPriceEntity(typeId);
-//         ManagerDBCache.getInstance().getAllExceptSpecificPriceEntity(typeId);
+         ManagerDBX.getInstance().taxSolarSystem().getAllExceptSpecificPriceEntity(typeId);
+
         
         if (priceEntitys.isEmpty())
             return;
@@ -177,8 +169,7 @@ public class PriceX {
     private PriceEntity getValueAdjusted_AveragePrice(String typePrice) throws PriceNotExistsException{
         
         initAll(typePrice);   
-        priceEntity = ManagerDBX.getInstance().cache().getPriceEntity(typePrice);     
-        // ManagerDBCache.getInstance().getPriceEntity(typePrice);     
+        priceEntity = ManagerDBX.getInstance().taxSolarSystem().getPriceEntity(typePrice);     
 
         if ( priceEntity == null)
             throw new PriceNotExistsException();        

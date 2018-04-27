@@ -20,6 +20,7 @@ import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.buiild.ComponentX;
 import managerindustry.logic.buiild.MaterialEfficiencyCalculate;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
+import managerindustry.logic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.ManagerComponentX;
 import managerindustry.logic.prove.managerDB.ManagerDBX;
 import managerindustry.logic.unused.structure.UNUSED_EngineeringComplex;
@@ -123,22 +124,20 @@ public class ManagerDisplayX {
     */
     private void baseMaterial(String bpoName){     
         System.out.println(""+bpoName);
+        RamActivitiesEnum activitiesEnum = RamActivitiesEnum.MANUFACTURING;
         
         // get item to build
         List < IndustryActivityMaterials > nameItemToBuild = 
-          ManagerDBX.getInstance().industryActivityMaterials().getMaterialNeedByName(bpoName);
-//        ManagerDBEve.getInstance().getMaterialNeedByName(bpoName);
+          ManagerDBX.getInstance().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
          
         if ( ! nameItemToBuild.isEmpty() ){
             for (IndustryActivityMaterials invTypeMaterialse :  nameItemToBuild) {
                 InvTypes invTypes = 
                   ManagerDBX.getInstance().invTypes().getNameById(invTypeMaterialse.getMaterialTypeID());
-//                  ManagerDBEve.getInstance().getInvTypes_NameById(invTypeMaterialse.getMaterialTypeID());
                 
                 // get component
                 List < IndustryActivityMaterials > neededComponents = 
-                  ManagerDBX.getInstance().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint");     
-//                ManagerDBEve.getInstance().getMaterialNeedByName( invTypes.getTypeName() + " blueprint");
+                  ManagerDBX.getInstance().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);     
                 
                 ComponentX componentX = new ComponentX();
                 componentX.setName(invTypes.getTypeName());
@@ -148,7 +147,6 @@ public class ManagerDisplayX {
                     for (IndustryActivityMaterials neededComponent : neededComponents) { 
                         
                         invTypes = ManagerDBX.getInstance().invTypes().getNameById(neededComponent.getMaterialTypeID());
-//                        ManagerDBEve.getInstance().getInvTypes_NameById(neededComponent.getMaterialTypeID());
                         
                         MaterialForComponents materialForComponents = new MaterialForComponents
                          ( invTypes.getTypeID(), invTypes.getTypeName(), neededComponent.getQuantity());
@@ -179,11 +177,9 @@ public class ManagerDisplayX {
         // 43867 Standup M-Set Advanced Component Manufacturing Material Efficiency I
         String bpoName = "drake Blueprint"; // Nighthawk Blueprint 
         InvTypes invTypes = ManagerDBX.getInstance().invTypes().getIdByName(bpoName);
-//        ManagerDBEve.getInstance().getInvTypes_IdByName(bpoName);
         
         List < DgmTypeAttributes > dgmTypeAttributes = 
           ManagerDBX.getInstance().dgmTypeAttributes().getTypeAttributes(invTypes.getTypeID());
-//        ManagerDBEve.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
         
         System.out.println(""+ bpoName + " ID " + invTypes.getTypeID() );
         
@@ -191,7 +187,6 @@ public class ManagerDisplayX {
            
             DgmAttributeTypes dgmAttributeTypes = 
               ManagerDBX.getInstance().dgmAttributeTypes().getAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
-//             ManagerDBEve.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
             
             if (dgmTypeAttribute.getValueInt() == null) {
                 System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  +
@@ -222,7 +217,6 @@ public class ManagerDisplayX {
     
     public void getSolarSystemID(){
         InvNames invNames = ManagerDBX.getInstance().invNames().getSolarSystemID("Jita");
-//        ManagerDBEve.getInstance().getInvNames_SolarSystemID("Jita");
         
         System.out.println(""+invNames.getItemID());
     }

@@ -122,19 +122,19 @@ public class RicorsioneBaseMaterial {
 
     void ricorsioneLuca(List<IndustryActivityMaterials> tree, String tab, ComponentX dad) {
 
-        for (IndustryActivityMaterials a : tree) {
-            System.out.println(tab + a.getIdd());
-
-            ComponentX componentX = new ComponentX();
-            componentX.setName("nome-" + a.getIdd());
-            componentX.setQuanityInt(a.getIdd());
-            MaterialForComponents comp = new MaterialForComponents(componentX);
-            dad.addMaterialForComponents(comp);
-
-            List<IndustryActivityMaterials> subList = fakeDbMap.get(a.getIdd());
-            if (subList != null) {
-                ricorsioneLuca(subList, tab + "-", componentX);
-            }
-        }
+//        for (IndustryActivityMaterials a : tree) {
+//            System.out.println(tab + a.getIdd());
+//
+//            ComponentX componentX = new ComponentX();
+//            componentX.setName("nome-" + a.getIdd());
+//            componentX.setQuanityInt(a.getIdd());
+//            MaterialForComponents comp = new MaterialForComponents(componentX);
+//            dad.addMaterialForComponents(comp);
+//
+//            List<IndustryActivityMaterials> subList = fakeDbMap.get(a.getIdd());
+//            if (subList != null) {
+//                ricorsioneLuca(subList, tab + "-", componentX);
+//            }
+//        }
     }
 }

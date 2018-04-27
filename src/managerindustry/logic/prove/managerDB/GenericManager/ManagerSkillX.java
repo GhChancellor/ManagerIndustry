@@ -5,9 +5,6 @@
  */
 package managerindustry.logic.prove.managerDB.GenericManager;
 
-//import managerindustry.logic.manager.managerDB.ManagerDBEve;
-
-
 import java.util.HashMap;
 import java.util.Map;
 import managerindustry.logic.prove.managerDB.ManagerDBX;
@@ -65,26 +62,21 @@ public class ManagerSkillX {
      */
     private final void initSkill(){
         SkillV skill = ManagerDBX.getInstance().invTypes().getSkillValues(3380, true, 440);
-//        ManagerDBEve.getInstance().getInvTypes_SkillValues(3380, true, 440);
         addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
                 
 //        SkillV skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3380, true, 440);
 //        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
 
         skill = ManagerDBX.getInstance().invTypes().getSkillValues(3395, true, 1982);
-//        ManagerDBEve.getInstance().getInvTypes_SkillValues(3395, true, 1982);
         addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
      
         skill = ManagerDBX.getInstance().invTypes().getSkillValues(3396, true, 1982);
-//        ManagerDBEve.getInstance().getInvTypes_SkillValues(3396, true, 1982);
         addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
         
         skill = ManagerDBX.getInstance().invTypes().getSkillValues(3397, true, 1982);
-//        ManagerDBEve.getInstance().getInvTypes_SkillValues(3397, true, 1982);
         addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
         
         skill = ManagerDBX.getInstance().invTypes().getSkillValues(3398, true, 1982);
-//        ManagerDBEve.getInstance().getInvTypes_SkillValues(3398, true, 1982);
         addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
             
 //        manuallyAddedNames();

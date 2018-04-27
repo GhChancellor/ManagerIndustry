@@ -5,22 +5,8 @@
  */
 package managerindustry.logic.prove.mainVari;
 
-import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.enumName.PlatformEnum;
-import managerindustry.logic.enumName.RuleBonusRigEnum;
-import managerindustry.logic.enumName.SecurityStatusEnum;
-import managerindustry.logic.enumName.TierEnum;
-import managerindustry.logic.manager.old.ManagerDisplay;
-import managerindustry.logic.manager.ManagerFitter;
-import managerindustry.logic.prove.invMarketGroups.Groups;
+import managerindustry.logic.manager.old.ManagerBuild;
 import managerindustry.logic.prove.managerDB.GenericManager.ManagerBuildX;
-import managerindustry.logic.prove.managerDB.GenericManager.ManagerDisplayX;
-import managerindustry.logic.prove.managerDB.ManagerDBX;
-import managerindustry.logic.prove.riv_v2.RIG_V2;
-import managerindustry.logic.structure.EngineeringComplex;
-import managerindustry.logic.structure.StructureEngineeringRigs;
-import managerindustry.logic.unused.structure.UNUSED_Manager_Rig_GroupId;
-import managerindustry.logic.unused.structure.Rig_GroupId.UNUSED_Rig_GroupId;
 
 /**
  *
@@ -31,6 +17,6 @@ public class MainProva {
 //        StructureEngineeringRigs structureEngineeringRigs = new StructureEngineeringRigs(TierEnum.T2, RuleBonusRigEnum.RIG_TIME_EFFICIENCY, SecurityStatusEnum.HI_SEC);
 //        EngineeringComplex engineeringComplex = new EngineeringComplex(PlatformEnum.RAITARU);
 //        Groups groups = new Groups();
-        ManagerBuildX managerBuildX = new ManagerBuildX("drake", 1, 1, 0, 0);
+        ManagerBuildX managerBuild = new ManagerBuildX("scimitar", 1, 1, 0, 0);
     }
 }
