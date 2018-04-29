@@ -9,8 +9,8 @@ import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.unused.structure.UNUSED_EngineeringComplex;
 import managerindustry.logic.unused.structure.UNUSED_ManagerFitter;
-import managerindustry.logic.unused.structure.Rig_GroupId.UNUSED_StructureEngineeringRigs;
-import managerindustry.logic.unused.structure.Rig_GroupId.UNUSED_StructureEngineeringRigs;
+import managerindustry.logic.unused.structure.rig_GroupId.UNUSED_StructureEngineeringRigs;
+import managerindustry.logic.unused.structure.rig_GroupId.UNUSED_StructureEngineeringRigs;
 
 /**
  *

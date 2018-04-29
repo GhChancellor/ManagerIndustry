@@ -11,7 +11,7 @@ import java.util.Map;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
-import managerindustry.logic.manager.old.managerCache.ManagerSystemCostIndex;
+import managerindustry.logic.manager.old.managerCache.ManagerSystemCostIndex_OLD;
 import managerindustry.logic.tax.formulas.itemcost.baseJobCost.BaseJobCost;
 import managerindustry.logic.tax.formulas.itemcost.systemCostIndex.SystemCostIndex;
 

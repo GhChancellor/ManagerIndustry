@@ -11,8 +11,8 @@ import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.ManagerComponentX;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
-import managerindustry.logic.manager.old.ManagerBuild;
+import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
+import managerindustry.logic.manager.old.ManagerBuild_OLD;
 import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.tax.formulas.itemcost.MainItemCost;
 
@@ -31,7 +31,7 @@ public class ManagerJobInstallationFee {
 //        String item = "Hammerhead I";
         String item = "Punisher";
         
-        InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(item);
+        InvTypes invTypes = ManagerDBEve_OLD.getInstance().getInvTypes_IdByName(item);
         System.out.println(""+ item + " ID: " +invTypes.getTypeID());
         
         int run = 662;
@@ -42,8 +42,8 @@ public class ManagerJobInstallationFee {
         int runPerCopy = 5;
         int startLevel = 5;
         int finishLevel = 10;
-        ManagerBuild managerBuildX1 = 
-                new ManagerBuild(item, run, job, bpoME, componentMe);
+        ManagerBuild_OLD managerBuildX1 = 
+                new ManagerBuild_OLD(item, run, job, bpoME, componentMe);
                         
         Map < String, ReportCalculatedComponentX > reportCalculatedComponentXMap = 
          ManagerComponentX.getInstance().getReportCalculatedComponentXMap();

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.logic.enumName.PlatformEnum;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**
  * https://community.eveonline.com/news/dev-blogs/building-dreams-introducing-engineering-complexes/
@@ -69,23 +69,23 @@ public class EngineeringComplex {
         
         // float roundOff = Math.round(value * 100.0) / 100.0;
         // Math.floor(value * 100) / 100;
-        DgmTypeAttributes dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex.getName(), RULE_BONUS.MANUFACTURING_MATERIAL.code); // 2600
+        DgmTypeAttributes dgmTypeAttributes = ManagerDB.getInstance().dgmTypeAttributes().getItemDescription(nameEngineeringComplex.getName(), RULE_BONUS.MANUFACTURING_MATERIAL.code); // 2600
         reductionManufacturingMaterial = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
         
-        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex.getName(), RULE_BONUS.MANUFACTURING_SCIENCE_JOB_ISK_COST.code); // 2601
+        dgmTypeAttributes = ManagerDB.getInstance().dgmTypeAttributes().getItemDescription(nameEngineeringComplex.getName(), RULE_BONUS.MANUFACTURING_SCIENCE_JOB_ISK_COST.code); // 2601
         reductionManufacturingScienceJobIskCost = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
         
-        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex.getName(), RULE_BONUS.MANUFACTURING_SCIENCE_JOB_TIME.code); // 2602
+        dgmTypeAttributes = ManagerDB.getInstance().dgmTypeAttributes().getItemDescription(nameEngineeringComplex.getName(), RULE_BONUS.MANUFACTURING_SCIENCE_JOB_TIME.code); // 2602
         
         reductionManufacturingScienceJobTime = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
         
-        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex.getName(), RULE_BONUS.FUEL_CONSUMPTIOM.code); // 2339
+        dgmTypeAttributes = ManagerDB.getInstance().dgmTypeAttributes().getItemDescription(nameEngineeringComplex.getName(), RULE_BONUS.FUEL_CONSUMPTIOM.code); // 2339
         reductionFuelConsumption = dgmTypeAttributes.getValueFloat();
         
-        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex.getName(), RULE_BONUS.MAX_CALIBRATION_COMPLEX.code); // 1132
+        dgmTypeAttributes = ManagerDB.getInstance().dgmTypeAttributes().getItemDescription(nameEngineeringComplex.getName(), RULE_BONUS.MAX_CALIBRATION_COMPLEX.code); // 1132
         maxCalibrationComplex = dgmTypeAttributes.getValueFloat();
         
-        dgmTypeAttributes = ManagerDBEve.getInstance().getItemDescription(nameEngineeringComplex.getName(), RULE_BONUS.RIG_SLOTS.code); // 1137
+        dgmTypeAttributes = ManagerDB.getInstance().dgmTypeAttributes().getItemDescription(nameEngineeringComplex.getName(), RULE_BONUS.RIG_SLOTS.code); // 1137
         maxRigSlot = dgmTypeAttributes.getValueFloat();
         
         this.nameEngineeringComplex = nameEngineeringComplex.getName();

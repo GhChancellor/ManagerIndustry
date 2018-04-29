@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.runMain;
 
-import managerindustry.logic.manager.old.ManagerDisplay;
+import managerindustry.logic.manager.old.ManagerDisplay_OLD;
 import managerindustry.logic.prove.ricorsione.ProvaRicorsione;
 
 /**
@@ -20,7 +20,7 @@ public class ManagerIndustry {
     public static void main(String[] args) {
 //        ProvaClass provaClass = new ProvaClass();
         
-        ManagerDisplay managerDisplay = new ManagerDisplay();
+        ManagerDisplay_OLD managerDisplay = new ManagerDisplay_OLD();
 //        managerDisplay.buildItem();
         managerDisplay.itemDescription();
 //        managerDisplay.displayValueRig();

@@ -7,7 +7,7 @@ package managerindustry.logic.prove.invMarketGroups;
 
 import java.util.List;
 import managerindustry.db.entities.InvMarketGroups;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
 
 /**
  *
@@ -16,9 +16,9 @@ import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
 public class Groups {
 
     public Groups() {
-        InvMarketGroups marketGroupID = ManagerDBEve.getInstance().getInvMarketGroups_marketGroupID(1372);
+        InvMarketGroups marketGroupID = ManagerDBEve_OLD.getInstance().getInvMarketGroups_marketGroupID(1372);
         
-        List < InvMarketGroups > parentGroupIDs = ManagerDBEve.getInstance().getInvMarketGroups_parentGroupID(marketGroupID.getMarketGroupID());
+        List < InvMarketGroups > parentGroupIDs = ManagerDBEve_OLD.getInstance().getInvMarketGroups_parentGroupID(marketGroupID.getMarketGroupID());
         
         parentGroupIDs.forEach((t) -> {
             System.out.println(""+ t.getMarketGroupName());

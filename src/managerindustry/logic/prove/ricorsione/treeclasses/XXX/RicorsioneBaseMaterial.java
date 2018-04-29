@@ -13,7 +13,7 @@ import managerindustry.db.entities.IndustryActivityMaterials;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.buiild.ComponentX;
 import managerindustry.logic.buiild.MaterialForComponents;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
 
 /**
  *
@@ -31,7 +31,7 @@ public class RicorsioneBaseMaterial {
         System.out.println("" + bpoName);
 
         // get item to build
-        List< IndustryActivityMaterials> nameItemToBuild = ManagerDBEve.getInstance().getMaterialNeedByName(bpoName);
+        List< IndustryActivityMaterials> nameItemToBuild = ManagerDBEve_OLD.getInstance().getMaterialNeedByName(bpoName);
         ComponentX dad = new ComponentX(0, "DAD", 0);
         ricorsione(nameItemToBuild, "", dad);
 
@@ -88,7 +88,7 @@ public class RicorsioneBaseMaterial {
     public void ricorsione(List< IndustryActivityMaterials> nameItemToBuild, String tab, ComponentX dad) {
 
         for (IndustryActivityMaterials nameItemToBuild1 : nameItemToBuild) {
-            InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_NameById(nameItemToBuild1.getMaterialTypeID());
+            InvTypes invTypes = ManagerDBEve_OLD.getInstance().getInvTypes_NameById(nameItemToBuild1.getMaterialTypeID());
             System.out.println(tab + invTypes.getTypeID() + " " + invTypes.getTypeName() + " " + nameItemToBuild1.getQuantity());
 
             ComponentX componentX = new ComponentX();
@@ -96,7 +96,7 @@ public class RicorsioneBaseMaterial {
             componentX.setQuanityInt(nameItemToBuild1.getQuantity());
 
             List< IndustryActivityMaterials> neededComponents = 
-             ManagerDBEve.getInstance().getMaterialNeedByName
+             ManagerDBEve_OLD.getInstance().getMaterialNeedByName
              (invTypes.getTypeName() + " blueprint");
 
             dad.addMaterialForComponents(new MaterialForComponents(componentX));

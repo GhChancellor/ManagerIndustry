@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.unused.structure;
 
-import managerindustry.logic.unused.structure.Rig_GroupId.UNUSED_Rig_GroupId;
+import managerindustry.logic.unused.structure.rig_GroupId.UNUSED_Rig_GroupId;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

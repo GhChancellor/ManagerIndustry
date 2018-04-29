@@ -16,8 +16,9 @@ import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.enumName.TierEnum;
 import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.manager.ManagerErrorExecption;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
-import managerindustry.logic.structure.rigbackup.RigBackUp;
+import managerindustry.logic.manager.managerDB.ManagerDB;
+//import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
+import managerindustry.logic.structure.fakeRig.FakeRig;
 
 /**
  * https://community.eveonline.com/news/dev-blogs/building-dreams-introducing-engineering-complexes/
@@ -33,7 +34,7 @@ import managerindustry.logic.structure.rigbackup.RigBackUp;
  * @author lele
  */
 public class StructureEngineeringRigs {
-    private List<RigBackUp> rigCouples = new ArrayList<>();   
+    private List<FakeRig> rigCouples = new ArrayList<>();   
     
     private float calibration;
     private float securityStatusBonus;    
@@ -52,6 +53,40 @@ public class StructureEngineeringRigs {
 //    private String nameRig;
     
     /**
+     * Gestione dei rig
+     * @param String nameRig
+     * @param SecurityStatusEnum securityStatusEnum 
+     */
+    public StructureEngineeringRigs(String nameRig, SecurityStatusEnum securityStatusEnum){
+        typeID = ManagerDB.getInstance().invTypes().getIdByName(nameRig).getTypeID();
+               
+        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributes(typeID);
+        
+        for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
+           
+            DgmAttributeTypes dgmAttributeTypes = 
+              ManagerDB.getInstance().dgmAttributeTypes().getAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
+
+            if ( bonusRigBln )
+                setBonusRig(dgmTypeAttribute);
+            
+            if ( securityStatusBln )
+                setSecurityStatus(dgmTypeAttribute, securityStatus(securityStatusEnum));
+            
+            if ( calibrationBln )
+                setCalibration(dgmTypeAttribute);
+            
+            if ( maxGroupFittedBln )
+                setMaxGroupFitted(dgmTypeAttribute);
+        } 
+
+        calculedSecuryStatusWithRig();
+//        displayAllValueCalculated();
+        displayValue();        
+    }
+    
+    /**
+     * @deprecated 
      * DBG DA OTTIMIZZARE
      * @param TierEnum tier
      * @param RuleBonusRigEnum materialTimeCostBonus
@@ -60,15 +95,15 @@ public class StructureEngineeringRigs {
     public StructureEngineeringRigs(TierEnum tier, RuleBonusRigEnum materialTimeCostBonus, SecurityStatusEnum securityStatusEnum) {
         initDbBackUp();
         
-        typeID = getDbBackup( tier, materialTimeCostBonus);
+        typeID = getFakeRig( tier, materialTimeCostBonus);
                
-        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(typeID);
+        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributes(typeID);
         
         for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
            
             DgmAttributeTypes dgmAttributeTypes = 
-             ManagerDBEve.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
-            
+              ManagerDB.getInstance().dgmAttributeTypes().getAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
+
             if ( bonusRigBln )
                 setBonusRig(dgmTypeAttribute);
             
@@ -239,15 +274,17 @@ public class StructureEngineeringRigs {
      */
     private void displayAllValue(){
         String bpoName = "Standup M-Set Blueprint Copy Accelerator II";
-        InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_IdByName(bpoName);
+        int typeId = ManagerDB.getInstance().invTypes().getIdByName(bpoName).getTypeID();
         
-        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
-        System.out.println(""+ bpoName + " " + invTypes.getTypeID());
+        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributes(typeId);
+
+        System.out.println(""+ bpoName + " " + typeId);
         
         for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
            
             DgmAttributeTypes dgmAttributeTypes = 
-             ManagerDBEve.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
+               ManagerDB.getInstance().dgmAttributeTypes().getAttributeTypes
+              (dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
 
             System.out.println("" + dgmAttributeTypes.getAttributeName() + " " + dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID() 
              + " " + dgmTypeAttribute.getValueFloat() );           
@@ -278,19 +315,19 @@ public class StructureEngineeringRigs {
     */
     private void initDbBackUp(){
         // Manufacturing Material Efficiency T1
-        rigCouples.add(new RigBackUp(43920, 37156, TierEnum.T1, RuleBonusRigEnum.RIG_MATERIAL_EFFICIENCY));        
+        rigCouples.add(new FakeRig(43920, 37156, TierEnum.T1, RuleBonusRigEnum.RIG_MATERIAL_EFFICIENCY));        
         // Manufacturing Material Efficiency T2
-        rigCouples.add(new RigBackUp(43921, 37156, TierEnum.T2, RuleBonusRigEnum.RIG_MATERIAL_EFFICIENCY));
+        rigCouples.add(new FakeRig(43921, 37156, TierEnum.T2, RuleBonusRigEnum.RIG_MATERIAL_EFFICIENCY));
         
         // Manufacturing Time Efficiency T1
-        rigCouples.add(new RigBackUp(37160, 37148, TierEnum.T1, RuleBonusRigEnum.RIG_TIME_EFFICIENCY));        
+        rigCouples.add(new FakeRig(37160, 37148, TierEnum.T1, RuleBonusRigEnum.RIG_TIME_EFFICIENCY));        
         // Manufacturing Time Efficiency T2
-        rigCouples.add(new RigBackUp(37161, 37149, TierEnum.T2, RuleBonusRigEnum.RIG_TIME_EFFICIENCY)) ;
+        rigCouples.add(new FakeRig(37161, 37149, TierEnum.T2, RuleBonusRigEnum.RIG_TIME_EFFICIENCY)) ;
         
         // Cost Optimization T1
-        rigCouples.add(new RigBackUp(43891, 43885, TierEnum.T1, RuleBonusRigEnum.RIG_COST_BONUS));         
+        rigCouples.add(new FakeRig(43891, 43885, TierEnum.T1, RuleBonusRigEnum.RIG_COST_BONUS));         
         // Cost Optimization T2
-        rigCouples.add(new RigBackUp(43884, 43890, TierEnum.T2, RuleBonusRigEnum.RIG_COST_BONUS));         
+        rigCouples.add(new FakeRig(43884, 43890, TierEnum.T2, RuleBonusRigEnum.RIG_COST_BONUS));         
     }
     
     /**
@@ -299,16 +336,17 @@ public class StructureEngineeringRigs {
      * @param RuleBonusRigEnum typeBonus
      * @return 
      */
-    private int getDbBackup(TierEnum tier, RuleBonusRigEnum typeBonus){
-        for (RigBackUp rigCouple : rigCouples) {
+    private int getFakeRig(TierEnum tier, RuleBonusRigEnum typeBonus){
+        for (FakeRig rigCouple : rigCouples) {
             if ( rigCouple.getTier() == tier && rigCouple.getRule_bonus() == typeBonus ){
-                InvTypes invTypes = ManagerDBEve.getInstance().getInvTypes_NameById(rigCouple.getId());
+                Integer typeId = ManagerDB.getInstance().invTypes().getNameById(rigCouple.getId()).getTypeID();
 
-                if ( invTypes != null ){
-                    return invTypes.getTypeID();
+                if ( typeId != null ){
+                    return typeId;
                 }
-                invTypes = ManagerDBEve.getInstance().getInvTypes_NameById(rigCouple.getIdBackUp());
-                return invTypes.getTypeID();
+                
+                typeId = ManagerDB.getInstance().invTypes().getNameById(rigCouple.getId()).getTypeID();
+                return typeId;
             }
         }
         return -33333;

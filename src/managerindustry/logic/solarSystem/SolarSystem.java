@@ -6,7 +6,7 @@
 package managerindustry.logic.solarSystem;
 
 import managerindustry.db.entities.InvNames;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
 
 /**
  *
@@ -22,7 +22,7 @@ public class SolarSystem {
      * @return int
      */
     public static int getSolarSystemID(String solarSystemName){
-        InvNames invNames = ManagerDBEve.getInstance().getInvNames_SolarSystemID(solarSystemName);       
+        InvNames invNames = ManagerDBEve_OLD.getInstance().getInvNames_SolarSystemID(solarSystemName);       
         return invNames.getItemID();
     }
     

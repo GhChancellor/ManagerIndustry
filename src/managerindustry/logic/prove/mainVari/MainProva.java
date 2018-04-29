@@ -5,8 +5,8 @@
  */
 package managerindustry.logic.prove.mainVari;
 
-import managerindustry.logic.manager.old.ManagerBuild;
-import managerindustry.logic.prove.managerDB.GenericManager.ManagerBuildX;
+import managerindustry.logic.manager.old.ManagerBuild_OLD;
+import managerindustry.logic.manager.ManagerBuild;
 
 /**
  *
@@ -17,6 +17,6 @@ public class MainProva {
 //        StructureEngineeringRigs structureEngineeringRigs = new StructureEngineeringRigs(TierEnum.T2, RuleBonusRigEnum.RIG_TIME_EFFICIENCY, SecurityStatusEnum.HI_SEC);
 //        EngineeringComplex engineeringComplex = new EngineeringComplex(PlatformEnum.RAITARU);
 //        Groups groups = new Groups();
-        ManagerBuildX managerBuild = new ManagerBuildX("scimitar", 1, 1, 0, 0);
+        ManagerBuild managerBuild = new ManagerBuild("scimitar", 1, 1, 0, 0);
     }
 }

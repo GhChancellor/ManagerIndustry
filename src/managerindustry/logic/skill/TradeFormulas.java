@@ -7,7 +7,7 @@ package managerindustry.logic.skill;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import managerindustry.logic.manager.old.ManagerSkill;
+import managerindustry.logic.manager.old.ManagerSkill_OLD;
 import managerindustry.logic.skill.specificSkill.BrokerFee;
 import managerindustry.logic.standing.Standing;
 
@@ -36,7 +36,7 @@ public class TradeFormulas extends FormulasSkill{
         
         Standing standing = new Standing(station);
         
-        BrokerFee brokerFee = ( BrokerFee ) ManagerSkill.getInstance().getSkillMap("Broker Relations");
+        BrokerFee brokerFee = ( BrokerFee ) ManagerSkill_OLD.getInstance().getSkillMap("Broker Relations");
         
         float initTax = brokerFee.getStartingValue(); // 0.03f;  // starting value
         float initTaxCorparationStanding =  brokerFee.getInitTaxCorparationStanding();  // 0.0002f;

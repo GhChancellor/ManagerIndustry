@@ -6,7 +6,7 @@
 package managerindustry.logic.runMain.skill;
 
 import managerindustry.logic.runMain.ManagerIndustry;
-import managerindustry.logic.manager.old.ManagerSkill;
+import managerindustry.logic.manager.old.ManagerSkill_OLD;
 
 /**
  *
@@ -14,6 +14,6 @@ import managerindustry.logic.manager.old.ManagerSkill;
  */
 public class MainSkill01 {
     public static void main(String[] args) {
-        ManagerSkill.getInstance().getSkillMap();
+        ManagerSkill_OLD.getInstance().getSkillMap();
     }
 }
