@@ -28,10 +28,8 @@ public class DgmAttributeTypesX {
      */
     public DgmAttributeTypes getAttributeTypes( int attributeID ){
         try {
-            EntityManager dgmAttributeTypesEM = entityManager;
-
             TypedQuery < DgmAttributeTypes > dgmAttributeTypesTQ = 
-             dgmAttributeTypesEM.createNamedQuery("DgmAttributeTypes.findByAttributeID", DgmAttributeTypes.class);
+             entityManager.createNamedQuery("DgmAttributeTypes.findByAttributeID", DgmAttributeTypes.class);
 
             dgmAttributeTypesTQ.setParameter("attributeID", attributeID);
             

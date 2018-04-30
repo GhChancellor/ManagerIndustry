@@ -13,7 +13,8 @@ import managerindustry.logic.prove.ricorsione.ProvaRicorsione;
  * @author lele
  */
 public class ManagerIndustry {
-
+    // scimitar blueprint
+    // CONCORD 25000mm Steel Plates Blueprint
     /**
      * @param args the command line arguments
      */

@@ -22,6 +22,16 @@ public class MainItemCost{
     public MainItemCost() {
     }
     
+    /**
+     * 
+     * @param ap<String, ReportCalculatedComponentX> reportCalculatedComponentXMap
+     * @param String solarSystemID
+     * @param String actvity Viene preso dai server MANUFACTORING, COPYING FEE, RESEARCH COST
+     * @param int run
+     * @param float taxRate
+     * @throws SolarSystemNotExistsException
+     * @throws PriceNotExistsException 
+     */
     public static void calculateJobInstallationCost(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
         String solarSystemID, String actvity, int run ,float taxRate) throws SolarSystemNotExistsException, PriceNotExistsException{ 
         

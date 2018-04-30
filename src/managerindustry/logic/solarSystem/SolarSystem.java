@@ -6,10 +6,10 @@
 package managerindustry.logic.solarSystem;
 
 import managerindustry.db.entities.InvNames;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
+import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**
- *
+ * Name and ID of solar system, moon etc
  * @author lele
  */
 public class SolarSystem {
@@ -22,7 +22,7 @@ public class SolarSystem {
      * @return int
      */
     public static int getSolarSystemID(String solarSystemName){
-        InvNames invNames = ManagerDBEve_OLD.getInstance().getInvNames_SolarSystemID(solarSystemName);       
+        InvNames invNames = ManagerDB.getInstance().invNames().getSolarSystemID(solarSystemName);
         return invNames.getItemID();
     }
     

@@ -11,7 +11,8 @@ import java.util.Map;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
+import managerindustry.logic.manager.managerDB.ManagerDB;
+//import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
 
 /**
  *  
@@ -32,7 +33,7 @@ public class BaseJobCost {
 //            String key = entry.getKey();
             ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
             InvTypes invTypes = 
-             ManagerDBEve_OLD.getInstance().getInvTypes_IdByName(totalCalculatedComponent.getName());
+             ManagerDB.getInstance().invTypes().getIdByName(totalCalculatedComponent.getName());
             
             Float jobCost = 
              JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
@@ -57,8 +58,7 @@ public class BaseJobCost {
         for (Map.Entry<String, ReportCalculatedComponentX> entry : reportCalculatedComponentXMap.entrySet()) {
 //            String key = entry.getKey();
             ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
-            InvTypes invTypes = 
-             ManagerDBEve_OLD.getInstance().getInvTypes_IdByName(totalCalculatedComponent.getName());
+            InvTypes invTypes = ManagerDB.getInstance().invTypes().getIdByName(totalCalculatedComponent.getName());
             
             Float jobCost = 
              JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));

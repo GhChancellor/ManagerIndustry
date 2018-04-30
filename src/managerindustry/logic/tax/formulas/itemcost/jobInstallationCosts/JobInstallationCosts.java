@@ -10,7 +10,6 @@ import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.formulas.itemcost.ItemCost;
-import managerindustry.logic.tax.formulas.itemcost.ItemCost;
 
 /**
  *

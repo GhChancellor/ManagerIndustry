@@ -24,16 +24,36 @@ public class PriceX {
     private PriceEntity priceEntity = new PriceEntity();
     private Map<String, Price > priceMap = new HashMap<>();
     private String typeId = null;
-    private static PriceX instance = null;
-    
-    public static PriceX getInstance() throws PriceNotExistsException{
-        if ( instance == null )
-            instance = new PriceX();
-        return instance;        
+//    private static PriceX instance = null;
+//    
+//    public static PriceX getInstance() throws PriceNotExistsException{
+//        if ( instance == null )
+//            instance = new PriceX();
+//        return instance;        
+//    }
+
+    public PriceX() throws PriceNotExistsException {
+        initPriceDB();
     }
 
-    private PriceX() throws PriceNotExistsException {
-        initPriceDB();
+    /**
+     * Get Adjusted Price
+     * @param String typePrice
+     * @param Map<String, Price > priceMap priceMap
+     * @return String
+     */
+    public String getAdjustedPriceEntity(String typePrice ) throws PriceNotExistsException {
+        return getValueAdjusted_AveragePrice(typePrice).getAdjusted_price();
+    }
+
+    /**
+     * Get Average Price
+     * @param String typePrice
+     * @param Map<String, Price > priceMap priceMap
+     * @return String
+     */
+    public String getAveragePriceEntity(String typePrice) throws PriceNotExistsException {
+        return getValueAdjusted_AveragePrice(typePrice).getAverage_price();
     }
     
     /**
@@ -120,11 +140,11 @@ public class PriceX {
     
     /**
      * Update All Price
+     * @throws PriceNotExistsException 
      */
     private void updateAllPrice() throws PriceNotExistsException{
         List < PriceEntity > priceEntitys = 
          ManagerDB.getInstance().taxSolarSystem().getAllExceptSpecificPriceEntity(typeId);
-
         
         if (priceEntitys.isEmpty())
             return;
@@ -138,27 +158,7 @@ public class PriceX {
 
     private void deleteAllPrice(){
         
-    }
-    
-    /**
-     * Get Adjusted Price
-     * @param String typePrice
-     * @param Map<String, Price > priceMap priceMap
-     * @return String
-     */
-    public String getAdjustedPriceEntity(String typePrice ) throws PriceNotExistsException {
-        return getValueAdjusted_AveragePrice(typePrice).getAdjusted_price();
-    }
-
-    /**
-     * Get Average Price
-     * @param String typePrice
-     * @param Map<String, Price > priceMap priceMap
-     * @return String
-     */
-    public String getAveragePriceEntity(String typePrice) throws PriceNotExistsException {
-        return getValueAdjusted_AveragePrice(typePrice).getAverage_price();
-    }
+    }   
     
     /**
      * Get Average Price or Adjusted Price

@@ -28,10 +28,8 @@ public class InvNamesX {
      */
     public InvNames getSolarSystemID(String solarSystem){
         try {
-            EntityManager solarSystemID = entityManager;
-            
             TypedQuery < InvNames > solarSystemTQ = 
-             solarSystemID.createNamedQuery("InvNames.findByItemName", InvNames.class);
+             entityManager.createNamedQuery("InvNames.findByItemName", InvNames.class);
             
             solarSystemTQ.setParameter("itemName", solarSystem);
             

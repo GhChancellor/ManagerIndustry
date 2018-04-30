@@ -211,8 +211,7 @@ public class ManagerDisplay {
     }
 
     public void engineeringComplex(){
-        String bpoName = "AZBEL";
-        UNUSED_EngineeringComplex engineeringComplex = new UNUSED_EngineeringComplex(bpoName);
+
     }
     
     public void getSolarSystemID(){

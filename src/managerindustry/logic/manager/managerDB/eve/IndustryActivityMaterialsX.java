@@ -33,12 +33,9 @@ public class IndustryActivityMaterialsX {
      * @return List < InvTypeMaterials >
      */
     public List < IndustryActivityMaterials > materialsID( int typeID, RamActivitiesEnum activitiesEnum){
-        
         try {
-            EntityManager materialsEM = entityManager;
-            
             TypedQuery < IndustryActivityMaterials > materialsTQ = 
-             materialsEM.createNamedQuery("IndustryActivityMaterials.findByTypeID", IndustryActivityMaterials.class);
+             entityManager.createNamedQuery("IndustryActivityMaterials.findByTypeID", IndustryActivityMaterials.class);
             
             materialsTQ.setParameter("typeID", typeID);
             materialsTQ.setParameter("activityID", activitiesEnum.getCode());
@@ -98,10 +95,8 @@ public class IndustryActivityMaterialsX {
         industryActivityMaterials.setActivityID(1);
         
         try {
-            EntityManager getInvTypeMaterialsEM = entityManager;
-            
             TypedQuery < IndustryActivityMaterials > getInvTypeMaterialsTQ = 
-             getInvTypeMaterialsEM.createNamedQuery("IndustryActivityMaterials.findByTypeName", IndustryActivityMaterials.class);
+             entityManager.createNamedQuery("IndustryActivityMaterials.findByTypeName", IndustryActivityMaterials.class);
             
             getInvTypeMaterialsTQ.setParameter("typeName", invTypes.getTypeName());
             getInvTypeMaterialsTQ.setParameter("activityID", industryActivityMaterials.getActivityID());
@@ -127,10 +122,8 @@ public class IndustryActivityMaterialsX {
         industryActivityMaterials.setActivityID(1);
         
         try {
-            EntityManager getInvTypeMaterialsEM = entityManager;
-            
             TypedQuery < IndustryActivityMaterials > getInvTypeMaterialsTQ = 
-             getInvTypeMaterialsEM.createNamedQuery("IndustryActivityMaterials.findByTypeName", IndustryActivityMaterials.class);
+             entityManager.createNamedQuery("IndustryActivityMaterials.findByTypeName", IndustryActivityMaterials.class);
             
             getInvTypeMaterialsTQ.setParameter("typeName", invTypes.getTypeName() + " Blueprint");
             getInvTypeMaterialsTQ.setParameter("activityID", industryActivityMaterials.getActivityID());

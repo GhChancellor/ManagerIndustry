@@ -31,10 +31,8 @@ public class DgmTypeAttributesX {
      */
     public List < DgmTypeAttributes > getTypeAttributes( int typeID ){
         try {
-            EntityManager dgmTypeAttributesEM = entityManager;
-
             TypedQuery < DgmTypeAttributes > dgmTypeAttributesTQ =
-             dgmTypeAttributesEM.createNamedQuery("DgmTypeAttributes.findByTypeID", DgmTypeAttributes.class);
+             entityManager.createNamedQuery("DgmTypeAttributes.findByTypeID", DgmTypeAttributes.class);
 
             dgmTypeAttributesTQ.setParameter("typeID", typeID);
             return dgmTypeAttributesTQ.getResultList();        
@@ -86,10 +84,8 @@ public class DgmTypeAttributesX {
      */
     private DgmTypeAttributes getValueStation( int typeID, int attributeID){
         try {
-            EntityManager getValueStationEM = entityManager;
-            
             TypedQuery < DgmTypeAttributes > getValueStationTQ = 
-             getValueStationEM.createNamedQuery("DgmTypeAttributes.findByValueStation", DgmTypeAttributes.class);
+             entityManager.createNamedQuery("DgmTypeAttributes.findByValueStation", DgmTypeAttributes.class);
             
             getValueStationTQ.setParameter("attributeID", attributeID);
             getValueStationTQ.setParameter("typeID", typeID);

@@ -82,9 +82,8 @@ public class TaxSolarSystem {
      */
     public TaxSolarSystemEntity getSolarSystemEntity(String solarSystemID){
         try {
-            EntityManager taxSolarSystemEntityEM = entityManager;
             TypedQuery < TaxSolarSystemEntity > taxSolarSystemEntityQT = 
-             taxSolarSystemEntityEM.createNamedQuery("TaxSolarSystemEntity.getSolarSystem", TaxSolarSystemEntity.class);
+             entityManager.createNamedQuery("TaxSolarSystemEntity.getSolarSystem", TaxSolarSystemEntity.class);
             
             taxSolarSystemEntityQT.setParameter("solarSystemID", solarSystemID);
             
@@ -109,9 +108,8 @@ public class TaxSolarSystem {
      */
     public List < TaxSolarSystemEntity > getAllExceptSpecificSolarSysemEntity( String solarSystemID){
         try {
-            EntityManager allExceptSpecificSolarSysemEM = entityManager;
             TypedQuery < TaxSolarSystemEntity > allExceptSpecificSolarSysemQT = 
-             allExceptSpecificSolarSysemEM.createNamedQuery("TaxSolarSystemEntity.getAllExceptSpecificSolarSysem", TaxSolarSystemEntity.class);
+             entityManager.createNamedQuery("TaxSolarSystemEntity.getAllExceptSpecificSolarSysem", TaxSolarSystemEntity.class);
             
             allExceptSpecificSolarSysemQT.setParameter("solarSystemID", solarSystemID);
             return allExceptSpecificSolarSysemQT.getResultList();
@@ -167,10 +165,8 @@ public class TaxSolarSystem {
      */
     public List < TaxSolarSystemEntity > getAllTaxSolarSystemEntity(){
         try {
-            EntityManager allTaxSolarSystemEntityEM = entityManager;
-        
             TypedQuery < TaxSolarSystemEntity > allTaxSolarSystemEntityTQ = 
-             allTaxSolarSystemEntityEM.createNamedQuery("TaxSolarSystemEntity.getAll", TaxSolarSystemEntity.class );
+             entityManager.createNamedQuery("TaxSolarSystemEntity.getAll", TaxSolarSystemEntity.class );
 
             return allTaxSolarSystemEntityTQ.getResultList();
             
@@ -202,10 +198,8 @@ public class TaxSolarSystem {
      */
     public List < PriceEntity > getAllPriceEntity(){
         try {
-            EntityManager allPriceEntityEM = entityManager;
-            
             TypedQuery < PriceEntity > allPriceEntityTQ =
-             allPriceEntityEM.createNamedQuery("PriceEntity.getAll", PriceEntity.class);
+             entityManager.createNamedQuery("PriceEntity.getAll", PriceEntity.class);
             
             return allPriceEntityTQ.getResultList();
         } catch (Exception e) {
@@ -221,10 +215,8 @@ public class TaxSolarSystem {
      */
     public PriceEntity getPriceEntity(String typeId){
         try {
-            EntityManager priceEntityEM = entityManager;
-            
             TypedQuery < PriceEntity > priceEntityTQ = 
-             priceEntityEM.createNamedQuery("PriceEntity.getTypeId", PriceEntity.class);
+             entityManager.createNamedQuery("PriceEntity.getTypeId", PriceEntity.class);
              
             priceEntityTQ.setParameter("type_id", typeId);
             
@@ -249,9 +241,8 @@ public class TaxSolarSystem {
      */
     public List < PriceEntity > getAllExceptSpecificPriceEntity( String typeID){
         try {
-            EntityManager allExceptSpecificEM = entityManager;
             TypedQuery < PriceEntity > allExceptSpecificQT = 
-             allExceptSpecificEM.createNamedQuery("PriceEntity.getAllExceptSpecificTypeID", PriceEntity.class);
+             entityManager.createNamedQuery("PriceEntity.getAllExceptSpecificTypeID", PriceEntity.class);
             
             allExceptSpecificQT.setParameter("type_id", typeID);
             return allExceptSpecificQT.getResultList();             

@@ -19,6 +19,7 @@
     <class>managerindustry.db.entities.cache.PriceEntity</class>
     <class>managerindustry.db.entities.user.UserApiEntity</class>
     <class>managerindustry.db.entities.InvMarketGroups</class>
+    <class>managerindustry.db.entities.IndustryBlueprints</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/industryDB?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

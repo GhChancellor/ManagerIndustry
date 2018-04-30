@@ -7,10 +7,13 @@ package managerindustry.logic.manager.managerDB;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.manager.managerDB.cache.price.PriceX;
 import managerindustry.logic.manager.managerDB.cache.taxCostIndex.TaxSolarSystem;
 import managerindustry.logic.manager.managerDB.eve.DgmAttributeTypesX;
 import managerindustry.logic.manager.managerDB.eve.DgmTypeAttributesX;
 import managerindustry.logic.manager.managerDB.eve.IndustryActivityMaterialsX;
+import managerindustry.logic.manager.managerDB.eve.IndustryBlueprintsX;
 import managerindustry.logic.manager.managerDB.eve.InvNamesX;
 import managerindustry.logic.manager.managerDB.eve.InvTypesX;
 import managerindustry.logic.manager.managerDB.eve.MapSolarSystemsX;
@@ -101,5 +104,19 @@ public class ManagerDB {
     public TaxSolarSystem taxSolarSystem(){
         TaxSolarSystem taxSolarSystem = new TaxSolarSystem(entityManager);
         return taxSolarSystem;
+    }
+    
+    /**
+     * Get all values of the PriceX ( entities )
+     * @return PriceX
+     */
+    public PriceX price() throws PriceNotExistsException{
+        PriceX price = new PriceX();
+        return price;
+    }
+    
+    public IndustryBlueprintsX industryBlueprints(){
+        IndustryBlueprintsX industryBlueprintsX = new IndustryBlueprintsX(entityManager);
+        return industryBlueprintsX;
     }
 }

@@ -37,11 +37,9 @@ public class InvTypesX {
      */
     public SkillV getSkillValues(int typeID, Boolean published, int attributeID){
         try {
-            EntityManager getInvTypeGroupAndNameEM = entityManager;
-            
             // Devo recupareare i valori misti di più taballe e metterle nella lista SkillV
             TypedQuery < SkillV > typedQueryTQ = 
-              getInvTypeGroupAndNameEM.createNamedQuery("InvTypes.findByTypeId-Published-AttributeID", SkillV.class);
+              entityManager.createNamedQuery("InvTypes.findByTypeId-Published-AttributeID", SkillV.class);
 
             typedQueryTQ.setParameter("typeID", typeID);
             typedQueryTQ.setParameter("published", published);
@@ -68,10 +66,8 @@ public class InvTypesX {
      */    
     public InvTypes getNameById ( int typeID ){
         try {
-            EntityManager nameByIdEM = entityManager;             
-
             TypedQuery < InvTypes > nameByIdTQ = 
-             nameByIdEM.createNamedQuery("InvTypes.findByTypeID", InvTypes.class);
+             entityManager.createNamedQuery("InvTypes.findByTypeID", InvTypes.class);
             
             nameByIdTQ.setParameter("typeID", typeID);
             List < InvTypes > invTypeses = nameByIdTQ.getResultList();
@@ -93,10 +89,8 @@ public class InvTypesX {
      */   
     public InvTypes getIdByName(String name){
         try {
-            EntityManager idByNameEM = entityManager;
-        
             TypedQuery < InvTypes > idByNameTQ = 
-             idByNameEM.createNamedQuery("InvTypes.findByTypeName", InvTypes.class);
+             entityManager.createNamedQuery("InvTypes.findByTypeName", InvTypes.class);
         
             idByNameTQ.setParameter("typeName", name);
             List < InvTypes > invTypeses = idByNameTQ.getResultList();

@@ -41,10 +41,8 @@ public class SqlUser {
      */
     public List < UserApiEntity > getUserApiEntities(){
         try {
-            EntityManager getUserApiEntityEM = entityManager;
-
             TypedQuery < UserApiEntity > getUserApiEntityTQ =
-             getUserApiEntityEM.createNamedQuery("getUserApiEntities", UserApiEntity.class);
+             entityManager.createNamedQuery("getUserApiEntities", UserApiEntity.class);
             
             getUserApiEntityTQ.setParameter("userEnable", true);
 
@@ -61,10 +59,8 @@ public class SqlUser {
      */
     public List < UserApiEntity > getAllUserApiEntities(){
         try {
-            EntityManager getUserApiEntityEM = entityManager;
-
             TypedQuery < UserApiEntity > getUserApiEntityTQ =
-             getUserApiEntityEM.createNamedQuery("getUserApiEntities", UserApiEntity.class);
+             entityManager.createNamedQuery("getUserApiEntities", UserApiEntity.class);
 
             return getUserApiEntityTQ.getResultList();            
         } catch (Exception e) {
@@ -122,10 +118,8 @@ public class SqlUser {
      */
     public UserApiEntity getUserApiEntity(){
         try {
-            EntityManager getUserApiEntityEM = entityManager;
-
             TypedQuery < UserApiEntity > getUserApiEntityTQ =
-             getUserApiEntityEM.createNamedQuery("getUserApiEntities", UserApiEntity.class);
+             entityManager.createNamedQuery("getUserApiEntities", UserApiEntity.class);
             
             getUserApiEntityTQ.setParameter("userEnable", true);
 
