@@ -49,8 +49,6 @@ public class ComponentX extends NameBase{
     public ComponentX() {
     }
     
-    
-    
     public void setName(String typeName){
         super.setName(typeName);
     }

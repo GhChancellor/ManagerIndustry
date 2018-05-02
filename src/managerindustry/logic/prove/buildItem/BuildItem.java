@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager;
+package managerindustry.logic.prove.buildItem;
 
-import managerindustry.logic.manager.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.IndustryActivityMaterials;
@@ -16,16 +16,18 @@ import managerindustry.logic.buiild.MaterialEfficiencyCalculate;
 import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.enumName.RamActivitiesEnum;
+import managerindustry.logic.manager.ManagerComponentX;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 
-//import managerindustry.logic.manager.managerDB.ManagerDBEve;
-
 /**
+ *
  * @author lele
  */
-public class ManagerBuild {
-   
-    public ManagerBuild(String bpoName, int run, int job, int bpoME, 
+public class BuildItem {
+    List< IndustryActivityMaterials> nameItemToBuildDBG = new ArrayList<>();
+    List < MaterialForComponents > materialsDBG = new ArrayList<>();
+    
+    public BuildItem(String bpoName, int run, int job, int bpoME, 
         int componentMe) {
         RamActivitiesEnum activitiesEnum = RamActivitiesEnum.MANUFACTURING;
         
@@ -48,9 +50,6 @@ public class ManagerBuild {
         List < MaterialForComponents > forComponentses = componentX.getMaterialForComponents();
         
         System.out.println("");
-               
-//        ComponentX componentX2 = new ComponentX();
-//        buildItem(bpoName, run, job, bpoME, componentMe, materials, componentX2);
         
         componentX = new ComponentX();
         
@@ -67,29 +66,13 @@ public class ManagerBuild {
             ReportCalculatedComponentX value = entry.getValue();
             System.out.println("" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
         }
-        
     }
     
-    /**
-     * Build Item, I varoli sono calcolati per ottenere la quantità di una singolo oggetto e 
-     * DOPO sono moltiplicati per gli oggetti necesserati
-     * Scimitar x 1 ME 10 
-     * * Plasma Thruster 68 
-     * * * Phenolic Composites 184 
-     * @param bpoName
-     * @param run
-     * @param job
-     * @param bpoME
-     * @param componentMe
-     * @param materials
-     * @param dad 
-     */
     private void buildItem(String bpoName, int run, int job, int bpoME, 
             int componentMe, List < MaterialForComponents > materials, 
-            ComponentX dad){    
+            ComponentX dad){   
                
-        for (MaterialForComponents material : materials) {            
-            // calculate materialEfficiencyCalculate
+        for (MaterialForComponents material : materials) {  
             MaterialEfficiencyCalculate materialEfficiencyCalculate;
             
             // check if item is t1 or t2
@@ -98,15 +81,16 @@ public class ManagerBuild {
                 MaterialEfficiencyCalculate materialEfficiencyCalculateX = 
                  new MaterialEfficiencyCalculate(run, job, bpoME , material.getComponentX().getQuanityInt() );
                 
-                materialEfficiencyCalculate = materialEfficiencyCalculateX;                
+                materialEfficiencyCalculate = materialEfficiencyCalculateX;
+                
             }else{
                 // me for component ( t2 )
                 MaterialEfficiencyCalculate materialEfficiencyCalculateX = 
                     new MaterialEfficiencyCalculate(run, job, componentMe , material.getComponentX().getQuanityInt() ); 
                 
                 materialEfficiencyCalculate = materialEfficiencyCalculateX;
-            }
-
+            }            
+      
             // quantity material per single item 1 run
             int singleMaterial = 
                     materialEfficiencyCalculate.getSingleItemMaterial();
@@ -144,6 +128,79 @@ public class ManagerBuild {
             if ( materialForComponents != null){
                 buildItem("", singleMaterial, 1, bpoME, 
                  1, materialForComponents, componentX );
+            }            
+        }
+        
+//        for (MaterialForComponents material : materials) {   
+//            if (material.getComponentX().getMaterialForComponents().isEmpty()){
+//                System.out.println("t1 "+ material.getComponentX().getName());
+//            }else{
+//                System.out.println("t2 "+ material.getComponentX().getName() );
+//            }
+//        }
+    
+    }
+    
+     /**
+     * Build Item, I varoli sono calcolati per ottenere la quantità di una singolo oggetto e 
+     * DOPO sono moltiplicati per gli oggetti necesserati
+     * Scimitar x 1 ME 10 
+     * * Plasma Thruster 68 
+     * * * Phenolic Composites 184 
+     * @param bpoName
+     * @param run
+     * @param job
+     * @param bpoME
+     * @param componentMe
+     * @param materials
+     * @param dad 
+     */
+    private void buildItemORI(String bpoName, int run, int job, int bpoME, 
+            int componentMe, List < MaterialForComponents > materials, 
+            ComponentX dad){    
+               
+        for (MaterialForComponents material : materials) {            
+            // calculate materialEfficiencyCalculate
+            MaterialEfficiencyCalculate materialEfficiencyCalculate = 
+             new MaterialEfficiencyCalculate
+             (run, job, bpoME , material.getComponentX().getQuanityInt() );
+                  
+            // quantity material per single item 1 run
+            int singleMaterial = 
+                    materialEfficiencyCalculate.getSingleItemMaterial();
+           
+            // quantity material per all items 1 run
+            double totalMaterials = 
+                    materialEfficiencyCalculate.getTotalItemsMaterials(); 
+            
+            ComponentX componentX = new ComponentX();
+            componentX.setName(material.getComponentX().getName());
+            componentX.setQuanityInt(singleMaterial);
+            componentX.setQuanityDbl(totalMaterials);
+            
+            // Single item scimitar x 1
+            CalculatedComponentX calculatedComponentX = new CalculatedComponentX
+                (material.getName(), singleMaterial, totalMaterials);            
+            
+            // add object values
+            ManagerComponentX.getInstance().addCalculatedComponentXs(calculatedComponentX);
+
+            // Put report Calculated Components
+            ReportCalculatedComponentX reportCalculatedComponentX = 
+             new ReportCalculatedComponentX(material.getComponentX().getName(), singleMaterial, totalMaterials);
+            
+            // Sum all values of the items to map Scimitar x 2
+            ManagerComponentX.getInstance().sumReportCalculatedComponentXMap
+                (reportCalculatedComponentX);
+            
+            // get Value for compoenents T2
+            List < MaterialForComponents > materialForComponents = 
+             material.getComponentX().getMaterialForComponents();
+            
+            dad.addMaterialForComponents( new MaterialForComponents(componentX));
+                     
+            if ( materialForComponents != null){
+                buildItem("", singleMaterial, 1, bpoME, 1, materialForComponents, componentX );
             }            
         }
     }        
@@ -181,73 +238,13 @@ public class ManagerBuild {
 
     } 
     
-    /**
-     * Funziona ma ha un bug 
-     * ManagerBuild managerBuild = new ManagerBuild("scimitar", 2, 2, 9, 10);
-     * il " 9 " lo prende sia per il t1 che per i t2 mentre il" 10 " viene ignorato
-     * da eliminare quando hai la sicurezza che l'altra si totalmente funzionante
-     * Scimitar x 1 ME 10 
-     * * Plasma Thruster 68 
-     * * * Phenolic Composites 184 
-     * @param bpoName
-     * @param run
-     * @param job
-     * @param bpoME
-     * @param componentMe
-     * @param materials
-     * @param dad 
-     * @deprecated 
-     */
-    private void buildItemOLD(String bpoName, int run, int job, int bpoME, 
-            int componentMe, List < MaterialForComponents > materials, 
-            ComponentX dad){    
-               
-        for (MaterialForComponents material : materials) {            
-            // calculate materialEfficiencyCalculate
-            
-            MaterialEfficiencyCalculate materialEfficiencyCalculate = 
-             new MaterialEfficiencyCalculate
-             (run, job, bpoME , material.getComponentX().getQuanityInt() );
-
-            // quantity material per single item 1 run
-            int singleMaterial = 
-                    materialEfficiencyCalculate.getSingleItemMaterial();
-           
-            // quantity material per all items 1 run
-            double totalMaterials = 
-                    materialEfficiencyCalculate.getTotalItemsMaterials(); 
-            
-            ComponentX componentX = new ComponentX();
-            componentX.setName(material.getComponentX().getName());
-            componentX.setQuanityInt(singleMaterial);
-            componentX.setQuanityDbl(totalMaterials);
-            
-            // Single item scimitar x 1
-            CalculatedComponentX calculatedComponentX = new CalculatedComponentX
-                (material.getName(), singleMaterial, totalMaterials);            
-            
-            // add object values
-            ManagerComponentX.getInstance().addCalculatedComponentXs(calculatedComponentX);
-
-            // Put report Calculated Components
-            ReportCalculatedComponentX reportCalculatedComponentX = 
-             new ReportCalculatedComponentX(material.getComponentX().getName(), singleMaterial, totalMaterials);
-            
-            // Sum all values of the items to map Scimitar x 2
-            ManagerComponentX.getInstance().sumReportCalculatedComponentXMap
-                (reportCalculatedComponentX);
-            
-            // get Value for compoenents T2
-            List < MaterialForComponents > materialForComponents = 
-             material.getComponentX().getMaterialForComponents();
-            
-            dad.addMaterialForComponents( new MaterialForComponents(componentX));
-                     
-            if ( materialForComponents != null){
-                buildItem("", singleMaterial, 1, bpoME, 
-                 1, materialForComponents, componentX );
-            }            
-        }
-    }    
-    
+    public void display(){
+        materialsDBG.forEach((t) -> {
+            System.out.println(""+ t.getComponentX().getId()); 
+        });
+        
+//        nameItemToBuildDBG.forEach((t) -> {
+//            System.out.println(""+ t.getTypeID() + " " + t.getMaterialTypeID() + " " + t.getQuantity());
+//        });        
+    }
 }
