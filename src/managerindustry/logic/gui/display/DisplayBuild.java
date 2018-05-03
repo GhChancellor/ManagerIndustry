@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.mainVari;
-
-import managerindustry.logic.exception.ErrorExeption;
-import managerindustry.logic.unused.structure.UNUSED_ManagerFitter;
+package managerindustry.logic.gui.display;
 
 /**
  *
  * @author lele
  */
-public class MainFitter {
-
+public class DisplayBuild {
+    
 }

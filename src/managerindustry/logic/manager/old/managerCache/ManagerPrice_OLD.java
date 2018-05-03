@@ -50,7 +50,7 @@ public class ManagerPrice_OLD {
         
         if (price == null) {
             this.priceMap = 
-                ApiEsi.getInstance().marketJSon().getListMarketPrices().getListMarketPrices();
+                ApiEsi.getInstance().market().getListMarketPrices().getListMarketPrices();
             price = this.priceMap.get(this.typeId);
             
             if (price == null) {

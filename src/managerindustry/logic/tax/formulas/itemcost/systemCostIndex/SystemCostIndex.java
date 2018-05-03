@@ -23,6 +23,13 @@ public class SystemCostIndex {
         return ManagerSystemCostIndex.getInstance().getCostIndexEntity(solarSystemID, actvity);
     }
 
+    /**
+     * @deprecated 
+     * @param solarSystemID
+     * @param actvity
+     * @return
+     * @throws SolarSystemNotExistsException 
+     */
     public static float SystemCostIndexDBG(String solarSystemID, String actvity) throws SolarSystemNotExistsException{
         return ManagerSystemCostIndex.getInstance().getCostIndexEntityDBG(solarSystemID, actvity, false);
     }

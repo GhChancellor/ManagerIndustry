@@ -91,7 +91,7 @@ public class SellOrder extends Tax {
     }
     
     @Override
-    protected float calculateTotalPriceWithTax() {
+    public float calculateTotalPriceWithTax() {
         float result = getTotalPriceWithoutTax() - getItemsTaxBrokerFee() - getItemsTaxSaleTax();
         setTotalPriceWithTax(result);
         return result;

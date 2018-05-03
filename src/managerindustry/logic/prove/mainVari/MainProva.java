@@ -5,9 +5,16 @@
  */
 package managerindustry.logic.prove.mainVari;
 
+import java.util.Map;
+import managerindustry.logic.apiEsiJson.ApiEsi;
+import managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices.ListSolarSystemCostIndices;
+import managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices.SolarSystemCost;
 import managerindustry.logic.manager.old.ManagerBuild_OLD;
 import managerindustry.logic.manager.ManagerBuild;
+import managerindustry.logic.manager.ManagerSkill;
 import managerindustry.logic.prove.buildItem.BuildItem;
+import managerindustry.logic.skill.SkillV;
+import managerindustry.logic.skill.specificSkill.BrokerFee;
 
 /**
  *
@@ -15,11 +22,9 @@ import managerindustry.logic.prove.buildItem.BuildItem;
  */
 public class MainProva {
     public static void main(String[] args) {
-//        StructureEngineeringRigs structureEngineeringRigs = new StructureEngineeringRigs(TierEnum.T2, RuleBonusRigEnum.RIG_TIME_EFFICIENCY, SecurityStatusEnum.HI_SEC);
-//        EngineeringComplex engineeringComplex = new EngineeringComplex(PlatformEnum.RAITARU);
-//        Groups groups = new Groups();
-//         ManagerBuild managerBuild = new ManagerBuild("scimitar", 2, 2, 9, 9);
-         // Scythe  scimitar   R.A.M.- Starship Tech   Scythe
-        BuildItem managerBuild = new BuildItem("CONCORD 25000mm Steel Plates", 1, 1, 1, 1);
+//        BuildItem buildItem = new BuildItem("scimitar", 2, 2, 10, 10);
+//        buildItem.xxx2();
+
+        ManagerBuild managerBuild = new ManagerBuild("scimitar", 1, 1, 10, 10);
     }
 }

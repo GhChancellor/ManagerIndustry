@@ -14,14 +14,13 @@ import managerindustry.logic.skill.SkillV;
 public class BrokerFee extends SkillV{
     private float initTaxCorparationStanding;
     private float factionStandingTax;
-    private String name;
 
     public BrokerFee(String nameSkill) {
         super(nameSkill);
     }
   
     /**
-     * 
+     * Get Init Tax Corparation Standing
      * @return float
      */
     public float getInitTaxCorparationStanding() {
@@ -29,7 +28,7 @@ public class BrokerFee extends SkillV{
     }
 
     /**
-     * 
+     * Init Tax Corparation Standing
      * @param float initTaxCorparationStanding 
      */
     public void setInitTaxCorparationStanding(float initTaxCorparationStanding) {
@@ -37,7 +36,7 @@ public class BrokerFee extends SkillV{
     }
 
     /**
-     * 
+     * Get Faction Standing Tax
      * @return float
      */
     public float getFactionStandingTax() {
@@ -45,30 +44,11 @@ public class BrokerFee extends SkillV{
     }
 
     /**
-     * 
+     * Set Faction Standing Tax
      * @param float factionStandingTax 
      */
     public void setFactionStandingTax(float factionStandingTax) {
         this.factionStandingTax = factionStandingTax;
     }
-
-    /**
-     * 
-     * @return String
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * 
-     * @param Stringname 
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    
     
 }

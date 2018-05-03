@@ -24,9 +24,8 @@ import managerindustry.logic.manager.managerDB.ManagerDB;
  * @author lele
  */
 public class BuildItem {
-    List< IndustryActivityMaterials> nameItemToBuildDBG = new ArrayList<>();
-    List < MaterialForComponents > materialsDBG = new ArrayList<>();
-    
+    List < ComponentX > reportMaterialForComponents = new ArrayList<>();
+
     public BuildItem(String bpoName, int run, int job, int bpoME, 
         int componentMe) {
         RamActivitiesEnum activitiesEnum = RamActivitiesEnum.MANUFACTURING;
@@ -48,23 +47,38 @@ public class BuildItem {
         buildItem(bpoName, run, job, bpoME, componentMe, materials, componentX);
         
         List < MaterialForComponents > forComponentses = componentX.getMaterialForComponents();
+        reportMaterialForComponents.add(componentX);
         
-        System.out.println("");
+//        componentX = new ComponentX();
         
-        componentX = new ComponentX();
+//        for (MaterialForComponents forComponentse : forComponentses) {
+//            displayMap(forComponentse.getComponentX(), "");
+//        }
+//        
+//        Map < String, ReportCalculatedComponentX> totalCalculatedComponentXmap = 
+//            ManagerComponentX.getInstance().getReportCalculatedComponentXMap();
+//        xxx1(totalCalculatedComponentXmap);
         
-        for (MaterialForComponents forComponentse : forComponentses) {
-            displayMap(forComponentse.getComponentX(), "");
+//        System.out.println("\nTotal Material");
+//        for (Map.Entry<String, ReportCalculatedComponentX> entry : totalCalculatedComponentXmap.entrySet()) {
+//            String key = entry.getKey();
+//            ReportCalculatedComponentX value = entry.getValue();
+//            System.out.println("" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
+//        }
+    }
+    
+    public void xxx2(){
+        for (ComponentX reportMaterialForComponent : reportMaterialForComponents) {
+            displayMap(reportMaterialForComponent, "");
         }
-        
-        Map < String, ReportCalculatedComponentX> totalCalculatedComponentXmap = 
-            ManagerComponentX.getInstance().getReportCalculatedComponentXMap();
-        
+    }
+    
+    private void displayTotalMaterial(Map < String, ReportCalculatedComponentX> totalCalculatedComponentXmap ){
         System.out.println("\nTotal Material");
         for (Map.Entry<String, ReportCalculatedComponentX> entry : totalCalculatedComponentXmap.entrySet()) {
             String key = entry.getKey();
             ReportCalculatedComponentX value = entry.getValue();
-            System.out.println("" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
+            System.out.println("" + value.getName() + " "  +  value.getQuanityInt() + " " + String.format("%.0f", value.getQuanityDbl()));
         }
     }
     
@@ -237,14 +251,5 @@ public class BuildItem {
         }
 
     } 
-    
-    public void display(){
-        materialsDBG.forEach((t) -> {
-            System.out.println(""+ t.getComponentX().getId()); 
-        });
-        
-//        nameItemToBuildDBG.forEach((t) -> {
-//            System.out.println(""+ t.getTypeID() + " " + t.getMaterialTypeID() + " " + t.getQuantity());
-//        });        
-    }
+
 }

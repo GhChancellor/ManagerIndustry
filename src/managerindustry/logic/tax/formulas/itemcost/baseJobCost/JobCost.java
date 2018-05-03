@@ -21,6 +21,15 @@ public class JobCost {
         return Float.valueOf(adjustedPrice) * baseQuantity;
     }  
 
+    /**
+     * @deprecated 
+     * DGB da controllare con attenzione nella originale uso " getAdjustedPriceEntity(typeId); "
+     * mentre qui  " getPriceEntity(typeId) "
+     * @param baseQuantity
+     * @param typeId
+     * @return
+     * @throws PriceNotExistsException 
+     */
     public static float getJobCostDBG(int baseQuantity, String typeId) throws PriceNotExistsException {
         PriceEntity priceEntity = ManagerDB.getInstance().taxSolarSystem().getPriceEntity(typeId);
         String adjustedPrice = priceEntity.getAdjusted_price();

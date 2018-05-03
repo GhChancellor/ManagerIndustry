@@ -16,20 +16,20 @@ import managerindustry.logic.apiEsiJson.skill.characterSkills.Skills;
  */
 public class MainSkill02 {
     
-    public static void main(String[] args) {
-        UserApiEntity userApiEntity = new UserApiEntity();
-        userApiEntity.setNameCharacter("asss");
-        Skills skills = ApiEsi.getInstance().skillJson().getCharacterSkills(userApiEntity);
-                
-        System.out.println("Total skill" + skills.getTotal_sp());
-        SkillRaw[] skillRaws = skills.getSkillsRaws();
-        
-        for (SkillRaw skillRaw : skillRaws) {
-            System.out.println("getCurrent_skill_level "+ skillRaw.getCurrent_skill_level());
-            System.out.println("getSkillpoints_in_skill "+ skillRaw.getSkillpoints_in_skill());
-            System.out.println("getSkill_id "+ skillRaw.getSkill_id());
-            System.out.println("");
-        }
-            
-    }
+//    public static void main(String[] args) {
+//        UserApiEntity userApiEntity = new UserApiEntity();
+//        userApiEntity.setNameCharacter("asss");
+//        Skills skills = ApiEsi.getInstance().skillJson().getCharacterSkills(userApiEntity);
+//                
+//        System.out.println("Total skill" + skills.getTotal_sp());
+//        SkillRaw[] skillRaws = skills.getSkillsRaws();
+//        
+//        for (SkillRaw skillRaw : skillRaws) {
+//            System.out.println("getCurrent_skill_level "+ skillRaw.getCurrent_skill_level());
+//            System.out.println("getSkillpoints_in_skill "+ skillRaw.getSkillpoints_in_skill());
+//            System.out.println("getSkill_id "+ skillRaw.getSkill_id());
+//            System.out.println("");
+//        }
+//            
+//    }
 }

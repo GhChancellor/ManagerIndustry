@@ -11,7 +11,7 @@ import managerindustry.logic.apiEsiJson.market.Market;
 import managerindustry.logic.apiEsiJson.skill.SkillJson;
 
 /**
- *
+ * ApiEsi get all value skill, industry, market from eve server ( json ) 
  * @author lele
  */
 public class ApiEsi {
@@ -26,17 +26,29 @@ public class ApiEsi {
         return instance;
     }
     
-    public SkillJson skillJson() {
+    /**
+     * ApiEsi get all value skill from eve server ( json ) 
+     * @return SkillJson
+     */
+    public SkillJson skill() {
         SkillJson skillJson = new SkillJson();
         return skillJson;
     }
     
-    public Industry industryJson(){
+    /**
+     * ApiEsi get all value industry from eve server ( json ) 
+     * @return Industry
+     */
+    public Industry industry(){
         Industry industry = new Industry();
         return industry;
     }
    
-    public Market marketJSon(){
+    /**
+     * ApiEsi get all value market from eve server ( json ) 
+     * @return Market
+     */
+    public Market market(){
         Market market = new Market();
         return market;
     }

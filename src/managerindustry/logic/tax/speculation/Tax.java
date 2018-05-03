@@ -49,7 +49,7 @@ public abstract class Tax {
      * Get Item Sell Price
      * @return float
      */
-    protected float getItemSellPrice() {
+    public float getItemSellPrice() {
         return itemSellPrice;
     }
 
@@ -57,17 +57,17 @@ public abstract class Tax {
      * Set Item Sel lPrice
      * @param float ItemSellPrice 
      */
-    protected void setItemSellPrice(float ItemSellPrice) {
+    public void setItemSellPrice(float ItemSellPrice) {
         this.itemSellPrice = ItemSellPrice;
     }
 
-    protected abstract float calculateTotalPriceWithTax();
+    public abstract float calculateTotalPriceWithTax();
     
     /**
      * Get Total Price With Tax
      * @return float
      */
-    protected float getTotalPriceWithTax() {
+    public float getTotalPriceWithTax() {
         return totalPriceWithTax;
     }
 
@@ -75,7 +75,7 @@ public abstract class Tax {
      * Set Total Price With Tax
      * @param float totalPriceWithTax 
      */
-    protected void setTotalPriceWithTax(float totalPriceWithTax) {
+    public void setTotalPriceWithTax(float totalPriceWithTax) {
         this.totalPriceWithTax = totalPriceWithTax;
     }
 
@@ -83,7 +83,7 @@ public abstract class Tax {
      * Get Items Number
      * @return int
      */
-    protected int getItemsNumber() {
+    public int getItemsNumber() {
         return itemsNumber;
     }
 
@@ -91,11 +91,11 @@ public abstract class Tax {
      * Set Items Number
      * @param int ItemsNumber 
      */
-    protected void setItemsNumber(int ItemsNumber) {
+    public void setItemsNumber(int ItemsNumber) {
         this.itemsNumber = ItemsNumber;
     }
 
-    protected float conversioneInLetturaNormale(float value){
+    public float conversioneInLetturaNormale(float value){
         BigDecimal result = new BigDecimal(value).setScale(2,RoundingMode.UP);
         return result.floatValue();
     }   
@@ -104,7 +104,7 @@ public abstract class Tax {
      * Get Total Price Without Tax
      * @return float
      */
-    protected float getTotalPriceWithoutTax() {
+    public float getTotalPriceWithoutTax() {
         totalPriceWithoutTax = this.itemsNumber * this.itemSellPrice;
         return totalPriceWithoutTax;
     }
@@ -113,7 +113,7 @@ public abstract class Tax {
      * Set Total Price Without Tax
      * @param float totalPriceWithoutTax 
      */
-    protected void setTotalPriceWithoutTax(float totalPriceWithoutTax) {
+    public void setTotalPriceWithoutTax(float totalPriceWithoutTax) {
         this.totalPriceWithoutTax = totalPriceWithoutTax;
     }    
 
@@ -121,7 +121,7 @@ public abstract class Tax {
      * Get Items Sell Price
      * @return float
      */
-    protected float getItemsSellPrice() {
+    public float getItemsSellPrice() {
         itemsSellPrice = itemSellPrice * itemsNumber;
         return  itemsSellPrice;
     }
@@ -130,7 +130,7 @@ public abstract class Tax {
      * Set Items Sell Price
      * @param float itemsSellPrice 
      */
-    protected void setItemsSellPrice(float itemsSellPrice) {
+    public void setItemsSellPrice(float itemsSellPrice) {
         this.itemsSellPrice = itemsSellPrice;
     }
 
@@ -138,7 +138,7 @@ public abstract class Tax {
      * Get Items Tax Sale Tax
      * @return float
      */
-    protected float getItemsTaxSaleTax() {
+    public float getItemsTaxSaleTax() {
         float tempResult = this.itemTaxSaleTax * this.itemsNumber;
         return conversioneInLetturaNormale(tempResult);
     }
@@ -149,7 +149,7 @@ public abstract class Tax {
      * @param float sellPrice
      * @return float
      */
-    protected float getItemTaxSaleTax( float saleTax, float sellPrice  ){
+    public float getItemTaxSaleTax( float saleTax, float sellPrice  ){
         float tempValue = saleTax * sellPrice;
         itemTaxSaleTax = conversioneInLetturaNormale(tempValue);
         return itemTaxSaleTax;
@@ -159,7 +159,7 @@ public abstract class Tax {
      * Get Item Tax SaleTax
      * @return float
      */
-    protected float getItemTaxSaleTax() {
+    public float getItemTaxSaleTax() {
         return itemTaxSaleTax;
     }
 
@@ -167,7 +167,7 @@ public abstract class Tax {
      * Set Item Tax SaleTax
      * @param float itemTaxSaleTax 
      */
-    protected void setItemTaxSaleTax(float itemTaxSaleTax) {
+    public void setItemTaxSaleTax(float itemTaxSaleTax) {
         this.itemTaxSaleTax = itemTaxSaleTax;
     }
 
@@ -192,7 +192,7 @@ public abstract class Tax {
      * Set Item Tax Broker Fee
      * @param float itemTaxBrokerFee 
      */
-    protected void setItemTaxBrokerFee(float itemTaxBrokerFee) {
+    public void setItemTaxBrokerFee(float itemTaxBrokerFee) {
         this.itemTaxBrokerFee = itemTaxBrokerFee;
     }   
     
@@ -202,7 +202,7 @@ public abstract class Tax {
      * @param float sellPrice
      * @return float
      */
-    protected float getItemTaxBrokerFee( float brokerFeeRate, float sellPrice ){
+    public float getItemTaxBrokerFee( float brokerFeeRate, float sellPrice ){
         float brokerFeeIskPerItemTemp = brokerFeeRate * sellPrice;
         itemTaxBrokerFee = conversioneInLetturaNormale(brokerFeeIskPerItemTemp) ;
         

@@ -5,9 +5,12 @@
  */
 package managerindustry.logic.manager;
 
-import managerindustry.logic.manager.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import managerindustry.db.entities.DgmAttributeTypes;
+import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.db.entities.IndustryActivityMaterials;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.buiild.CalculatedComponentX;
@@ -24,12 +27,12 @@ import managerindustry.logic.manager.managerDB.ManagerDB;
  * @author lele
  */
 public class ManagerBuild {
-   
-    public ManagerBuild(String bpoName, int run, int job, int bpoME, 
-        int componentMe) {
+    private List < ComponentX > reportMaterialForComponents = new ArrayList<>();
+    private Map < String, ReportCalculatedComponentX> totalCalculatedComponentXmap = new HashMap<>();
+    
+    public void xxx01(String bpoName, int run, int job, int bpoME, 
+        int componentMe){
         RamActivitiesEnum activitiesEnum = RamActivitiesEnum.MANUFACTURING;
-        
-        // CONCORD 25000mm Steel Plates
 
         bpoName += " blueprint";
         System.out.println("" + bpoName);
@@ -45,28 +48,71 @@ public class ManagerBuild {
         componentX = new ComponentX();
         buildItem(bpoName, run, job, bpoME, componentMe, materials, componentX);
         
-        List < MaterialForComponents > forComponentses = componentX.getMaterialForComponents();
-        
-        System.out.println("");
-               
-//        ComponentX componentX2 = new ComponentX();
-//        buildItem(bpoName, run, job, bpoME, componentMe, materials, componentX2);
+        reportMaterialForComponents.add(componentX);
+        displayMap(componentX, "");
         
         componentX = new ComponentX();
         
-        for (MaterialForComponents forComponentse : forComponentses) {
-            displayMap(forComponentse.getComponentX(), "");
-        }
-        
-        Map < String, ReportCalculatedComponentX> totalCalculatedComponentXmap = 
+        totalCalculatedComponentXmap = 
             ManagerComponentX.getInstance().getReportCalculatedComponentXMap();
-        
+    
+        displayTotalMaterial();
+    }
+    
+    public void displayTotalMaterial(){
         System.out.println("\nTotal Material");
         for (Map.Entry<String, ReportCalculatedComponentX> entry : totalCalculatedComponentXmap.entrySet()) {
             String key = entry.getKey();
             ReportCalculatedComponentX value = entry.getValue();
             System.out.println("" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
-        }
+        }            
+    }
+    
+    public ManagerBuild(String bpoName, int run, int job, int bpoME, 
+        int componentMe) {
+        xxx01(bpoName, run, job, bpoME, componentMe);
+        
+        
+//        RamActivitiesEnum activitiesEnum = RamActivitiesEnum.MANUFACTURING;
+//        
+//        // CONCORD 25000mm Steel Plates
+//
+//        bpoName += " blueprint";
+//        System.out.println("" + bpoName);
+//        
+//        List< IndustryActivityMaterials> nameItemToBuild = 
+//         ManagerDB.getInstance().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
+//        
+//        ComponentX componentX = new ComponentX();
+//        baseMaterial(nameItemToBuild, componentX, activitiesEnum );
+//        
+//        List < MaterialForComponents > materials = componentX.getMaterialForComponents();
+//        
+//        componentX = new ComponentX();
+//        buildItem(bpoName, run, job, bpoME, componentMe, materials, componentX);
+//        
+//        List < MaterialForComponents > forComponentses = componentX.getMaterialForComponents();
+//        
+//        System.out.println("");
+//               
+////        ComponentX componentX2 = new ComponentX();
+////        buildItem(bpoName, run, job, bpoME, componentMe, materials, componentX2);
+//        
+//        componentX = new ComponentX();
+//        
+//        for (MaterialForComponents forComponentse : forComponentses) {
+//            displayMap(forComponentse.getComponentX(), "");
+//        }
+//        
+//        Map < String, ReportCalculatedComponentX> totalCalculatedComponentXmap = 
+//            ManagerComponentX.getInstance().getReportCalculatedComponentXMap();
+//        
+//        System.out.println("\nTotal Material");
+//        for (Map.Entry<String, ReportCalculatedComponentX> entry : totalCalculatedComponentXmap.entrySet()) {
+//            String key = entry.getKey();
+//            ReportCalculatedComponentX value = entry.getValue();
+//            System.out.println("" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
+//        }    
         
     }
     
@@ -135,7 +181,7 @@ public class ManagerBuild {
             ManagerComponentX.getInstance().sumReportCalculatedComponentXMap
                 (reportCalculatedComponentX);
             
-            // get Value for compoenents T2
+            // get Value for components T2
             List < MaterialForComponents > materialForComponents = 
              material.getComponentX().getMaterialForComponents();
             
@@ -171,15 +217,14 @@ public class ManagerBuild {
     }
     
     public void displayMap(ComponentX dad, String tab){
-        
         System.out.println(tab + dad.getName() + " " + dad.getQuanityInt() + " -> " + String.format("%.0f", dad.getQuanityDbl()) );
         tab += "\t";
         
         for (MaterialForComponents componentse : dad.getMaterialForComponents()) {
             displayMap(componentse.getComponentX(), tab);
         }
-
     } 
+    
     
     /**
      * Funziona ma ha un bug 
@@ -249,5 +294,42 @@ public class ManagerBuild {
             }            
         }
     }    
+
+    public void itemDescription(){
+        // 43867 Standup M-Set Advanced Component Manufacturing Material Efficiency I
+        String bpoName = "drake Blueprint"; // Nighthawk Blueprint 
+        InvTypes invTypes = ManagerDB.getInstance().invTypes().getIdByName(bpoName);
+        
+        List < DgmTypeAttributes > dgmTypeAttributes = 
+          ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributes(invTypes.getTypeID());
+        
+        System.out.println(""+ bpoName + " ID " + invTypes.getTypeID() );
+        
+        for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
+           
+            DgmAttributeTypes dgmAttributeTypes = 
+              ManagerDB.getInstance().dgmAttributeTypes().getAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
+            
+            if (dgmTypeAttribute.getValueInt() == null) {
+                System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  +
+                " " + dgmTypeAttribute.getValueFloat() + "\n");
+            }
+            
+            if (dgmTypeAttribute.getValueFloat() == null) {
+                System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  + " " + dgmTypeAttribute.getValueInt() + "\n");                
+            }
+            
+            if (dgmAttributeTypes.getDisplayName() == null ){
+                System.out.println(""+ dgmAttributeTypes.getDescription()  + " " + dgmTypeAttribute.getValueInt() + " " + dgmTypeAttribute.getValueFloat() + "\n");
+            }
+            
+            if ( dgmAttributeTypes.getDescription() == null ){
+                System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmTypeAttribute.getValueInt() + " " + dgmTypeAttribute.getValueFloat() + "\n");                
+            }
+            
+            System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  + " " +
+             + dgmAttributeTypes.getAttributeID() + " " + dgmTypeAttribute.getValueInt() + " " + dgmTypeAttribute.getValueFloat() + "\n");
+        }        
+    }
     
 }

@@ -32,7 +32,7 @@ public class BuyOrder extends Tax{
     }
 
     @Override
-    protected float calculateTotalPriceWithTax() {        
+    public float calculateTotalPriceWithTax() {        
         float brokerFeeIskPerItem = getItemsTaxBrokerFee() + getTotalPriceWithoutTax();
         
         if ( getItemsTaxBrokerFee() < 100 ){

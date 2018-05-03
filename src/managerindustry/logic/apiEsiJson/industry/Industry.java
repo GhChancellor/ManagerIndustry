@@ -12,9 +12,8 @@ import managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices.List
  * @author lele
  */
 public class Industry {
-    private ListSolarSystemCostIndices listSolarSystemCostIndices;
-
     public ListSolarSystemCostIndices getListSolarSystemCostIndices() {
+        ListSolarSystemCostIndices listSolarSystemCostIndices = new ListSolarSystemCostIndices();
         return listSolarSystemCostIndices;
     }
     

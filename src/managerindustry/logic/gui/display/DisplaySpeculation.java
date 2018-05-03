@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax.speculation;
+package managerindustry.logic.gui.display;
 
-import managerindustry.logic.skill.FormulasSkill;
-import managerindustry.logic.skill.TradeFormulas;
+import managerindustry.logic.tax.speculation.BuyOrder;
+import managerindustry.logic.tax.speculation.SellOrder;
 
 /**
  *
  * @author lele
  */
-public class Speculation{
+public class DisplaySpeculation{
     private float profit;
     private float minSell;
     private float totalInvestment;
@@ -21,7 +21,7 @@ public class Speculation{
     private float gainItem;
     private float totalGain;
 
-    public Speculation() {
+    public DisplaySpeculation() {
         int numberItem = 2;
         SellOrder sellOrder = new SellOrder(5, 5, "station", numberItem, 100000);
         BuyOrder buyOrder = new BuyOrder(5, "station", numberItem, 90000);

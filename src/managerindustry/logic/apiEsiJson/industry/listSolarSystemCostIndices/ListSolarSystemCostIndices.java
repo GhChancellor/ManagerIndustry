@@ -8,15 +8,10 @@ package managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -29,7 +24,6 @@ import java.util.stream.Collectors;
 public class ListSolarSystemCostIndices {
 
     public ListSolarSystemCostIndices() {
-    
     }
     
     /**
@@ -38,7 +32,6 @@ public class ListSolarSystemCostIndices {
      * @return Map<String, SolarSystemCost >
      */
     public Map<String, SolarSystemCost > getSolarSystemCost() {
-       
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();
             gsonBuilder.registerTypeAdapter(SolarSystemCost.class, new SolarSystemDeserializer());

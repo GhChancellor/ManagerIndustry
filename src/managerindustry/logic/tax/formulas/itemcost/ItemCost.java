@@ -47,13 +47,12 @@ public class ItemCost {
         
         // ManagerSystemCostIndex > SolarSystemCost > getCostIndexEntity() 
 //        this.systemCostIndex = SystemCostIndex.SystemCostIndexDBG(solarSystemID, actvity);
-        this.systemCostIndex = SystemCostIndex.SystemCostIndex(solarSystemID, actvity);
+        this.systemCostIndex = SystemCostIndex.SystemCostIndex(this.solarSystemID, this.actvity);
 
-        System.out.println("");
         BaseJobCost baseJobCost = new BaseJobCost();
         // BaseJobCost > getBaseJobCostDBG 
-         this.baseJobCost = baseJobCost.getBaseJobCostDBG(this.reportCalculatedComponentXMap);
-//        this.baseJobCost = baseJobCost.getBaseJobCost(this.reportCalculatedComponentXMap);
+//         this.baseJobCost = baseJobCost.getBaseJobCostDBG(this.reportCalculatedComponentXMap);
+        this.baseJobCost = baseJobCost.getBaseJobCost(this.reportCalculatedComponentXMap);
         
         this.sumOfEachJobcosts = baseJobCost.getsumOfEachJobcosts();
     }

@@ -12,11 +12,14 @@ import managerindustry.logic.skill.SkillV;
 import managerindustry.logic.skill.specificSkill.BrokerFee;
 
 /**
- *  SELECT invTypes.typeName, invTypes.typeID, invTypes.description, dgmTypeAttributes.valueFloat, dgmTypeAttributes.valueInt, dgmAttributeTypes.attributeName,
+ * 
+  SELECT invTypes.typeName, invTypes.typeID, invTypes.description, dgmTypeAttributes.valueFloat, dgmTypeAttributes.valueInt, dgmAttributeTypes.attributeName,
   dgmAttributeTypes.attributeID  
   FROM invTypes, dgmTypeAttributes, dgmAttributeTypes 
   WHERE invTypes.typeName="Advanced Industrial Ship Construction"   and invTypes.typeID=dgmTypeAttributes.typeID and invTypes.typeID=dgmTypeAttributes.typeID 
   and dgmTypeAttributes.attributeID = dgmAttributeTypes.attributeID;
+ *
+ * 
  * https://wiki.eveuniversity.org/Skills:Production#Advanced_Industrial_Ship_Construction
  * @author lele
  */
@@ -24,6 +27,30 @@ public class ManagerSkill {
     private static ManagerSkill instance = null;
     private Map < String, SkillV > skillMap = new HashMap<>();
 
+    private enum SkillProduction{
+        INDUSTRY(3380),
+        ADVANCED_SMALL_SHIP_CONSTRUCTION(3395),
+        ADVANCED_MEDIUM_SHIP_CONSTRUCTION(3397),
+        ADVANCED_LARGE_SHIP_CONSTRUCTION(3398),
+        ADVANCED_INDUSTRIAL_SHIP_CONSTRUCTION(3396);
+        
+        private int skillID;
+        private SkillProduction skillProduction;
+
+        private SkillProduction(SkillProduction skillProduction) {
+            this.skillProduction = skillProduction;
+        }
+        
+        private SkillProduction(int skillID) {
+            this.skillID = skillID;
+        }
+
+        public int getSkillID() {
+            return skillID;
+        }
+
+    }
+    
     public static ManagerSkill getInstance (){
         if ( instance == null )
             instance = new ManagerSkill();
@@ -31,7 +58,12 @@ public class ManagerSkill {
     }
 
     private ManagerSkill() {
-        initSkill();
+        initSkill(SkillProduction.INDUSTRY, true, 440); // 440 attributeID
+        initSkill(SkillProduction.ADVANCED_SMALL_SHIP_CONSTRUCTION, true, 1982); // 1982 attributeID
+        initSkill(SkillProduction.ADVANCED_MEDIUM_SHIP_CONSTRUCTION, true, 1982); // 1982 attributeID
+        initSkill(SkillProduction.ADVANCED_LARGE_SHIP_CONSTRUCTION, true, 1982); // 1982 attributeID
+        initSkill(SkillProduction.ADVANCED_INDUSTRIAL_SHIP_CONSTRUCTION, true, 1982); // 1982 attributeID
+        manuallyAddedNames();        
     }
 
     public boolean maxSkill(int level){
@@ -39,10 +71,6 @@ public class ManagerSkill {
             return true;
         }
         return false;
-    }
-    
-    public Map<String, SkillV> getSkillMap() {
-        return skillMap;
     }
 
     public void setSkillMap(Map<String, SkillV> skillMap) {
@@ -53,34 +81,25 @@ public class ManagerSkill {
         this.skillMap.put(nameSkill, skill);
     }
 
+    public Map<String, SkillV> getSkillMap() {
+        return skillMap;
+    }
+    
     public SkillV getSkillMap(String nameSkill) {
         return this.skillMap.get(nameSkill);
     }
     
     /**
-     *   SELECT * FROM invTypes where invTypes.groupID=268;
+     * Init Skill
+     * @param SkillProduction skillProduction
+     * @param boolean flag
+     * @param int attributeID 
      */
-    private final void initSkill(){
-        SkillV skill = ManagerDB.getInstance().invTypes().getSkillValues(3380, true, 440);
-        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
-                
-//        SkillV skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3380, true, 440);
-//        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
-
-        skill = ManagerDB.getInstance().invTypes().getSkillValues(3395, true, 1982);
-        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
-     
-        skill = ManagerDB.getInstance().invTypes().getSkillValues(3396, true, 1982);
-        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
+    private void initSkill(SkillProduction skillProduction, boolean flag, int attributeID){
+        SkillV skill = ManagerDB.getInstance().invTypes().getSkillValues
+            (skillProduction.getSkillID(), flag, attributeID );
         
-        skill = ManagerDB.getInstance().invTypes().getSkillValues(3397, true, 1982);
-        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
-        
-        skill = ManagerDB.getInstance().invTypes().getSkillValues(3398, true, 1982);
-        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
-            
-//        manuallyAddedNames();
-        
+        addSkillMap(skill.getName(), new SkillV(skill.getName()));
     }
     
     private void manuallyAddedNames(){

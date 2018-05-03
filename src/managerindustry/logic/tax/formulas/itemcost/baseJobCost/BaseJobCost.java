@@ -26,6 +26,12 @@ public class BaseJobCost {
     
     }
 
+    /**
+     * @deprecated 
+     * @param reportCalculatedComponentXMap
+     * @return
+     * @throws PriceNotExistsException 
+     */
     public float getBaseJobCostDBG(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap) throws PriceNotExistsException{
         Float sumJobcost = 0f;
         
@@ -52,19 +58,24 @@ public class BaseJobCost {
      * @return float
      * @throws PriceNotExistsException 
      */
-    public float getBaseJobCost(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap) throws PriceNotExistsException{
+    public float getBaseJobCost(Map<String, ReportCalculatedComponentX>  
+            reportCalculatedComponentXMap) throws PriceNotExistsException{
         Float sumJobcost = 0f;
         
-        for (Map.Entry<String, ReportCalculatedComponentX> entry : reportCalculatedComponentXMap.entrySet()) {
+        for (Map.Entry<String, ReportCalculatedComponentX> entry :
+                reportCalculatedComponentXMap.entrySet()) {
+            
 //            String key = entry.getKey();
             ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
-            InvTypes invTypes = ManagerDB.getInstance().invTypes().getIdByName(totalCalculatedComponent.getName());
-            
-            Float jobCost = 
-             JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
+            int typesId = 
+                ManagerDB.getInstance().invTypes().getIdByName
+                (totalCalculatedComponent.getName()).getTypeID();
             
 //            Float jobCost = 
-//             JobCost.getJobCost(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
+//             JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
+            
+            Float jobCost = 
+             JobCost.getJobCost(totalCalculatedComponent.getQuanityInt(), String.valueOf(typesId));
             
             sumJobcost += jobCost;            
             sumOfEachJobcosts.add(jobCost);

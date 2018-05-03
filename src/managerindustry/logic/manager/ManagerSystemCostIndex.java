@@ -69,7 +69,7 @@ public class ManagerSystemCostIndex {
         
         if ( solarSystem == null){
                 this.solarSystemMap = 
-                    ApiEsi.getInstance().industryJson().getListSolarSystemCostIndices().getSolarSystemCost();
+                    ApiEsi.getInstance().industry().getListSolarSystemCostIndices().getSolarSystemCost();
  
                 solarSystem = this.solarSystemMap.get(this.solarSystemID);               
             
@@ -94,7 +94,7 @@ public class ManagerSystemCostIndex {
                 
         taxSolarSystemEntity = new TaxSolarSystemEntity();
         taxSolarSystemEntity.setSolarSystemID(this.solarSystemID);
-        taxSolarSystemEntity.setLastUsed(nowPresent);
+        taxSolarSystemEntity.setLastAccess(nowPresent);
         List < CostIndex > costIndexs = Arrays.asList(solarSystem.getCostIndexs());
         
         
@@ -135,11 +135,12 @@ public class ManagerSystemCostIndex {
      * @param TaxSolarSystemEntity taxSolarSystemEntity
      * @param boolean valueBool 
      */
-    private void updateSolarSystem(boolean valueBool) throws SolarSystemNotExistsException{
+    private void updateSolarSystem(boolean flag) throws SolarSystemNotExistsException{
         
-        if (valueBool){
+        // create date last access
+        if (flag){
             Date nowPresent = new Date();
-            taxSolarSystemEntity.setLastUsed(nowPresent);            
+            taxSolarSystemEntity.setLastAccess(nowPresent);            
         }
         
         // Solar systems From Json ( eve server )
@@ -147,9 +148,10 @@ public class ManagerSystemCostIndex {
         SolarSystemCost solarSystem = getSolarSystemMap();
 //        SolarSystemCost solarSystem = this.solarSystemMap.get(this.solarSystemID);
         
-        // Convert Arrays to Costindexs
+        // Convert Arrays to Costindexs list
         List < CostIndex > costIndexs = Arrays.asList(solarSystem.getCostIndexs());        
 
+        // Convert Costindexs list to map
         Map < String, CostIndex > costIndexMap = 
          costIndexs.stream().collect(Collectors.toMap(CostIndex::getActivity, CostIndex -> CostIndex));
 
@@ -162,7 +164,8 @@ public class ManagerSystemCostIndex {
             taxCostIndexEntity1.setCostIndex(costIndex.getCostIndex());
             ManagerDB.getInstance().taxSolarSystem().updateTaxCostIndexEntity(taxCostIndexEntity1);
             
-            if ( valueBool ){
+            // update last access
+            if ( flag ){
                 ManagerDB.getInstance().taxSolarSystem().updateTaxSolarSystemEntity(taxSolarSystemEntity);
             }
         }
@@ -189,6 +192,7 @@ public class ManagerSystemCostIndex {
     /**
      * Delete Solar System
      * DBG
+     * @deprecated 
      */    
     private void deleteSolarSystem(){
         System.out.println("DBG deleteSolarSystem da errore nella eliminazione dei fati");

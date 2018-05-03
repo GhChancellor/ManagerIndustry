@@ -20,10 +20,10 @@ public class xxx111 {
    
     public xxx111(UserApiEntity userApiEntity) {
 
-        ApiEsi.getInstance().skillJson().getCharacterSkills(userApiEntity);
+        ApiEsi.getInstance().skill().getCharacterSkills(userApiEntity);
         
-        ApiEsi.getInstance().industryJson().getListSolarSystemCostIndices();
-        ApiEsi.getInstance().marketJSon().getListMarketPrices().getListMarketPrices();
+        ApiEsi.getInstance().industry().getListSolarSystemCostIndices();
+        ApiEsi.getInstance().market().getListMarketPrices().getListMarketPrices();
         
         
     }

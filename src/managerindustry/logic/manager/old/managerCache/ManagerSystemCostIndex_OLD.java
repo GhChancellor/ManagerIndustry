@@ -71,7 +71,7 @@ public class ManagerSystemCostIndex_OLD {
         
         if ( solarSystem == null){
                 this.solarSystemMap = 
-                    ApiEsi.getInstance().industryJson().getListSolarSystemCostIndices().getSolarSystemCost();
+                    ApiEsi.getInstance().industry().getListSolarSystemCostIndices().getSolarSystemCost();
  
                 solarSystem = this.solarSystemMap.get(this.solarSystemID);               
             
@@ -96,7 +96,7 @@ public class ManagerSystemCostIndex_OLD {
                 
         taxSolarSystemEntity = new TaxSolarSystemEntity();
         taxSolarSystemEntity.setSolarSystemID(this.solarSystemID);
-        taxSolarSystemEntity.setLastUsed(nowPresent);
+        taxSolarSystemEntity.setLastAccess(nowPresent);
         List < CostIndex > costIndexs = Arrays.asList(solarSystem.getCostIndexs());
         
         
@@ -141,7 +141,7 @@ public class ManagerSystemCostIndex_OLD {
         
         if (valueBool){
             Date nowPresent = new Date();
-            taxSolarSystemEntity.setLastUsed(nowPresent);            
+            taxSolarSystemEntity.setLastAccess(nowPresent);            
         }
         
         // Solar systems From Json ( eve server )

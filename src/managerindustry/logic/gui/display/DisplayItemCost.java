@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax.formulas.itemcost;
+package managerindustry.logic.gui.display;
 
 import managerindustry.logic.tax.formulas.itemcost.jobInstallationCosts.JobInstallationCosts;
 import java.util.Map;
@@ -17,9 +17,9 @@ import managerindustry.logic.tax.formulas.itemcost.researchCosts.ResearchCosts;
  *
  * @author lele
  */
-public class MainItemCost{
+public class DisplayItemCost{
 
-    public MainItemCost() {
+    public DisplayItemCost() {
     }
     
     /**

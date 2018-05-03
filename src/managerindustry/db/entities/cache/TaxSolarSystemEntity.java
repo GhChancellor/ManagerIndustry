@@ -84,7 +84,7 @@ public class TaxSolarSystemEntity implements Serializable {
      * Set LastUsed
      * @param Date lastUsed 
      */
-    public void setLastUsed(Date lastUsed) {
+    public void setLastAccess(Date lastUsed) {
         this.lastUsed = lastUsed;
     }
     

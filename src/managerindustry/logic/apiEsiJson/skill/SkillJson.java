@@ -16,14 +16,13 @@ import managerindustry.logic.apiEsiJson.skill.charactersSkillQueue.CharactersSki
  * @author lele
  */
 public class SkillJson {
-    private CharactersSkillQueue charactersSkillQueue = new CharactersSkillQueue();
-    private CharacterSkills characterSkills = new CharacterSkills();
-    
-    public Skills getCharacterSkills(UserApiEntity userApiEntity){       
+    public Skills getCharacterSkills(UserApiEntity userApiEntity){  
+        CharacterSkills characterSkills = new CharacterSkills();
         return characterSkills.getCharacterSkills(userApiEntity);
     }
     
     private void getCharactersSkillQueue(){
+        CharactersSkillQueue charactersSkillQueue = new CharactersSkillQueue();
         charactersSkillQueue.xxx();
     }
 }

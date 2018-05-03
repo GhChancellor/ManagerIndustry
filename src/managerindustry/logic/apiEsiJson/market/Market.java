@@ -12,9 +12,8 @@ import managerindustry.logic.apiEsiJson.market.listMarketPrices.ListMarketPrices
  * @author lele
  */
 public class Market {
-    private ListMarketPrices listMarketPrices;
-    
     public ListMarketPrices getListMarketPrices(){
+        ListMarketPrices listMarketPrices = new ListMarketPrices();
         return listMarketPrices;
     }
 }

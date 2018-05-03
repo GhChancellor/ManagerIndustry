@@ -42,7 +42,7 @@ public class PriceX {
      * @param Map<String, Price > priceMap priceMap
      * @return String
      */
-    public String getAdjustedPriceEntity(String typePrice ) throws PriceNotExistsException {
+    public String getAdjustedPriceEntity(String typePrice) throws PriceNotExistsException {
         return getValueAdjusted_AveragePrice(typePrice).getAdjusted_price();
     }
 
@@ -70,7 +70,7 @@ public class PriceX {
         
         if (price == null) {
             this.priceMap = 
-                ApiEsi.getInstance().marketJSon().getListMarketPrices().getListMarketPrices();
+                ApiEsi.getInstance().market().getListMarketPrices().getListMarketPrices();
             price = this.priceMap.get(this.typeId);
             
             if (price == null) {
