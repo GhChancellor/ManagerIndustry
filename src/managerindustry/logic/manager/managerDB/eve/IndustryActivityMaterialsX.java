@@ -25,14 +25,13 @@ public class IndustryActivityMaterialsX {
         this.entityManager = entityManager;
     }
     
-
     /**
      * Get Type Materials, show Which and how many material need to build an Object
      * 10 di tritanium, 20 zydrine.....
      * @param int invType
      * @return List < InvTypeMaterials >
      */
-    public List < IndustryActivityMaterials > materialsID( int typeID, RamActivitiesEnum activitiesEnum){
+    public List < IndustryActivityMaterials > getMaterialsID( int typeID, RamActivitiesEnum activitiesEnum){
         try {
             TypedQuery < IndustryActivityMaterials > materialsTQ = 
              entityManager.createNamedQuery("IndustryActivityMaterials.findByTypeID", IndustryActivityMaterials.class);
@@ -62,75 +61,21 @@ public class IndustryActivityMaterialsX {
         */
         
 ////         Convert name to Id
-        InvTypes invTypes = ManagerDB.getInstance().invTypes().getIdByName(bpoName);
+        Integer typeID = ManagerDB.getInstance().invTypes().getIdByName(bpoName).getTypeID();
         
-        if ( invTypes == null ){
-            return null;
-            
+        if ( typeID == null ){
+            return null;            
             // return new ArrayList<>();
         }
         
         // convert name ( from InvTypes ) to Materials Needed ( from  IndustryActivityMaterials )
         List < IndustryActivityMaterials > invTypeMaterialses = 
-           ManagerDB.getInstance().industryActivityMaterials().materialsID(invTypes.getTypeID(), activitiesEnum );
+           ManagerDB.getInstance().industryActivityMaterials().getMaterialsID(typeID, activitiesEnum );
 
         if ( invTypeMaterialses.isEmpty() ){
             return null;
         }
         
         return invTypeMaterialses;       
-    } 
-    
-    
-    
-    //    --------------------------------------------------------------------
-    /**
-     * UNUSED
-     * @param invTypes
-     * @param industryActivityMaterials
-     * @return 
-     */
-    public List < IndustryActivityMaterials > getMaterialNeedByNameDBG(InvTypes invTypes, IndustryActivityMaterials industryActivityMaterials){
-        industryActivityMaterials.setActivityID(1);
-        
-        try {
-            TypedQuery < IndustryActivityMaterials > getInvTypeMaterialsTQ = 
-             entityManager.createNamedQuery("IndustryActivityMaterials.findByTypeName", IndustryActivityMaterials.class);
-            
-            getInvTypeMaterialsTQ.setParameter("typeName", invTypes.getTypeName());
-            getInvTypeMaterialsTQ.setParameter("activityID", industryActivityMaterials.getActivityID());
-            
-            return getInvTypeMaterialsTQ.getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    /**
-     * UNUSED
-     * Get Material Need By Id
-     * @param industryActivityMaterials
-     * @return List < IndustryActivityMaterials > 
-     */
-    public List < IndustryActivityMaterials > getMaterialNeedById( IndustryActivityMaterials industryActivityMaterials){
-        
-        InvTypes invTypes = ManagerDB.getInstance().invTypes().getNameById(industryActivityMaterials.getMaterialTypeID());
-         // ManagerDBEve.getInstance().getInvTypes_NameById(industryActivityMaterials.getMaterialTypeID());
-        
-        industryActivityMaterials.setActivityID(1);
-        
-        try {
-            TypedQuery < IndustryActivityMaterials > getInvTypeMaterialsTQ = 
-             entityManager.createNamedQuery("IndustryActivityMaterials.findByTypeName", IndustryActivityMaterials.class);
-            
-            getInvTypeMaterialsTQ.setParameter("typeName", invTypes.getTypeName() + " Blueprint");
-            getInvTypeMaterialsTQ.setParameter("activityID", industryActivityMaterials.getActivityID());
-            
-            return getInvTypeMaterialsTQ.getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }     
+    }      
 }

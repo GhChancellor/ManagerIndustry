@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.runMain.skill;
+package managerindustry.logic.prove.skill;
 
 import managerindustry.db.entities.user.UserApiEntity;
 import managerindustry.logic.apiEsiJson.ApiEsi;
 import managerindustry.logic.apiEsiJson.skill.characterSkills.SkillRaw;
-import managerindustry.logic.apiEsiJson.skill.characterSkills.Skills;
+import managerindustry.logic.apiEsiJson.skill.characterSkills.SkillParser;
 
 /**
  *
@@ -19,7 +19,7 @@ public class MainSkill02 {
 //    public static void main(String[] args) {
 //        UserApiEntity userApiEntity = new UserApiEntity();
 //        userApiEntity.setNameCharacter("asss");
-//        Skills skills = ApiEsi.getInstance().skillJson().getCharacterSkills(userApiEntity);
+//        SkillParser skills = ApiEsi.getInstance().skill().getCharacterSkills(userApiEntity);
 //                
 //        System.out.println("Total skill" + skills.getTotal_sp());
 //        SkillRaw[] skillRaws = skills.getSkillsRaws();

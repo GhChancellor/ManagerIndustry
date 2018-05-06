@@ -40,6 +40,11 @@ public class ComponentX extends NameBase{
         this.materialForComponents.add(materialForComponent);
     }   
 
+    /**
+     * @param int typeID
+     * @param String typeName
+     * @param int amount 
+     */
     public ComponentX(int typeID, String typeName, int amount ) {
         super.setName(typeName);
         super.setQuanityInt(amount);

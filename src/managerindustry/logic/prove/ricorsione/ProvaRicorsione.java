@@ -14,6 +14,7 @@ import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.manager.ManagerComponentX;
 import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
 
+
 /**
  *
  * @author lele
@@ -53,7 +54,7 @@ public class ProvaRicorsione {
     }
     
     public void baseMaterial(String bpoName){
-//        baseMaterial02();
+        baseMaterial02();
         boolean flag = false;
         
         

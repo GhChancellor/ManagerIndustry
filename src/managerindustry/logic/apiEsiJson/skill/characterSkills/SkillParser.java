@@ -5,27 +5,24 @@
  */
 package managerindustry.logic.apiEsiJson.skill.characterSkills;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author lele
  */
-public class Skills {
+public class SkillParser {
     private SkillRaw[] skillsRaws;
     private String total_sp;
 
-    public Skills() {
+    public SkillParser() {
     }
 
-    public Skills(SkillRaw[] skillsRaws, String total_sp) {
+    public SkillParser(SkillRaw[] skillsRaws, String total_sp) {
         this.skillsRaws = skillsRaws;
         this.total_sp = total_sp;
     }
     
     /**
-     * Get Skills
+     * Get SkillParser
      * @return SkillRaw[]
      */
     public SkillRaw[] getSkillsRaws() {
@@ -33,7 +30,7 @@ public class Skills {
     }
 
     /**
-     * Set Skills
+     * Set SkillParser
      * @param skillsRaws 
      */
     public void setSkillsRaws(SkillRaw[] skillsRaws) {

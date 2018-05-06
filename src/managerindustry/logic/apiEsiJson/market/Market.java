@@ -8,7 +8,7 @@ package managerindustry.logic.apiEsiJson.market;
 import managerindustry.logic.apiEsiJson.market.listMarketPrices.ListMarketPrices;
 
 /**
- *
+ * It's a class container
  * @author lele
  */
 public class Market {

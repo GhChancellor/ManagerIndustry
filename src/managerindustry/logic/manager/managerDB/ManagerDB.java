@@ -13,6 +13,7 @@ import managerindustry.logic.manager.managerDB.cache.taxCostIndex.TaxSolarSystem
 import managerindustry.logic.manager.managerDB.eve.DgmAttributeTypesX;
 import managerindustry.logic.manager.managerDB.eve.DgmTypeAttributesX;
 import managerindustry.logic.manager.managerDB.eve.IndustryActivityMaterialsX;
+import managerindustry.logic.manager.managerDB.eve.IndustryActivitySkillsX;
 import managerindustry.logic.manager.managerDB.eve.IndustryBlueprintsX;
 import managerindustry.logic.manager.managerDB.eve.InvNamesX;
 import managerindustry.logic.manager.managerDB.eve.InvTypesX;
@@ -25,7 +26,8 @@ import managerindustry.logic.manager.managerDB.sqlUser.SqlUser;
  */
 public class ManagerDB {
     private static ManagerDB instance = null;
-    private EntityManager entityManager = Persistence.createEntityManagerFactory("ManagerIndustryPU").createEntityManager();
+    private EntityManager entityManager = 
+        Persistence.createEntityManagerFactory("ManagerIndustryPU").createEntityManager();
      
     public static ManagerDB getInstance(){
         if ( instance == null )
@@ -115,8 +117,22 @@ public class ManagerDB {
         return price;
     }
     
+    /**
+     * Get all values of the industryBlueprints ( entities ) Max production limit
+     * @return IndustryBlueprintsX
+     */
     public IndustryBlueprintsX industryBlueprints(){
         IndustryBlueprintsX industryBlueprintsX = new IndustryBlueprintsX(entityManager);
         return industryBlueprintsX;
+    }
+    
+    /**
+     * Get all values of the IndustryActivitySkills ( entities ) like Required Skill
+     * @return IndustryActivitySkillsX
+     */
+    public IndustryActivitySkillsX IndustryActivitySkills(){
+        IndustryActivitySkillsX industryActivitySkillsX = 
+            new IndustryActivitySkillsX(entityManager);
+        return industryActivitySkillsX;
     }
 }

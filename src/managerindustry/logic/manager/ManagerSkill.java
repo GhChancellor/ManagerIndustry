@@ -8,7 +8,7 @@ package managerindustry.logic.manager;
 import java.util.HashMap;
 import java.util.Map;
 import managerindustry.logic.manager.managerDB.ManagerDB;
-import managerindustry.logic.skill.SkillV;
+import managerindustry.logic.skill.SkillX;
 import managerindustry.logic.skill.specificSkill.BrokerFee;
 
 /**
@@ -25,7 +25,7 @@ import managerindustry.logic.skill.specificSkill.BrokerFee;
  */
 public class ManagerSkill {
     private static ManagerSkill instance = null;
-    private Map < String, SkillV > skillMap = new HashMap<>();
+    private Map < String, SkillX > skillMap = new HashMap<>();
 
     private enum SkillProduction{
         INDUSTRY(3380),
@@ -73,19 +73,19 @@ public class ManagerSkill {
         return false;
     }
 
-    public void setSkillMap(Map<String, SkillV> skillMap) {
+    public void setSkillMap(Map<String, SkillX> skillMap) {
         this.skillMap = skillMap;
     }
 
-    public void addSkillMap( String nameSkill, SkillV skill) {
+    public void addSkillMap( String nameSkill, SkillX skill) {
         this.skillMap.put(nameSkill, skill);
     }
 
-    public Map<String, SkillV> getSkillMap() {
+    public Map<String, SkillX> getSkillMap() {
         return skillMap;
     }
     
-    public SkillV getSkillMap(String nameSkill) {
+    public SkillX getSkillMap(String nameSkill) {
         return this.skillMap.get(nameSkill);
     }
     
@@ -96,14 +96,14 @@ public class ManagerSkill {
      * @param int attributeID 
      */
     private void initSkill(SkillProduction skillProduction, boolean flag, int attributeID){
-        SkillV skill = ManagerDB.getInstance().invTypes().getSkillValues
+        SkillX skill = ManagerDB.getInstance().invTypes().getSkillValues
             (skillProduction.getSkillID(), flag, attributeID );
         
-        addSkillMap(skill.getName(), new SkillV(skill.getName()));
+        addSkillMap(skill.getName(), new SkillX(skill.getName()));
     }
     
     private void manuallyAddedNames(){
-//        SkillV accounting = new SkillV("Accounting");
+//        SkillX accounting = new SkillX("Accounting");
 //        accounting.setValueFloat(0.1f);
 //        accounting.setStartingValue(0.02f);
 //        addSkillMap(accounting.getName(), accounting);

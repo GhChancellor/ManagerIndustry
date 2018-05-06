@@ -8,7 +8,7 @@ package managerindustry.logic.apiEsiJson.industry;
 import managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices.ListSolarSystemCostIndices;
 
 /**
- *
+ * It's a class container
  * @author lele
  */
 public class Industry {
@@ -16,6 +16,5 @@ public class Industry {
         ListSolarSystemCostIndices listSolarSystemCostIndices = new ListSolarSystemCostIndices();
         return listSolarSystemCostIndices;
     }
-    
-    
+
 }

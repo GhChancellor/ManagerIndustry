@@ -44,5 +44,5 @@ public class DgmAttributeTypesX {
             e.printStackTrace();
             return null;
         }          
-    }    
+    }   
 }

@@ -8,15 +8,15 @@ package managerindustry.logic.apiEsiJson.skill;
 import java.util.Map;
 import managerindustry.db.entities.user.UserApiEntity;
 import managerindustry.logic.apiEsiJson.skill.characterSkills.CharacterSkills;
-import managerindustry.logic.apiEsiJson.skill.characterSkills.Skills;
+import managerindustry.logic.apiEsiJson.skill.characterSkills.SkillParser;
 import managerindustry.logic.apiEsiJson.skill.charactersSkillQueue.CharactersSkillQueue;
 
 /**
- *
+ * It's a class container
  * @author lele
  */
-public class SkillJson {
-    public Skills getCharacterSkills(UserApiEntity userApiEntity){  
+public class Skill {
+    public SkillParser getCharacterSkills(UserApiEntity userApiEntity){  
         CharacterSkills characterSkills = new CharacterSkills();
         return characterSkills.getCharacterSkills(userApiEntity);
     }

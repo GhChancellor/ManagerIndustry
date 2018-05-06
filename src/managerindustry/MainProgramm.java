@@ -32,7 +32,7 @@ public class MainProgramm {
     
     public static void buildItem(){
          // Scythe  scimitar   R.A.M.- Starship Tech   CONCORD 25000mm Steel Plates
-        ManagerBuild managerBuild = new ManagerBuild("scimitar", 1, 1, 10, 10);         
+        ManagerBuild managerBuild = new ManagerBuild("drake", 1, 1, 10, 1);         
     }
     
     /**

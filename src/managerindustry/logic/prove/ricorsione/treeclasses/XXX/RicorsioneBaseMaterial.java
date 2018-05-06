@@ -13,7 +13,7 @@ import managerindustry.db.entities.IndustryActivityMaterials;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.buiild.ComponentX;
 import managerindustry.logic.buiild.MaterialForComponents;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
+
 
 /**
  *
@@ -27,20 +27,20 @@ public class RicorsioneBaseMaterial {
     public void initBPO() {
         // CONCORD 25000mm Steel Plates
 
-        String bpoName = "scimitar " + "blueprint";
-        System.out.println("" + bpoName);
-
-        // get item to build
-        List< IndustryActivityMaterials> nameItemToBuild = ManagerDBEve_OLD.getInstance().getMaterialNeedByName(bpoName);
-        ComponentX dad = new ComponentX(0, "DAD", 0);
-        ricorsione(nameItemToBuild, "", dad);
-
-        
-        List<MaterialForComponents> mmmmm = dad.getMaterialForComponents();
-        
-        for (MaterialForComponents mat : mmmmm) {
-            componentXs.add(mat.getComponentX());
-        }
+//        String bpoName = "scimitar " + "blueprint";
+//        System.out.println("" + bpoName);
+//
+//        // get item to build
+//        List< IndustryActivityMaterials> nameItemToBuild = ManagerDBEve_OLD.getInstance().getMaterialNeedByName(bpoName);
+//        ComponentX dad = new ComponentX(0, "DAD", 0);
+//        ricorsione(nameItemToBuild, "", dad);
+//
+//        
+//        List<MaterialForComponents> mmmmm = dad.getMaterialForComponents();
+//        
+//        for (MaterialForComponents mat : mmmmm) {
+//            componentXs.add(mat.getComponentX());
+//        }
         
         System.out.println("");
 //        ricorsione02(nameItemToBuild);
@@ -87,26 +87,26 @@ public class RicorsioneBaseMaterial {
 
     public void ricorsione(List< IndustryActivityMaterials> nameItemToBuild, String tab, ComponentX dad) {
 
-        for (IndustryActivityMaterials nameItemToBuild1 : nameItemToBuild) {
-            InvTypes invTypes = ManagerDBEve_OLD.getInstance().getInvTypes_NameById(nameItemToBuild1.getMaterialTypeID());
-            System.out.println(tab + invTypes.getTypeID() + " " + invTypes.getTypeName() + " " + nameItemToBuild1.getQuantity());
-
-            ComponentX componentX = new ComponentX();
-            componentX.setName(invTypes.getTypeName());
-            componentX.setQuanityInt(nameItemToBuild1.getQuantity());
-
-            List< IndustryActivityMaterials> neededComponents = 
-             ManagerDBEve_OLD.getInstance().getMaterialNeedByName
-             (invTypes.getTypeName() + " blueprint");
-
-            dad.addMaterialForComponents(new MaterialForComponents(componentX));
-
-            if (neededComponents != null) {
-
-                ricorsione(neededComponents, tab + "\t", componentX);
-            }
-
-        }
+//        for (IndustryActivityMaterials nameItemToBuild1 : nameItemToBuild) {
+//            InvTypes invTypes = ManagerDBEve_OLD.getInstance().getInvTypes_NameById(nameItemToBuild1.getMaterialTypeID());
+//            System.out.println(tab + invTypes.getTypeID() + " " + invTypes.getTypeName() + " " + nameItemToBuild1.getQuantity());
+//
+//            ComponentX componentX = new ComponentX();
+//            componentX.setName(invTypes.getTypeName());
+//            componentX.setQuanityInt(nameItemToBuild1.getQuantity());
+//
+//            List< IndustryActivityMaterials> neededComponents = 
+//             ManagerDBEve_OLD.getInstance().getMaterialNeedByName
+//             (invTypes.getTypeName() + " blueprint");
+//
+//            dad.addMaterialForComponents(new MaterialForComponents(componentX));
+//
+//            if (neededComponents != null) {
+//
+//                ricorsione(neededComponents, tab + "\t", componentX);
+//            }
+//
+//        }
     }
 
     public void diplay() {

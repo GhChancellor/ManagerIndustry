@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.manager.managerDB.eve;
 
+import java.util.ArrayList;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -101,7 +102,44 @@ public class DgmTypeAttributesX {
             e.printStackTrace();
             return null;        
         }
+        
     }
     
+    /**
+     * Get Required Skill
+     * @param typeID
+     * @return 
+     */
+    public List < DgmTypeAttributes > getRequiredSkill(int typeID){
+        try {
+            TypedQuery < DgmTypeAttributes > requiredSkill =
+             entityManager.createNamedQuery("DgmTypeAttributes.findAttrybuteRequiredSkill", DgmTypeAttributes.class);
+            requiredSkill.setParameter("typeID", typeID);
+            return requiredSkill.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     
+    /**
+     * Get Required Skill give only attributeID 182-183-184
+     * @param typeID
+     * @return List < Integer >
+     */
+    public List < Integer > getRequiredSkillAttribute(int typeID){
+        List < DgmTypeAttributes > dgmTypeAttributes = getRequiredSkill(typeID);
+        
+        List < Integer > attributeIds = new ArrayList<>();
+
+        int attributeID;
+        for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
+            attributeID = dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID();
+            
+            if (attributeID == 182 || attributeID == 183 || attributeID == 184 ){
+                attributeIds.add(dgmTypeAttribute.getValueInt());
+            }
+        }
+        return attributeIds;
+    }
 }

@@ -11,7 +11,7 @@ import managerindustry.db.entities.DgmAttributeTypes;
 import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.enumName.SecurityStatusEnum;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
+
 
 /**
  * dgmAttributeTypes Securiy status 
@@ -59,25 +59,25 @@ public class UNUSED_StructureEngineeringRigs {
     
 
     public UNUSED_StructureEngineeringRigs(String name, SecurityStatusEnum securityStatusEnum) {
-        InvTypes invTypes = ManagerDBEve_OLD.getInstance().getInvTypes_IdByName(name);
-        nameRig = invTypes.getTypeName();
-        
-        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
-        
-        // DBG NON mi piace creare una cache con una mappa        
-        for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
-           
-            DgmAttributeTypes dgmAttributeTypes = 
-             ManagerDBEve_OLD.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
-
-            setBonusRig(dgmTypeAttribute);
-            setSecurityStatus(dgmTypeAttribute, securityStatus(securityStatusEnum));
-            setCalibration(dgmTypeAttribute);
-
-        } 
-        calcolaValoriSecurityStatusConRig();
-//        displayAllValueCalculated();
-        displayValue();
+//        InvTypes invTypes = ManagerDBEve_OLD.getInstance().getInvTypes_IdByName(name);
+//        nameRig = invTypes.getTypeName();
+//        
+//        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
+//        
+//        // DBG NON mi piace creare una cache con una mappa        
+//        for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
+//           
+//            DgmAttributeTypes dgmAttributeTypes = 
+//             ManagerDBEve_OLD.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
+//
+//            setBonusRig(dgmTypeAttribute);
+//            setSecurityStatus(dgmTypeAttribute, securityStatus(securityStatusEnum));
+//            setCalibration(dgmTypeAttribute);
+//
+//        } 
+//        calcolaValoriSecurityStatusConRig();
+////        displayAllValueCalculated();
+//        displayValue();
     }
 
     /**
@@ -211,20 +211,20 @@ public class UNUSED_StructureEngineeringRigs {
      * Display all value of the rig
      */
     private void displayAllValue(){
-        String bpoName = "Standup M-Set Blueprint Copy Accelerator II";
-        InvTypes invTypes = ManagerDBEve_OLD.getInstance().getInvTypes_IdByName(bpoName);
-        
-        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
-        System.out.println(""+ bpoName + " " + invTypes.getTypeID());
-        
-        for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
-           
-            DgmAttributeTypes dgmAttributeTypes = 
-             ManagerDBEve_OLD.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
-
-            System.out.println("" + dgmAttributeTypes.getAttributeName() + " " + dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID() 
-             + " " + dgmTypeAttribute.getValueFloat() );           
-        }
+//        String bpoName = "Standup M-Set Blueprint Copy Accelerator II";
+//        InvTypes invTypes = ManagerDBEve_OLD.getInstance().getInvTypes_IdByName(bpoName);
+//        
+//        List < DgmTypeAttributes > dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getDgmTypeAttributes(invTypes.getTypeID());
+//        System.out.println(""+ bpoName + " " + invTypes.getTypeID());
+//        
+//        for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
+//           
+//            DgmAttributeTypes dgmAttributeTypes = 
+//             ManagerDBEve_OLD.getInstance().getDgmAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
+//
+//            System.out.println("" + dgmAttributeTypes.getAttributeName() + " " + dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID() 
+//             + " " + dgmTypeAttribute.getValueFloat() );           
+//        }
     }    
     
     /**

@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.skill;
 
-import managerindustry.logic.manager.old.ManagerSkill_OLD;
+import managerindustry.logic.manager.ManagerSkill;
 
 /**
  *
@@ -14,7 +14,7 @@ import managerindustry.logic.manager.old.ManagerSkill_OLD;
 public class ProductionFormulas extends FormulasSkill{
     // forse è meglio production ME
     public float production( String nameSkill, int level){
-        SkillV skill = ManagerSkill_OLD.getInstance().getSkillMap(nameSkill);
+        SkillX skill = ManagerSkill.getInstance().getSkillMap(nameSkill);
         FormulasSkill formulasSkill = new FormulasSkill();
         
         try {

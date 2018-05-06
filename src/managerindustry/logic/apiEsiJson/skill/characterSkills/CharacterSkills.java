@@ -34,13 +34,13 @@ public class CharacterSkills {
     /**
      * Get Character Skills
      * @param userApiEntity
-     * @return Map < String, Skills >
+     * @return Map < String, SkillParser >
      */
-    public Skills getCharacterSkills(UserApiEntity userApiEntity){
+    public SkillParser getCharacterSkills(UserApiEntity userApiEntity){
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();
             gsonBuilder.registerTypeAdapter(SkillRaw.class, new SkillRawDeserializer() );           
-            gsonBuilder.registerTypeAdapter(Skills.class, new SkillsDeserializer() );  
+            gsonBuilder.registerTypeAdapter(SkillParser.class, new SkillsDeserializer() );  
             Gson gson = gsonBuilder.create();
             // /home/lele/Documenti/Programmi/EveDoc/eveobject/skill.json
             
@@ -50,7 +50,7 @@ public class CharacterSkills {
 //            URL url = new URL("https://login.eveonline.com/oauth/token/");
 //            InputStreamReader reader = new InputStreamReader(url.openStream());
 
-            Skills skills = ( Skills ) gson.fromJson(reader, Skills.class);
+            SkillParser skills = ( SkillParser ) gson.fromJson(reader, SkillParser.class);
             return skills;
         } catch (Exception e) {
             e.printStackTrace();

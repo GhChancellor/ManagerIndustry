@@ -9,11 +9,10 @@ import java.util.Map;
 import managerindustry.logic.apiEsiJson.ApiEsi;
 import managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices.ListSolarSystemCostIndices;
 import managerindustry.logic.apiEsiJson.industry.listSolarSystemCostIndices.SolarSystemCost;
-import managerindustry.logic.manager.old.ManagerBuild_OLD;
 import managerindustry.logic.manager.ManagerBuild;
 import managerindustry.logic.manager.ManagerSkill;
 import managerindustry.logic.prove.buildItem.BuildItem;
-import managerindustry.logic.skill.SkillV;
+import managerindustry.logic.skill.SkillX;
 import managerindustry.logic.skill.specificSkill.BrokerFee;
 
 /**

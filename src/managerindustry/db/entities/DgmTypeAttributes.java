@@ -35,6 +35,10 @@ import javax.xml.bind.annotation.XmlRootElement;
        + "A.dgmTypeAttributesPK.attributeID = :attributeID AND "
        + "C.typeID = :typeID"), 
     
+    // get value Required Skill i need only attributeID 182-183-184
+    @NamedQuery(name = "DgmTypeAttributes.findAttrybuteRequiredSkill", 
+     query = "SELECT a FROM DgmTypeAttributes a, DgmAttributeTypes b WHERE a.dgmTypeAttributesPK.typeID = :typeID and a.dgmTypeAttributesPK.attributeID = b.attributeID ")
+    
 })
 public class DgmTypeAttributes implements Serializable {
 

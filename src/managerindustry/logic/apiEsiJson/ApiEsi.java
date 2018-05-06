@@ -8,7 +8,7 @@ package managerindustry.logic.apiEsiJson;
 import managerindustry.db.entities.user.UserApiEntity;
 import managerindustry.logic.apiEsiJson.industry.Industry;
 import managerindustry.logic.apiEsiJson.market.Market;
-import managerindustry.logic.apiEsiJson.skill.SkillJson;
+import managerindustry.logic.apiEsiJson.skill.Skill;
 
 /**
  * ApiEsi get all value skill, industry, market from eve server ( json ) 
@@ -28,10 +28,10 @@ public class ApiEsi {
     
     /**
      * ApiEsi get all value skill from eve server ( json ) 
-     * @return SkillJson
+     * @return Skill
      */
-    public SkillJson skill() {
-        SkillJson skillJson = new SkillJson();
+    public Skill skill() {
+        Skill skillJson = new Skill();
         return skillJson;
     }
     

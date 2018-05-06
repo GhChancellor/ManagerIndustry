@@ -8,7 +8,6 @@ package managerindustry.logic.unused.structure.rig_GroupId;
 import java.util.HashMap;
 import java.util.Map;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
 
 /**
  * il tipo rig id  groupID controllare il gruop ID della drake 

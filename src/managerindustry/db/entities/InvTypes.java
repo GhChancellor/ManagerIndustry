@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlRootElement;
       
         // DGB collocare in una posizione migliore? fa parte del gruppo invType ma recupera solo skill
     , @NamedQuery(name = "InvTypes.findByTypeId-Published-AttributeID",  query = 
-     "SELECT NEW managerindustry.logic.skill.SkillV ( a.typeName, a.description, b.valueFloat, b.valueInt ) "
+     "SELECT NEW managerindustry.logic.skill.SkillX ( a.typeName, a.description, b.valueFloat, b.valueInt ) "
     + "FROM InvTypes a, DgmTypeAttributes b, DgmAttributeTypes c "
     + "WHERE a.typeID = b.dgmTypeAttributesPK.typeID and "
     + "b.dgmTypeAttributesPK.attributeID = c.attributeID AND "

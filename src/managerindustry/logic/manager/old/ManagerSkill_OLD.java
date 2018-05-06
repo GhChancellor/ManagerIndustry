@@ -10,7 +10,7 @@ import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
 
 import java.util.HashMap;
 import java.util.Map;
-import managerindustry.logic.skill.SkillV;
+import managerindustry.logic.skill.SkillX;
 import managerindustry.logic.skill.specificSkill.BrokerFee;
 
 /**
@@ -25,7 +25,7 @@ import managerindustry.logic.skill.specificSkill.BrokerFee;
  */
 public class ManagerSkill_OLD {
     private static ManagerSkill_OLD instance = null;
-    private Map < String, SkillV > skillMap = new HashMap<>();
+    private Map < String, SkillX > skillMap = new HashMap<>();
 
     public static ManagerSkill_OLD getInstance (){
         if ( instance == null )
@@ -44,19 +44,19 @@ public class ManagerSkill_OLD {
         return false;
     }
     
-    public Map<String, SkillV> getSkillMap() {
+    public Map<String, SkillX> getSkillMap() {
         return skillMap;
     }
 
-    public void setSkillMap(Map<String, SkillV> skillMap) {
+    public void setSkillMap(Map<String, SkillX> skillMap) {
         this.skillMap = skillMap;
     }
 
-    public void addSkillMap( String nameSkill, SkillV skill) {
+    public void addSkillMap( String nameSkill, SkillX skill) {
         this.skillMap.put(nameSkill, skill);
     }
 
-    public SkillV getSkillMap(String nameSkill) {
+    public SkillX getSkillMap(String nameSkill) {
         return this.skillMap.get(nameSkill);
     }
     
@@ -64,30 +64,30 @@ public class ManagerSkill_OLD {
      *   SELECT * FROM invTypes where invTypes.groupID=268;
      */
     private final void initSkill(){
-        SkillV skill = ManagerDBEve_OLD.getInstance().getInvTypes_SkillValues(3380, true, 440);
-        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
+        SkillX skill = ManagerDBEve_OLD.getInstance().getInvTypes_SkillValues(3380, true, 440);
+        addSkillMap(skill.getName(), new SkillX(skill.getName()) );       
                 
-//        SkillV skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3380, true, 440);
-//        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
+//        SkillX skill = ManagerDBEve.getInstance().getInvTypes_SkillValues(3380, true, 440);
+//        addSkillMap(skill.getName(), new SkillX(skill.getName()) );       
 //        
         skill = ManagerDBEve_OLD.getInstance().getInvTypes_SkillValues(3395, true, 1982);
-        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
+        addSkillMap(skill.getName(), new SkillX(skill.getName()) );       
 //        
         skill = ManagerDBEve_OLD.getInstance().getInvTypes_SkillValues(3396, true, 1982);
-        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
+        addSkillMap(skill.getName(), new SkillX(skill.getName()) );       
         
         skill = ManagerDBEve_OLD.getInstance().getInvTypes_SkillValues(3397, true, 1982);
-        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
+        addSkillMap(skill.getName(), new SkillX(skill.getName()) );       
         
         skill = ManagerDBEve_OLD.getInstance().getInvTypes_SkillValues(3398, true, 1982);
-        addSkillMap(skill.getName(), new SkillV(skill.getName()) );       
+        addSkillMap(skill.getName(), new SkillX(skill.getName()) );       
             
 //        manuallyAddedNames();
         
     }
     
     private void manuallyAddedNames(){
-//        SkillV accounting = new SkillV("Accounting");
+//        SkillX accounting = new SkillX("Accounting");
 //        accounting.setValueFloat(0.1f);
 //        accounting.setStartingValue(0.02f);
 //        addSkillMap(accounting.getName(), accounting);

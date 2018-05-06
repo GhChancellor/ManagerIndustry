@@ -6,9 +6,8 @@
 package managerindustry.logic.unused.structure;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import managerindustry.db.entities.DgmTypeAttributes;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
+
 
 /**
  * https://community.eveonline.com/news/dev-blogs/building-dreams-introducing-engineering-complexes/
@@ -62,25 +61,25 @@ public class UNUSED_EngineeringComplex {
 
     public UNUSED_EngineeringComplex(String nameEngineeringComplex){
         
-        // float roundOff = Math.round(value * 100.0) / 100.0;
-        // Math.floor(value * 100) / 100;
-        DgmTypeAttributes dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.MANUFACTURING_MATERIAL.code); // 2600
-        reductionManufacturingMaterial = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
-        
-        dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.MANUFACTURING_SCIENCE_JOB_ISK_COST.code); // 2601
-        reductionManufacturingScienceJobIskCost = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
-        
-        dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.MANUFACTURING_SCIENCE_JOB_TIME.code); // 2602
-        
-        reductionManufacturingScienceJobTime = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
-        
-        dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.FUEL_CONSUMPTIOM.code); // 2339
-        reductionFuelConsumption = dgmTypeAttributes.getValueFloat();
-        
-        dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.MAX_CALIBRATION_COMPLEX.code); // 1132
-        maxCalibrationComplex = dgmTypeAttributes.getValueFloat();
-        
-        this.nameEngineeringComplex = nameEngineeringComplex;
+//        // float roundOff = Math.round(value * 100.0) / 100.0;
+//        // Math.floor(value * 100) / 100;
+//        DgmTypeAttributes dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.MANUFACTURING_MATERIAL.code); // 2600
+//        reductionManufacturingMaterial = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
+//        
+//        dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.MANUFACTURING_SCIENCE_JOB_ISK_COST.code); // 2601
+//        reductionManufacturingScienceJobIskCost = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
+//        
+//        dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.MANUFACTURING_SCIENCE_JOB_TIME.code); // 2602
+//        
+//        reductionManufacturingScienceJobTime = truncateDecimal(baseValue -dgmTypeAttributes.getValueFloat(), 2).floatValue();
+//        
+//        dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.FUEL_CONSUMPTIOM.code); // 2339
+//        reductionFuelConsumption = dgmTypeAttributes.getValueFloat();
+//        
+//        dgmTypeAttributes = ManagerDBEve_OLD.getInstance().getItemDescription(nameEngineeringComplex, RULE_BONUS.MAX_CALIBRATION_COMPLEX.code); // 1132
+//        maxCalibrationComplex = dgmTypeAttributes.getValueFloat();
+//        
+//        this.nameEngineeringComplex = nameEngineeringComplex;
         
 //         displayValue();
     } 
