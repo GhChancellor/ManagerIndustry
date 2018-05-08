@@ -61,7 +61,7 @@ public class IndustryActivityMaterialsX {
         */
         
 ////         Convert name to Id
-        Integer typeID = ManagerDB.getInstance().invTypes().getIdByName(bpoName).getTypeID();
+        InvTypes typeID = ManagerDB.getInstance().invTypes().getIdByName(bpoName);
         
         if ( typeID == null ){
             return null;            
@@ -70,7 +70,7 @@ public class IndustryActivityMaterialsX {
         
         // convert name ( from InvTypes ) to Materials Needed ( from  IndustryActivityMaterials )
         List < IndustryActivityMaterials > invTypeMaterialses = 
-           ManagerDB.getInstance().industryActivityMaterials().getMaterialsID(typeID, activitiesEnum );
+           ManagerDB.getInstance().industryActivityMaterials().getMaterialsID(typeID.getTypeID(), activitiesEnum );
 
         if ( invTypeMaterialses.isEmpty() ){
             return null;

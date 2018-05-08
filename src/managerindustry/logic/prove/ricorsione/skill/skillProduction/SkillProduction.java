@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.skill.skillProduction;
+package managerindustry.logic.prove.ricorsione.skill.skillProduction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,7 @@ import managerindustry.db.entities.DgmTypeAttributes;
 import managerindustry.db.entities.IndustryActivitySkills;
 import managerindustry.logic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.managerDB.ManagerDB;
+import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
 
 /**
  * Oscillator Capacitor Unit Blueprint - 17337
@@ -33,6 +34,22 @@ public class SkillProduction <T>{
         skillTree02();
     }
     
+    public void recursion02(List < Integer > skills, RecursionA y){
+        for (Integer skillID : skills) {
+            
+            RecursionA a = new RecursionA();
+            a.setValue(skillID);
+            y.addLists(new RecursionB(a));
+            
+            List<Integer> requiredSkillAttribute = ManagerDB.getInstance().dgmTypeAttributes().getRequiredSkillAttribute(a.getValue());
+        
+            if ( !requiredSkillAttribute.isEmpty()){
+                recursion02(requiredSkillAttribute, a);
+            }            
+        }
+        
+    }
+
     public void skillTree02(){
         List < Integer > skills = new ArrayList<>();
         
@@ -45,23 +62,29 @@ public class SkillProduction <T>{
             skills.add(industryActivitySkills.getSkillID());
         }
         
-        recursion02(skills, new RecursionA());
-
-    }
+        RecursionA a = new RecursionA(typeId);
+        
+        recursion02(skills, a );
+        
+        System.out.println("aa");
+        
+    }      
     
-    public void recursion02(List < Integer > skills, RecursionA t){
+    public void recursion(List < Integer > skills, XxxA xxx){
+
         for (Integer skillID : skills) {
             
-            t.setValue(skillID);
-            t.addLists(new RecursionB(t));
+            XxxA a = new XxxA();
+            a.setSkillId(skillID);            
+            xxx.addList(new XxxB(a));            
             
-            List<Integer> requiredSkillAttribute = ManagerDB.getInstance().dgmTypeAttributes().getRequiredSkillAttribute(t.getValue());
-        
+            List<Integer> requiredSkillAttribute = ManagerDB.getInstance().dgmTypeAttributes().getRequiredSkillAttribute(a.getSkillId());
+
+            
             if ( !requiredSkillAttribute.isEmpty()){
-                recursion02(requiredSkillAttribute, t);
+                recursion(requiredSkillAttribute, a);
             }            
         }   
-        System.out.println("");       
     }
     
     public void skillTree(){
@@ -76,25 +99,12 @@ public class SkillProduction <T>{
             skills.add(industryActivitySkills.getSkillID());
         }
 
-        recursion(skills, new XxxA());
-
-    }    
-    
-    public void recursion(List < Integer > skills, XxxA a){
-
-        for (Integer skillID : skills) {
-            
-            a.setSkillId(skillID);            
-            a.addList(new XxxB(a));
-            
-            List<Integer> requiredSkillAttribute = ManagerDB.getInstance().dgmTypeAttributes().getRequiredSkillAttribute(a.getSkillId());
+        XxxA xxxA = new XxxA(typeId);
         
-            if ( !requiredSkillAttribute.isEmpty()){
-                recursion(requiredSkillAttribute, a);
-            }            
-        }   
-        System.out.println("");
-    }
+        recursion(skills, xxxA );
+        System.out.println("aa");
+    }    
+
 }
 /*
     dgmAttributeTypes attributeID 277-278-279-280

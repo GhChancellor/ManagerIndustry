@@ -30,8 +30,18 @@ public class ManagerBuild {
     private List < ComponentX > reportMaterialForComponents = new ArrayList<>();
     private Map < String, ReportCalculatedComponentX> totalCalculatedComponentXmap = new HashMap<>();
     
-    public void xxx01(String bpoName, int run, int job, int bpoME, 
-        int componentMe){
+    public void displayTotalMaterial(){
+        System.out.println("\nTotal Material");
+        for (Map.Entry<String, ReportCalculatedComponentX> entry : totalCalculatedComponentXmap.entrySet()) {
+            String key = entry.getKey();
+            ReportCalculatedComponentX value = entry.getValue();
+            System.out.println("" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
+        }            
+    }
+    
+    public ManagerBuild(String bpoName, int run, int job, int bpoME, 
+        int componentMe) {
+       
         RamActivitiesEnum activitiesEnum = RamActivitiesEnum.MANUFACTURING;
 
         bpoName += " blueprint";
@@ -56,64 +66,8 @@ public class ManagerBuild {
         totalCalculatedComponentXmap = 
             ManagerComponentX.getInstance().getReportCalculatedComponentXMap();
     
-        displayTotalMaterial();
-    }
-    
-    public void displayTotalMaterial(){
-        System.out.println("\nTotal Material");
-        for (Map.Entry<String, ReportCalculatedComponentX> entry : totalCalculatedComponentXmap.entrySet()) {
-            String key = entry.getKey();
-            ReportCalculatedComponentX value = entry.getValue();
-            System.out.println("" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
-        }            
-    }
-    
-    public ManagerBuild(String bpoName, int run, int job, int bpoME, 
-        int componentMe) {
-        xxx01(bpoName, run, job, bpoME, componentMe);
-        
-        
-//        RamActivitiesEnum activitiesEnum = RamActivitiesEnum.MANUFACTURING;
-//        
-//        // CONCORD 25000mm Steel Plates
-//
-//        bpoName += " blueprint";
-//        System.out.println("" + bpoName);
-//        
-//        List< IndustryActivityMaterials> nameItemToBuild = 
-//         ManagerDB.getInstance().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
-//        
-//        ComponentX componentX = new ComponentX();
-//        baseMaterial(nameItemToBuild, componentX, activitiesEnum );
-//        
-//        List < MaterialForComponents > materials = componentX.getMaterialForComponents();
-//        
-//        componentX = new ComponentX();
-//        buildItem(bpoName, run, job, bpoME, componentMe, materials, componentX);
-//        
-//        List < MaterialForComponents > forComponentses = componentX.getMaterialForComponents();
-//        
-//        System.out.println("");
-//               
-////        ComponentX componentX2 = new ComponentX();
-////        buildItem(bpoName, run, job, bpoME, componentMe, materials, componentX2);
-//        
-//        componentX = new ComponentX();
-//        
-//        for (MaterialForComponents forComponentse : forComponentses) {
-//            displayMap(forComponentse.getComponentX(), "");
-//        }
-//        
-//        Map < String, ReportCalculatedComponentX> totalCalculatedComponentXmap = 
-//            ManagerComponentX.getInstance().getReportCalculatedComponentXMap();
-//        
-//        System.out.println("\nTotal Material");
-//        for (Map.Entry<String, ReportCalculatedComponentX> entry : totalCalculatedComponentXmap.entrySet()) {
-//            String key = entry.getKey();
-//            ReportCalculatedComponentX value = entry.getValue();
-//            System.out.println("" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
-//        }    
-        
+        displayTotalMaterial();        
+
     }
     
     /**
@@ -204,12 +158,11 @@ public class ManagerBuild {
             ComponentX componentX = new ComponentX();
             componentX.setName(invTypes.getTypeName());
             componentX.setQuanityInt(nameItemToBuild1.getQuantity());
-
+            dad.addMaterialForComponents(new MaterialForComponents(componentX));
+            
             List< IndustryActivityMaterials> neededComponents = 
               ManagerDB.getInstance().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
-            
-            dad.addMaterialForComponents(new MaterialForComponents(componentX));  
-            
+
             if (neededComponents != null)
                 baseMaterial(neededComponents, componentX, activitiesEnum);
 

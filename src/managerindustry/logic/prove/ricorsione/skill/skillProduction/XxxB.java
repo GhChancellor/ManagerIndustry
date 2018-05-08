@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.skill.skillProduction;
+package managerindustry.logic.prove.ricorsione.skill.skillProduction;
 
 import managerindustry.logic.skill.SkillX;
 
@@ -13,7 +13,7 @@ import managerindustry.logic.skill.SkillX;
  */
 public class XxxB {
     private XxxA a;
-    private int skillID;
+//    private int skillID;
 
     public XxxB(XxxA a) {
         this.a = a;
@@ -27,13 +27,8 @@ public class XxxB {
         this.a = a;
     }
 
-    public int getSkillID() {
-        return skillID;
-    }
-
-    public void setSkillID(int skillID) {
-        this.skillID = skillID;
-    }
-    
+//    public int getSkillID() {
+//        return skillID;
+//    }   
     
 }
