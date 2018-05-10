@@ -119,6 +119,7 @@ public class ManagerBuild {
             componentX.setName(material.getComponentX().getName());
             componentX.setQuanityInt(singleMaterial);
             componentX.setQuanityDbl(totalMaterials);
+            dad.addMaterialForComponents( new MaterialForComponents(componentX));
             
             // Single item scimitar x 1
             CalculatedComponentX calculatedComponentX = new CalculatedComponentX
@@ -139,8 +140,6 @@ public class ManagerBuild {
             List < MaterialForComponents > materialForComponents = 
              material.getComponentX().getMaterialForComponents();
             
-            dad.addMaterialForComponents( new MaterialForComponents(componentX));
-                     
             if ( materialForComponents != null){
                 buildItem("", singleMaterial, 1, bpoME, 
                  1, materialForComponents, componentX );

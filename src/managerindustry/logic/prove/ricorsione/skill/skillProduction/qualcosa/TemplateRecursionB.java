@@ -13,6 +13,7 @@ import java.util.List;
  * @author lele
  */
 public class TemplateRecursionB < T > {
+    private List<T> lists = new ArrayList<>();
     private T t;
 
     public TemplateRecursionB(T t) {
@@ -29,6 +30,19 @@ public class TemplateRecursionB < T > {
     public void setT(T t) {
         this.t = t;
     }
+
+    public List<T> getLists() {
+        return lists;
+    }
+
+    public void setLists(List<T> lists) {
+        this.lists = lists;
+    }
+    
+    public void addLists(T lists) {
+        this.lists.add(t);
+    }
+    
     
     
 }

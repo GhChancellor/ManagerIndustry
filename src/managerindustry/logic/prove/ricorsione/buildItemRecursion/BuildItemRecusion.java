@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.prove.ricorsione.buildItemRecursion;
 
+import java.util.ArrayList;
 import java.util.List;
 import managerindustry.db.entities.IndustryActivityMaterials;
 import managerindustry.db.entities.InvTypes;
@@ -26,7 +27,8 @@ import managerindustry.logic.prove.ricorsione.skill.skillProduction.qualcosa.Tem
  * @author lele
  */
 public class BuildItemRecusion {
-
+    private TemplateRecursionA componentRecursion;
+    
     public BuildItemRecusion(String bpoName, int run, int job, int bpoME, 
         int componentMe) {
         
@@ -44,36 +46,82 @@ public class BuildItemRecusion {
         
         baseMaterial(nameItemToBuild, componentRecursion, activitiesEnum );
         
-        buildItem(bpoName, run, job, bpoME, componentMe, componentRecursion.getLists(), componentRecursion);
+        List materials = componentRecursion.getLists();
+        componentRecursion = new TemplateRecursionA();
         
-        System.out.println("");
+        buildItem(bpoName, run, job, bpoME, componentMe, materials, componentRecursion );
+        
+        displayTreeMateralNeeded(componentRecursion, " ");
+//        System.out.println("");
     }
+    
+    private void displayTreeMateralNeeded( TemplateRecursionA templateRecursionA, String tab){
+        List < TemplateRecursionB > as = templateRecursionA.getLists();
+        tab += "\t";
+        
+        for (TemplateRecursionB a : as) {
+            
+            TemplateRecursionA recursionA = (TemplateRecursionA)a.getT();
+            System.out.println(""+ tab + ((ComponentX02)recursionA.getT()).getName());
+          
+            displayTreeMateralNeeded(recursionA, tab);
+        }
+        
+        /*
+                for (TemplateRecursionB material : materials) {
+            TemplateRecursionA recursionA = (TemplateRecursionA)material.getT();
+            
+            ComponentX02 componentX02 = new ComponentX02();
+            componentX02.setName( ((ComponentX02)recursionA.getT()).getName() );
+            
+            TemplateRecursionA a = new TemplateRecursionA(componentX02);
+            componentRecursion.addLists(new TemplateRecursionB(a));            
+            
+            TemplateRecursionB materialForComponents = new TemplateRecursionB();
+            materialForComponents.setLists(recursionA.getLists());
+            
+            if ( materialForComponents != null){
+                buildItem("", run, job, bpoME, componentMe,
+                materialForComponents.getLists(), a);
+            
+            
+//            System.out.println("");
+            }
+        */
+        
+// System.out.println(""+((ComponentX02)templateRecursionB.getT()).getName() );
+    }
+    
+    private void displayTreeMateralNeededOLD(TemplateRecursionA templateRecursionA, String tab){
+        List lists = templateRecursionA.getLists();
+        
+        ComponentX02 componentX = ((ComponentX02)templateRecursionA.getLists());
+        tab ="\t";
+        
+        System.out.println("" + componentX.getName() + " " + componentX.getQuanityInt() 
+                + " -> " +String.format("%.0f", componentX.getQuanityDbl()));
+        
+        List < TemplateRecursionA > materialForComponent = templateRecursionA.getLists();
+        
+        for (TemplateRecursionA templateRecursionA1 : materialForComponent) {
+            displayTreeMateralNeededOLD( templateRecursionA1  ,tab);
+        }
+        
+        
+
+    }
+    
     
     private void buildItem(String bpoName, int run, int job, int bpoME, 
         int componentMe, List < TemplateRecursionB > materials, 
-        TemplateRecursionA t){
+        TemplateRecursionA componentRecursion){
         
         for (TemplateRecursionB material : materials) {
             TemplateRecursionA recursionA = (TemplateRecursionA)material.getT();
 
            // calculate materialEfficiencyCalculate
-            MaterialEfficiencyCalculate materialEfficiencyCalculate;
-
-            // check if item is t1 or t2           
-            if ( materials.isEmpty() ){
-                                
-                // me for T1
-                MaterialEfficiencyCalculate materialEfficiencyCalculateX = 
-                 new MaterialEfficiencyCalculate(run, job, bpoME ,((ComponentX02)recursionA.getT()).getQuanityInt() );
-                
-                materialEfficiencyCalculate = materialEfficiencyCalculateX;                
-            }else{
-                // me for component ( t2 )
-                MaterialEfficiencyCalculate materialEfficiencyCalculateX = 
-                 new MaterialEfficiencyCalculate(run, job, componentMe , ((ComponentX02)recursionA.getT()).getQuanityInt() ); 
-                
-                materialEfficiencyCalculate = materialEfficiencyCalculateX;
-            }     
+            MaterialEfficiencyCalculate materialEfficiencyCalculate = 
+                getMaterialEfficiencyCalculate(run, job, bpoME, componentMe, materials, componentRecursion, recursionA);
             
             // quantity material per single item 1 run
             int singleMaterial = 
@@ -86,7 +134,10 @@ public class BuildItemRecusion {
             ComponentX02 component = new ComponentX02();
             component.setName( ((ComponentX02)recursionA.getT()).getName());
             component.setQuanityInt(singleMaterial);
-            component.setQuanityDbl(totalMaterials);            
+            component.setQuanityDbl(totalMaterials);
+            
+            TemplateRecursionA a = new TemplateRecursionA(component);
+            componentRecursion.addLists( new TemplateRecursionB(a));            
             
             // Single item scimitar x 1
             CalculatedComponentX calculatedComponentX = new CalculatedComponentX
@@ -104,23 +155,76 @@ public class BuildItemRecusion {
                 (reportCalculatedComponentX);            
             
             // get Value for components T2
-            List < MaterialForComponents > materialForComponents = recursionA.getLists();
+            TemplateRecursionB materialForComponents = new TemplateRecursionB();
+            materialForComponents.setLists(recursionA.getLists());
+            
+            
+            if ( materialForComponents != null){
+                buildItem(bpoName, singleMaterial, 1, bpoME, 1, materialForComponents.getLists(), a);
+            }             
 
-            t.addLists( new TemplateRecursionB(component));
-                     
-//            if ( materialForComponents != null){
-//                buildItem("", singleMaterial, 1, bpoME, 
-//                 1, materialForComponents, component );
-//            }             
-            
-            
-            System.out.println("");                 
-            
         }
-        
-
     }
+    
+        private void buildItemOLD(String bpoName, int run, int job, int bpoME, 
+        int componentMe, List < TemplateRecursionB > materials, 
+        TemplateRecursionA componentRecursion){
         
+        for (TemplateRecursionB material : materials) {
+            TemplateRecursionA recursionA = (TemplateRecursionA)material.getT();
+            
+            ComponentX02 componentX02 = new ComponentX02();
+            componentX02.setName( ((ComponentX02)recursionA.getT()).getName() );
+            
+            TemplateRecursionA a = new TemplateRecursionA(componentX02);
+            componentRecursion.addLists(new TemplateRecursionB(a));            
+            
+            TemplateRecursionB materialForComponents = new TemplateRecursionB();
+            materialForComponents.setLists(recursionA.getLists());
+            
+            if ( materialForComponents != null){
+                buildItem("", run, job, bpoME, componentMe,
+                materialForComponents.getLists(), a);
+            
+            
+//            System.out.println("");
+            }
+
+        }
+    }
+    
+    /**
+     * @deprecated 
+     * DBG
+     * Get Material Efficiency Calculate
+     * @param int run
+     * @param int job
+     * @param int bpoME
+     * @param int componentMe
+     * @param List < TemplateRecursionB > materials
+     * @param TemplateRecursionA t <------
+     * @param TemplateRecursionA recursionA <------
+     * @return MaterialEfficiencyCalculate
+     */
+    private MaterialEfficiencyCalculate getMaterialEfficiencyCalculate(int run, int job, int bpoME,  
+        int componentMe, List < TemplateRecursionB > materials, 
+        TemplateRecursionA t,TemplateRecursionA recursionA){
+            // check if item is t1 or t2           
+            if ( materials.isEmpty() ){                               
+                // me for T1
+                MaterialEfficiencyCalculate materialEfficiencyCalculate = 
+                 new MaterialEfficiencyCalculate(run, job, bpoME ,((ComponentX02)recursionA.getT()).getQuanityInt() );
+                
+                return materialEfficiencyCalculate;                
+            }else{
+                // me for component ( t2 )
+                MaterialEfficiencyCalculate materialEfficiencyCalculate = 
+                 new MaterialEfficiencyCalculate(run, job, componentMe , ((ComponentX02)recursionA.getT()).getQuanityInt() ); 
+                
+                return materialEfficiencyCalculate;   
+            }         
+    }
+    
     private void baseMaterial(List< IndustryActivityMaterials> nameItemToBuild,
         TemplateRecursionA t, RamActivitiesEnum activitiesEnum){   
         
@@ -143,5 +247,4 @@ public class BuildItemRecusion {
 
         }
     }
-
 }

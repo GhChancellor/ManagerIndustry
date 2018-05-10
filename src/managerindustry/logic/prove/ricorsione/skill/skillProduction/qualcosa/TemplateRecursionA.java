@@ -16,6 +16,9 @@ public class TemplateRecursionA < T >{
     private List<T> lists = new ArrayList<>();
     private T t;
 
+    public TemplateRecursionA() {
+    }
+    
     public TemplateRecursionA(T t) {
         this.t = t;
     }
