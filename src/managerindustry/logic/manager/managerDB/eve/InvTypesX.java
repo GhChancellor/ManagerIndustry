@@ -103,5 +103,64 @@ public class InvTypesX {
             e.printStackTrace();
             return null;
         }        
-    }      
+    }
+    
+    
+    /**
+     * DBG
+     * @deprecated 
+     * @param code
+     * @return List < InvTypes >
+     */
+    public List < InvTypes > getAllDrone(int code){
+        try {
+            TypedQuery < InvTypes > typedQuery = 
+                entityManager.createNamedQuery("InvTypes.findByParentGroupID_InvTypes", InvTypes.class);
+
+            typedQuery.setParameter("parentGroupID", code);
+            
+            List<InvTypes> resultList = typedQuery.getResultList();
+            
+            if (resultList.isEmpty()){
+                return null;
+            }else{
+                return resultList;
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+    }   
+    
+    /**
+     * DBG
+     * Fighters > Carrier-based Fighters > heavy fighter or light fighter or support fighter
+     * @deprecated 
+     * @param code
+     * @return List < InvTypes >
+     */
+    public List < InvTypes > getAllCategory(int code){
+        try {
+            TypedQuery < InvTypes > typedQuery = 
+                entityManager.createNamedQuery("InvTypes.findByMarketGroupID_InvTypes", InvTypes.class);
+
+            typedQuery.setParameter("marketGroupID", code);
+            List<InvTypes> resultList = typedQuery.getResultList();
+            
+            if (resultList.isEmpty()){
+                return null;
+            }else{
+                return resultList;
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+    }   
+    
+    
 }

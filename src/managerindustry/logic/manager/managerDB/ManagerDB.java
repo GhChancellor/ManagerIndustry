@@ -7,6 +7,7 @@ package managerindustry.logic.manager.managerDB;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import managerindustry.db.entities.InvMarketGroups;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.manager.managerDB.cache.price.PriceX;
 import managerindustry.logic.manager.managerDB.cache.taxCostIndex.TaxSolarSystem;
@@ -15,6 +16,7 @@ import managerindustry.logic.manager.managerDB.eve.DgmTypeAttributesX;
 import managerindustry.logic.manager.managerDB.eve.IndustryActivityMaterialsX;
 import managerindustry.logic.manager.managerDB.eve.IndustryActivitySkillsX;
 import managerindustry.logic.manager.managerDB.eve.IndustryBlueprintsX;
+import managerindustry.logic.manager.managerDB.eve.InvMarketGroupsX;
 import managerindustry.logic.manager.managerDB.eve.InvNamesX;
 import managerindustry.logic.manager.managerDB.eve.InvTypesX;
 import managerindustry.logic.manager.managerDB.eve.MapSolarSystemsX;
@@ -135,4 +137,13 @@ public class ManagerDB {
             new IndustryActivitySkillsX(entityManager);
         return industryActivitySkillsX;
     }
+    
+//    /**
+//     * Get all values of the InvMarketGroups ( entities ) like parent group of object
+//     * @return InvMarketGroupsX
+//     */    
+//    public InvMarketGroupsX invMarketGroups(){
+//        InvMarketGroupsX invMarketGroups = new InvMarketGroupsX(entityManager);
+//        return invMarketGroups;
+//    }
 }

@@ -29,7 +29,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "InvMarketGroups.findByMarketGroupName", query = "SELECT i FROM InvMarketGroups i WHERE i.marketGroupName = :marketGroupName")
     , @NamedQuery(name = "InvMarketGroups.findByDescription", query = "SELECT i FROM InvMarketGroups i WHERE i.description = :description")
     , @NamedQuery(name = "InvMarketGroups.findByIconID", query = "SELECT i FROM InvMarketGroups i WHERE i.iconID = :iconID")
-    , @NamedQuery(name = "InvMarketGroups.findByHasTypes", query = "SELECT i FROM InvMarketGroups i WHERE i.hasTypes = :hasTypes")})
+    , @NamedQuery(name = "InvMarketGroups.findByHasTypes", query = "SELECT i FROM InvMarketGroups i WHERE i.hasTypes = :hasTypes")
+      
+      // recupera tutti i tipi di droni
+    , @NamedQuery(name = "InvMarketGroups.findByMarketGroup_InvTypes", query = "SELECT a FROM InvMarketGroups i, InvTypes a WHERE a.marketGroupID = i.marketGroupID and i.parentGroupID = :parentGroupID ")        
+})
 public class InvMarketGroups implements Serializable {
 
     private static final long serialVersionUID = 1L;

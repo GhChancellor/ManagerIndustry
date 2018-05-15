@@ -3,24 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.ricorsione.skill.skillProduction.qualcosa;
+package managerindustry.logic.prove.ricorsione.buildItemRecursion.build02;
 
+import managerindustry.logic.prove.ricorsione.skill.skillProduction.qualcosa.*;
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.logic.prove.buildItem.BuildItem;
 
 /**
  *
  * @author lele
  */
-public class TemplateRecursionA < T > {
+public class TemplateRecursionA02 < T >{
     private List<T> lists = new ArrayList<>();
     private T t;
 
-    public TemplateRecursionA() {
+    public TemplateRecursionA02() {
     }
     
-    public TemplateRecursionA(T t) {
+    public TemplateRecursionA02(T t) {
         this.t = t;
     }
     

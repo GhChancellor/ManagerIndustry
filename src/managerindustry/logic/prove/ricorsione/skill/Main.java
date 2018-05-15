@@ -5,11 +5,8 @@
  */
 package managerindustry.logic.prove.ricorsione.skill;
 
-import managerindustry.logic.manager.ManagerBuild;
-import managerindustry.logic.prove.buildItem.BuildItem;
 import managerindustry.logic.prove.ricorsione.buildItemRecursion.BuildItemRecusion;
-import managerindustry.logic.prove.ricorsione.skill.skillProduction.SkillProduction;
-import managerindustry.logic.prove.ricorsione.skill.skillProduction.qualcosa.SkillProva;
+import managerindustry.logic.prove.ricorsione.buildItemRecursion.build02.BuildItemRecursion02;
 
 /**
  *
@@ -20,6 +17,8 @@ public class Main {
 //        SkillProduction skillProduction = new SkillProduction();
 
         BuildItemRecusion buildItemRecusion = new BuildItemRecusion("scimitar", 1, 1, 10, 1);
+        
+//        BuildItemRecursion02 buildItemRecusion02 = new BuildItemRecursion02("scimitar", 1, 1, 10, 1);
         
 //        ManagerBuild managerBuild = new ManagerBuild("scimitar", 1, 1, 10, 1);
         

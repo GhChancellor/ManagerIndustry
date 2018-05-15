@@ -1,5 +1,5 @@
 
-AMMUNITION & CHARGES
+AMMUNITION & CHARGES OK
 -- esseziale
 SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=11; -- makertGroupID 1374
 SELECT * from invTypes where invTypes.typeName ="Armor EM Resistance Script"; -- typeID 41517 makertGroupID 1094 
@@ -10,7 +10,7 @@ SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=11; -- Si ferm
 SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1094; -- parentGroupID 11
 SELECT * from invTypes where invTypes.typeName ="Armor EM Resistance Script"; -- typeID 41517 makertGroupID 1094 
 
--- DRONE AND FIGHTER
+-- DRONE AND FIGHTER  OK
 -- essenziale
 SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=157;
 SELECT * from invTypes where invTypes.typeName ="Salvage Drone I"; -- typeID 32787 makertGroupID 1646 
@@ -21,6 +21,12 @@ SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=157; -- Si fer
 SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1646; -- parentGroupID 157
 SELECT * from invTypes where invTypes.typeName ="Salvage Drone I"; -- typeID 32787 makertGroupID 1646 
 
+SELECT * from invTypes, invMarketGroups where invTypes.marketGroupID=invMarketGroups.marketGroupID and 
+	invMarketGroups.parentGroupID=159;
+	
+SELECT * from  invTypes, invMarketGroups where invTypes.marketGroupID=invMarketGroups.marketGroupID and
+ invMarketGroups.marketGroupID=158;
+
 -- BATTLECRUISERS
 -- essenziale
 SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1374; -- makertGroupID 137
@@ -30,9 +36,16 @@ SELECT * from invTypes where invTypes.typeName ="Oracle"; -- typeID 4302 makertG
 -- tutto
 SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1374; -- makertGroupID 137
 SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1374; -- makertGroupID 469 T1, 1375 T2, 1703 Faction
+SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=469; -- < ---- IMPORTATISSIMO PUNTO DI CONGIUNZIONE TRA parentGroupID=469 E parentGroupID=1374
 SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=469; -- Si ferma qua 
 SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=470; -- parentGroupID 469
-SELECT * from invTypes where invTypes.typeName ="Oracle"; -- typeID 4302 makertGroupID 470 
+SELECT * from invTypes where invTypes.typeName ="Oracle"; -- Harbinger  Oracle  Prophecy amarr typeID 4302 makertGroupID 470 
+
+SELECT * from invTypes, invMarketGroups WHERE invMarketGroups.marketGroupID=470 and
+	invTypes.marketGroupID=470 ;
+
+SELECT * from invTypes, invMarketGroups WHERE invMarketGroups.parentGroupID=469 and
+	invTypes.marketGroupID=invMarketGroups.marketGroupID;
 
 -- SHUTTLE
 essenziale
@@ -176,3 +189,15 @@ SELECT * from invGroups where invGroups.groupID=38;
 SELECT * FROM invTypes where invTypes.typeID=380;
 
 Ship Equipment > invMarketGroups > marketGroupID 9
+
+    Fighters > Carrier-based Fighters > heavy fighter or light fighter or support fighter
+    
+    Structure-based Fighters marketGroupID 2409, ParentGroupID 2236
+      Standup heavy fighters Standup Ametat I 47124, marketGroupID 2412
+      Standup light fighters Standup Dragonfly I
+      Standup support fighters Standup Cenobite I 
+    
+    Carrier-based Fighters marketGroupID 2410, ParentGroupID 2236  
+      heavy fighter Ametat I ID=40362, MarketGroupID=1310
+      light fighter Dragonfly I ID= 23057, MarketGroupID=840
+      support fighter Cenobite I ID=37599, MarketGroupID=2239
