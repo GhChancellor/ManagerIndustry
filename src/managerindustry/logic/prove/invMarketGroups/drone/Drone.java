@@ -5,20 +5,15 @@
  */
 package managerindustry.logic.prove.invMarketGroups.drone;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import managerindustry.db.entities.InvMarketGroups;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.manager.managerDB.ManagerDB;
-import managerindustry.logic.prove.invMarketGroups.old.ItemClass;
+import managerindustry.logic.prove.invMarketGroups.fatherclass.Category;
 
 /**
  *
  * @author lele
  */
-public class Drone {
+public class Drone extends Category<Object>{
     private enum DroneEnum{
         ALL(157),        
         MINING(158),
@@ -44,70 +39,34 @@ public class Drone {
             return code;
         }
         
-    }
-    private List<InvTypes> allDrone = new ArrayList<>();
+    }        
 
-    /**
-     * Medium Shield Maintenance Bot I
-     * Ice Harvesting Drone I minining
-     */
-    public Drone() {
-        initCategory(DroneEnum.COMBAT);
-        InvTypes invTypes = ManagerDB.getInstance().invTypes().getIdByName("Ice Harvesting Drone I");        
-        
-        for (InvTypes allDrones : allDrone) {
-            if ( allDrones.getMarketGroupID() == invTypes.getMarketGroupID() ){
-                System.out.println("Si");
-            }else{
-                System.out.println("NO");
-            }
-        }
-        
-        display(allDrone);
-        // System.out.println(""+ invTypes.getTypeID());
+    public Drone(Object t, String typeName) {
+        super(t, typeName);
+        display(getItems());
     }
-    
-    /**
-     * Fighters > Carrier-based Fighters > heavy fighter or light fighter or support fighter
-     * @param drone 
-     */
-    private void initCategory(DroneEnum drone){
-        switch (drone){
+
+    public Drone() {
+        xxx(DroneEnum.ALL, "Ice Harvesting Drone I");
+        display(getItems());
+    }
+
+    @Override
+    public void initItems(Object t) {        
+        switch ((DroneEnum) t){
             case ALL:
             case COMBAT:
             case ELECTRONIC_WARFARE:
             case LOGISTIC:              
-                allDrone = ManagerDB.getInstance().invTypes().getAllDrone(drone.getCode());
+                setItems( ManagerDB.getInstance().invTypes().getAllItems( ((DroneEnum) t).getCode()) );
                 break;
             case FIGHTERS:      
             case MINING:      
             case COMBAT_UTILITY:    
-            case SALVAGE:                
-                allDrone = ManagerDB.getInstance().invTypes().getAllCategory(drone.getCode());
+            case SALVAGE:
+                setItems( ManagerDB.getInstance().invTypes().getAllCategory(((DroneEnum) t).getCode()) );
                 break;
         }
-//        display(allDrone); 
- 
     }
-    
-    private void display(List<InvTypes> items){
-        for (InvTypes item : items) {
-            System.out.println(""+item.getTypeID()+ " " + item.getTypeName() );
-        }
-    }
-    
-    /*
-    Fighters > Carrier-based Fighters > heavy fighter or light fighter or support fighter
-    
-    Structure-based Fighters marketGroupID 2409, ParentGroupID 2236
-      Standup heavy fighters Standup Ametat I 47124, marketGroupID 2412
-      Standup light fighters Standup Dragonfly I
-      Standup support fighters Standup Cenobite I 
-    
-    Carrier-based Fighters marketGroupID 2410, ParentGroupID 2236  
-      heavy fighter Ametat I ID=40362, MarketGroupID=1310
-      light fighter Dragonfly I ID= 23057, MarketGroupID=840
-      support fighter Cenobite I ID=37599, MarketGroupID=2239
-    */
     
 }

@@ -112,7 +112,7 @@ public class InvTypesX {
      * @param code
      * @return List < InvTypes >
      */
-    public List < InvTypes > getAllDrone(int code){
+    public List < InvTypes > getAllItems(int code){
         try {
             TypedQuery < InvTypes > typedQuery = 
                 entityManager.createNamedQuery("InvTypes.findByParentGroupID_InvTypes", InvTypes.class);

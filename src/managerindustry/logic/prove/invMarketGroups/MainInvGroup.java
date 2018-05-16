@@ -5,7 +5,9 @@
  */
 package managerindustry.logic.prove.invMarketGroups;
 
+import managerindustry.logic.prove.invMarketGroups.ammunion.AmmunionCharges;
 import managerindustry.logic.prove.invMarketGroups.drone.Drone;
+import managerindustry.logic.prove.invMarketGroups.drone.DroneOLD;
 
 /**
  *
@@ -14,5 +16,6 @@ import managerindustry.logic.prove.invMarketGroups.drone.Drone;
 public class MainInvGroup {
     public static void main(String[] args) {
         Drone drone = new Drone();
+        AmmunionCharges ammunionCharges = new AmmunionCharges();
     }
 }
