@@ -112,10 +112,10 @@ public class InvTypesX {
      * @param code
      * @return List < InvTypes >
      */
-    public List < InvTypes > getAllItems(int code){
+    public List < InvTypes > getParentGroupID(int code){
         try {
             TypedQuery < InvTypes > typedQuery = 
-                entityManager.createNamedQuery("InvTypes.findByParentGroupID_InvTypes", InvTypes.class);
+                entityManager.createNamedQuery("InvTypes.findByParentGroupIDXXX", InvTypes.class);
 
             typedQuery.setParameter("parentGroupID", code);
             
@@ -141,10 +141,10 @@ public class InvTypesX {
      * @param code
      * @return List < InvTypes >
      */
-    public List < InvTypes > getAllCategory(int code){
+    public List < InvTypes > getMarketGroupID(int code){
         try {
             TypedQuery < InvTypes > typedQuery = 
-                entityManager.createNamedQuery("InvTypes.findByMarketGroupID_InvTypes", InvTypes.class);
+                entityManager.createNamedQuery("InvTypes.findByMarketGroupIDXXX", InvTypes.class);
 
             typedQuery.setParameter("marketGroupID", code);
             List<InvTypes> resultList = typedQuery.getResultList();

@@ -1,4 +1,6 @@
 
+----->   BATTLECRUISERS <------ è il più complento, prendilo ha modello razze ecc
+
 AMMUNITION & CHARGES OK
 -- esseziale
 SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=11; -- makertGroupID 1374
@@ -9,6 +11,9 @@ SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=11; -- makertG
 SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=11; -- Si ferma qua 
 SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1094; -- parentGroupID 11
 SELECT * from invTypes where invTypes.typeName ="Armor EM Resistance Script"; -- typeID 41517 makertGroupID 1094 
+
+SELECT * from invTypes, invMarketGroups WHERE invTypes.marketGroupID=invMarketGroups.marketGroupID and
+invMarketGroups.parentGroupID=846; -- 846 849 852
 
 -- DRONE AND FIGHTER  OK
 -- essenziale
@@ -41,11 +46,16 @@ SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=469; -- Si fer
 SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=470; -- parentGroupID 469
 SELECT * from invTypes where invTypes.typeName ="Oracle"; -- Harbinger  Oracle  Prophecy amarr typeID 4302 makertGroupID 470 
 
+// selezione per Razza
 SELECT * from invTypes, invMarketGroups WHERE invMarketGroups.marketGroupID=470 and
 	invTypes.marketGroupID=470 ;
 
-SELECT * from invTypes, invMarketGroups WHERE invMarketGroups.parentGroupID=469 and
-	invTypes.marketGroupID=invMarketGroups.marketGroupID;
+// Navy Issue
+  SELECT * from invTypes, invMarketGroups WHERE invTypes.marketGroupID=invMarketGroups.marketGroupID and
+ invMarketGroups.marketGroupID=1704;
+
+SELECT * from invTypes, invMarketGroups WHERE invTypes.marketGroupID=invMarketGroups.marketGroupID and
+ invMarketGroups.parentGroupID=469;
 
 -- SHUTTLE
 essenziale

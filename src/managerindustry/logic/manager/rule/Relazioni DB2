@@ -1,1 +1,32 @@
+ ALL TYPE SHIPS
+  SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=4; -- ships
+  SELECT * from invMarketGroups WHERE invMarketGroups.parentGroupID=4; -- type ships
 
+ Battlecruisers
+ SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1374; -- - Battlecruisers
+  SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1374; -- -- T1, T2, T3
+   SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1375; -- --- Advanced Battlecruisers
+    SELECT * from invMarketGroups WHERE invMarketGroups.parentGroupID=1375; -- ---- Command Ships
+     SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=822; -- razze 
+      -- Se ti serve una singola razza
+      SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=825; -- singola razza 825, 828, 831, 834
+       SELECT * from invTypes where invTypes.typeName ="Sleipnir"; 
+       
+    -- ti da tutte le navi ti tutte le razze di una particolare classe Advanced Battlecruisers  
+    SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
+    invMarketGroups.parentGroupID=822; 
+
+ Shuttle 
+ SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=391; -- Shuttles
+  SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=391; -- razze
+   -- Se ti serve una singola razza
+   SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=393; -- singola razza 393, 394, 395, 396, 1631
+    SELECT * from invTypes where invTypes.typeName ="Minmatar Shuttle"; 
+
+ Frigate
+  SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1361; -- frigate
+   SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1361; -- T1, T2, T3
+    SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=5; -- razze
+     -- Se ti serve una singola razza
+      SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=61; -- 61, 64, 72, 77, 1616 
+     SELECT * from invTypes where invTypes.typeName ="Venture";

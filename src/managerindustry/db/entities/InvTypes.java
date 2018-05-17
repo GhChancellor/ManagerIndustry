@@ -51,10 +51,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     + "a.published = :published AND "
     + "c.attributeID = :attributeID"),
     
-    @NamedQuery(name = "InvTypes.findByParentGroupID_InvTypes", 
+    @NamedQuery(name = "InvTypes.findByParentGroupIDXXX", 
       query = "SELECT a FROM InvMarketGroups i, InvTypes a WHERE a.marketGroupID = i.marketGroupID and i.parentGroupID = :parentGroupID"),
     
-    @NamedQuery(name = "InvTypes.findByMarketGroupID_InvTypes", 
+    @NamedQuery(name = "InvTypes.findByMarketGroupIDXXX", 
       query = "SELECT a FROM InvMarketGroups i, InvTypes a WHERE a.marketGroupID = i.marketGroupID and i.marketGroupID = :marketGroupID"), 
     
 

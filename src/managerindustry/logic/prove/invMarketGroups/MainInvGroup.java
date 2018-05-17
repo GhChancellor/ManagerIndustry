@@ -5,9 +5,11 @@
  */
 package managerindustry.logic.prove.invMarketGroups;
 
-import managerindustry.logic.prove.invMarketGroups.ammunion.AmmunionCharges;
-import managerindustry.logic.prove.invMarketGroups.drone.Drone;
-import managerindustry.logic.prove.invMarketGroups.drone.DroneOLD;
+import managerindustry.logic.prove.invMarketGroups.items.ammunion.AmmunionCharges;
+import managerindustry.logic.prove.invMarketGroups.items.battleCruiser.BattleCruiser;
+import managerindustry.logic.prove.invMarketGroups.items.drone.Drone;
+import managerindustry.logic.prove.invMarketGroups.items.frigate.Frigate;
+import managerindustry.logic.prove.invMarketGroups.old.DroneOLD;
 
 /**
  *
@@ -15,7 +17,9 @@ import managerindustry.logic.prove.invMarketGroups.drone.DroneOLD;
  */
 public class MainInvGroup {
     public static void main(String[] args) {
-        Drone drone = new Drone();
-        AmmunionCharges ammunionCharges = new AmmunionCharges();
+//        Drone drone = new Drone();
+//        AmmunionCharges ammunionCharges = new AmmunionCharges();
+//        BattleCruiser battleCruiser = new BattleCruiser();
+        Frigate frigate = new Frigate();
     }
 }

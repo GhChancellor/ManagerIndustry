@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.invMarketGroups.drone;
+package managerindustry.logic.prove.invMarketGroups.items.drone;
 
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.manager.managerDB.ManagerDB;
-import managerindustry.logic.prove.invMarketGroups.fatherclass.Category;
+import managerindustry.logic.prove.invMarketGroups.items.fatherclass.Category;
 
 /**
  *
@@ -58,13 +58,13 @@ public class Drone extends Category<Object>{
             case COMBAT:
             case ELECTRONIC_WARFARE:
             case LOGISTIC:              
-                setItems( ManagerDB.getInstance().invTypes().getAllItems( ((DroneEnum) t).getCode()) );
+                setItems( ManagerDB.getInstance().invTypes().getParentGroupID( ((DroneEnum) t).getCode()) );
                 break;
             case FIGHTERS:      
             case MINING:      
             case COMBAT_UTILITY:    
             case SALVAGE:
-                setItems( ManagerDB.getInstance().invTypes().getAllCategory(((DroneEnum) t).getCode()) );
+                setItems( ManagerDB.getInstance().invTypes().getMarketGroupID(((DroneEnum) t).getCode()) );
                 break;
         }
     }

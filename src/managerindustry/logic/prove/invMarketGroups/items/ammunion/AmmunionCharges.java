@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.invMarketGroups.ammunion;
+package managerindustry.logic.prove.invMarketGroups.items.ammunion;
 
 import managerindustry.logic.manager.managerDB.ManagerDB;
-import managerindustry.logic.prove.invMarketGroups.fatherclass.Category;
+import managerindustry.logic.prove.invMarketGroups.items.fatherclass.Category;
 
 /**
  *
@@ -15,9 +15,9 @@ import managerindustry.logic.prove.invMarketGroups.fatherclass.Category;
 public class AmmunionCharges extends Category<Object>{
     private enum AmmunitionEnum{
         ALL(11),
-        PROJECTILE_AMMO(99),
-        HYBRID_CHARGES(100),
-        FREQUENCY_CRYSTALS(101),               
+        PROJECTILE_AMMO(846),  // subclass 99 
+        HYBRID_CHARGES(849), // subclass 100
+        FREQUENCY_CRYSTALS(852), // subclass 101  
         MISSILES(114),
         PROBES(120),
         CAP_BOOSTER_CHARGES(139),
@@ -51,7 +51,7 @@ public class AmmunionCharges extends Category<Object>{
     }
 
     public AmmunionCharges() {
-        xxx(AmmunitionEnum.ALL, "Cap Booster 25");
+        xxx(AmmunitionEnum.SCRIPTS, "");
         display(getItems());        
     }
     
@@ -59,20 +59,22 @@ public class AmmunionCharges extends Category<Object>{
     public void initItems(Object t) {
         switch ((AmmunitionEnum)t){
             case ALL:
-                setItems( ManagerDB.getInstance().invTypes().getAllItems( ((AmmunitionEnum) t).getCode()) );
-                break;
-            case PROJECTILE_AMMO:
-            case HYBRID_CHARGES:
-            case FREQUENCY_CRYSTALS:
-            case MISSILES:
-            case PROBES:
-            case CAP_BOOSTER_CHARGES:
-            case MINING_CRYSTALS:
-            case BOMBS:
-            case SCRIPTS:
-            case NANITE_REPAIR_PASTE:
-            case STRUCTURE_GUIDED_BOMBS:
+            case MISSILES: 
+            case PROBES:      
             case COMMAND_BURST_CHARGES:
+            case PROJECTILE_AMMO:
+            case HYBRID_CHARGES:                                    
+            case FREQUENCY_CRYSTALS:  
+                setItems( ManagerDB.getInstance().invTypes().getParentGroupID( ((AmmunitionEnum) t).getCode()) );
+                break;
+            case BOMBS:                
+            case NANITE_REPAIR_PASTE:                  
+            case MINING_CRYSTALS:          
+            case STRUCTURE_GUIDED_BOMBS: 
+            case CAP_BOOSTER_CHARGES:   
+            case SCRIPTS:
+                setItems( ManagerDB.getInstance().invTypes().getMarketGroupID( ((AmmunitionEnum) t).getCode()) );
+                break;                
         }
     }    
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.invMarketGroups.drone;
+package managerindustry.logic.prove.invMarketGroups.old;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,13 +77,13 @@ public class DroneOLD {
             case COMBAT:
             case ELECTRONIC_WARFARE:
             case LOGISTIC:              
-                allDrone = ManagerDB.getInstance().invTypes().getAllItems(drone.getCode());
+                allDrone = ManagerDB.getInstance().invTypes().getParentGroupID(drone.getCode());
                 break;
             case FIGHTERS:      
             case MINING:      
             case COMBAT_UTILITY:    
             case SALVAGE:                
-                allDrone = ManagerDB.getInstance().invTypes().getAllCategory(drone.getCode());
+                allDrone = ManagerDB.getInstance().invTypes().getMarketGroupID(drone.getCode());
                 break;
         }
 //        display(allDrone); 

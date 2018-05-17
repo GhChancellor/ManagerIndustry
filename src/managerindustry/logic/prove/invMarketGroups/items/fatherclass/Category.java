@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.invMarketGroups.fatherclass;
+package managerindustry.logic.prove.invMarketGroups.items.fatherclass;
 
 import java.util.ArrayList;
 import java.util.HashMap;
