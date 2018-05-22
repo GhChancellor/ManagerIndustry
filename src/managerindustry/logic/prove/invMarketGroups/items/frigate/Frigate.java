@@ -16,10 +16,17 @@ public class Frigate extends Category<Object>{
     private enum FrigateEnum{
         STANDARD_FRIGATES(5),
         FACTION_FRIGATES(1362),
-        ADVANCED_FRIGATES(1364); 
+        ADVANCED_FRIGATES(1364),
+            INTERCEPTORS(399),
+            COVERT_OPS(420),
+            ASSAULT_FRIGATES(432),
+            ELECTRONIC_ATTACK_FRIGATES(1065),
+            EXPEDITION_FRIGATES(1924),
+            LOGISTICS_FRIGATES(2146);
 
-        private FrigateEnum(FrigateEnum ammunition) {
-            this.ammunition = ammunition;
+
+        private FrigateEnum(FrigateEnum frigateEnum) {
+            this.frigateEnum = frigateEnum;
         }
 
         private FrigateEnum(int code) {
@@ -27,7 +34,7 @@ public class Frigate extends Category<Object>{
         }
       
         private int code;
-        private FrigateEnum ammunition;
+        private FrigateEnum frigateEnum;
 
         public int getCode() {
             return code;
@@ -41,7 +48,7 @@ public class Frigate extends Category<Object>{
     }
 
     public Frigate() {
-        xxx(FrigateEnum.ADVANCED_FRIGATES , "");
+        xxx(FrigateEnum.STANDARD_FRIGATES , "");
         display(getItems());
     }
         
@@ -49,9 +56,18 @@ public class Frigate extends Category<Object>{
     public void initItems(Object t) {
         switch ((FrigateEnum)t){
             case STANDARD_FRIGATES:
+                addAllItems(ManagerDB.getInstance().invTypes().getParentGroupID( ((FrigateEnum) t).getCode(), true ) );
+                break;
             case ADVANCED_FRIGATES:
+                addAllItems(ManagerDB.getInstance().invTypes().getParentGroupID( ((FrigateEnum) t).INTERCEPTORS.getCode(), true ) );
+                addAllItems(ManagerDB.getInstance().invTypes().getParentGroupID( ((FrigateEnum) t).COVERT_OPS.getCode(), true ) );
+                addAllItems(ManagerDB.getInstance().invTypes().getParentGroupID( ((FrigateEnum) t).ASSAULT_FRIGATES.getCode(), true  ) );
+                addAllItems(ManagerDB.getInstance().invTypes().getParentGroupID( ((FrigateEnum) t).ELECTRONIC_ATTACK_FRIGATES.getCode(), true ) );
+                addAllItems(ManagerDB.getInstance().invTypes().getMarketGroupID( ((FrigateEnum) t).EXPEDITION_FRIGATES.getCode(), true  ) );
+                addAllItems(ManagerDB.getInstance().invTypes().getParentGroupID( ((FrigateEnum) t).LOGISTICS_FRIGATES.getCode(), true  ) );
+                break;
             case FACTION_FRIGATES:
-                setItems( ManagerDB.getInstance().invTypes().getParentGroupID( ((FrigateEnum) t).getCode()) );
+                setItems( ManagerDB.getInstance().invTypes().getParentGroupID( ((FrigateEnum) t).getCode(), true ) );
                 break;
         }
     }

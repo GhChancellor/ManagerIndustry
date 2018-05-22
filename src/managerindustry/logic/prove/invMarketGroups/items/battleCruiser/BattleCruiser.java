@@ -41,7 +41,7 @@ public class BattleCruiser extends Category<Object>{
     }
 
     public BattleCruiser() {
-        xxx(BattleCruiserEnum.FACTION_BATTLECRUISERS, "");    
+        xxx(BattleCruiserEnum.ADVANCED_BATTLECRUISERS, "");    
         display(getItems());
     }
     
@@ -51,7 +51,7 @@ public class BattleCruiser extends Category<Object>{
             case ADVANCED_BATTLECRUISERS:
             case FACTION_BATTLECRUISERS:
             case STANDARD_BATTLECRUISERS:
-                setItems( ManagerDB.getInstance().invTypes().getParentGroupID( ((BattleCruiserEnum) t).getCode()) );
+                setItems( ManagerDB.getInstance().invTypes().getParentGroupID( ((BattleCruiserEnum) t).getCode(), true ) );
                 break;                
         }
     }

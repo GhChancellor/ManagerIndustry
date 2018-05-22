@@ -58,13 +58,13 @@ public class Drone extends Category<Object>{
             case COMBAT:
             case ELECTRONIC_WARFARE:
             case LOGISTIC:              
-                setItems( ManagerDB.getInstance().invTypes().getParentGroupID( ((DroneEnum) t).getCode()) );
+                setItems( ManagerDB.getInstance().invTypes().getParentGroupID( ((DroneEnum) t).getCode(), true ) );
                 break;
             case FIGHTERS:      
             case MINING:      
             case COMBAT_UTILITY:    
             case SALVAGE:
-                setItems( ManagerDB.getInstance().invTypes().getMarketGroupID(((DroneEnum) t).getCode()) );
+                setItems( ManagerDB.getInstance().invTypes().getMarketGroupID(((DroneEnum) t).getCode(), true ) );
                 break;
         }
     }

@@ -26,6 +26,7 @@ public abstract class Category <T>{
     }
 
     public Category() {
+
     }
     
     public void xxx(T t, String typeName){
@@ -46,6 +47,10 @@ public abstract class Category <T>{
 
     public void setItems(List<InvTypes> items) {
         this.items = items;
+    }
+    
+    public void addAllItems(List<InvTypes> items){
+        this.items.addAll(items);
     }
     
     public void display(List < InvTypes > items){

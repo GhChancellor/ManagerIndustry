@@ -51,7 +51,7 @@ SELECT * from invTypes, invMarketGroups WHERE invMarketGroups.marketGroupID=470 
 	invTypes.marketGroupID=470 ;
 
 // Navy Issue
-  SELECT * from invTypes, invMarketGroups WHERE invTypes.marketGroupID=invMarketGroups.marketGroupID and
+SELECT * from invTypes, invMarketGroups WHERE invTypes.marketGroupID=invMarketGroups.marketGroupID and
  invMarketGroups.marketGroupID=1704;
 
 SELECT * from invTypes, invMarketGroups WHERE invTypes.marketGroupID=invMarketGroups.marketGroupID and

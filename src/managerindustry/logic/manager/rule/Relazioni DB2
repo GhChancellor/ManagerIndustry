@@ -1,4 +1,11 @@
- ALL TYPE SHIPS
+ ESEMPIO SEMPLICATO PER OTTERNE L'ELENCO DELLE NAVI DI UNA CATEGORIA
+  SELECT * from invTypes where invTypes.typeName ="Maulus Navy Issue";
+   SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1366;
+    SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1362;
+     SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
+      invMarketGroups.parentGroupID=1362; 
+
+ALL TYPE SHIPS
   SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=4; -- ships
   SELECT * from invMarketGroups WHERE invMarketGroups.parentGroupID=4; -- type ships
 
@@ -27,6 +34,55 @@
   SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1361; -- frigate
    SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1361; -- T1, T2, T3
     SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=5; -- razze
-     -- Se ti serve una singola razza
-      SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=61; -- 61, 64, 72, 77, 1616 
-     SELECT * from invTypes where invTypes.typeName ="Venture";
+     SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1616;	 
+       -- Se ti serve una singola razza
+       SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=61; -- 61, 64, 72, 77, 1616
+      SELECT * from invTypes where invTypes.typeName ="Venture"; -- 
+  
+  advanced frigate    
+  SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
+    invMarketGroups.parentGroupID=432; -- 399, 432, 420, 1065, 1924, 2146
+
+ BattleShip
+  SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1376; -- Battleships
+   SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1376; -- T1, T2, T3
+    SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=7;   
+     SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=7; -- race
+       -- Se ti serve una singola razza
+       SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=80; -- 
+      SELECT * from invTypes where invTypes.typeName ="raven"; -- "Redeemer"; 
+            
+  SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
+    invMarketGroups.parentGroupID=7; -- 
+
+ Capital ship
+  SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1381; -- Capital Ships
+   SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1381; -- T1, T2, T3
+    SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1047;   
+     SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1047; -- race
+       -- Se ti serve una singola razza
+       SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1048; -- 
+      SELECT * from invTypes where invTypes.typeName ="Rorqual"; -- 761, 766, 812, 817, 1047, 1089, 2271
+            
+  SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
+    invMarketGroups.parentGroupID=761; -- 
+
+ Corvettes ( Velator )
+  SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1381; -- Corvettes
+    SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1815;   
+     SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1815; -- race
+       -- Se ti serve una singola razza
+       SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1816; -- 
+      SELECT * from invTypes where invTypes.typeName ="Impairor"; 
+            
+  SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
+    invMarketGroups.parentGroupID=1047; -- 
+
+ Cruisers
+  SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1381; -- Cruisers
+   SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1368; -- T1, T2, T3
+    SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=448;   
+     SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=448; -- race
+       -- Se ti serve una singola razza
+       SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=449; -- 
+      SELECT * from invTypes where invTypes.typeName ="Sacrilege"; -- 

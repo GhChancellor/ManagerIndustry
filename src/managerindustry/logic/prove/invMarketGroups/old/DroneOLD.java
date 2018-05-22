@@ -77,13 +77,13 @@ public class DroneOLD {
             case COMBAT:
             case ELECTRONIC_WARFARE:
             case LOGISTIC:              
-                allDrone = ManagerDB.getInstance().invTypes().getParentGroupID(drone.getCode());
+                allDrone = ManagerDB.getInstance().invTypes().getParentGroupID(drone.getCode(), true );
                 break;
             case FIGHTERS:      
             case MINING:      
             case COMBAT_UTILITY:    
             case SALVAGE:                
-                allDrone = ManagerDB.getInstance().invTypes().getMarketGroupID(drone.getCode());
+                allDrone = ManagerDB.getInstance().invTypes().getMarketGroupID(drone.getCode(), true );
                 break;
         }
 //        display(allDrone); 

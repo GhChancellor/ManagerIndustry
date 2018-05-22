@@ -65,7 +65,7 @@ public class AmmunionCharges extends Category<Object>{
             case PROJECTILE_AMMO:
             case HYBRID_CHARGES:                                    
             case FREQUENCY_CRYSTALS:  
-                setItems( ManagerDB.getInstance().invTypes().getParentGroupID( ((AmmunitionEnum) t).getCode()) );
+                setItems( ManagerDB.getInstance().invTypes().getParentGroupID( ((AmmunitionEnum) t).getCode(), true ) );
                 break;
             case BOMBS:                
             case NANITE_REPAIR_PASTE:                  
@@ -73,7 +73,7 @@ public class AmmunionCharges extends Category<Object>{
             case STRUCTURE_GUIDED_BOMBS: 
             case CAP_BOOSTER_CHARGES:   
             case SCRIPTS:
-                setItems( ManagerDB.getInstance().invTypes().getMarketGroupID( ((AmmunitionEnum) t).getCode()) );
+                setItems( ManagerDB.getInstance().invTypes().getMarketGroupID( ((AmmunitionEnum) t).getCode(), true ) );
                 break;                
         }
     }    
