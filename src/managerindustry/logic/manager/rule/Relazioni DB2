@@ -86,3 +86,46 @@ ALL TYPE SHIPS
        -- Se ti serve una singola razza
        SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=449; -- 
       SELECT * from invTypes where invTypes.typeName ="Sacrilege"; -- 
+
+ Destroyers
+  SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1372; -- Destroyers
+   SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1372; -- T1, T2, T3
+    SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=464;   
+     SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=464; -- race
+       -- Se ti serve una singola razza
+       SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=466; -- 
+      SELECT * from invTypes where invTypes.typeName ="Cormorant"; --
+      
+        SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
+    invMarketGroups.parentGroupID=464; -- 2125
+
+ Industrial ship
+  SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1382; -- Industrial ship
+   SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1382; -- T1, T2, T3
+    SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=8;   
+     SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=8; -- race
+       -- Se ti serve una singola razza
+       SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=85; -- 
+      SELECT * from invTypes where invTypes.typeName ="Sigil"; --
+      
+        SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
+    invMarketGroups.parentGroupID=8; --
+
+ Mining Barges
+    SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1384;   
+     SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1384; -- race
+       -- Se ti serve una singola razza
+       SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=874; -- 
+        SELECT * from invTypes where invTypes.typeName ="Hulk"; 
+
+    SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
+     invMarketGroups.marketGroupID=874;
+
+ Shuttles
+    SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=391;   
+     SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=391; -- race
+       -- Se ti serve una singola razza
+       SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=393; -- 
+      SELECT * from invTypes where invTypes.typeName ="Amarr Shuttle"; --
+
+      

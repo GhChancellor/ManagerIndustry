@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.invMarketGroups.items.capitalShip;
+package managerindustry.logic.prove.invMarketGroups.items.ships.capitalShip;
 
-import managerindustry.logic.prove.invMarketGroups.items.battleCruiser.*;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.prove.invMarketGroups.items.fatherclass.Category;
 

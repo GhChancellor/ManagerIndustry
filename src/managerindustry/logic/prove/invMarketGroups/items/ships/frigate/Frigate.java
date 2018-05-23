@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.invMarketGroups.items.frigate;
+package managerindustry.logic.prove.invMarketGroups.items.ships.frigate;
 
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.prove.invMarketGroups.items.fatherclass.Category;

@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.invMarketGroups.items.cruisers;
+package managerindustry.logic.prove.invMarketGroups.items.ships.cruisers;
 
-import managerindustry.logic.prove.invMarketGroups.items.frigate.*;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.prove.invMarketGroups.items.fatherclass.Category;
 
@@ -23,8 +22,9 @@ public class Cruisers extends Category<Object>{
             STRATEGIC_CRUISERS(1138),
             FLAG_CRUISERS(2416), // ???
         STANDARD_CRUISERS(6),
-        FACTION_CRUISERS(1369);
-
+        FACTION_CRUISERS(1369),
+        T3_CRUISERS(0);
+        
         private CruisersEnum(CruisersEnum cruisers) {
             this.cruisers = cruisers;
         }
@@ -63,11 +63,13 @@ public class Cruisers extends Category<Object>{
                 addAllItems(ManagerDB.getInstance().invTypes().getParentGroupID( ((CruisersEnum) t).HEAVY_ASSAULT_CRUISERS.getCode(), true ) );
                 addAllItems(ManagerDB.getInstance().invTypes().getParentGroupID( ((CruisersEnum) t).RECON_SHIPS.getCode(), true  ) );
                 addAllItems(ManagerDB.getInstance().invTypes().getParentGroupID( ((CruisersEnum) t).HEAVY_INTERDICTION_CRUISERS.getCode(), true ) );
-                addAllItems(ManagerDB.getInstance().invTypes().getParentGroupID(((CruisersEnum) t).STRATEGIC_CRUISERS.getCode(), true  ) );
                 addAllItems(ManagerDB.getInstance().invTypes().getParentGroupID( ((CruisersEnum) t).FLAG_CRUISERS.getCode(), true  ) );
                 break;
             case FACTION_CRUISERS:
                 setItems( ManagerDB.getInstance().invTypes().getParentGroupID( ((CruisersEnum) t).getCode(), true ) );
+                break;
+            case T3_CRUISERS:
+                setItems(ManagerDB.getInstance().invTypes().getParentGroupID(((CruisersEnum) t).STRATEGIC_CRUISERS.getCode(), true  ) );
                 break;
         }
     }
