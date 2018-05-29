@@ -8,7 +8,7 @@ package managerindustry.logic.prove.invMarketGroups.old;
 import java.util.HashMap;
 import java.util.Map;
 import managerindustry.logic.prove.invMarketGroups.old.ItemClass;
-import managerindustry.logic.prove.invMarketGroups.items.fatherclass.Category;
+import managerindustry.logic.prove.invMarketGroups.old.items.fatherclass.Category;
 
 /**
  *

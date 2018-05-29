@@ -5,6 +5,26 @@
      SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
       invMarketGroups.parentGroupID=1362; 
 
+Versione generica completa
+   SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=4; -- ships
+    SELECT * from invMarketGroups WHERE invMarketGroups.parentGroupID=4; -- type ships
+     SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1361; -- class ships
+      SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1361; -- t1, t2, t3
+       SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=1364; -- Advanced Frigates
+        SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=1364;	-- Interceptors, Covert Ops 	    
+         SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=399; -- Interceptors
+          SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=399; -- race
+           SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=401; -- Caldari
+            SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=401; -- non ce più nulla
+    
+    -- razza specifica
+    SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
+      invMarketGroups.marketGroupID=401; 
+      
+     -- tutte le razze  
+     SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
+      invMarketGroups.parentGroupID=39
+
 ALL TYPE SHIPS
   SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=4; -- ships
   SELECT * from invMarketGroups WHERE invMarketGroups.parentGroupID=4; -- type ships

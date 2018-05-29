@@ -138,12 +138,12 @@ public class ManagerDB {
         return industryActivitySkillsX;
     }
     
-//    /**
-//     * Get all values of the InvMarketGroups ( entities ) like parent group of object
-//     * @return InvMarketGroupsX
-//     */    
-//    public InvMarketGroupsX invMarketGroups(){
-//        InvMarketGroupsX invMarketGroups = new InvMarketGroupsX(entityManager);
-//        return invMarketGroups;
-//    }
+    /**
+     * Get all values of the InvMarketGroups ( entities ) like parent group of object
+     * @return InvMarketGroupsX
+     */    
+    public InvMarketGroupsX invMarketGroupsX(){
+        InvMarketGroupsX invMarketGroups = new InvMarketGroupsX(entityManager);
+        return invMarketGroups;
+    }
 }

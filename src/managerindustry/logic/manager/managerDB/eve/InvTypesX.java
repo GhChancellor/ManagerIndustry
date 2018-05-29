@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.manager.managerDB.eve;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -123,7 +124,7 @@ public class InvTypesX {
             List<InvTypes> resultList = typedQuery.getResultList();
             
             if (resultList.isEmpty()){
-                return null;
+                return new ArrayList<>();
             }else{
                 return resultList;
             }
@@ -153,7 +154,7 @@ public class InvTypesX {
             List<InvTypes> resultList = typedQuery.getResultList();
             
             if (resultList.isEmpty()){
-                return null;
+                return new ArrayList<>();
             }else{
                 return resultList;
             }
@@ -164,6 +165,5 @@ public class InvTypesX {
         }
         
     }   
-    
     
 }

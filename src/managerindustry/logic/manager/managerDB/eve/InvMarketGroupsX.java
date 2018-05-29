@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.manager.managerDB.eve;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -22,4 +23,46 @@ public class InvMarketGroupsX {
         this.entityManager = entityManager;
     }    
     
+    /**
+     * Get Parent Group ID
+     * @param int code
+     * @return List < InvMarketGroups >
+     */
+    public List < InvMarketGroups > getParentGroupID(int code){
+        try {
+            TypedQuery < InvMarketGroups > typedQuery = 
+                entityManager.createNamedQuery("InvMarketGroups.findByParentGroupID", InvMarketGroups.class);
+            typedQuery.setParameter("parentGroupID", code);
+            if ( typedQuery.getResultList().isEmpty()){
+                return new ArrayList<>();
+            }else{
+                return typedQuery.getResultList();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    /**
+     * Get Market GroupID
+     * @param int code
+     * @return < InvMarketGroups >
+     */
+    public List < InvMarketGroups > getMarketGroupID(int code){
+        try {
+            TypedQuery < InvMarketGroups > typedQuery = 
+                entityManager.createNamedQuery("InvMarketGroups.findByMarketGroupID", InvMarketGroups.class);
+            typedQuery.setParameter("marketGroupID", code);
+            if ( typedQuery.getResultList().isEmpty()){
+                return new ArrayList<>();
+            }else{
+                return typedQuery.getResultList();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+  
+    }
 }
