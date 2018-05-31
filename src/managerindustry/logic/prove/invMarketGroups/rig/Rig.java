@@ -14,6 +14,7 @@ import managerindustry.logic.manager.managerDB.ManagerDB;
  */
 public class Rig{
     private String typeName;
+    private String description;
     private int typeID;
 
     public Rig() {

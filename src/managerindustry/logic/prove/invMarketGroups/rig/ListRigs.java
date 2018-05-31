@@ -28,10 +28,10 @@ public class ListRigs {
     }
     
     private void initRig(){
-        xxx(43920);
+        addRig(43920);
     }
     
-    private void xxx(int code){
+    private void addRig(int code){
         Rig rig = new Rig(43920);
         rigs.add(rig);        
     }
