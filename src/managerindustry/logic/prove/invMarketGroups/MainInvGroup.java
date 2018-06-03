@@ -7,6 +7,7 @@ package managerindustry.logic.prove.invMarketGroups;
 
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.manager.managerDB.ManagerDB;
+import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecursionA;
 import managerindustry.logic.prove.invMarketGroups.old.items.ammunion.AmmunionCharges;
 import managerindustry.logic.prove.invMarketGroups.old.items.ships.battleCruiser.BattleCruiser;
 import managerindustry.logic.prove.invMarketGroups.old.items.ships.battleships.Battleships;
@@ -20,9 +21,12 @@ import managerindustry.logic.prove.invMarketGroups.old.items.ships.industrialShi
 import managerindustry.logic.prove.invMarketGroups.old.items.ships.miningBarges.MiningBarges;
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 import managerindustry.logic.prove.invMarketGroups.old.DroneOLD;
-import managerindustry.logic.prove.invMarketGroups.rig.EffectRig;
-import managerindustry.logic.prove.invMarketGroups.rig.RigGroups;
+import managerindustry.logic.prove.invMarketGroups.rig.RigDescription;
+import managerindustry.logic.prove.invMarketGroups.rig.effectRig.EffectRig;
+import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.RigMedium;
 import managerindustry.logic.prove.invMarketGroups.rig.StructureRig;
+import managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship_ModuleModifications.Rigs;
+import managerindustry.logic.prove.invMarketGroups.rig.riggroups.RigGroups;
 
 /**
  * http://evewiz.com/329-data-interfaces
@@ -36,24 +40,30 @@ public class MainInvGroup {
         personal deployables, implants and cargo containers
          */
 //        InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesByName("Standup M-Set Equipment Manufacturing Material Efficiency I");
-        RigGroups rigGroups = new RigGroups();
-        
+       
+       
+
         StructureRig structureRig = new StructureRig();
-        structureRig.newRigs(rigGroups.getStandupMSetAdvancedComponentManufacturing());
+//        structureRig.newRigGroups(RigGroups.getInstance().rigMedium().getStandupMSetAdvancedComponentManufacturing()); // rigGroups.getStandupMSetAdvancedComponentManufacturing()
+//    
+//        structureRig.getRigGroups().forEach((t) -> {
+//            System.out.println(""+ t.getTypeName()  );
+//
+//        });
+
         structureRig.newEffect(EffectRig.getInstance().ships().cruisers().getAdvancedCruisers());
+
         
-        structureRig.getItemRecusions().forEach((t) -> {
-            System.out.println(""+t);
+        structureRig.getEffects().forEach((t) -> {
+//            System.out.println(""+ ((InvTypes)t.)  );
         });
+    
         
-        structureRig.getRigGroups().forEach((t) -> {
-            System.out.println(""+t);
-        });
 
     }
     
     public static void X001(){
-        ItemRecusion ir = new ItemRecusion(404,405);
+        ItemRecusion ir = new ItemRecusion(1111);
             
 //        Drone drone = new Drone();
 //        AmmunionCharges ammunionCharges = new AmmunionCharges();

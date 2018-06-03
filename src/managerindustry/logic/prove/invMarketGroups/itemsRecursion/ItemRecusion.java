@@ -15,7 +15,8 @@ import managerindustry.logic.manager.managerDB.ManagerDB;
  * @author lele
  */
 public class ItemRecusion {
-
+    private ItemRecursionA ira = new ItemRecursionA();
+    
     /**
      * Init ItemRecusion with all tree 
      * @param code 
@@ -24,6 +25,9 @@ public class ItemRecusion {
         List<InvMarketGroups> parentGroupIDs = ManagerDB.getInstance().invMarketGroupsX().getMarketGroupID(code);
         ItemRecursionA recursionA02 = new ItemRecursionA();
         recusionAllBranches(parentGroupIDs, recursionA02 );
+        
+        ira = recursionA02;
+        
         display(recursionA02, "");
         
         System.out.println("");
@@ -93,6 +97,8 @@ public class ItemRecusion {
         }
     }
     
+    
+    
     private void display(ItemRecursionA recursionA02, String tab){
         System.out.println(tab + recursionA02.getMarketGroupName() + " " + recursionA02.getMarketGroupID() + " " + recursionA02.getParentGroupID());
         tab +="  ";
@@ -108,9 +114,13 @@ public class ItemRecusion {
         
         for (ItemRecursionB object : recursionA02.getRecursionB02s()) {
             display(object.getRecursionA02(), tab);
-        }
-        
+        }        
     }
+
+    public ItemRecursionA getIra() {
+        return ira;
+    }
+    
 }
 /*
    SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=4; -- ships

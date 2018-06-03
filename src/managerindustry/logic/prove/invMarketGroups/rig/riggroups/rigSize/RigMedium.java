@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.invMarketGroups.rig;
+package managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,20 +11,11 @@ import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**
- *
+ * marketGroupID 2347 
+ * parentGroupID 2340
  * @author lele
  */
-public class RigGroups {
-    
-    private List<InvTypes> getInvTypes(List<Integer> rigGroups){
-        List<InvTypes> invTypeses = new ArrayList<>();
-        for (Integer rigGroup : rigGroups) {
-            InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesById(rigGroup);
-            invTypeses.add(invTypes);
-        }
-        return invTypeses;
-    }
-    
+public class RigMedium extends RigSize{
     public List<InvTypes> getStandupMSetAdvancedComponentManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43867); // Standup M-Set Advanced Component Manufacturing Material Efficiency I
@@ -124,60 +115,56 @@ public class RigGroups {
         return getInvTypes(rigGroups);
     }
     
-//    public List<InvTypes> get(){
-//        List<Integer> rigGroups = new ArrayList<>();
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        return getInvTypes(rigGroups);
-//    }
-//    
-//    public List<InvTypes> get(){
-//        List<Integer> rigGroups = new ArrayList<>();
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        return getInvTypes(rigGroups);
-//    }
-//    
-//    public List<InvTypes> get(){
-//        List<Integer> rigGroups = new ArrayList<>();
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        return getInvTypes(rigGroups);
-//    }
-//    
-//    public List<InvTypes> get(){
-//        List<Integer> rigGroups = new ArrayList<>();
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        return getInvTypes(rigGroups);
-//    }
-//    
-//    public List<InvTypes> get(){
-//        List<Integer> rigGroups = new ArrayList<>();
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        return getInvTypes(rigGroups);
-//    }
-//    
-//    public List<InvTypes> get(){
-//        List<Integer> rigGroups = new ArrayList<>();
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        rigGroups.add(); // 
-//        return getInvTypes(rigGroups);
-//    }
+    public List<InvTypes> getStandupMSetEquipmentManufacturing(){
+        List<Integer> rigGroups = new ArrayList<>();
+        rigGroups.add(43920); // Standup M-Set Equipment Manufacturing Material Efficiency I
+        rigGroups.add(43921); // Standup M-Set Equipment Manufacturing Material Efficiency II
+        rigGroups.add(37160); // Standup M-Set Equipment Manufacturing Time Efficiency I
+        rigGroups.add(37161); // Standup M-Set Equipment Manufacturing Time Efficiency II
+        return getInvTypes(rigGroups);
+    }
     
+    public List<InvTypes> getStandupMSetInvention(){
+        List<Integer> rigGroups = new ArrayList<>();
+        rigGroups.add(43880); // Standup M-Set Invention Accelerator I
+        rigGroups.add(43881); // Standup M-Set Invention Accelerator II
+        rigGroups.add(43879); // Standup M-Set Invention Cost Optimization I
+        rigGroups.add(43878); // Standup M-Set Invention Cost Optimization II
+        return getInvTypes(rigGroups);
+    }
     
-
+    public List<InvTypes> getStandupMSetMEResearch(){
+        List<Integer> rigGroups = new ArrayList<>();
+        rigGroups.add(43883); // Standup M-Set ME Research Accelerator I
+        rigGroups.add(43882); // Standup M-Set ME Research Accelerator II
+        rigGroups.add(43885); // Standup M-Set ME Research Cost Optimization I
+        rigGroups.add(43884); // Standup M-Set ME Research Cost Optimization II
+        return getInvTypes(rigGroups);
+    }
+    
+    public List<InvTypes> getStandupMSetStructureManufacturing(){
+        List<Integer> rigGroups = new ArrayList<>();
+        rigGroups.add(43875); // Standup M-Set Structure Manufacturing Material Efficiency I
+        rigGroups.add(43874); // Standup M-Set Structure Manufacturing Material Efficiency II
+        rigGroups.add(43876); // Standup M-Set Structure Manufacturing Time Efficiency I
+        rigGroups.add(43877); // Standup M-Set Structure Manufacturing Time Efficiency II
+        return getInvTypes(rigGroups);
+    }
+    
+    public List<InvTypes> getStandupMSetTEResearch(){
+        List<Integer> rigGroups = new ArrayList<>();
+        rigGroups.add(43889); // Standup M-Set TE Research Accelerator I
+        rigGroups.add(43888); // Standup M-Set TE Research Accelerator II
+        rigGroups.add(43887); // Standup M-Set TE Research Cost Optimization I
+        rigGroups.add(43886); // Standup M-Set TE Research Cost Optimization II
+        return getInvTypes(rigGroups);
+    }
+    
+    public List<InvTypes> getStandupMSetThukkerAdvancedComponentManufacturing(){
+        List<Integer> rigGroups = new ArrayList<>();
+        rigGroups.add(45640); // Standup M-Set Thukker Advanced Component Manufacturing Material Efficiency
+        rigGroups.add(45544); // Standup M-Set Thukker Basic Capital Component Manufacturing Material Efficiency
+        return getInvTypes(rigGroups);
+    }
+    
 }

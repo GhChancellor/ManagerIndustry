@@ -17,25 +17,33 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class StructureRig {
-    private List<Rig> rigGroups = new ArrayList<>();
-    private List<ItemRecusion> itemRecusions = new ArrayList<>();
+    private List<RigDescription> rigGroups = new ArrayList<>();
+    private List<ItemRecusion> effects = new ArrayList<>();
 
     /**
-     * New Rig
+     * New RigDescription
      * @param InvTypes invTypes 
      */
     public void newRig(InvTypes invTypes){
-        Rig rig = new Rig(invTypes);
+        RigDescription rig = new RigDescription(invTypes);
         rigGroups.add(rig);
+    }
+
+    /**
+     * Get RigDescription Groups
+     * @return List<Rig> 
+     */
+    public List<RigDescription> getRigGroups() {
+        return rigGroups;
     }
     
     /**
-     * New Rig groups
+     * New RigDescription groups
      * @param List < InvTypes > invTypeses 
      */
-    public void newRigs(List < InvTypes > invTypeses){
+    public void newRigGroups(List < InvTypes > invTypeses){
         for (InvTypes invTypes : invTypeses) {
-            Rig rig = new Rig(invTypes);
+            RigDescription rig = new RigDescription(invTypes);
             rigGroups.add(rig); 
         }
     }
@@ -46,27 +54,19 @@ public class StructureRig {
      * @param int excludeCode 
      */
     public void newEffect(ItemRecusion itemRecusion){
-        itemRecusions.add(itemRecusion);
+        effects.add(itemRecusion);
     }
 
     /**
      * Get Item Recusions
      * @return List<ItemRecusion>
      */
-    public List<ItemRecusion> getItemRecusions() {
+    public List<ItemRecusion> getEffects() {
         List< ItemRecusion > groupItems = new ArrayList<>();
-        groupItems.addAll(itemRecusions);
+        groupItems.addAll(effects);
         return groupItems;
     }   
-
-    /**
-     * Get Rig Groups
-     * @return List<Rig> 
-     */
-    public List<Rig> getRigGroups() {
-        return rigGroups;
-    }
-    
+   
 }
 
 

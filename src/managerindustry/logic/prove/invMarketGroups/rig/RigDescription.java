@@ -12,15 +12,15 @@ import managerindustry.logic.manager.managerDB.ManagerDB;
  *
  * @author lele
  */
-public class Rig{
+public class RigDescription{
     private String typeName;
     private String description;
     private int typeID;
 
-    public Rig() {
+    public RigDescription() {
     }
 
-    public Rig(InvTypes invTypes) {
+    public RigDescription(InvTypes invTypes) {
         this.typeName = invTypes.getTypeName();
         this.description = invTypes.getDescription();
         this.typeID = invTypes.getTypeID();
@@ -30,7 +30,7 @@ public class Rig{
      * @deprecated 
      * @param typeID 
      */
-    public Rig(int typeID) {
+    public RigDescription(int typeID) {
         InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesById(typeID);
         this.typeID = invTypes.getTypeID();
         this.typeName = invTypes.getTypeName();
