@@ -12,11 +12,19 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class MiningBarges {
-    public final ItemRecusion getExhumers (){
+    /**
+     * GetExhumers
+     * @return ItemRecusion
+     */     
+    public final ItemRecusion getExhumers(){
         ItemRecusion exhumers = new ItemRecusion(874);
         return exhumers;
     } 
     
+    /**
+     * Get Mining Barges
+     * @return ItemRecusion
+     */     
     public final ItemRecusion getMiningBarges(){
         ItemRecusion miningBarges = new ItemRecusion(494);
         return miningBarges;

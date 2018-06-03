@@ -12,6 +12,10 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class StandardCapitalShipComponets {
+    /**
+     * 
+     * @return ItemRecusion
+     */     
     public final ItemRecusion getStandardCapitalShipComponents(){
         ItemRecusion standardCapitalShipComponents = new ItemRecusion(781); 
         return standardCapitalShipComponents;

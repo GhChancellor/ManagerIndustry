@@ -9,16 +9,12 @@ package managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship_ModuleMod
  *
  * @author lele
  */
-public class Ship_ModuleModifications {
+public class Ship_ModuleModifications {    
     public Rigs rigs(){
         Rigs rigs = new Rigs();
         return rigs;
     }
     
-    /**
-     * T3 Subsystems
-     * @return 
-     */
     public Subsystems subsystems(){
         Subsystems subsystems = new Subsystems();
         return subsystems;

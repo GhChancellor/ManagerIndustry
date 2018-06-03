@@ -59,7 +59,7 @@ public class DgmTypeAttributesX {
         */
 
         ////         Convert name to Id
-        InvTypes invTypes = ManagerDB.getInstance().invTypes().getIdByName(bpoName);
+        InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesByName(bpoName);
          // ManagerDBEve.getInstance().getInvTypes_IdByName(bpoName);
         
         if ( invTypes == null ){

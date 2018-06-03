@@ -53,7 +53,7 @@ public class SkillProduction <T>{
     public void skillTree02(){
         List < Integer > skills = new ArrayList<>();
         
-        int typeId = ManagerDB.getInstance().invTypes().getIdByName("Oscillator Capacitor Unit Blueprint ").getTypeID();
+        int typeId = ManagerDB.getInstance().invTypes().getInvTypesByName("Oscillator Capacitor Unit Blueprint ").getTypeID();
         
         List<IndustryActivitySkills> requiredSkill = 
             ManagerDB.getInstance().IndustryActivitySkills().getRequiredSkill(typeId, RamActivitiesEnum.MANUFACTURING);
@@ -90,7 +90,7 @@ public class SkillProduction <T>{
     public void skillTree(){
         List < Integer > skills = new ArrayList<>();
         
-        int typeId = ManagerDB.getInstance().invTypes().getIdByName("Oscillator Capacitor Unit Blueprint ").getTypeID();
+        int typeId = ManagerDB.getInstance().invTypes().getInvTypesByName("Oscillator Capacitor Unit Blueprint ").getTypeID();
         
         List<IndustryActivitySkills> requiredSkill = 
             ManagerDB.getInstance().IndustryActivitySkills().getRequiredSkill(typeId, RamActivitiesEnum.MANUFACTURING);

@@ -152,7 +152,7 @@ public class BuildItem {
      ComponentX dad, RamActivitiesEnum activitiesEnum){   
         for (IndustryActivityMaterials nameItemToBuild1 : nameItemToBuild) {
             InvTypes invTypes =
-              ManagerDB.getInstance().invTypes().getNameById(nameItemToBuild1.getMaterialTypeID());
+              ManagerDB.getInstance().invTypes().getInvTypesById(nameItemToBuild1.getMaterialTypeID());
 //            System.out.println(tab + invTypes.getTypeID() + " " + invTypes.getTypeName() + " " + nameItemToBuild1.getQuantity());
 
             ComponentX componentX = new ComponentX();
@@ -251,7 +251,7 @@ public class BuildItem {
     public void itemDescription(){
         // 43867 Standup M-Set Advanced Component Manufacturing Material Efficiency I
         String bpoName = "drake Blueprint"; // Nighthawk Blueprint 
-        InvTypes invTypes = ManagerDB.getInstance().invTypes().getIdByName(bpoName);
+        InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesByName(bpoName);
         
         List < DgmTypeAttributes > dgmTypeAttributes = 
           ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributes(invTypes.getTypeID());

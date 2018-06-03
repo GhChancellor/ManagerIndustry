@@ -12,6 +12,10 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class StructureModifications {
+    /**
+     * Get Structure Modifications
+     * @return ItemRecusion
+     */     
     public final ItemRecusion getStructureModifications(){
         ItemRecusion structureModifications = new ItemRecusion(2203);
         return structureModifications;

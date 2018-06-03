@@ -50,7 +50,7 @@ public class MainProgramm {
 //        String item = "Hammerhead I";
         String item = "Punisher";
         
-        int typeID = ManagerDB.getInstance().invTypes().getIdByName(item).getTypeID();
+        int typeID = ManagerDB.getInstance().invTypes().getInvTypesByName(item).getTypeID();
         System.out.println(""+ item + " ID: " + typeID );
         
         int run = 662;

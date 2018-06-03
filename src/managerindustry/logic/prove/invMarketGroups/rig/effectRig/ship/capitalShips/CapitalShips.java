@@ -8,16 +8,16 @@ package managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship.capitalSh
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
- *
+ * @deprecated 
  * @author lele
  */
 public class CapitalShips {
     /**
-     * @deprecated 
-     * @return 
+     * Get Jump Freighters
+     * @return ItemRecusion
      */
     public final ItemRecusion getJumpFreighters(){
-        ItemRecusion jumpFreighters = new ItemRecusion(1089); // <----
+        ItemRecusion jumpFreighters = new ItemRecusion(1089); 
         return jumpFreighters;
     }     
 }

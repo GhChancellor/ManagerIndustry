@@ -12,6 +12,10 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class DroneFighters {
+    /**
+     * Get Drone Fighters
+     * @return ItemRecusion
+     */     
     public final ItemRecusion getDroneFighters(){
         ItemRecusion droneFighters = new ItemRecusion(157);
         return droneFighters;

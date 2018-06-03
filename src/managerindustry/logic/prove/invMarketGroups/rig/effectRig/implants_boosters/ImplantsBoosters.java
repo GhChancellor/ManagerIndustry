@@ -10,6 +10,7 @@ package managerindustry.logic.prove.invMarketGroups.rig.effectRig.implants_boost
  * @author lele
  */
 public class ImplantsBoosters {
+   
     public Boosters boosters(){
         Boosters boosters = new Boosters();
         return boosters;

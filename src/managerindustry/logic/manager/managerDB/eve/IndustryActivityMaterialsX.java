@@ -61,7 +61,7 @@ public class IndustryActivityMaterialsX {
         */
         
 ////         Convert name to Id
-        InvTypes typeID = ManagerDB.getInstance().invTypes().getIdByName(bpoName);
+        InvTypes typeID = ManagerDB.getInstance().invTypes().getInvTypesByName(bpoName);
         
         if ( typeID == null ){
             return null;            

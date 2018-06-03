@@ -61,11 +61,11 @@ public class InvTypesX {
     }
     
     /**
-     * Get name, convert ID to Name Drake ID 24698
+     * Get items from ID 
      * @param int typeID
      * @return InvTypes
      */    
-    public InvTypes getNameById ( int typeID ){
+    public InvTypes getInvTypesById ( int typeID ){
         try {
             TypedQuery < InvTypes > nameByIdTQ = 
              entityManager.createNamedQuery("InvTypes.findByTypeID", InvTypes.class);
@@ -84,11 +84,11 @@ public class InvTypesX {
     }    
     
     /**
-     * Get Types Name, convert name to ID like Drake ID 24698
+     * Get items from name
      * @param String name
      * @return InvTypes 
      */   
-    public InvTypes getIdByName(String name){
+    public InvTypes getInvTypesByName(String name){
         try {
             TypedQuery < InvTypes > idByNameTQ = 
              entityManager.createNamedQuery("InvTypes.findByTypeName", InvTypes.class);

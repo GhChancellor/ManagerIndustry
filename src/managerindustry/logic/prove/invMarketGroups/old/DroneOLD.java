@@ -53,7 +53,7 @@ public class DroneOLD {
      */
     public DroneOLD() {
         initCategory(DroneEnum.COMBAT);
-        InvTypes invTypes = ManagerDB.getInstance().invTypes().getIdByName("Ice Harvesting Drone I");        
+        InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesByName("Ice Harvesting Drone I");        
         
         for (InvTypes allDrones : allDrone) {
             if ( allDrones.getMarketGroupID() == invTypes.getMarketGroupID() ){

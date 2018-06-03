@@ -12,6 +12,10 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class AmmunitionCarges {
+    /**
+     * Get Ammunition Carges
+     * @return ItemRecusion
+     */     
     public final ItemRecusion getAmmunitionCarges(){
         ItemRecusion ammunitionCarges = new ItemRecusion(11);
         return ammunitionCarges;

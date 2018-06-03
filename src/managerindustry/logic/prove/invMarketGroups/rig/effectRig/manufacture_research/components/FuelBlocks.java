@@ -12,6 +12,10 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class FuelBlocks {
+    /**
+     * 
+     * @return ItemRecusion
+     */     
     public final ItemRecusion getFuelBlocks(){
         ItemRecusion fuelBlocks = new ItemRecusion(1870); 
         return fuelBlocks;

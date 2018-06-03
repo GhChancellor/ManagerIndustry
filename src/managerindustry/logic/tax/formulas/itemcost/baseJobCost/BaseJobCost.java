@@ -39,7 +39,7 @@ public class BaseJobCost {
 //            String key = entry.getKey();
             ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
             InvTypes invTypes = 
-             ManagerDB.getInstance().invTypes().getIdByName(totalCalculatedComponent.getName());
+             ManagerDB.getInstance().invTypes().getInvTypesByName(totalCalculatedComponent.getName());
             
             Float jobCost = 
              JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
@@ -68,7 +68,7 @@ public class BaseJobCost {
 //            String key = entry.getKey();
             ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
             int typesId = 
-                ManagerDB.getInstance().invTypes().getIdByName
+                ManagerDB.getInstance().invTypes().getInvTypesByName
                 (totalCalculatedComponent.getName()).getTypeID();
             
 //            Float jobCost = 

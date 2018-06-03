@@ -31,7 +31,7 @@ public abstract class Category <T>{
     
     public void xxx(T t, String typeName){
         initItems(t);
-        InvTypes invTypes = ManagerDB.getInstance().invTypes().getIdByName(typeName);
+        InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesByName(typeName);
         
         for (InvTypes item : items) {
             if ( item.getMarketGroupID() == invTypes.getMarketGroupID() ){

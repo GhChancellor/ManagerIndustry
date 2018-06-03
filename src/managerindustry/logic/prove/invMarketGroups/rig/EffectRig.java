@@ -6,6 +6,7 @@
 package managerindustry.logic.prove.invMarketGroups.rig;
 
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.ammunitionCarges.AmmunitionCarges;
+import managerindustry.logic.prove.invMarketGroups.rig.effectRig.deployableStructures.DeployableStructures;
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.droneFighters.DroneFighters;
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.shipEquipment.ShipEquipment;
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship.Ships;
@@ -27,8 +28,7 @@ public class EffectRig {
         if ( instance == null )
             instance = new EffectRig();
         return instance;
-    }    
-    
+    }     
     
     public AmmunitionCarges ammunitionCarges(){
         AmmunitionCarges ammunitionCarges = new AmmunitionCarges();
@@ -75,11 +75,15 @@ public class EffectRig {
         return ship_ModuleModifications;
     }
     
-   public StructureEquipment structureEquipment(){
+    public StructureEquipment structureEquipment(){
        StructureEquipment structureEquipment = new StructureEquipment();
        return structureEquipment;
-   }
+    }
     
+    public DeployableStructures deployableStructures(){
+        DeployableStructures deployableStructures = new DeployableStructures();
+        return deployableStructures;
+    }
 }
 
 //        ItemRecusion ammunitionCarges = new ItemRecusion(11);

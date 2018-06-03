@@ -12,11 +12,19 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class Frigates {
+    /**
+     * Get Standard Frigates
+     * @return ItemRecusion
+     */     
     public final ItemRecusion getStandardFrigates(){
         ItemRecusion standardFrigates = new ItemRecusion(5);
         return standardFrigates;
     } 
     
+    /**
+     * Get Advanced Frigates
+     * @return ItemRecusion
+     */     
     public final ItemRecusion getAdvancedFrigates(){
         ItemRecusion advancedFrigates = new ItemRecusion(1364);
         return advancedFrigates;

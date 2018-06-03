@@ -20,8 +20,18 @@ public class Rig{
     public Rig() {
     }
 
+    public Rig(InvTypes invTypes) {
+        this.typeName = invTypes.getTypeName();
+        this.description = invTypes.getDescription();
+        this.typeID = invTypes.getTypeID();
+    }
+
+    /**
+     * @deprecated 
+     * @param typeID 
+     */
     public Rig(int typeID) {
-        InvTypes invTypes = ManagerDB.getInstance().invTypes().getNameById(typeID);
+        InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesById(typeID);
         this.typeID = invTypes.getTypeID();
         this.typeName = invTypes.getTypeName();
     }

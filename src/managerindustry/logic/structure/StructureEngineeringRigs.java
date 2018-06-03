@@ -58,7 +58,8 @@ public class StructureEngineeringRigs {
      * @param SecurityStatusEnum securityStatusEnum 
      */
     public StructureEngineeringRigs(String nameRig, SecurityStatusEnum securityStatusEnum){
-        typeID = ManagerDB.getInstance().invTypes().getIdByName(nameRig).getTypeID();
+        InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesByName(nameRig);
+        typeID = invTypes.getTypeID();
                
         List < DgmTypeAttributes > dgmTypeAttributes = ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributes(typeID);
         
@@ -274,7 +275,7 @@ public class StructureEngineeringRigs {
      */
     private void displayAllValue(){
         String bpoName = "Standup M-Set Blueprint Copy Accelerator II";
-        int typeId = ManagerDB.getInstance().invTypes().getIdByName(bpoName).getTypeID();
+        int typeId = ManagerDB.getInstance().invTypes().getInvTypesByName(bpoName).getTypeID();
         
         List < DgmTypeAttributes > dgmTypeAttributes = ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributes(typeId);
 
@@ -339,13 +340,13 @@ public class StructureEngineeringRigs {
     private int getFakeRig(TierEnum tier, RuleBonusRigEnum typeBonus){
         for (FakeRig rigCouple : rigCouples) {
             if ( rigCouple.getTier() == tier && rigCouple.getRule_bonus() == typeBonus ){
-                Integer typeId = ManagerDB.getInstance().invTypes().getNameById(rigCouple.getId()).getTypeID();
+                Integer typeId = ManagerDB.getInstance().invTypes().getInvTypesById(rigCouple.getId()).getTypeID();
 
                 if ( typeId != null ){
                     return typeId;
                 }
                 
-                typeId = ManagerDB.getInstance().invTypes().getNameById(rigCouple.getId()).getTypeID();
+                typeId = ManagerDB.getInstance().invTypes().getInvTypesById(rigCouple.getId()).getTypeID();
                 return typeId;
             }
         }

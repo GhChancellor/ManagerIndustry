@@ -12,6 +12,10 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class SubsystemComponets {
+    /**
+     * 
+     * @return ItemRecusion
+     */     
     public final ItemRecusion getSubsystemComponents(){
         ItemRecusion subsystemComponents = new ItemRecusion(1147); 
         return subsystemComponents;

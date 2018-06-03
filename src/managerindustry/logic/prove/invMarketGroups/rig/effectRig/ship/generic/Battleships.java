@@ -12,11 +12,19 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class Battleships {
+    /**
+     * Get Standard Battleships
+     * @return ItemRecusion
+     */
     public final ItemRecusion getStandardBattleships(){
         ItemRecusion standardBattleships = new ItemRecusion(7);     
         return standardBattleships;
     } 
     
+    /**
+     * Get Advanced Battleships
+     * @return ItemRecusion
+     */    
     public final ItemRecusion getAdvancedBattleships (){
         ItemRecusion advancedBattleships = new ItemRecusion(1377);
         return advancedBattleships;

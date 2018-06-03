@@ -12,20 +12,30 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class Cruisers {
+    /**
+     * Get Standard Cruisers
+     * @return ItemRecusion
+     */    
     public final ItemRecusion getStandardCruisers(){
         ItemRecusion standardCruisers = new ItemRecusion(6);
         return standardCruisers;
     } 
     
     /**
-     * @deprecated 
-     * @return 
+     * Get Advanced Cruisers exclude T3 Strategic cruiser
+     * @return ItemRecusion
      */
     public final ItemRecusion getAdvancedCruisers(){
-        ItemRecusion advancedCruisers = new ItemRecusion(1368); // *
+        // Init ItemRecusion exclude T3 Strategic cruiser
+        ItemRecusion advancedCruisers = new ItemRecusion(1368, 1138); // 1138 T3 Strategic cruiser
+        
         return advancedCruisers;
     } 
     
+    /**
+     * Get T3 Strategic cruiser
+     * @return ItemRecusion
+     */    
     public final ItemRecusion getT3Cruisers(){
         ItemRecusion t3Cruisers = new ItemRecusion(1138); // <----
         return t3Cruisers;

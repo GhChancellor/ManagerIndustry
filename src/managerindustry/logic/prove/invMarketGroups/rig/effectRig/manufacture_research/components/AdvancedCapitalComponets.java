@@ -12,6 +12,10 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class AdvancedCapitalComponets {
+    /**
+     * 
+     * @return ItemRecusion
+     */     
     public final ItemRecusion getAdvancedCapitalComponents(){
         ItemRecusion advancedCapitalComponents = new ItemRecusion(1883); 
         return advancedCapitalComponents;

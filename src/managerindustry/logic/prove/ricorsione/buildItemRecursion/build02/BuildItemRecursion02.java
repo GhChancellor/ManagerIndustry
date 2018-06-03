@@ -74,7 +74,7 @@ public class BuildItemRecursion02 {
         
         for (IndustryActivityMaterials nameItemToBuild1 : nameItemToBuild) {
             InvTypes invTypes =
-              ManagerDB.getInstance().invTypes().getNameById(nameItemToBuild1.getMaterialTypeID());
+              ManagerDB.getInstance().invTypes().getInvTypesById(nameItemToBuild1.getMaterialTypeID());
 
             ComponentX02 componentX = new ComponentX02();
             componentX.setName(invTypes.getTypeName());

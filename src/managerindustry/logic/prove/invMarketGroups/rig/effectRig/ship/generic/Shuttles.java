@@ -12,6 +12,10 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class Shuttles {
+    /**
+     * Get Shuttles
+     * @return ItemRecusion
+     */     
     public final ItemRecusion getShuttles(){
         ItemRecusion shuttles = new ItemRecusion(391);
         return shuttles;

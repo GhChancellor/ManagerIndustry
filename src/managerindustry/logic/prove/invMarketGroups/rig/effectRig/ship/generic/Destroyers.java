@@ -12,20 +12,29 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * @author lele
  */
 public class Destroyers {
+    /**
+     * Get Standard Destroyers
+     * @return ItemRecusion
+     */
     public final ItemRecusion getStandardDestroyers(){
         ItemRecusion standardDestroyers = new ItemRecusion(464);
         return standardDestroyers;
     } 
     
     /**
-     * @deprecated 
-     * @return 
+     * Get Advanced Destroyers
+     * @return ItemRecusion
      */
     public final ItemRecusion getAdvancedDestroyers(){
-        ItemRecusion advancedDestroyers = new ItemRecusion(1373); // *
+        // Init ItemRecusion Exclude some branches 
+        ItemRecusion advancedDestroyers = new ItemRecusion(1373, 1951); //1951 Exclude T3 Destroyers
         return advancedDestroyers;
     } 
     
+    /**
+     * Get T3 Destroyers
+     * @return ItemRecusion
+     */    
     public final ItemRecusion getT3Destroyers(){
         ItemRecusion t3Destroyers = new ItemRecusion(1951); // <----
         return t3Destroyers;
