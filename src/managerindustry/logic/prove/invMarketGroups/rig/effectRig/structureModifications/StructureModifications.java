@@ -8,7 +8,8 @@ package managerindustry.logic.prove.invMarketGroups.rig.effectRig.structureModif
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
- *
+ * marketGroupID 2203 
+ * parentGroupID null
  * @author lele
  */
 public class StructureModifications {

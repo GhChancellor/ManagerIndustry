@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.invMarketGroups.rig.effectRig.implants_boosters;
+package managerindustry.logic.prove.invMarketGroups.rig.effectRig.blueprints;
 
 /**
  * marketGroupID  
  * parentGroupID 
  * @author lele
  */
-public class Boosters {
-    
+public class Copy {
+//    public final ItemRecusion getBlueprint(){
+//        ItemRecusion blueprint = new ItemRecusion(157);
+//        return blueprint;
+//    }       
 }

@@ -8,7 +8,6 @@ package managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize;
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**
  * marketGroupID 2347 
@@ -16,6 +15,10 @@ import managerindustry.logic.manager.managerDB.ManagerDB;
  * @author lele
  */
 public class RigMedium extends RigSize{
+    /**
+     * Get Standup MSet Advanced Component Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetAdvancedComponentManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43867); // Standup M-Set Advanced Component Manufacturing Material Efficiency I
@@ -25,6 +28,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet Advanced Large Ship Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetAdvancedLargeShipManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43862); // Standup M-Set Advanced Large Ship Manufacturing Material Efficiency I
@@ -34,6 +41,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet Advanced Medium Ship Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetAdvancedMediumShipManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43858); // Standup M-Set Advanced Medium Ship Manufacturing Material Efficiency I
@@ -43,6 +54,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet Advanced Small Ship Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetAdvancedSmallShipManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43855); // Standup M-Set Advanced Small Ship Manufacturing Material Efficiency I
@@ -52,6 +67,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet Ammunition Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetAmmunitionManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(37158); // Standup M-Set Ammunition Manufacturing Material Efficiency I
@@ -61,6 +80,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet Basic Capital Component Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetBasicCapitalComponentManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43870); // Standup M-Set Basic Capital Component Manufacturing Material Efficiency I
@@ -70,6 +93,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet Basic Large Ship Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetBasicLargeShipManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43732); // Standup M-Set Basic Large Ship Manufacturing Material Efficiency I
@@ -79,6 +106,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet Basic Medium Ship Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetBasicMediumShipManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(37146); // Standup M-Set Basic Medium Ship Manufacturing Material Efficiency I
@@ -88,6 +119,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet Basic Small Ship Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetBasicSmallShipManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(37154); // Standup M-Set Basic Small Ship Manufacturing Material Efficiency I
@@ -97,6 +132,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSe tBlue print Copy
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetBlueprintCopy(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43893); // Standup M-Set Blueprint Copy Accelerator I
@@ -106,6 +145,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet Drone And Fighter Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetDroneAndFighterManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(37156); // Standup M-Set Drone and Fighter Manufacturing Material Efficiency I
@@ -115,6 +158,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet Equipment Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetEquipmentManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43920); // Standup M-Set Equipment Manufacturing Material Efficiency I
@@ -124,6 +171,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet Invention
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetInvention(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43880); // Standup M-Set Invention Accelerator I
@@ -133,6 +184,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet ME Research
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetMEResearch(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43883); // Standup M-Set ME Research Accelerator I
@@ -142,6 +197,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet Structure Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetStructureManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43875); // Standup M-Set Structure Manufacturing Material Efficiency I
@@ -151,6 +210,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet TE Research
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetTEResearch(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43889); // Standup M-Set TE Research Accelerator I
@@ -160,6 +223,10 @@ public class RigMedium extends RigSize{
         return getInvTypes(rigGroups);
     }
     
+    /**
+     * Get Standup MSet Thukker Advanced Component Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupMSetThukkerAdvancedComponentManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(45640); // Standup M-Set Thukker Advanced Component Manufacturing Material Efficiency

@@ -8,7 +8,8 @@ package managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship.generic;
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
- *
+ * marketGroupID 7 - 1377 
+ * parentGroupID 1376
  * @author lele
  */
 public class Battleships {

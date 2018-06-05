@@ -9,6 +9,8 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
  * ADVANCED_INDUSTRIAL_SHIPS(1373)
+ * marketGroupID 629 
+ * parentGroupID 1385
  * @deprecated 
  * @author lele
  */

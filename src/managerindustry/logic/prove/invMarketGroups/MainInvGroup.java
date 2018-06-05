@@ -5,9 +5,11 @@
  */
 package managerindustry.logic.prove.invMarketGroups;
 
+import java.util.List;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecursionA;
+import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecursionB;
 import managerindustry.logic.prove.invMarketGroups.old.items.ammunion.AmmunionCharges;
 import managerindustry.logic.prove.invMarketGroups.old.items.ships.battleCruiser.BattleCruiser;
 import managerindustry.logic.prove.invMarketGroups.old.items.ships.battleships.Battleships;
@@ -27,6 +29,7 @@ import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.RigMedi
 import managerindustry.logic.prove.invMarketGroups.rig.StructureRig;
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship_ModuleModifications.Rigs;
 import managerindustry.logic.prove.invMarketGroups.rig.riggroups.RigGroups;
+import managerindustry.logic.prove.ricorsione.skill.skillProduction.RecursionA;
 
 /**
  * http://evewiz.com/329-data-interfaces
@@ -44,23 +47,35 @@ public class MainInvGroup {
        
 
         StructureRig structureRig = new StructureRig();
-//        structureRig.newRigGroups(RigGroups.getInstance().rigMedium().getStandupMSetAdvancedComponentManufacturing()); // rigGroups.getStandupMSetAdvancedComponentManufacturing()
-//    
-//        structureRig.getRigGroups().forEach((t) -> {
-//            System.out.println(""+ t.getTypeName()  );
-//
-//        });
-
-        structureRig.newEffect(EffectRig.getInstance().ships().cruisers().getAdvancedCruisers());
-
-        
-        structureRig.getEffects().forEach((t) -> {
-//            System.out.println(""+ ((InvTypes)t.)  );
-        });
+        structureRig.newRigGroups(RigGroups.getInstance().rigMedium().getStandupMSetAdvancedComponentManufacturing()); // rigGroups.getStandupMSetAdvancedComponentManufacturing()
     
-        
+        structureRig.getRigGroups().forEach((t) -> {
+            System.out.println(""+ t.getTypeName()  );
 
+        });
+//
+//        structureRig.newEffect(EffectRig.getInstance().ships().cruisers().getAdvancedCruisers());
+        structureRig.newEffect(EffectRig.getInstance().ships().cruisers().getStandardCruisers());
+//        structureRig.newEffect(EffectRig.getInstance().ammunitionCarges().getAmmunitionCarges());
+        List<ItemRecursionA> effects = structureRig.getEffects();
+        display(effects);
+//
+//        System.out.println("");
+//        ItemRecusion ir = new ItemRecusion(2203);
+        
     }
+    
+    public static void display( List<ItemRecursionA> effects){
+        for (ItemRecursionA effect : effects) {
+            List<ItemRecursionB> recursionB02s = effect.getRecursionB02s();
+            
+            for (ItemRecursionB recursionB02 : recursionB02s) {
+                ItemRecursionA recursionA02 = recursionB02.getRecursionA02();
+                System.out.println(""+recursionA02.getMarketGroupName() + " " + recursionA02.getMarketGroupID());
+            }
+        }  
+    }
+    
     
     public static void X001(){
         ItemRecusion ir = new ItemRecusion(1111);

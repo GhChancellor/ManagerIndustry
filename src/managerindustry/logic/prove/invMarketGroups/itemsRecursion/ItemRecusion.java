@@ -29,8 +29,6 @@ public class ItemRecusion {
         ira = recursionA02;
         
         display(recursionA02, "");
-        
-        System.out.println("");
     }
 
     /**
@@ -46,8 +44,6 @@ public class ItemRecusion {
         recusionExcludeTree(parentGroupIDs, recursionA02, excludeCode );
         
         display(recursionA02, "");
-        
-        System.out.println("");
     }
     
     /**
@@ -120,6 +116,7 @@ public class ItemRecusion {
     public ItemRecursionA getIra() {
         return ira;
     }
+    
     
 }
 /*

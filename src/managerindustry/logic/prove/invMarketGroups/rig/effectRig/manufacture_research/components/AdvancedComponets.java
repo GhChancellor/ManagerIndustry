@@ -8,12 +8,13 @@ package managerindustry.logic.prove.invMarketGroups.rig.effectRig.manufacture_re
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
- *
+ * marketGroupID 65  
+ * parentGroupID 1035
  * @author lele
  */
 public class AdvancedComponets {
     /**
-     * 
+     * Get Advanced Components for T2 ships
      * @return ItemRecusion
      */     
     public final ItemRecusion getAdvancedComponents(){

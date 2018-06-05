@@ -8,12 +8,13 @@ package managerindustry.logic.prove.invMarketGroups.rig.effectRig.manufacture_re
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
- *
+ * marketGroupID 1883
+ * parentGroupID 1035
  * @author lele
  */
 public class AdvancedCapitalComponets {
     /**
-     * 
+     * Get Advanced Capital Components
      * @return ItemRecusion
      */     
     public final ItemRecusion getAdvancedCapitalComponents(){

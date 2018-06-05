@@ -6,7 +6,7 @@
 package managerindustry.logic.prove.invMarketGroups.rig.effectRig;
 
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.ammunitionCarges.AmmunitionCarges;
-import managerindustry.logic.prove.invMarketGroups.rig.effectRig.deployableStructures.DeployableStructures;
+import managerindustry.logic.prove.invMarketGroups.rig.effectRig.structure.deployableStructures.DeployableStructures;
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.droneFighters.DroneFighters;
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.shipEquipment.ShipEquipment;
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship.Ships;
@@ -145,3 +145,14 @@ public class EffectRig {
     upwell structure ??
 
 */  
+
+/*
+SELECT * FROM invTypes where invTypes.typeName="Standup M-Set Equipment Manufacturing Material Efficiency I";
+-- 43920
+
+   SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=2347; -- Advanced Frigates
+   SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=2340;	-- vuoto
+            
+    SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
+    invMarketGroups.marketGroupID=2347;  
+*/

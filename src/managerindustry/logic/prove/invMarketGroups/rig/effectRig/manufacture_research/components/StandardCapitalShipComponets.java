@@ -8,12 +8,13 @@ package managerindustry.logic.prove.invMarketGroups.rig.effectRig.manufacture_re
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
- *
+ * marketGroupID 781 
+ * parentGroupID 1035
  * @author lele
  */
 public class StandardCapitalShipComponets {
     /**
-     * 
+     * Get Standard Capital Ship Components
      * @return ItemRecusion
      */     
     public final ItemRecusion getStandardCapitalShipComponents(){

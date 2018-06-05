@@ -5,10 +5,16 @@
  */
 package managerindustry.logic.prove.invMarketGroups.rig.effectRig.implants_boosters;
 
+import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
+
 /**
- *
+ * marketGroupID 27 
+ * parentGroupID 24
  * @author lele
  */
 public class Implants {
-    
+    public final ItemRecusion getImplants(){
+        ItemRecusion implants = new ItemRecusion(27); 
+        return implants;        
+    }
 }

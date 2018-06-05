@@ -8,7 +8,8 @@ package managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship.generic;
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
- *
+ * marketGroupID 5 - 1364 
+ * parentGroupID 1361
  * @author lele
  */
 public class Frigates {

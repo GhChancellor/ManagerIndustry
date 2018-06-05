@@ -8,7 +8,8 @@ package managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship_ModuleMod
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
- *
+ * marketGroupID 1112 
+ * parentGroupID 955
  * @author lele
  */
 public class Subsystems {

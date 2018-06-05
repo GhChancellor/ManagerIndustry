@@ -15,6 +15,10 @@ import managerindustry.db.entities.InvTypes;
  * @author lele
  */
 public class RigXLarge extends RigSize{
+    /**
+     * Get Standup XL Set Equipment And Consumable Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupXLSetEquipmentAndConsumableManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(37178); // Standup XL-Set Equipment and Consumable Manufacturing Efficiency I
@@ -22,6 +26,10 @@ public class RigXLarge extends RigSize{
         return getInvTypes(rigGroups);
     }      
     
+    /**
+     * Get Standup XL Set Ship Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupXLSetShipManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(37180); // Standup XL-Set Ship Manufacturing Efficiency I
@@ -29,6 +37,10 @@ public class RigXLarge extends RigSize{
         return getInvTypes(rigGroups);
     }      
     
+    /**
+     * Get Standup XL Set Laboratory
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupXLSetLaboratory(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(37182); // Standup XL-Set Laboratory Optimization II
@@ -36,6 +48,10 @@ public class RigXLarge extends RigSize{
         return getInvTypes(rigGroups);
     }      
     
+    /**
+     * Get Standup XL Set Structure And Component Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupXLSetStructureAndComponentManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(43704); // Standup XL-Set Structure and Component Manufacturing Efficiency I
@@ -43,6 +59,10 @@ public class RigXLarge extends RigSize{
         return getInvTypes(rigGroups);
     }      
     
+    /**
+     * Get Standup XL Set Thukker Structure And Component Manufacturing
+     * @return List<InvTypes>
+     */    
     public List<InvTypes> getStandupXLSetThukkerStructureAndComponentManufacturing(){
         List<Integer> rigGroups = new ArrayList<>();
         rigGroups.add(45548); // Standup XL-Set Thukker Structure and Component Manufacturing Efficiency

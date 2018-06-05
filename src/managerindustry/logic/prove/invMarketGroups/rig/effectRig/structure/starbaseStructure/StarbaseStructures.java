@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship.generic;
+package managerindustry.logic.prove.invMarketGroups.rig.effectRig.structure.starbaseStructure;
 
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
- * marketGroupID 391 
- * parentGroupID 4
+ * marketGroupID 1285 
+ * parentGroupID 477
  * @author lele
  */
-public class Shuttles {
+public class StarbaseStructures {
     /**
-     * Get Shuttles
+     * Get Base Structure 
      * @return ItemRecusion
      */     
-    public final ItemRecusion getShuttles(){
-        ItemRecusion shuttles = new ItemRecusion(391);
-        return shuttles;
+    public final ItemRecusion getStarbaseStructures(){
+        ItemRecusion baseStructure = new ItemRecusion(1285);
+        return baseStructure;
     }     
 }

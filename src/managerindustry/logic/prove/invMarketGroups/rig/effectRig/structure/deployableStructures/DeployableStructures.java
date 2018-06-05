@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.invMarketGroups.rig.effectRig.deployableStructures;
+package managerindustry.logic.prove.invMarketGroups.rig.effectRig.structure.deployableStructures;
 
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
  * marketGroupID 404
- * parentGroupID 477
+ * parentGroupID 404
  * @author lele
  */
 public class DeployableStructures {
@@ -18,7 +18,7 @@ public class DeployableStructures {
      * @return ItemRecusion
      */     
     public final ItemRecusion getPersonalDeployables(){
-        ItemRecusion personalDeployables = new ItemRecusion(157);
+        ItemRecusion personalDeployables = new ItemRecusion(404);
         return personalDeployables;
     }   
 }

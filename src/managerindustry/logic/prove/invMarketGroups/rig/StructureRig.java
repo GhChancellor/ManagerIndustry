@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import managerindustry.db.entities.InvTypes;
+import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecursionA;
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
@@ -18,7 +19,7 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  */
 public class StructureRig {
     private List<RigDescription> rigGroups = new ArrayList<>();
-    private List<ItemRecusion> effects = new ArrayList<>();
+    private List<ItemRecursionA> effects = new ArrayList<>();
 
     /**
      * New RigDescription
@@ -53,18 +54,17 @@ public class StructureRig {
      * @param int code
      * @param int excludeCode 
      */
-    public void newEffect(ItemRecusion itemRecusion){
-        effects.add(itemRecusion);
+    public void newEffect(ItemRecusion itemRecusion){       
+        effects.add(itemRecusion.getIra());
+        System.out.println("");
     }
 
     /**
      * Get Item Recusions
      * @return List<ItemRecusion>
      */
-    public List<ItemRecusion> getEffects() {
-        List< ItemRecusion > groupItems = new ArrayList<>();
-        groupItems.addAll(effects);
-        return groupItems;
+    public List<ItemRecursionA> getEffects() {
+        return effects;
     }   
    
 }
