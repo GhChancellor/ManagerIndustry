@@ -12,6 +12,15 @@ import managerindustry.logic.prove.invMarketGroups.rig.effectRig.manufacture_res
  * @author lele
  */
 public class Manufacture_research {
+    /** 
+     * Standard Capital Ship Componets
+     * Advanced Capital Componets
+     * Advanced Componets
+     * Fuel Blocks
+     * Subsystem Componets
+     * Ram
+     * @return 
+     */
     public Components components(){
         Components components = new Components();
         return components;

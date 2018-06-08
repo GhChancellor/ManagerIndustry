@@ -15,6 +15,7 @@ import managerindustry.logic.manager.managerDB.eve.DgmAttributeTypesX;
 import managerindustry.logic.manager.managerDB.eve.DgmTypeAttributesX;
 import managerindustry.logic.manager.managerDB.eve.IndustryActivityMaterialsX;
 import managerindustry.logic.manager.managerDB.eve.IndustryActivitySkillsX;
+import managerindustry.logic.manager.managerDB.eve.IndustryActivityX;
 import managerindustry.logic.manager.managerDB.eve.IndustryBlueprintsX;
 import managerindustry.logic.manager.managerDB.eve.InvMarketGroupsX;
 import managerindustry.logic.manager.managerDB.eve.InvNamesX;
@@ -96,7 +97,7 @@ public class ManagerDB {
      * Get all values of the SqlUserX ( entities )
      * @return SqlUser
      */    
-    public SqlUser sqlUserX(){
+    public SqlUser sqlUser(){
         SqlUser sqlUser = new SqlUser(entityManager);
         return sqlUser;
     }
@@ -142,8 +143,17 @@ public class ManagerDB {
      * Get all values of the InvMarketGroups ( entities ) like parent group of object
      * @return InvMarketGroupsX
      */    
-    public InvMarketGroupsX invMarketGroupsX(){
+    public InvMarketGroupsX invMarketGroups(){
         InvMarketGroupsX invMarketGroups = new InvMarketGroupsX(entityManager);
         return invMarketGroups;
+    }
+    
+    /**
+     * Get industry Activity Id
+     * @return IndustryActivityX
+     */
+    public IndustryActivityX industryActivity(){
+        IndustryActivityX industryActivityX = new IndustryActivityX(entityManager);
+        return industryActivityX;
     }
 }

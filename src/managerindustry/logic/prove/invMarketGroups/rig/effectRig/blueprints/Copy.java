@@ -5,14 +5,19 @@
  */
 package managerindustry.logic.prove.invMarketGroups.rig.effectRig.blueprints;
 
+import managerindustry.db.entities.IndustryActivity;
+import managerindustry.logic.enumName.RamActivitiesEnum;
+import managerindustry.logic.manager.managerDB.ManagerDB;
+
 /**
  * marketGroupID  
  * parentGroupID 
  * @author lele
  */
 public class Copy {
-//    public final ItemRecusion getBlueprint(){
-//        ItemRecusion blueprint = new ItemRecusion(157);
-//        return blueprint;
-//    }       
+    public IndustryActivity getCopy(int typeID){
+        IndustryActivity industryActivity = 
+          ManagerDB.getInstance().industryActivity().getIndustryActivity(typeID, RamActivitiesEnum.COPYING);
+        return industryActivity;
+    }  
 }

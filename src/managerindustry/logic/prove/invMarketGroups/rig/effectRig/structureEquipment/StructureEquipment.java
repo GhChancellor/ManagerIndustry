@@ -14,7 +14,7 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  */
 public class StructureEquipment {
     /**
-     * Get Structure Equipment
+     * Get Structure Equipment / Structure modules
      * @return ItemRecusion
      */     
     public final ItemRecusion getStructureEquipment(){

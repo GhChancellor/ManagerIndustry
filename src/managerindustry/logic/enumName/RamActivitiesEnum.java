@@ -21,8 +21,8 @@ public enum RamActivitiesEnum {
     private int code;
     private RamActivitiesEnum RamActivitiesEnum;
 
-    private RamActivitiesEnum(RamActivitiesEnum RamActivitiesEnum) {
-        this.RamActivitiesEnum = RamActivitiesEnum;
+    private RamActivitiesEnum(RamActivitiesEnum ramActivitiesEnum) {
+        this.RamActivitiesEnum = ramActivitiesEnum;
     }
 
     private RamActivitiesEnum(int code) {

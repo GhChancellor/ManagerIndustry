@@ -15,20 +15,20 @@ import managerindustry.logic.manager.managerDB.ManagerDB;
  * @author lele
  */
 public class ItemRecusion {
-    private ItemRecursionA ira = new ItemRecursionA();
+    private ItemRecursionA itemRecursionReport = new ItemRecursionA();
     
     /**
      * Init ItemRecusion with all tree 
      * @param code 
      */
     public ItemRecusion(int code) {
-        List<InvMarketGroups> parentGroupIDs = ManagerDB.getInstance().invMarketGroupsX().getMarketGroupID(code);
-        ItemRecursionA recursionA02 = new ItemRecursionA();
-        recusionAllBranches(parentGroupIDs, recursionA02 );
+        List<InvMarketGroups> parentGroupIDs = ManagerDB.getInstance().invMarketGroups().getMarketGroupID(code);
+        ItemRecursionA recursionA = new ItemRecursionA();
+        recusionAllBranches(parentGroupIDs, recursionA );        
+        itemRecursionReport = recursionA;
         
-        ira = recursionA02;
-        
-        display(recursionA02, "");
+        ItemRercsionLibrary itemRercsionLibrary = new ItemRercsionLibrary();
+        itemRercsionLibrary.display(recursionA, "");
     }
 
     /**
@@ -37,13 +37,15 @@ public class ItemRecusion {
      * @param excludeCode 
      */
     public ItemRecusion(int code, int excludeCode) {
-        List<InvMarketGroups> parentGroupIDs = ManagerDB.getInstance().invMarketGroupsX().getMarketGroupID(code);
-        ItemRecursionA recursionA02 = new ItemRecursionA();
+        List<InvMarketGroups> parentGroupIDs = ManagerDB.getInstance().invMarketGroups().getMarketGroupID(code);
+        ItemRecursionA recursionA = new ItemRecursionA();
         
         //Exclude some branches
-        recusionExcludeTree(parentGroupIDs, recursionA02, excludeCode );
+        recusionExcludeTree(parentGroupIDs, recursionA, excludeCode );
+        itemRecursionReport = recursionA;
         
-        display(recursionA02, "");
+        ItemRercsionLibrary itemRercsionLibrary = new ItemRercsionLibrary();
+        itemRercsionLibrary.display(recursionA, "");
     }
     
     /**
@@ -54,19 +56,19 @@ public class ItemRecusion {
      */
     private void recusionExcludeTree(List<InvMarketGroups> invMarketGroups, ItemRecursionA recursionA02, int excludeCode ){
         for (InvMarketGroups marketGroups01 : invMarketGroups) {
-            ItemRecursionA recursionA = new ItemRecursionA
+            ItemRecursionA recursionA01 = new ItemRecursionA
                 ( marketGroups01.getMarketGroupID(), marketGroups01.getParentGroupID(), marketGroups01.getMarketGroupName() );
             
             // Exclude some branches ( items )
             if (marketGroups01.getMarketGroupID() == excludeCode)
                 continue;
             
-            recursionA02.addRecursionB02(new ItemRecursionB(recursionA));
-            List<InvMarketGroups> marketGroups02 = ManagerDB.getInstance().invMarketGroupsX().getParentGroupID( marketGroups01.getMarketGroupID() );
+            recursionA02.addRecursionB02(new ItemRecursionB(recursionA01));
+            List<InvMarketGroups> marketGroups02 = ManagerDB.getInstance().invMarketGroups().getParentGroupID( marketGroups01.getMarketGroupID() );
             
             if ( marketGroups02 != null){
                 if (!marketGroups02.isEmpty()){
-                    recusionExcludeTree(marketGroups02, recursionA, excludeCode);
+                    recusionExcludeTree(marketGroups02, recursionA01, excludeCode);
                 }                
             }
         }
@@ -79,44 +81,27 @@ public class ItemRecusion {
      */
     private void recusionAllBranches(List<InvMarketGroups> invMarketGroups, ItemRecursionA recursionA02 ){
         for (InvMarketGroups marketGroups01 : invMarketGroups) {
-            ItemRecursionA recursionA = new ItemRecursionA
+            ItemRecursionA recursionA01 = new ItemRecursionA
                 ( marketGroups01.getMarketGroupID(), marketGroups01.getParentGroupID(), marketGroups01.getMarketGroupName() );
 
-            recursionA02.addRecursionB02(new ItemRecursionB(recursionA));
-            List<InvMarketGroups> marketGroups02 = ManagerDB.getInstance().invMarketGroupsX().getParentGroupID( marketGroups01.getMarketGroupID() );
+            recursionA02.addRecursionB02(new ItemRecursionB(recursionA01));
+            List<InvMarketGroups> marketGroups02 = ManagerDB.getInstance().invMarketGroups().getParentGroupID( marketGroups01.getMarketGroupID() );
             
             if ( marketGroups02 != null){
                 if (!marketGroups02.isEmpty()){
-                    recusionAllBranches(marketGroups02, recursionA);
+                    recusionAllBranches(marketGroups02, recursionA01);
                 }                
             }
         }
     }
-    
-    
-    
-    private void display(ItemRecursionA recursionA02, String tab){
-        System.out.println(tab + recursionA02.getMarketGroupName() + " " + recursionA02.getMarketGroupID() + " " + recursionA02.getParentGroupID());
-        tab +="  ";
 
-        if ( recursionA02.getRecursionB02s().isEmpty() ){
-            List<InvTypes> parentGroupID = ManagerDB.getInstance().invTypes().getMarketGroupID(recursionA02.getMarketGroupID(), true);
-            
-            
-            for (InvTypes invTypes : parentGroupID) {
-                System.out.println(tab + invTypes.getTypeName()+ " " + invTypes.getTypeID() );
-            }            
-        }
-        
-        for (ItemRecursionB object : recursionA02.getRecursionB02s()) {
-            display(object.getRecursionA02(), tab);
-        }        
+    /**
+     * get Report of the all items
+     * @return 
+     */
+    public ItemRecursionA getItemRecursionReport() {
+        return itemRecursionReport;
     }
-
-    public ItemRecursionA getIra() {
-        return ira;
-    }
-    
     
 }
 /*

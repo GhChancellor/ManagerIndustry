@@ -14,7 +14,7 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  */
 public class StarbaseStructures {
     /**
-     * Get Base Structure 
+     * Get Base Structures 
      * @return ItemRecusion
      */     
     public final ItemRecusion getStarbaseStructures(){

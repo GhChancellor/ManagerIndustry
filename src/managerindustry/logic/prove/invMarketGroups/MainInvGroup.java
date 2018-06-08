@@ -6,7 +6,10 @@
 package managerindustry.logic.prove.invMarketGroups;
 
 import java.util.List;
+import java.util.Map;
+import managerindustry.db.entities.IndustryActivity;
 import managerindustry.db.entities.InvTypes;
+import managerindustry.logic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecursionA;
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecursionB;
@@ -22,11 +25,12 @@ import managerindustry.logic.prove.invMarketGroups.old.items.ships.frigate.Friga
 import managerindustry.logic.prove.invMarketGroups.old.items.ships.industrialShips.IndustrialShips;
 import managerindustry.logic.prove.invMarketGroups.old.items.ships.miningBarges.MiningBarges;
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
+import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRercsionLibrary;
 import managerindustry.logic.prove.invMarketGroups.old.DroneOLD;
-import managerindustry.logic.prove.invMarketGroups.rig.RigDescription;
+import managerindustry.logic.prove.invMarketGroups.rig.QUALCOSA.RigDescription;
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.EffectRig;
 import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.RigMedium;
-import managerindustry.logic.prove.invMarketGroups.rig.StructureRig;
+import managerindustry.logic.prove.invMarketGroups.rig.QUALCOSA.StructureRig;
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship_ModuleModifications.Rigs;
 import managerindustry.logic.prove.invMarketGroups.rig.riggroups.RigGroups;
 import managerindustry.logic.prove.ricorsione.skill.skillProduction.RecursionA;
@@ -37,28 +41,36 @@ import managerindustry.logic.prove.ricorsione.skill.skillProduction.RecursionA;
  */
 public class MainInvGroup {
     public static void main(String[] args) {
-        /*
-        Standup M-Set Equipment Manufacturing Material Efficiency I
-        decrease material requirements manufacturing ship modules, ship rigs, 
-        personal deployables, implants and cargo containers
-         */
+
 //        InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesByName("Standup M-Set Equipment Manufacturing Material Efficiency I");
        
-       
-
         StructureRig structureRig = new StructureRig();
-        structureRig.newRigGroups(RigGroups.getInstance().rigMedium().getStandupMSetAdvancedComponentManufacturing()); // rigGroups.getStandupMSetAdvancedComponentManufacturing()
-    
-        structureRig.getRigGroups().forEach((t) -> {
-            System.out.println(""+ t.getTypeName()  );
+        structureRig.newEffect(EffectRig.getInstance().manufacture_research().components().ram().getRam());
+//        structureRig.newEffect(EffectRig.getInstance().manufacture_research().components().fuelBlocks().getFuelBlocks());
+//        structureRig.newEffect(EffectRig.getInstance().implantsBoosters().implants().getImplants());
 
-        });
-//
-//        structureRig.newEffect(EffectRig.getInstance().ships().cruisers().getAdvancedCruisers());
-        structureRig.newEffect(EffectRig.getInstance().ships().cruisers().getStandardCruisers());
+        
+        ItemRercsionLibrary itemRercsionLibrary = new ItemRercsionLibrary();
+        itemRercsionLibrary.display(structureRig.getEffects().get(0), "");
+       
+        List<Integer> conversionToList = itemRercsionLibrary.getConversionToList(structureRig.getEffects().get(0));
+        Map<Integer, Integer> conversionToMap = itemRercsionLibrary.getConversionToMap(structureRig.getEffects().get(0));
+//        
+        System.out.println("");
+//        StructureRig structureRig = new StructureRig();
+//        structureRig.newRigGroups(RigGroups.getInstance().rigMedium().getStandupMSetEquipmentManufacturing()); // rigGroups.getStandupMSetAdvancedComponentManufacturing()
+//        
+//        structureRig.getRigGroups().forEach((t) -> {
+//            System.out.println(""+ t.getTypeName() + " " + t.getTypeID());
+//        });
+//        structureRig.newEffect(EffectRig.getInstance().shipEquipments().getshipEquipments());
+//        structureRig.newEffect(EffectRig.getInstance().ship_ModuleModifications().rigs().getRigs() );
+//        structureRig.newEffect(EffectRig.getInstance().deployableStructures().getPersonalDeployables()); // <-- include cargo container
+//        structureRig.newEffect(EffectRig.getInstance().implantsBoosters().implants().getImplants());
+//        structureRig.newEffect(EffectRig.getInstance().ships().cruisers().getStandardCruisers());
 //        structureRig.newEffect(EffectRig.getInstance().ammunitionCarges().getAmmunitionCarges());
-        List<ItemRecursionA> effects = structureRig.getEffects();
-        display(effects);
+//        List<ItemRecursionA> effects = structureRig.getEffects();
+//        display(effects);
 //
 //        System.out.println("");
 //        ItemRecusion ir = new ItemRecusion(2203);
@@ -71,11 +83,16 @@ public class MainInvGroup {
             
             for (ItemRecursionB recursionB02 : recursionB02s) {
                 ItemRecursionA recursionA02 = recursionB02.getRecursionA02();
-                System.out.println(""+recursionA02.getMarketGroupName() + " " + recursionA02.getMarketGroupID());
+                System.out.println("XXXXXXX "+recursionA02.getMarketGroupName() + " " + recursionA02.getMarketGroupID());
             }
         }  
     }
     
+    public IndustryActivity getCopy(int typeID, RamActivitiesEnum ramActivitiesEnum){
+        IndustryActivity industryActivity = 
+          ManagerDB.getInstance().industryActivity().getIndustryActivity(typeID, ramActivitiesEnum);
+        return industryActivity;
+    }
     
     public static void X001(){
         ItemRecusion ir = new ItemRecusion(1111);

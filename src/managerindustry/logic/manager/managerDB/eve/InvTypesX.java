@@ -108,15 +108,14 @@ public class InvTypesX {
     
     
     /**
-     * DBG
-     * @deprecated 
+     * Get ParentGroupID
      * @param code
      * @return List < InvTypes >
      */
     public List < InvTypes > getParentGroupID(int code, boolean published){
         try {
             TypedQuery < InvTypes > typedQuery = 
-                entityManager.createNamedQuery("InvTypes.findByParentGroupIDXXX", InvTypes.class);
+                entityManager.createNamedQuery("InvTypes.findByParentGroupID", InvTypes.class);
 
             typedQuery.setParameter("parentGroupID", code);
             typedQuery.setParameter("published", published);
@@ -137,9 +136,7 @@ public class InvTypesX {
     }   
     
     /**
-     * DBG
-     * Fighters > Carrier-based Fighters > heavy fighter or light fighter or support fighter
-     * @deprecated 
+     * Get MarketGroupID
      * @param code
      * @return List < InvTypes >
      */

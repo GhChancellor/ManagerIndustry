@@ -25,7 +25,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "IndustryActivity.findAll", query = "SELECT i FROM IndustryActivity i")
     , @NamedQuery(name = "IndustryActivity.findByTypeID", query = "SELECT i FROM IndustryActivity i WHERE i.industryActivityPK.typeID = :typeID")
     , @NamedQuery(name = "IndustryActivity.findByActivityID", query = "SELECT i FROM IndustryActivity i WHERE i.industryActivityPK.activityID = :activityID")
-    , @NamedQuery(name = "IndustryActivity.findByTime", query = "SELECT i FROM IndustryActivity i WHERE i.time = :time")})
+    , @NamedQuery(name = "IndustryActivity.findByTime", query = "SELECT i FROM IndustryActivity i WHERE i.time = :time")
+    // get ActivityID 
+    , @NamedQuery(name = "IndustryActivity.findByTypeID_ActivityID", query = "SELECT i FROM IndustryActivity i WHERE i.industryActivityPK.typeID = :typeID and "
+            + "i.industryActivityPK.activityID = :activityID")
+    })
 public class IndustryActivity implements Serializable {
 
     private static final long serialVersionUID = 1L;

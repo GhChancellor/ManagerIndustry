@@ -34,7 +34,7 @@ public class ManagerLoginSql {
      */
     public List < UserApiEntity > getUserApiEntities(){
         List < UserApiEntity > userApiEntities = 
-          ManagerDB.getInstance().sqlUserX().getUserApiEntities();
+          ManagerDB.getInstance().sqlUser().getUserApiEntities();
 
         return userApiEntities;     
     }
@@ -44,7 +44,7 @@ public class ManagerLoginSql {
      */
     public List < UserApiEntity > getAllUserApiEntities(){
         List < UserApiEntity > userApiEntities =
-          ManagerDB.getInstance().sqlUserX().getUserApiEntities();
+          ManagerDB.getInstance().sqlUser().getUserApiEntities();
 
         return userApiEntities;     
     }
@@ -54,7 +54,7 @@ public class ManagerLoginSql {
      * @param  
      */
     public void addUserApiIndex(UserApiEntity userApiEntity){
-          ManagerDB.getInstance().sqlUserX().addUserApiEntity(userApiEntity);
+          ManagerDB.getInstance().sqlUser().addUserApiEntity(userApiEntity);
     }
     
     /**
@@ -62,7 +62,7 @@ public class ManagerLoginSql {
      * @param Integer id 
      */
     public void deleteUserApi(UserApiEntity userApiEntity){
-        ManagerDB.getInstance().sqlUserX().deleteUserApiEntity(userApiEntity);
+        ManagerDB.getInstance().sqlUser().deleteUserApiEntity(userApiEntity);
     }
     
     /**
@@ -70,6 +70,6 @@ public class ManagerLoginSql {
      * @param userApiEntity 
      */
     public void updateUserApiEntity(UserApiEntity userApiEntity){
-          ManagerDB.getInstance().sqlUserX().updateUserApiEntity(userApiEntity);
+          ManagerDB.getInstance().sqlUser().updateUserApiEntity(userApiEntity);
     }
 }

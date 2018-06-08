@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.invMarketGroups.rig;
+package managerindustry.logic.prove.invMarketGroups.rig.QUALCOSA;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -55,8 +55,7 @@ public class StructureRig {
      * @param int excludeCode 
      */
     public void newEffect(ItemRecusion itemRecusion){       
-        effects.add(itemRecusion.getIra());
-        System.out.println("");
+        effects.add(itemRecusion.getItemRecursionReport());
     }
 
     /**

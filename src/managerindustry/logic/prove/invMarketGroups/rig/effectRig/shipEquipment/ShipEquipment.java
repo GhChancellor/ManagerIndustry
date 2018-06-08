@@ -14,7 +14,7 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  */
 public class ShipEquipment {
     /**
-     * Get ship Equipments
+     * Get ship Equipments / ship modules
      * @return ItemRecusion
      */     
     public final ItemRecusion getshipEquipments(){

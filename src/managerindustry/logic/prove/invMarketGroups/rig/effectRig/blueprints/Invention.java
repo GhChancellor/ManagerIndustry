@@ -5,14 +5,19 @@
  */
 package managerindustry.logic.prove.invMarketGroups.rig.effectRig.blueprints;
 
+import managerindustry.db.entities.IndustryActivity;
+import managerindustry.logic.enumName.RamActivitiesEnum;
+import managerindustry.logic.manager.managerDB.ManagerDB;
+
 /**
  * marketGroupID  
  * parentGroupID 
  * @author lele
  */
 public class Invention {
-//    public final ItemRecusion getBlueprint(){
-//        ItemRecusion blueprint = new ItemRecusion(157);
-//        return blueprint;
-//    }       
+    public IndustryActivity getInvention(int typeID){
+        IndustryActivity industryActivity = 
+          ManagerDB.getInstance().industryActivity().getIndustryActivity(typeID, RamActivitiesEnum.INVENTION);
+        return industryActivity;
+    } 
 }

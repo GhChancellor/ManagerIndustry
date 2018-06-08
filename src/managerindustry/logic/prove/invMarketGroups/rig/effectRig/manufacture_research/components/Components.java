@@ -35,4 +35,8 @@ public class Components {
         return subsystemComponets;
     }
 
+    public Ram ram(){
+        Ram ram = new Ram();
+        return ram;
+    }
 }

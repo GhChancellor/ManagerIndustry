@@ -30,56 +30,92 @@ public class EffectRig {
         return instance;
     }     
     
+    /**
+     * * Get Ammunition Carges
+     * @return 
+     */
     public AmmunitionCarges ammunitionCarges(){
         AmmunitionCarges ammunitionCarges = new AmmunitionCarges();
         return ammunitionCarges;
     }
     
+    /**
+     * Get ship Equipments / ship modules
+     * @return 
+     */
     public ShipEquipment shipEquipments(){
         ShipEquipment shipEquipment = new ShipEquipment();
         return shipEquipment;
     }
  
+    /**
+     * get t3 subsystems
+     * @return 
+     */
     public Subsystems t3subsystems(){
         Subsystems t3subsystems = new Subsystems();
         return t3subsystems;
     }
 
+    /**
+     * get Drone Fighters
+     * @return 
+     */
     public DroneFighters droneFighters(){
         DroneFighters droneFighters = new DroneFighters();
         return droneFighters;
     }
 
+    /**
+     * Get ship
+     * @return 
+     */
     public Ships ships(){
         Ships ships = new Ships();
         return ships;
     }
 
+    /**
+     * Get Component 
+     * @return 
+     */
     public Manufacture_research manufacture_research(){
         Manufacture_research manufacture_research = new Manufacture_research();
         return manufacture_research;
     }
-    
-    public Components components(){
-        Components components = new Components();
-        return components;
-    }
-    
+
+    /**
+     * Implants Boosters
+     * @return 
+     */
     public ImplantsBoosters implantsBoosters(){
         ImplantsBoosters implantsBoosters = new ImplantsBoosters();
         return implantsBoosters;
     }
     
+    /**
+     * Ship rigs - Module Modifications
+     * @return 
+     */
     public Ship_ModuleModifications ship_ModuleModifications(){
         Ship_ModuleModifications ship_ModuleModifications = new Ship_ModuleModifications();
         return ship_ModuleModifications;
     }
     
+    /**
+     * Structure Equipment / Structure modules
+     * @return 
+     */
     public StructureEquipment structureEquipment(){
        StructureEquipment structureEquipment = new StructureEquipment();
        return structureEquipment;
     }
     
+    /**
+     * Deployable Structures
+     * - Include cargo container
+     * @return 
+     */
     public DeployableStructures deployableStructures(){
         DeployableStructures deployableStructures = new DeployableStructures();
         return deployableStructures;

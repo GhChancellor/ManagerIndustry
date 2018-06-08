@@ -14,12 +14,19 @@ import managerindustry.logic.prove.invMarketGroups.rig.effectRig.structure.deplo
  * @author lele
  */
 public class Structures {
-    
+    /**
+     * Get Base Structures
+     * @return 
+     */
     public StarbaseStructures starbaseStructures(){
        StarbaseStructures starbaseStructures = new StarbaseStructures();
        return starbaseStructures;
     }
    
+    /**
+     * Get Personal Deployables
+     * @return 
+     */
     public DeployableStructures deployableStructures(){
        DeployableStructures deployableStructures = new DeployableStructures();
        return deployableStructures;

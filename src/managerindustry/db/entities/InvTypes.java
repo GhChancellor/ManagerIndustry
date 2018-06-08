@@ -51,7 +51,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     + "a.published = :published AND "
     + "c.attributeID = :attributeID"),
     
-    @NamedQuery(name = "InvTypes.findByParentGroupIDXXX", 
+    // DBG findByParentGroupID e marketGroupID sono usati per fare la ricorsione del market
+    @NamedQuery(name = "InvTypes.findByParentGroupID", 
       query = "SELECT a FROM InvMarketGroups i, InvTypes a WHERE a.marketGroupID = i.marketGroupID and i.parentGroupID = :parentGroupID and a.published = :published"),
     
     @NamedQuery(name = "InvTypes.findByMarketGroupIDXXX", 

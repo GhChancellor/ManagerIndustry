@@ -14,7 +14,7 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  */
 public class Rigs {
     /**
-     * Get Rigs
+     * Get Rig Ship
      * @return ItemRecusion
      */     
     public final ItemRecusion getRigs(){
