@@ -66,6 +66,8 @@ public class StructureRig {
         return effects;
     }   
    
+    
+    
 }
 
 

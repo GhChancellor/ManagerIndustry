@@ -14,6 +14,7 @@ import managerindustry.logic.manager.managerDB.cache.taxCostIndex.TaxSolarSystem
 import managerindustry.logic.manager.managerDB.eve.DgmAttributeTypesX;
 import managerindustry.logic.manager.managerDB.eve.DgmTypeAttributesX;
 import managerindustry.logic.manager.managerDB.eve.IndustryActivityMaterialsX;
+import managerindustry.logic.manager.managerDB.eve.IndustryActivityProductsX;
 import managerindustry.logic.manager.managerDB.eve.IndustryActivitySkillsX;
 import managerindustry.logic.manager.managerDB.eve.IndustryActivityX;
 import managerindustry.logic.manager.managerDB.eve.IndustryBlueprintsX;
@@ -155,5 +156,15 @@ public class ManagerDB {
     public IndustryActivityX industryActivity(){
         IndustryActivityX industryActivityX = new IndustryActivityX(entityManager);
         return industryActivityX;
+    }
+    
+    /**
+     * get industry Activity Products
+     * @return IndustryActivityProductsX
+     */
+    public IndustryActivityProductsX industryActivityProducts(){
+        IndustryActivityProductsX industryActivityProductsX = 
+            new IndustryActivityProductsX(entityManager);
+        return industryActivityProductsX;
     }
 }

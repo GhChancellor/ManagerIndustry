@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize;
+package managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.old;
 
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.db.entities.InvTypes;
+import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.RigSize;
 
 /**
  * marketGroupID 2349 
  * parentGroupID 2340
  * @author lele
  */
-public class RigXLarge extends RigSize{
+public class RigXLarge_OLD extends RigSize{
     /**
      * Get Standup XL Set Equipment And Consumable Manufacturing
      * @return List<InvTypes>

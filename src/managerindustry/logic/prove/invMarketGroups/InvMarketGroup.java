@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.prove.invMarketGroups;
 
+import java.util.List;
 import managerindustry.db.entities.InvMarketGroups;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.manager.managerDB.ManagerDB;
@@ -23,22 +24,31 @@ public class InvMarketGroup {
 
     }
     
-    public void getStandupMSetEquipmentManufacturing(int code){
+    public void xxx(int code){
+        List<InvTypes> standupMSetEquipmentManufacturing = RigGroups.getInstance().rigMedium().getStandupMSetEquipmentManufacturing();
+        
+        for (InvTypes invTypes : standupMSetEquipmentManufacturing) {
+            if ( code == invTypes.getTypeID()){
+                
+            }
+        }
+    }
+    
+    
+    public StructureRig getStandupMSetEquipmentManufacturing(int code){
         StructureRig structureRig = new StructureRig();
         structureRig.newRigGroups(RigGroups.getInstance().rigMedium().getStandupMSetEquipmentManufacturing());
         
-        structureRig.getRigGroups().forEach((t) -> {
-            if (code == t.getTypeID()){
-                System.out.println("OK "+ t.getTypeID() + " " + t.getTypeName());
+        for (RigDescription rigGroup : structureRig.getRigGroups()) {
+            if (code == rigGroup.getTypeID()){
+                structureRig.newEffect(EffectRig.getInstance().shipEquipments().getshipEquipments());
+                structureRig.newEffect(EffectRig.getInstance().ship_ModuleModifications().rigs().getRigs() );
+                structureRig.newEffect(EffectRig.getInstance().deployableStructures().getPersonalDeployables()); // <-- include cargo container
+                structureRig.newEffect(EffectRig.getInstance().implantsBoosters().implants().getImplants());
+                return structureRig;                
             }
-        });
-
-        structureRig.newEffect(EffectRig.getInstance().shipEquipments().getshipEquipments());
-        structureRig.newEffect(EffectRig.getInstance().ship_ModuleModifications().rigs().getRigs() );
-        structureRig.newEffect(EffectRig.getInstance().deployableStructures().getPersonalDeployables()); // <-- include cargo container
-        structureRig.newEffect(EffectRig.getInstance().implantsBoosters().implants().getImplants());
-
- 
+        }
+        return null;
     }
     
 }

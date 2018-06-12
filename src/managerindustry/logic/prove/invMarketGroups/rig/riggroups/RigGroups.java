@@ -5,9 +5,9 @@
  */
 package managerindustry.logic.prove.invMarketGroups.rig.riggroups;
 
-import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.RigLarge;
-import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.RigMedium;
-import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.RigXLarge;
+import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.old.RigLarge_OLD;
+import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.old.RigMedium_OLD;
+import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.old.RigXLarge_OLD;
 
 /**
  *
@@ -23,18 +23,30 @@ public class RigGroups {
         return instance;
     }
  
-    public RigMedium rigMedium(){
-        RigMedium rigGroupsMedium = new RigMedium();
+    /**
+     * Rig Medium
+     * @return RigMedium_OLD
+     */
+    public RigMedium_OLD rigMedium(){
+        RigMedium_OLD rigGroupsMedium = new RigMedium_OLD();
         return rigGroupsMedium;
     }
     
-    public RigLarge rigLarge(){
-        RigLarge rigLarge = new RigLarge();
+    /**
+     * Rig Large
+     * @return RigLarge_OLD
+     */
+    public RigLarge_OLD rigLarge(){
+        RigLarge_OLD rigLarge = new RigLarge_OLD();
         return rigLarge;
     }
-    
-    public RigXLarge rigXLarge(){
-        RigXLarge rigXLarge = new RigXLarge();
+
+    /**
+     * Rig XLarge
+     * @return RigXLarge_OLD
+     */    
+    public RigXLarge_OLD rigXLarge(){
+        RigXLarge_OLD rigXLarge = new RigXLarge_OLD();
         return rigXLarge;
     }
 }

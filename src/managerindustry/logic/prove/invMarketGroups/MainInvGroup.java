@@ -29,7 +29,7 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRercsionLi
 import managerindustry.logic.prove.invMarketGroups.old.DroneOLD;
 import managerindustry.logic.prove.invMarketGroups.rig.QUALCOSA.RigDescription;
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.EffectRig;
-import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.RigMedium;
+import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.old.RigMedium_OLD;
 import managerindustry.logic.prove.invMarketGroups.rig.QUALCOSA.StructureRig;
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship_ModuleModifications.Rigs;
 import managerindustry.logic.prove.invMarketGroups.rig.riggroups.RigGroups;
