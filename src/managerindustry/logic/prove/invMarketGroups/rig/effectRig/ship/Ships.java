@@ -40,31 +40,55 @@ public class Ships {
         return destroyers;
     }
 
+    /**
+     * Get Cruiser Standard Cruisers, Advanced Cruisers exclude T3 Strategic cruiser, T3 Strategic cruiser
+     * @return Cruisers
+     */
     public Cruisers cruisers(){
         Cruisers cruisers = new Cruisers();
         return cruisers;
     }
     
+    /**
+     * Standard Battlecruisers - Advanced Battlecruisers
+     * @return 
+     */
     public Battlecruisers battlecruisers(){
         Battlecruisers battlecruisers = new Battlecruisers();
         return battlecruisers;
     }
     
+    /**
+     * Battle ships standard - advanced
+     * @return Battleships
+     */
     public Battleships battleships(){
         Battleships battleships = new Battleships();
         return battleships;
     }
     
+    /**
+     * Mining Barges - Exhumers
+     * @return MiningBarges
+     */
     public MiningBarges miningBarges(){
         MiningBarges miningBarges = new MiningBarges();
         return miningBarges;
     }    
     
+    /**
+     * Capital Ships - Jump Freighter
+     * @return CapitalShips
+     */
     public CapitalShips capitalShips(){
         CapitalShips capitalShips = new CapitalShips();
         return capitalShips;
     }
     
+    /**
+     * Standard Industrial Ships, Industrial Command Ships, Advanced Industrial Ships
+     * @return IndustrialShips
+     */
     public IndustrialShips industrialShips(){
         IndustrialShips industrialShips = new IndustrialShips();
         return industrialShips;

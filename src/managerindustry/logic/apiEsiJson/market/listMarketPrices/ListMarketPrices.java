@@ -39,11 +39,11 @@ public class ListMarketPrices {
             Gson gson = gsonBuilder.create();
             
             // Lettura da file, 
-//            final String path = "./AdjustedPrice.json";
-//            Reader reader = new FileReader(path);
+            final String path = "./AdjustedPrice.json";
+            Reader reader = new FileReader(path);
 
-            URL url = new URL("https://esi.tech.ccp.is/latest/markets/prices/?datasource=tranquility");
-            InputStreamReader reader = new InputStreamReader(url.openStream());
+//            URL url = new URL("https://esi.tech.ccp.is/latest/markets/prices/?datasource=tranquility");
+//            InputStreamReader reader = new InputStreamReader(url.openStream());
 
             Type type = new TypeToken< ArrayList <Price> >() {}.getType();
             List < Price > adjustedPrices = 

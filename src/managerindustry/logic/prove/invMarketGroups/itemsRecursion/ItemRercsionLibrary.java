@@ -35,8 +35,7 @@ public class ItemRercsionLibrary {
         tab +="  ";
 
         if ( recursionA.getRecursionB02s().isEmpty() ){
-            List<InvTypes> parentGroupID = ManagerDB.getInstance().invTypes().getMarketGroupID(recursionA.getMarketGroupID(), true);
-            
+            List<InvTypes> parentGroupID = ManagerDB.getInstance().invTypes().getMarketGroupID(recursionA.getMarketGroupID(), true);            
             
             for (InvTypes invTypes : parentGroupID) {
                 System.out.println(tab + invTypes.getTypeName()+ " " + invTypes.getTypeID() );

@@ -10,6 +10,7 @@ import java.util.Map;
 import managerindustry.db.entities.IndustryActivity;
 import managerindustry.db.entities.InvTypes;
 import managerindustry.logic.enumName.RamActivitiesEnum;
+import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecursionA;
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecursionB;
@@ -30,7 +31,7 @@ import managerindustry.logic.prove.invMarketGroups.old.DroneOLD;
 import managerindustry.logic.prove.invMarketGroups.rig.QUALCOSA.RigDescription;
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.EffectRig;
 import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.old.RigMedium_OLD;
-import managerindustry.logic.prove.invMarketGroups.rig.QUALCOSA.StructureRig;
+import managerindustry.logic.prove.invMarketGroups.rig.QUALCOSA.StructureRig_OLD;
 import managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship_ModuleModifications.Rigs;
 import managerindustry.logic.prove.invMarketGroups.rig.riggroups.RigGroups;
 import managerindustry.logic.prove.ricorsione.skill.skillProduction.RecursionA;
@@ -40,62 +41,32 @@ import managerindustry.logic.prove.ricorsione.skill.skillProduction.RecursionA;
  * @author lele
  */
 public class MainInvGroup {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PriceNotExistsException {
 
-//        InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesByName("Standup M-Set Equipment Manufacturing Material Efficiency I");
-       
-        StructureRig structureRig = new StructureRig();
-        structureRig.newEffect(EffectRig.getInstance().manufacture_research().components().ram().getRam());
-//        structureRig.newEffect(EffectRig.getInstance().manufacture_research().components().fuelBlocks().getFuelBlocks());
-//        structureRig.newEffect(EffectRig.getInstance().implantsBoosters().implants().getImplants());
+        InvMarketGroup invMarketGroup = new InvMarketGroup();
 
-        
-        ItemRercsionLibrary itemRercsionLibrary = new ItemRercsionLibrary();
-        itemRercsionLibrary.display(structureRig.getEffects().get(0), "");
-       
-        List<Integer> conversionToList = itemRercsionLibrary.getConversionToList(structureRig.getEffects().get(0));
-        Map<Integer, Integer> conversionToMap = itemRercsionLibrary.getConversionToMap(structureRig.getEffects().get(0));
-//        
-        System.out.println("");
-//        StructureRig structureRig = new StructureRig();
-//        structureRig.newRigGroups(RigGroups.getInstance().rigMedium().getStandupMSetEquipmentManufacturing()); // rigGroups.getStandupMSetAdvancedComponentManufacturing()
-//        
-//        structureRig.getRigGroups().forEach((t) -> {
-//            System.out.println(""+ t.getTypeName() + " " + t.getTypeID());
-//        });
-//        structureRig.newEffect(EffectRig.getInstance().shipEquipments().getshipEquipments());
-//        structureRig.newEffect(EffectRig.getInstance().ship_ModuleModifications().rigs().getRigs() );
-//        structureRig.newEffect(EffectRig.getInstance().deployableStructures().getPersonalDeployables()); // <-- include cargo container
-//        structureRig.newEffect(EffectRig.getInstance().implantsBoosters().implants().getImplants());
-//        structureRig.newEffect(EffectRig.getInstance().ships().cruisers().getStandardCruisers());
-//        structureRig.newEffect(EffectRig.getInstance().ammunitionCarges().getAmmunitionCarges());
-//        List<ItemRecursionA> effects = structureRig.getEffects();
-//        display(effects);
-//
-//        System.out.println("");
-//        ItemRecusion ir = new ItemRecusion(2203);
         
     }
     
-    public static void display( List<ItemRecursionA> effects){
-        for (ItemRecursionA effect : effects) {
-            List<ItemRecursionB> recursionB02s = effect.getRecursionB02s();
-            
-            for (ItemRecursionB recursionB02 : recursionB02s) {
-                ItemRecursionA recursionA02 = recursionB02.getRecursionA02();
-                System.out.println("XXXXXXX "+recursionA02.getMarketGroupName() + " " + recursionA02.getMarketGroupID());
-            }
-        }  
-    }
-    
-    public IndustryActivity getCopy(int typeID, RamActivitiesEnum ramActivitiesEnum){
-        IndustryActivity industryActivity = 
-          ManagerDB.getInstance().industryActivity().getIndustryActivity(typeID, ramActivitiesEnum);
-        return industryActivity;
-    }
+//    public static void display( List<ItemRecursionA> effects){
+//        for (ItemRecursionA effect : effects) {
+//            List<ItemRecursionB> recursionB02s = effect.getRecursionB02s();
+//            
+//            for (ItemRecursionB recursionB02 : recursionB02s) {
+//                ItemRecursionA recursionA02 = recursionB02.getRecursionA02();
+//                System.out.println("XXXXXXX "+recursionA02.getMarketGroupName() + " " + recursionA02.getMarketGroupID());
+//            }
+//        }  
+//    }
+//    
+//    public IndustryActivity getCopy(int typeID, RamActivitiesEnum ramActivitiesEnum){
+//        IndustryActivity industryActivity = 
+//          ManagerDB.getInstance().industryActivity().getIndustryActivity(typeID, ramActivitiesEnum);
+//        return industryActivity;
+//    }
     
     public static void X001(){
-        ItemRecusion ir = new ItemRecusion(1111);
+//        ItemRecusion ir = new ItemRecusion(1111);
             
 //        Drone drone = new Drone();
 //        AmmunionCharges ammunionCharges = new AmmunionCharges();

@@ -27,8 +27,8 @@ public class ItemRecusion {
         recusionAllBranches(parentGroupIDs, recursionA );        
         itemRecursionReport = recursionA;
         
-        ItemRercsionLibrary itemRercsionLibrary = new ItemRercsionLibrary();
-        itemRercsionLibrary.display(recursionA, "");
+//        ItemRercsionLibrary itemRercsionLibrary = new ItemRercsionLibrary();
+//        itemRercsionLibrary.display(recursionA, "");
     }
 
     /**
@@ -44,8 +44,8 @@ public class ItemRecusion {
         recusionExcludeTree(parentGroupIDs, recursionA, excludeCode );
         itemRecursionReport = recursionA;
         
-        ItemRercsionLibrary itemRercsionLibrary = new ItemRercsionLibrary();
-        itemRercsionLibrary.display(recursionA, "");
+//        ItemRercsionLibrary itemRercsionLibrary = new ItemRercsionLibrary();
+//        itemRercsionLibrary.display(recursionA, "");
     }
     
     /**

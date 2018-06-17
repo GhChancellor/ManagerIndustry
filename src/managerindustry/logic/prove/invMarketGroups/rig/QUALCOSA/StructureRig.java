@@ -6,80 +6,40 @@
 package managerindustry.logic.prove.invMarketGroups.rig.QUALCOSA;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import managerindustry.db.entities.InvTypes;
-import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecursionA;
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
- * SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=404; id example
- * SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=404; id example
+ *
  * @author lele
  */
 public class StructureRig {
-    private List<RigDescription> rigGroups = new ArrayList<>();
-    private List<ItemRecursionA> effects = new ArrayList<>();
+    private int typeID;
+    private List < ItemRecusion > itemRecusions = new ArrayList<>();    
 
     /**
-     * New RigDescription
-     * @param InvTypes invTypes 
-     */
-    public void newRig(InvTypes invTypes){
-        RigDescription rig = new RigDescription(invTypes);
-        rigGroups.add(rig);
-    }
-
-    /**
-     * Get RigDescription Groups
-     * @return List<Rig> 
-     */
-    public List<RigDescription> getRigGroups() {
-        return rigGroups;
-    }
-    
-    /**
-     * New RigDescription groups
-     * @param List < InvTypes > invTypeses 
-     */
-    public void newRigGroups(List < InvTypes > invTypeses){
-        for (InvTypes invTypes : invTypeses) {
-            RigDescription rig = new RigDescription(invTypes);
-            rigGroups.add(rig); 
-        }
-    }
-    
-    /**
-     * New Effect
-     * @param int code
-     * @param int excludeCode 
-     */
-    public void newEffect(ItemRecusion itemRecusion){       
-        effects.add(itemRecusion.getItemRecursionReport());
+     * Add rig and add Effect
+     * @param int typeId
+     * @param List < ItemRecusion > itemRecusions 
+     */    
+    public StructureRig(int typeID, List < ItemRecusion > itemRecusions) {
+        this.typeID = typeID;
+        this.itemRecusions = itemRecusions;
     }
 
     /**
-     * Get Item Recusions
+     * Get TypeID
+     * @return int
+     */
+    public int getTypeID() {
+        return typeID;
+    }
+
+    /**
+     * Get ItemRecusions
      * @return List<ItemRecusion>
      */
-    public List<ItemRecursionA> getEffects() {
-        return effects;
-    }   
-   
-    
-    
+    public List<ItemRecusion> getItemRecusions() {
+        return itemRecusions;
+    }    
 }
-
-
-/*
-
-SELECT * FROM invTypes where invTypes.typeName="Standup M-Set Equipment Manufacturing Material Efficiency I";
--- 43920
-
-
-   SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=2347;
-   SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=2340;
-            
-    SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and
-    invMarketGroups.marketGroupID=2347; 
-*/

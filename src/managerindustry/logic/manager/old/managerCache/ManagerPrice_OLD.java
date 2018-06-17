@@ -72,7 +72,7 @@ public class ManagerPrice_OLD {
         Price price = getPriceMap();     
         
         this.priceEntity = new PriceEntity();
-        this.priceEntity.setType_id(price.getType_id());
+        this.priceEntity.setTypeID(price.getType_id());
         this.priceEntity.setLastUsed(nowPresent);
         this.priceEntity.setAverage_price(price.getAverage_price());
         this.priceEntity.setAdjusted_price(price.getAdjusted_price());
@@ -128,7 +128,7 @@ public class ManagerPrice_OLD {
             return;
         
         for (PriceEntity priceEntity1 : priceEntitys) {
-            this.typeId = priceEntity1.getType_id();
+            this.typeId = priceEntity1.getTypeID();
             this.priceEntity = priceEntity1;
             updatePrice(false);
         }

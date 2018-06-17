@@ -22,9 +22,6 @@ import managerindustry.db.entities.cache.TaxSolarSystemEntity;
  */
 public class TaxSolarSystem {
     private EntityManager entityManager;
-
-    private PriceEntityJpaController priceEntityJpaController =
-     new PriceEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));
     
     private TaxSolarSystemEntityJpaController taxSolarSystemEntityJpaController = 
      new TaxSolarSystemEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));
@@ -176,92 +173,5 @@ public class TaxSolarSystem {
         }
 
     }      
-    
-    // ----------------------------------------------------------------------
-    
-    /**
-     * Add Price Entity
-     * @param priceEntity adjustedPriceEntity
-     */
-    public void addPriceEntity( PriceEntity priceEntity ){
-        try {
-            priceEntityJpaController.create(priceEntity);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;        
-        }
-    }
-    
-    /**
-     * Get All Price Entity
-     * @return PriceEntity
-     */
-    public List < PriceEntity > getAllPriceEntity(){
-        try {
-            TypedQuery < PriceEntity > allPriceEntityTQ =
-             entityManager.createNamedQuery("PriceEntity.getAll", PriceEntity.class);
-            
-            return allPriceEntityTQ.getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;            
-        }
-    }
-    
-    /**
-     * Get Price Entity
-     * @param typeId
-     * @return PriceEntity
-     */
-    public PriceEntity getPriceEntity(String typeId){
-        try {
-            TypedQuery < PriceEntity > priceEntityTQ = 
-             entityManager.createNamedQuery("PriceEntity.getTypeId", PriceEntity.class);
-             
-            priceEntityTQ.setParameter("type_id", typeId);
-            
-            List < PriceEntity > priceEntitys = 
-             priceEntityTQ.getResultList();
-            
-            if (priceEntitys.isEmpty()){
-                return null;
-            }else{
-                return priceEntitys.get(0);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;            
-        }
-    }
-    
-    /**
-     * Get All Except Specific Price Entity
-     * @param typeID
-     * @return List < PriceEntity >
-     */
-    public List < PriceEntity > getAllExceptSpecificPriceEntity( String typeID){
-        try {
-            TypedQuery < PriceEntity > allExceptSpecificQT = 
-             entityManager.createNamedQuery("PriceEntity.getAllExceptSpecificTypeID", PriceEntity.class);
-            
-            allExceptSpecificQT.setParameter("type_id", typeID);
-            return allExceptSpecificQT.getResultList();             
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;             
-        }
-    }
-    
-    /**
-     * Update Tax Price Entity
-     * @param AdjustedPriceEntity adjustedPriceEntity 
-     */
-    public void updateTaxPriceEntity(PriceEntity priceEntity){
-        try {
-           priceEntityJpaController.edit(priceEntity);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;
-        }
-    }    
+
 }

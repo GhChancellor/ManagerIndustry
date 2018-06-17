@@ -13,11 +13,11 @@ import managerindustry.logic.prove.invMarketGroups.rig.effectRig.manufacture_res
  */
 public class Manufacture_research {
     /** 
-     * Standard Capital Ship Componets
-     * Advanced Capital Componets
-     * Advanced Componets
-     * Fuel Blocks
-     * Subsystem Componets
+     * Standard Capital Ship Componets, 
+     * Advanced Capital Componets, 
+     * Advanced Componets, 
+     * Fuel Blocks,
+     * Subsystem Componets,
      * Ram
      * @return 
      */

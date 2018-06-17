@@ -16,6 +16,20 @@ import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.RigSize
  * @author lele
  */
 public class RigMedium_OLD extends RigSize{
+    
+    /**
+     * Get Standup MSet Equipment Manufacturing
+     * @return List<InvTypes>
+     */    
+    public List<InvTypes> getStandupMSetEquipmentManufacturing(){
+        List<Integer> rigGroups = new ArrayList<>();
+        rigGroups.add(43920); // Standup M-Set Equipment Manufacturing Material Efficiency I
+        rigGroups.add(43921); // Standup M-Set Equipment Manufacturing Material Efficiency II
+        rigGroups.add(37160); // Standup M-Set Equipment Manufacturing Time Efficiency I
+        rigGroups.add(37161); // Standup M-Set Equipment Manufacturing Time Efficiency II
+        return getInvTypes(rigGroups);
+    }    
+    
     /**
      * Get Standup MSet Advanced Component Manufacturing
      * @return List<InvTypes>
@@ -158,20 +172,7 @@ public class RigMedium_OLD extends RigSize{
         rigGroups.add(37149); // Standup M-Set Drone and Fighter Manufacturing Time Efficiency II
         return getInvTypes(rigGroups);
     }
-    
-    /**
-     * Get Standup MSet Equipment Manufacturing
-     * @return List<InvTypes>
-     */    
-    public List<InvTypes> getStandupMSetEquipmentManufacturing(){
-        List<Integer> rigGroups = new ArrayList<>();
-        rigGroups.add(43920); // Standup M-Set Equipment Manufacturing Material Efficiency I
-        rigGroups.add(43921); // Standup M-Set Equipment Manufacturing Material Efficiency II
-        rigGroups.add(37160); // Standup M-Set Equipment Manufacturing Time Efficiency I
-        rigGroups.add(37161); // Standup M-Set Equipment Manufacturing Time Efficiency II
-        return getInvTypes(rigGroups);
-    }
-    
+        
     /**
      * Get Standup MSet Invention
      * @return List<InvTypes>

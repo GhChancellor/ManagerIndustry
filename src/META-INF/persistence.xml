@@ -2,31 +2,29 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="ManagerIndustryPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>managerindustry.db.entities.InvTypesEntity</class>
-    <class>managerindustry.db.entities.InvTypes</class>
-    <class>managerindustry.db.entities.InvGroupsEntity</class>
-    <class>managerindustry.db.entities.InvGroups</class>
-    <class>managerindustry.db.entities.InvTypeMaterials</class>
+    <class>managerindustry.db.entities.DgmAttributeTypes</class>
+    <class>managerindustry.db.entities.DgmTypeAttributes</class>
     <class>managerindustry.db.entities.IndustryActivity</class>
     <class>managerindustry.db.entities.IndustryActivityMaterials</class>
-    <class>managerindustry.db.entities.DgmTypeAttributes</class>
-    <class>managerindustry.db.entities.DgmAttributeTypes</class>
+    <class>managerindustry.db.entities.IndustryActivityProducts</class>
+    <class>managerindustry.db.entities.IndustryActivitySkills</class>
+    <class>managerindustry.db.entities.IndustryBlueprints</class>
+    <class>managerindustry.db.entities.InvMarketGroups</class>
     <class>managerindustry.db.entities.InvNames</class>
+    <class>managerindustry.db.entities.InvTypes</class>
     <class>managerindustry.db.entities.MapRegions</class>
     <class>managerindustry.db.entities.MapSolarSystems</class>
+    <class>managerindustry.db.entities.cache.EffectRigEntity</class>
+    <class>managerindustry.db.entities.cache.PriceEntity</class>
     <class>managerindustry.db.entities.cache.TaxCostIndexEntity</class>
     <class>managerindustry.db.entities.cache.TaxSolarSystemEntity</class>
-    <class>managerindustry.db.entities.cache.PriceEntity</class>
     <class>managerindustry.db.entities.user.UserApiEntity</class>
-    <class>managerindustry.db.entities.InvMarketGroups</class>
-    <class>managerindustry.db.entities.IndustryBlueprints</class>
-    <class>managerindustry.db.entities.IndustryActivitySkills</class>
-    <class>managerindustry.db.entities.IndustryActivityProducts</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/industryDB?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="cane"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
 </persistence>

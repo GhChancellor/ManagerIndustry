@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import managerindustry.db.entities.InvMarketGroups;
 import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.manager.managerDB.cache.effectRig.EffectRigX;
 import managerindustry.logic.manager.managerDB.cache.price.PriceX;
 import managerindustry.logic.manager.managerDB.cache.taxCostIndex.TaxSolarSystem;
 import managerindustry.logic.manager.managerDB.eve.DgmAttributeTypesX;
@@ -117,7 +118,7 @@ public class ManagerDB {
      * @return PriceX
      */
     public PriceX price() throws PriceNotExistsException{
-        PriceX price = new PriceX();
+        PriceX price = new PriceX(entityManager);
         return price;
     }
     
@@ -131,10 +132,10 @@ public class ManagerDB {
     }
     
     /**
-     * Get all values of the IndustryActivitySkills ( entities ) like Required Skill
+     * Get all values of the industryActivitySkills ( entities ) like Required Skill
      * @return IndustryActivitySkillsX
      */
-    public IndustryActivitySkillsX IndustryActivitySkills(){
+    public IndustryActivitySkillsX industryActivitySkills(){
         IndustryActivitySkillsX industryActivitySkillsX = 
             new IndustryActivitySkillsX(entityManager);
         return industryActivitySkillsX;
@@ -166,5 +167,14 @@ public class ManagerDB {
         IndustryActivityProductsX industryActivityProductsX = 
             new IndustryActivityProductsX(entityManager);
         return industryActivityProductsX;
+    }
+    
+    /**
+     * Get Effect Rig
+     * @return EffectRigX
+     */
+    public EffectRigX effectRig(){
+        EffectRigX effectRigX = new EffectRigX(entityManager);
+        return effectRigX;
     }
 }

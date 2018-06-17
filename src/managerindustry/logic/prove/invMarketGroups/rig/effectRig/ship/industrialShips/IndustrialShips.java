@@ -10,16 +10,28 @@ package managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship.industria
  * @author lele
  */
 public class IndustrialShips {
+    /**
+     * Standard Industrial Ships
+     * @return StandardIndustrialShips
+     */
     public StandardIndustrialShips standardIndustrialShips(){
         StandardIndustrialShips standardIndustrialShips = new StandardIndustrialShips();
         return standardIndustrialShips;
     }
     
+    /**
+     * Industrial Command Ships
+     * @return IndustrialCommandShips
+     */
     public IndustrialCommandShips industrialCommandShips(){
         IndustrialCommandShips industrialCommandShips = new IndustrialCommandShips();
         return industrialCommandShips;
     }
     
+    /**
+     * Advanced Industrial Ships
+     * @return AdvancedIndustrialShips
+     */
     public AdvancedIndustrialShips advancedIndustrialShips(){
         AdvancedIndustrialShips advancedIndustrialShips = new AdvancedIndustrialShips();
         return advancedIndustrialShips;

@@ -14,7 +14,7 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  */
 public class FuelBlocks {
     /**
-     * Get Fuel Blocks 
+     * Get Fuel Blocks for structure
      * @return ItemRecusion
      */     
     public final ItemRecusion getFuelBlocks(){

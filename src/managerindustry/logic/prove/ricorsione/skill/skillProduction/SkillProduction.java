@@ -56,7 +56,7 @@ public class SkillProduction <T>{
         int typeId = ManagerDB.getInstance().invTypes().getInvTypesByName("Oscillator Capacitor Unit Blueprint ").getTypeID();
         
         List<IndustryActivitySkills> requiredSkill = 
-            ManagerDB.getInstance().IndustryActivitySkills().getRequiredSkill(typeId, RamActivitiesEnum.MANUFACTURING);
+            ManagerDB.getInstance().industryActivitySkills().getRequiredSkill(typeId, RamActivitiesEnum.MANUFACTURING);
 
         for (IndustryActivitySkills industryActivitySkills : requiredSkill) {
             skills.add(industryActivitySkills.getSkillID());
@@ -93,7 +93,7 @@ public class SkillProduction <T>{
         int typeId = ManagerDB.getInstance().invTypes().getInvTypesByName("Oscillator Capacitor Unit Blueprint ").getTypeID();
         
         List<IndustryActivitySkills> requiredSkill = 
-            ManagerDB.getInstance().IndustryActivitySkills().getRequiredSkill(typeId, RamActivitiesEnum.MANUFACTURING);
+            ManagerDB.getInstance().industryActivitySkills().getRequiredSkill(typeId, RamActivitiesEnum.MANUFACTURING);
 
         for (IndustryActivitySkills industryActivitySkills : requiredSkill) {
             skills.add(industryActivitySkills.getSkillID());

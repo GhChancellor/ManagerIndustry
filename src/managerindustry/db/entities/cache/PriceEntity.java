@@ -22,11 +22,11 @@ import javax.persistence.Temporal;
 @Entity
 @NamedQueries({
 // Get a specific type ID ( price )
-@NamedQuery(name = "PriceEntity.getTypeId", query = "SELECT a FROM PriceEntity a WHERE a.type_id = :type_id"),  
+@NamedQuery(name = "PriceEntity.getTypeId", query = "SELECT a FROM PriceEntity a WHERE a.typeID = :typeID"),  
 // Get all typeID
 @NamedQuery(name = "PriceEntity.getAll", query = "SELECT a FROM PriceEntity a"),
 // Get All Except Specific typeID
-@NamedQuery(name = "PriceEntity.getAllExceptSpecificTypeID", query = "SELECT a FROM PriceEntity a WHERE a.type_id <> :type_id"),
+@NamedQuery(name = "PriceEntity.getAllExceptSpecificTypeID", query = "SELECT a FROM PriceEntity a WHERE a.typeID <> :typeID"),
     
 })
 public class PriceEntity implements Serializable {
@@ -37,7 +37,8 @@ public class PriceEntity implements Serializable {
     private Long id;
     private String adjusted_price;
     private String average_price;
-    private String type_id;
+    private String typeID;
+    
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date lastUsed = null;
 
@@ -95,16 +96,16 @@ public class PriceEntity implements Serializable {
      * Get Type Id
      * @return String
      */
-    public String getType_id() {
-        return type_id;
+    public String getTypeID() {
+        return typeID;
     }
 
     /**
      * Set Type Id
-     * @param String type_id 
+     * @param String typeID 
      */
-    public void setType_id(String type_id) {
-        this.type_id = type_id;
+    public void setTypeID(String typeID) {
+        this.typeID = typeID;
     }    
     
     public Long getId() {

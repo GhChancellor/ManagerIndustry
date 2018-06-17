@@ -9,18 +9,25 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import managerindustry.db.controllers.PriceEntityJpaController;
 import managerindustry.db.entities.cache.PriceEntity;
 import managerindustry.logic.apiEsiJson.ApiEsi;
 import managerindustry.logic.apiEsiJson.market.listMarketPrices.Price;
 import managerindustry.logic.exception.PriceNotExistsException;
-import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**
- *
+ * @deprecated 
  * @author lele
  */
 public class PriceX {
+    private EntityManager entityManager;
 
+    private PriceEntityJpaController priceEntityJpaController =
+     new PriceEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));
+    
     private PriceEntity priceEntity = new PriceEntity();
     private Map<String, Price > priceMap = new HashMap<>();
     private String typeId = null;
@@ -32,7 +39,8 @@ public class PriceX {
 //        return instance;        
 //    }
 
-    public PriceX() throws PriceNotExistsException {
+    public PriceX(EntityManager entityManager) throws PriceNotExistsException {
+        this.entityManager = entityManager;
         initPriceDB();
     }
 
@@ -60,8 +68,8 @@ public class PriceX {
      * Init Price DB
      */
     private void initPriceDB(){
-        if ( ManagerDB.getInstance().taxSolarSystem().getAllPriceEntity() == null){
-            ManagerDB.getInstance().taxSolarSystem().addPriceEntity(priceEntity);
+        if ( getAllPriceEntity() == null){
+            addPriceEntity(priceEntity);
         }
     }    
 
@@ -92,12 +100,12 @@ public class PriceX {
         Price price = getPriceMap();     
         
         this.priceEntity = new PriceEntity();
-        this.priceEntity.setType_id(price.getType_id());
+        this.priceEntity.setTypeID(price.getType_id());
         this.priceEntity.setLastUsed(nowPresent);
         this.priceEntity.setAverage_price(price.getAverage_price());
         this.priceEntity.setAdjusted_price(price.getAdjusted_price());
         
-        ManagerDB.getInstance().taxSolarSystem().addPriceEntity(priceEntity);
+        addPriceEntity(priceEntity);
     }
     
     /**
@@ -106,7 +114,7 @@ public class PriceX {
      * @throws String SolarSystemNotExistsException 
      */
     private void initAll(String priceID) throws PriceNotExistsException{
-        priceEntity = ManagerDB.getInstance().taxSolarSystem().getPriceEntity(typeId);
+        priceEntity = getPriceEntity(typeId);
 
         this.typeId = priceID;
         
@@ -135,7 +143,7 @@ public class PriceX {
         priceEntity.setAdjusted_price(price.getAdjusted_price());
         priceEntity.setAverage_price(price.getAverage_price());
         
-        ManagerDB.getInstance().taxSolarSystem().updateTaxPriceEntity(priceEntity);
+        updateTaxPriceEntity(priceEntity);
     }    
     
     /**
@@ -144,13 +152,13 @@ public class PriceX {
      */
     private void updateAllPrice() throws PriceNotExistsException{
         List < PriceEntity > priceEntitys = 
-         ManagerDB.getInstance().taxSolarSystem().getAllExceptSpecificPriceEntity(typeId);
+         getAllExceptSpecificPriceEntity(typeId);
         
         if (priceEntitys.isEmpty())
             return;
         
         for (PriceEntity priceEntity1 : priceEntitys) {
-            this.typeId = priceEntity1.getType_id();
+            this.typeId = priceEntity1.getTypeID();
             this.priceEntity = priceEntity1;
             updatePrice(false);
         }
@@ -159,6 +167,8 @@ public class PriceX {
     private void deleteAllPrice(){
         
     }   
+    
+    // ---------------------------------------------------------------------
     
     /**
      * Get Average Price or Adjusted Price
@@ -169,11 +179,97 @@ public class PriceX {
     private PriceEntity getValueAdjusted_AveragePrice(String typePrice) throws PriceNotExistsException{
         
         initAll(typePrice);   
-        priceEntity = ManagerDB.getInstance().taxSolarSystem().getPriceEntity(typePrice);     
+        priceEntity = getPriceEntity(typePrice);     
 
         if ( priceEntity == null)
             throw new PriceNotExistsException();        
         
         return priceEntity;
+    }
+
+    /**
+    * Add Price Entity
+    * @param priceEntity adjustedPriceEntity
+    */
+    private void addPriceEntity( PriceEntity priceEntity ){
+        try {
+            priceEntityJpaController.create(priceEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;        
+        }
+    }
+    
+    /**
+     * Get All Price Entity
+     * @return PriceEntity
+     */
+    private List < PriceEntity > getAllPriceEntity(){
+        try {
+            TypedQuery < PriceEntity > allPriceEntityTQ =
+             entityManager.createNamedQuery("PriceEntity.getAll", PriceEntity.class);
+            
+            return allPriceEntityTQ.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;            
+        }
+    }
+    
+    /**
+     * Get Price Entity
+     * @param typeId
+     * @return PriceEntity
+     */
+    private PriceEntity getPriceEntity(String typeId){
+        try {
+            TypedQuery < PriceEntity > priceEntityTQ = 
+             entityManager.createNamedQuery("PriceEntity.getTypeId", PriceEntity.class);
+             
+            priceEntityTQ.setParameter("typeID", typeId);
+            
+            List < PriceEntity > priceEntitys = 
+             priceEntityTQ.getResultList();
+            
+            if (priceEntitys.isEmpty()){
+                return null;
+            }else{
+                return priceEntitys.get(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;            
+        }
+    }
+    
+    /**
+     * Get All Except Specific Price Entity
+     * @param typeID
+     * @return List < PriceEntity >
+     */
+    private List < PriceEntity > getAllExceptSpecificPriceEntity( String typeID){
+        try {
+            TypedQuery < PriceEntity > allExceptSpecificQT = 
+             entityManager.createNamedQuery("PriceEntity.getAllExceptSpecificTypeID", PriceEntity.class);
+            
+            allExceptSpecificQT.setParameter("typeID", typeID);
+            return allExceptSpecificQT.getResultList();             
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;             
+        }
+    }
+    
+    /**
+     * Update Tax Price Entity
+     * @param AdjustedPriceEntity adjustedPriceEntity 
+     */
+    private void updateTaxPriceEntity(PriceEntity priceEntity){
+        try {
+           priceEntityJpaController.edit(priceEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
     }    
 }

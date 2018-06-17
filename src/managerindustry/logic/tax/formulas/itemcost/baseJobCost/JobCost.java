@@ -31,9 +31,12 @@ public class JobCost {
      * @throws PriceNotExistsException 
      */
     public static float getJobCostDBG(int baseQuantity, String typeId) throws PriceNotExistsException {
-        PriceEntity priceEntity = ManagerDB.getInstance().taxSolarSystem().getPriceEntity(typeId);
-        String adjustedPrice = priceEntity.getAdjusted_price();
-        
-        return Float.valueOf(adjustedPrice) * baseQuantity;
+        Exception e = new Exception();
+        e.printStackTrace();
+        return 0.0F;
+//        PriceEntity priceEntity = ManagerDB.getInstance().taxSolarSystem().getPriceEntity(typeId);
+//        String adjustedPrice = priceEntity.getAdjusted_price();
+//        
+//        return Float.valueOf(adjustedPrice) * baseQuantity;
     }  
 }    

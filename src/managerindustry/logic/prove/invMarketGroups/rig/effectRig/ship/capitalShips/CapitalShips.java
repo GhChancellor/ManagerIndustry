@@ -8,13 +8,14 @@ package managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship.capitalSh
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 
 /**
- * @deprecated 
+ * 
  * marketGroupID 1089 
  * parentGroupID 1381
  * @author lele
  */
 public class CapitalShips {
     /**
+     * @deprecated 
      * Get Jump Freighters
      * @return ItemRecusion
      */

@@ -14,7 +14,7 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  */
 public class MiningBarges {
     /**
-     * GetExhumers
+     * Get Exhumers
      * @return ItemRecusion
      */     
     public final ItemRecusion getExhumers(){
