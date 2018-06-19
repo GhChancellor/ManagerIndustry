@@ -45,10 +45,7 @@ public class InitLargeRigGroups {
     private void initStandupLSetAmmunitionManufacturing(){
         List < ItemRecusion > effectRigs = new ArrayList<>();
         
-        effectRigs.add(GroupEffectRig.getInstance().shipEquipments().getshipEquipments());
-        effectRigs.add(GroupEffectRig.getInstance().ship_ModuleModifications().rigs().getRigs());
-        effectRigs.add(GroupEffectRig.getInstance().structures().deployableStructures().getPersonalDeployables()); // <-- include cargo container  
-        effectRigs.add(GroupEffectRig.getInstance().implantsBoosters().implants().getImplants());   
+        effectRigs.add(GroupEffectRig.getInstance().);  
         
         structureRig(37164, effectRigs); // Standup L-Set Ammunition Manufacturing Efficiency I 
         structureRig(37165, effectRigs); // Standup L-Set Ammunition Manufacturing Efficiency II
@@ -62,7 +59,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);        
+        structureRig(37166, effectRigs); // Standup L-Set Basic Large Ship Manufacturing Efficiency I        
+        structureRig(37167, effectRigs); // Standup L-Set Basic Large Ship Manufacturing Efficiency II       
     }
     
     /**
@@ -73,7 +71,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(37168, effectRigs); // Standup L-Set Advanced Large Ship Manufacturing Efficiency I              
+        structureRig(37169, effectRigs); // Standup L-Set Advanced Large Ship Manufacturing Efficiency II              
     }
     
     /**
@@ -82,9 +81,13 @@ public class InitLargeRigGroups {
     private void initStandupLSetEquipmentManufacturing(){
         List < ItemRecusion > effectRigs = new ArrayList<>();
         
-        effectRigs.add(GroupEffectRig.getInstance().);
+        effectRigs.add(GroupEffectRig.getInstance().shipEquipments().getshipEquipments());
+        effectRigs.add(GroupEffectRig.getInstance().ship_ModuleModifications().rigs().getRigs());
+        effectRigs.add(GroupEffectRig.getInstance().structures().deployableStructures().getPersonalDeployables()); // <-- include cargo container  
+        effectRigs.add(GroupEffectRig.getInstance().implantsBoosters().implants().getImplants());   
         
-        structureRig(, effectRigs);               
+        structureRig(37170, effectRigs); // Standup L-Set Equipment Manufacturing Efficiency I
+        structureRig(37171, effectRigs); // Standup L-Set Equipment Manufacturing Efficiency II
     }
     
     /**
@@ -95,7 +98,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(37172, effectRigs); // Standup L-Set Capital Ship Manufacturing Efficiency II              
+        structureRig(37173, effectRigs); // Standup L-Set Capital Ship Manufacturing Efficiency I              
     }
     
     /**
@@ -106,7 +110,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(37174, effectRigs); // Standup L-Set Advanced Component Manufacturing Efficiency I              
+        structureRig(37175, effectRigs); // Standup L-Set Advanced Component Manufacturing Efficiency II              
     }
     
     /**
@@ -117,7 +122,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(43707, effectRigs); // Standup L-Set Advanced Small Ship Manufacturing Efficiency I              
+        structureRig(43708, effectRigs); // Standup L-Set Advanced Small Ship Manufacturing Efficiency II              
     }
     
     /**
@@ -128,7 +134,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(43709, effectRigs); // Standup L-Set Advanced Medium Ship Manufacturing Efficiency I              
+        structureRig(43711, effectRigs); // Standup L-Set Advanced Medium Ship Manufacturing Efficiency II              
     }
     
     /**
@@ -139,7 +146,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(43712, effectRigs); // Standup L-Set Drone and Fighter Manufacturing Efficiency I              
+        structureRig(43713, effectRigs); // Standup L-Set Drone and Fighter Manufacturing Efficiency II              
     }
     
     /**
@@ -150,7 +158,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(43714, effectRigs); // Standup L-Set Basic Small Ship Manufacturing Efficiency I              
+        structureRig(43715, effectRigs); // Standup L-Set Basic Small Ship Manufacturing Efficiency II              
     }
     
     /**
@@ -161,7 +170,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(43716, effectRigs); // Standup L-Set Basic Medium Ship Manufacturing Efficiency I              
+        structureRig(43717, effectRigs); // Standup L-Set Basic Medium Ship Manufacturing Efficiency II              
     }
     
     /**
@@ -172,7 +182,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(43718, effectRigs); // Standup L-Set Basic Capital Component Manufacturing Efficiency I              
+        structureRig(43719, effectRigs); // Standup L-Set Basic Capital Component Manufacturing Efficiency II              
     }
     
     /**
@@ -183,7 +194,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(43720, effectRigs); // Standup L-Set Structure Manufacturing Efficiency I              
+        structureRig(43721, effectRigs); // Standup L-Set Structure Manufacturing Efficiency II              
     }
     
     /**
@@ -194,7 +206,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(43722, effectRigs); // Standup L-Set Invention Optimization I              
+        structureRig(43723, effectRigs); // Standup L-Set Invention Optimization II              
     }
     
     /**
@@ -205,7 +218,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(43724, effectRigs); // Standup L-Set ME Research Optimization I              
+        structureRig(43725, effectRigs); // Standup L-Set ME Research Optimization II              
     }
     
     /**
@@ -216,7 +230,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(43726, effectRigs); // Standup L-Set TE Research Optimization I               
+        structureRig(43727, effectRigs); // Standup L-Set TE Research Optimization II              
     }
     
     /**
@@ -227,7 +242,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(43729, effectRigs); // Standup L-Set Blueprint Copy Optimization I              
+        structureRig(43730, effectRigs); // Standup L-Set Blueprint Copy Optimization II              
     }
     
     /**
@@ -238,7 +254,8 @@ public class InitLargeRigGroups {
         
         effectRigs.add(GroupEffectRig.getInstance().);
         
-        structureRig(, effectRigs);               
+        structureRig(45546, effectRigs); // Standup L-Set Thukker Basic Capital Component Manufacturing Efficiency              
+        structureRig(45641, effectRigs); // Standup L-Set Thukker Advanced Component Manufacturing Efficiency              
     }
     
     private void structureRig(int typeId, List < ItemRecusion > effectRigs){
