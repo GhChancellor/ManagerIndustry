@@ -16,7 +16,7 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecursionB
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRercsionLibrary;
 import managerindustry.logic.prove.invMarketGroups.rig.QUALCOSA.StructureRig;
-import managerindustry.logic.prove.invMarketGroups.rig.effectRig.EffectRig;
+import managerindustry.logic.prove.invMarketGroups.rig.effectRigXXX.GroupEffectRig;
 
 /**
  *

@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.prove.invMarketGroups;
 
+import managerindustry.logic.prove.invMarketGroups.rig.effectRigXXX.initRigGroupSize.mediumRig.InitMediumRigGroups;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.IndustryActivity;
@@ -29,10 +30,10 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
 import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRercsionLibrary;
 import managerindustry.logic.prove.invMarketGroups.old.DroneOLD;
 import managerindustry.logic.prove.invMarketGroups.rig.QUALCOSA.RigDescription;
-import managerindustry.logic.prove.invMarketGroups.rig.effectRig.EffectRig;
+import managerindustry.logic.prove.invMarketGroups.rig.effectRigXXX.GroupEffectRig;
 import managerindustry.logic.prove.invMarketGroups.rig.riggroups.rigSize.old.RigMedium_OLD;
 import managerindustry.logic.prove.invMarketGroups.rig.QUALCOSA.StructureRig_OLD;
-import managerindustry.logic.prove.invMarketGroups.rig.effectRig.ship_ModuleModifications.Rigs;
+import managerindustry.logic.prove.invMarketGroups.rig.effectRigXXX.effectRigs.ship_ModuleModifications.Rigs;
 import managerindustry.logic.prove.invMarketGroups.rig.riggroups.RigGroups;
 import managerindustry.logic.prove.ricorsione.skill.skillProduction.RecursionA;
 
@@ -43,7 +44,7 @@ import managerindustry.logic.prove.ricorsione.skill.skillProduction.RecursionA;
 public class MainInvGroup {
     public static void main(String[] args) throws PriceNotExistsException {
 
-        InvMarketGroup invMarketGroup = new InvMarketGroup();
+        InitMediumRigGroups invMarketGroup = new InitMediumRigGroups();
 
         
     }
