@@ -19,7 +19,10 @@ import managerindustry.logic.prove.invMarketGroups.rig.effectRigXXX.effectRigs.s
 import managerindustry.logic.prove.invMarketGroups.rig.effectRigXXX.effectRigs.structureModifications.StructureModifications;
 
 /**
- *
+ * SELECT * FROM invMarketGroups where invMarketGroups.marketGroupID=2347; -- Advanced Frigates
+ * SELECT * FROM invMarketGroups where invMarketGroups.parentGroupID=2340;	-- vuoto
+ * SELECT * FROM invTypes, invMarketGroups where invMarketGroups.marketGroupID=invTypes.marketGroupID and invMarketGroups.marketGroupID=2347;
+ *  
  * @author lele
  */
 public class GroupEffectRig {

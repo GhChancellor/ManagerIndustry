@@ -12,6 +12,8 @@ import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
  * marketGroupID 1089 
  * parentGroupID 1381
  * @author lele
+ * 
+ * Capital Industrial Ships <-----
  */
 public class CapitalShips {
     /**
@@ -33,5 +35,30 @@ public class CapitalShips {
     }
     
     
+    public final ItemRecusion getDreadnoughts(){
+        ItemRecusion dreadnoughts = new ItemRecusion(761); 
+        return dreadnoughts;
+    }
+    
+    public final ItemRecusion getTitans(){
+        ItemRecusion titans = new ItemRecusion(812); 
+        return titans;
+    }
+    
+    public final ItemRecusion getCarriers(){
+        ItemRecusion carriers = new ItemRecusion(817); 
+        return carriers;
+    }
+    
+    public final ItemRecusion getForceAuxiliaries(){
+        ItemRecusion forceAuxiliaries = new ItemRecusion(2271); 
+        return forceAuxiliaries;
+    }
+    
+
+    public CapitalIndustrialShips getCapitalIndustrialShips(){
+        CapitalIndustrialShips capitalIndustrialShips = new CapitalIndustrialShips();
+        return capitalIndustrialShips;
+    }
     
 }
