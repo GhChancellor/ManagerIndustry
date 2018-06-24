@@ -15,7 +15,9 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * If you need to know how long it takes to do something, this is your table. 
+ * Blueprint type id,  activityid, time in seconds to do it. 
+ * This is a time unmodified by TE, so you’ll be reducing it.
  * @author lele
  */
 @Entity

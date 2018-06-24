@@ -16,7 +16,8 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * I needed somewhere to keep the maxProductionLimit value. 
+ * That’s what this table is for.
  * @author lele
  */
 @Entity

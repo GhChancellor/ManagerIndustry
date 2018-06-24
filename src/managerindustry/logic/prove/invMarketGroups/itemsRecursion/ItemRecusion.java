@@ -27,8 +27,7 @@ public class ItemRecusion {
         recusionAllBranches(parentGroupIDs, recursionA );        
         itemRecursionReport = recursionA;
         
-//        ItemRercsionLibrary itemRercsionLibrary = new ItemRercsionLibrary();
-//        itemRercsionLibrary.display(recursionA, "");
+//        display();
     }
 
     /**
@@ -44,8 +43,7 @@ public class ItemRecusion {
         recusionExcludeTree(parentGroupIDs, recursionA, excludeCode );
         itemRecursionReport = recursionA;
         
-//        ItemRercsionLibrary itemRercsionLibrary = new ItemRercsionLibrary();
-//        itemRercsionLibrary.display(recursionA, "");
+        display();
     }
     
     /**
@@ -97,10 +95,15 @@ public class ItemRecusion {
 
     /**
      * get Report of the all items
-     * @return 
+     * @return ItemRecursionA
      */
     public ItemRecursionA getItemRecursionReport() {
         return itemRecursionReport;
+    }
+    
+    public void display(){
+        ItemRercsionLibrary itemRercsionLibrary = new ItemRercsionLibrary();
+        itemRercsionLibrary.display(itemRecursionReport, "");        
     }
     
 }

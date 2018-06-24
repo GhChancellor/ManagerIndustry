@@ -18,7 +18,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * Get all items of game like scimitar, drake etc
  * @author lele
  */
 @Entity

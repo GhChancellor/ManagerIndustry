@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * Crea una relazione padre figlio per sapere a quale categoria un oggetto appartiene 
  * @author lele
  */
 @Entity

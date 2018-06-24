@@ -35,7 +35,7 @@ public class ManagerBuild {
         for (Map.Entry<String, ReportCalculatedComponentX> entry : totalCalculatedComponentXmap.entrySet()) {
             String key = entry.getKey();
             ReportCalculatedComponentX value = entry.getValue();
-            System.out.println("" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
+            System.out.println("XXXXX" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
         }            
     }
     
@@ -147,6 +147,12 @@ public class ManagerBuild {
         }
     }        
     
+    /**
+     * Gel all raw material to build a items
+     * @param List< IndustryActivityMaterials> nameItemToBuild
+     * @param ComponentX dad
+     * @param ComponentX activitiesEnum 
+     */
     private void baseMaterial(List< IndustryActivityMaterials> nameItemToBuild,
      ComponentX dad, RamActivitiesEnum activitiesEnum){   
         for (IndustryActivityMaterials nameItemToBuild1 : nameItemToBuild) {

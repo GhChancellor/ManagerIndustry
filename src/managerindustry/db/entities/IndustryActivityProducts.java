@@ -18,7 +18,10 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * The outputs from a blueprints, with its various activities. 
+ * Handy, when you want to be able to determine what is invented from what. 
+ * Also includes the number of items created in a batch, or the number of runs 
+ * from invention and reverse engineering.
  * @author lele
  */
 @Entity

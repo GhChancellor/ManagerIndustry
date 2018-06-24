@@ -16,6 +16,8 @@ import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.prove.buildItem.BuildItem;
 import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
+import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
+import managerindustry.logic.prove.invMarketGroups.rig.groupEffectRig.GroupEffectRig;
 
 
 /**
@@ -28,10 +30,15 @@ public class MainProgramm {
         buildItem();
 //        DisplayItemCost();
 //        speculation();
+//        recursionItems();
     }
     
     public static void buildItem(){
          // Scythe  scimitar   R.A.M.- Starship Tech   CONCORD 25000mm Steel Plates
+        // riporta sempre le quantità calcolate non quelle base
+        //  drake
+        // 	Tritanium 2500001 -> 2500001
+	// Pyerite 612071 -> 612071
         ManagerBuild managerBuild = new ManagerBuild("drake", 1, 1, 10, 1);         
     }
     
@@ -86,5 +93,12 @@ public class MainProgramm {
     
     public static void speculation(){
         DisplaySpeculation speculation = new DisplaySpeculation();
+    }
+    
+    public static void recursionItems(){
+//        ItemRecusion advancedBattleships = GroupEffectRig.getInstance().ships().battleships().getAdvancedBattleships();
+//        advancedBattleships.display();
+
+
     }
 }

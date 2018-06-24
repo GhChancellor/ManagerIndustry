@@ -18,7 +18,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * Get blueprint type id, activity id, material id, quantity, and if it’s consumed. 
  * @author lele
  */
 @Entity

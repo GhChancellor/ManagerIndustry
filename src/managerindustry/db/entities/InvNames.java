@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * get all name of solar system, corporation, region
  * @author lele
  */
 @Entity
