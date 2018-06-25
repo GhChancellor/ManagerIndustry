@@ -2,23 +2,23 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="ManagerIndustryPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>managerindustry.db.entities.DgmAttributeTypes</class>
-    <class>managerindustry.db.entities.DgmTypeAttributes</class>
-    <class>managerindustry.db.entities.IndustryActivity</class>
-    <class>managerindustry.db.entities.IndustryActivityMaterials</class>
-    <class>managerindustry.db.entities.IndustryActivityProducts</class>
-    <class>managerindustry.db.entities.IndustryActivitySkills</class>
-    <class>managerindustry.db.entities.IndustryBlueprints</class>
-    <class>managerindustry.db.entities.InvMarketGroups</class>
-    <class>managerindustry.db.entities.InvNames</class>
-    <class>managerindustry.db.entities.InvTypes</class>
-    <class>managerindustry.db.entities.MapRegions</class>
-    <class>managerindustry.db.entities.MapSolarSystems</class>
     <class>managerindustry.db.entities.cache.EffectRigEntity</class>
     <class>managerindustry.db.entities.cache.PriceEntity</class>
     <class>managerindustry.db.entities.cache.TaxCostIndexEntity</class>
     <class>managerindustry.db.entities.cache.TaxSolarSystemEntity</class>
     <class>managerindustry.db.entities.user.UserApiEntity</class>
+    <class>managerindustry.db.entities.eve.IndustryActivity</class>
+    <class>managerindustry.db.entities.eve.MapRegions</class>
+    <class>managerindustry.db.entities.eve.InvTypes</class>
+    <class>managerindustry.db.entities.eve.InvMarketGroups</class>
+    <class>managerindustry.db.entities.eve.IndustryActivitySkills</class>
+    <class>managerindustry.db.entities.eve.IndustryActivityMaterials</class>
+    <class>managerindustry.db.entities.eve.MapSolarSystems</class>
+    <class>managerindustry.db.entities.eve.InvNames</class>
+    <class>managerindustry.db.entities.eve.IndustryBlueprints</class>
+    <class>managerindustry.db.entities.eve.DgmTypeAttributes</class>
+    <class>managerindustry.db.entities.eve.IndustryActivityProducts</class>
+    <class>managerindustry.db.entities.eve.DgmAttributeTypes</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/industryDB?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

@@ -16,7 +16,7 @@ import managerindustry.logic.enumName.TierEnum;
 import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.fitter.duplicateRig.DuplicateRig;
 import managerindustry.logic.structure.engineeringComplex.EngineeringComplex;
-import managerindustry.logic.structure.StructureEngineeringRigs.StructureEngineeringRigs;
+import managerindustry.logic.structure.structureEngineeringRigs.StructureEngineeringRigs;
 
 /**
  *

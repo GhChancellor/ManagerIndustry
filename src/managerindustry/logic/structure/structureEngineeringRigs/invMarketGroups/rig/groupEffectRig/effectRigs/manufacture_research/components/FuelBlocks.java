@@ -1,0 +1,24 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package managerindustry.logic.structure.structureEngineeringRigs.invMarketGroups.rig.groupEffectRig.effectRigs.manufacture_research.components;
+
+import managerindustry.logic.structure.structureEngineeringRigs.invMarketGroups.itemsRecursion.ItemRecusion;
+
+/**
+ * marketGroupID 1870
+ * parentGroupID 1035
+ * @author lele
+ */
+public class FuelBlocks {
+    /**
+     * Get Fuel Blocks for structure
+     * @return ItemRecusion
+     */     
+    public final ItemRecusion getFuelBlocks(){
+        ItemRecusion fuelBlocks = new ItemRecusion(1870); 
+        return fuelBlocks;
+    }     
+}

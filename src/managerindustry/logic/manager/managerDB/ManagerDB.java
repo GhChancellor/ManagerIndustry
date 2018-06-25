@@ -7,7 +7,7 @@ package managerindustry.logic.manager.managerDB;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import managerindustry.db.entities.InvMarketGroups;
+import managerindustry.db.entities.eve.InvMarketGroups;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.manager.managerDB.cache.effectRig.EffectRigX;
 import managerindustry.logic.manager.managerDB.cache.price.PriceX;

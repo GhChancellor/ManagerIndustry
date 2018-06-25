@@ -13,12 +13,8 @@ import managerindustry.logic.gui.display.DisplaySpeculation;
 import managerindustry.logic.manager.ManagerBuild;
 import managerindustry.logic.manager.ManagerComponentX;
 import managerindustry.logic.manager.managerDB.ManagerDB;
-import managerindustry.logic.prove.buildItem.BuildItem;
 import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
-import managerindustry.logic.structure.StructureEngineeringRigs.invMarketGroups.itemsRecursion.ItemRecusion;
-import managerindustry.logic.structure.StructureEngineeringRigs.invMarketGroups.rig.groupEffectRig.GroupEffectRig;
-
 
 /**
  *
@@ -27,9 +23,9 @@ import managerindustry.logic.structure.StructureEngineeringRigs.invMarketGroups.
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, PriceNotExistsException {
-        buildItem();
-//        DisplayItemCost();
-//        speculation();
+        buildItem(); // << controllare
+//        jobInstallationFee();
+//        speculation(); // << controllare
 //        recursionItems();
     }
     

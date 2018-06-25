@@ -7,13 +7,11 @@ package managerindustry.logic.prove.ricorsione;
 
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.db.entities.IndustryActivityMaterials;
-import managerindustry.db.entities.InvTypes;
+import managerindustry.db.entities.eve.IndustryActivityMaterials;
+import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.buiild.ComponentX;
 import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.manager.ManagerComponentX;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
-
 
 /**
  *
@@ -54,53 +52,53 @@ public class ProvaRicorsione {
     }
     
     public void baseMaterial(String bpoName){
-        baseMaterial02();
-        boolean flag = false;
-        
-        
-        if ( flag )
-            return;
-        
-        System.out.println(""+bpoName);
-        
-        // get item to build
-        List < IndustryActivityMaterials > nameItemToBuild = ManagerDBEve_OLD.getInstance().getMaterialNeedByName(bpoName);
-        
-        if ( ! nameItemToBuild.isEmpty() ){
-            for (IndustryActivityMaterials invTypeMaterialse :  nameItemToBuild) {
-                InvTypes invTypes = ManagerDBEve_OLD.getInstance().getInvTypes_NameById(invTypeMaterialse.getMaterialTypeID());
-                
-                // get component
-                List < IndustryActivityMaterials > neededComponents = ManagerDBEve_OLD.getInstance().getMaterialNeedByName( invTypes.getTypeName() + " blueprint");
-                
-                ComponentX componentX = new ComponentX();
-                
-                componentX.setName(invTypes.getTypeName());
-                componentX.setQuanityInt(invTypeMaterialse.getQuantity());
-
-                if ( neededComponents != null){ 
-                    for (IndustryActivityMaterials neededComponent : neededComponents) {
-                        invTypes = ManagerDBEve_OLD.getInstance().getInvTypes_NameById(neededComponent.getMaterialTypeID());
-                        
-                        
-//                        MaterialForComponents materialForComponents = new MaterialForComponents( invTypes.getTypeID(),invTypes.getTypeName(), neededComponent.getQuantity()  );
-//                        componentX.addMaterialForComponents(materialForComponents); 
-                        
+//        baseMaterial02();
+//        boolean flag = false;
+//        
+//        
+//        if ( flag )
+//            return;
+//        
+//        System.out.println(""+bpoName);
+//        
+//        // get item to build
+//        List < IndustryActivityMaterials > nameItemToBuild = ManagerDBEve_OLD.getInstance().getMaterialNeedByName(bpoName);
+//        
+//        if ( ! nameItemToBuild.isEmpty() ){
+//            for (IndustryActivityMaterials invTypeMaterialse :  nameItemToBuild) {
+//                InvTypes invTypes = ManagerDBEve_OLD.getInstance().getInvTypes_NameById(invTypeMaterialse.getMaterialTypeID());
+//                
+//                // get component
+//                List < IndustryActivityMaterials > neededComponents = ManagerDBEve_OLD.getInstance().getMaterialNeedByName( invTypes.getTypeName() + " blueprint");
+//                
+//                ComponentX componentX = new ComponentX();
+//                
+//                componentX.setName(invTypes.getTypeName());
+//                componentX.setQuanityInt(invTypeMaterialse.getQuantity());
+//
+//                if ( neededComponents != null){ 
+//                    for (IndustryActivityMaterials neededComponent : neededComponents) {
+//                        invTypes = ManagerDBEve_OLD.getInstance().getInvTypes_NameById(neededComponent.getMaterialTypeID());
+//                        
+//                        
+////                        MaterialForComponents materialForComponents = new MaterialForComponents( invTypes.getTypeID(),invTypes.getTypeName(), neededComponent.getQuantity()  );
+////                        componentX.addMaterialForComponents(materialForComponents); 
+//                        
+////                        componentX.addMaterialForComponents
+////                         ( new MaterialForComponents(invTypes.getTypeID(), 
+////                           invTypes.getTypeName(), neededComponent.getQuantity()));
+//                        
+//                        
 //                        componentX.addMaterialForComponents
-//                         ( new MaterialForComponents(invTypes.getTypeID(), 
-//                           invTypes.getTypeName(), neededComponent.getQuantity()));
-                        
-                        
-                        componentX.addMaterialForComponents
-                         ( new MaterialForComponents( new ComponentX
-                         ( invTypes.getTypeID(), invTypes.getTypeName(), neededComponent.getQuantity()  ) ) );
-                    }
-                }
-                ManagerComponentX.getInstance().addComponentXs(componentX);
-            }
-        }
-        List < ComponentX > componentXs1 = ManagerComponentX.getInstance().getBaseComponentXs();
-        System.out.println("");
+//                         ( new MaterialForComponents( new ComponentX
+//                         ( invTypes.getTypeID(), invTypes.getTypeName(), neededComponent.getQuantity()  ) ) );
+//                    }
+//                }
+//                ManagerComponentX.getInstance().addComponentXs(componentX);
+//            }
+//        }
+//        List < ComponentX > componentXs1 = ManagerComponentX.getInstance().getBaseComponentXs();
+//        System.out.println("");
     }
     
     public void Display(){

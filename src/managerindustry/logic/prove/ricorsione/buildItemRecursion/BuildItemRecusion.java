@@ -7,8 +7,8 @@ package managerindustry.logic.prove.ricorsione.buildItemRecursion;
 
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.db.entities.IndustryActivityMaterials;
-import managerindustry.db.entities.InvTypes;
+import managerindustry.db.entities.eve.IndustryActivityMaterials;
+import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.buiild.CalculatedComponentX;
 import managerindustry.logic.buiild.ComponentX;
 import managerindustry.logic.buiild.MaterialEfficiencyCalculate;

@@ -6,8 +6,8 @@
 package managerindustry.logic.prove.ricorsione.buildItemRecursion.build02;
 
 import java.util.List;
-import managerindustry.db.entities.IndustryActivityMaterials;
-import managerindustry.db.entities.InvTypes;
+import managerindustry.db.entities.eve.IndustryActivityMaterials;
+import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.prove.ricorsione.buildItemRecursion.ComponentX02;

@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.solarSystem;
 
-import managerindustry.db.entities.InvNames;
+import managerindustry.db.entities.eve.InvNames;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**

@@ -7,11 +7,10 @@ package managerindustry.logic.prove.ricorsione.skill.skillProduction;
 
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.db.entities.DgmTypeAttributes;
-import managerindustry.db.entities.IndustryActivitySkills;
+import managerindustry.db.entities.eve.DgmTypeAttributes;
+import managerindustry.db.entities.eve.IndustryActivitySkills;
 import managerindustry.logic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.managerDB.ManagerDB;
-import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
 
 /**
  * Oscillator Capacitor Unit Blueprint - 17337

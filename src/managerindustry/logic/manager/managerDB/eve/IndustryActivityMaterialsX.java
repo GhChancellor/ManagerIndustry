@@ -9,8 +9,8 @@ import managerindustry.logic.manager.managerDB.ManagerDB;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import managerindustry.db.entities.IndustryActivityMaterials;
-import managerindustry.db.entities.InvTypes;
+import managerindustry.db.entities.eve.IndustryActivityMaterials;
+import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.enumName.RamActivitiesEnum;
 //import managerindustry.logic.manager.managerDB.ManagerDBEve;
 

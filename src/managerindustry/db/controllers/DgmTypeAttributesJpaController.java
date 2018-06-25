@@ -15,8 +15,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import managerindustry.db.controllers.exceptions.NonexistentEntityException;
 import managerindustry.db.controllers.exceptions.PreexistingEntityException;
-import managerindustry.db.entities.DgmTypeAttributes;
-import managerindustry.db.entities.DgmTypeAttributesPK;
+import managerindustry.db.entities.eve.DgmTypeAttributes;
+import managerindustry.db.entities.eve.DgmTypeAttributesPK;
 
 /**
  *

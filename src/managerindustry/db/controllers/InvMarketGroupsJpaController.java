@@ -15,7 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import managerindustry.db.controllers.exceptions.NonexistentEntityException;
 import managerindustry.db.controllers.exceptions.PreexistingEntityException;
-import managerindustry.db.entities.InvMarketGroups;
+import managerindustry.db.entities.eve.InvMarketGroups;
 
 /**
  *

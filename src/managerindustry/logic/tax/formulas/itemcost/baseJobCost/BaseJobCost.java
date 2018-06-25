@@ -8,7 +8,7 @@ package managerindustry.logic.tax.formulas.itemcost.baseJobCost;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import managerindustry.db.entities.InvTypes;
+import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.manager.managerDB.ManagerDB;

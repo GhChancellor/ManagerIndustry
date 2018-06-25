@@ -5,10 +5,8 @@
  */
 package managerindustry.logic.structure.engineeringComplex;
 
-import managerindustry.logic.unused.structure.*;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import managerindustry.db.entities.DgmTypeAttributes;
+import managerindustry.db.entities.eve.DgmTypeAttributes;
 import managerindustry.logic.enumName.PlatformEnum;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 

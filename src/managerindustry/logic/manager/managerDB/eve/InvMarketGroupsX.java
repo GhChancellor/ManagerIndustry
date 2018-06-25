@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import managerindustry.db.entities.InvMarketGroups;
-import managerindustry.db.entities.InvTypes;
+import managerindustry.db.entities.eve.InvMarketGroups;
+import managerindustry.db.entities.eve.InvTypes;
 
 /**
  *

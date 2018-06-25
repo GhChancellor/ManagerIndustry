@@ -8,7 +8,7 @@ package managerindustry.logic.manager.managerDB.eve;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import managerindustry.db.entities.IndustryActivity;
+import managerindustry.db.entities.eve.IndustryActivity;
 import managerindustry.logic.enumName.RamActivitiesEnum;
 
 /**
