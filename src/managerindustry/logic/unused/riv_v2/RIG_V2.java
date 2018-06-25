@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.unused.riv_v2;
 
-import managerindustry.logic.structure.fakeRig.FakeRig;
+import managerindustry.logic.structure.StructureEngineeringRigs.fakeRig.FakeRig;
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.db.entities.InvTypes;

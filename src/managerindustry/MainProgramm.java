@@ -16,8 +16,8 @@ import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.prove.buildItem.BuildItem;
 import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
-import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
-import managerindustry.logic.prove.invMarketGroups.rig.groupEffectRig.GroupEffectRig;
+import managerindustry.logic.structure.StructureEngineeringRigs.invMarketGroups.itemsRecursion.ItemRecusion;
+import managerindustry.logic.structure.StructureEngineeringRigs.invMarketGroups.rig.groupEffectRig.GroupEffectRig;
 
 
 /**

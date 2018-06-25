@@ -10,8 +10,8 @@ import managerindustry.logic.enumName.RuleBonusRigEnum;
 import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.enumName.TierEnum;
 import managerindustry.logic.fitter.Fitter;
-import managerindustry.logic.structure.EngineeringComplex;
-import managerindustry.logic.structure.StructureEngineeringRigs;
+import managerindustry.logic.structure.engineeringComplex.EngineeringComplex;
+import managerindustry.logic.structure.StructureEngineeringRigs.StructureEngineeringRigs;
 
 /**
  *

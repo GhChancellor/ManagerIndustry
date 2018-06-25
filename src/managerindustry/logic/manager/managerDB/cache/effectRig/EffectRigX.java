@@ -11,12 +11,12 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.EffectRigEntityJpaController;
 import managerindustry.db.entities.cache.EffectRigEntity;
-import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecursionA;
-import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecursionB;
-import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRecusion;
-import managerindustry.logic.prove.invMarketGroups.itemsRecursion.ItemRercsionLibrary;
-import managerindustry.logic.prove.invMarketGroups.rig.groupEffectRig.effectRigs.logic.StructureRig;
-import managerindustry.logic.prove.invMarketGroups.rig.groupEffectRig.GroupEffectRig;
+import managerindustry.logic.structure.StructureEngineeringRigs.invMarketGroups.itemsRecursion.ItemRecursionA;
+import managerindustry.logic.structure.StructureEngineeringRigs.invMarketGroups.itemsRecursion.ItemRecursionB;
+import managerindustry.logic.structure.StructureEngineeringRigs.invMarketGroups.itemsRecursion.ItemRecusion;
+import managerindustry.logic.structure.StructureEngineeringRigs.invMarketGroups.itemsRecursion.ItemRercsionLibrary;
+import managerindustry.logic.structure.StructureEngineeringRigs.invMarketGroups.rig.groupEffectRig.effectRigs.logic.StructureRig;
+import managerindustry.logic.structure.StructureEngineeringRigs.invMarketGroups.rig.groupEffectRig.GroupEffectRig;
 
 /**
  *
