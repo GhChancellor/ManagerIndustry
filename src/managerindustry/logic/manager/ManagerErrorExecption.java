@@ -23,9 +23,10 @@ public class ManagerErrorExecption {
                 return ErrorMessage.MAX_CALIBRATION.getErrorMessage();
             case MAX_SLOT_RIGS:
                 return ErrorMessage.MAX_SLOT_RIGS.getErrorMessage();
+            case RIG_SIZE:
+                return ErrorMessage.RIG_SIZE.getErrorMessage();
             default:
-                System.out.println("errore");
-                return "";
+                return ErrorMessage.UNKNOW_ERROR.getErrorMessage();
         }
     }
 }

@@ -11,10 +11,10 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.EffectRigEntityJpaController;
 import managerindustry.db.entities.cache.EffectRigEntity;
-import managerindustry.logic.structure.structureEngineeringRigs.invMarketGroups.itemsRecursion.ItemRecursionA;
-import managerindustry.logic.structure.structureEngineeringRigs.invMarketGroups.itemsRecursion.ItemRecusion;
-import managerindustry.logic.structure.structureEngineeringRigs.invMarketGroups.itemsRecursion.ItemRercsionLibrary;
-import managerindustry.logic.structure.structureEngineeringRigs.invMarketGroups.rig.groupEffectRig.effectRigs.logic.StructureRig;
+import managerindustry.logic.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecursionA;
+import managerindustry.logic.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRercsionLibrary;
+import managerindustry.logic.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigsXXX;
 
 /**
  *
@@ -46,7 +46,7 @@ public class EffectRigX {
      * Add Effect Rigs
      * @param StructureRig structureRig 
      */
-    public void addEffectRigs(StructureRig structureRig){
+    public void addEffectRigs(EffectEngineeringRigsXXX structureRig){
         List<ItemRecusion> itemRecusions = structureRig.getItemRecusions();
         ItemRercsionLibrary library = new ItemRercsionLibrary();
 
@@ -64,8 +64,8 @@ public class EffectRigX {
 
     /**
      * Get Effect Rig Entity
-     * @param int typeID
-     * @param int effectID
+     * @param int typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
+     * @param int effectID, has effect on item to build like ammunition
      * @return EffectRigEntity
      */
     public EffectRigEntity getEffectRigEntity(int typeID, int effectID){

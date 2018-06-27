@@ -16,6 +16,7 @@ public enum ErrorMessage {
     PRICE_NOT_EXISTS("Price Not Exists"),
     SECURITY_STATUS_ERROR("Security status error"),
     MAX_SLOT_RIGS("Max slot rig"),
+    RIG_SIZE("Size Wrong"),
     UNKNOW_ERROR("Unknow error");
     
     private String errorMessage;

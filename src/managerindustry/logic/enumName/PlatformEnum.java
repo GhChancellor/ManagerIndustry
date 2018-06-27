@@ -11,7 +11,7 @@ package managerindustry.logic.enumName;
  */
 public enum PlatformEnum {
     STATION("Station"),
-    ENGINEERING_COMPLEX("Engineering Complex"),
+    // ENGINEERING_COMPLEX("Engineering Complex"),
     RAITARU("Raitaru"),
     AZBEL("Azbel"),
     SOTIYO("Sotiyo");

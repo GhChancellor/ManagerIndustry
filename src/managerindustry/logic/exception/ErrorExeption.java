@@ -28,6 +28,7 @@ public class ErrorExeption extends Exception{
         PRICE_NOT_EXISTS,
         SECURITY_STATUS_ERROR,
         MAX_SLOT_RIGS,
+        RIG_SIZE,
         UNKNOW_ERROR;
     }    
 }

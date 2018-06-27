@@ -16,7 +16,7 @@ import managerindustry.logic.enumName.TierEnum;
 import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.fitter.duplicateRig.DuplicateRig;
 import managerindustry.logic.structure.engineeringComplex.EngineeringComplex;
-import managerindustry.logic.structure.structureEngineeringRigs.StructureEngineeringRigs;
+import managerindustry.logic.structure.engineeringRig.EngineeringRig_OLD;
 
 /**
  *
@@ -28,9 +28,11 @@ public class Fitter {
     private float currentCalibration = 0;
     private float currentSlot = 0;
     
-    private enum ADD_RIGS {NEW,ADD_ANOTHER,DONT_ADD;}
+    private enum ADD_RIGS {NEW, ADD_ANOTHER, DONT_ADD;}
     
     public Fitter() {
+        engineeringComplex(PlatformEnum.RAITARU);
+        engineeringComplex.displayValue();
 
     }
     
@@ -39,10 +41,10 @@ public class Fitter {
     }
     
     public void structureEngineeringRigs(TierEnum tierEnum, RuleBonusRigEnum bonusRigEnum, SecurityStatusEnum securityStatusEnum){
-        StructureEngineeringRigs structureEngineeringRigs = new StructureEngineeringRigs(tierEnum, bonusRigEnum, securityStatusEnum);
+        EngineeringRig_OLD structureEngineeringRigs = new EngineeringRig_OLD(tierEnum, bonusRigEnum, securityStatusEnum);
     }
     
-    private void addRig(StructureEngineeringRigs structureEngineeringRigs) throws ErrorExeption{
+    private void addRig(EngineeringRig_OLD structureEngineeringRigs) throws ErrorExeption{
         if ( currentSlot <= engineeringComplex.getMaxRigSlot()){
             
             if ( currentCalibration > engineeringComplex.getMaxCalibrationComplex())
@@ -87,15 +89,15 @@ public class Fitter {
      * @param StructureEngineeringRigs structureEngineeringRigs
      * @return ENUM ADD_RIGS
      */
-    private ADD_RIGS maxGroupFitted(StructureEngineeringRigs structureEngineeringRigs){
-        if ( maxGroupFittedMap.containsKey(structureEngineeringRigs.getTypeID())){
+    private ADD_RIGS maxGroupFitted(EngineeringRig_OLD engineeringRigs){
+        if ( maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
             
             DuplicateRig duplicateRig = 
-                maxGroupFittedMap.get(structureEngineeringRigs.getTypeID());
+                maxGroupFittedMap.get(engineeringRigs.getTypeID());
             
-                int tempRigFitted = duplicateRig.getCurrentRigFitted();
+                int currentRigFitted = duplicateRig.getCurrentRigFitted();
                 
-                if (tempRigFitted++ <= duplicateRig.getMaxGroupFitted() )
+                if (currentRigFitted++ <= duplicateRig.getMaxGroupFitted() )
                     return ADD_RIGS.ADD_ANOTHER;
                 else
                     return ADD_RIGS.DONT_ADD;

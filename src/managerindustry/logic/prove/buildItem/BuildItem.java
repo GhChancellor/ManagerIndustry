@@ -254,7 +254,7 @@ public class BuildItem {
         InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesByName(bpoName);
         
         List < DgmTypeAttributes > dgmTypeAttributes = 
-          ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributes(invTypes.getTypeID());
+          ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributesByTypeId(invTypes.getTypeID());
         
         System.out.println(""+ bpoName + " ID " + invTypes.getTypeID() );
         

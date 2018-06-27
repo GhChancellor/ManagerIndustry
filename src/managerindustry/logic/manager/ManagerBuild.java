@@ -59,6 +59,8 @@ public class ManagerBuild {
         buildItem(bpoName, run, job, bpoME, componentMe, materials, componentX);
         
         reportMaterialForComponents.add(componentX);
+        
+        // bug ComponetX viene cancellato di baseMaterial, viene cancellato e sostituti con build item e quindi NON si avavrà mai i valori puri del DB
         displayMap(componentX, "");
         
         componentX = new ComponentX();
@@ -174,6 +176,7 @@ public class ManagerBuild {
         }
     }
     
+    @Deprecated
     public void displayMap(ComponentX dad, String tab){
         System.out.println(tab + dad.getName() + " " + dad.getQuanityInt() + " -> " + String.format("%.0f", dad.getQuanityDbl()) );
         tab += "\t";
@@ -259,7 +262,7 @@ public class ManagerBuild {
         InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesByName(bpoName);
         
         List < DgmTypeAttributes > dgmTypeAttributes = 
-          ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributes(invTypes.getTypeID());
+          ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributesByTypeId(invTypes.getTypeID());
         
         System.out.println(""+ bpoName + " ID " + invTypes.getTypeID() );
         

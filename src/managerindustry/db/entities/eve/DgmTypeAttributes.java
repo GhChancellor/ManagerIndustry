@@ -27,8 +27,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "DgmTypeAttributes.findByAttributeID", query = "SELECT d FROM DgmTypeAttributes d WHERE d.dgmTypeAttributesPK.attributeID = :attributeID")
     , @NamedQuery(name = "DgmTypeAttributes.findByValueInt", query = "SELECT d FROM DgmTypeAttributes d WHERE d.valueInt = :valueInt")
     , @NamedQuery(name = "DgmTypeAttributes.findByValueFloat", query = "SELECT d FROM DgmTypeAttributes d WHERE d.valueFloat = :valueFloat")
-       // /get value station like reductionManufacturingMaterial, calibration....
-    , @NamedQuery(name = "DgmTypeAttributes.findByValueStation", 
+       
+    // get value station/rig like bonus, reductionManufacturingMaterial, calibration....
+    , @NamedQuery(name = "DgmTypeAttributes.findByTypeId_ByAttributeID", 
        query = "SELECT a FROM DgmTypeAttributes a, DgmAttributeTypes b, InvTypes c WHERE "
        + "a.dgmTypeAttributesPK.typeID = C.typeID AND "
        + "B.attributeID = A.dgmTypeAttributesPK.attributeID AND "

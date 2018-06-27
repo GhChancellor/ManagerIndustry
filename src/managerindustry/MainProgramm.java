@@ -35,7 +35,7 @@ public class MainProgramm {
         //  drake
         // 	Tritanium 2500001 -> 2500001
 	// Pyerite 612071 -> 612071
-        ManagerBuild managerBuild = new ManagerBuild("drake", 1, 1, 10, 1);         
+        ManagerBuild managerBuild = new ManagerBuild("drake", 1, 1, 1, 0);         
     }
     
     /**

@@ -28,7 +28,9 @@ public class EffectRigEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    // typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
     private int typeID;
+    // effectID, has effect on item to build like ammunition
     private int effectID;
 
     public EffectRigEntity() {
@@ -38,19 +40,35 @@ public class EffectRigEntity implements Serializable {
         this.typeID = typeID;
         this.effectID = effectID;
     }
-        
+    
+    /**
+     * Get typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
+     * @return int
+     */
     public int getTypeID() {
         return typeID;
     }
 
+    /**
+     * Set typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
+     * @param int typeID 
+     */
     public void setTypeID(int typeID) {
         this.typeID = typeID;
     }
 
+    /**
+     * Get effectID has effect on item to build like ammunition
+     * @return int
+     */
     public int getEffectID() {
         return effectID;
     }
 
+    /**
+     * Set effectID, has effect on item to build like ammunition
+     * @param int effectID 
+     */
     public void setEffectID(int effectID) {
         this.effectID = effectID;
     }

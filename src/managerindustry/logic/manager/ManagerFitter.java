@@ -11,7 +11,7 @@ import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.enumName.TierEnum;
 import managerindustry.logic.fitter.Fitter;
 import managerindustry.logic.structure.engineeringComplex.EngineeringComplex;
-import managerindustry.logic.structure.structureEngineeringRigs.StructureEngineeringRigs;
+import managerindustry.logic.structure.engineeringRig.EngineeringRig_OLD;
 
 /**
  *
@@ -25,4 +25,4 @@ public class ManagerFitter {
     
     
 }
-// StructureEngineeringRigs engineeringRigs = new StructureEngineeringRigs(TierEnum.T2, RuleBonusRigEnum.RIG_TIME_EFFICIENCY, SecurityStatusEnum.NULL_SEC);
+// EngineeringRig_OLD engineeringRigs = new EngineeringRig_OLD(TierEnum.T2, RuleBonusRigEnum.RIG_TIME_EFFICIENCY, SecurityStatusEnum.NULL_SEC);
