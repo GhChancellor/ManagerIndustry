@@ -35,7 +35,8 @@ public class ManagerFakeRig {
             case NULL_SEC:
                 return RuleBonusRigEnum.NULL_SEC;
             default:
-                ManagerErrorExecption.getErrorExecption(ErrorExeption.ErrorExeptionEnum.SECURITY_STATUS_ERROR);
+//                ManagerErrorExecption.getErrorExecption(ErrorExeption.ErrorExeptionEnum.SECURITY_STATUS_ERROR);
+                ManagerErrorExecption.displayErrorExecption(ErrorExeption.ErrorExeptionEnum.SECURITY_STATUS_ERROR);
                 return null;
         }
     }    

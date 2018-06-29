@@ -3,24 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.fitter.duplicateRig;
+package managerindustry.logic.fitter.maxGroupFitted;
 
 /**
- *
+ * Maximum number of the same rig that you can fit
  * @author lele
  */
-public class DuplicateRig {
+public class MaxGroupFitted {
     private int typeId;
     private float maxGroupFitted;
     private int currentRigFitted = 0;
     
-    public DuplicateRig(int rigID, float maxGroupFitted) {
+    public MaxGroupFitted(int rigID, float maxGroupFitted) {
         this.typeId = rigID;
         this.maxGroupFitted = maxGroupFitted;
         currentRigFitted++;
     }
 
-    public DuplicateRig(int rigID, int currentRigFitted, float maxGroupFitted) {
+    public MaxGroupFitted(int rigID, int currentRigFitted, float maxGroupFitted) {
         this.typeId = rigID;
         this.maxGroupFitted = maxGroupFitted;
         this.currentRigFitted = currentRigFitted;

@@ -5,12 +5,14 @@
  */
 package managerindustry.logic.fitter;
 
+import managerindustry.logic.exception.ErrorExeption;
+
 /**
  *
  * @author lele
  */
 public class MainFitter {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ErrorExeption {
         Fitter fitter = new Fitter();
     }
 }

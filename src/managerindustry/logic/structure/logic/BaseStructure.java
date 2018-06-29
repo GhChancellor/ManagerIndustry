@@ -1,0 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package managerindustry.logic.structure.logic;
+
+import managerindustry.db.entities.eve.DgmTypeAttributes;
+import managerindustry.logic.manager.managerDB.ManagerDB;
+
+/**
+ *
+ * @author lele
+ */
+public abstract class BaseStructure {
+    protected abstract void calculedBonus();
+    public abstract void displayAllValueCalculated();
+    public abstract void displayValue();
+    
+    /**
+     * Truncate to decimal
+     * @param value
+     * @return float
+     */
+    public float truncateToDecimal(float value, int numberofDecimals){
+        return StructureLibrary.truncateToDecimal(value, numberofDecimals).floatValue();        
+    }
+
+   /**
+     * Get bonus station like fuel consumption, manufacturing and science job required time 
+     * @param int typeName
+     * @param int code
+     * @return float 
+     */
+    public float getDgmTypeAttributes(int typeId, int code){
+        DgmTypeAttributes dgmTypeAttribute = 
+            ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributesByTypeId_ByAttributeID(typeId, code);
+        return dgmTypeAttribute.getValueFloat();
+    }       
+}

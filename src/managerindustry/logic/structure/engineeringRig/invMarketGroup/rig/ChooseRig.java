@@ -16,7 +16,7 @@ import managerindustry.logic.structure.engineeringRig.invMarketGroup.rig.groupEf
  *
  * @author lele
  */
-public class ChooseRigXXX {
+public class ChooseRig {
     private InitMediumRigGroups initMediumRigGroups = new InitMediumRigGroups();
     private InitLargeRigGroups initLargeRigGroups = new InitLargeRigGroups();
     private InitXLRigGroups initXLRigGroups = new InitXLRigGroups();
@@ -32,7 +32,7 @@ public class ChooseRigXXX {
         return engineeringRigs.getEffectRig(typeID, effectID);
     }
     
-    public ChooseRigXXX(int typeId) {
+    public ChooseRig(int typeId) {
         if (ManagerDB.getInstance().invTypes().getInvTypesById(typeId).equals(typeId))
             return;
         

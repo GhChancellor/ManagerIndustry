@@ -5,30 +5,15 @@
  */
 package managerindustry.logic.structure.engineeringComplex;
 
-import java.math.BigDecimal;
-import managerindustry.db.entities.eve.DgmTypeAttributes;
 import managerindustry.logic.enumName.PlatformEnum;
 import managerindustry.logic.manager.managerDB.ManagerDB;
+import managerindustry.logic.structure.logic.BaseStructure;
 
 /**
- * https://community.eveonline.com/news/dev-blogs/building-dreams-introducing-engineering-complexes/
- * raitaru '35825', '2339' structureServiceRoleBonus, NULL, '-25' 
- *  
- * Material bonus for Engineering Complexes Structures 2600 0.99 ( 1 - 0.99 = 0.1 )
- * 1% reduction in manufacturing job required materials 2600
- * 
- * Cost bonus for Engineering Complexes Structures 2601 null 0.97 ( 1 - 0.97 = 0.3 )
- * 3% reduction in manufacturing and science job required ISK cost 2601
- * 
- * Time bonus for Engineering Complexes Structures 2602 null 0.85 ( 1 - 0.85 = 0.15 )
- * 15% reduction in manufacturing and science job required time 2602 
- * 
- * 25% reduction in Engineering Service Module fuel consumption 2339
- * 
- * Calibration station 1132
+ * https://www.eveonline.com/article/building-dreams-introducing-engineering-complexes/
  * @author lele
  */
-public class EngineeringComplex {
+public class EngineeringComplex extends BaseStructure{
     /**
      * BONUS ATTRIBUTE
      */
@@ -59,88 +44,71 @@ public class EngineeringComplex {
     private float reductionFuelConsumption; // 2339
     private float maxCalibrationComplex; // 1132
     private float maxRigSlot;
-    private float rigSize;
+    private float rigSize;    
     private final float baseValue = 1.0f;
-    
-    public EngineeringComplex() {
-    }
 
-    public EngineeringComplex(PlatformEnum nameEngineeringComplex){
-        // float roundOff = Math.round(value * 100.0) / 100.0;
-        // Math.floor(value * 100) / 100;
-        
+    public EngineeringComplex(PlatformEnum nameEngineeringComplex) {
         int typeId = ManagerDB.getInstance().invTypes().getInvTypesByName(nameEngineeringComplex.getName()).getTypeID();
         
         // MANUFACTURING_MATERIAL
-        DgmTypeAttributes dgmTypeAttribute = 
-            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.MANUFACTURING_MATERIAL); // 2600               
         reductionManufacturingMaterial = 
-          truncateDecimal(baseValue - dgmTypeAttribute.getValueFloat(), 2).floatValue();
+            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.MANUFACTURING_MATERIAL.getCode()); // 2600  
         
         // MANUFACTURING_SCIENCE_JOB_ISK_COST
-        dgmTypeAttribute = 
-            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.MANUFACTURING_SCIENCE_JOB_ISK_COST); // 2601        
-        reductionManufacturingScienceJobIskCost = 
-          truncateDecimal(baseValue - dgmTypeAttribute.getValueFloat(), 2).floatValue();
+        reductionManufacturingScienceJobTime = 
+            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.MANUFACTURING_SCIENCE_JOB_ISK_COST.getCode()); // 2601  
         
         // MANUFACTURING_SCIENCE_JOB_TIME
-        dgmTypeAttribute = 
-            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.MANUFACTURING_SCIENCE_JOB_TIME);// 2602        
-        reductionManufacturingScienceJobTime = 
-          truncateDecimal(baseValue - dgmTypeAttribute.getValueFloat(), 2).floatValue();
+        reductionManufacturingScienceJobIskCost = 
+            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.MANUFACTURING_SCIENCE_JOB_TIME.getCode()); // 2602
         
         // FUEL_CONSUMPTIOM
-        dgmTypeAttribute = 
-            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.FUEL_CONSUMPTIOM); // 2339       
-        reductionFuelConsumption = dgmTypeAttribute.getValueFloat();
-
+        reductionFuelConsumption =
+            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.FUEL_CONSUMPTIOM.getCode()); // 2339
+        
         // MAX_CALIBRATION_COMPLEX 
-        dgmTypeAttribute = 
-            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.MAX_CALIBRATION_COMPLEX); // 1132
-        maxCalibrationComplex = dgmTypeAttribute.getValueFloat();
-
+        maxCalibrationComplex =
+            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.MAX_CALIBRATION_COMPLEX.getCode()); // 1132
+        
         // RIG_SLOTS
-        dgmTypeAttribute = 
-            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.RIG_SLOTS); // 1137       
-        maxRigSlot = dgmTypeAttribute.getValueFloat();
+        maxRigSlot =
+            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.RIG_SLOTS.getCode()); // 1137
         
         // RIG_SIZE
-        dgmTypeAttribute = 
-            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.RIG_SIZE); // 1547
-        rigSize = dgmTypeAttribute.getValueFloat();
-                
-        this.nameEngineeringComplex = nameEngineeringComplex.getName();        
+        rigSize =
+            getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.RIG_SIZE.getCode()); // 1547        
+        
+        this.nameEngineeringComplex = nameEngineeringComplex.getName();
+        
+        calculedBonus();
     }
-    
+   
     /**
-     * Get bonus station like fuel consumption, manufacturing and science job required time 
-     * @param int typeName
-     * @param ATTRIBUTE_ID_ENUM attribute_id
-     * @return DgmTypeAttributes
+     * Calculate bouns engineering complex
+     * value bonus = baseValue - reductionManufacturingMaterial
      */
-    private DgmTypeAttributes getDgmTypeAttributes(int typeId, ATTRIBUTE_ID_ENUM attribute_id){
-        return ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributesByTypeId_ByAttributeID(typeId, attribute_id.getCode());
+    @Override
+    protected void calculedBonus() {        
+        if (reductionManufacturingMaterial != 0)
+            reductionManufacturingMaterial = 
+            truncateToDecimal(baseValue - reductionManufacturingMaterial,2);
+            
+        if (reductionManufacturingScienceJobTime != 0)
+            reductionManufacturingScienceJobTime = 
+            truncateToDecimal(baseValue - reductionManufacturingScienceJobTime, 2);
+                    
+        if (reductionManufacturingScienceJobIskCost != 0)
+            reductionManufacturingScienceJobIskCost = 
+            truncateToDecimal(baseValue - reductionManufacturingScienceJobIskCost, 2);
     }
-    
-    /**
-     * Truncate to decimal
-     * @param float x
-     * @param int numberofDecimals
-     * @return BigDecimal
-     */
-    private static BigDecimal truncateDecimal(float x, int numberofDecimals) {        
-//        return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_HALF_UP);
-        if (x > 0) {
-            return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_HALF_UP);
-        } else {
-            return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_CEILING);
-        }        
+
+    @Override
+    public void displayAllValueCalculated() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    /**
-     * Display Value
-     */
-    public void displayValue(){
+
+    @Override
+    public void displayValue() {
         System.out.println("nameEngineeringComplex " + nameEngineeringComplex);
         System.out.println("reductionManufacturingMaterial " + reductionManufacturingMaterial);
         System.out.println("reductionManufacturingScienceJobIskCost " + reductionManufacturingScienceJobIskCost);
@@ -223,5 +191,5 @@ public class EngineeringComplex {
      */
     private void setReductionFuelConsumption(float reductionFuelConsumption) {
         this.reductionFuelConsumption = reductionFuelConsumption;
-    }  
+    }    
 }

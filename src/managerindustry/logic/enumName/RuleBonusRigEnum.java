@@ -28,6 +28,7 @@ public enum RuleBonusRigEnum {
     RIG_TIME_EFFICIENCY(2593),
     RIG_COST_BONUS(2595),
     CALIBRATION(1153),
+    RIG_SIZE(1547),
     MAX_GROUP_FITTED(1544);
 
     private final int code;

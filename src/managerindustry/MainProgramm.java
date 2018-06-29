@@ -7,6 +7,8 @@ package managerindustry;
 
 import java.util.Map;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
+import managerindustry.logic.enumName.PlatformEnum;
+import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.gui.display.DisplaySpeculation;
@@ -15,6 +17,8 @@ import managerindustry.logic.manager.ManagerComponentX;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
+import managerindustry.logic.structure.engineeringComplex.EngineeringComplex;
+import managerindustry.logic.structure.engineeringRig.EngineeringRig;
 
 /**
  *
@@ -27,6 +31,7 @@ public class MainProgramm {
 //        jobInstallationFee();
 //        speculation(); // << controllare
 //        recursionItems();
+//        structure();
     }
     
     public static void buildItem(){
@@ -96,5 +101,16 @@ public class MainProgramm {
 //        advancedBattleships.display();
 
 
+    }
+    
+    public static void structure(){
+        EngineeringRig engineeringRig = new EngineeringRig("Standup XL-Set Equipment and Consumable Manufacturing Efficiency II", SecurityStatusEnum.LOW_SEC);
+        engineeringRig.displayValue();
+        engineeringRig.displayAllValueCalculated();
+
+        System.out.println("");
+        
+        EngineeringComplex engineeringComplex = new EngineeringComplex(PlatformEnum.RAITARU);
+        engineeringComplex.displayValue();        
     }
 }

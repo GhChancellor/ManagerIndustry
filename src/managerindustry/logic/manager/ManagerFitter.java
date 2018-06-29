@@ -5,13 +5,8 @@
  */
 package managerindustry.logic.manager;
 
-import managerindustry.logic.enumName.PlatformEnum;
-import managerindustry.logic.enumName.RuleBonusRigEnum;
-import managerindustry.logic.enumName.SecurityStatusEnum;
-import managerindustry.logic.enumName.TierEnum;
+import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.fitter.Fitter;
-import managerindustry.logic.structure.engineeringComplex.EngineeringComplex;
-import managerindustry.logic.structure.engineeringRig.EngineeringRig_OLD;
 
 /**
  *
@@ -19,7 +14,7 @@ import managerindustry.logic.structure.engineeringRig.EngineeringRig_OLD;
  */
 public class ManagerFitter {
 
-    public ManagerFitter() {
+    public ManagerFitter() throws ErrorExeption {
         Fitter fitter = new Fitter();
     }
     

@@ -11,22 +11,44 @@ import managerindustry.logic.exception.ErrorExeption;
 
 
 /**
- *
+ * @deprecated 
  * @author lele
  */
-public class ManagerErrorExecption {
-    public static String getErrorExecption(ErrorExeption.ErrorExeptionEnum errorExeptionEnum){
+public class ManagerErrorExecption extends Exception {
+//    public String getErrorExecption(ErrorExeption.ErrorExeptionEnum errorExeptionEnum){
+//        switch (errorExeptionEnum){
+//            case DUPLICATE_RIGS:
+//                return ErrorMessage.DUPLICATE_RIGS.getErrorMessage();
+//            case MAX_CALIBRATION:
+//                return ErrorMessage.MAX_CALIBRATION.getErrorMessage();
+//            case MAX_SLOT_RIGS:
+//                return ErrorMessage.MAX_SLOT_RIGS.getErrorMessage();
+//            case RIG_SIZE:
+//                return ErrorMessage.RIG_SIZE.getErrorMessage();
+//            default:
+//                return ErrorMessage.UNKNOW_ERROR.getErrorMessage();
+//        }
+//        
+//    }
+    
+    public static void displayErrorExecption(ErrorExeption.ErrorExeptionEnum errorExeptionEnum){
         switch (errorExeptionEnum){
             case DUPLICATE_RIGS:
-                return ErrorMessage.DUPLICATE_RIGS.getErrorMessage();
+                System.out.println(""+ ErrorMessage.DUPLICATE_RIGS.getErrorMessage()); 
+                break;
             case MAX_CALIBRATION:
-                return ErrorMessage.MAX_CALIBRATION.getErrorMessage();
+                System.out.println(""+ ErrorMessage.MAX_CALIBRATION.getErrorMessage());
+                break;
             case MAX_SLOT_RIGS:
-                return ErrorMessage.MAX_SLOT_RIGS.getErrorMessage();
+                System.out.println(""+ ErrorMessage.MAX_SLOT_RIGS.getErrorMessage());
+                break;
             case RIG_SIZE:
-                return ErrorMessage.RIG_SIZE.getErrorMessage();
+                System.out.println(""+ ErrorMessage.RIG_SIZE.getErrorMessage());
+                break;
             default:
-                return ErrorMessage.UNKNOW_ERROR.getErrorMessage();
-        }
+                System.out.println(""+ ErrorMessage.UNKNOW_ERROR.getErrorMessage());
+                break;
+        }                
     }
+    
 }

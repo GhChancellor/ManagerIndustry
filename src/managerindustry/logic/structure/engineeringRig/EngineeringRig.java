@@ -5,19 +5,20 @@
  */
 package managerindustry.logic.structure.engineeringRig;
 
-import java.math.BigDecimal;
 import managerindustry.db.entities.eve.DgmTypeAttributes;
 import managerindustry.logic.enumName.RuleBonusRigEnum;
 import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.manager.ManagerErrorExecption;
 import managerindustry.logic.manager.managerDB.ManagerDB;
+import managerindustry.logic.structure.logic.BaseStructure;
+import managerindustry.logic.structure.logic.StructureLibrary;
 
 /**
- *
+ * https://www.eveonline.com/article/building-dreams-introducing-engineering-complexes/
  * @author lele
  */
-public class EngineeringRig {
+public class EngineeringRig extends BaseStructure{
     private float calibration; // CALIBRATION 1153
     private float securityStatusBonus; // HI 2355, Low 2356, Null 2357    
     private float materialEfficiency; // RIG_MATERIAL_EFFICIENCY(2594)
@@ -34,88 +35,56 @@ public class EngineeringRig {
         typeID = ManagerDB.getInstance().invTypes().getInvTypesByName(nameRig).getTypeID();
         
         // RIG_TIME_EFFICIENCY
-        DgmTypeAttributes dgmTypeAttribute = 
-            getDgmTypeAttributes(typeID, RuleBonusRigEnum.RIG_TIME_EFFICIENCY); // 2593 
-        timeEfficiency = dgmTypeAttribute.getValueFloat();
+        timeEfficiency = 
+            getDgmTypeAttributes(typeID, RuleBonusRigEnum.RIG_TIME_EFFICIENCY.getCode()); // 2593
         
         // RIG_MATERIAL_EFFICIENCY
-        dgmTypeAttribute = 
-            getDgmTypeAttributes(typeID, RuleBonusRigEnum.RIG_MATERIAL_EFFICIENCY); // 2594 
-        materialEfficiency = dgmTypeAttribute.getValueFloat();
-        
+        materialEfficiency = 
+            getDgmTypeAttributes(typeID, RuleBonusRigEnum.RIG_MATERIAL_EFFICIENCY.getCode()); // 2594 
+                
         // RIG_COST_BONUS
-        dgmTypeAttribute = 
-            getDgmTypeAttributes(typeID, RuleBonusRigEnum.RIG_COST_BONUS); // 2595 
-        costBonus = dgmTypeAttribute.getValueFloat();
+        costBonus = 
+            getDgmTypeAttributes(typeID, RuleBonusRigEnum.RIG_COST_BONUS.getCode()); // 2595 
         
         // CALIBRATION
-        dgmTypeAttribute = 
-            getDgmTypeAttributes(typeID, RuleBonusRigEnum.CALIBRATION); // 1153 
-        calibration = dgmTypeAttribute.getValueFloat();
+        calibration = 
+            getDgmTypeAttributes(typeID, RuleBonusRigEnum.CALIBRATION.getCode()); // 1153 
         
         // MAX_GROUP_FITTED
-        dgmTypeAttribute = 
-            getDgmTypeAttributes(typeID, RuleBonusRigEnum.MAX_GROUP_FITTED); // 1544 
-        maxGroupFitted = dgmTypeAttribute.getValueFloat();
+        maxGroupFitted = 
+            getDgmTypeAttributes(typeID, RuleBonusRigEnum.MAX_GROUP_FITTED.getCode()); // 1544 
         
         // SecurityStatus
-        dgmTypeAttribute = 
-            getDgmTypeAttributes(typeID, getSecurityStatus(securityStatusEnum)); // HI 2355, Low 2356, Null 2357
-        securityStatusBonus = dgmTypeAttribute.getValueFloat();
+        securityStatusBonus = 
+            getDgmTypeAttributes(typeID, getSecurityStatus(securityStatusEnum).getCode() ); // HI 2355, Low 2356, Null 2357
+
+        // Rig Size
+        rigSize = getDgmTypeAttributes(typeID, RuleBonusRigEnum.RIG_SIZE.getCode()); // Rig size 1547();
         
-        calculedSecuryStatusWithRig();
-    }
-    
-    /**
-     * Converte un enum security status ( generico ) in un valore leggibile per la classe
-     * @param SecurityStatusEnum securityStatusEnum
-     * @return RuleBonusRigEnum
-     */
-    private RuleBonusRigEnum getSecurityStatus(SecurityStatusEnum securityStatusEnum){
-        switch ( securityStatusEnum ){
-            case HI_SEC:
-                return RuleBonusRigEnum.HI_SEC;
-            case LOW_SEC:
-                return RuleBonusRigEnum.LOW_SEC;
-            case NULL_SEC:
-                return RuleBonusRigEnum.NULL_SEC;
-            default:
-                ManagerErrorExecption.getErrorExecption(ErrorExeption.ErrorExeptionEnum.SECURITY_STATUS_ERROR);
-                return null;
-        }
-    }        
-    
-    /**
-     * Calculed Secury Status With Rig
-     */
-    private void calculedSecuryStatusWithRig(){
-        if ( materialEfficiency != 0)
-            materialEfficiencyAndSecurityStatus = truncateDecimal(materialEfficiency * securityStatusBonus, 1).floatValue() ;
-        
-        if ( timeEfficiency != 0)
-            timeEfficiencyAndSecurityStatus = truncateDecimal(timeEfficiency * securityStatusBonus, 1).floatValue() ;
-        
-        if ( costBonus != 0)
-            costBonusAndSecurityStatus = truncateDecimal(costBonus * securityStatusBonus, 1).floatValue();
+        calculedBonus();     
     }
 
     /**
-     * Truncate to decimal
-     * @param float x
-     * @param int numberofDecimals
-     * @return BigDecimal
-     */    
-    private static BigDecimal truncateDecimal(float x, int numberofDecimals) {
-//        return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_HALF_UP);
-        if (x > 0) {
-            return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_HALF_UP);
-        } else {
-            return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_CEILING);
-        }
-    }      
+     * Calculed Secury Status With Rig
+     * value rig = materialEfficiency * securityStatusBonus
+     */
+    @Override
+    protected void calculedBonus() {
+        if ( materialEfficiency != 0)
+            materialEfficiencyAndSecurityStatus = 
+                truncateToDecimal(materialEfficiency * securityStatusBonus, 2);
+        
+        if ( timeEfficiency != 0)
+            timeEfficiencyAndSecurityStatus = 
+                truncateToDecimal(timeEfficiency * securityStatusBonus, 2);
+        
+        if ( costBonus != 0)
+            costBonusAndSecurityStatus = 
+                truncateToDecimal(costBonus * securityStatusBonus, 2);
+    }
     
-    
-    public void displayAllValueCalculated(){
+    @Override
+    public void displayAllValueCalculated() {
         System.out.println("StructureEngineeringRigs > displayAllValueCalculated()");
         if ( materialEfficiencyAndSecurityStatus != 0)
             System.out.println("materialEfficiencyAndSecurityStatus " + materialEfficiencyAndSecurityStatus);
@@ -124,10 +93,11 @@ public class EngineeringRig {
             System.out.println("timeEfficiencyAndSecurityStatus " + timeEfficiencyAndSecurityStatus);
 
         if ( costBonusAndSecurityStatus != 0)
-            System.out.println("costBonusAndSecurityStatus " + costBonusAndSecurityStatus);        
+            System.out.println("costBonusAndSecurityStatus " + costBonusAndSecurityStatus);
     }
-    
-    public void displayValue(){
+
+    @Override
+    public void displayValue() {
         if ( materialEfficiency != 0)
             System.out.println("materialEfficiency " + materialEfficiency);
 
@@ -145,20 +115,32 @@ public class EngineeringRig {
             System.out.println("calibration " + calibration);
         }
         
+        if ( rigSize != 0 ){
+            System.out.println("Rig Size " + rigSize);
+        }
         System.out.println("Max Group Fitted " + maxGroupFitted);
-    }    
-    
+    }
+
     /**
-     * Get bonus station like fuel consumption, manufacturing and science job required time 
-     * @param int typeName
-     * @param ATTRIBUTE_ID_ENUM attribute_id
-     * @return DgmTypeAttributes
+     * Converte un enum security status ( generico ) in un valore leggibile per la classe
+     * @param SecurityStatusEnum securityStatusEnum
+     * @return RuleBonusRigEnum
      */
-    private DgmTypeAttributes getDgmTypeAttributes(int typeId, RuleBonusRigEnum attribute_id){
-        return ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributesByTypeId_ByAttributeID(typeId, attribute_id.getCode());
-    }    
-    
-    
+    private RuleBonusRigEnum getSecurityStatus(SecurityStatusEnum securityStatusEnum){
+        switch ( securityStatusEnum ){
+            case HI_SEC:
+                return RuleBonusRigEnum.HI_SEC;
+            case LOW_SEC:
+                return RuleBonusRigEnum.LOW_SEC;
+            case NULL_SEC:
+                return RuleBonusRigEnum.NULL_SEC;
+            default:
+//                ManagerErrorExecption.getErrorExecption(ErrorExeption.ErrorExeptionEnum.SECURITY_STATUS_ERROR);
+                ManagerErrorExecption.displayErrorExecption(ErrorExeption.ErrorExeptionEnum.SECURITY_STATUS_ERROR);
+                return null;
+        }
+    }
+
     /**
      * Get Cost Bonus without security status
      * @return float
@@ -232,6 +214,14 @@ public class EngineeringRig {
      */
     public float getMaxGroupFitted() {
         return maxGroupFitted;
+    }    
+
+    /**
+     * Get Rig Size
+     * @return float
+     */
+    public float getRigSize() {
+        return rigSize;
     }
-    
+
 }
