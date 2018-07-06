@@ -57,6 +57,25 @@ Standup M-Set Equipment Manufacturing Time Efficiency I 37160 / 37161
         addRig(engineeringRigs);
     }
     
+    public void displayAllValue(){
+        engineeringComplex.getReductionManufacturingMaterial();
+        engineeringComplex.getReductionManufacturingScienceJobIskCost();
+        engineeringComplex.getReductionManufacturingScienceJobTime();
+        
+        if (engineeringComplex.getReductionManufacturingMaterial() != 0){
+            
+        }
+        
+        if (engineeringComplex.getReductionManufacturingScienceJobIskCost() != 0){
+            
+        }
+        
+        if (engineeringComplex.getReductionManufacturingScienceJobTime() != 0){
+            
+        }
+        
+    }
+    
     /**
      * Add Rig
      * @param EngineeringRig engineeringRigs
@@ -149,4 +168,22 @@ Standup M-Set Equipment Manufacturing Time Efficiency I 37160 / 37161
             return ADD_RIGS.NEW;
         }           
     } 
+
+    public float getCurrentCalibration() {
+        return currentCalibration;
+    }
+
+    public void setCurrentCalibration(float currentCalibration) {
+        this.currentCalibration = currentCalibration;
+    }
+
+    public float getCurrentSlot() {
+        return currentSlot;
+    }
+
+    public void setCurrentSlot(float currentSlot) {
+        this.currentSlot = currentSlot;
+    }
+    
+    
 }

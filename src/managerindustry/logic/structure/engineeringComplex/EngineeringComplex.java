@@ -104,11 +104,6 @@ public class EngineeringComplex extends BaseStructure{
 
     @Override
     public void displayAllValueCalculated() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void displayValue() {
         System.out.println("nameEngineeringComplex " + nameEngineeringComplex);
         System.out.println("reductionManufacturingMaterial " + reductionManufacturingMaterial);
         System.out.println("reductionManufacturingScienceJobIskCost " + reductionManufacturingScienceJobIskCost);
@@ -119,6 +114,11 @@ public class EngineeringComplex extends BaseStructure{
         System.out.println("rigsize " + rigSize);
         
         System.out.println("");
+    }
+
+    @Override
+    public void displayValue() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
