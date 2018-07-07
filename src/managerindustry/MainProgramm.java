@@ -17,8 +17,8 @@ import managerindustry.logic.manager.ManagerComponentX;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
-import managerindustry.logic.structure.engineeringComplex.EngineeringComplex;
-import managerindustry.logic.structure.engineeringRig.EngineeringRig;
+import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
+import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
 
 /**
  *

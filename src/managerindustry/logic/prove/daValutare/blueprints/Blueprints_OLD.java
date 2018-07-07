@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.prove.daValutare.blueprints;
 
-import managerindustry.logic.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
 
 /**
  * @author lele

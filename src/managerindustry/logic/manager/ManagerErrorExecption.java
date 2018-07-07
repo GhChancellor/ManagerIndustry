@@ -15,40 +15,40 @@ import managerindustry.logic.exception.ErrorExeption;
  * @author lele
  */
 public class ManagerErrorExecption extends Exception {
-//    public String getErrorExecption(ErrorExeption.ErrorExeptionEnum errorExeptionEnum){
-//        switch (errorExeptionEnum){
-//            case DUPLICATE_RIGS:
-//                return ErrorMessage.DUPLICATE_RIGS.getErrorMessage();
-//            case MAX_CALIBRATION:
-//                return ErrorMessage.MAX_CALIBRATION.getErrorMessage();
-//            case MAX_SLOT_RIGS:
-//                return ErrorMessage.MAX_SLOT_RIGS.getErrorMessage();
-//            case RIG_SIZE:
-//                return ErrorMessage.RIG_SIZE.getErrorMessage();
-//            default:
-//                return ErrorMessage.UNKNOW_ERROR.getErrorMessage();
-//        }
-//        
-//    }
-    
-    public static void displayErrorExecption(ErrorExeption.ErrorExeptionEnum errorExeptionEnum){
+    public static String getErrorExecption(ErrorExeption.ErrorExeptionEnum errorExeptionEnum){
         switch (errorExeptionEnum){
             case DUPLICATE_RIGS:
-                System.out.println(""+ ErrorMessage.DUPLICATE_RIGS.getErrorMessage()); 
-                break;
+                return ErrorMessage.DUPLICATE_RIGS.getErrorMessage();
             case MAX_CALIBRATION:
-                System.out.println(""+ ErrorMessage.MAX_CALIBRATION.getErrorMessage());
-                break;
+                return ErrorMessage.MAX_CALIBRATION.getErrorMessage();
             case MAX_SLOT_RIGS:
-                System.out.println(""+ ErrorMessage.MAX_SLOT_RIGS.getErrorMessage());
-                break;
+                return ErrorMessage.MAX_SLOT_RIGS.getErrorMessage();
             case RIG_SIZE:
-                System.out.println(""+ ErrorMessage.RIG_SIZE.getErrorMessage());
-                break;
+                return ErrorMessage.RIG_SIZE.getErrorMessage();
             default:
-                System.out.println(""+ ErrorMessage.UNKNOW_ERROR.getErrorMessage());
-                break;
-        }                
+                return ErrorMessage.UNKNOW_ERROR.getErrorMessage();
+        }
+        
     }
+    
+//    public static void displayErrorExecption(ErrorExeption.ErrorExeptionEnum errorExeptionEnum){
+//        switch (errorExeptionEnum){
+//            case DUPLICATE_RIGS:
+//                System.out.println(""+ ErrorMessage.DUPLICATE_RIGS.getErrorMessage()); 
+//                break;
+//            case MAX_CALIBRATION:
+//                System.out.println(""+ ErrorMessage.MAX_CALIBRATION.getErrorMessage());
+//                break;
+//            case MAX_SLOT_RIGS:
+//                System.out.println(""+ ErrorMessage.MAX_SLOT_RIGS.getErrorMessage());
+//                break;
+//            case RIG_SIZE:
+//                System.out.println(""+ ErrorMessage.RIG_SIZE.getErrorMessage());
+//                break;
+//            default:
+//                System.out.println(""+ ErrorMessage.UNKNOW_ERROR.getErrorMessage());
+//                break;
+//        }                
+//    }
     
 }

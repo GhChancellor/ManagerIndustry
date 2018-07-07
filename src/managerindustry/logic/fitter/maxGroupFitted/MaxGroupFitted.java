@@ -6,12 +6,12 @@
 package managerindustry.logic.fitter.maxGroupFitted;
 
 /**
- * Maximum number of the same rig that you can fit
+ * Max Modules Of This Group Allowed 
  * @author lele
  */
 public class MaxGroupFitted {
     private int typeId;
-    private float maxGroupFitted;
+    private float maxGroupFitted; // <---- Max Modules Of This Group Allowed
     private int currentRigFitted = 0;
     
     public MaxGroupFitted(int rigID, float maxGroupFitted) {
