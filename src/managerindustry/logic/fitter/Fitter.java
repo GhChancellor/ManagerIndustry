@@ -10,11 +10,8 @@ import java.util.Map;
 import managerindustry.logic.enumName.PlatformEnum;
 import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.exception.ErrorExeption;
-import managerindustry.logic.fitter.maxGroupFitted.MaxGroupFitted;
-import managerindustry.logic.manager.ManagerErrorExecption;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
 import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
-import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**
  *
@@ -22,27 +19,19 @@ import managerindustry.logic.manager.managerDB.ManagerDB;
  */
 public class Fitter {
     private EngineeringComplex engineeringComplex;
-    private Map< Integer /* typeId */, Integer /* currentRigFitted */ > maxGroupFittedMap = new HashMap<>();
+    private Map< /* typeId */ Integer , /* currentRigFitted */ Integer  > maxGroupFittedMap = new HashMap<>();
     private float currentCalibration = 0;
     private int engineeringComplex_CurrentSlot = 0;
     
-    private enum ADD_RIGS {NEW, ADD_ANOTHER, DONT_ADD;}
-    
+    enum EngineeringRigEnum {ADD, REMOVE};
+        
     public Fitter() throws ErrorExeption {
         engineeringComplex(PlatformEnum.RAITARU);
-//        engineeringComplex.displayValue();
-//
-        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency II", SecurityStatusEnum.LOW_SEC);
-//        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency I", SecurityStatusEnum.LOW_SEC);
-        engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
-        engineeringRigs("Standup M-Set Ammunition Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
 
-        
-        /*
-        Standup M-Set Equipment Manufacturing Material Efficiency I 43920 / 43921
-Standup M-Set Equipment Manufacturing Time Efficiency I 37160 / 37161
-        Standup M-Set Ammunition Manufacturing Time Efficiency I
-        */
+        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency II", SecurityStatusEnum.LOW_SEC);
+        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency I", SecurityStatusEnum.LOW_SEC);
+        engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
+//        engineeringRigs("Standup M-Set Ammunition Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
 
     }
     
@@ -91,20 +80,34 @@ Standup M-Set Equipment Manufacturing Time Efficiency I 37160 / 37161
      * @param engineeringRigs
      * @throws ErrorExeption 
      */
-    private boolean managerError(EngineeringRig engineeringRigs) throws ErrorExeption{
+    private boolean managerError(EngineeringRig engineeringRigs, EngineeringRigEnum engineeringRigEnum ) throws ErrorExeption{
         // if rig is wrong size
         if (engineeringRigs.getRigSize() != engineeringComplex.getRigSize()){
             displayErrorRig(ErrorExeption.ErrorExeptionEnum.RIG_SIZE);
             return false;
         }
 
-        // if rig is duplicate
+        // Max Modules Of This Group Allowed
         if ( maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
-            if( maxGroupFittedMap.get(engineeringRigs.getTypeID()) >= 
-               engineeringRigs.getMaxGroupFitted().intValue() ){
-                displayErrorRig(ErrorExeption.ErrorExeptionEnum.DUPLICATE_RIGS);
-                return false;            
-            }            
+            
+            switch (engineeringRigEnum){
+            
+                case ADD:
+                    if( maxGroupFittedMap.get(engineeringRigs.getTypeID()) >= 
+                        engineeringRigs.getMaxGroupFitted().intValue() ){
+                            displayErrorRig(ErrorExeption.ErrorExeptionEnum.DUPLICATE_RIGS);
+                        return false;     
+                    }                    
+                
+                case REMOVE:
+                    if (maxGroupFittedMap.get(engineeringRigs.getTypeID()) <= 0){
+                        displayErrorRig(ErrorExeption.ErrorExeptionEnum.CANT_REMOVE);
+                        return false;
+                    }                  
+            default:
+                displayErrorRig(ErrorExeption.ErrorExeptionEnum.UNKNOW_ERROR);
+                return false;
+            }  
         }
         
         // Engineering Complex Max Rig Slot
@@ -125,7 +128,7 @@ Standup M-Set Equipment Manufacturing Time Efficiency I 37160 / 37161
             displayErrorRig(ErrorExeption.ErrorExeptionEnum.MAX_CALIBRATION);
             return false;
         }
-        
+
         return true;
     }
     
@@ -134,8 +137,8 @@ Standup M-Set Equipment Manufacturing Time Efficiency I 37160 / 37161
      * @param EngineeringRig engineeringRigs
      * @throws ErrorExeption 
      */
-    private void addRig(EngineeringRig engineeringRigs) throws ErrorExeption{
-        if ( managerError(engineeringRigs) ){                   
+    public void addRig(EngineeringRig engineeringRigs) throws ErrorExeption{
+        if ( managerError(engineeringRigs, EngineeringRigEnum.ADD) ){                   
 
             if (maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
                 maxGroupFittedMap.put(engineeringRigs.getTypeID(), 
@@ -149,18 +152,52 @@ Standup M-Set Equipment Manufacturing Time Efficiency I 37160 / 37161
         }
     }
 
+    /**
+     * Remove Rig
+     * @param EngineeringRig engineeringRigs
+     * @throws ErrorExeption 
+     */
+    public void removeRig(EngineeringRig engineeringRigs) throws ErrorExeption{        
+        if ( managerError(engineeringRigs, EngineeringRigEnum.REMOVE ) ){
+            engineeringComplex_CurrentSlot--;
+            currentCalibration -= engineeringRigs.getCalibration();               
+            
+            maxGroupFittedMap.remove(engineeringRigs.getTypeID());
+        }
+    }
+    
+    public void updateBonus(){
+        
+    }
+    
+    /**
+     *  Get Current Calibration
+     * @return float
+     */
     public float getCurrentCalibration() {
         return currentCalibration;
     }
 
+    /**
+     * Set Current Calibration
+     * @param float currentCalibration 
+     */
     public void setCurrentCalibration(float currentCalibration) {
         this.currentCalibration = currentCalibration;
     }
 
+    /**
+     * Get EngineeringComplex Current Slot
+     * @return int
+     */
     public int getEngineeringComplex_CurrentSlot() {
         return engineeringComplex_CurrentSlot;
     }
 
+    /**
+     * Set EngineeringComplex Current Slot
+     * @param int engineeringComplex_CurrentSlot 
+     */
     public void setEngineeringComplex_CurrentSlot(int engineeringComplex_CurrentSlot) {
         this.engineeringComplex_CurrentSlot = engineeringComplex_CurrentSlot;
     }

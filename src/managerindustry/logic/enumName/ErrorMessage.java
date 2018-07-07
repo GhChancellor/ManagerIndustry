@@ -17,6 +17,7 @@ public enum ErrorMessage {
     SECURITY_STATUS_ERROR("Security status error"),
     MAX_SLOT_RIGS("Max slot rig"),
     RIG_SIZE("Size Wrong"),
+    CANT_REMOVE("You can't remove this item"),
     UNKNOW_ERROR("Unknow error");
     
     private String errorMessage;

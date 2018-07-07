@@ -29,6 +29,7 @@ public class ErrorExeption extends Exception{
         SECURITY_STATUS_ERROR,
         MAX_SLOT_RIGS,
         RIG_SIZE,
+        CANT_REMOVE,
         UNKNOW_ERROR;
     }    
 }

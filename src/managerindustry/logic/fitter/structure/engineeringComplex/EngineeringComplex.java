@@ -103,6 +103,9 @@ public class EngineeringComplex extends BaseStructure{
     }
 
     @Override
+    /**
+     * Display All Value Calculated
+     */
     public void displayAllValueCalculated() {
         System.out.println("nameEngineeringComplex " + nameEngineeringComplex);
         System.out.println("reductionManufacturingMaterial " + reductionManufacturingMaterial);

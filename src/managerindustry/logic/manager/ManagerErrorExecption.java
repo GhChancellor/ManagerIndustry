@@ -25,6 +25,8 @@ public class ManagerErrorExecption extends Exception {
                 return ErrorMessage.MAX_SLOT_RIGS.getErrorMessage();
             case RIG_SIZE:
                 return ErrorMessage.RIG_SIZE.getErrorMessage();
+            case CANT_REMOVE:
+                return ErrorMessage.CANT_REMOVE.getErrorMessage();
             default:
                 return ErrorMessage.UNKNOW_ERROR.getErrorMessage();
         }
