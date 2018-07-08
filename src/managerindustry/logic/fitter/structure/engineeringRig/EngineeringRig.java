@@ -68,17 +68,19 @@ public class EngineeringRig extends BaseStructure{
      */
     @Override
     protected void calculedBonus() {
+        byte numberofDecimals = 2;
+        
         if ( materialEfficiency != 0)
             materialEfficiencyAndSecurityStatus = 
-                truncateToDecimal(materialEfficiency * securityStatusBonus, 2);
+                truncateToDecimal(materialEfficiency * securityStatusBonus, numberofDecimals);
         
         if ( timeEfficiency != 0)
             timeEfficiencyAndSecurityStatus = 
-                truncateToDecimal(timeEfficiency * securityStatusBonus, 2);
+                truncateToDecimal(timeEfficiency * securityStatusBonus, numberofDecimals);
         
         if ( costBonus != 0)
             costBonusAndSecurityStatus = 
-                truncateToDecimal(costBonus * securityStatusBonus, 2);
+                truncateToDecimal(costBonus * securityStatusBonus, numberofDecimals);
     }
     
     @Override

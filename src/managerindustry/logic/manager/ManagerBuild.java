@@ -39,8 +39,8 @@ public class ManagerBuild {
         }            
     }
     
-    public ManagerBuild(String bpoName, int run, int job, int bpoME, 
-        int componentMe) {
+    public ManagerBuild(String bpoName, int run, int job, byte bpoME, 
+        byte componentMe) {
        
         RamActivitiesEnum activitiesEnum = RamActivitiesEnum.MANUFACTURING;
 
@@ -78,16 +78,16 @@ public class ManagerBuild {
      * Scimitar x 1 ME 10 
      * * Plasma Thruster 68 
      * * * Phenolic Composites 184 
-     * @param bpoName
-     * @param run
-     * @param job
-     * @param bpoME
-     * @param componentMe
-     * @param materials
+     * @param String bpoName
+     * @param int run
+     * @param int job
+     * @param byte bpoME
+     * @param byte componentMe
+     * @param int materials
      * @param dad 
      */
-    private void buildItem(String bpoName, int run, int job, int bpoME, 
-            int componentMe, List < MaterialForComponents > materials, 
+    private void buildItem(String bpoName, int run, int job, byte bpoME, 
+            byte componentMe, List < MaterialForComponents > materials, 
             ComponentX dad){    
                
         for (MaterialForComponents material : materials) {            
@@ -143,8 +143,11 @@ public class ManagerBuild {
              material.getComponentX().getMaterialForComponents();
             
             if ( materialForComponents != null){
-                buildItem("", singleMaterial, 1, bpoME, 
-                 1, materialForComponents, componentX );
+                int tempJob = 1;
+                byte tempComponetMe = 1;
+                
+                buildItem("", singleMaterial, tempJob, bpoME, 
+                 tempComponetMe, materialForComponents, componentX );
             }            
         }
     }        
@@ -198,14 +201,14 @@ public class ManagerBuild {
      * @param bpoName
      * @param run
      * @param job
-     * @param bpoME
+     * @param byte bpoME
      * @param componentMe
      * @param materials
      * @param dad 
      * @deprecated 
      */
-    private void buildItemOLD(String bpoName, int run, int job, int bpoME, 
-            int componentMe, List < MaterialForComponents > materials, 
+    private void buildItemOLD(String bpoName, int run, int job, byte bpoME, 
+            byte componentMe, List < MaterialForComponents > materials, 
             ComponentX dad){    
                
         for (MaterialForComponents material : materials) {            
@@ -250,8 +253,11 @@ public class ManagerBuild {
             dad.addMaterialForComponents( new MaterialForComponents(componentX));
                      
             if ( materialForComponents != null){
-                buildItem("", singleMaterial, 1, bpoME, 
-                 1, materialForComponents, componentX );
+                int tempJob = 1;
+                byte tempComponentMe = 1;
+                
+                buildItem("", singleMaterial, tempJob, bpoME, 
+                 tempComponentMe, materialForComponents, componentX );
             }            
         }
     }    

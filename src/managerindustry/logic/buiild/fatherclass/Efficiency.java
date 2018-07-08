@@ -12,7 +12,7 @@ package managerindustry.logic.buiild.fatherclass;
 public abstract class Efficiency {
     private String name;
     private float ratePercent;
-    private Integer level;
+    private Byte level;
     private final double baseValue = 1f; 
 
     public Efficiency() {
@@ -65,14 +65,14 @@ public abstract class Efficiency {
      * @return int
      */
     public Integer getLevel() {
-        return level;
+        return level.intValue();
     }
 
     /**
      * Set Level
      * @param int level 
      */
-    public void setLevel(int level) {
+    public void setLevel(byte level) {
         this.level = level;
     }
 

@@ -209,20 +209,21 @@ public class BuildItemRecusion {
     private MaterialEfficiencyCalculate getMaterialEfficiencyCalculate(int run, int job, int bpoME,  
         int componentMe, List < TemplateRecursionB > materials, 
         TemplateRecursionA t,TemplateRecursionA recursionA){
-            // check if item is t1 or t2           
-            if ( materials.isEmpty() ){                               
-                // me for T1
-                MaterialEfficiencyCalculate materialEfficiencyCalculate = 
-                 new MaterialEfficiencyCalculate(run, job, bpoME ,((ComponentX02)recursionA.getT()).getQuanityInt() );
-                
-                return materialEfficiencyCalculate;                
-            }else{
-                // me for component ( t2 )
-                MaterialEfficiencyCalculate materialEfficiencyCalculate = 
-                 new MaterialEfficiencyCalculate(run, job, componentMe , ((ComponentX02)recursionA.getT()).getQuanityInt() ); 
-                
-                return materialEfficiencyCalculate;   
-            }         
+//            // check if item is t1 or t2           
+//            if ( materials.isEmpty() ){                               
+//                // me for T1
+//                MaterialEfficiencyCalculate materialEfficiencyCalculate = 
+//                 new MaterialEfficiencyCalculate(run, job, bpoME ,((ComponentX02)recursionA.getT()).getQuanityInt() );
+//                
+//                return materialEfficiencyCalculate;                
+//            }else{
+//                // me for component ( t2 )
+//                MaterialEfficiencyCalculate materialEfficiencyCalculate = 
+//                 new MaterialEfficiencyCalculate(run, job, componentMe , ((ComponentX02)recursionA.getT()).getQuanityInt() ); 
+//                
+//                return materialEfficiencyCalculate;   
+//            }         
+            return null;
     }
     
     private void baseMaterial(List< IndustryActivityMaterials> nameItemToBuild,

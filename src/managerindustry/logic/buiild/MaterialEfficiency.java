@@ -16,9 +16,9 @@ public class MaterialEfficiency extends Efficiency {
 
     /**
      * init MaterialEfficiencyX1
-     * @param int bpoLevel 
+     * @param byte bpoLevel 
      */
-    public MaterialEfficiency(int bpoLevel) {
+    public MaterialEfficiency(byte bpoLevel) {
         setLevel(bpoLevel);
     }
     

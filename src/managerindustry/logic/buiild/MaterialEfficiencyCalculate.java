@@ -37,10 +37,10 @@ public class MaterialEfficiencyCalculate {
      * job * Math.ceil( ((quantityBaseMarial * run) * materialEfficiencyRate) * platformModifier );
      * @param int run
      * @param int job
-     * @param int bpoME or componentMe 
+     * @byte int bpoME or componentMe 
      * @param int quantityBaseMarial 
      */
-    public MaterialEfficiencyCalculate( int run, int job, int bpoME, int quantityBaseMarial ) {
+    public MaterialEfficiencyCalculate( int run, int job, byte bpoME, int quantityBaseMarial ) {
         double materialEfficiencyRate = new MaterialEfficiency(bpoME).getRateBpo();
                 
 //        // quando il valore è 1 non si fanno calcoli su ME

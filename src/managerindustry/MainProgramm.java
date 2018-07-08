@@ -19,6 +19,8 @@ import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
 import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
 
 /**
  *
@@ -40,7 +42,7 @@ public class MainProgramm {
         //  drake
         // 	Tritanium 2500001 -> 2500001
 	// Pyerite 612071 -> 612071
-        ManagerBuild managerBuild = new ManagerBuild("drake", 1, 1, 1, 0);         
+        ManagerBuild managerBuild = new ManagerBuild("drake", 1,  1, (byte)1, (byte) 1);         
     }
     
     /**
@@ -63,8 +65,8 @@ public class MainProgramm {
         
         int run = 662;
         int job = 1;
-        int bpoME = 5;
-        int componentMe = 0;
+        byte bpoME = 5;
+        byte componentMe = 0;
         float taxRateStation = 0.1f;
         int runPerCopy = 5;
         int startLevel = 5;
@@ -97,8 +99,8 @@ public class MainProgramm {
     }
     
     public static void recursionItems(){
-//        ItemRecusion advancedBattleships = GroupEffectRig.getInstance().ships().battleships().getAdvancedBattleships();
-//        advancedBattleships.display();
+        ItemRecusion advancedBattleships = GroupEffectRig.getInstance().ships().battleships().getAdvancedBattleships();
+        advancedBattleships.display();
 
 
     }

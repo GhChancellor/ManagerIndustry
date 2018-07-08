@@ -7,7 +7,6 @@ package managerindustry.logic.prove.ricorsione.skill.skillProduction.qualcosa;
 
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.logic.prove.buildItem.BuildItem;
 
 /**
  *

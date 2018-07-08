@@ -7,7 +7,6 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 
 import java.util.List;
 import managerindustry.db.entities.eve.InvMarketGroups;
-import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**
@@ -55,7 +54,9 @@ public class ItemRecusion {
     private void recusionExcludeTree(List<InvMarketGroups> invMarketGroups, ItemRecursionA recursionA02, int excludeCode ){
         for (InvMarketGroups marketGroups01 : invMarketGroups) {
             ItemRecursionA recursionA01 = new ItemRecursionA
-                ( marketGroups01.getMarketGroupID(), marketGroups01.getParentGroupID(), marketGroups01.getMarketGroupName() );
+                ( marketGroups01.getMarketGroupID().byteValue(), 
+                marketGroups01.getParentGroupID().byteValue(), 
+                marketGroups01.getMarketGroupName() );
             
             // Exclude some branches ( items )
             if (marketGroups01.getMarketGroupID() == excludeCode)
@@ -80,7 +81,9 @@ public class ItemRecusion {
     private void recusionAllBranches(List<InvMarketGroups> invMarketGroups, ItemRecursionA recursionA02 ){
         for (InvMarketGroups marketGroups01 : invMarketGroups) {
             ItemRecursionA recursionA01 = new ItemRecursionA
-                ( marketGroups01.getMarketGroupID(), marketGroups01.getParentGroupID(), marketGroups01.getMarketGroupName() );
+                ( marketGroups01.getMarketGroupID().byteValue(),
+                marketGroups01.getParentGroupID().byteValue(), 
+                marketGroups01.getMarketGroupName() );
 
             recursionA02.addRecursionB02(new ItemRecursionB(recursionA01));
             List<InvMarketGroups> marketGroups02 = ManagerDB.getInstance().invMarketGroups().getParentGroupID( marketGroups01.getMarketGroupID() );

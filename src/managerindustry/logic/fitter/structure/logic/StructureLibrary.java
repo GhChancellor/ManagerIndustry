@@ -18,10 +18,10 @@ public class StructureLibrary{
     /**
      * Truncate to decimal
      * @param float x
-     * @param int numberofDecimals
+     * @param byte numberofDecimals
      * @return BigDecimal
      */    
-    public static BigDecimal truncateToDecimal(float x, int numberofDecimals) {
+    public static BigDecimal truncateToDecimal(float x, byte numberofDecimals) {
 //        return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_HALF_UP);
         if (x > 0) {
             return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_HALF_UP);

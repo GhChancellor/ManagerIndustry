@@ -16,22 +16,22 @@ public class ItemRecursionA {
     private List < ItemRecursionB > recursionB02s = new ArrayList<>();
     
     private String typeName;
-    private Integer typeID;
+    private int typeID;
 
-    private Integer marketGroupID;
-    private Integer parentGroupID;    
+    private short marketGroupID;
+    private short parentGroupID;    
     private String marketGroupName;
 
     public ItemRecursionA() {
     }
     
-    public ItemRecursionA(Integer marketGroupID, Integer parentGroupID, String marketGroupName) {
+    public ItemRecursionA(short marketGroupID, short parentGroupID, String marketGroupName) {
         this.marketGroupID = marketGroupID;
         this.parentGroupID = parentGroupID;
         this.marketGroupName = marketGroupName;        
     }
 
-    public void initRecursion(Integer marketGroupID, Integer parentGroupID, String marketGroupName) {
+    public void initRecursion(short marketGroupID, short parentGroupID, String marketGroupName) {
         this.marketGroupID = marketGroupID;
         this.parentGroupID = parentGroupID;
         this.marketGroupName = marketGroupName;
@@ -57,27 +57,27 @@ public class ItemRecursionA {
         this.typeName = typeName;
     }
 
-    public Integer getTypeID() {
+    public int getTypeID() {
         return typeID;
     }
 
-    public void setTypeID(Integer typeID) {
+    public void setTypeID(int typeID) {
         this.typeID = typeID;
     }
 
-    public Integer getMarketGroupID() {
+    public short getMarketGroupID() {
         return marketGroupID;
     }
 
-    public void setMarketGroupID(Integer marketGroupID) {
+    public void setMarketGroupID(short marketGroupID) {
         this.marketGroupID = marketGroupID;
     }
 
-    public Integer getParentGroupID() {
+    public short getParentGroupID() {
         return parentGroupID;
     }
 
-    public void setParentGroupID(Integer parentGroupID) {
+    public void setParentGroupID(short parentGroupID) {
         this.parentGroupID = parentGroupID;
     }
 

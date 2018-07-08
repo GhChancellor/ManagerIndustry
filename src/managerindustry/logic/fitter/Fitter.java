@@ -21,7 +21,7 @@ public class Fitter {
     private EngineeringComplex engineeringComplex;
     private Map< /* typeId */ Integer , /* currentRigFitted */ Integer  > maxGroupFittedMap = new HashMap<>();
     private float currentCalibration = 0;
-    private int engineeringComplex_CurrentSlot = 0;
+    private byte engineeringComplex_CurrentSlot = 0;
     
     enum EngineeringRigEnum {ADD, REMOVE};
         
@@ -41,10 +41,12 @@ public class Fitter {
      */
     public void engineeringComplex(PlatformEnum platformEnum){
         engineeringComplex = new EngineeringComplex(platformEnum);
+        engineeringComplex.displayAllValueCalculated();
     }
     
     public void engineeringRigs(String rigName, SecurityStatusEnum securityStatusEnum) throws ErrorExeption{
         EngineeringRig engineeringRigs = new EngineeringRig(rigName, securityStatusEnum);
+        engineeringRigs.displayValue();
         addRig(engineeringRigs);
     }
     
@@ -188,17 +190,17 @@ public class Fitter {
 
     /**
      * Get EngineeringComplex Current Slot
-     * @return int
+     * @return byte
      */
-    public int getEngineeringComplex_CurrentSlot() {
+    public byte getEngineeringComplex_CurrentSlot() {
         return engineeringComplex_CurrentSlot;
     }
 
     /**
      * Set EngineeringComplex Current Slot
-     * @param int engineeringComplex_CurrentSlot 
+     * @param byte engineeringComplex_CurrentSlot 
      */
-    public void setEngineeringComplex_CurrentSlot(int engineeringComplex_CurrentSlot) {
+    public void setEngineeringComplex_CurrentSlot(byte engineeringComplex_CurrentSlot) {
         this.engineeringComplex_CurrentSlot = engineeringComplex_CurrentSlot;
     }
     

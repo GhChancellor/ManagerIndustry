@@ -88,18 +88,20 @@ public class EngineeringComplex extends BaseStructure{
      * value bonus = baseValue - reductionManufacturingMaterial
      */
     @Override
-    protected void calculedBonus() {        
+    protected void calculedBonus() {       
+        byte numberofDecimals = 2;
+        
         if (reductionManufacturingMaterial != 0)
             reductionManufacturingMaterial = 
-            truncateToDecimal(baseValue - reductionManufacturingMaterial,2);
+            truncateToDecimal(baseValue - reductionManufacturingMaterial,numberofDecimals);
             
         if (reductionManufacturingScienceJobTime != 0)
             reductionManufacturingScienceJobTime = 
-            truncateToDecimal(baseValue - reductionManufacturingScienceJobTime, 2);
+            truncateToDecimal(baseValue - reductionManufacturingScienceJobTime, numberofDecimals);
                     
         if (reductionManufacturingScienceJobIskCost != 0)
             reductionManufacturingScienceJobIskCost = 
-            truncateToDecimal(baseValue - reductionManufacturingScienceJobIskCost, 2);
+            truncateToDecimal(baseValue - reductionManufacturingScienceJobIskCost, numberofDecimals);
     }
 
     @Override

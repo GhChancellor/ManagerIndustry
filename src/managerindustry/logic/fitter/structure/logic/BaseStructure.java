@@ -19,10 +19,11 @@ public abstract class BaseStructure {
     
     /**
      * Truncate to decimal
-     * @param value
-     * @return float
+     * @param float value
+     * @param byte numberofDecimals
+     * @return float 
      */
-    public float truncateToDecimal(float value, int numberofDecimals){
+    public float truncateToDecimal(float value, byte numberofDecimals){
         return StructureLibrary.truncateToDecimal(value, numberofDecimals).floatValue();        
     }
 
