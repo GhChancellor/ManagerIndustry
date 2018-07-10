@@ -23,8 +23,8 @@ public class DisplaySpeculation{
 
     public DisplaySpeculation() {
         int numberItem = 2;
-        SellOrder sellOrder = new SellOrder(5, 5, "station", numberItem, 100000);
-        BuyOrder buyOrder = new BuyOrder(5, "station", numberItem, 90000);
+        SellOrder sellOrder = new SellOrder((byte) 5,(byte)  5, "station", numberItem, 100000);
+        BuyOrder buyOrder = new BuyOrder((byte) 5, "station", numberItem, 90000);
 
         displaySellOrder(sellOrder);
         displayBuyOrder(buyOrder);
@@ -32,7 +32,7 @@ public class DisplaySpeculation{
         speculationByBuyOrder(sellOrder, buyOrder);        
         displaySpeculationByBuyOrder(sellOrder.getTotalPriceWithTax(), buyOrder.getTotalPriceWithTax());
         
-        sellOrder = new SellOrder(5, 5, "station", numberItem, 90000);
+        sellOrder = new SellOrder((byte) 5,(byte)  5, "station", numberItem, 90000);
         speculationBySellOrder(sellOrder, 100000);
         dispalySpeculationBySellOrder(sellOrder);
     }

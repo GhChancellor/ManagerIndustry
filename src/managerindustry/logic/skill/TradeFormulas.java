@@ -26,7 +26,7 @@ public class TradeFormulas extends FormulasSkill{
      * @param String station
      * @return float
      */
-    public float calculateBrokerFee(int brokerRelationsLevel, String station){
+    public float calculateBrokerFee(byte brokerRelationsLevel, String station){
 //        float initTax = 0.03f;  // starting value
 //        float initTaxCorparationStanding = 0.0002f;
 //        float reduceFeePerLevel = 0.001f; // valueFloat
@@ -52,11 +52,11 @@ public class TradeFormulas extends FormulasSkill{
     // 
     /**
      * Calculate Sale Tax
-     * @param int levelSkill
+     * @param byte levelSkill
      * @return float
      * Accounting" skill.
      */
-    public float calculateSaleTax(int levelSkill){
+    public float calculateSaleTax(byte levelSkill){
         float saleTransactionStart = 0.02f; // starting value
         float reducedPrice = 0.01f; // valueFloat  
         

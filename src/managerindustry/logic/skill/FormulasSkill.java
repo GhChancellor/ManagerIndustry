@@ -15,11 +15,11 @@ public class FormulasSkill {
        
     /**
      * Calculate Level Per Skill
-     * @param int level
+     * @param byte level
      * @param float percente
      * @return float
      */
-    protected float calculateLevelPerSkill(int level, float percente)  {
+    protected float calculateLevelPerSkill(byte level, float percente)  {
         try {
             if ( level >= 0 && level <= 5){
                 return level * percente;
@@ -35,11 +35,11 @@ public class FormulasSkill {
     /**
      * Calculate Result With Skill
      * @param float initialValue
-     * @param int levelSkill
+     * @param byte levelSkill
      * @param float percente
      * @return 
      */
-    public float calculateResultWithSkill( float initialValue, int levelSkill, float percente){
+    public float calculateResultWithSkill( float initialValue, byte levelSkill, float percente){
         float result = calculateLevelPerSkill(levelSkill, percente);
         return initialValue * result;
     }

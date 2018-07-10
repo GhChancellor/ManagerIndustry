@@ -14,7 +14,7 @@ import managerindustry.logic.skill.TradeFormulas;
 public class BuyOrder extends Tax{
     private float totalItemTaxBuyOrder;
     
-    public BuyOrder(int brokerRelationsLevel, String station, int numberItems, float sellPrice) {
+    public BuyOrder(byte brokerRelationsLevel, String station, int numberItems, float sellPrice) {
 
         setItemsNumber(numberItems);
         setItemSellPrice(sellPrice);

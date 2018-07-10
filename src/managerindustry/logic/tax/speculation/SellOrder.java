@@ -17,7 +17,15 @@ public class SellOrder extends Tax {
     private float totalItemTax;
     private float totalItemsTax;
     
-    public SellOrder(int brokerRelationsLevel, int accountingLevel, 
+    /**
+     * 
+     * @param byte brokerRelationsLevel
+     * @param byte accountingLevel
+     * @param String station
+     * @param int numberItems
+     * @param float sellPrice 
+     */
+    public SellOrder(byte brokerRelationsLevel, byte accountingLevel, 
      String station, int numberItems, float sellPrice) {
        
         setItemsNumber(numberItems);

@@ -22,9 +22,9 @@ public class EngineeringRig extends BaseStructure{
     private float materialEfficiency; // RIG_MATERIAL_EFFICIENCY(2594)
     private float timeEfficiency; // RIG_TIME_EFFICIENCY(2593)
     private float costBonus; // RIG_COST_BONUS(2595)      
-    private float materialEfficiencyAndSecurityStatus;
-    private float timeEfficiencyAndSecurityStatus;
-    private float costBonusAndSecurityStatus;
+    private float materialEfficiency_SecurityStatus;
+    private float timeEfficiency_SecurityStatus;
+    private float costBonus_SecurityStatus;
     private float rigSize; // 1547
     private int typeID;
     private float maxGroupFitted; // MAX_GROUP_FITTED(1544)
@@ -68,32 +68,32 @@ public class EngineeringRig extends BaseStructure{
      */
     @Override
     protected void calculedBonus() {
-        byte numberofDecimals = 2;
+        byte numberOfDecimals = 2;
         
         if ( materialEfficiency != 0)
-            materialEfficiencyAndSecurityStatus = 
-                truncateToDecimal(materialEfficiency * securityStatusBonus, numberofDecimals);
+            materialEfficiency_SecurityStatus = 
+                truncateToDecimal(materialEfficiency * securityStatusBonus, numberOfDecimals);
         
         if ( timeEfficiency != 0)
-            timeEfficiencyAndSecurityStatus = 
-                truncateToDecimal(timeEfficiency * securityStatusBonus, numberofDecimals);
+            timeEfficiency_SecurityStatus = 
+                truncateToDecimal(timeEfficiency * securityStatusBonus, numberOfDecimals);
         
         if ( costBonus != 0)
-            costBonusAndSecurityStatus = 
-                truncateToDecimal(costBonus * securityStatusBonus, numberofDecimals);
+            costBonus_SecurityStatus = 
+                truncateToDecimal(costBonus * securityStatusBonus, numberOfDecimals);
     }
     
     @Override
     public void displayAllValueCalculated() {
         System.out.println("StructureEngineeringRigs > displayAllValueCalculated()");
-        if ( materialEfficiencyAndSecurityStatus != 0)
-            System.out.println("materialEfficiencyAndSecurityStatus " + materialEfficiencyAndSecurityStatus);
+        if ( materialEfficiency_SecurityStatus != 0)
+            System.out.println("materialEfficiencyAndSecurityStatus " + materialEfficiency_SecurityStatus);
 
-        if ( timeEfficiencyAndSecurityStatus != 0)
-            System.out.println("timeEfficiencyAndSecurityStatus " + timeEfficiencyAndSecurityStatus);
+        if ( timeEfficiency_SecurityStatus != 0)
+            System.out.println("timeEfficiencyAndSecurityStatus " + timeEfficiency_SecurityStatus);
 
-        if ( costBonusAndSecurityStatus != 0)
-            System.out.println("costBonusAndSecurityStatus " + costBonusAndSecurityStatus);
+        if ( costBonus_SecurityStatus != 0)
+            System.out.println("costBonusAndSecurityStatus " + costBonus_SecurityStatus);
     }
 
     @Override
@@ -119,6 +119,7 @@ public class EngineeringRig extends BaseStructure{
             System.out.println("Rig Size " + rigSize);
         }
         System.out.println("Max Group Fitted " + maxGroupFitted);
+        System.out.println("\n");
     }
 
     /**
@@ -177,8 +178,8 @@ public class EngineeringRig extends BaseStructure{
      * MaterialEfficiency * SecurityStatus
      * @return float
      */
-    public float getMaterialEfficiencyAndSecurityStatus() {
-        return materialEfficiencyAndSecurityStatus;
+    public float getMaterialEfficiency_SecurityStatus() {
+        return materialEfficiency_SecurityStatus;
     }
 
     /**
@@ -186,8 +187,8 @@ public class EngineeringRig extends BaseStructure{
      * TimeEfficiency * SecurityStatus
      * @return float
      */
-    public float getTimeEfficiencyAndSecurityStatus() {
-        return timeEfficiencyAndSecurityStatus;
+    public float getTimeEfficiency_SecurityStatus() {
+        return timeEfficiency_SecurityStatus;
     }
 
     /**
@@ -195,8 +196,8 @@ public class EngineeringRig extends BaseStructure{
      * CostBonus * SecurityStatus
      * @return float
      */
-    public float getCostBonusAndSecurityStatus() {
-        return costBonusAndSecurityStatus;
+    public float getCostBonus_SecurityStatus() {
+        return costBonus_SecurityStatus;
     }
 
     /**
