@@ -25,8 +25,6 @@ public class ItemRecusion {
         ItemRecursionA recursionA = new ItemRecursionA();
         recusionAllBranches(parentGroupIDs, recursionA );        
         itemRecursionReport = recursionA;
-        
-//        display();
     }
 
     /**
@@ -41,8 +39,6 @@ public class ItemRecusion {
         //Exclude some branches
         recusionExcludeTree(parentGroupIDs, recursionA, excludeCode );
         itemRecursionReport = recursionA;
-        
-        display();
     }
     
     /**
