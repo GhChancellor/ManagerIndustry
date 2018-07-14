@@ -7,6 +7,7 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 
 import java.util.ArrayList;
 import java.util.List;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
 
 /**
@@ -240,6 +241,49 @@ public class InitCommonRigGroups {
         return effectRigs;        
     }
 
+    /**
+     * Add rig and effect to DB
+     * @param typeId
+     * @param List < ItemRecusion > effectRigs 
+     */    
+    public void structureRig(int typeId, List < ItemRecusion > effectRigs){
+        EffectEngineeringRigs managerStructure = new EffectEngineeringRigs(typeId, effectRigs);
+    }
+
+    /**
+     * Add Effect Engineering Rig
+     * @param int rig1
+     * @param List < ItemRecusion > effectRigs 
+     */
+    public void addEffectEngineeringRig(int rig1, List < ItemRecusion > effectRigs ){
+        structureRig(rig1, effectRigs); 
+    }
+    
+    /**
+     * Add Effect Engineering Rig
+     * @param int rig1
+     * @param int rig2
+     * @param List < ItemRecusion > effectRigs 
+     */
+    public void addEffectEngineeringRig(int rig1, int rig2, List < ItemRecusion > effectRigs ){
+        structureRig(rig1, effectRigs); 
+        structureRig(rig2, effectRigs);          
+    }     
+    
+    /**
+     * Add Effect Engineering Rig
+     * @param int rig1
+     * @param int rig2
+     * @param int rig3
+     * @param int rig4
+     * @param List < ItemRecusion > effectRigs 
+     */
+    public void addEffectEngineeringRig(int rig1, int rig2,int rig3,int rig4, List < ItemRecusion > effectRigs ){
+        structureRig(rig1, effectRigs); 
+        structureRig(rig2, effectRigs); 
+        structureRig(rig3, effectRigs); 
+        structureRig(rig4, effectRigs);         
+    }      
 }
 
 /*

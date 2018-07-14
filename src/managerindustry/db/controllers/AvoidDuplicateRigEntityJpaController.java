@@ -14,15 +14,15 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import managerindustry.db.controllers.exceptions.NonexistentEntityException;
-import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
+import managerindustry.db.entities.cache.AvoidDuplicateRigEntity;
 
 /**
  *
  * @author lele
  */
-public class EffectRigEntityJpaController implements Serializable {
+public class AvoidDuplicateRigEntityJpaController implements Serializable {
 
-    public EffectRigEntityJpaController(EntityManagerFactory emf) {
+    public AvoidDuplicateRigEntityJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -31,12 +31,12 @@ public class EffectRigEntityJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(EffectEngineeringRigEntity effectRigEntity) {
+    public void create(AvoidDuplicateRigEntity avoidDuplicateRigEntity) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(effectRigEntity);
+            em.persist(avoidDuplicateRigEntity);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -45,19 +45,19 @@ public class EffectRigEntityJpaController implements Serializable {
         }
     }
 
-    public void edit(EffectEngineeringRigEntity effectRigEntity) throws NonexistentEntityException, Exception {
+    public void edit(AvoidDuplicateRigEntity avoidDuplicateRigEntity) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            effectRigEntity = em.merge(effectRigEntity);
+            avoidDuplicateRigEntity = em.merge(avoidDuplicateRigEntity);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = effectRigEntity.getId();
-                if (findEffectRigEntity(id) == null) {
-                    throw new NonexistentEntityException("The effectRigEntity with id " + id + " no longer exists.");
+                Long id = avoidDuplicateRigEntity.getId();
+                if (findAvoidDuplicateRigEntity(id) == null) {
+                    throw new NonexistentEntityException("The avoidDuplicateRigEntity with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,14 +73,14 @@ public class EffectRigEntityJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            EffectEngineeringRigEntity effectRigEntity;
+            AvoidDuplicateRigEntity avoidDuplicateRigEntity;
             try {
-                effectRigEntity = em.getReference(EffectEngineeringRigEntity.class, id);
-                effectRigEntity.getId();
+                avoidDuplicateRigEntity = em.getReference(AvoidDuplicateRigEntity.class, id);
+                avoidDuplicateRigEntity.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The effectRigEntity with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The avoidDuplicateRigEntity with id " + id + " no longer exists.", enfe);
             }
-            em.remove(effectRigEntity);
+            em.remove(avoidDuplicateRigEntity);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -89,19 +89,19 @@ public class EffectRigEntityJpaController implements Serializable {
         }
     }
 
-    public List<EffectEngineeringRigEntity> findEffectRigEntityEntities() {
-        return findEffectRigEntityEntities(true, -1, -1);
+    public List<AvoidDuplicateRigEntity> findAvoidDuplicateRigEntityEntities() {
+        return findAvoidDuplicateRigEntityEntities(true, -1, -1);
     }
 
-    public List<EffectEngineeringRigEntity> findEffectRigEntityEntities(int maxResults, int firstResult) {
-        return findEffectRigEntityEntities(false, maxResults, firstResult);
+    public List<AvoidDuplicateRigEntity> findAvoidDuplicateRigEntityEntities(int maxResults, int firstResult) {
+        return findAvoidDuplicateRigEntityEntities(false, maxResults, firstResult);
     }
 
-    private List<EffectEngineeringRigEntity> findEffectRigEntityEntities(boolean all, int maxResults, int firstResult) {
+    private List<AvoidDuplicateRigEntity> findAvoidDuplicateRigEntityEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(EffectEngineeringRigEntity.class));
+            cq.select(cq.from(AvoidDuplicateRigEntity.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -113,20 +113,20 @@ public class EffectRigEntityJpaController implements Serializable {
         }
     }
 
-    public EffectEngineeringRigEntity findEffectRigEntity(Long id) {
+    public AvoidDuplicateRigEntity findAvoidDuplicateRigEntity(Long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(EffectEngineeringRigEntity.class, id);
+            return em.find(AvoidDuplicateRigEntity.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getEffectRigEntityCount() {
+    public int getAvoidDuplicateRigEntityCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<EffectEngineeringRigEntity> rt = cq.from(EffectEngineeringRigEntity.class);
+            Root<AvoidDuplicateRigEntity> rt = cq.from(AvoidDuplicateRigEntity.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

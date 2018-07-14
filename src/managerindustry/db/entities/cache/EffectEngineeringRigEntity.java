@@ -22,7 +22,7 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name = "EffectRigEntity.getEffectByID", query = "SELECT a FROM EffectRigEntity a WHERE a.typeID= :typeID AND a.effectID = :effectID")
 })
 
-public class EffectRigEntity implements Serializable {
+public class EffectEngineeringRigEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -33,10 +33,10 @@ public class EffectRigEntity implements Serializable {
     // effectID, has effect on item to build like ammunition
     private int effectID;
 
-    public EffectRigEntity() {
+    public EffectEngineeringRigEntity() {
     }
 
-    public EffectRigEntity(int typeID, int effectID) {
+    public EffectEngineeringRigEntity(int typeID, int effectID) {
         this.typeID = typeID;
         this.effectID = effectID;
     }
@@ -91,10 +91,10 @@ public class EffectRigEntity implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof EffectRigEntity)) {
+        if (!(object instanceof EffectEngineeringRigEntity)) {
             return false;
         }
-        EffectRigEntity other = (EffectRigEntity) object;
+        EffectEngineeringRigEntity other = (EffectEngineeringRigEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

@@ -6,7 +6,7 @@
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic;
 
 import java.util.List;
-import managerindustry.db.entities.cache.EffectRigEntity;
+import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
 
@@ -35,9 +35,9 @@ public class EffectEngineeringRigs {
      * Get Effect Rig and his effect
      * @param int typeID
      * @param int effectID 
-     * @return EffectRigEntity
+     * @return EffectEngineeringRigEntity
      */
-    public EffectRigEntity getEffectRig(int typeID, int effectID){
+    public EffectEngineeringRigEntity getEffectRig(int typeID, int effectID){
         return ManagerDB.getInstance().effectRig().getEffectRigEntity(typeID, effectID);
     }
 }

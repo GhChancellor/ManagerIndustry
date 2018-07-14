@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.EffectRigEntityJpaController;
-import managerindustry.db.entities.cache.EffectRigEntity;
+import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecursionA;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRercsionLibrary;
@@ -33,7 +33,7 @@ public class EffectRigX {
      * Add Effect Rig Entity
      * @param EffectRigEntity effectRigEntity 
      */
-    private void addEffectRigEntity(EffectRigEntity effectRigEntity){
+    private void addEffectRigEntity(EffectEngineeringRigEntity effectRigEntity){
         try {
             effectRigEntityJpaController.create(effectRigEntity);
         } catch (Exception e) {
@@ -56,7 +56,7 @@ public class EffectRigX {
             List<Integer> effects = library.getConversionToList(itemRecursionReport);
             
             for (Integer effect : effects) {
-                EffectRigEntity effectRigEntity = new EffectRigEntity(structureRig.getTypeID(), effect);
+                EffectEngineeringRigEntity effectRigEntity = new EffectEngineeringRigEntity(structureRig.getTypeID(), effect);
                 addEffectRigEntity(effectRigEntity);                
             }            
         }        
@@ -66,17 +66,17 @@ public class EffectRigX {
      * Get Effect Rig Entity
      * @param int typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
      * @param int effectID, has effect on item to build like ammunition
-     * @return EffectRigEntity
+     * @return EffectEngineeringRigEntity
      */
-    public EffectRigEntity getEffectRigEntity(int typeID, int effectID){
+    public EffectEngineeringRigEntity getEffectRigEntity(int typeID, int effectID){
         try {
-            TypedQuery < EffectRigEntity > effectsTQ = 
-                entityManager.createNamedQuery("EffectRigEntity.getEffectByID", EffectRigEntity.class);
+            TypedQuery < EffectEngineeringRigEntity > effectsTQ = 
+                entityManager.createNamedQuery("EffectRigEntity.getEffectByID", EffectEngineeringRigEntity.class);
 
             effectsTQ.setParameter("typeID", typeID );
             effectsTQ.setParameter("effectID", effectID );            
             
-            List<EffectRigEntity> resultList = effectsTQ.getResultList();
+            List<EffectEngineeringRigEntity> resultList = effectsTQ.getResultList();
             
             if ( resultList.isEmpty()){
                 return null;
@@ -84,7 +84,7 @@ public class EffectRigX {
                 return resultList.get(0);
             }
         } catch (Exception e) {
-            e.printStackTrace();;
+            e.printStackTrace();
             return null;
         }
     }

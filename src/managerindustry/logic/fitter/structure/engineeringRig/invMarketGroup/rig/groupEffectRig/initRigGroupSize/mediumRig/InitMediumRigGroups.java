@@ -45,229 +45,154 @@ public class InitMediumRigGroups {
     /**
      * Init Standup MSet Equipment Manufacturing
      */
-    public void initStandupMSetEquipmentManufacturing(){
+    public void initStandupMSetEquipmentManufacturing(int rig1, int rig2,int rig3,int rig4){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonEquipmentManufacturing();
-        
-        structureRig(43920, effectRigs); // Standup M-Set Equipment Manufacturing Material Efficiency I
-        structureRig(43921, effectRigs); // Standup M-Set Equipment Manufacturing Material Efficiency II
-        structureRig(37160, effectRigs); // Standup M-Set Equipment Manufacturing Time Efficiency I
-        structureRig(37161, effectRigs); // Standup M-Set Equipment Manufacturing Time Efficiency II
-
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, effectRigs);
     }
-    
+      
     /**
      * @deprecated 
      * mancano i data interfaces 
      * 
      */
-    public void initStandupMSetAdvancedComponentManufacturing(){
+    public void initStandupMSetAdvancedComponentManufacturing(int rig1, int rig2,int rig3,int rig4){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonAdvancedComponentManufacturing(); 
-        
-        structureRig(43867, effectRigs); // Standup M-Set Advanced Component Manufacturing Material Efficiency I
-        structureRig(43866, effectRigs); // Standup M-Set Advanced Component Manufacturing Material Efficiency II
-        structureRig(43869, effectRigs); // Standup M-Set Advanced Component Manufacturing Time Efficiency I
-        structureRig(43868, effectRigs); // Standup M-Set Advanced Component Manufacturing Time Efficiency II   
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, effectRigs); 
     }
     
     /**
      * Init Standup MSet Advanced Large Ship Manufacturing
      */
-    public void initStandupMSetAdvancedLargeShipManufacturing(){
+    public void initStandupMSetAdvancedLargeShipManufacturing(int rig1, int rig2,int rig3,int rig4){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonAdvancedLargeShipManufacturing(); 
-        
-        structureRig(43862, effectRigs); // Standup M-Set Advanced Large Ship Manufacturing Material Efficiency I
-        structureRig(43863, effectRigs); // Standup M-Set Advanced Large Ship Manufacturing Material Efficiency II
-        structureRig(43865, effectRigs); // Standup M-Set Advanced Large Ship Manufacturing Time Efficiency I
-        structureRig(43864, effectRigs); // Standup M-Set Advanced Large Ship Manufacturing Time Efficiency II
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, effectRigs);
     }
     
     /**
      * Init Standup MSet Advanced Medium Ship Manufacturing
      */
-    public void initStandupMSetAdvancedMediumShipManufacturing(){
+    public void initStandupMSetAdvancedMediumShipManufacturing(int rig1, int rig2,int rig3,int rig4){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonAdvancedMediumShipManufacturing();  
-        
-        structureRig(43858, effectRigs); // Standup M-Set Advanced Medium Ship Manufacturing Material Efficiency I
-        structureRig(43859, effectRigs); // Standup M-Set Advanced Medium Ship Manufacturing Material Efficiency II
-        structureRig(43860, effectRigs); // Standup M-Set Advanced Medium Ship Manufacturing Time Efficiency I
-        structureRig(43861, effectRigs); // Standup M-Set Advanced Medium Ship Manufacturing Time Efficiency II
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, effectRigs);
     }
     
     /**
      * Init Standup MSet Advanced Small Ship Manufacturing
      */
-    public void initStandupMSetAdvancedSmallShipManufacturing(){
+    public void initStandupMSetAdvancedSmallShipManufacturing(int rig1, int rig2,int rig3,int rig4){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonAdvancedSmallShipManufacturing(); 
-        
-        structureRig(43855, effectRigs); // Standup M-Set Advanced Small Ship Manufacturing Material Efficiency I
-        structureRig(43854, effectRigs); // Standup M-Set Advanced Small Ship Manufacturing Material Efficiency II
-        structureRig(43856, effectRigs); // Standup M-Set Advanced Small Ship Manufacturing Time Efficiency I
-        structureRig(43857, effectRigs); // Standup M-Set Advanced Small Ship Manufacturing Time Efficiency II
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, effectRigs);
     }
     
     /**
      * Init Standup MSet Ammunition Manufacturing
      */
-    public void initStandupMSetAmmunitionManufacturing(){
+    public void initStandupMSetAmmunitionManufacturing(int rig1, int rig2,int rig3,int rig4){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonAmmunitionManufacturing(); 
-    
-        structureRig(37158, effectRigs); // Standup M-Set Ammunition Manufacturing Material Efficiency I
-        structureRig(37159, effectRigs); // Standup M-Set Ammunition Manufacturing Material Efficiency II
-        structureRig(37150, effectRigs); // Standup M-Set Ammunition Manufacturing Time Efficiency I
-        structureRig(37151, effectRigs); // Standup M-Set Ammunition Manufacturing Time Efficiency II
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, effectRigs);
     }
     
     /**
      * Init Standup MSet Basic Capital Component Manufacturing
      */
-    public void initStandupMSetBasicCapitalComponentManufacturing(){
+    public void initStandupMSetBasicCapitalComponentManufacturing(int rig1, int rig2,int rig3,int rig4){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonBasicCapitalComponentManufacturing(); 
-        
-        structureRig(43870, effectRigs); // Standup M-Set Basic Capital Component Manufacturing Material Efficiency I
-        structureRig(43871, effectRigs); // Standup M-Set Basic Capital Component Manufacturing Material Efficiency II
-        structureRig(43872, effectRigs); // Standup M-Set Basic Capital Component Manufacturing Time Efficiency I
-        structureRig(43873, effectRigs); // Standup M-Set Basic Capital Component Manufacturing Time Efficiency II
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, effectRigs);
     }
     
     /**
      * Init Standup MSet Basic Large Ship Manufacturing
      */
-    public void initStandupMSetBasicLargeShipManufacturing(){
+    public void initStandupMSetBasicLargeShipManufacturing(int rig1, int rig2,int rig3,int rig4){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonBasicLargeShipManufacturing(); 
-        
-        structureRig(43732, effectRigs); // Standup M-Set Basic Large Ship Manufacturing Material Efficiency I
-        structureRig(37152, effectRigs); // Standup M-Set Basic Large Ship Manufacturing Material Efficiency II
-        structureRig(43733, effectRigs); // Standup M-Set Basic Large Ship Manufacturing Time Efficiency I
-        structureRig(43734, effectRigs); // Standup M-Set Basic Large Ship Manufacturing Time Efficiency II
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, effectRigs);
     }
     
     /**
      * Init Standup MSet Basic Medium Ship Manufacturing
      */
-    public void initStandupMSetBasicMediumShipManufacturing(){
+    public void initStandupMSetBasicMediumShipManufacturing(int rig1, int rig2,int rig3,int rig4){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonBasicMediumShipManufacturing();   
-        
-        structureRig(37146, effectRigs); // Standup M-Set Basic Medium Ship Manufacturing Material Efficiency I
-        structureRig(37147, effectRigs); // Standup M-Set Basic Medium Ship Manufacturing Material Efficiency II
-        structureRig(43919, effectRigs); // Standup M-Set Basic Medium Ship Manufacturing Time Efficiency I
-        structureRig(37153, effectRigs); // Standup M-Set Basic Medium Ship Manufacturing Time Efficiency II
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, effectRigs);
     }
     
     /**
      * Init Standup MSet Basic Small Ship Manufacturing
      */
-    public void initStandupMSetBasicSmallShipManufacturing(){
+    public void initStandupMSetBasicSmallShipManufacturing(int rig1, int rig2,int rig3,int rig4){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonBasicSmallShipManufacturing(); 
-        
-        structureRig(37154, effectRigs); // Standup M-Set Basic Small Ship Manufacturing Material Efficiency I
-        structureRig(37155, effectRigs); // Standup M-Set Basic Small Ship Manufacturing Material Efficiency II
-        structureRig(37162, effectRigs); // Standup M-Set Basic Small Ship Manufacturing Time Efficiency I
-        structureRig(37163, effectRigs); // Standup M-Set Basic Small Ship Manufacturing Time Efficiency II
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, effectRigs);
     }
         
     /**
      * init Standup MSet Drone And Fighter Manufacturing
      */
-    public void initStandupMSetDroneAndFighterManufacturing(){
+    public void initStandupMSetDroneAndFighterManufacturing(int rig1, int rig2,int rig3,int rig4){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonDroneAndFighterManufacturing(); 
-        
-        structureRig(37156, effectRigs); // Standup M-Set Drone and Fighter Manufacturing Material Efficiency I
-        structureRig(37157, effectRigs); // Standup M-Set Drone and Fighter Manufacturing Material Efficiency II
-        structureRig(37148, effectRigs); // Standup M-Set Drone and Fighter Manufacturing Time Efficiency I
-        structureRig(37149, effectRigs); // Standup M-Set Drone and Fighter Manufacturing Time Efficiency II
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, effectRigs);
     }
     
     /**
      * Init Standup MSet Structure Manufacturing
      */
-    public void initStandupMSetStructureManufacturing(){
+    public void initStandupMSetStructureManufacturing(int rig1, int rig2,int rig3,int rig4){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonStructureManufacturing();  
-        
-        structureRig(43875, effectRigs); // Standup M-Set Structure Manufacturing Material Efficiency I
-        structureRig(43874, effectRigs); // Standup M-Set Structure Manufacturing Material Efficiency II
-        structureRig(43876, effectRigs); // Standup M-Set Structure Manufacturing Time Efficiency I
-        structureRig(43877, effectRigs); // Standup M-Set Structure Manufacturing Time Efficiency II
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, effectRigs);
     }    
     
     /**
      * @deprecated 
      * mancano ti data interfaces
      */
-    public void initStandupMSetThukkerAdvancedComponentManufacturing(){
+    public void initStandupMSetThukkerAdvancedComponentManufacturing(int rig1){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonThukkerAdvancedComponentManufacturing();     
-        
-        structureRig(45640, effectRigs); // Standup M-Set Thukker Advanced Component Manufacturing Material Efficiency
+        initCommonRigGroups.addEffectEngineeringRig(rig1, effectRigs);
     }
 
     /**
      * Init Standup MSet Thukker Basic Capital Component Manufacturing
      */
-    public void initStandupMSetThukkerBasicCapitalComponentManufacturing(){
+    public void initStandupMSetThukkerBasicCapitalComponentManufacturing(int rig1){
         List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonThukkerBasicCapitalComponentManufacturing();   
-        structureRig(45544, effectRigs); // Standup M-Set Thukker Basic Capital Component Manufacturing Material Efficiency        
+        initCommonRigGroups.addEffectEngineeringRig(rig1, effectRigs);       
     }
     
     /**
      * Init Standup MSet Blueprint Copy 
      * bonuses apply to all blueprints
      */
-    public void initStandupMSetBlueprintCopy(){
+    public void initStandupMSetBlueprintCopy(int rig1, int rig2,int rig3,int rig4){
         // new ArrayList<>() must be empty
-        
-        structureRig(43893, new ArrayList<>()); // Standup M-Set Blueprint Copy Accelerator I
-        structureRig(43892, new ArrayList<>()); // Standup M-Set Blueprint Copy Accelerator II
-        structureRig(43891, new ArrayList<>()); // Standup M-Set Blueprint Copy Cost Optimization I
-        structureRig(43890, new ArrayList<>()); // Standup M-Set Blueprint Copy Cost Optimization II
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4,  new ArrayList<>());
     }    
     
     /**
      * Init Standup MSet Invention
      * bonuses apply to all blueprints
      */
-    public void initStandupMSetInvention(){
+    public void initStandupMSetInvention(int rig1, int rig2,int rig3,int rig4){
         // new ArrayList<>() must be empty
-        
-        structureRig(43880, new ArrayList<>()); // Standup M-Set Invention Accelerator I
-        structureRig(43881, new ArrayList<>()); // Standup M-Set Invention Accelerator II
-        structureRig(43879, new ArrayList<>()); // Standup M-Set Invention Cost Optimization I
-        structureRig(43878, new ArrayList<>()); // Standup M-Set Invention Cost Optimization II
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, new ArrayList<>());
     }
     
     /**
      * Init Standup MSet ME Research
      * bonuses apply to all blueprints
      */
-    public void initStandupMSetMEResearch(){
+    public void initStandupMSetMEResearch(int rig1, int rig2,int rig3,int rig4){
         // new ArrayList<>() must be empty
-        
-        structureRig(43883, new ArrayList<>()); // Standup M-Set ME Research Accelerator I
-        structureRig(43882, new ArrayList<>()); // Standup M-Set ME Research Accelerator II
-        structureRig(43885, new ArrayList<>()); // Standup M-Set ME Research Cost Optimization I
-        structureRig(43884, new ArrayList<>()); // Standup M-Set ME Research Cost Optimization II
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, new ArrayList<>());
     }
     
     /**
      * Init Standup MSet TE Research
      * bonuses apply to all blueprints
      */
-    public void initStandupMSetTEResearch(){
-        // new ArrayList<>() must be empty        
-        
-        structureRig(43889, new ArrayList<>()); // 43889 Standup M-Set TE Research Accelerator I
-        structureRig(43888, new ArrayList<>()); // 43888 Standup M-Set TE Research Accelerator II
-        structureRig(43887, new ArrayList<>()); // 43887 Standup M-Set TE Research Cost Optimization I
-        structureRig(43886, new ArrayList<>()); // 43886 Standup M-Set TE Research Cost Optimization II
+    public void initStandupMSetTEResearch(int rig1, int rig2,int rig3,int rig4){
+        // new ArrayList<>() must be empty               
+        initCommonRigGroups.addEffectEngineeringRig(rig1, rig2, rig3, rig4, new ArrayList<>());        
     }    
-    
-    /**
-     * Add rig and effect to DB
-     * @param typeId
-     * @param effectRigs 
-     */
-    private void structureRig(int typeId, List < ItemRecusion > effectRigs){
-        EffectEngineeringRigs managerStructure = new EffectEngineeringRigs(typeId, effectRigs);
-    }       
-    
+ 
 }
 
 /*

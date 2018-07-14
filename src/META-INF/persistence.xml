@@ -2,7 +2,6 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="ManagerIndustryPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>managerindustry.db.entities.cache.EffectRigEntity</class>
     <class>managerindustry.db.entities.cache.PriceEntity</class>
     <class>managerindustry.db.entities.cache.TaxCostIndexEntity</class>
     <class>managerindustry.db.entities.cache.TaxSolarSystemEntity</class>
@@ -19,6 +18,8 @@
     <class>managerindustry.db.entities.eve.DgmTypeAttributes</class>
     <class>managerindustry.db.entities.eve.IndustryActivityProducts</class>
     <class>managerindustry.db.entities.eve.DgmAttributeTypes</class>
+    <class>managerindustry.db.entities.cache.EffectEngineeringRigEntity</class>
+    <class>managerindustry.db.entities.cache.AvoidDuplicateRigEntity</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/industryDB?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
