@@ -13,6 +13,6 @@ import managerindustry.logic.exception.ErrorExeption;
  */
 public class MainFitter {
     public static void main(String[] args) throws ErrorExeption {
-        Fitter fitter = new Fitter();
+        EngineeringComplexSlot fitter = new EngineeringComplexSlot();
     }
 }

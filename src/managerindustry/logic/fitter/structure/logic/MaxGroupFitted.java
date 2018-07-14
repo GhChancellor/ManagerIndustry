@@ -27,8 +27,10 @@ public class MaxGroupFitted {
     public void setCurrentFitted(byte currentFitted) {
         this.currentFitted = currentFitted;
     }
-    
-     
+
+    public EngineeringRig getEngineeringRig() {
+        return engineeringRig;
+    }
 
 }
 

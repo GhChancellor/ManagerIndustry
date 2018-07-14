@@ -29,6 +29,9 @@ public class EngineeringRig extends BaseStructure{
     private int typeID;
     private float maxGroupFitted; // MAX_GROUP_FITTED(1544)
 
+    public EngineeringRig() {
+    }
+
     public EngineeringRig(String nameRig, SecurityStatusEnum securityStatusEnum) {
         typeID = ManagerDB.getInstance().invTypes().getInvTypesByName(nameRig).getTypeID();
         

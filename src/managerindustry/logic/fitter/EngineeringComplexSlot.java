@@ -13,12 +13,14 @@ import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
 import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
 import managerindustry.logic.fitter.structure.logic.MaxGroupFitted;
+import managerindustry.logic.fitter.structure.logic.StructureLibrary;
 
 /**
- *
+ * @deprecated 
+ * Eliminare il codice commentato
  * @author lele
  */
-public class Fitter {
+public class EngineeringComplexSlot {
     private EngineeringComplex engineeringComplex;
 //    private Map< /* typeId */ Integer , /* currentRigFitted */ Integer  > maxGroupFittedMap_OLD = new HashMap<>();
     
@@ -26,17 +28,21 @@ public class Fitter {
     
     private float currentCalibration = 0;
     private byte engineeringComplex_CurrentSlot = 0;
+    float totReductionManufacturingMaterial;
+    float totReductionManufacturingScienceJobIskCost;
+    float totReductionManufacturingScienceJobTime;
     
     enum EngineeringRigEnum {ADD, REMOVE};
         
-    public Fitter() throws ErrorExeption {
+    public EngineeringComplexSlot() throws ErrorExeption {
         engineeringComplex(PlatformEnum.RAITARU);
 
         engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency II", SecurityStatusEnum.LOW_SEC);
-        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency I", SecurityStatusEnum.LOW_SEC);
-        engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
+//        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency I", SecurityStatusEnum.LOW_SEC);
+//        engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
 //        engineeringRigs("Standup M-Set Ammunition Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
-
+        calculatesBonus();
+        displayAllValue();
     }
     
     /**
@@ -50,7 +56,7 @@ public class Fitter {
     
     public void engineeringRigs(String rigName, SecurityStatusEnum securityStatusEnum) throws ErrorExeption{
         EngineeringRig engineeringRigs = new EngineeringRig(rigName, securityStatusEnum);
-        engineeringRigs.displayValue();
+        engineeringRigs.displayAllValueCalculated();
         addRig(engineeringRigs);
     }
     
@@ -58,20 +64,17 @@ public class Fitter {
      * 
      */
     public void displayAllValue(){
-        engineeringComplex.getReductionManufacturingMaterial();
-        engineeringComplex.getReductionManufacturingScienceJobIskCost();
-        engineeringComplex.getReductionManufacturingScienceJobTime();
         
-        if (engineeringComplex.getReductionManufacturingMaterial() != 0){
-            
+        if (totReductionManufacturingMaterial != 0){
+            System.out.println("XX totReductionManufacturingMaterial " + totReductionManufacturingMaterial);
         }
         
-        if (engineeringComplex.getReductionManufacturingScienceJobIskCost() != 0){
-            
+        if (totReductionManufacturingScienceJobIskCost != 0){
+            System.out.println("XX totReductionManufacturingScienceJobIskCost " + totReductionManufacturingScienceJobIskCost);
         }
         
-        if (engineeringComplex.getReductionManufacturingScienceJobTime() != 0){
-            
+        if (totReductionManufacturingScienceJobTime != 0){
+            System.out.println("XX totReductionManufacturingScienceJobTime " + totReductionManufacturingScienceJobTime);
         }
         
     }   
@@ -143,7 +146,7 @@ public class Fitter {
      * @param EngineeringRig engineeringRigs
      * @throws ErrorExeption 
      */
-    public void addRig(EngineeringRig engineeringRigs) throws ErrorExeption{
+    private void addRig(EngineeringRig engineeringRigs) throws ErrorExeption{
         if ( managerError(engineeringRigs, EngineeringRigEnum.ADD) ){        
             if (maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
                 
@@ -168,7 +171,7 @@ public class Fitter {
      * @param EngineeringRig engineeringRigs
      * @throws ErrorExeption 
      */
-    public void removeRig(EngineeringRig engineeringRigs) throws ErrorExeption{      
+    private void removeRig(EngineeringRig engineeringRigs) throws ErrorExeption{      
         if ( managerError(engineeringRigs, EngineeringRigEnum.REMOVE ) ){
             if (maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
                 MaxGroupFitted tempMaxGroupFitted = maxGroupFittedMap.get(engineeringRigs.getTypeID());
@@ -184,10 +187,44 @@ public class Fitter {
         }
     }
     
-    public void calculatesBonus(){
+    private void calculatesBonus(){
+        EngineeringRig _engineeringRig = new EngineeringRig();
+        byte trucateDecimal = 2;
+        float tempFloat;
         
+        for (Map.Entry<Integer, MaxGroupFitted> entry : maxGroupFittedMap.entrySet()) {
+            _engineeringRig = entry.getValue().getEngineeringRig();
+        
+            if ( _engineeringRig.getMaterialEfficiency_SecurityStatus() != 0 ){
+                tempFloat = engineeringComplex.getReductionManufacturingMaterial() +
+                    _engineeringRig.getMaterialEfficiency_SecurityStatus();
+                totReductionManufacturingMaterial = truncateToDecimal(tempFloat, trucateDecimal);
+            }
+            
+            if ( _engineeringRig.getTimeEfficiency_SecurityStatus()!= 0 ){
+                tempFloat = engineeringComplex.getReductionManufacturingScienceJobTime() +
+                    _engineeringRig.getTimeEfficiency_SecurityStatus();
+                totReductionManufacturingScienceJobTime = truncateToDecimal(tempFloat, trucateDecimal);
+            }
+            
+            if ( _engineeringRig.getCostBonus_SecurityStatus()!= 0 ){
+                tempFloat = engineeringComplex.getReductionManufacturingScienceJobIskCost() +
+                    _engineeringRig.getCostBonus_SecurityStatus(); 
+                totReductionManufacturingScienceJobIskCost = truncateToDecimal(tempFloat, trucateDecimal);
+            }        
+        }
     }
     
+    /**
+     * Truncate to decimal
+     * @param float value
+     * @param byte numberofDecimals
+     * @return float 
+     */
+    private float truncateToDecimal(float value, byte numberofDecimals){
+        return StructureLibrary.truncateToDecimal(value, numberofDecimals).floatValue();     
+    }
+      
     /**
      *  Get Current Calibration
      * @return float
@@ -218,6 +255,18 @@ public class Fitter {
      */
     public void setEngineeringComplex_CurrentSlot(byte engineeringComplex_CurrentSlot) {
         this.engineeringComplex_CurrentSlot = engineeringComplex_CurrentSlot;
+    }
+    
+    public float getTotReductionManufacturingMaterial() {
+        return totReductionManufacturingMaterial;
+    }
+
+    public float getTotReductionManufacturingScienceJobIskCost() {
+        return totReductionManufacturingScienceJobIskCost;
+    }
+
+    public float getTotReductionManufacturingScienceJobTime() {
+        return totReductionManufacturingScienceJobTime;
     }
     
     
@@ -269,4 +318,5 @@ public class Fitter {
 //        }        
 //    }
 //    
+
 }

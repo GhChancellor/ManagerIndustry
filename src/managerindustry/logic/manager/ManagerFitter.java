@@ -6,7 +6,7 @@
 package managerindustry.logic.manager;
 
 import managerindustry.logic.exception.ErrorExeption;
-import managerindustry.logic.fitter.Fitter;
+import managerindustry.logic.fitter.EngineeringComplexSlot;
 
 /**
  *
@@ -15,7 +15,7 @@ import managerindustry.logic.fitter.Fitter;
 public class ManagerFitter {
 
     public ManagerFitter() throws ErrorExeption {
-        Fitter fitter = new Fitter();
+        EngineeringComplexSlot fitter = new EngineeringComplexSlot();
     }
     
     
