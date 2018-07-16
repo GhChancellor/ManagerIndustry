@@ -20,6 +20,8 @@
     <class>managerindustry.db.entities.eve.DgmAttributeTypes</class>
     <class>managerindustry.db.entities.cache.EffectEngineeringRigEntity</class>
     <class>managerindustry.db.entities.cache.AvoidDuplicateRigEntity</class>
+    <class>managerindustry.logic.prove.oneToMany.ManagerUserEntity</class>
+    <class>managerindustry.logic.prove.oneToMany.UserEntity</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/industryDB?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

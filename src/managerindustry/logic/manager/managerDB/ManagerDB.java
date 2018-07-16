@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import managerindustry.db.entities.eve.InvMarketGroups;
 import managerindustry.logic.exception.PriceNotExistsException;
-import managerindustry.logic.manager.managerDB.cache.effectRig.EffectRigX;
+import managerindustry.logic.manager.managerDB.cache.effectRig.EffectEngineeringRigX;
 import managerindustry.logic.manager.managerDB.cache.price.PriceX;
 import managerindustry.logic.manager.managerDB.cache.taxCostIndex.TaxSolarSystem;
 import managerindustry.logic.manager.managerDB.eve.DgmAttributeTypesX;
@@ -171,10 +171,10 @@ public class ManagerDB {
     
     /**
      * Get Effect Rig
-     * @return EffectRigX
+     * @return EffectEngineeringRigX
      */
-    public EffectRigX effectRig(){
-        EffectRigX effectRigX = new EffectRigX(entityManager);
+    public EffectEngineeringRigX effectRig(){
+        EffectEngineeringRigX effectRigX = new EffectEngineeringRigX(entityManager);
         return effectRigX;
     }
 }

@@ -65,7 +65,7 @@ public class ItemRecursionA {
         this.typeID = typeID;
     }
 
-    public short getMarketGroupID() {
+    public Short getMarketGroupID() {
         return marketGroupID;
     }
 
@@ -73,7 +73,7 @@ public class ItemRecursionA {
         this.marketGroupID = marketGroupID;
     }
 
-    public short getParentGroupID() {
+    public Short getParentGroupID() {
         return parentGroupID;
     }
 

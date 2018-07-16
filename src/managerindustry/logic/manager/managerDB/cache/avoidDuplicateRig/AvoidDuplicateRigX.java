@@ -7,7 +7,7 @@ package managerindustry.logic.manager.managerDB.cache.avoidDuplicateRig;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import managerindustry.db.controllers.EffectRigEntityJpaController;
+import managerindustry.db.controllers.EffectEngineeringRigEntityJpaController;
 
 /**
  *
@@ -15,12 +15,12 @@ import managerindustry.db.controllers.EffectRigEntityJpaController;
  */
 public class AvoidDuplicateRigX {
     private EntityManager entityManager;
-    private EffectRigEntityJpaController AvoidDuplicateRigEntityJpaController = 
-        new EffectRigEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));    
+    private EffectEngineeringRigEntityJpaController AvoidDuplicateRigEntityJpaController = 
+        new EffectEngineeringRigEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));    
 
     public AvoidDuplicateRigX(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
     
-    
+//    public void addEffectRigs(EffectEngineeringRigsXXX structureRig){
 }

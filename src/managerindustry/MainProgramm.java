@@ -19,6 +19,7 @@ import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
 import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.ChooseRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
 
@@ -29,7 +30,7 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, PriceNotExistsException {
-        buildItem(); // << controllare
+//        buildItem(); // << controllare
 //        jobInstallationFee();
 //        speculation(); // << controllare
 //        recursionItems();
@@ -99,8 +100,11 @@ public class MainProgramm {
     }
     
     public static void recursionItems(){
-        ItemRecusion advancedBattleships = GroupEffectRig.getInstance().ships().battleships().getAdvancedBattleships();
-        advancedBattleships.display();
+//        ItemRecusion advancedBattleships = GroupEffectRig.getInstance().ships().cruisers().getStandardCruisers();
+//        ItemRecusion advancedBattleships = GroupEffectRig.getInstance().shipEquipments().getshipEquipments();
+//        advancedBattleships.display();
+        
+        ChooseRig chooseRig = new ChooseRig(43921);
 
 
     }

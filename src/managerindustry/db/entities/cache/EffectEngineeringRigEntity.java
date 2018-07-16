@@ -19,7 +19,9 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "EffectRigEntity.getEffectByID", query = "SELECT a FROM EffectRigEntity a WHERE a.typeID= :typeID AND a.effectID = :effectID")
+    @NamedQuery(name = "EffectEngineeringRigEntity.getByEffectID_ByID", 
+        query = "SELECT a FROM EffectEngineeringRigEntity a WHERE a.typeID= :typeID AND a.effectID = :effectID"),
+    @NamedQuery(name = "EffectEngineeringRigEntity.getByID", query = "SELECT a FROM EffectEngineeringRigEntity a WHERE a.typeID= :typeID")
 })
 
 public class EffectEngineeringRigEntity implements Serializable {
@@ -103,7 +105,7 @@ public class EffectEngineeringRigEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "managerindustry.db.entities.cache.EffectRigEntity[ id=" + id + " ]";
+        return "managerindustry.db.entities.cache.EffectEngineeringRigEntity[ id=" + id + " ]";
     }
     
 }

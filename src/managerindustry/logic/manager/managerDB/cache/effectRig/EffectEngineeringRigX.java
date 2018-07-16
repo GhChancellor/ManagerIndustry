@@ -9,7 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import managerindustry.db.controllers.EffectRigEntityJpaController;
+import managerindustry.db.controllers.EffectEngineeringRigEntityJpaController;
 import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecursionA;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
@@ -20,12 +20,12 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
  *
  * @author lele
  */
-public class EffectRigX {
+public class EffectEngineeringRigX {
     private EntityManager entityManager;
-    private EffectRigEntityJpaController effectRigEntityJpaController = 
-        new EffectRigEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));
+    private EffectEngineeringRigEntityJpaController effectRigEntityJpaController = 
+        new EffectEngineeringRigEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));
         
-    public EffectRigX(EntityManager entityManager) {
+    public EffectEngineeringRigX(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
     
@@ -63,19 +63,43 @@ public class EffectRigX {
     }
 
     /**
-     * Get Effect Rig Entity
+     * Get Effect Rig Entity by typeId and effectID
      * @param int typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
      * @param int effectID, has effect on item to build like ammunition
      * @return EffectEngineeringRigEntity
      */
-    public EffectEngineeringRigEntity getEffectRigEntity(int typeID, int effectID){
+    public EffectEngineeringRigEntity getEffectEngineeringRigEntity(int typeID, int effectID){
         try {
             TypedQuery < EffectEngineeringRigEntity > effectsTQ = 
-                entityManager.createNamedQuery("EffectRigEntity.getEffectByID", EffectEngineeringRigEntity.class);
+                entityManager.createNamedQuery("EffectEngineeringRigEntity.getByEffectID_ByID", EffectEngineeringRigEntity.class);
 
             effectsTQ.setParameter("typeID", typeID );
             effectsTQ.setParameter("effectID", effectID );            
             
+            List<EffectEngineeringRigEntity> resultList = effectsTQ.getResultList();
+            
+            if ( resultList.isEmpty()){
+                return null;
+            }else{
+                return resultList.get(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    /**
+     * Get Effect Engineering Rig entity by typeId
+     * @param typeID typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
+     * @return EffectEngineeringRigEntity
+     */
+    public EffectEngineeringRigEntity getEffectEngineeringRigEntity(int typeID){
+        try {
+            TypedQuery < EffectEngineeringRigEntity > effectsTQ = 
+                entityManager.createNamedQuery("EffectEngineeringRigEntity.getByID", EffectEngineeringRigEntity.class);
+
+            effectsTQ.setParameter("typeID", typeID );           
             List<EffectEngineeringRigEntity> resultList = effectsTQ.getResultList();
             
             if ( resultList.isEmpty()){

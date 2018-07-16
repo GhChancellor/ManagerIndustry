@@ -49,6 +49,9 @@ public class ItemRecusion {
      */
     private void recusionExcludeTree(List<InvMarketGroups> invMarketGroups, ItemRecursionA recursionA02, int excludeCode ){
         for (InvMarketGroups marketGroups01 : invMarketGroups) {
+            if (marketGroups01.getParentGroupID() == null)
+                marketGroups01.setParentGroupID(-1);
+            
             ItemRecursionA recursionA01 = new ItemRecursionA
                 ( marketGroups01.getMarketGroupID().byteValue(), 
                 marketGroups01.getParentGroupID().byteValue(), 
@@ -76,9 +79,37 @@ public class ItemRecusion {
      */
     private void recusionAllBranches(List<InvMarketGroups> invMarketGroups, ItemRecursionA recursionA02 ){
         for (InvMarketGroups marketGroups01 : invMarketGroups) {
+            if (marketGroups01.getParentGroupID() == null)
+                marketGroups01.setParentGroupID(-1);
+            
             ItemRecursionA recursionA01 = new ItemRecursionA
-                ( marketGroups01.getMarketGroupID().byteValue(),
-                marketGroups01.getParentGroupID().byteValue(), 
+                ( marketGroups01.getMarketGroupID().shortValue(),
+                marketGroups01.getParentGroupID().shortValue(), 
+                marketGroups01.getMarketGroupName() );
+
+            recursionA02.addRecursionB02(new ItemRecursionB(recursionA01));
+            List<InvMarketGroups> marketGroups02 = ManagerDB.getInstance().invMarketGroups().getParentGroupID( marketGroups01.getMarketGroupID() );
+            
+            if ( marketGroups02 != null){
+                if (!marketGroups02.isEmpty()){
+                    recusionAllBranches(marketGroups02, recursionA01);
+                }                
+            }
+        }
+    }
+
+    
+    /**
+     * All branches
+     * @param invMarketGroups
+     * @param recursionA02 
+     */
+    private void recusionAllBranchesBack(List<InvMarketGroups> invMarketGroups, ItemRecursionA recursionA02 ){
+        for (InvMarketGroups marketGroups01 : invMarketGroups) {
+            
+            ItemRecursionA recursionA01 = new ItemRecursionA
+                ( marketGroups01.getMarketGroupID().shortValue(),
+                marketGroups01.getParentGroupID().shortValue(), 
                 marketGroups01.getMarketGroupName() );
 
             recursionA02.addRecursionB02(new ItemRecursionB(recursionA01));

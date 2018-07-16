@@ -35,9 +35,20 @@ public class EffectEngineeringRigs {
      * Get Effect Rig and his effect
      * @param int typeID
      * @param int effectID 
-     * @return EffectEngineeringRigEntity
+     * @return getEffectEngineeringRig
      */
-    public EffectEngineeringRigEntity getEffectRig(int typeID, int effectID){
-        return ManagerDB.getInstance().effectRig().getEffectRigEntity(typeID, effectID);
+    public EffectEngineeringRigEntity getEffectEngineeringRig(int typeID, int effectID){
+        return ManagerDB.getInstance().effectRig().getEffectEngineeringRigEntity(typeID, effectID);
     }
+    
+    /**
+     * Get Effect Rig
+     * @param int typeID
+     * @return getEffectEngineeringRig
+     */
+    public EffectEngineeringRigEntity getEffectEngineeringRig(int typeID){
+        return ManagerDB.getInstance().effectRig().getEffectEngineeringRigEntity(typeID);
+    }
+    
+    
 }

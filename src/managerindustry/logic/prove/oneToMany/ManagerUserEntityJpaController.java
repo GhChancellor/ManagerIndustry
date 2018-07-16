@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.db.controllers;
+package managerindustry.logic.prove.oneToMany;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,16 +13,15 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import managerindustry.db.controllers.exceptions.NonexistentEntityException;
-import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
+import managerindustry.logic.prove.oneToMany.exceptions.NonexistentEntityException;
 
 /**
  *
  * @author lele
  */
-public class EffectRigEntityJpaController implements Serializable {
+public class ManagerUserEntityJpaController implements Serializable {
 
-    public EffectRigEntityJpaController(EntityManagerFactory emf) {
+    public ManagerUserEntityJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -31,12 +30,12 @@ public class EffectRigEntityJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(EffectEngineeringRigEntity effectRigEntity) {
+    public void create(ManagerUserEntity managerUserEntity) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(effectRigEntity);
+            em.persist(managerUserEntity);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -45,19 +44,19 @@ public class EffectRigEntityJpaController implements Serializable {
         }
     }
 
-    public void edit(EffectEngineeringRigEntity effectRigEntity) throws NonexistentEntityException, Exception {
+    public void edit(ManagerUserEntity managerUserEntity) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            effectRigEntity = em.merge(effectRigEntity);
+            managerUserEntity = em.merge(managerUserEntity);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = effectRigEntity.getId();
-                if (findEffectRigEntity(id) == null) {
-                    throw new NonexistentEntityException("The effectRigEntity with id " + id + " no longer exists.");
+                Long id = managerUserEntity.getId();
+                if (findManagerUserEntity(id) == null) {
+                    throw new NonexistentEntityException("The managerUserEntity with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,14 +72,14 @@ public class EffectRigEntityJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            EffectEngineeringRigEntity effectRigEntity;
+            ManagerUserEntity managerUserEntity;
             try {
-                effectRigEntity = em.getReference(EffectEngineeringRigEntity.class, id);
-                effectRigEntity.getId();
+                managerUserEntity = em.getReference(ManagerUserEntity.class, id);
+                managerUserEntity.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The effectRigEntity with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The managerUserEntity with id " + id + " no longer exists.", enfe);
             }
-            em.remove(effectRigEntity);
+            em.remove(managerUserEntity);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -89,19 +88,19 @@ public class EffectRigEntityJpaController implements Serializable {
         }
     }
 
-    public List<EffectEngineeringRigEntity> findEffectRigEntityEntities() {
-        return findEffectRigEntityEntities(true, -1, -1);
+    public List<ManagerUserEntity> findManagerUserEntityEntities() {
+        return findManagerUserEntityEntities(true, -1, -1);
     }
 
-    public List<EffectEngineeringRigEntity> findEffectRigEntityEntities(int maxResults, int firstResult) {
-        return findEffectRigEntityEntities(false, maxResults, firstResult);
+    public List<ManagerUserEntity> findManagerUserEntityEntities(int maxResults, int firstResult) {
+        return findManagerUserEntityEntities(false, maxResults, firstResult);
     }
 
-    private List<EffectEngineeringRigEntity> findEffectRigEntityEntities(boolean all, int maxResults, int firstResult) {
+    private List<ManagerUserEntity> findManagerUserEntityEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(EffectEngineeringRigEntity.class));
+            cq.select(cq.from(ManagerUserEntity.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -113,20 +112,20 @@ public class EffectRigEntityJpaController implements Serializable {
         }
     }
 
-    public EffectEngineeringRigEntity findEffectRigEntity(Long id) {
+    public ManagerUserEntity findManagerUserEntity(Long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(EffectEngineeringRigEntity.class, id);
+            return em.find(ManagerUserEntity.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getEffectRigEntityCount() {
+    public int getManagerUserEntityCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<EffectEngineeringRigEntity> rt = cq.from(EffectEngineeringRigEntity.class);
+            Root<ManagerUserEntity> rt = cq.from(ManagerUserEntity.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
