@@ -23,28 +23,22 @@ public class AvoidDuplicateRigEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int typeId;
-    private int duplicateID;
-    private byte currentFitted;
+    private int typeIdOppositeTo;
 
     public AvoidDuplicateRigEntity() {
     }
 
-    public AvoidDuplicateRigEntity(int typeId, int duplicateID, byte currentFitted) {
+    public AvoidDuplicateRigEntity(int typeId, int typeIdOppositeTo) {
         this.typeId = typeId;
-        this.duplicateID = duplicateID;
-        this.currentFitted = currentFitted;
+        this.typeIdOppositeTo = typeIdOppositeTo;
+    }
+
+    public int getTypeIdOppositeTo() {
+        return typeIdOppositeTo;
     }
 
     public int getTypeId() {
         return typeId;
-    }
-
-    public int getDuplicateID() {
-        return duplicateID;
-    }
-
-    public byte getCurrentFitted() {
-        return currentFitted;
     }
     
     public Long getId() {

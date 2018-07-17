@@ -38,7 +38,7 @@ public class InitLargeRigGroups {
 //        initStandupLSetInvention();
 //        initStandupLSetMEResearch();
 //        initStandupLSetTEResearch();
-//        initStandupLSetBlueprintCopy();
+//        initStandupLSetBlueprintCopyOptimization();
 //        initStandupLSetThukkerBasicCapitalComponentManufacturing();
 //        initStandupLSetThukkerAdvancedComponentManufacturing();
     }
@@ -215,7 +215,7 @@ public class InitLargeRigGroups {
      * Get Standup LSet Blueprint Copy
      * @param int typeId 
      */
-    public void initStandupLSetBlueprintCopy(int typeId){
+    public void initStandupLSetBlueprintCopyOptimization(int typeId){
         // new ArrayList<>() must be empty
         initCommonRigGroups.addEffectEngineeringRig(typeId, new ArrayList<>());        
     }
