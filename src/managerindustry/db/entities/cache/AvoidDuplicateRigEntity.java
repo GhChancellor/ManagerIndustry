@@ -10,43 +10,63 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author lele
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "AvoidDuplicateRigEntity.NotMountableById_T1", query="SELECT a FROM AvoidDuplicateRigEntity a where a.typeId_T1 = :typeId_T1" ),
+    @NamedQuery(name = "AvoidDuplicateRigEntity.NotMountableById_T2", query="SELECT a FROM AvoidDuplicateRigEntity a where a.typeId_T2 = :typeId_T2" ),    
+})
+
 public class AvoidDuplicateRigEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int typeId;
-    private int typeIdOppositeTo;
+    private int typeId_T1;
+    private int typeId_T2;
 
     public AvoidDuplicateRigEntity() {
     }
 
-    public AvoidDuplicateRigEntity(int typeId, int typeIdOppositeTo) {
-        this.typeId = typeId;
-        this.typeIdOppositeTo = typeIdOppositeTo;
+    /**
+     * Avoid Duplicate Rig Entity
+     * @param typeId_T1
+     * @param typeId_T2 
+     */
+    public AvoidDuplicateRigEntity(int typeId_T1, int typeId_T2) {
+        this.typeId_T1 = typeId_T1;
+        this.typeId_T2 = typeId_T2;
     }
 
-    public int getTypeIdOppositeTo() {
-        return typeIdOppositeTo;
-    }
-
-    public int getTypeId() {
-        return typeId;
+    /**
+     * Get TypeId T1
+     * @return int
+     */
+    public int getTypeId_T1() {
+        return typeId_T1;
     }
     
-    public Long getId() {
-        return id;
+    /**
+     * Get TypeId T2
+     * @return int
+     */
+    public int getTypeId_T2() {
+        return typeId_T2;
     }
-
+    
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override

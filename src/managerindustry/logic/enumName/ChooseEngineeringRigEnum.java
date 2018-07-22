@@ -154,7 +154,7 @@ public enum ChooseEngineeringRigEnum{
         XL_BLUEPRINT_LABORATORY_1(37183), // Standup XL-Set Laboratory Optimization I          
         
         XL_SHIP_MANUFACTURING_1(37180), // Standup XL-Set Ship Manufacturing Efficiency I
-        XL_SHIP_2(37181), // Standup XL-Set Ship Manufacturing Efficiency II  
+        XL_SHIP_MANUFACTURING_2(37181), // Standup XL-Set Ship Manufacturing Efficiency II  
                                 
         XL_STRUCTURE_COMPONENT_1(43704), // Standup XL-Set Structure and Component Manufacturing Efficiency I 
         XL_STRUCTURE_COMPONENT_2(43705), // Standup XL-Set Structure and Component Manufacturing Efficiency II 

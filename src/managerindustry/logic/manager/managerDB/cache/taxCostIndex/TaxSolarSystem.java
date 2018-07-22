@@ -9,10 +9,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import managerindustry.db.controllers.PriceEntityJpaController;
 import managerindustry.db.controllers.TaxCostIndexEntityJpaController;
 import managerindustry.db.controllers.TaxSolarSystemEntityJpaController;
-import managerindustry.db.entities.cache.PriceEntity;
 import managerindustry.db.entities.cache.TaxCostIndexEntity;
 import managerindustry.db.entities.cache.TaxSolarSystemEntity;
 

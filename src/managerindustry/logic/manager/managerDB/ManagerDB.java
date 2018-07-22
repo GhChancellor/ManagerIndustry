@@ -7,8 +7,8 @@ package managerindustry.logic.manager.managerDB;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import managerindustry.db.entities.eve.InvMarketGroups;
 import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.manager.managerDB.cache.avoidDuplicateRig.AvoidDuplicateRigX;
 import managerindustry.logic.manager.managerDB.cache.effectRig.EffectEngineeringRigX;
 import managerindustry.logic.manager.managerDB.cache.price.PriceX;
 import managerindustry.logic.manager.managerDB.cache.taxCostIndex.TaxSolarSystem;
@@ -176,5 +176,14 @@ public class ManagerDB {
     public EffectEngineeringRigX effectRig(){
         EffectEngineeringRigX effectRigX = new EffectEngineeringRigX(entityManager);
         return effectRigX;
+    }
+    
+    /**
+     * Avoid Duplicate Rig Entity
+     * @return AvoidDuplicateRigX
+     */
+    public AvoidDuplicateRigX avoidDuplicateRigEntity(){
+        AvoidDuplicateRigX avoidDuplicateRigX = new AvoidDuplicateRigX(entityManager);
+        return avoidDuplicateRigX;
     }
 }

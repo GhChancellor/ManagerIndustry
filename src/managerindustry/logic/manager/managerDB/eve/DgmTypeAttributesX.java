@@ -54,7 +54,7 @@ public class DgmTypeAttributesX {
         SELECT * FROM industryDB.dgmTypeAttributes, industryDB.dgmAttributeTypes, industryDB.invTypes
         WHERE invTypes.typeID = dgmTypeAttributes.typeID 
         AND dgmAttributeTypes.attributeID = dgmTypeAttributes.attributeID
-        AND dgmTypeAttributes.attributeID="2600" AND invTypes.typeID="35825";                
+        AND invTypes.typeID="35825";                
         */
 
         try {

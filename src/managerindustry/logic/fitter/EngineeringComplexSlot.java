@@ -12,6 +12,7 @@ import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
 import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
+import managerindustry.logic.fitter.structure.logic.AvoidDuplicateRig;
 import managerindustry.logic.fitter.structure.logic.MaxGroupFitted;
 import managerindustry.logic.fitter.structure.logic.StructureLibrary;
 
@@ -38,7 +39,7 @@ public class EngineeringComplexSlot {
         engineeringComplex(PlatformEnum.RAITARU);
 
         engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency II", SecurityStatusEnum.LOW_SEC);
-//        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency I", SecurityStatusEnum.LOW_SEC);
+        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency I", SecurityStatusEnum.LOW_SEC);
 //        engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
 //        engineeringRigs("Standup M-Set Ammunition Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
         calculatesBonus();
@@ -56,6 +57,14 @@ public class EngineeringComplexSlot {
     
     public void engineeringRigs(String rigName, SecurityStatusEnum securityStatusEnum) throws ErrorExeption{
         EngineeringRig engineeringRigs = new EngineeringRig(rigName, securityStatusEnum);
+        
+        AvoidDuplicateRig avoidDuplicateRig = new AvoidDuplicateRig();
+        if (avoidDuplicateRig.isOpposite(engineeringRigs.getTypeID()) == false){
+            System.out.println("doppione");
+            return;
+        }
+            
+        
         engineeringRigs.displayAllValueCalculated();
         addRig(engineeringRigs);
     }
