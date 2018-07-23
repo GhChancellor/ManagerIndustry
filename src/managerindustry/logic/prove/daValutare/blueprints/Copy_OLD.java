@@ -7,7 +7,7 @@ package managerindustry.logic.prove.daValutare.blueprints;
 
 import managerindustry.db.entities.eve.IndustryActivity;
 import managerindustry.logic.enumName.RamActivitiesEnum;
-import managerindustry.logic.manager.managerDB.ManagerDB;
+import managerindustry.logic.manager.Manager;
 
 /**
  * @author lele
@@ -20,7 +20,7 @@ public class Copy_OLD {
      */
     public IndustryActivity getCopy(int typeID){
         IndustryActivity industryActivity = 
-          ManagerDB.getInstance().industryActivity().getIndustryActivity(typeID, RamActivitiesEnum.COPYING);
+          Manager.getInstance().managerDB().industryActivity().getIndustryActivity(typeID, RamActivitiesEnum.COPYING);
         return industryActivity;
     }  
 }

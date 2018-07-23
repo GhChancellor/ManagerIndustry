@@ -17,6 +17,7 @@ import managerindustry.db.entities.cache.PriceEntity;
 import managerindustry.logic.apiEsiJson.ApiEsi;
 import managerindustry.logic.apiEsiJson.market.listMarketPrices.Price;
 import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.manager.Manager;
 
 /**
  * @deprecated 
@@ -78,7 +79,7 @@ public class PriceX {
         
         if (price == null) {
             this.priceMap = 
-                ApiEsi.getInstance().market().getListMarketPrices().getListMarketPrices();
+                Manager.getInstance().apiEsi().market().getListMarketPrices().getListMarketPrices();
             price = this.priceMap.get(this.typeId);
             
             if (price == null) {

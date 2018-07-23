@@ -16,7 +16,8 @@ import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.buiild.fatherclass.NameBase;
 import managerindustry.logic.enumName.RamActivitiesEnum;
-import managerindustry.logic.manager.ManagerComponentX;
+import managerindustry.logic.manager.Manager;
+import managerindustry.logic.manager.build.ManagerComponentX;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.prove.ricorsione.skill.skillProduction.RecursionA;
 import managerindustry.logic.prove.ricorsione.skill.skillProduction.qualcosa.TemplateRecursionA;
@@ -38,7 +39,7 @@ public class BuildItemRecusion {
         System.out.println("" + bpoName);
         
         List< IndustryActivityMaterials> nameItemToBuild = 
-         ManagerDB.getInstance().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
+         Manager.getInstance().managerDB().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
 
         ComponentX02 component = new ComponentX02();
         component.setName(bpoName);
@@ -231,7 +232,7 @@ public class BuildItemRecusion {
         
         for (IndustryActivityMaterials nameItemToBuild1 : nameItemToBuild) {
             InvTypes invTypes =
-              ManagerDB.getInstance().invTypes().getInvTypesById(nameItemToBuild1.getMaterialTypeID());
+              Manager.getInstance().managerDB().invTypes().getInvTypesById(nameItemToBuild1.getMaterialTypeID());
 
             ComponentX02 componentX = new ComponentX02();
             componentX.setName(invTypes.getTypeName());
@@ -241,7 +242,7 @@ public class BuildItemRecusion {
             t.addLists(new TemplateRecursionB(a));
             
             List< IndustryActivityMaterials> neededComponents = 
-              ManagerDB.getInstance().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
+              Manager.getInstance().managerDB().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
                         
             if (neededComponents != null)
                 baseMaterial(neededComponents, a, activitiesEnum);

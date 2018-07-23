@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager;
+package managerindustry.logic.manager.errorExecption;
 
 import managerindustry.logic.enumName.ErrorMessage;
 import managerindustry.logic.exception.ErrorExeption;
-
-
 
 /**
  * @deprecated 

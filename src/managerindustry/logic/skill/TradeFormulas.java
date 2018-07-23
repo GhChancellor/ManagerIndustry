@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.skill;
 
-import managerindustry.logic.manager.ManagerSkill;
+import managerindustry.logic.manager.skill.ManagerSkill;
 import managerindustry.logic.skill.specificSkill.BrokerFee;
 import managerindustry.logic.standing.Standing;
 

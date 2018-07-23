@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager;
+package managerindustry.logic.manager.fiiter;
 
 import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.fitter.EngineeringComplexSlot;

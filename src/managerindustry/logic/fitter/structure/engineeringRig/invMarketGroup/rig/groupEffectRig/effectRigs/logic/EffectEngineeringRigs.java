@@ -9,6 +9,7 @@ import java.util.List;
 import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.manager.Manager;
 
 /**
  * @author lele
@@ -28,7 +29,7 @@ public class EffectEngineeringRigs {
      * Add Effect Rigs to DB
      */
     private void addEffectRig(){
-        ManagerDB.getInstance().effectRig().addEffectRigs(structureRig);        
+        Manager.getInstance().managerDB().effectRig().addEffectRigs(structureRig);        
     }
     
     /**
@@ -38,7 +39,7 @@ public class EffectEngineeringRigs {
      * @return getEffectEngineeringRig
      */
     public EffectEngineeringRigEntity getEffectEngineeringRig(int typeID, int effectID){
-        return ManagerDB.getInstance().effectRig().getEffectEngineeringRigEntity(typeID, effectID);
+        return Manager.getInstance().managerDB().effectRig().getEffectEngineeringRigEntity(typeID, effectID);
     }
     
     /**
@@ -47,7 +48,7 @@ public class EffectEngineeringRigs {
      * @return getEffectEngineeringRig
      */
     public EffectEngineeringRigEntity getEffectEngineeringRig(int typeID){
-        return ManagerDB.getInstance().effectRig().getEffectEngineeringRigEntity(typeID);
+        return Manager.getInstance().managerDB().effectRig().getEffectEngineeringRigEntity(typeID);
     }
     
     

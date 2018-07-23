@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager;
+package managerindustry.logic.manager.skill;
 
 import java.util.HashMap;
 import java.util.Map;
+import managerindustry.logic.manager.Manager;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.skill.SkillX;
 import managerindustry.logic.skill.specificSkill.BrokerFee;
@@ -96,7 +97,7 @@ public class ManagerSkill {
      * @param int attributeID 
      */
     private void initSkill(SkillProduction skillProduction, boolean flag, int attributeID){
-        SkillX skill = ManagerDB.getInstance().invTypes().getSkillValues
+        SkillX skill = Manager.getInstance().managerDB().invTypes().getSkillValues
             (skillProduction.getSkillID(), flag, attributeID );
         
         addSkillMap(skill.getName(), new SkillX(skill.getName()));

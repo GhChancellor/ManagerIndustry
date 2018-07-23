@@ -8,9 +8,10 @@ package managerindustry.logic.fitter.structure.engineeringRig;
 import managerindustry.logic.enumName.RuleBonusRigEnum;
 import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.exception.ErrorExeption;
-import managerindustry.logic.manager.ManagerErrorExecption;
+import managerindustry.logic.manager.errorExecption.ManagerErrorExecption;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.fitter.structure.logic.BaseStructure;
+import managerindustry.logic.manager.Manager;
 
 /**
  * https://www.eveonline.com/article/building-dreams-introducing-engineering-complexes/
@@ -33,7 +34,7 @@ public class EngineeringRig extends BaseStructure{
     }
 
     public EngineeringRig(String nameRig, SecurityStatusEnum securityStatusEnum) {
-        typeID = ManagerDB.getInstance().invTypes().getInvTypesByName(nameRig).getTypeID();
+        typeID = Manager.getInstance().managerDB().invTypes().getInvTypesByName(nameRig).getTypeID();
         
         // RIG_TIME_EFFICIENCY
         timeEfficiency = 

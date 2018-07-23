@@ -9,6 +9,7 @@ import java.util.List;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.enumName.RamActivitiesEnum;
+import managerindustry.logic.manager.Manager;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.prove.ricorsione.buildItemRecursion.ComponentX02;
 import managerindustry.logic.prove.ricorsione.skill.skillProduction.qualcosa.TemplateRecursionA;
@@ -29,7 +30,7 @@ public class BuildItemRecursion02 {
         System.out.println("" + bpoName);
         
         List< IndustryActivityMaterials> nameItemToBuild = 
-         ManagerDB.getInstance().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
+         Manager.getInstance().managerDB().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
 
         ComponentX02 component = new ComponentX02();
         component.setName(bpoName);
@@ -74,7 +75,7 @@ public class BuildItemRecursion02 {
         
         for (IndustryActivityMaterials nameItemToBuild1 : nameItemToBuild) {
             InvTypes invTypes =
-              ManagerDB.getInstance().invTypes().getInvTypesById(nameItemToBuild1.getMaterialTypeID());
+              Manager.getInstance().managerDB().invTypes().getInvTypesById(nameItemToBuild1.getMaterialTypeID());
 
             ComponentX02 componentX = new ComponentX02();
             componentX.setName(invTypes.getTypeName());
@@ -84,7 +85,7 @@ public class BuildItemRecursion02 {
             t.addLists(new TemplateRecursionB(a));
             
             List< IndustryActivityMaterials> neededComponents = 
-              ManagerDB.getInstance().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
+              Manager.getInstance().managerDB().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
                         
             if (neededComponents != null)
                 baseMaterial(neededComponents, a, activitiesEnum);

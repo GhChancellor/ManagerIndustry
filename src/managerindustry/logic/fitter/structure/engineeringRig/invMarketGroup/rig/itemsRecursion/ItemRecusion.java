@@ -7,6 +7,7 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 
 import java.util.List;
 import managerindustry.db.entities.eve.InvMarketGroups;
+import managerindustry.logic.manager.Manager;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**
@@ -21,7 +22,7 @@ public class ItemRecusion {
      * @param code 
      */
     public ItemRecusion(int code) {
-        List<InvMarketGroups> parentGroupIDs = ManagerDB.getInstance().invMarketGroups().getMarketGroupID(code);
+        List<InvMarketGroups> parentGroupIDs = Manager.getInstance().managerDB().invMarketGroups().getMarketGroupID(code);
         ItemRecursionA recursionA = new ItemRecursionA();
         recusionAllBranches(parentGroupIDs, recursionA );        
         itemRecursionReport = recursionA;
@@ -33,7 +34,7 @@ public class ItemRecusion {
      * @param excludeCode 
      */
     public ItemRecusion(int code, int excludeCode) {
-        List<InvMarketGroups> parentGroupIDs = ManagerDB.getInstance().invMarketGroups().getMarketGroupID(code);
+        List<InvMarketGroups> parentGroupIDs = Manager.getInstance().managerDB().invMarketGroups().getMarketGroupID(code);
         ItemRecursionA recursionA = new ItemRecursionA();
         
         //Exclude some branches
@@ -62,7 +63,7 @@ public class ItemRecusion {
                 continue;
             
             recursionA02.addRecursionB02(new ItemRecursionB(recursionA01));
-            List<InvMarketGroups> marketGroups02 = ManagerDB.getInstance().invMarketGroups().getParentGroupID( marketGroups01.getMarketGroupID() );
+            List<InvMarketGroups> marketGroups02 = Manager.getInstance().managerDB().invMarketGroups().getParentGroupID( marketGroups01.getMarketGroupID() );
             
             if ( marketGroups02 != null){
                 if (!marketGroups02.isEmpty()){
@@ -88,7 +89,7 @@ public class ItemRecusion {
                 marketGroups01.getMarketGroupName() );
 
             recursionA02.addRecursionB02(new ItemRecursionB(recursionA01));
-            List<InvMarketGroups> marketGroups02 = ManagerDB.getInstance().invMarketGroups().getParentGroupID( marketGroups01.getMarketGroupID() );
+            List<InvMarketGroups> marketGroups02 = Manager.getInstance().managerDB().invMarketGroups().getParentGroupID( marketGroups01.getMarketGroupID() );
             
             if ( marketGroups02 != null){
                 if (!marketGroups02.isEmpty()){
@@ -113,7 +114,7 @@ public class ItemRecusion {
                 marketGroups01.getMarketGroupName() );
 
             recursionA02.addRecursionB02(new ItemRecursionB(recursionA01));
-            List<InvMarketGroups> marketGroups02 = ManagerDB.getInstance().invMarketGroups().getParentGroupID( marketGroups01.getMarketGroupID() );
+            List<InvMarketGroups> marketGroups02 = Manager.getInstance().managerDB().invMarketGroups().getParentGroupID( marketGroups01.getMarketGroupID() );
             
             if ( marketGroups02 != null){
                 if (!marketGroups02.isEmpty()){

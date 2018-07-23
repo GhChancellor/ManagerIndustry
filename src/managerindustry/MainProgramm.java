@@ -12,8 +12,8 @@ import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.gui.display.DisplaySpeculation;
-import managerindustry.logic.manager.ManagerBuild;
-import managerindustry.logic.manager.ManagerComponentX;
+import managerindustry.logic.manager.build.Build;
+import managerindustry.logic.manager.build.ManagerComponentX;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
@@ -22,6 +22,7 @@ import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.ChooseRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.manager.Manager;
 
 /**
  *
@@ -43,7 +44,7 @@ public class MainProgramm {
         //  drake
         // 	Tritanium 2500001 -> 2500001
 	// Pyerite 612071 -> 612071
-        ManagerBuild managerBuild = new ManagerBuild("drake", 1,  1, (byte)1, (byte) 1);         
+        Build managerBuild = new Build("drake", 1,  1, (byte)1, (byte) 1);         
     }
     
     /**
@@ -61,7 +62,7 @@ public class MainProgramm {
 //        String item = "Hammerhead I";
         String item = "Punisher";
         
-        int typeID = ManagerDB.getInstance().invTypes().getInvTypesByName(item).getTypeID();
+        int typeID = Manager.getInstance().managerDB().invTypes().getInvTypesByName(item).getTypeID();
         System.out.println(""+ item + " ID: " + typeID );
         
         int run = 662;
@@ -72,8 +73,8 @@ public class MainProgramm {
         int runPerCopy = 5;
         int startLevel = 5;
         int finishLevel = 10;
-        ManagerBuild managerBuildX1 = 
-                new ManagerBuild(item, run, job, bpoME, componentMe);
+        Build managerBuildX1 = 
+                new Build(item, run, job, bpoME, componentMe);
                         
         Map < String, ReportCalculatedComponentX > reportCalculatedComponentXMap = 
          ManagerComponentX.getInstance().getReportCalculatedComponentXMap();
@@ -100,11 +101,11 @@ public class MainProgramm {
     }
     
     public static void recursionItems(){
-//        ItemRecusion advancedBattleships = GroupEffectRig.getInstance().ships().cruisers().getStandardCruisers();
-//        ItemRecusion advancedBattleships = GroupEffectRig.getInstance().shipEquipments().getshipEquipments();
-//        advancedBattleships.display();
+        ItemRecusion advancedStandard = GroupEffectRig.getInstance().ships().cruisers().getStandardCruisers();
+        ItemRecusion advancedBattleships = GroupEffectRig.getInstance().shipEquipments().getshipEquipments();
+        advancedBattleships.display();
         
-        ChooseRig chooseRig = new ChooseRig(43921);
+//        ChooseRig chooseRig = new ChooseRig(43921);
 
 
     }

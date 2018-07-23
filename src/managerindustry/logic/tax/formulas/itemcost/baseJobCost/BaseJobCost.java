@@ -11,6 +11,7 @@ import java.util.Map;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.manager.Manager;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 //import managerindustry.logic.manager.old.managerDB.ManagerDBEve_OLD;
 
@@ -39,7 +40,7 @@ public class BaseJobCost {
 //            String key = entry.getKey();
             ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
             InvTypes invTypes = 
-             ManagerDB.getInstance().invTypes().getInvTypesByName(totalCalculatedComponent.getName());
+             Manager.getInstance().managerDB().invTypes().getInvTypesByName(totalCalculatedComponent.getName());
             
             Float jobCost = 
              JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
@@ -68,7 +69,7 @@ public class BaseJobCost {
 //            String key = entry.getKey();
             ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
             int typesId = 
-                ManagerDB.getInstance().invTypes().getInvTypesByName
+                Manager.getInstance().managerDB().invTypes().getInvTypesByName
                 (totalCalculatedComponent.getName()).getTypeID();
             
 //            Float jobCost = 

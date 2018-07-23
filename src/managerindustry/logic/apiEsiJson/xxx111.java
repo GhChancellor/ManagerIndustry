@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import managerindustry.db.entities.user.UserApiEntity;
+import managerindustry.logic.manager.Manager;
 
 /**
  *
@@ -20,10 +21,10 @@ public class xxx111 {
    
     public xxx111(UserApiEntity userApiEntity) {
 
-        ApiEsi.getInstance().skill().getCharacterSkills(userApiEntity);
+        Manager.getInstance().apiEsi().skill().getCharacterSkills(userApiEntity);
         
-        ApiEsi.getInstance().industry().getListSolarSystemCostIndices();
-        ApiEsi.getInstance().market().getListMarketPrices().getListMarketPrices();
+        Manager.getInstance().apiEsi().industry().getListSolarSystemCostIndices();
+        Manager.getInstance().apiEsi().market().getListMarketPrices().getListMarketPrices();
         
         
     }

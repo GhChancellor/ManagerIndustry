@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import managerindustry.db.entities.eve.InvTypes;
+import managerindustry.logic.manager.Manager;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**
@@ -35,7 +36,7 @@ public class ItemRercsionLibrary {
         tab +="  ";
 
         if ( recursionA.getRecursionB02s().isEmpty() ){
-            List<InvTypes> parentGroupID = ManagerDB.getInstance().invTypes().getMarketGroupID(recursionA.getMarketGroupID(), true);            
+            List<InvTypes> parentGroupID = Manager.getInstance().managerDB().invTypes().getMarketGroupID(recursionA.getMarketGroupID(), true);            
             
             for (InvTypes invTypes : parentGroupID) {
                 System.out.println(tab + invTypes.getTypeName()+ " " + invTypes.getTypeID() );
@@ -69,7 +70,7 @@ public class ItemRercsionLibrary {
     
     private void converter(ItemRecursionA recursionA, Converter converter){
         if ( recursionA.getRecursionB02s().isEmpty() ){
-            List<InvTypes> parentGroupID = ManagerDB.getInstance().invTypes().getMarketGroupID(recursionA.getMarketGroupID(), true);
+            List<InvTypes> parentGroupID = Manager.getInstance().managerDB().invTypes().getMarketGroupID(recursionA.getMarketGroupID(), true);
             
             for (InvTypes invTypes : parentGroupID) {
                 if (converter == Converter.List){

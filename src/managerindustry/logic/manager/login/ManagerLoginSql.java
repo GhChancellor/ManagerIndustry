@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager;
+package managerindustry.logic.manager.login;
 
 import java.util.List;
 import managerindustry.db.entities.user.UserApiEntity;
+import managerindustry.logic.manager.Manager;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**
@@ -34,7 +35,7 @@ public class ManagerLoginSql {
      */
     public List < UserApiEntity > getUserApiEntities(){
         List < UserApiEntity > userApiEntities = 
-          ManagerDB.getInstance().sqlUser().getUserApiEntities();
+          Manager.getInstance().managerDB().sqlUser().getUserApiEntities();
 
         return userApiEntities;     
     }
@@ -44,7 +45,7 @@ public class ManagerLoginSql {
      */
     public List < UserApiEntity > getAllUserApiEntities(){
         List < UserApiEntity > userApiEntities =
-          ManagerDB.getInstance().sqlUser().getUserApiEntities();
+          Manager.getInstance().managerDB().sqlUser().getUserApiEntities();
 
         return userApiEntities;     
     }
@@ -54,7 +55,7 @@ public class ManagerLoginSql {
      * @param  
      */
     public void addUserApiIndex(UserApiEntity userApiEntity){
-          ManagerDB.getInstance().sqlUser().addUserApiEntity(userApiEntity);
+          Manager.getInstance().managerDB().sqlUser().addUserApiEntity(userApiEntity);
     }
     
     /**
@@ -62,7 +63,7 @@ public class ManagerLoginSql {
      * @param Integer id 
      */
     public void deleteUserApi(UserApiEntity userApiEntity){
-        ManagerDB.getInstance().sqlUser().deleteUserApiEntity(userApiEntity);
+        Manager.getInstance().managerDB().sqlUser().deleteUserApiEntity(userApiEntity);
     }
     
     /**
@@ -70,6 +71,6 @@ public class ManagerLoginSql {
      * @param userApiEntity 
      */
     public void updateUserApiEntity(UserApiEntity userApiEntity){
-          ManagerDB.getInstance().sqlUser().updateUserApiEntity(userApiEntity);
+          Manager.getInstance().managerDB().sqlUser().updateUserApiEntity(userApiEntity);
     }
 }

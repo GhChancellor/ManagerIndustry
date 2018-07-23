@@ -30,16 +30,12 @@ import managerindustry.logic.manager.managerDB.sqlUser.SqlUser;
  * @author lele
  */
 public class ManagerDB {
-    private static ManagerDB instance = null;
-    private EntityManager entityManager = 
-        Persistence.createEntityManagerFactory("ManagerIndustryPU").createEntityManager();
-     
-    public static ManagerDB getInstance(){
-        if ( instance == null )
-            instance = new ManagerDB();
-        return instance;
-    }
+    private EntityManager entityManager;
     
+    public ManagerDB(EntityManager entityManager) {
+        this.entityManager = entityManager;        
+    }
+
     /**
      * Get all values of the InvTypes ( entities )
      * @return InvTypesX

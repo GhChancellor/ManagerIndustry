@@ -8,6 +8,7 @@ package managerindustry.logic.fitter.structure.engineeringComplex;
 import managerindustry.logic.enumName.PlatformEnum;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.fitter.structure.logic.BaseStructure;
+import managerindustry.logic.manager.Manager;
 
 /**
  * https://www.eveonline.com/article/building-dreams-introducing-engineering-complexes/
@@ -48,7 +49,7 @@ public class EngineeringComplex extends BaseStructure{
     private final float baseValue = 1.0f;
 
     public EngineeringComplex(PlatformEnum nameEngineeringComplex) {
-        int typeId = ManagerDB.getInstance().invTypes().getInvTypesByName(nameEngineeringComplex.getName()).getTypeID();
+        int typeId = Manager.getInstance().managerDB().invTypes().getInvTypesByName(nameEngineeringComplex.getName()).getTypeID();
         
         // MANUFACTURING_MATERIAL
         reductionManufacturingMaterial = 

@@ -15,16 +15,6 @@ import managerindustry.logic.apiEsiJson.skill.Skill;
  * @author lele
  */
 public class ApiEsi {
-    private static ApiEsi instance = null;
-
-    public ApiEsi() {
-    }
-    
-    public static ApiEsi getInstance(){
-        if ( instance == null)
-            instance = new ApiEsi();
-        return instance;
-    }
     
     /**
      * ApiEsi get all value skill from eve server ( json ) 

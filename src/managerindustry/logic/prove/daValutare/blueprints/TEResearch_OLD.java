@@ -7,6 +7,7 @@ package managerindustry.logic.prove.daValutare.blueprints;
 
 import managerindustry.db.entities.eve.IndustryActivity;
 import managerindustry.logic.enumName.RamActivitiesEnum;
+import managerindustry.logic.manager.Manager;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**
@@ -20,7 +21,7 @@ public class TEResearch_OLD {
      */
     public IndustryActivity getTEResearch(int typeID){
         IndustryActivity industryActivity = 
-          ManagerDB.getInstance().industryActivity().getIndustryActivity(typeID, RamActivitiesEnum.RESEARCHING_TIME_EFFICIENCY);
+          Manager.getInstance().managerDB().industryActivity().getIndustryActivity(typeID, RamActivitiesEnum.RESEARCHING_TIME_EFFICIENCY);
         return industryActivity;
     }        
 }

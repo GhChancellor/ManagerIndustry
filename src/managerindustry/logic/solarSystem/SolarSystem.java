@@ -6,6 +6,7 @@
 package managerindustry.logic.solarSystem;
 
 import managerindustry.db.entities.eve.InvNames;
+import managerindustry.logic.manager.Manager;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**
@@ -22,7 +23,7 @@ public class SolarSystem {
      * @return int
      */
     public static int getSolarSystemID(String solarSystemName){
-        InvNames invNames = ManagerDB.getInstance().invNames().getSolarSystemID(solarSystemName);
+        InvNames invNames = Manager.getInstance().managerDB().invNames().getSolarSystemID(solarSystemName);
         return invNames.getItemID();
     }
     

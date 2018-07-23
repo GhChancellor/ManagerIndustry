@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager;
+package managerindustry.logic.manager.build;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,14 +19,12 @@ import managerindustry.logic.buiild.MaterialEfficiencyCalculate;
 import managerindustry.logic.buiild.MaterialForComponents;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.enumName.RamActivitiesEnum;
-import managerindustry.logic.manager.managerDB.ManagerDB;
-
-//import managerindustry.logic.manager.managerDB.ManagerDBEve;
+import managerindustry.logic.manager.Manager;
 
 /**
  * @author lele
  */
-public class ManagerBuild {
+public class Build {
     private List < ComponentX > reportMaterialForComponents = new ArrayList<>();
     private Map < String, ReportCalculatedComponentX> totalCalculatedComponentXmap = new HashMap<>();
     
@@ -38,8 +36,11 @@ public class ManagerBuild {
             System.out.println("XXXXX" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
         }            
     }
+
+    public Build() {
+    }
     
-    public ManagerBuild(String bpoName, int run, int job, byte bpoME, 
+    public Build(String bpoName, int run, int job, byte bpoME, 
         byte componentMe) {
        
         RamActivitiesEnum activitiesEnum = RamActivitiesEnum.MANUFACTURING;
@@ -48,7 +49,7 @@ public class ManagerBuild {
         System.out.println("" + bpoName);
         
         List< IndustryActivityMaterials> nameItemToBuild = 
-         ManagerDB.getInstance().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
+         Manager.getInstance().managerDB().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
         
         ComponentX componentX = new ComponentX();
         baseMaterial(nameItemToBuild, componentX, activitiesEnum );
@@ -162,7 +163,7 @@ public class ManagerBuild {
      ComponentX dad, RamActivitiesEnum activitiesEnum){   
         for (IndustryActivityMaterials nameItemToBuild1 : nameItemToBuild) {
             InvTypes invTypes =
-              ManagerDB.getInstance().invTypes().getInvTypesById(nameItemToBuild1.getMaterialTypeID());
+              Manager.getInstance().managerDB().invTypes().getInvTypesById(nameItemToBuild1.getMaterialTypeID());
 //            System.out.println(tab + invTypes.getTypeID() + " " + invTypes.getTypeName() + " " + nameItemToBuild1.getQuantity());
 
             ComponentX componentX = new ComponentX();
@@ -171,7 +172,7 @@ public class ManagerBuild {
             dad.addMaterialForComponents(new MaterialForComponents(componentX));
             
             List< IndustryActivityMaterials> neededComponents = 
-              ManagerDB.getInstance().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
+              Manager.getInstance().managerDB().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
 
             if (neededComponents != null)
                 baseMaterial(neededComponents, componentX, activitiesEnum);
@@ -265,17 +266,17 @@ public class ManagerBuild {
     public void itemDescription(){
         // 43867 Standup M-Set Advanced Component Manufacturing Material Efficiency I
         String bpoName = "drake Blueprint"; // Nighthawk Blueprint 
-        InvTypes invTypes = ManagerDB.getInstance().invTypes().getInvTypesByName(bpoName);
+        InvTypes invTypes = Manager.getInstance().managerDB().invTypes().getInvTypesByName(bpoName);
         
         List < DgmTypeAttributes > dgmTypeAttributes = 
-          ManagerDB.getInstance().dgmTypeAttributes().getTypeAttributesByTypeId(invTypes.getTypeID());
+          Manager.getInstance().managerDB().dgmTypeAttributes().getTypeAttributesByTypeId(invTypes.getTypeID());
         
         System.out.println(""+ bpoName + " ID " + invTypes.getTypeID() );
         
         for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
            
             DgmAttributeTypes dgmAttributeTypes = 
-              ManagerDB.getInstance().dgmAttributeTypes().getAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
+              Manager.getInstance().managerDB().dgmAttributeTypes().getAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
             
             if (dgmTypeAttribute.getValueInt() == null) {
                 System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  +

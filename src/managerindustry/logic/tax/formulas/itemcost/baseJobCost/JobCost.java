@@ -7,6 +7,7 @@ package managerindustry.logic.tax.formulas.itemcost.baseJobCost;
 
 import managerindustry.db.entities.cache.PriceEntity;
 import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.manager.Manager;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 
 /**
@@ -17,7 +18,7 @@ import managerindustry.logic.manager.managerDB.ManagerDB;
  */
 public class JobCost {
     public static float getJobCost(int baseQuantity, String typeId) throws PriceNotExistsException {
-        String adjustedPrice = ManagerDB.getInstance().price().getAdjustedPriceEntity(typeId);
+        String adjustedPrice = Manager.getInstance().managerDB().price().getAdjustedPriceEntity(typeId);
         return Float.valueOf(adjustedPrice) * baseQuantity;
     }  
 

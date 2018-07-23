@@ -10,7 +10,8 @@ import java.util.List;
 import managerindustry.db.entities.cache.AvoidDuplicateRigEntity;
 import managerindustry.logic.enumName.ChooseEngineeringRigEnum;
 import managerindustry.logic.exception.ErrorExeption;
-import managerindustry.logic.manager.ManagerErrorExecption;
+import managerindustry.logic.manager.Manager;
+import managerindustry.logic.manager.errorExecption.ManagerErrorExecption;
 import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.manager.managerDB.cache.avoidDuplicateRig.AvoidDuplicateRigX;
 import managerindustry.logic.manager.managerDB.cache.avoidDuplicateRig.AvoidDuplicateRigX.Parameter;
@@ -53,7 +54,7 @@ public class AvoidDuplicateRig {
         Parameter parameter, int value, AvoidDuplicateRig.TIER tier ){
 
         AvoidDuplicateRigEntity avoidDuplicateRigEntity = 
-            ManagerDB.getInstance().avoidDuplicateRigEntity().getAvoidDuplicateRig(
+            Manager.getInstance().managerDB().avoidDuplicateRigEntity().getAvoidDuplicateRig(
             namedQueryEnum, parameter, value);
         
         if (avoidDuplicateRigEntity == null)
@@ -98,7 +99,7 @@ public class AvoidDuplicateRig {
      * @param AvoidDuplicateRigEntity avoidDuplicateRigEntity 
      */
     private void addRigsToDb(AvoidDuplicateRigEntity avoidDuplicateRigEntity){
-        ManagerDB.getInstance().avoidDuplicateRigEntity().addEffectRigs(avoidDuplicateRigEntity);
+        Manager.getInstance().managerDB().avoidDuplicateRigEntity().addEffectRigs(avoidDuplicateRigEntity);
     }    
     
     /**
@@ -111,7 +112,7 @@ public class AvoidDuplicateRig {
     private boolean isDuplicateInToDb(AvoidDuplicateRigX.NamedQueryEnum namedQueryEnum, 
         AvoidDuplicateRigX.Parameter parameter, int value){
         
-        if ( ManagerDB.getInstance().avoidDuplicateRigEntity().getAvoidDuplicateRig(
+        if ( Manager.getInstance().managerDB().avoidDuplicateRigEntity().getAvoidDuplicateRig(
             namedQueryEnum, parameter, value) == null){
             return false;
         }else{
