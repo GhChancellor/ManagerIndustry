@@ -32,15 +32,17 @@ public class EngineeringComplexSlot {
     float totReductionManufacturingMaterial;
     float totReductionManufacturingScienceJobIskCost;
     float totReductionManufacturingScienceJobTime;
+    private AvoidDuplicateRig avoidDuplicateRig = new AvoidDuplicateRig();    
     
     enum EngineeringRigEnum {ADD, REMOVE};
         
     public EngineeringComplexSlot() throws ErrorExeption {
         engineeringComplex(PlatformEnum.RAITARU);
 
-        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency II", SecurityStatusEnum.LOW_SEC);
-        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency I", SecurityStatusEnum.LOW_SEC);
-//        engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
+//        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency II", SecurityStatusEnum.LOW_SEC);
+//        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency I", SecurityStatusEnum.LOW_SEC);
+        engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
+        engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency I", SecurityStatusEnum.LOW_SEC);
 //        engineeringRigs("Standup M-Set Ammunition Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
         calculatesBonus();
         displayAllValue();
@@ -58,15 +60,16 @@ public class EngineeringComplexSlot {
     public void engineeringRigs(String rigName, SecurityStatusEnum securityStatusEnum) throws ErrorExeption{
         EngineeringRig engineeringRigs = new EngineeringRig(rigName, securityStatusEnum);
         
-        AvoidDuplicateRig avoidDuplicateRig = new AvoidDuplicateRig();
-        if (avoidDuplicateRig.isOpposite(engineeringRigs.getTypeID()) == false){
+
+        if (avoidDuplicateRig.isOpposite(engineeringRigs.getTypeID()) == true ){
             System.out.println("doppione");
-            return;
+        }else{
+            System.out.println("non doppio");
         }
             
         
-        engineeringRigs.displayAllValueCalculated();
-        addRig(engineeringRigs);
+//        engineeringRigs.displayAllValueCalculated();
+//        addRig(engineeringRigs);
     }
     
     /**

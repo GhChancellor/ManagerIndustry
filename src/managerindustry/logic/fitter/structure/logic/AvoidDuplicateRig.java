@@ -20,8 +20,67 @@ import managerindustry.logic.manager.managerDB.cache.avoidDuplicateRig.AvoidDupl
  * @author lele
  */
 public class AvoidDuplicateRig {
-    private List < Integer > avoidDuplicateRigs = new ArrayList();
+    private List < Integer > avoidDuplicateRigs = new ArrayList<>();
+    
     private enum TIER{T1,T2};
+    
+    /**
+     * Is Opposite
+     * @param int value
+     * @return boolean
+     */
+    public boolean isOpposite(int value){
+        addOpposite(AvoidDuplicateRigX.NamedQueryEnum.QUERY_1, Parameter.PARAMETER_1, value, TIER.T1);
+        addOpposite(AvoidDuplicateRigX.NamedQueryEnum.QUERY_2, Parameter.PARAMETER_2, value, TIER.T2);
+        
+        for (Integer avoidDuplicateRig : avoidDuplicateRigs) {
+            if (avoidDuplicateRig == value){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Add Opposite
+     * @param NamedQueryEnum namedQueryEnum
+     * @param Parameter parameter
+     * @param int value
+     * @param TIER tier
+     * @return int
+     */
+    private void addOpposite(AvoidDuplicateRigX.NamedQueryEnum namedQueryEnum, 
+        Parameter parameter, int value, AvoidDuplicateRig.TIER tier ){
+
+        AvoidDuplicateRigEntity avoidDuplicateRigEntity = 
+            ManagerDB.getInstance().avoidDuplicateRigEntity().getAvoidDuplicateRig(
+            namedQueryEnum, parameter, value);
+        
+        if (avoidDuplicateRigEntity == null)
+            return;
+        
+        switch(tier){
+            case T1:
+                addAvoidDuplicateRigs( avoidDuplicateRigEntity.getTypeId_T2() );
+                break;
+            case T2:
+                addAvoidDuplicateRigs( avoidDuplicateRigEntity.getTypeId_T1() );
+                break;
+            default:
+                ManagerErrorExecption.getErrorExecption(ErrorExeption.ErrorExeptionEnum.UNKNOW_ERROR);
+                break;
+        }
+    }
+
+    /**
+     * Check and add if there are duplicate
+     * @param value 
+     */
+    private void addAvoidDuplicateRigs(Integer value) {
+        if ( avoidDuplicateRigs.contains(value) == false){
+            avoidDuplicateRigs.add(value);
+        }
+    }    
     
     public AvoidDuplicateRig() {
         if ( isDuplicateInToDb(AvoidDuplicateRigX.NamedQueryEnum.QUERY_1, 
@@ -33,60 +92,6 @@ public class AvoidDuplicateRig {
         
         init();
     }
-    
-    public boolean isOpposite(int value){
-
-        if ( getOpposite(AvoidDuplicateRigX.NamedQueryEnum.QUERY_1, 
-            AvoidDuplicateRigX.Parameter.PARAMETER_1, value, TIER.T1) == -1 ){
-            return false;
-        }
-        
-        if ( getOpposite(AvoidDuplicateRigX.NamedQueryEnum.QUERY_2, 
-            AvoidDuplicateRigX.Parameter.PARAMETER_2, value, TIER.T2) == -1 ){
-            return false;
-        }
-        return true;
-    }
-    
-    private int getOpposite(AvoidDuplicateRigX.NamedQueryEnum namedQueryEnum, 
-        Parameter parameter, int value, TIER tier ){
-        
-        AvoidDuplicateRigEntity avoidDuplicateRigEntity = 
-            ManagerDB.getInstance().avoidDuplicateRigEntity().getAvoidDuplicateRig(
-            namedQueryEnum, parameter, value);
-        
-        if (avoidDuplicateRigEntity == null)
-            return -10; 
-        
-        switch(tier){
-            
-            case T1:
-                if (avoidDuplicateRigs.isEmpty()){
-//                    addAvoidDuplicateRigs(avoidDuplicateRigEntity.getTypeId_T1());
-//                    return avoidDuplicateRigEntity.getTypeId_T1();                    
-                }
-                
-                if (avoidDuplicateRigs.contains(avoidDuplicateRigEntity.getTypeId_T1())){
-//                    avoidDuplicateRigs.add(avoidDuplicateRigEntity.getTypeId_T1());
-//                    return avoidDuplicateRigEntity.getTypeId_T1();
-                }                 
-                return -1;
-            case T2:
-                if (avoidDuplicateRigs.isEmpty()){
-//                    avoidDuplicateRigs.add(avoidDuplicateRigEntity.getTypeId_T2());
-//                    return avoidDuplicateRigEntity.getTypeId_T2();                    
-                }                
-                
-                if (avoidDuplicateRigs.contains(avoidDuplicateRigEntity.getTypeId_T2()) ){
-//                    avoidDuplicateRigs.add(avoidDuplicateRigEntity.getTypeId_T2());                
-//                    return avoidDuplicateRigEntity.getTypeId_T2();                    
-                }                  
-                return -1;
-            default:
-                return -1;
-        }         
-
-    }    
     
     /**
      * Add Effect Rigs
@@ -101,7 +106,7 @@ public class AvoidDuplicateRig {
      * @param NamedQueryEnum namedQueryEnum
      * @param Parameter parameter
      * @param int value
-     * @return 
+     * @return boolean
      */
     private boolean isDuplicateInToDb(AvoidDuplicateRigX.NamedQueryEnum namedQueryEnum, 
         AvoidDuplicateRigX.Parameter parameter, int value){
@@ -122,20 +127,6 @@ public class AvoidDuplicateRig {
     private void createIncompatibleObject(int typeID_T1, int typeID_T2){
         AvoidDuplicateRigEntity avoidDuplicateRigEntity = new AvoidDuplicateRigEntity(typeID_T1, typeID_T2);
         addRigsToDb(avoidDuplicateRigEntity);        
-    }
-
-    private List<Integer> getAvoidDuplicateRigs() {
-        return avoidDuplicateRigs;
-    }
-
-    private void setAvoidDuplicateRigs(List<Integer> avoidDuplicateRigs) {
-        this.avoidDuplicateRigs = avoidDuplicateRigs;
-    }
-
-    private void addAvoidDuplicateRigs(Integer avoidDuplicateRig) {
-        if ( this.avoidDuplicateRigs.contains(avoidDuplicateRig) == false){
-            this.avoidDuplicateRigs.add(avoidDuplicateRig);
-        }
     }
     
     /**
@@ -353,7 +344,6 @@ public class AvoidDuplicateRig {
         createIncompatibleObject
             (ChooseEngineeringRigEnum.XL_STRUCTURE_COMPONENT_1.getTypeID(), 
              ChooseEngineeringRigEnum.XL_STRUCTURE_COMPONENT_2.getTypeID());        
-    }
-    
+    }    
 
 }
