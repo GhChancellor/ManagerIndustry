@@ -20,7 +20,7 @@ public class Copy_OLD {
      */
     public IndustryActivity getCopy(int typeID){
         IndustryActivity industryActivity = 
-          Manager.getInstance().managerDB().industryActivity().getIndustryActivity(typeID, RamActivitiesEnum.COPYING);
+          Manager.getInstance().db().industryActivity().getIndustryActivity(typeID, RamActivitiesEnum.COPYING);
         return industryActivity;
     }  
 }

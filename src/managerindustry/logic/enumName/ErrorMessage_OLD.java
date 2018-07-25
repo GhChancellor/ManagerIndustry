@@ -9,7 +9,7 @@ package managerindustry.logic.enumName;
  *
  * @author lele
  */
-public enum ErrorMessage {
+public enum ErrorMessage_OLD {
     MAX_CALIBRATION("Max Calibration"),
     DUPLICATE_RIGS("Duplicate Rigs"),
     MAX_VALUE_SKILL_EXCEEDED("Maximun value skill exceeded"),
@@ -22,7 +22,7 @@ public enum ErrorMessage {
     
     private String errorMessage;
 
-    private ErrorMessage(String errorMessage) {
+    private ErrorMessage_OLD(String errorMessage) {
         this.errorMessage = errorMessage;
     }
 

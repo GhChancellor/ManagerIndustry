@@ -8,8 +8,9 @@ package managerindustry.logic.manager;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import managerindustry.logic.apiEsiJson.ApiEsi;
+import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.manager.build.Build;
-import managerindustry.logic.manager.managerDB.ManagerDB;
+import managerindustry.logic.manager.managerDB.Db;
 import managerindustry.logic.manager.tax.SystemCostXXX;
 
 /**
@@ -29,10 +30,10 @@ public class Manager {
     
     /**
      * Manager DB
-     * @return ManagerDB
+     * @return Db
      */
-    public ManagerDB managerDB(){
-        ManagerDB managerDB = new ManagerDB(entityManager);
+    public Db db(){
+        Db managerDB = new Db(entityManager);
         return managerDB;
     }
     
@@ -59,6 +60,5 @@ public class Manager {
 //        return systemCost;
 //        
 //    }
-    
-    
+      
 }

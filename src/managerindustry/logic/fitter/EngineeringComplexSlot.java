@@ -17,8 +17,7 @@ import managerindustry.logic.fitter.structure.logic.MaxGroupFitted;
 import managerindustry.logic.fitter.structure.logic.StructureLibrary;
 
 /**
- * @deprecated 
- * Eliminare il codice commentato
+ *
  * @author lele
  */
 public class EngineeringComplexSlot {
@@ -32,20 +31,27 @@ public class EngineeringComplexSlot {
     float totReductionManufacturingMaterial;
     float totReductionManufacturingScienceJobIskCost;
     float totReductionManufacturingScienceJobTime;
-    private AvoidDuplicateRig avoidDuplicateRig = new AvoidDuplicateRig();    
+    private AvoidDuplicateRig avoidDuplicateRig = new AvoidDuplicateRig(); 
     
-    enum EngineeringRigEnum {ADD, REMOVE};
+    public enum EngineeringRigEnum {ADD, REMOVE};
         
-    public EngineeringComplexSlot() throws ErrorExeption {
-        engineeringComplex(PlatformEnum.RAITARU);
+    public EngineeringComplexSlot() {
+        try {
+            engineeringComplex(PlatformEnum.RAITARU);
 
-//        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency II", SecurityStatusEnum.LOW_SEC);
-//        engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency I", SecurityStatusEnum.LOW_SEC);
-        engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
-        engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency I", SecurityStatusEnum.LOW_SEC);
-//        engineeringRigs("Standup M-Set Ammunition Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
-        calculatesBonus();
-        displayAllValue();
+//            engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency II", SecurityStatusEnum.LOW_SEC);
+            engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency I", SecurityStatusEnum.LOW_SEC);
+            engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency II", SecurityStatusEnum.LOW_SEC);
+
+//            engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
+//            engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency I", SecurityStatusEnum.LOW_SEC);
+//            engineeringRigs("Standup M-Set Ammunition Manufacturing Time Efficiency I", SecurityStatusEnum.LOW_SEC);
+//            engineeringRigs("Standup M-Set Advanced Component Manufacturing Time Efficiency I", SecurityStatusEnum.LOW_SEC);
+            calculatesBonus();
+            displayAllValue();            
+        } catch (ErrorExeption e) {
+            System.out.println(""+ e.getErrorEnum().getErrorMessage());
+        }
     }
     
     /**
@@ -59,17 +65,7 @@ public class EngineeringComplexSlot {
     
     public void engineeringRigs(String rigName, SecurityStatusEnum securityStatusEnum) throws ErrorExeption{
         EngineeringRig engineeringRigs = new EngineeringRig(rigName, securityStatusEnum);
-        
-
-        if (avoidDuplicateRig.isOpposite(engineeringRigs.getTypeID()) == true ){
-            System.out.println("doppione");
-        }else{
-            System.out.println("non doppio");
-        }
-            
-        
-//        engineeringRigs.displayAllValueCalculated();
-//        addRig(engineeringRigs);
+        addRig(engineeringRigs);
     }
     
     /**
@@ -104,98 +100,77 @@ public class EngineeringComplexSlot {
      * @param engineeringRigs
      * @throws ErrorExeption 
      */
-    private boolean managerError(EngineeringRig engineeringRigs, EngineeringRigEnum engineeringRigEnum ) throws ErrorExeption{
+    private void managerError(EngineeringRig engineeringRigs, EngineeringRigEnum engineeringRigEnum ) throws ErrorExeption{        
         // if rig is wrong size
         if (engineeringRigs.getRigSize() != engineeringComplex.getRigSize()){
-            displayErrorRig(ErrorExeption.ErrorExeptionEnum.RIG_SIZE);
-            return false;
+            throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.RIG_SIZE);
         }
 
-        // Max Modules Of This Group Allowed
-        if ( maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
-            switch (engineeringRigEnum){
-                case ADD:
-                    if( maxGroupFittedMap.get(engineeringRigs.getTypeID()).getCurrentFitted() >= 
-                        engineeringRigs.getMaxGroupFitted().intValue() ){
-                            displayErrorRig(ErrorExeption.ErrorExeptionEnum.DUPLICATE_RIGS);
-                        return false;     
-                    }                       
-                case REMOVE:
-                    if (maxGroupFittedMap.get(engineeringRigs.getTypeID()).getCurrentFitted() <= 0){
-                        displayErrorRig(ErrorExeption.ErrorExeptionEnum.CANT_REMOVE);
-                        return false;
-                    }                    
-            default:
-                displayErrorRig(ErrorExeption.ErrorExeptionEnum.UNKNOW_ERROR);
-                return false;                
-            }
-        }
+        // avoid duplicate rig
+        avoidDuplicateRig.maxGroupFitted(maxGroupFittedMap, engineeringRigs, engineeringRigEnum);
         
         // Engineering Complex Max Rig Slot
-        if ( engineeringComplex_CurrentSlot > engineeringComplex.getMaxRigSlot()){        
-            displayErrorRig(ErrorExeption.ErrorExeptionEnum.MAX_SLOT_RIGS);
-            return false;            
+        if ( engineeringComplex_CurrentSlot >= engineeringComplex.getMaxRigSlot()){        
+            throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.MAX_SLOT_RIGS);       
         }
 
         // max calibration
         if ( currentCalibration > engineeringComplex.getMaxCalibrationComplex()){
-            displayErrorRig(ErrorExeption.ErrorExeptionEnum.MAX_CALIBRATION);            
-            return false;
+            throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.MAX_CALIBRATION);            
         }
 
         // if add a new rig exceed max calibration 
         if ( ( currentCalibration + engineeringRigs.getCalibration() ) 
                 > engineeringComplex.getMaxCalibrationComplex() ){
-            displayErrorRig(ErrorExeption.ErrorExeptionEnum.MAX_CALIBRATION);
-            return false;
+            throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.MAX_CALIBRATION);
         }
-
-        return true;
     }
     
     /**
-     * Add Rig, 10-07-2018 Il gioco prevede SOLO 1 rig dello stesso tipo. Aggiunge più rig dello stesso tipo aggiornando currentCalibration, engineeringComplex_CurrentSlot
+     * Add Rig, 10-07-2018 Il gioco prevede SOLO 1 rig dello stesso tipo. 
+     * Aggiunge più rig dello stesso tipo aggiornando currentCalibration, engineeringComplex_CurrentSlot
      * @param EngineeringRig engineeringRigs
      * @throws ErrorExeption 
      */
     private void addRig(EngineeringRig engineeringRigs) throws ErrorExeption{
-        if ( managerError(engineeringRigs, EngineeringRigEnum.ADD) ){        
-            if (maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
-                
-                MaxGroupFitted tempMaxGroupFitted = maxGroupFittedMap.get(engineeringRigs.getTypeID());
-                byte currentFitted = tempMaxGroupFitted.getCurrentFitted();
-                tempMaxGroupFitted.setCurrentFitted( (byte) ( currentFitted + 1) );
-                
-                maxGroupFittedMap.put(engineeringRigs.getTypeID(), tempMaxGroupFitted);
-            }else{
-                MaxGroupFitted tempMaxGroupFitted = new MaxGroupFitted(engineeringRigs, (byte) 1);
-                maxGroupFittedMap.put(engineeringRigs.getTypeID(), tempMaxGroupFitted );
-            }
-            
-            engineeringComplex_CurrentSlot++;
-            currentCalibration += engineeringRigs.getCalibration();                
+        // Manager errors rig
+        managerError(engineeringRigs, EngineeringRigEnum.ADD);
         
+        if (maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
+
+            MaxGroupFitted tempMaxGroupFitted = maxGroupFittedMap.get(engineeringRigs.getTypeID());
+            byte currentFitted = tempMaxGroupFitted.getCurrentFitted();
+            tempMaxGroupFitted.setCurrentFitted( (byte) ( currentFitted + 1) );
+
+            maxGroupFittedMap.put(engineeringRigs.getTypeID(), tempMaxGroupFitted);
+        }else{
+            MaxGroupFitted tempMaxGroupFitted = new MaxGroupFitted(engineeringRigs, (byte) 1);
+            maxGroupFittedMap.put(engineeringRigs.getTypeID(), tempMaxGroupFitted );
         }
+
+        engineeringComplex_CurrentSlot++;
+        currentCalibration += engineeringRigs.getCalibration();    
     }
     
     /**
-     * Remove Rig, 10-07-2018 Il gioco prevede SOLO 1 rig dello stesso tipo. Elimina più rig dello stesso tipo aggiornando currentCalibration, engineeringComplex_CurrentSlot
+     * Remove Rig, 10-07-2018 Il gioco prevede SOLO 1 rig dello stesso tipo. 
+     * Elimina più rig dello stesso tipo aggiornando currentCalibration, engineeringComplex_CurrentSlot
      * @param EngineeringRig engineeringRigs
      * @throws ErrorExeption 
      */
-    private void removeRig(EngineeringRig engineeringRigs) throws ErrorExeption{      
-        if ( managerError(engineeringRigs, EngineeringRigEnum.REMOVE ) ){
-            if (maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
-                MaxGroupFitted tempMaxGroupFitted = maxGroupFittedMap.get(engineeringRigs.getTypeID());
+    private void removeRig(EngineeringRig engineeringRigs) throws ErrorExeption{    
+        managerError(engineeringRigs, EngineeringRigEnum.REMOVE );
+        
+        if (maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
+            MaxGroupFitted tempMaxGroupFitted = maxGroupFittedMap.get(engineeringRigs.getTypeID());
 
-                engineeringComplex_CurrentSlot--;
-                currentCalibration -= engineeringRigs.getCalibration();               
+            engineeringComplex_CurrentSlot--;
+            currentCalibration -= engineeringRigs.getCalibration();               
 
-                if  ( tempMaxGroupFitted.getCurrentFitted() == 1){
-                    maxGroupFittedMap.remove(engineeringRigs.getTypeID());
-                }            
-            
-            }
+            if  ( tempMaxGroupFitted.getCurrentFitted() == 1){
+                maxGroupFittedMap.remove(engineeringRigs.getTypeID());
+            }            
+
         }
     }
     
@@ -279,56 +254,6 @@ public class EngineeringComplexSlot {
 
     public float getTotReductionManufacturingScienceJobTime() {
         return totReductionManufacturingScienceJobTime;
-    }
-    
-    
-//        /**
-//     * @deprecated 
-//     */
-//    private boolean addMap_OLD(EngineeringRig engineeringRigs, EngineeringRigEnum engineeringRigEnum){
-//        if ( maxGroupFittedMap_OLD.containsKey(engineeringRigs.getTypeID())){
-//            
-//            switch (engineeringRigEnum){
-//            
-//                case ADD:
-//                    if( maxGroupFittedMap_OLD.get(engineeringRigs.getTypeID()) >= 
-//                        engineeringRigs.getMaxGroupFitted().intValue() ){
-//                            displayErrorRig(ErrorExeption.ErrorExeptionEnum.DUPLICATE_RIGS);
-//                        return false;     
-//                    }                    
-//                
-//                case REMOVE:
-//                    if (maxGroupFittedMap_OLD.get(engineeringRigs.getTypeID()) <= 0){
-//                        displayErrorRig(ErrorExeption.ErrorExeptionEnum.CANT_REMOVE);
-//                        return false;
-//                    }                  
-//            default:
-//                displayErrorRig(ErrorExeption.ErrorExeptionEnum.UNKNOW_ERROR);
-//                return false;
-//            }  
-//        }   
-//        return true;
-//    }
-//    
-//    /**
-//     * @deprecated 
-//     * @param engineeringRigs
-//     * @throws ErrorExeption 
-//     */
-//    private void addRig_OLD(EngineeringRig engineeringRigs) throws ErrorExeption{
-//        if ( managerError(engineeringRigs, EngineeringRigEnum.ADD) ){                   
-//
-//            if (maxGroupFittedMap_OLD.containsKey(engineeringRigs.getTypeID())){
-//                maxGroupFittedMap_OLD.put(engineeringRigs.getTypeID(), 
-//                    maxGroupFittedMap_OLD.get(engineeringRigs.getTypeID()) + 1 );                
-//            }else{
-//                maxGroupFittedMap_OLD.put(engineeringRigs.getTypeID(), 1);                
-//            }
-//            
-//            engineeringComplex_CurrentSlot++;
-//            currentCalibration += engineeringRigs.getCalibration();            
-//        }        
-//    }
-//    
+    }   
 
 }

@@ -29,10 +29,10 @@ import managerindustry.logic.manager.managerDB.sqlUser.SqlUser;
  *
  * @author lele
  */
-public class ManagerDB {
+public class Db {
     private EntityManager entityManager;
     
-    public ManagerDB(EntityManager entityManager) {
+    public Db(EntityManager entityManager) {
         this.entityManager = entityManager;        
     }
 

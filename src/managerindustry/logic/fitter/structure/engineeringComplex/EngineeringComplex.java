@@ -6,7 +6,7 @@
 package managerindustry.logic.fitter.structure.engineeringComplex;
 
 import managerindustry.logic.enumName.PlatformEnum;
-import managerindustry.logic.manager.managerDB.ManagerDB;
+import managerindustry.logic.manager.managerDB.Db;
 import managerindustry.logic.fitter.structure.logic.BaseStructure;
 import managerindustry.logic.manager.Manager;
 
@@ -49,7 +49,7 @@ public class EngineeringComplex extends BaseStructure{
     private final float baseValue = 1.0f;
 
     public EngineeringComplex(PlatformEnum nameEngineeringComplex) {
-        int typeId = Manager.getInstance().managerDB().invTypes().getInvTypesByName(nameEngineeringComplex.getName()).getTypeID();
+        int typeId = Manager.getInstance().db().invTypes().getInvTypesByName(nameEngineeringComplex.getName()).getTypeID();
         
         // MANUFACTURING_MATERIAL
         reductionManufacturingMaterial = 

@@ -6,7 +6,7 @@
 package managerindustry.logic.manager.managerDB.eve;
 
 import java.util.ArrayList;
-import managerindustry.logic.manager.managerDB.ManagerDB;
+import managerindustry.logic.manager.managerDB.Db;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

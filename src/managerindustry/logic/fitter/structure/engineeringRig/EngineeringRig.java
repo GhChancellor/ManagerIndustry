@@ -8,8 +8,6 @@ package managerindustry.logic.fitter.structure.engineeringRig;
 import managerindustry.logic.enumName.RuleBonusRigEnum;
 import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.exception.ErrorExeption;
-import managerindustry.logic.manager.errorExecption.ManagerErrorExecption;
-import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.fitter.structure.logic.BaseStructure;
 import managerindustry.logic.manager.Manager;
 
@@ -33,8 +31,8 @@ public class EngineeringRig extends BaseStructure{
     public EngineeringRig() {
     }
 
-    public EngineeringRig(String nameRig, SecurityStatusEnum securityStatusEnum) {
-        typeID = Manager.getInstance().managerDB().invTypes().getInvTypesByName(nameRig).getTypeID();
+    public EngineeringRig(String nameRig, SecurityStatusEnum securityStatusEnum) throws ErrorExeption {
+        typeID = Manager.getInstance().db().invTypes().getInvTypesByName(nameRig).getTypeID();
         
         // RIG_TIME_EFFICIENCY
         timeEfficiency = 
@@ -131,7 +129,7 @@ public class EngineeringRig extends BaseStructure{
      * @param SecurityStatusEnum securityStatusEnum
      * @return RuleBonusRigEnum
      */
-    private RuleBonusRigEnum getSecurityStatus(SecurityStatusEnum securityStatusEnum){
+    private RuleBonusRigEnum getSecurityStatus(SecurityStatusEnum securityStatusEnum) throws ErrorExeption{
         switch ( securityStatusEnum ){
             case HI_SEC:
                 return RuleBonusRigEnum.HI_SEC;
@@ -140,8 +138,7 @@ public class EngineeringRig extends BaseStructure{
             case NULL_SEC:
                 return RuleBonusRigEnum.NULL_SEC;
             default:
-                ManagerErrorExecption.getErrorExecption(ErrorExeption.ErrorExeptionEnum.SECURITY_STATUS_ERROR);
-                return null;
+                throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.SECURITY_STATUS_ERROR); 
         }
     }
 

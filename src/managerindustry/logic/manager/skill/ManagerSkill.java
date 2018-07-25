@@ -8,7 +8,7 @@ package managerindustry.logic.manager.skill;
 import java.util.HashMap;
 import java.util.Map;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.manager.managerDB.ManagerDB;
+import managerindustry.logic.manager.managerDB.Db;
 import managerindustry.logic.skill.SkillX;
 import managerindustry.logic.skill.specificSkill.BrokerFee;
 
@@ -97,7 +97,7 @@ public class ManagerSkill {
      * @param int attributeID 
      */
     private void initSkill(SkillProduction skillProduction, boolean flag, int attributeID){
-        SkillX skill = Manager.getInstance().managerDB().invTypes().getSkillValues
+        SkillX skill = Manager.getInstance().db().invTypes().getSkillValues
             (skillProduction.getSkillID(), flag, attributeID );
         
         addSkillMap(skill.getName(), new SkillX(skill.getName()));

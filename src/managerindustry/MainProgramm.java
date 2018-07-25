@@ -9,12 +9,13 @@ import java.util.Map;
 import managerindustry.logic.buiild.ReportCalculatedComponentX;
 import managerindustry.logic.enumName.PlatformEnum;
 import managerindustry.logic.enumName.SecurityStatusEnum;
+import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.gui.display.DisplaySpeculation;
 import managerindustry.logic.manager.build.Build;
 import managerindustry.logic.manager.build.ManagerComponentX;
-import managerindustry.logic.manager.managerDB.ManagerDB;
+import managerindustry.logic.manager.managerDB.Db;
 import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
@@ -31,7 +32,7 @@ import managerindustry.logic.manager.Manager;
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, PriceNotExistsException {
-//        buildItem(); // << controllare
+        buildItem(); // << controllare
 //        jobInstallationFee();
 //        speculation(); // << controllare
 //        recursionItems();
@@ -62,7 +63,7 @@ public class MainProgramm {
 //        String item = "Hammerhead I";
         String item = "Punisher";
         
-        int typeID = Manager.getInstance().managerDB().invTypes().getInvTypesByName(item).getTypeID();
+        int typeID = Manager.getInstance().db().invTypes().getInvTypesByName(item).getTypeID();
         System.out.println(""+ item + " ID: " + typeID );
         
         int run = 662;
@@ -110,7 +111,7 @@ public class MainProgramm {
 
     }
     
-    public static void structure(){
+    public static void structure() throws ErrorExeption{
         EngineeringRig engineeringRig = new EngineeringRig("Standup XL-Set Equipment and Consumable Manufacturing Efficiency II", SecurityStatusEnum.LOW_SEC);
         engineeringRig.displayValue();
         engineeringRig.displayAllValueCalculated();

@@ -7,39 +7,63 @@ package managerindustry.logic.fitter.structure.logic;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import managerindustry.db.entities.cache.AvoidDuplicateRigEntity;
 import managerindustry.logic.enumName.ChooseEngineeringRigEnum;
 import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.fitter.EngineeringComplexSlot;
+import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.manager.errorExecption.ManagerErrorExecption;
-import managerindustry.logic.manager.managerDB.ManagerDB;
 import managerindustry.logic.manager.managerDB.cache.avoidDuplicateRig.AvoidDuplicateRigX;
 import managerindustry.logic.manager.managerDB.cache.avoidDuplicateRig.AvoidDuplicateRigX.Parameter;
 
 /**
- *
+ * Evita che due rig dello stesso tipo T1 o T2 vengano aggiunti
  * @author lele
  */
 public class AvoidDuplicateRig {
     private List < Integer > avoidDuplicateRigs = new ArrayList<>();
     
     private enum TIER{T1,T2};
-    
+       
     /**
-     * Is Opposite
-     * @param int value
-     * @return boolean
+     * Max Modules Of This Group Allowed
+     * @param maxGroupFittedMap
+     * @param engineeringRigs
+     * @param engineeringRigEnum
+     * @throws ErrorExeption 
      */
-    public boolean isOpposite(int value){
-        addOpposite(AvoidDuplicateRigX.NamedQueryEnum.QUERY_1, Parameter.PARAMETER_1, value, TIER.T1);
-        addOpposite(AvoidDuplicateRigX.NamedQueryEnum.QUERY_2, Parameter.PARAMETER_2, value, TIER.T2);
+    public void maxGroupFitted( Map<Integer, MaxGroupFitted> maxGroupFittedMap,
+        EngineeringRig engineeringRigs,
+        EngineeringComplexSlot.EngineeringRigEnum engineeringRigEnum ) throws ErrorExeption {
         
-        for (Integer avoidDuplicateRig : avoidDuplicateRigs) {
-            if (avoidDuplicateRig == value){
-                return true;
+        // Max Modules Of This Group Allowed
+        // 10-07-2018 Il gioco prevede SOLO 1 rig dello stesso tipo. 
+        if ( maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
+            switch (engineeringRigEnum){
+                case ADD:
+                    if( maxGroupFittedMap.get(engineeringRigs.getTypeID()).getCurrentFitted() >= 
+                        engineeringRigs.getMaxGroupFitted().intValue() ){
+                            throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.DUPLICATE_RIGS);
+                    }                       
+                case REMOVE:
+                    if (maxGroupFittedMap.get(engineeringRigs.getTypeID()).getCurrentFitted() <= 0){
+                        throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.CANT_REMOVE);
+                    }                    
+            default:
+                throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.UNKNOW_ERROR);             
             }
         }
-        return false;
+
+        // non puoi mettere solo lo stesso rig in versione T1 e T2 contemporaneamente
+        addOpposite(AvoidDuplicateRigX.NamedQueryEnum.QUERY_1, Parameter.PARAMETER_1, engineeringRigs.getTypeID(), TIER.T1);
+        addOpposite(AvoidDuplicateRigX.NamedQueryEnum.QUERY_2, Parameter.PARAMETER_2, engineeringRigs.getTypeID(), TIER.T2);
+    
+        for (Integer avoidDuplicateRig : avoidDuplicateRigs) {
+            if (avoidDuplicateRig == engineeringRigs.getTypeID()){
+                throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.DUPLICATE_RIGS);
+            }
+        }         
     }
     
     /**
@@ -48,13 +72,12 @@ public class AvoidDuplicateRig {
      * @param Parameter parameter
      * @param int value
      * @param TIER tier
-     * @return int
      */
     private void addOpposite(AvoidDuplicateRigX.NamedQueryEnum namedQueryEnum, 
-        Parameter parameter, int value, AvoidDuplicateRig.TIER tier ){
+        Parameter parameter, int value, AvoidDuplicateRig.TIER tier ) throws ErrorExeption {
 
         AvoidDuplicateRigEntity avoidDuplicateRigEntity = 
-            Manager.getInstance().managerDB().avoidDuplicateRigEntity().getAvoidDuplicateRig(
+            Manager.getInstance().db().avoidDuplicateRigEntity().getAvoidDuplicateRig(
             namedQueryEnum, parameter, value);
         
         if (avoidDuplicateRigEntity == null)
@@ -68,8 +91,7 @@ public class AvoidDuplicateRig {
                 addAvoidDuplicateRigs( avoidDuplicateRigEntity.getTypeId_T1() );
                 break;
             default:
-                ManagerErrorExecption.getErrorExecption(ErrorExeption.ErrorExeptionEnum.UNKNOW_ERROR);
-                break;
+                throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.UNKNOW_ERROR);  
         }
     }
 
@@ -81,25 +103,19 @@ public class AvoidDuplicateRig {
         if ( avoidDuplicateRigs.contains(value) == false){
             avoidDuplicateRigs.add(value);
         }
-    }    
-    
+    }  
+
     public AvoidDuplicateRig() {
-        if ( isDuplicateInToDb(AvoidDuplicateRigX.NamedQueryEnum.QUERY_1, 
-             AvoidDuplicateRigX.Parameter.PARAMETER_1, 
-             ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_1.getTypeID()) ){
-        
-            return;
-        }
-        
-        init();
+        // Check if already exists in to db
+        checkIfDbExits();        
     }
-    
+
     /**
      * Add Effect Rigs
      * @param AvoidDuplicateRigEntity avoidDuplicateRigEntity 
      */
     private void addRigsToDb(AvoidDuplicateRigEntity avoidDuplicateRigEntity){
-        Manager.getInstance().managerDB().avoidDuplicateRigEntity().addEffectRigs(avoidDuplicateRigEntity);
+        Manager.getInstance().db().avoidDuplicateRigEntity().addEffectRigs(avoidDuplicateRigEntity);
     }    
     
     /**
@@ -109,14 +125,16 @@ public class AvoidDuplicateRig {
      * @param int value
      * @return boolean
      */
-    private boolean isDuplicateInToDb(AvoidDuplicateRigX.NamedQueryEnum namedQueryEnum, 
-        AvoidDuplicateRigX.Parameter parameter, int value){
+    private void checkIfDbExits(){
         
-        if ( Manager.getInstance().managerDB().avoidDuplicateRigEntity().getAvoidDuplicateRig(
-            namedQueryEnum, parameter, value) == null){
-            return false;
-        }else{
-            return true;
+        AvoidDuplicateRigEntity avoidDuplicateRigEntity = 
+            Manager.getInstance().db().avoidDuplicateRigEntity().getAvoidDuplicateRig(
+            AvoidDuplicateRigX.NamedQueryEnum.QUERY_1, 
+            Parameter.PARAMETER_1, 
+            ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_1.getTypeID());
+        
+        if ( avoidDuplicateRigEntity == null){
+            initDB();
         }
     }
     
@@ -133,7 +151,7 @@ public class AvoidDuplicateRig {
     /**
      * Init all object
      */
-    private void init(){
+    private void initDB(){
         createIncompatibleObject
             (ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_1.getTypeID(), 
              ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_2.getTypeID());

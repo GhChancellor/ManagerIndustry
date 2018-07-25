@@ -11,7 +11,7 @@ import managerindustry.db.entities.eve.DgmTypeAttributes;
 import managerindustry.db.entities.eve.IndustryActivitySkills;
 import managerindustry.logic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.manager.managerDB.ManagerDB;
+import managerindustry.logic.manager.managerDB.Db;
 
 /**
  * Oscillator Capacitor Unit Blueprint - 17337
@@ -41,7 +41,7 @@ public class SkillProduction <T>{
             a.setValue(skillID);
             y.addLists(new RecursionB(a));
             
-            List<Integer> requiredSkillAttribute = Manager.getInstance().managerDB().dgmTypeAttributes().getRequiredSkillAttribute(a.getValue());
+            List<Integer> requiredSkillAttribute = Manager.getInstance().db().dgmTypeAttributes().getRequiredSkillAttribute(a.getValue());
         
             if ( !requiredSkillAttribute.isEmpty()){
                 recursion02(requiredSkillAttribute, a);
@@ -53,10 +53,10 @@ public class SkillProduction <T>{
     public void skillTree02(){
         List < Integer > skills = new ArrayList<>();
         
-        int typeId = Manager.getInstance().managerDB().invTypes().getInvTypesByName("Oscillator Capacitor Unit Blueprint ").getTypeID();
+        int typeId = Manager.getInstance().db().invTypes().getInvTypesByName("Oscillator Capacitor Unit Blueprint ").getTypeID();
         
         List<IndustryActivitySkills> requiredSkill = 
-            Manager.getInstance().managerDB().industryActivitySkills().getRequiredSkill(typeId, RamActivitiesEnum.MANUFACTURING);
+            Manager.getInstance().db().industryActivitySkills().getRequiredSkill(typeId, RamActivitiesEnum.MANUFACTURING);
 
         for (IndustryActivitySkills industryActivitySkills : requiredSkill) {
             skills.add(industryActivitySkills.getSkillID());
@@ -78,7 +78,7 @@ public class SkillProduction <T>{
             a.setSkillId(skillID);            
             xxx.addList(new XxxB(a));            
             
-            List<Integer> requiredSkillAttribute = Manager.getInstance().managerDB().dgmTypeAttributes().getRequiredSkillAttribute(a.getSkillId());
+            List<Integer> requiredSkillAttribute = Manager.getInstance().db().dgmTypeAttributes().getRequiredSkillAttribute(a.getSkillId());
 
             
             if ( !requiredSkillAttribute.isEmpty()){
@@ -90,10 +90,10 @@ public class SkillProduction <T>{
     public void skillTree(){
         List < Integer > skills = new ArrayList<>();
         
-        int typeId = Manager.getInstance().managerDB().invTypes().getInvTypesByName("Oscillator Capacitor Unit Blueprint ").getTypeID();
+        int typeId = Manager.getInstance().db().invTypes().getInvTypesByName("Oscillator Capacitor Unit Blueprint ").getTypeID();
         
         List<IndustryActivitySkills> requiredSkill = 
-            Manager.getInstance().managerDB().industryActivitySkills().getRequiredSkill(typeId, RamActivitiesEnum.MANUFACTURING);
+            Manager.getInstance().db().industryActivitySkills().getRequiredSkill(typeId, RamActivitiesEnum.MANUFACTURING);
 
         for (IndustryActivitySkills industryActivitySkills : requiredSkill) {
             skills.add(industryActivitySkills.getSkillID());

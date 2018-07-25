@@ -8,7 +8,7 @@ package managerindustry.logic.manager.login;
 import java.util.List;
 import managerindustry.db.entities.user.UserApiEntity;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.manager.managerDB.ManagerDB;
+import managerindustry.logic.manager.managerDB.Db;
 
 /**
  * DBG Forse da cancellare
@@ -35,7 +35,7 @@ public class ManagerLoginSql {
      */
     public List < UserApiEntity > getUserApiEntities(){
         List < UserApiEntity > userApiEntities = 
-          Manager.getInstance().managerDB().sqlUser().getUserApiEntities();
+          Manager.getInstance().db().sqlUser().getUserApiEntities();
 
         return userApiEntities;     
     }
@@ -45,7 +45,7 @@ public class ManagerLoginSql {
      */
     public List < UserApiEntity > getAllUserApiEntities(){
         List < UserApiEntity > userApiEntities =
-          Manager.getInstance().managerDB().sqlUser().getUserApiEntities();
+          Manager.getInstance().db().sqlUser().getUserApiEntities();
 
         return userApiEntities;     
     }
@@ -55,7 +55,7 @@ public class ManagerLoginSql {
      * @param  
      */
     public void addUserApiIndex(UserApiEntity userApiEntity){
-          Manager.getInstance().managerDB().sqlUser().addUserApiEntity(userApiEntity);
+          Manager.getInstance().db().sqlUser().addUserApiEntity(userApiEntity);
     }
     
     /**
@@ -63,7 +63,7 @@ public class ManagerLoginSql {
      * @param Integer id 
      */
     public void deleteUserApi(UserApiEntity userApiEntity){
-        Manager.getInstance().managerDB().sqlUser().deleteUserApiEntity(userApiEntity);
+        Manager.getInstance().db().sqlUser().deleteUserApiEntity(userApiEntity);
     }
     
     /**
@@ -71,6 +71,6 @@ public class ManagerLoginSql {
      * @param userApiEntity 
      */
     public void updateUserApiEntity(UserApiEntity userApiEntity){
-          Manager.getInstance().managerDB().sqlUser().updateUserApiEntity(userApiEntity);
+          Manager.getInstance().db().sqlUser().updateUserApiEntity(userApiEntity);
     }
 }
