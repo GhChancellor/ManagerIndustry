@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.tax.formulas.itemcost.baseJobCost;
 
-import managerindustry.logic.buiild.fatherclass.NameBase;
+import managerindustry.logic.build.fatherclass.NameBase;
 
 /**
  *

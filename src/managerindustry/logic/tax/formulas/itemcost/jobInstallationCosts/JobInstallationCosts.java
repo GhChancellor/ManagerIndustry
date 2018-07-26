@@ -6,8 +6,8 @@
 package managerindustry.logic.tax.formulas.itemcost.jobInstallationCosts;
 
 import java.util.Map;
-import managerindustry.logic.buiild.ReportCalculatedComponentX;
-import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.build.ReportCalculatedComponentX;
+import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.formulas.itemcost.ItemCost;
 
@@ -28,7 +28,7 @@ public class JobInstallationCosts extends ItemCost{
      * @throws PriceNotExistsException 
      */
     public JobInstallationCosts(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
-        String solarSystemID, String actvity, int run ,float taxRate) throws SolarSystemNotExistsException, PriceNotExistsException {
+        String solarSystemID, String actvity, int run ,float taxRate) throws SolarSystemNotExistsException, ErrorExeption {
         super(reportCalculatedComponentXMap, solarSystemID, actvity, run, taxRate);
         
         calculateJobInstallationCost();

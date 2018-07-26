@@ -6,21 +6,18 @@
 package managerindustry;
 
 import java.util.Map;
-import managerindustry.logic.buiild.ReportCalculatedComponentX;
+import managerindustry.logic.build.ReportCalculatedComponentX;
 import managerindustry.logic.enumName.PlatformEnum;
 import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.exception.ErrorExeption;
-import managerindustry.logic.exception.PriceNotExistsException;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.gui.display.DisplaySpeculation;
 import managerindustry.logic.manager.build.Build;
 import managerindustry.logic.manager.build.ManagerComponentX;
-import managerindustry.logic.manager.managerDB.Db;
 import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
 import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.ChooseRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
 import managerindustry.logic.manager.Manager;
@@ -31,7 +28,7 @@ import managerindustry.logic.manager.Manager;
  */
 public class MainProgramm {
 
-    public static void main(String[] args) throws SolarSystemNotExistsException, PriceNotExistsException {
+    public static void main(String[] args) throws SolarSystemNotExistsException{
         buildItem(); // << controllare
 //        jobInstallationFee();
 //        speculation(); // << controllare
@@ -54,7 +51,7 @@ public class MainProgramm {
      * @throws SolarSystemNotExistsException
      * @throws PriceNotExistsException 
      */
-    public static void jobInstallationFee() throws SolarSystemNotExistsException, PriceNotExistsException{
+    public static void jobInstallationFee() throws SolarSystemNotExistsException, ErrorExeption{
         String solarSystemID = String.valueOf( SolarSystem.getSolarSystemID("Sobaseki") ); // Sotrentaira 30001369// Isanamo 30001389
         System.out.println("Id Solar system "+ solarSystemID);
         
@@ -63,7 +60,7 @@ public class MainProgramm {
 //        String item = "Hammerhead I";
         String item = "Punisher";
         
-        int typeID = Manager.getInstance().db().invTypes().getInvTypesByName(item).getTypeID();
+        int typeID = Manager.getInstance().db().item().invTypes().getInvTypesByName(item).getTypeID();
         System.out.println(""+ item + " ID: " + typeID );
         
         int run = 662;

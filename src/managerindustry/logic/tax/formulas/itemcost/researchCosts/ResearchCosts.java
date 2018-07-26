@@ -8,8 +8,8 @@ package managerindustry.logic.tax.formulas.itemcost.researchCosts;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.buiild.ReportCalculatedComponentX;
-import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.build.ReportCalculatedComponentX;
+import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.formulas.itemcost.ItemCost;
 
@@ -38,7 +38,7 @@ public class ResearchCosts extends ItemCost{
     public ResearchCosts(Map<String, ReportCalculatedComponentX> reportCalculatedComponentXMap, 
      String solarSystemID, String actvity, int run, float facilityTax,
      int startLevel, int finishLevel)
-      throws SolarSystemNotExistsException, PriceNotExistsException {
+      throws SolarSystemNotExistsException, ErrorExeption {
         
         // DBG controllare questa funzione
         super(reportCalculatedComponentXMap, solarSystemID, actvity, run, facilityTax);

@@ -13,11 +13,11 @@ import managerindustry.db.entities.eve.DgmAttributeTypes;
 import managerindustry.db.entities.eve.DgmTypeAttributes;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
-import managerindustry.logic.buiild.CalculatedComponentX;
-import managerindustry.logic.buiild.ComponentX;
-import managerindustry.logic.buiild.MaterialEfficiencyCalculate;
-import managerindustry.logic.buiild.MaterialForComponents;
-import managerindustry.logic.buiild.ReportCalculatedComponentX;
+import managerindustry.logic.build.CalculatedComponentX;
+import managerindustry.logic.build.ComponentX;
+import managerindustry.logic.build.MaterialEfficiencyCalculate;
+import managerindustry.logic.build.MaterialForComponents;
+import managerindustry.logic.build.ReportCalculatedComponentX;
 import managerindustry.logic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.Manager;
 
@@ -49,7 +49,7 @@ public class Build {
         System.out.println("" + bpoName);
         
         List< IndustryActivityMaterials> nameItemToBuild = 
-         Manager.getInstance().db().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
+         Manager.getInstance().db().item().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
         
         ComponentX componentX = new ComponentX();
         baseMaterial(nameItemToBuild, componentX, activitiesEnum );
@@ -163,7 +163,7 @@ public class Build {
      ComponentX dad, RamActivitiesEnum activitiesEnum){   
         for (IndustryActivityMaterials nameItemToBuild1 : nameItemToBuild) {
             InvTypes invTypes =
-              Manager.getInstance().db().invTypes().getInvTypesById(nameItemToBuild1.getMaterialTypeID());
+              Manager.getInstance().db().item().invTypes().getInvTypesById(nameItemToBuild1.getMaterialTypeID());
 //            System.out.println(tab + invTypes.getTypeID() + " " + invTypes.getTypeName() + " " + nameItemToBuild1.getQuantity());
 
             ComponentX componentX = new ComponentX();
@@ -172,7 +172,7 @@ public class Build {
             dad.addMaterialForComponents(new MaterialForComponents(componentX));
             
             List< IndustryActivityMaterials> neededComponents = 
-              Manager.getInstance().db().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
+              Manager.getInstance().db().item().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
 
             if (neededComponents != null)
                 baseMaterial(neededComponents, componentX, activitiesEnum);
@@ -266,17 +266,17 @@ public class Build {
     public void itemDescription(){
         // 43867 Standup M-Set Advanced Component Manufacturing Material Efficiency I
         String bpoName = "drake Blueprint"; // Nighthawk Blueprint 
-        InvTypes invTypes = Manager.getInstance().db().invTypes().getInvTypesByName(bpoName);
+        InvTypes invTypes = Manager.getInstance().db().item().invTypes().getInvTypesByName(bpoName);
         
         List < DgmTypeAttributes > dgmTypeAttributes = 
-          Manager.getInstance().db().dgmTypeAttributes().getTypeAttributesByTypeId(invTypes.getTypeID());
+          Manager.getInstance().db().item().dgmTypeAttributes().getTypeAttributesByTypeId(invTypes.getTypeID());
         
         System.out.println(""+ bpoName + " ID " + invTypes.getTypeID() );
         
         for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
            
             DgmAttributeTypes dgmAttributeTypes = 
-              Manager.getInstance().db().dgmAttributeTypes().getAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
+              Manager.getInstance().db().item().dgmAttributeTypes().getAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
             
             if (dgmTypeAttribute.getValueInt() == null) {
                 System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  +

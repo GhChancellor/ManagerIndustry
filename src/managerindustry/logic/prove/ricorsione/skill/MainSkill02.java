@@ -6,9 +6,9 @@
 package managerindustry.logic.prove.ricorsione.skill;
 
 import managerindustry.db.entities.user.UserApiEntity;
-import managerindustry.logic.apiEsiJson.ApiEsi;
-import managerindustry.logic.apiEsiJson.skill.characterSkills.SkillRaw;
-import managerindustry.logic.apiEsiJson.skill.characterSkills.SkillParser;
+import managerindustry.logic.apiEsi.ApiEsi;
+import managerindustry.logic.apiEsi.skill.characterSkills.SkillRaw;
+import managerindustry.logic.apiEsi.skill.characterSkills.SkillParser;
 
 /**
  *

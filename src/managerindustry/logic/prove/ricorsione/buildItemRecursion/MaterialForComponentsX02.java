@@ -5,8 +5,7 @@
  */
 package managerindustry.logic.prove.ricorsione.buildItemRecursion;
 
-import managerindustry.logic.buiild.*;
-import managerindustry.logic.buiild.fatherclass.NameBase;
+import managerindustry.logic.build.fatherclass.NameBase;
 
 /**
  * Attribute Material For Components

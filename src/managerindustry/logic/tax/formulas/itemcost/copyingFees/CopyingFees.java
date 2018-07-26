@@ -6,8 +6,8 @@
 package managerindustry.logic.tax.formulas.itemcost.copyingFees;
 
 import java.util.Map;
-import managerindustry.logic.buiild.ReportCalculatedComponentX;
-import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.build.ReportCalculatedComponentX;
+import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.formulas.itemcost.ItemCost;
 
@@ -30,7 +30,7 @@ public class CopyingFees extends ItemCost{
      * @throws PriceNotExistsException 
      */      
     public CopyingFees(Map<String, ReportCalculatedComponentX> reportCalculatedComponentXMap, 
-        String solarSystemID, String actvity, int run, float facilityTax, int runPerCopy) throws SolarSystemNotExistsException, PriceNotExistsException {
+        String solarSystemID, String actvity, int run, float facilityTax, int runPerCopy) throws SolarSystemNotExistsException, ErrorExeption{
         super(reportCalculatedComponentXMap, solarSystemID, actvity, run, facilityTax);
         this.runPerCopy = runPerCopy;
         

@@ -8,6 +8,7 @@ package managerindustry.logic.fitter.structure.engineeringRig;
 import managerindustry.logic.enumName.RuleBonusRigEnum;
 import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.ChooseRig;
 import managerindustry.logic.fitter.structure.logic.BaseStructure;
 import managerindustry.logic.manager.Manager;
 
@@ -32,7 +33,10 @@ public class EngineeringRig extends BaseStructure{
     }
 
     public EngineeringRig(String nameRig, SecurityStatusEnum securityStatusEnum) throws ErrorExeption {
-        typeID = Manager.getInstance().db().invTypes().getInvTypesByName(nameRig).getTypeID();
+        typeID = Manager.getInstance().db().item().invTypes().getInvTypesByName(nameRig).getTypeID();
+        
+        // Init and add to db if not exits
+        ChooseRig chooseRig = new ChooseRig(typeID);
         
         // RIG_TIME_EFFICIENCY
         timeEfficiency = 

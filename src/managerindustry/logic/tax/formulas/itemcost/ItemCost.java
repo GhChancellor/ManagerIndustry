@@ -8,8 +8,8 @@ package managerindustry.logic.tax.formulas.itemcost;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.buiild.ReportCalculatedComponentX;
-import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.build.ReportCalculatedComponentX;
+import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.formulas.itemcost.baseJobCost.BaseJobCost;
 import managerindustry.logic.tax.formulas.itemcost.systemCostIndex.SystemCostIndex;
@@ -37,7 +37,7 @@ public class ItemCost {
     }
 
     public ItemCost(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
-        String solarSystemID, String actvity, int run, float facilityTax) throws SolarSystemNotExistsException, PriceNotExistsException {
+        String solarSystemID, String actvity, int run, float facilityTax) throws SolarSystemNotExistsException, ErrorExeption{
         
         this.reportCalculatedComponentXMap = reportCalculatedComponentXMap;
         this.solarSystemID = solarSystemID;

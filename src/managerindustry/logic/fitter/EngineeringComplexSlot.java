@@ -22,8 +22,6 @@ import managerindustry.logic.fitter.structure.logic.StructureLibrary;
  */
 public class EngineeringComplexSlot {
     private EngineeringComplex engineeringComplex;
-//    private Map< /* typeId */ Integer , /* currentRigFitted */ Integer  > maxGroupFittedMap_OLD = new HashMap<>();
-    
     private Map< /* typeId */ Integer , MaxGroupFitted > maxGroupFittedMap = new HashMap<>();
     
     private float currentCalibration = 0;
@@ -34,45 +32,57 @@ public class EngineeringComplexSlot {
     private AvoidDuplicateRig avoidDuplicateRig = new AvoidDuplicateRig(); 
     
     public enum EngineeringRigEnum {ADD, REMOVE};
-        
-    public EngineeringComplexSlot() {
+    
+    private void init(){
         try {
             engineeringComplex(PlatformEnum.RAITARU);
 
 //            engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency II", SecurityStatusEnum.LOW_SEC);
-            engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency I", SecurityStatusEnum.LOW_SEC);
+//            engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency I", SecurityStatusEnum.LOW_SEC);
             engineeringRigs("Standup M-Set Equipment Manufacturing Material Efficiency II", SecurityStatusEnum.LOW_SEC);
 
 //            engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency II", SecurityStatusEnum.LOW_SEC);
 //            engineeringRigs("Standup M-Set Equipment Manufacturing Time Efficiency I", SecurityStatusEnum.LOW_SEC);
 //            engineeringRigs("Standup M-Set Ammunition Manufacturing Time Efficiency I", SecurityStatusEnum.LOW_SEC);
 //            engineeringRigs("Standup M-Set Advanced Component Manufacturing Time Efficiency I", SecurityStatusEnum.LOW_SEC);
+            engineeringComplex.displayAllValueCalculated();
             calculatesBonus();
             displayAllValue();            
         } catch (ErrorExeption e) {
             System.out.println(""+ e.getErrorEnum().getErrorMessage());
-        }
+        }        
     }
     
     /**
-     * 
+     * Engineering Complex Slot
+     */
+    public EngineeringComplexSlot() {
+        init();
+    }
+    
+    /**
+     * Engineering complex
      * @param PlatformEnum platformEnum 
      */
     public void engineeringComplex(PlatformEnum platformEnum){
         engineeringComplex = new EngineeringComplex(platformEnum);
-        engineeringComplex.displayAllValueCalculated();
     }
     
+    /**
+     * Engineering Rigs
+     * @param String rigName
+     * @param SecurityStatusEnum securityStatusEnum
+     * @throws ErrorExeption 
+     */
     public void engineeringRigs(String rigName, SecurityStatusEnum securityStatusEnum) throws ErrorExeption{
         EngineeringRig engineeringRigs = new EngineeringRig(rigName, securityStatusEnum);
         addRig(engineeringRigs);
     }
     
     /**
-     * 
+     * Display AllV alue
      */
-    public void displayAllValue(){
-        
+    public void displayAllValue(){        
         if (totReductionManufacturingMaterial != 0){
             System.out.println("XX totReductionManufacturingMaterial " + totReductionManufacturingMaterial);
         }
@@ -83,9 +93,55 @@ public class EngineeringComplexSlot {
         
         if (totReductionManufacturingScienceJobTime != 0){
             System.out.println("XX totReductionManufacturingScienceJobTime " + totReductionManufacturingScienceJobTime);
-        }
-        
+        }        
     }   
+    
+    /**
+     * Add Rig, 10-07-2018 Il gioco prevede SOLO 1 rig dello stesso tipo. 
+     * Aggiunge più rig dello stesso tipo aggiornando currentCalibration, engineeringComplex_CurrentSlot
+     * @param EngineeringRig engineeringRigs
+     * @throws ErrorExeption 
+     */
+    public void addRig(EngineeringRig engineeringRigs) throws ErrorExeption{
+        // Manager errors rig
+        managerError(engineeringRigs, EngineeringRigEnum.ADD);
+        
+        if (maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
+
+            MaxGroupFitted tempMaxGroupFitted = maxGroupFittedMap.get(engineeringRigs.getTypeID());
+            byte currentFitted = tempMaxGroupFitted.getCurrentFitted();
+            tempMaxGroupFitted.setCurrentFitted( (byte) ( currentFitted + 1) );
+
+            maxGroupFittedMap.put(engineeringRigs.getTypeID(), tempMaxGroupFitted);
+        }else{
+            MaxGroupFitted tempMaxGroupFitted = new MaxGroupFitted(engineeringRigs, (byte) 1);
+            maxGroupFittedMap.put(engineeringRigs.getTypeID(), tempMaxGroupFitted );
+        }
+
+        engineeringComplex_CurrentSlot++;
+        currentCalibration += engineeringRigs.getCalibration();    
+    }
+    
+    /**
+     * Remove Rig, 10-07-2018 Il gioco prevede SOLO 1 rig dello stesso tipo. 
+     * Elimina più rig dello stesso tipo aggiornando currentCalibration, engineeringComplex_CurrentSlot
+     * @param EngineeringRig engineeringRigs
+     * @throws ErrorExeption 
+     */
+    public void removeRig(EngineeringRig engineeringRigs) throws ErrorExeption{    
+        managerError(engineeringRigs, EngineeringRigEnum.REMOVE );
+        
+        if (maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
+            MaxGroupFitted tempMaxGroupFitted = maxGroupFittedMap.get(engineeringRigs.getTypeID());
+
+            engineeringComplex_CurrentSlot--;
+            currentCalibration -= engineeringRigs.getCalibration();               
+
+            if  ( tempMaxGroupFitted.getCurrentFitted() == 1){
+                maxGroupFittedMap.remove(engineeringRigs.getTypeID());
+            }            
+        }
+    }
     
     /**
      * Put to video a error
@@ -127,53 +183,8 @@ public class EngineeringComplexSlot {
     }
     
     /**
-     * Add Rig, 10-07-2018 Il gioco prevede SOLO 1 rig dello stesso tipo. 
-     * Aggiunge più rig dello stesso tipo aggiornando currentCalibration, engineeringComplex_CurrentSlot
-     * @param EngineeringRig engineeringRigs
-     * @throws ErrorExeption 
+     * Calculates Bonus
      */
-    private void addRig(EngineeringRig engineeringRigs) throws ErrorExeption{
-        // Manager errors rig
-        managerError(engineeringRigs, EngineeringRigEnum.ADD);
-        
-        if (maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
-
-            MaxGroupFitted tempMaxGroupFitted = maxGroupFittedMap.get(engineeringRigs.getTypeID());
-            byte currentFitted = tempMaxGroupFitted.getCurrentFitted();
-            tempMaxGroupFitted.setCurrentFitted( (byte) ( currentFitted + 1) );
-
-            maxGroupFittedMap.put(engineeringRigs.getTypeID(), tempMaxGroupFitted);
-        }else{
-            MaxGroupFitted tempMaxGroupFitted = new MaxGroupFitted(engineeringRigs, (byte) 1);
-            maxGroupFittedMap.put(engineeringRigs.getTypeID(), tempMaxGroupFitted );
-        }
-
-        engineeringComplex_CurrentSlot++;
-        currentCalibration += engineeringRigs.getCalibration();    
-    }
-    
-    /**
-     * Remove Rig, 10-07-2018 Il gioco prevede SOLO 1 rig dello stesso tipo. 
-     * Elimina più rig dello stesso tipo aggiornando currentCalibration, engineeringComplex_CurrentSlot
-     * @param EngineeringRig engineeringRigs
-     * @throws ErrorExeption 
-     */
-    private void removeRig(EngineeringRig engineeringRigs) throws ErrorExeption{    
-        managerError(engineeringRigs, EngineeringRigEnum.REMOVE );
-        
-        if (maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
-            MaxGroupFitted tempMaxGroupFitted = maxGroupFittedMap.get(engineeringRigs.getTypeID());
-
-            engineeringComplex_CurrentSlot--;
-            currentCalibration -= engineeringRigs.getCalibration();               
-
-            if  ( tempMaxGroupFitted.getCurrentFitted() == 1){
-                maxGroupFittedMap.remove(engineeringRigs.getTypeID());
-            }            
-
-        }
-    }
-    
     private void calculatesBonus(){
         EngineeringRig _engineeringRig = new EngineeringRig();
         byte trucateDecimal = 2;
@@ -224,7 +235,7 @@ public class EngineeringComplexSlot {
      * Set Current Calibration
      * @param float currentCalibration 
      */
-    public void setCurrentCalibration(float currentCalibration) {
+    private void setCurrentCalibration(float currentCalibration) {
         this.currentCalibration = currentCalibration;
     }
 
@@ -240,20 +251,31 @@ public class EngineeringComplexSlot {
      * Set EngineeringComplex Current Slot
      * @param byte engineeringComplex_CurrentSlot 
      */
-    public void setEngineeringComplex_CurrentSlot(byte engineeringComplex_CurrentSlot) {
+    private void setEngineeringComplex_CurrentSlot(byte engineeringComplex_CurrentSlot) {
         this.engineeringComplex_CurrentSlot = engineeringComplex_CurrentSlot;
     }
     
+    /**
+     * Get Tot Reduction Manufacturing Material
+     * @return float
+     */
     public float getTotReductionManufacturingMaterial() {
         return totReductionManufacturingMaterial;
     }
 
+    /**
+     * Get Tot Reduction Manufacturing Science Job Isk Cost
+     * @return float
+     */
     public float getTotReductionManufacturingScienceJobIskCost() {
         return totReductionManufacturingScienceJobIskCost;
     }
 
+    /**
+     * Get Tot Reduction Manufacturing Science Job Time
+     * @return float
+     */
     public float getTotReductionManufacturingScienceJobTime() {
         return totReductionManufacturingScienceJobTime;
     }   
-
 }

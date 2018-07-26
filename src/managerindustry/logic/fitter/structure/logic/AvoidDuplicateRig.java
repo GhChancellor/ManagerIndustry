@@ -14,8 +14,8 @@ import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.fitter.EngineeringComplexSlot;
 import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.manager.managerDB.cache.avoidDuplicateRig.AvoidDuplicateRigX;
-import managerindustry.logic.manager.managerDB.cache.avoidDuplicateRig.AvoidDuplicateRigX.Parameter;
+import managerindustry.logic.manager.db.item.cache.avoidDuplicateRig.AvoidDuplicateRigX;
+import managerindustry.logic.manager.db.item.cache.avoidDuplicateRig.AvoidDuplicateRigX.Parameter;
 
 /**
  * Evita che due rig dello stesso tipo T1 o T2 vengano aggiunti
@@ -26,6 +26,11 @@ public class AvoidDuplicateRig {
     
     private enum TIER{T1,T2};
        
+    public AvoidDuplicateRig() {
+        // Check if already exists in to db
+        checkIfDbExits();        
+    }
+    
     /**
      * Max Modules Of This Group Allowed
      * @param maxGroupFittedMap
@@ -74,11 +79,11 @@ public class AvoidDuplicateRig {
      * @param TIER tier
      */
     private void addOpposite(AvoidDuplicateRigX.NamedQueryEnum namedQueryEnum, 
-        Parameter parameter, int value, AvoidDuplicateRig.TIER tier ) throws ErrorExeption {
+        Parameter parameter, int typeId, AvoidDuplicateRig.TIER tier ) throws ErrorExeption {
 
         AvoidDuplicateRigEntity avoidDuplicateRigEntity = 
-            Manager.getInstance().db().avoidDuplicateRigEntity().getAvoidDuplicateRig(
-            namedQueryEnum, parameter, value);
+            Manager.getInstance().db().item().avoidDuplicateRigEntity().getAvoidDuplicateRig(
+            namedQueryEnum, parameter, typeId);
         
         if (avoidDuplicateRigEntity == null)
             return;
@@ -96,7 +101,7 @@ public class AvoidDuplicateRig {
     }
 
     /**
-     * Check and add if there are duplicate
+     * Check and add if there are not duplicate
      * @param value 
      */
     private void addAvoidDuplicateRigs(Integer value) {
@@ -105,17 +110,12 @@ public class AvoidDuplicateRig {
         }
     }  
 
-    public AvoidDuplicateRig() {
-        // Check if already exists in to db
-        checkIfDbExits();        
-    }
-
     /**
      * Add Effect Rigs
      * @param AvoidDuplicateRigEntity avoidDuplicateRigEntity 
      */
     private void addRigsToDb(AvoidDuplicateRigEntity avoidDuplicateRigEntity){
-        Manager.getInstance().db().avoidDuplicateRigEntity().addEffectRigs(avoidDuplicateRigEntity);
+        Manager.getInstance().db().item().avoidDuplicateRigEntity().addEffectRigs(avoidDuplicateRigEntity);
     }    
     
     /**
@@ -128,7 +128,7 @@ public class AvoidDuplicateRig {
     private void checkIfDbExits(){
         
         AvoidDuplicateRigEntity avoidDuplicateRigEntity = 
-            Manager.getInstance().db().avoidDuplicateRigEntity().getAvoidDuplicateRig(
+            Manager.getInstance().db().item().avoidDuplicateRigEntity().getAvoidDuplicateRig(
             AvoidDuplicateRigX.NamedQueryEnum.QUERY_1, 
             Parameter.PARAMETER_1, 
             ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_1.getTypeID());

@@ -22,14 +22,14 @@ public class ChooseRig {
     
     /**
      * Get Effect Rig and his effect
-     * @param int typeID
-     * @param int effectID 
-     * @return getEffectEngineeringRig
+     * @param int typeID is enginnering rig like Standup M-Set Blueprint Copy Accelerator II
+     * @param int effectID has effect on item to build like ammunition
+     * @return boolean
      */
-    public boolean isEffectEngineeringRig(int typeID, int effectID){
+    public boolean isEffectEngineeringRig(int typeID, int effectID_Item){
         EffectEngineeringRigs engineeringRigs = new EffectEngineeringRigs();
         
-        if (engineeringRigs.getEffectEngineeringRig(typeID, effectID) == null ){
+        if (engineeringRigs.getEffectEngineeringRig(typeID, effectID_Item) == null ){
             return false;
         }
         
@@ -38,10 +38,10 @@ public class ChooseRig {
     
     /**
      * Is exits?
-     * @param typeID
+     * @param typeID typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
      * @return boolean
      */
-    public boolean isExits(int typeID){
+    private boolean isExits(int typeID){
         EffectEngineeringRigs engineeringRigs = new EffectEngineeringRigs();
         if (engineeringRigs.getEffectEngineeringRig(typeID) == null ){
             return false;
@@ -52,7 +52,7 @@ public class ChooseRig {
     
     /**
      * Init and add to db if not exits
-     * @param typeId 
+     * @param typeId typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
      */
     public ChooseRig(int typeId) {
         if ( isExits(typeId) )
@@ -336,8 +336,6 @@ public class ChooseRig {
              ChooseEngineeringRigEnum.XL_BLUEPRINT_LABORATORY_1.getTypeID() == typeId ){
             initXLRigGroups.initStandupXLSetLaboratory(typeId);
             return;
-        }                
-              
+        }                              
     }
-
 }

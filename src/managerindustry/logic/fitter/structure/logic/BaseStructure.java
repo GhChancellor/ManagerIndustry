@@ -7,7 +7,7 @@ package managerindustry.logic.fitter.structure.logic;
 
 import managerindustry.db.entities.eve.DgmTypeAttributes;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.manager.managerDB.Db;
+import managerindustry.logic.manager.db.Db;
 
 /**
  *
@@ -36,7 +36,7 @@ public abstract class BaseStructure {
      */
     public float getDgmTypeAttributes(int typeId, int code){
         DgmTypeAttributes dgmTypeAttribute = 
-            Manager.getInstance().db().dgmTypeAttributes().getTypeAttributesByTypeId_ByAttributeID(typeId, code);
+            Manager.getInstance().db().item().dgmTypeAttributes().getTypeAttributesByTypeId_ByAttributeID(typeId, code);
         return dgmTypeAttribute.getValueFloat();
     }       
 }

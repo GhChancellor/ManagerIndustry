@@ -9,10 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.eve.InvTypes;
-import managerindustry.logic.buiild.ReportCalculatedComponentX;
-import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.build.ReportCalculatedComponentX;
+import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.manager.managerDB.Db;
 //import managerindustry.logic.manager.old.db.ManagerDBEve_OLD;
 /**
  *  
@@ -32,14 +31,14 @@ public class BaseJobCost {
      * @return
      * @throws PriceNotExistsException 
      */
-    public float getBaseJobCostDBG(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap) throws PriceNotExistsException{
+    public float getBaseJobCostDBG(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap) {
         Float sumJobcost = 0f;
         
         for (Map.Entry<String, ReportCalculatedComponentX> entry : reportCalculatedComponentXMap.entrySet()) {
 //            String key = entry.getKey();
             ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
             InvTypes invTypes = 
-             Manager.getInstance().db().invTypes().getInvTypesByName(totalCalculatedComponent.getName());
+             Manager.getInstance().db().item().invTypes().getInvTypesByName(totalCalculatedComponent.getName());
             
             Float jobCost = 
              JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
@@ -59,7 +58,7 @@ public class BaseJobCost {
      * @throws PriceNotExistsException 
      */
     public float getBaseJobCost(Map<String, ReportCalculatedComponentX>  
-            reportCalculatedComponentXMap) throws PriceNotExistsException{
+            reportCalculatedComponentXMap) throws ErrorExeption{
         Float sumJobcost = 0f;
         
         for (Map.Entry<String, ReportCalculatedComponentX> entry :
@@ -68,7 +67,7 @@ public class BaseJobCost {
 //            String key = entry.getKey();
             ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
             int typesId = 
-                Manager.getInstance().db().invTypes().getInvTypesByName
+                Manager.getInstance().db().item().invTypes().getInvTypesByName
                 (totalCalculatedComponent.getName()).getTypeID();
             
 //            Float jobCost = 

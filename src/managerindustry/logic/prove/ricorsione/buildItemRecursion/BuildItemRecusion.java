@@ -9,16 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
-import managerindustry.logic.buiild.CalculatedComponentX;
-import managerindustry.logic.buiild.ComponentX;
-import managerindustry.logic.buiild.MaterialEfficiencyCalculate;
-import managerindustry.logic.buiild.MaterialForComponents;
-import managerindustry.logic.buiild.ReportCalculatedComponentX;
-import managerindustry.logic.buiild.fatherclass.NameBase;
+import managerindustry.logic.build.CalculatedComponentX;
+import managerindustry.logic.build.ComponentX;
+import managerindustry.logic.build.MaterialEfficiencyCalculate;
+import managerindustry.logic.build.MaterialForComponents;
+import managerindustry.logic.build.ReportCalculatedComponentX;
+import managerindustry.logic.build.fatherclass.NameBase;
 import managerindustry.logic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.Manager;
 import managerindustry.logic.manager.build.ManagerComponentX;
-import managerindustry.logic.manager.managerDB.Db;
+import managerindustry.logic.manager.db.Db;
 import managerindustry.logic.prove.ricorsione.skill.skillProduction.RecursionA;
 import managerindustry.logic.prove.ricorsione.skill.skillProduction.qualcosa.TemplateRecursionA;
 import managerindustry.logic.prove.ricorsione.skill.skillProduction.qualcosa.TemplateRecursionB;
@@ -39,7 +39,7 @@ public class BuildItemRecusion {
         System.out.println("" + bpoName);
         
         List< IndustryActivityMaterials> nameItemToBuild = 
-         Manager.getInstance().db().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
+         Manager.getInstance().db().item().industryActivityMaterials().getMaterialNeedByName(bpoName, activitiesEnum);
 
         ComponentX02 component = new ComponentX02();
         component.setName(bpoName);
@@ -232,7 +232,7 @@ public class BuildItemRecusion {
         
         for (IndustryActivityMaterials nameItemToBuild1 : nameItemToBuild) {
             InvTypes invTypes =
-              Manager.getInstance().db().invTypes().getInvTypesById(nameItemToBuild1.getMaterialTypeID());
+              Manager.getInstance().db().item().invTypes().getInvTypesById(nameItemToBuild1.getMaterialTypeID());
 
             ComponentX02 componentX = new ComponentX02();
             componentX.setName(invTypes.getTypeName());
@@ -242,7 +242,7 @@ public class BuildItemRecusion {
             t.addLists(new TemplateRecursionB(a));
             
             List< IndustryActivityMaterials> neededComponents = 
-              Manager.getInstance().db().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
+              Manager.getInstance().db().item().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
                         
             if (neededComponents != null)
                 baseMaterial(neededComponents, a, activitiesEnum);

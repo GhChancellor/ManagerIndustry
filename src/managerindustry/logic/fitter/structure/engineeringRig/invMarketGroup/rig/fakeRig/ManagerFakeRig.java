@@ -12,7 +12,7 @@ import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.enumName.TierEnum;
 import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.manager.managerDB.Db;
+import managerindustry.logic.manager.db.Db;
 
 /**
  *
@@ -77,13 +77,13 @@ public class ManagerFakeRig {
     public int getFakeRig(TierEnum tier, RuleBonusRigEnum typeBonus){
         for (FakeRig rigCouple : rigCouples) {
             if ( rigCouple.getTier() == tier && rigCouple.getRule_bonus() == typeBonus ){
-                Integer typeId = Manager.getInstance().db().invTypes().getInvTypesById(rigCouple.getId()).getTypeID();
+                Integer typeId = Manager.getInstance().db().item().invTypes().getInvTypesById(rigCouple.getId()).getTypeID();
 
                 if ( typeId != null ){
                     return typeId;
                 }
                 
-                typeId = Manager.getInstance().db().invTypes().getInvTypesById(rigCouple.getId()).getTypeID();
+                typeId = Manager.getInstance().db().item().invTypes().getInvTypesById(rigCouple.getId()).getTypeID();
                 return typeId;
             }
         }

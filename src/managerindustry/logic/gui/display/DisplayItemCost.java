@@ -7,8 +7,8 @@ package managerindustry.logic.gui.display;
 
 import managerindustry.logic.tax.formulas.itemcost.jobInstallationCosts.JobInstallationCosts;
 import java.util.Map;
-import managerindustry.logic.buiild.ReportCalculatedComponentX;
-import managerindustry.logic.exception.PriceNotExistsException;
+import managerindustry.logic.build.ReportCalculatedComponentX;
+import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.formulas.itemcost.copyingFees.CopyingFees;
 import managerindustry.logic.tax.formulas.itemcost.researchCosts.ResearchCosts;
@@ -33,7 +33,7 @@ public class DisplayItemCost{
      * @throws PriceNotExistsException 
      */
     public static void calculateJobInstallationCost(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
-        String solarSystemID, String actvity, int run ,float taxRate) throws SolarSystemNotExistsException, PriceNotExistsException{ 
+        String solarSystemID, String actvity, int run ,float taxRate) throws SolarSystemNotExistsException, ErrorExeption{ 
         
         JobInstallationCosts buildItem = new JobInstallationCosts(reportCalculatedComponentXMap, solarSystemID, actvity, run, taxRate);
         System.out.println("\nMANUFACTORING");
@@ -55,7 +55,7 @@ public class DisplayItemCost{
      */
     public static void calculateCopingFee(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
         String solarSystemID, String actvity, int run ,float taxRate, int runPerCopy) 
-            throws SolarSystemNotExistsException, PriceNotExistsException{
+            throws SolarSystemNotExistsException, ErrorExeption{
         
         CopyingFees copyingFees = new CopyingFees
          (reportCalculatedComponentXMap, solarSystemID, actvity, run, taxRate, runPerCopy);        
@@ -79,7 +79,7 @@ public class DisplayItemCost{
      * @throws PriceNotExistsException 
      */     
     public static void calculateResearchCosts(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
-        String solarSystemID, String actvity, int run ,float taxRate, int startLevel, int finishLevel) throws SolarSystemNotExistsException, PriceNotExistsException{
+        String solarSystemID, String actvity, int run ,float taxRate, int startLevel, int finishLevel) throws SolarSystemNotExistsException, ErrorExeption{
         
         ResearchCosts researchCosts = new ResearchCosts(reportCalculatedComponentXMap, solarSystemID, actvity, run, taxRate, startLevel, finishLevel);
         

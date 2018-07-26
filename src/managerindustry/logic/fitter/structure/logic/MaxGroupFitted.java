@@ -33,33 +33,3 @@ public class MaxGroupFitted {
     }
 
 }
-
-/*
-        if ( managerError(engineeringRigs, EngineeringRigEnum.ADD) ){                   
-
-            if (maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){
-                maxGroupFittedMap.put(engineeringRigs.getTypeID(), 
-                    maxGroupFittedMap.get(engineeringRigs.getTypeID()) + 1 );                
-            }else{
-                maxGroupFittedMap.put(engineeringRigs.getTypeID(), 1);                
-            }
-            
-            engineeringComplex_CurrentSlot++;
-            currentCalibration += engineeringRigs.getCalibration();            
-        }
-*/
-
-/*
-        case ADD:
-            if( maxGroupFittedMap.get(engineeringRigs.getTypeID()) >= 
-                engineeringRigs.getMaxGroupFitted().intValue() ){
-                    displayErrorRig(ErrorExeption.ErrorExeptionEnum.DUPLICATE_RIGS);
-                return false;     
-            }                    
-
-        case REMOVE:
-            if (maxGroupFittedMap.get(engineeringRigs.getTypeID()) <= 0){
-                displayErrorRig(ErrorExeption.ErrorExeptionEnum.CANT_REMOVE);
-                return false;
-            }
-*/

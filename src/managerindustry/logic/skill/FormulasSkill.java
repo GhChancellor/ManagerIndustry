@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.skill;
 
-import managerindustry.logic.exception.MaximumValueSkillexceededException;
+import managerindustry.logic.exception.ErrorExeption;
 
 /**
  *
@@ -19,14 +19,15 @@ public class FormulasSkill {
      * @param float percente
      * @return float
      */
-    protected float calculateLevelPerSkill(byte level, float percente)  {
+    protected float calculateLevelPerSkill(byte level, float percente) {
         try {
             if ( level >= 0 && level <= 5){
                 return level * percente;
             }else{
-                throw new MaximumValueSkillexceededException();
+                throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.MAX_VALUE_SKILL_EXCEEDED);
+//                throw new MaximumValueSkillexceededException();
             }
-        } catch (MaximumValueSkillexceededException ex) {
+        } catch (ErrorExeption ex) {
             System.out.println(""+ex.getMessage());
             return 0.0f;
         }

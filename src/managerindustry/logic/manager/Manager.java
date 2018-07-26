@@ -7,11 +7,10 @@ package managerindustry.logic.manager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import managerindustry.logic.apiEsiJson.ApiEsi;
-import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.apiEsi.ApiEsi;
 import managerindustry.logic.manager.build.Build;
-import managerindustry.logic.manager.managerDB.Db;
-import managerindustry.logic.manager.tax.SystemCostXXX;
+import managerindustry.logic.manager.db.item.user.login.LoginSql;
+import managerindustry.logic.manager.db.Db;
 
 /**
  *
@@ -60,5 +59,5 @@ public class Manager {
 //        return systemCost;
 //        
 //    }
-      
+
 }
