@@ -6,6 +6,7 @@
 package managerindustry.logic.tax.formulas.itemcost.systemCostIndex;
 
 import managerindustry.logic.exception.SolarSystemNotExistsException;
+import managerindustry.logic.manager.Manager;
 
 /**
  * 
@@ -19,7 +20,7 @@ public class SystemCostIndex {
      * @throws SolarSystemNotExistsException 
     */
     public static float SystemCostIndex(String solarSystemID, String actvity) throws SolarSystemNotExistsException{
-        return managerindustry.logic.manager.tax.SystemCostXXX.getInstance().getCostIndexEntity(solarSystemID, actvity);
+        return Manager.getInstance().game().systemCost().getCostIndexEntity(solarSystemID, actvity);
     }
 
     /**
@@ -30,6 +31,6 @@ public class SystemCostIndex {
      * @throws SolarSystemNotExistsException 
      */
     public static float SystemCostIndexDBG(String solarSystemID, String actvity) throws SolarSystemNotExistsException{
-        return managerindustry.logic.manager.tax.SystemCostXXX.getInstance().getCostIndexEntityDBG(solarSystemID, actvity, false);
+        return Manager.getInstance().game().systemCost().getCostIndexEntityDBG(solarSystemID, actvity, false);
     }
 }

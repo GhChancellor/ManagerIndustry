@@ -5,7 +5,6 @@
  */
 package managerindustry.logic.apiEsi.skill;
 
-import java.util.Map;
 import managerindustry.db.entities.user.UserApiEntity;
 import managerindustry.logic.apiEsi.skill.characterSkills.CharacterSkills;
 import managerindustry.logic.apiEsi.skill.characterSkills.SkillParser;

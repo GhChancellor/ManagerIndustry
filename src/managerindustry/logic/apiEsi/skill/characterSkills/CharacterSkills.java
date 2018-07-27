@@ -7,22 +7,8 @@ package managerindustry.logic.apiEsi.skill.characterSkills;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import java.awt.Desktop;
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.FileReader;
-import java.io.InputStreamReader;
 import java.io.Reader;
-import java.lang.reflect.Type;
-import java.net.URI;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.net.ssl.HttpsURLConnection;
 import managerindustry.db.entities.user.UserApiEntity;
 
 /**

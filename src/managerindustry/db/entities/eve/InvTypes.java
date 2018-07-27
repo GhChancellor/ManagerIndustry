@@ -42,20 +42,20 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "InvTypes.findByGraphicID", query = "SELECT i FROM InvTypes i WHERE i.graphicID = :graphicID")   
       
         // DGB collocare in una posizione migliore? fa parte del gruppo invType ma recupera solo skill
-    , @NamedQuery(name = "InvTypes.findByTypeId-Published-AttributeID",  query = 
-     "SELECT NEW managerindustry.logic.skill.SkillX ( a.typeName, a.description, b.valueFloat, b.valueInt ) "
-    + "FROM InvTypes a, DgmTypeAttributes b, DgmAttributeTypes c "
-    + "WHERE a.typeID = b.dgmTypeAttributesPK.typeID and "
-    + "b.dgmTypeAttributesPK.attributeID = c.attributeID AND "
-    + "a.typeID = :typeID AND "
-    + "a.published = :published AND "
-    + "c.attributeID = :attributeID"),
+//    , @NamedQuery(name = "InvTypes.findByTypeId-Published-AttributeID",  query = 
+//     "SELECT NEW managerindustry.logic.skill.SkillX ( a.typeName, a.description, b.valueFloat, b.valueInt ) "
+//    + "FROM InvTypes a, DgmTypeAttributes b, DgmAttributeTypes c "
+//    + "WHERE a.typeID = b.dgmTypeAttributesPK.typeID and "
+//    + "b.dgmTypeAttributesPK.attributeID = c.attributeID AND "
+//    + "a.typeID = :typeID AND "
+//    + "a.published = :published AND "
+//    + "c.attributeID = :attributeID"),
     
     // DBG findByParentGroupID e marketGroupID sono usati per fare la ricorsione del market
-    @NamedQuery(name = "InvTypes.findByParentGroupID", 
-      query = "SELECT a FROM InvMarketGroups i, InvTypes a WHERE a.marketGroupID = i.marketGroupID and i.parentGroupID = :parentGroupID and a.published = :published"),
+    , @NamedQuery(name = "InvTypes.findByParentGroupID", 
+      query = "SELECT a FROM InvMarketGroups i, InvTypes a WHERE a.marketGroupID = i.marketGroupID and i.parentGroupID = :parentGroupID and a.published = :published")
     
-    @NamedQuery(name = "InvTypes.findByMarketGroupIDXXX", 
+    , @NamedQuery(name = "InvTypes.findByMarketGroupIDXXX", 
       query = "SELECT a FROM InvMarketGroups i, InvTypes a WHERE a.marketGroupID = i.marketGroupID and i.marketGroupID = :marketGroupID and a.published = :published"), 
     
 

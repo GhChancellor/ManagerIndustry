@@ -7,10 +7,9 @@ package managerindustry.logic.manager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import managerindustry.logic.apiEsi.ApiEsi;
-import managerindustry.logic.manager.build.Build;
-import managerindustry.logic.manager.db.item.user.login.LoginSql;
+import managerindustry.logic.manager.apiEsi.ApiEsi;
 import managerindustry.logic.manager.db.Db;
+import managerindustry.logic.manager.game.Game;
 
 /**
  *
@@ -46,13 +45,15 @@ public class Manager {
     }
     
     /**
-     * Build
-     * @return Build
+     * Game
+     * @return Game
      */
-    public Build build(){
-        Build build = new Build();
-        return build;
+    public Game game(){
+        Game game = new Game();
+        return game;
     }
+    
+        
     
 //    public SystemCostXXX systemCost(){
 //        SystemCostXXX systemCost = new SystemCostXXX();

@@ -11,7 +11,7 @@ import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.build.ComponentX;
 import managerindustry.logic.build.MaterialForComponents;
-import managerindustry.logic.manager.build.ManagerComponentX;
+import managerindustry.logic.manager.game.build.ManagerComponentX;
 
 /**
  *

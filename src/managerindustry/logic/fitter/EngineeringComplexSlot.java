@@ -22,6 +22,7 @@ import managerindustry.logic.fitter.structure.logic.StructureLibrary;
  */
 public class EngineeringComplexSlot {
     private EngineeringComplex engineeringComplex;
+    
     private Map< /* typeId */ Integer , MaxGroupFitted > maxGroupFittedMap = new HashMap<>();
     
     private float currentCalibration = 0;
@@ -53,6 +54,12 @@ public class EngineeringComplexSlot {
         }        
     }
     
+    public EngineeringComplexSlot(PlatformEnum platformEnum, 
+        String rigName, SecurityStatusEnum securityStatusEnum) throws ErrorExeption {
+        engineeringComplex(platformEnum);
+        engineeringRigs(rigName, securityStatusEnum);
+    }
+   
     /**
      * Engineering Complex Slot
      */

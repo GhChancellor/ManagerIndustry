@@ -12,8 +12,8 @@ import managerindustry.logic.enumName.SecurityStatusEnum;
 import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.gui.display.DisplaySpeculation;
-import managerindustry.logic.manager.build.Build;
-import managerindustry.logic.manager.build.ManagerComponentX;
+import managerindustry.logic.manager.game.build.Build;
+import managerindustry.logic.manager.game.build.ManagerComponentX;
 import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
@@ -28,10 +28,10 @@ import managerindustry.logic.manager.Manager;
  */
 public class MainProgramm {
 
-    public static void main(String[] args) throws SolarSystemNotExistsException{
+    public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
         buildItem(); // << controllare
-//        jobInstallationFee();
-//        speculation(); // << controllare
+//        jobInstallationFee(); << controllare funziona male
+//        speculation(); // << controllare funziona male
 //        recursionItems();
 //        structure();
     }

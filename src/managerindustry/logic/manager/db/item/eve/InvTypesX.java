@@ -10,7 +10,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import managerindustry.db.entities.eve.InvTypes;
-import managerindustry.logic.skill.SkillX;
+import managerindustry.logic.prove.skill.old.Skill_OLD;
+import managerindustry.logic.prove.skill.old.SkillX_OLD;
 
 /**
  * SELECT * FROM industryDB.invTypes where invTypes.typeName = "scythe blueprint"; -- scythe typeID 976 scimitar 11979
@@ -30,34 +31,36 @@ public class InvTypesX {
     }
     
     /**
+     * @deprecated 
      * Get value skill like description or name....
      * @param int typeID
      * @param Boolean published
      * @param int attributeID
-     * @return SkillX
+     * @return SkillX_OLD
      */
-    public SkillX getSkillValues(int typeID, Boolean published, int attributeID){
-        try {
-            // Devo recupareare i valori misti di più taballe e metterle nella lista SkillX
-            TypedQuery < SkillX > typedQueryTQ = 
-              entityManager.createNamedQuery("InvTypes.findByTypeId-Published-AttributeID", SkillX.class);
-
-            typedQueryTQ.setParameter("typeID", typeID);
-            typedQueryTQ.setParameter("published", published);
-            typedQueryTQ.setParameter("attributeID", attributeID);
-
-            List < SkillX > skills = typedQueryTQ.setMaxResults(10).getResultList();
-                        
-            if ( skills.isEmpty() ){
-                return null;
-            }else{
-                return skills.get(0);
-            }            
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }            
+    public SkillX_OLD getSkillValues(int typeID, Boolean published, int attributeID){
+        return null;
+//        try {
+//            // Devo recupareare i valori misti di più taballe e metterle nella lista SkillX_OLD
+//            TypedQuery < SkillX_OLD > typedQueryTQ = 
+//              entityManager.createNamedQuery("InvTypes.findByTypeId-Published-AttributeID", SkillX_OLD.class);
+//
+//            typedQueryTQ.setParameter("typeID", typeID);
+//            typedQueryTQ.setParameter("published", published);
+//            typedQueryTQ.setParameter("attributeID", attributeID);
+//
+//            List < SkillX_OLD > skills = typedQueryTQ.setMaxResults(10).getResultList();
+//                        
+//            if ( skills.isEmpty() ){
+//                return null;
+//            }else{
+//                return skills.get(0);
+//            }            
+//            
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }            
     }
     
     /**

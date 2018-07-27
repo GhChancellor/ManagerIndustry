@@ -15,6 +15,32 @@ public class NameBase {
     private int quanityInt;
     private double quanityDbl;
 
+    public NameBase(int id, String name, int quanityInt) {
+        this.id = id;
+        this.name = name;
+        this.quanityInt = quanityInt;
+    }
+
+    public NameBase(int id, String name, int quanityInt, double quanityDbl) {
+        this.id = id;
+        this.name = name;
+        this.quanityInt = quanityInt;
+        this.quanityDbl = quanityDbl;
+    }
+
+    public NameBase(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public NameBase(String name, int quanityInt) {
+        this.name = name;
+        this.quanityInt = quanityInt;
+    }
+    
+    public NameBase() {
+    }
+ 
     /**
      * Get Id
      * @return int

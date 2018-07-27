@@ -7,7 +7,7 @@ package managerindustry.logic.tax.speculation;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import managerindustry.logic.skill.TradeFormulas;
+import managerindustry.logic.prove.skill.old.TradeFormulas_OLD;
 
 /**
  *
@@ -31,7 +31,7 @@ public class SellOrder extends Tax {
         setItemsNumber(numberItems);
         setItemSellPrice(sellPrice);
                 
-        TradeFormulas tradeFormulas = new TradeFormulas();
+        TradeFormulas_OLD tradeFormulas = new TradeFormulas_OLD();
         
         float brokerFeeRate = tradeFormulas.calculateBrokerFee(brokerRelationsLevel, station);
         float saleTaxRate =  conversioneInLetturaNormale( tradeFormulas.calculateSaleTax(accountingLevel) )       ;

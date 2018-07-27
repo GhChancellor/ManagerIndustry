@@ -7,7 +7,7 @@ package managerindustry.logic.tax.speculation;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import managerindustry.logic.skill.TradeFormulas;
+import managerindustry.logic.prove.skill.old.TradeFormulas_OLD;
 
 /**
  *

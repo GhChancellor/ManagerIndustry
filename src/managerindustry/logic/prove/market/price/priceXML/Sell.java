@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.apiEsi.skill.charactersSkillQueue;
+package managerindustry.logic.prove.market.price.priceXML;
 
 /**
- * @deprecated 
+ *
  * @author lele
  */
-public class CharactersSkillQueue {
-    
-    public void xxx(){
-        
+public class Sell extends MarketElement {
+
+    public Sell() {
     }
+    
 }

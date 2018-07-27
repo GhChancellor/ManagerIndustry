@@ -16,7 +16,7 @@ public class NewClass {
 
     public NewClass() {
         EngineeringRig engineeringRig = new EngineeringRig();
-//        engineeringRig.
+//        Manager.getInstance().game().
         
     }
     
