@@ -29,6 +29,7 @@ public class ErrorExeption extends Exception{
         MAX_SLOT_RIGS("Max slot rig"),
         RIG_SIZE("Size Wrong"),
         CANT_REMOVE("You can't remove this item"),
+        ITEM_NOT_EXITS("This item doesn't exits"),
         UNKNOW_ERROR("Unknow error");
 
         private String errorMessage;

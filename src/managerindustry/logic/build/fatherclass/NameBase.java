@@ -10,32 +10,55 @@ package managerindustry.logic.build.fatherclass;
  * @author lele
  */
 public class NameBase {
-    private int id;
+    private int typeId;
     private String name;
     private int quanityInt;
     private double quanityDbl;
 
-    public NameBase(int id, String name, int quanityInt) {
-        this.id = id;
+    /**
+     * Name Base
+     * @param int typeId
+     * @param String name 
+     */
+    public NameBase(int typeId, String name) {
+        this.typeId = typeId;
+        this.name = name;
+    }
+
+    /**
+     * Name Base
+     * @param int typeId
+     * @param int quanityInt 
+     */
+    public NameBase(int typeId, int quanityInt) {
+        this.typeId = typeId;
+        this.quanityInt = quanityInt;
+    }
+
+    /**
+     * Name Base
+     * @param int typeId
+     * @param String name
+     * @param int quanityInt 
+     */
+    public NameBase(int typeId, String name, int quanityInt) {
+        this.typeId = typeId;
         this.name = name;
         this.quanityInt = quanityInt;
     }
 
-    public NameBase(int id, String name, int quanityInt, double quanityDbl) {
-        this.id = id;
+    /**
+     * Name Base
+     * @param int typeId
+     * @param String name
+     * @param int quanityInt
+     * @param double quanityDbl 
+     */
+    public NameBase(int typeId, String name, int quanityInt, double quanityDbl) {
+        this.typeId = typeId;
         this.name = name;
         this.quanityInt = quanityInt;
         this.quanityDbl = quanityDbl;
-    }
-
-    public NameBase(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public NameBase(String name, int quanityInt) {
-        this.name = name;
-        this.quanityInt = quanityInt;
     }
     
     public NameBase() {
@@ -45,16 +68,16 @@ public class NameBase {
      * Get Id
      * @return int
      */
-    public int getId() {
-        return id;
+    public int getTypeId() {
+        return typeId;
     }
 
     /**
      * Set Id
-     * @param id 
+     * @param typeId 
      */
-    public void setId(int id) {
-        this.id = id;
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
     
     /**

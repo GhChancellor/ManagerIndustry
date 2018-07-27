@@ -6,6 +6,7 @@
 package managerindustry.logic.prove.buildV2;
 
 import managerindustry.logic.enumName.RamActivitiesEnum;
+import managerindustry.logic.exception.ErrorExeption;
 import managerindustry.logic.manager.game.build.Build;
 
 /**
@@ -14,8 +15,8 @@ import managerindustry.logic.manager.game.build.Build;
  */
 public class Main {
 
-    public static void main(String[] args) {
-        String name ="scimitar";
+    public static void main(String[] args) throws ErrorExeption {
+        String name ="drake";
         int run = 1;
         int job = 1;
         byte bpoMe = 1;
@@ -24,6 +25,7 @@ public class Main {
 //        Build build = new Build(name, run, job, bpoMe, componentMe);
         
         Build_V2 build_V2 = new Build_V2(name, run, job, bpoMe, componentMe, RamActivitiesEnum.MANUFACTURING);
+//        build_V2.displayBaseMaterialRequired();
 
     }
 }

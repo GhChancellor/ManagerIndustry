@@ -8,14 +8,14 @@ package managerindustry.logic.prove.buildV2;
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.logic.build.fatherclass.NameBase;
+import managerindustry.logic.prove.skill.Skill;
 
 /**
  *
  * @author lele
  */
 public class RequiredItemsRecursionA extends NameBase {
-    private List < RequiredItemsRecursionB > materialRequiredRecursionBs = new ArrayList<>();
-
+    private List < RequiredItemsRecursionB > materialRequiredRecursionBs = new ArrayList<>();   
     /**
      * Get material Required
      * @return List<MaterialRequiredRecursionB>
@@ -28,8 +28,11 @@ public class RequiredItemsRecursionA extends NameBase {
      * Add Material Required
      * @param recursionB 
      */
-    private void addMaterialRequiredRecursionB(RequiredItemsRecursionB recursionB) {
+    public void addMaterialRequiredRecursionB(RequiredItemsRecursionB recursionB) {
         this.materialRequiredRecursionBs.add(recursionB);
+    }
+
+    public RequiredItemsRecursionA() {
     }
 
     /**
@@ -43,15 +46,16 @@ public class RequiredItemsRecursionA extends NameBase {
     }
     
     public RequiredItemsRecursionA(int typeID, String typeName) {
-        super(typeID, typeName );
+        super(typeID, typeName);
     }
 
-    public RequiredItemsRecursionA(String typeName, int quantity) {
-        super( typeName, quantity);
+    /**
+     * Required skill RecursionA
+     * @param int typeID
+     * @param int requiredSKill
+     * @param byte level 
+     */
+    public RequiredItemsRecursionA(int typeID, int requiredSKill, byte level){
+        Skill skill = new Skill(typeID, requiredSKill, level);
     }
-
-    public RequiredItemsRecursionA() {
-    }        
-    
-    
 }

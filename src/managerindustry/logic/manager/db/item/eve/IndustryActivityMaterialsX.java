@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.manager.db.item.eve;
 
-import managerindustry.logic.manager.db.Db;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -13,7 +13,6 @@ import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.Manager;
-//import managerindustry.logic.manager.db.ManagerDBEve;
 
 /**
  *
@@ -65,8 +64,7 @@ public class IndustryActivityMaterialsX {
         InvTypes typeID = Manager.getInstance().db().item().invTypes().getInvTypesByName(bpoName);
         
         if ( typeID == null ){
-            return null;            
-            // return new ArrayList<>();
+            return new ArrayList<>();
         }
         
         // convert name ( from InvTypes ) to Materials Needed ( from  IndustryActivityMaterials )
@@ -74,7 +72,7 @@ public class IndustryActivityMaterialsX {
            Manager.getInstance().db().item().industryActivityMaterials().getMaterialsID(typeID.getTypeID(), activitiesEnum );
 
         if ( invTypeMaterialses.isEmpty() ){
-            return null;
+            return new ArrayList<>();
         }
         
         return invTypeMaterialses;       

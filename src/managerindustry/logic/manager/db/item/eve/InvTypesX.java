@@ -31,7 +31,7 @@ public class InvTypesX {
     }
     
     /**
-     * @deprecated 
+     * @deprecated DISABLE!!!!
      * Get value skill like description or name....
      * @param int typeID
      * @param Boolean published

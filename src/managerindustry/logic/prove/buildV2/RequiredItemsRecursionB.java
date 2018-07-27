@@ -12,6 +12,10 @@ package managerindustry.logic.prove.buildV2;
 public class RequiredItemsRecursionB {
     private RequiredItemsRecursionA materialRequiredRecursionA;
 
+    public RequiredItemsRecursionB(RequiredItemsRecursionA materialRequiredRecursionA) {
+        this.materialRequiredRecursionA = materialRequiredRecursionA;
+    }
+
     public RequiredItemsRecursionB() {
     }
 
