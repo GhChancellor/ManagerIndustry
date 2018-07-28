@@ -9,9 +9,12 @@ import java.util.List;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.IndustryActivitySkills;
 import managerindustry.db.entities.eve.InvTypes;
-import managerindustry.logic.enumName.RamActivitiesEnum;
-import managerindustry.logic.exception.ErrorExeption;
-import managerindustry.logic.exception.ErrorExeption.ErrorExeptionEnum;
+import managerindustry.logic.build.ComponentX;
+import managerindustry.logic.build.MaterialForComponents;
+import managerindustry.logic.generic.enumName.RamActivitiesEnum;
+import managerindustry.logic.generic.exception.ErrorExeption;
+import managerindustry.logic.generic.exception.ErrorExeption.ErrorExeptionEnum;
+import managerindustry.logic.generic.recursion.ItemRecursionB;
 import managerindustry.logic.manager.Manager;
 
 /**
@@ -19,8 +22,8 @@ import managerindustry.logic.manager.Manager;
  * @author lele
  */
 public class Build_V2 {
-    private RequiredItemsRecursionA requiredItems;
-    private RequiredItemsRecursionA requiredSkill;
+    private RequiredMaterialRecusion requiredItems;
+    private RequiredSkillRecusion requiredSkill;
     private String DBG_bpoName;
     /**
      * 
@@ -51,10 +54,10 @@ public class Build_V2 {
             Manager.getInstance().db().item().industryActivitySkills().getRequiredSkill(typeID, activitiesEnum);
         
 
-        RequiredItemsRecursionA requiredItems = new RequiredItemsRecursionA();
+        RequiredMaterialRecusion requiredItems = new RequiredMaterialRecusion();
         baseMaterialRequired(materialLists, requiredItems, activitiesEnum);
 
-        RequiredItemsRecursionA requiredSkill = new RequiredItemsRecursionA();
+        RequiredSkillRecusion requiredSkill = new RequiredSkillRecusion();
         skillRequired(industryActivitySkills, requiredSkill, activitiesEnum);
 
         this.requiredItems = requiredItems;
@@ -64,29 +67,44 @@ public class Build_V2 {
     
     /**
      * required skill to build object
+     * @param List<IndustryActivitySkills> industryActivitySkills industryActivitySkills
+     * @param RequiredSkillRecusion requiredA requiredA
+     * @param RamActivitiesEnum activitiesEnum 
      */
-    private void skillRequired(List<IndustryActivitySkills> industryActivitySkills, 
-        RequiredItemsRecursionA requiredA, RamActivitiesEnum activitiesEnum){
+    private void skillRequired(List<IndustryActivitySkills> industryActivitySkills,
+        RequiredSkillRecusion requiredA, RamActivitiesEnum activitiesEnum){
         
         for (IndustryActivitySkills industryActivitySkill : industryActivitySkills) {
-            RequiredItemsRecursionA requiredItemsRecursionA = 
-                new RequiredItemsRecursionA(industryActivitySkill.getTypeID(), 
-                industryActivitySkill.getSkillID(), industryActivitySkill.getLevel().byteValue() );
+
             
-            requiredA.addMaterialRequiredRecursionB(new RequiredItemsRecursionB(requiredItemsRecursionA) );
+            RequiredSkillRecusion requiredSkillRecusion = 
+                new RequiredSkillRecusion(
+                industryActivitySkill.getTypeID(), getName(industryActivitySkill.getTypeID()),
+                        
+                industryActivitySkill.getSkillID(), getName(industryActivitySkill.getSkillID()),
+                industryActivitySkill.getLevel().byteValue() );            
+            
+            requiredA.addRecursionB02(new ItemRecursionB(requiredSkillRecusion));
+            
+            List<IndustryActivitySkills> recursion = 
+                Manager.getInstance().db().item().industryActivitySkills().getRequiredSkill(
+                industryActivitySkill.getSkillID(), activitiesEnum);
+            
+            if (!recursion.isEmpty())
+                skillRequired(recursion, requiredA, activitiesEnum);            
         }
-        
-        
     }
         
-    
+    private String getName(int typeId){
+        return Manager.getInstance().db().item().invTypes().getInvTypesById(
+            typeId).getTypeName();
+    }
     /**
-     * new RequiredItemsRecursionA(invTypes.getTypeName(), materialList.getQuantity()); deve essere quella finale
-     * 
+     * new RequiredItemsRecursionA_OLD(invTypes.getTypeName(), materialList.getQuantity()); deve essere quella finale
      * Material required to build object
      */
     private void baseMaterialRequired(List< IndustryActivityMaterials> materialLists, 
-        RequiredItemsRecursionA requiredA, RamActivitiesEnum activitiesEnum ) {
+        RequiredMaterialRecusion requiredA, RamActivitiesEnum activitiesEnum ) {
         
         for (IndustryActivityMaterials materialList : materialLists) {
             
@@ -94,12 +112,12 @@ public class Build_V2 {
             InvTypes invTypes =
               Manager.getInstance().db().item().invTypes().getInvTypesById(materialList.getMaterialTypeID());
             
-            RequiredItemsRecursionA requiredItemsRecursionA = 
-                new RequiredItemsRecursionA(invTypes.getTypeID(), invTypes.getTypeName(), materialList.getQuantity());
-//                new RequiredItemsRecursionA(invTypes.getTypeName(), materialList.getQuantity());
+            RequiredMaterialRecusion requiredItemsRecursionA = 
+                new RequiredMaterialRecusion(invTypes.getTypeID(), invTypes.getTypeName(), materialList.getQuantity());
+//                new RequiredMaterialRecusion(invTypes.getTypeName(), materialList.getQuantity());
 
-            requiredA.addMaterialRequiredRecursionB(new RequiredItemsRecursionB(requiredItemsRecursionA));
-
+            requiredA.addRecursionB02(new ItemRecursionB(requiredItemsRecursionA));
+            
             // get value blueprint component if necessary
             List< IndustryActivityMaterials> neededComponents = 
               Manager.getInstance().db().item().industryActivityMaterials().getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
@@ -111,26 +129,50 @@ public class Build_V2 {
     }
     
     public void displayBaseMaterialRequired(){
-        display();
-        displayMap(requiredItems, "");
+        displayBaseMaterialRequired_(requiredItems, "");        
     }
     
-    private void displayMap(RequiredItemsRecursionA requiredItems, String tab){
-        System.out.println(""+ requiredItems.getTypeId() + " " + 
-            requiredItems.getName() + " " + 
-            requiredItems.getQuanityInt() + " - " +
-            requiredItems.getQuanityDbl());
+    private void displayRequiredSkill( ){
+        displayRequiredSkill_(requiredSkill, "");
+    }
+    
+    private void displayRequiredSkill_( RequiredSkillRecusion requiredSkillA, String tab){
+        
+        System.out.println("" + 
+            requiredSkillA.getTypeIdSkill() + " " +
+            requiredSkillA.getNameSkill() + " - " +
+            requiredSkillA.getRequiredSKillId() + " " +
+            requiredSkillA.getRequiredSKillName() + " " +
+            requiredSkillA.getLevel() );
+        
+        tab += tab;
+        
+        for (ItemRecursionB recursionB02 : requiredSkillA.getRecursionB02s()) {
+            displayRequiredSkill_( (RequiredSkillRecusion) recursionB02.getRecursionA02(), tab);
+        }
+    }
+    
+    private void displayBaseMaterialRequired_(RequiredMaterialRecusion requiredItemA, String tab){
+        System.out.println(""+ requiredItemA.getTypeID() + " " + 
+            requiredItemA.getTypeName()+ " " + 
+            requiredItemA.getQuantity()+ " - " +
+            requiredItemA.getQuanityDbl());
         
         tab +="\t";
         
-        for (RequiredItemsRecursionB requiredItemsB : requiredItems.getMaterialRequiredRecursionBs()) {
-            displayMap(requiredItemsB.getMaterialRequiredRecursionA(), tab);
+        for (ItemRecursionB requiredItem : requiredItemA.getRecursionB02s()) {
+            displayBaseMaterialRequired_((RequiredMaterialRecusion) requiredItem.getRecursionA02(), tab);
         }
+                
+        
     }
     
     public void display(){
         InvTypes invTypes = Manager.getInstance().db().item().invTypes().getInvTypesByName(DBG_bpoName);
         System.out.println(""+ invTypes.getTypeID() + " " +invTypes.getTypeName() );
+        
+//        displayBaseMaterialRequired();
+        displayRequiredSkill();
     }
     
 }

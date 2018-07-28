@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import managerindustry.db.entities.cache.TaxCostIndexEntity;
 import managerindustry.db.entities.cache.TaxSolarSystemEntity;
-import managerindustry.logic.exception.SolarSystemNotExistsException;
+import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.apiEsi.industry.listSolarSystemCostIndices.CostIndex;
 import managerindustry.logic.apiEsi.industry.listSolarSystemCostIndices.SolarSystemCost;
 import managerindustry.logic.manager.Manager;

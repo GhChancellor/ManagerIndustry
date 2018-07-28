@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringComplex;
 
-import managerindustry.logic.enumName.PlatformEnum;
+import managerindustry.logic.generic.enumName.PlatformEnum;
 import managerindustry.logic.manager.db.Db;
 import managerindustry.logic.fitter.structure.logic.BaseStructure;
 import managerindustry.logic.manager.Manager;

@@ -22,24 +22,6 @@ public class InitMediumRigGroups {
     private InitCommonRigGroups initCommonRigGroups = new InitCommonRigGroups();
     
     public InitMediumRigGroups() {
-//        initStandupMSetEquipmentManufacturing();
-//        initStandupMSetAdvancedComponentManufacturing();
-//        initStandupMSetAdvancedLargeShipManufacturing();
-//        initStandupMSetAdvancedMediumShipManufacturing();
-//        initStandupMSetAdvancedSmallShipManufacturing();
-//        initStandupMSetAmmunitionManufacturing();
-//        initStandupMSetBasicCapitalComponentManufacturing();
-//        initStandupMSetBasicLargeShipManufacturing();
-//        initStandupMSetBasicMediumShipManufacturing();
-//        initStandupMSetBasicSmallShipManufacturing();
-//        initStandupMSetDroneAndFighterManufacturing();
-//        initStandupMSetStructureManufacturing();
-//        initStandupMSetThukkerAdvancedComponentManufacturing();
-//        initStandupMSetThukkerBasicCapitalComponentManufacturing();
-//        initStandupMSetBlueprintCopy();
-//        initStandupMSetInvention();
-//        initStandupMSetMEResearch();
-//        initStandupMSetTEResearch();
     }
     
     /**

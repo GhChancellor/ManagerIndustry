@@ -6,7 +6,7 @@
 package managerindustry.logic.prove.daValutare.blueprints;
 
 import managerindustry.db.entities.eve.IndustryActivity;
-import managerindustry.logic.enumName.RamActivitiesEnum;
+import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.Manager;
 
 /**

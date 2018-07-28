@@ -6,7 +6,7 @@
 package managerindustry.logic.manager.db.item;
 
 import javax.persistence.EntityManager;
-import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.manager.db.item.cache.avoidDuplicateRig.AvoidDuplicateRigX;
 import managerindustry.logic.manager.db.item.cache.effectRig.EffectEngineeringRigX;
 import managerindustry.logic.manager.db.item.cache.price.PriceX;

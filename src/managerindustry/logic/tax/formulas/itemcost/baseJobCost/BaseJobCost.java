@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.build.ReportCalculatedComponentX;
-import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.manager.Manager;
 //import managerindustry.logic.manager.old.db.ManagerDBEve_OLD;
 /**

@@ -15,7 +15,7 @@ import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.PriceEntityJpaController;
 import managerindustry.db.entities.cache.PriceEntity;
 import managerindustry.logic.apiEsi.market.listMarketPrices.Price;
-import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.manager.Manager;
 
 /**

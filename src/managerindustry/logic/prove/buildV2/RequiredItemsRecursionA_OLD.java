@@ -14,13 +14,14 @@ import managerindustry.logic.prove.skill.Skill;
  *
  * @author lele
  */
-public class RequiredItemsRecursionA extends NameBase {
-    private List < RequiredItemsRecursionB > materialRequiredRecursionBs = new ArrayList<>();   
+public class RequiredItemsRecursionA_OLD extends NameBase {
+    private List < RequiredItemsRecursionB_OLD > materialRequiredRecursionBs = new ArrayList<>();   
+    
     /**
      * Get material Required
      * @return List<MaterialRequiredRecursionB>
      */
-    public List<RequiredItemsRecursionB> getMaterialRequiredRecursionBs() {
+    public List<RequiredItemsRecursionB_OLD> getMaterialRequiredRecursionBs() {
         return materialRequiredRecursionBs;
     }
 
@@ -28,11 +29,11 @@ public class RequiredItemsRecursionA extends NameBase {
      * Add Material Required
      * @param recursionB 
      */
-    public void addMaterialRequiredRecursionB(RequiredItemsRecursionB recursionB) {
+    public void addMaterialRequiredRecursionB(RequiredItemsRecursionB_OLD recursionB) {
         this.materialRequiredRecursionBs.add(recursionB);
     }
 
-    public RequiredItemsRecursionA() {
+    public RequiredItemsRecursionA_OLD() {
     }
 
     /**
@@ -41,21 +42,13 @@ public class RequiredItemsRecursionA extends NameBase {
      * @param String typeName
      * @param int quantity 
      */
-    public RequiredItemsRecursionA(int typeID, String typeName, int quantity) {
+    public RequiredItemsRecursionA_OLD(int typeID, String typeName, int quantity) {
         super(typeID, typeName, quantity);
     }
     
-    public RequiredItemsRecursionA(int typeID, String typeName) {
+    public RequiredItemsRecursionA_OLD(int typeID, String typeName) {
         super(typeID, typeName);
     }
-
-    /**
-     * Required skill RecursionA
-     * @param int typeID
-     * @param int requiredSKill
-     * @param byte level 
-     */
-    public RequiredItemsRecursionA(int typeID, int requiredSKill, byte level){
-        Skill skill = new Skill(typeID, requiredSKill, level);
-    }
+    
+    
 }

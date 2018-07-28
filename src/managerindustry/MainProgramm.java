@@ -7,10 +7,10 @@ package managerindustry;
 
 import java.util.Map;
 import managerindustry.logic.build.ReportCalculatedComponentX;
-import managerindustry.logic.enumName.PlatformEnum;
-import managerindustry.logic.enumName.SecurityStatusEnum;
-import managerindustry.logic.exception.ErrorExeption;
-import managerindustry.logic.exception.SolarSystemNotExistsException;
+import managerindustry.logic.generic.enumName.PlatformEnum;
+import managerindustry.logic.generic.enumName.SecurityStatusEnum;
+import managerindustry.logic.generic.exception.ErrorExeption;
+import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.gui.display.DisplaySpeculation;
 import managerindustry.logic.manager.game.build.Build;
 import managerindustry.logic.manager.game.build.ManagerComponentX;

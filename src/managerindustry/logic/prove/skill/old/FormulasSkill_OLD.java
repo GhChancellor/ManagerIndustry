@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.prove.skill.old;
 
-import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.generic.exception.ErrorExeption;
 
 /**
  *

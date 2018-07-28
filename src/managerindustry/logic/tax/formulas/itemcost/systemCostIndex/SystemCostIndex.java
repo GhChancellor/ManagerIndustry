@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.tax.formulas.itemcost.systemCostIndex;
 
-import managerindustry.logic.exception.SolarSystemNotExistsException;
+import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.Manager;
 
 /**

@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.manager.game.fitter;
 
-import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.fitter.EngineeringComplexSlot;
 
 /**

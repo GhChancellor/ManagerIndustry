@@ -5,8 +5,8 @@
  */
 package managerindustry.logic.manager.game;
 
-import managerindustry.logic.exception.ErrorExeption;
-import managerindustry.logic.exception.SolarSystemNotExistsException;
+import managerindustry.logic.generic.exception.ErrorExeption;
+import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.game.build.Build;
 import managerindustry.logic.manager.game.fitter.Fitter;
 import managerindustry.logic.prove.skill.old.Skill_OLD;

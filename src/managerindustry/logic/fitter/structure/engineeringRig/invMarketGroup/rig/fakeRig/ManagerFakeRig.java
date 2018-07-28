@@ -7,10 +7,10 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.logic.enumName.RuleBonusRigEnum;
-import managerindustry.logic.enumName.SecurityStatusEnum;
-import managerindustry.logic.enumName.TierEnum;
-import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.generic.enumName.RuleBonusRigEnum;
+import managerindustry.logic.generic.enumName.SecurityStatusEnum;
+import managerindustry.logic.generic.enumName.TierEnum;
+import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.manager.Manager;
 import managerindustry.logic.manager.db.Db;
 

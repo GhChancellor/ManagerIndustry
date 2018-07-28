@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
-import managerindustry.logic.enumName.RamActivitiesEnum;
+import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.Manager;
 
 /**

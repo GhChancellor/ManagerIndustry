@@ -5,9 +5,9 @@
  */
 package managerindustry.logic.fitter;
 
-import managerindustry.logic.enumName.PlatformEnum;
-import managerindustry.logic.enumName.SecurityStatusEnum;
-import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.generic.enumName.PlatformEnum;
+import managerindustry.logic.generic.enumName.SecurityStatusEnum;
+import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
 import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
 

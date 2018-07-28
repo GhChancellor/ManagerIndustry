@@ -6,13 +6,10 @@
 package managerindustry.logic.manager.db.item.eve;
 
 import java.util.ArrayList;
-import managerindustry.logic.manager.db.Db;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import managerindustry.db.entities.eve.DgmTypeAttributes;
-import managerindustry.db.entities.eve.InvTypes;
-//import managerindustry.logic.manager.managerDB.ManagerDBEve;
 
 /**
  * 

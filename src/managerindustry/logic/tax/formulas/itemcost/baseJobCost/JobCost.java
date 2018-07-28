@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.tax.formulas.itemcost.baseJobCost;
 
-import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.manager.Manager;
 
 /**

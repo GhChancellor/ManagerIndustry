@@ -39,6 +39,9 @@ public class Skill extends NameBase{
         super.setQuanityInt(requiredSKillId); // it's required SKill Id skill!!!!!!
         this.requiredLevel = level;        
     }
+
+    public Skill() {
+    }    
     
     public byte getCurrentLevel() {
         return currentLevel;

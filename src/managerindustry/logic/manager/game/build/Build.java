@@ -18,7 +18,7 @@ import managerindustry.logic.build.ComponentX;
 import managerindustry.logic.build.MaterialEfficiencyCalculate;
 import managerindustry.logic.build.MaterialForComponents;
 import managerindustry.logic.build.ReportCalculatedComponentX;
-import managerindustry.logic.enumName.RamActivitiesEnum;
+import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.Manager;
 
 /**

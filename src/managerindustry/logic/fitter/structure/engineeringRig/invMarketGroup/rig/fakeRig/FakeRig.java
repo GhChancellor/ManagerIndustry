@@ -5,8 +5,8 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.fakeRig;
 
-import managerindustry.logic.enumName.RuleBonusRigEnum;
-import managerindustry.logic.enumName.TierEnum;
+import managerindustry.logic.generic.enumName.RuleBonusRigEnum;
+import managerindustry.logic.generic.enumName.TierEnum;
 
 /**
  *

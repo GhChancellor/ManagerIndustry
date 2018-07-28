@@ -5,9 +5,9 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig;
 
-import managerindustry.logic.enumName.RuleBonusRigEnum;
-import managerindustry.logic.enumName.SecurityStatusEnum;
-import managerindustry.logic.exception.ErrorExeption;
+import managerindustry.logic.generic.enumName.RuleBonusRigEnum;
+import managerindustry.logic.generic.enumName.SecurityStatusEnum;
+import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.ChooseRig;
 import managerindustry.logic.fitter.structure.logic.BaseStructure;
 import managerindustry.logic.manager.Manager;

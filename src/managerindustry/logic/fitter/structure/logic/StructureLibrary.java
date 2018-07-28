@@ -7,7 +7,7 @@ package managerindustry.logic.fitter.structure.logic;
 
 import java.math.BigDecimal;
 import managerindustry.db.entities.eve.DgmTypeAttributes;
-import managerindustry.logic.enumName.RuleBonusRigEnum;
+import managerindustry.logic.generic.enumName.RuleBonusRigEnum;
 import managerindustry.logic.manager.db.Db;
 
 /**
