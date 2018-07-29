@@ -7,10 +7,7 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.logic.manager.db.Db;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigsXXX;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.InitCommonRigGroups;
 
@@ -22,11 +19,6 @@ public class InitXLRigGroups{
     private InitCommonRigGroups initCommonRigGroups = new InitCommonRigGroups();
     
     public InitXLRigGroups() {
-//        initStandupXLSetEquipmentAndConsumableManufacturing();
-//        initStandupXLSetShipManufacturing();
-//        initStandupXLSetLaboratory();
-//        initStandupXLSetStructureAndComponentManufacturing();
-//        initStandupXLSetThukkerStructureAndComponentManufacturing();
     }
     
     /**

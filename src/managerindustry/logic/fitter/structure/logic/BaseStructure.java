@@ -17,6 +17,9 @@ public abstract class BaseStructure {
     protected abstract void calculedBonus();
     public abstract void displayAllValueCalculated();
     public abstract void displayValue();
+
+    public BaseStructure() {
+    }
     
     /**
      * Truncate to decimal

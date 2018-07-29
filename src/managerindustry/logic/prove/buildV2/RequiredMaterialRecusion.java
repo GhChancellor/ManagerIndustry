@@ -12,7 +12,7 @@ import managerindustry.logic.generic.recursion.ItemRecursionA;
  * estendila a BaseName
  * @author lele
  */
-public class RequiredMaterialRecusion extends ItemRecursionA{
+public class RequiredMaterialRecusion extends ItemRecursionA {
     private int typeID;  
     private String typeName;
     private int quantity;

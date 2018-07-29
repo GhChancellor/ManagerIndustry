@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.buildV2;
+package managerindustry.logic.prove.skill;
 
 import managerindustry.logic.generic.recursion.ItemRecursionA;
 
@@ -18,8 +18,7 @@ public class RequiredSkillRecusion extends ItemRecursionA{
     private int requiredSKillId;
     private String requiredSKillName;
 
-    private byte level;
-    
+    private byte level;    
 
     public RequiredSkillRecusion() {
     }

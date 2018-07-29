@@ -7,7 +7,6 @@ package managerindustry.logic.prove.buildV2;
 
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.manager.game.build.Build;
 
 /**
  *
@@ -24,8 +23,11 @@ public class Main {
         
 //        Build build = new Build(name, run, job, bpoMe, componentMe);
         
-        Build_V2 build_V2 = new Build_V2(name, run, job, bpoMe, componentMe, RamActivitiesEnum.MANUFACTURING);
-        build_V2.display();
+//        Build_V2 build_V2 = new Build_V2(name, run, job, bpoMe, componentMe, RamActivitiesEnum.MANUFACTURING);
+//        build_V2.display();
+
+        BasicMaterialRequired buildV3 = new BasicMaterialRequired(name, run, job, bpoMe, componentMe, RamActivitiesEnum.MANUFACTURING);
+        buildV3.displayBasicMaterialRequired();
 
     }
 }

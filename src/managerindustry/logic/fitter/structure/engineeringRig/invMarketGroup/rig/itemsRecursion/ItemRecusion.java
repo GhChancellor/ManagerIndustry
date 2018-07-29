@@ -8,7 +8,6 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 import java.util.List;
 import managerindustry.db.entities.eve.InvMarketGroups;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.manager.db.Db;
 
 /**
  *
