@@ -54,10 +54,18 @@ public class RequiredMaterialRecusion extends ItemRecursionA {
         return typeName;
     }
 
+    /**
+     * Get Quantity
+     * @return int
+     */
     public int getQuantity() {
         return quantity;
     }
 
+    /**
+     * Get Quanity Dbl
+     * @return double
+     */
     public double getQuanityDbl() {
         return quanityDbl;
     }

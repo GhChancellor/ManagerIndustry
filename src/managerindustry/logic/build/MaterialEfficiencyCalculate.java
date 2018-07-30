@@ -8,7 +8,7 @@ package managerindustry.logic.build;
 import managerindustry.logic.build.MaterialEfficiency;
 
 /**
- *
+ * Calculate material Efficiency
  * @author lele
  */
 public class MaterialEfficiencyCalculate {
@@ -59,4 +59,8 @@ public class MaterialEfficiencyCalculate {
         itemMaterialDbl = job * Math.ceil( ((quantityBaseMarial * run) * materialEfficiencyRate) * platformModifier );
         totalItemsMaterials = itemMaterialDbl;        
     }
+
+    public MaterialEfficiencyCalculate() {
+    }
+    
 }
