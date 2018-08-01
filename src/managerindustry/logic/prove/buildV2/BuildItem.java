@@ -9,6 +9,7 @@ import java.util.List;
 import managerindustry.logic.build.MaterialEfficiencyCalculate;
 import managerindustry.logic.generic.GenericRequiredItem;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
+import managerindustry.logic.generic.recursion.ItemRecursionA;
 import managerindustry.logic.generic.recursion.ItemRecursionB;
 
 /**
@@ -22,50 +23,66 @@ public class BuildItem extends GenericRequiredItem{
     private int job;
     private byte bpoME;
     private byte componentMe;
-    private int singleMaterial;
-    private double totalMaterials;
-    
+    private int singleMaterialQuantity;
+    private double totalMaterialQuantity;    
     private RequiredMaterialRecusion basicRequiredMaterial;
+    private ReportItem repotItem; 
     
-
-    private void calculateRequiredItem( RequiredMaterialRecusion basicRequiredMaterial, RequiredMaterialRecusion requiredA) {        
-        
-        System.out.println(""+ basicRequiredMaterial.getTypeName());
-        
-        if ( !basicRequiredMaterial.getRecursionB02s().isEmpty())
-            calculateRequiredItem(basicRequiredMaterial, requiredA);
+    private void calculateRequiredItem( RequiredMaterialRecusion basicRequiredMaterial, RequiredMaterialRecusion requiredA00) {        
+        List<ItemRecursionB> recursionB = basicRequiredMaterial.getRecursionB02s();
+        for (ItemRecursionB recursionB_ : recursionB) {
             
-//        calculateME(basicRequiredMaterial);
-//        QUALCOSA_001();
-//        QUALCOSA_002(requiredA);
-        
-//        System.out.println("");
-        
-
-        
+            RequiredMaterialRecusion requiredA_ = (RequiredMaterialRecusion) (ItemRecursionA) recursionB_.getRecursionA02();
+            
+            calculateME(requiredA_);
+            calculateQuantityMaterial();
+            
+            RequiredMaterialRecusion calculateItemMaterial = 
+                getRequiredMaterialRecusion(requiredA_);            
+            
+            addItem(calculateItemMaterial);
+            
+            if ( !recursionB_.getRecursionA02().getRecursionB02s().isEmpty() ){                
+                calculateRequiredItem( 
+                    (RequiredMaterialRecusion) recursionB_.getRecursionA02() , 
+                    calculateItemMaterial );                
+            }
+        }       
     }
 
+    private void addItem(RequiredMaterialRecusion requiredA01){
+        Item singleItem = new Item(
+            requiredA01.getTypeID(), requiredA01.getTypeName(), 
+            singleMaterialQuantity, totalMaterialQuantity);
+        
+        System.out.println("");
+        repotItem = new ReportItem(singleItem);
+        
+    }
+    
     /**
-     * @deprecated 
+     * Set Required Material Recusion
      * @param RequiredMaterialRecusion requiredA 
      */
-    private void QUALCOSA_002(RequiredMaterialRecusion requiredA){
+    private RequiredMaterialRecusion getRequiredMaterialRecusion(RequiredMaterialRecusion requiredA ){
         RequiredMaterialRecusion requiredA_ = 
-            new RequiredMaterialRecusion(basicRequiredMaterial.getTypeID(), basicRequiredMaterial.getTypeName(), singleMaterial, totalMaterials);
-        requiredA.addRecursionB02( new ItemRecursionB(requiredA_));        
+            new RequiredMaterialRecusion(requiredA.getTypeID(), requiredA.getTypeName(), singleMaterialQuantity, totalMaterialQuantity);
+        requiredA_.addRecursionB02( new ItemRecursionB(requiredA) );        
+        return requiredA;
     }
     
     /**
-     * @deprecated 
+     * 
      */
-    private void QUALCOSA_001(){
+    private void calculateQuantityMaterial(){
         // quantity material per single item 1 run
-        int singleMaterial = 
-            materialEfficiencyCalculate.getSingleItemMaterial();
+        singleMaterialQuantity = materialEfficiencyCalculate.getSingleItemMaterial();
            
         // quantity material per all items 1 run
-        double totalMaterials = 
-            materialEfficiencyCalculate.getTotalItemsMaterials();           
+        totalMaterialQuantity = materialEfficiencyCalculate.getTotalItemsMaterials();         
+        
+        // destroy object
+        materialEfficiencyCalculate = null;
     }
     
     /**
@@ -90,7 +107,8 @@ public class BuildItem extends GenericRequiredItem{
         this.componentMe = componentMe;
         this.basicRequiredMaterial = basicRequiredMaterial;
         
-        calculateRequiredItem(basicRequiredMaterial, new RequiredMaterialRecusion());
+        calculateRequiredItem(this.basicRequiredMaterial, new RequiredMaterialRecusion());
+        System.out.println("");
     }
     
     public BuildItem() {

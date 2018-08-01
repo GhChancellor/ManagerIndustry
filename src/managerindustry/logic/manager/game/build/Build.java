@@ -61,7 +61,8 @@ public class Build {
         
         reportMaterialForComponents.add(componentX);
         
-        // bug ComponetX viene cancellato di baseMaterial, viene cancellato e sostituti con build item e quindi NON si avavrà mai i valori puri del DB
+        // bug ComponetX viene cancellato di baseMaterial, viene cancellato 
+        // e sostituti con build item e quindi NON si avavrà mai i valori puri del DB
         displayMap(componentX, "");
         
         componentX = new ComponentX();
