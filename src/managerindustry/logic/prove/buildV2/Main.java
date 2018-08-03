@@ -16,6 +16,6 @@ public class Main {
 
     public static void main(String[] args) throws ErrorExeption {
         ManagerBuild managerBuild = new ManagerBuild();
-        
+//        New001 new001 = new New001();
     }
 }

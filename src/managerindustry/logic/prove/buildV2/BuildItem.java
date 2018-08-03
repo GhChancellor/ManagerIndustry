@@ -26,7 +26,8 @@ public class BuildItem extends GenericRequiredItem{
     private int singleMaterialQuantity;
     private double totalMaterialQuantity;    
     private RequiredMaterialRecusion basicRequiredMaterial;
-    private ReportItem repotItem; 
+    private ReportItem reportItem = new ReportItem(); 
+    RequiredMaterialRecusion requiredA00 = new RequiredMaterialRecusion();
     
     private void calculateRequiredItem( RequiredMaterialRecusion basicRequiredMaterial, RequiredMaterialRecusion requiredA00) {        
         List<ItemRecursionB> recursionB = basicRequiredMaterial.getRecursionB02s();
@@ -54,10 +55,8 @@ public class BuildItem extends GenericRequiredItem{
         Item singleItem = new Item(
             requiredA01.getTypeID(), requiredA01.getTypeName(), 
             singleMaterialQuantity, totalMaterialQuantity);
-        
-        System.out.println("");
-        repotItem = new ReportItem(singleItem);
-        
+
+        reportItem.addItem(singleItem);
     }
     
     /**
@@ -106,12 +105,32 @@ public class BuildItem extends GenericRequiredItem{
         this.bpoME = bpoME;
         this.componentMe = componentMe;
         this.basicRequiredMaterial = basicRequiredMaterial;
-        
-        calculateRequiredItem(this.basicRequiredMaterial, new RequiredMaterialRecusion());
+                
+        calculateRequiredItem(this.basicRequiredMaterial, requiredA00);
         System.out.println("");
     }
     
     public BuildItem() {
+    }
+    
+    public void displayBuildMaterialRequired(){
+        displayRequiredItem( requiredA00 , "");
+    }
+    
+    @Override
+    protected void displayRequiredItem(Object requiredItemA, String tab) {
+        RequiredMaterialRecusion requiredItemA_ = (RequiredMaterialRecusion) requiredItemA;
+        
+        System.out.println(tab + requiredItemA_.getTypeID() + " " + 
+            requiredItemA_.getTypeName()+ " " + 
+            requiredItemA_.getQuantity()+ " - " +
+            requiredItemA_.getQuanityDbl());
+        
+        tab +="\t";
+        
+        for (ItemRecursionB requiredItem : requiredItemA_.getRecursionB02s()) {
+            displayRequiredItem((RequiredMaterialRecusion) requiredItem.getRecursionA02(), tab);
+        }           
     }
     
     @Override
@@ -120,12 +139,7 @@ public class BuildItem extends GenericRequiredItem{
     }
 
     @Override
-    protected void displayRequiredItem(Object t, String tab) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     protected Object getRequiredItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return reportItem;
     }    
 }

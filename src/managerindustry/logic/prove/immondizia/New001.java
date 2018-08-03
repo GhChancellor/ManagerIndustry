@@ -5,20 +5,29 @@
  */
 package managerindustry.logic.prove.immondizia;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author lele
  */
-public class New001 {
-
+public class New001 <T> {
+    private List < Integer > value = new ArrayList<>();
+    
     public New001() {
-        New002 new002 = new New002();
-        a001(new002);
-        System.out.println(""+ new002.getA());
+        value.add(1);
+        value.add(2);
+        value.add(3);
+        value.add(4);
+        a001((T) value);
     }
 
-    public void a001(New002 new002){
-        new002.setA(10);
+    public void a001(T t){
+        List < Integer > aa = (List < Integer >) t;
+        for (Integer xx : aa) {
+            System.out.println(""+ xx);
+        }
     }
 }
 

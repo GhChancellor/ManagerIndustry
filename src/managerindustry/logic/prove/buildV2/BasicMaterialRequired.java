@@ -79,19 +79,19 @@ public class BasicMaterialRequired extends GenericRequiredItem{
      * Display BaseMaterial Required
      */
     public void displayBasicMaterialRequired(){
-        displayRequiredItem(requiredMaterial, "");        
+        displayRequiredItem(requiredMaterial, " ");        
     }  
     
-    @Override
     /**
      * Display Required Item
      * @param RequiredMaterialRecusion requiredItemA
      * @param String tab 
      */
+    @Override
     protected void displayRequiredItem(Object requiredItemA, String tab) {
         RequiredMaterialRecusion requiredItemA_ = (RequiredMaterialRecusion) requiredItemA;
         
-        System.out.println(""+ requiredItemA_.getTypeID() + " " + 
+        System.out.println(tab + requiredItemA_.getTypeID() + " " + 
             requiredItemA_.getTypeName()+ " " + 
             requiredItemA_.getQuantity()+ " - " +
             requiredItemA_.getQuanityDbl());

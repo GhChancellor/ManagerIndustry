@@ -27,9 +27,11 @@ public class ManagerBuild {
 //        build_V2.display();
 
         BasicMaterialRequired buildV3 = new BasicMaterialRequired(name, run, job, bpoMe, componentMe, RamActivitiesEnum.MANUFACTURING);
+//        buildV3.displayBasicMaterialRequired();
+
         RequiredMaterialRecusion requiredMaterial = buildV3.getRequiredMaterial();
-        
         BuildItem buildItem = new BuildItem(name, run, job, bpoMe, componentMe, requiredMaterial);
+        buildItem.displayBuildMaterialRequired();
     }
     
 }
