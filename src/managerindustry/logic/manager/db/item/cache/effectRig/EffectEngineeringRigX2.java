@@ -11,22 +11,22 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.EffectEngineeringRigEntityJpaController;
 import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigsXXX;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecursionA;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRercsionLibrary;
-
+import managerindustry.logic.generic.recursion.ItemRecursionA;
+import managerindustry.logic.prove.buildV3.recusionRig.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigsXXX02;
+import managerindustry.logic.prove.buildV3.recusionRig.safe.RigMarketGroupRecursion;
+import managerindustry.logic.prove.buildV3.recusionRig.safe.RigRecusion;
 
 /**
  *
  * @author lele
  */
-public class EffectEngineeringRigX {
+public class EffectEngineeringRigX2 {
     private EntityManager entityManager;
     private EffectEngineeringRigEntityJpaController effectRigEntityJpaController = 
         new EffectEngineeringRigEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));
         
-    public EffectEngineeringRigX(EntityManager entityManager) {
+    public EffectEngineeringRigX2(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
     
@@ -47,20 +47,36 @@ public class EffectEngineeringRigX {
      * Add Effect Rigs
      * @param StructureRig structureRig 
      */
-    public void addEffectRigs(EffectEngineeringRigsXXX structureRig){
-        List<ItemRecusion> itemRecusions = structureRig.getItemRecusions();
-        ItemRercsionLibrary library = new ItemRercsionLibrary();
-
-        for (ItemRecusion itemRecusion : itemRecusions) {
-            ItemRecursionA itemRecursionReport = itemRecusion.getItemRecursionReport();
+    public void addEffectRigs(EffectEngineeringRigsXXX02 structureRig){
+        List<RigRecusion> rigRecusion = structureRig.getRigRecusions();
+        
+        for (RigRecusion rigRecusion_ : rigRecusion) {
+            List<RigMarketGroupRecursion> rigMarketGroups = rigRecusion_.getRigMarketGroups();
             
-            List<Integer> effects = library.getConversionToList(itemRecursionReport);
-            
-            for (Integer effect : effects) {
-                EffectEngineeringRigEntity effectRigEntity = new EffectEngineeringRigEntity(structureRig.getTypeID(), effect);
-                addEffectRigEntity(effectRigEntity);                
-            }            
-        }        
+            for (RigMarketGroupRecursion effect : rigMarketGroups) {
+                EffectEngineeringRigEntity effectRigEntity = 
+                    new EffectEngineeringRigEntity(
+                    structureRig.getTypeID(), effect.getMarketGroupID() );
+                
+                addEffectRigEntity(effectRigEntity);                  
+            }
+        }
+        
+        
+        
+//        List<ItemRecusion> itemRecusions = structureRig.getItemRecusions();
+//        ItemRercsionLibrary library = new ItemRercsionLibrary();
+//
+//        for (ItemRecusion itemRecusion : itemRecusions) {
+//            ItemRecursionA itemRecursionReport = itemRecusion.getItemRecursionReport();
+//            
+//            List<Integer> effects = library.getConversionToList(itemRecursionReport);
+//            
+//            for (Integer effect : effects) {
+//                EffectEngineeringRigEntity effectRigEntity = new EffectEngineeringRigEntity(structureRig.getTypeID(), effect);
+//                addEffectRigEntity(effectRigEntity);                
+//            }            
+//        }             
     }
 
     /**

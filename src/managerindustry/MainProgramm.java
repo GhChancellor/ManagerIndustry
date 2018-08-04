@@ -21,6 +21,8 @@ import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
 import managerindustry.logic.manager.Manager;
+import managerindustry.logic.prove.buildV3.recusionRig.rig.ChooseRig;
+import managerindustry.logic.prove.buildV3.recusionRig.safe.RigRecusion;
 
 /**
  *
@@ -29,10 +31,10 @@ import managerindustry.logic.manager.Manager;
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
-        buildItem(); // << controllare
+//        buildItem(); // << controllare
 //        jobInstallationFee(); << controllare funziona male
 //        speculation(); // << controllare funziona male
-//        recursionItems();
+        recursionItems();
 //        structure();
     }
     
@@ -99,11 +101,19 @@ public class MainProgramm {
     }
     
     public static void recursionItems(){
-        ItemRecusion advancedStandard = GroupEffectRig.getInstance().ships().cruisers().getStandardCruisers();
-        ItemRecusion advancedBattleships = GroupEffectRig.getInstance().shipEquipments().getshipEquipments();
-        advancedBattleships.display();
+        ItemRecusion subsystem = GroupEffectRig.getInstance().t3subsystems().getT3subsystems();        
+        subsystem.display();
+//        ChooseRig chooseRig = new ChooseRig(43921);        
         
-//        ChooseRig chooseRig = new ChooseRig(43921);
+// -------- 
+        RigRecusion rigRecusion = 
+            managerindustry.logic.prove.buildV3.recusionRig.rig.
+            groupEffectRig.initRigGroupSize.logic.GroupEffectRig.getInstance().
+            t3subsystems().getT3subsystems();
+        
+        rigRecusion.displayRecursion();
+        
+//        ChooseRig chooseRig02 = new ChooseRig(43921);
 
 
     }

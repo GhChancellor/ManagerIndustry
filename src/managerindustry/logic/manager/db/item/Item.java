@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.manager.db.item.cache.avoidDuplicateRig.AvoidDuplicateRigX;
 import managerindustry.logic.manager.db.item.cache.effectRig.EffectEngineeringRigX;
+import managerindustry.logic.manager.db.item.cache.effectRig.EffectEngineeringRigX2;
 import managerindustry.logic.manager.db.item.cache.price.PriceX;
 import managerindustry.logic.manager.db.item.cache.taxCostIndex.TaxSolarSystem;
 import managerindustry.logic.manager.db.item.eve.DgmAttributeTypesX;
@@ -160,6 +161,11 @@ public class Item {
      */
     public EffectEngineeringRigX effectRig(){
         EffectEngineeringRigX effectRigX = new EffectEngineeringRigX(entityManager);
+        return effectRigX;
+    }
+    
+    public EffectEngineeringRigX2 effectRigX2(){
+        EffectEngineeringRigX2 effectRigX = new EffectEngineeringRigX2(entityManager);
         return effectRigX;
     }
     
