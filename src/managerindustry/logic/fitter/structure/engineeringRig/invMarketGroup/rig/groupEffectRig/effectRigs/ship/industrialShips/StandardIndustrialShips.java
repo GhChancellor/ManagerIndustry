@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ship.industrialShips;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 
 /**
  * marketGroupID 8 
@@ -15,10 +15,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class StandardIndustrialShips {
     /**
      * Get Standard Industrial Ships
-     * @return ItemRecusion
+     * @return RigRecusion
      */
-    public final ItemRecusion getStandardIndustrialShips(){
-        ItemRecusion standardIndustrialShips = new ItemRecusion(8);
+    public final RigRecusion getStandardIndustrialShips(){
+        RigRecusion standardIndustrialShips = new RigRecusion(8);
         return standardIndustrialShips;
     }     
 }

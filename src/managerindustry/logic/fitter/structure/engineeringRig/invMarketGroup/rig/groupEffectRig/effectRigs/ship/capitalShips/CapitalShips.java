@@ -5,8 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ship.capitalShips;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
-
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 
 
 /**
@@ -20,55 +19,55 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class CapitalShips {
     /**
      * Get Jump Freighters
-     * @return ItemRecusion
+     * @return RigRecusion
      */
-    public final ItemRecusion getJumpFreighters(){
-        ItemRecusion jumpFreighters = new ItemRecusion(1089); 
+    public final RigRecusion getJumpFreighters(){
+        RigRecusion jumpFreighters = new RigRecusion(1089); 
         return jumpFreighters;
     }
     
     /**
      * Get Freighters
-     * @return ItemRecusion
+     * @return RigRecusion
      */
-    public final ItemRecusion getFreighters(){
-        ItemRecusion jumpFreighters = new ItemRecusion(766); 
+    public final RigRecusion getFreighters(){
+        RigRecusion jumpFreighters = new RigRecusion(766); 
         return jumpFreighters;
     }
     
     /**
      * Get Dreadnoughts
-     * @return ItemRecusion
+     * @return RigRecusion
      */    
-    public final ItemRecusion getDreadnoughts(){
-        ItemRecusion dreadnoughts = new ItemRecusion(761); 
+    public final RigRecusion getDreadnoughts(){
+        RigRecusion dreadnoughts = new RigRecusion(761); 
         return dreadnoughts;
     }
 
     /**
      * Get Titans
-     * @return ItemRecusion
+     * @return RigRecusion
      */    
-    public final ItemRecusion getTitans(){
-        ItemRecusion titans = new ItemRecusion(812); 
+    public final RigRecusion getTitans(){
+        RigRecusion titans = new RigRecusion(812); 
         return titans;
     }
     
     /**
      * Get Carriers
-     * @return ItemRecusion
+     * @return RigRecusion
      */    
-    public final ItemRecusion getCarriers(){
-        ItemRecusion carriers = new ItemRecusion(817); 
+    public final RigRecusion getCarriers(){
+        RigRecusion carriers = new RigRecusion(817); 
         return carriers;
     }
     
     /**
      * Get Force Auxiliaries
-     * @return ItemRecusion
+     * @return RigRecusion
      */    
-    public final ItemRecusion getForceAuxiliaries(){
-        ItemRecusion forceAuxiliaries = new ItemRecusion(2271); 
+    public final RigRecusion getForceAuxiliaries(){
+        RigRecusion forceAuxiliaries = new RigRecusion(2271); 
         return forceAuxiliaries;
     }
     

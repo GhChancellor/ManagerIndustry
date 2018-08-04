@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.buildV3.recusionRig.safe;
+package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +12,7 @@ import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.generic.recursion.ItemRecursionB;
 import managerindustry.logic.manager.Manager;
 import managerindustry.logic.prove.buildV3.GenericRequiredItem;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 
 /**
  * Recursion rig
@@ -164,7 +165,8 @@ public class RigRecusion extends GenericRequiredItem{
      * @return List < RigMarketGroupRecursion >
      */
     public List < RigMarketGroupRecursion > getRigMarketGroups(){
-        List rigMarketGroups = getConversionToList(rigMarketGroupRecursion);
+        List<RigMarketGroupRecursion> rigMarketGroups = 
+            (List < RigMarketGroupRecursion >) getConversionToList(rigMarketGroupRecursion);
         return rigMarketGroups;
     }
     

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.buildV3.recusionRig.rig.groupEffectRig.effectRigs.logic;
+package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic;
 
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.logic.prove.buildV3.recusionRig.safe.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 
 
 /**
@@ -15,21 +15,24 @@ import managerindustry.logic.prove.buildV3.recusionRig.safe.RigRecusion;
  * Trova un nome decente
  * @author lele
  */
-public class EffectEngineeringRigsXXX02 {
+public class EffectEngineeringRigs_1 {
     private int typeID;
-    private List < RigRecusion > rigRecusions = new ArrayList<>();    
+    private List < RigRecusion > itemRecusions = new ArrayList<>();    
+
+    public EffectEngineeringRigs_1() {
+    }
 
     /**
      * Add rig and add Effect
      * @param int typeId
      * @param List < RigRecusion > itemRecusions 
      */    
-    public EffectEngineeringRigsXXX02(int typeID, List < RigRecusion > rigRecusions) {
+    public EffectEngineeringRigs_1(int typeID, List < RigRecusion > rigRecusion) {
         this.typeID = typeID;
-        this.rigRecusions = rigRecusions;
+        this.itemRecusions = rigRecusion;
     }
 
-    public EffectEngineeringRigsXXX02(int typeID) {
+    public EffectEngineeringRigs_1(int typeID) {
         this.typeID = typeID;
     }
     
@@ -46,6 +49,6 @@ public class EffectEngineeringRigsXXX02 {
      * @return List<RigRecusion>
      */
     public List<RigRecusion> getRigRecusions() {
-        return rigRecusions;
-    }    
+        return itemRecusions;
+    }        
 }

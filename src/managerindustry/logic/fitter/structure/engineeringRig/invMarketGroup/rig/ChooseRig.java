@@ -5,8 +5,8 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig;
 
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs_2;
 import managerindustry.logic.generic.enumName.ChooseEngineeringRigEnum;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.largeRig.InitLargeRigGroups;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.mediumRig.InitMediumRigGroups;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.xl_Rig.InitXLRigGroups;
@@ -21,13 +21,14 @@ public class ChooseRig {
     private InitXLRigGroups initXLRigGroups = new InitXLRigGroups();
     
     /**
+     * @deprecated 
      * Get Effect Rig and his effect
      * @param int typeID is enginnering rig like Standup M-Set Blueprint Copy Accelerator II
      * @param int effectID has effect on item to build like ammunition
      * @return boolean
      */
     public boolean isEffectEngineeringRig(int typeID, int effectID_Item){
-        EffectEngineeringRigs engineeringRigs = new EffectEngineeringRigs();
+        EffectEngineeringRigs_2 engineeringRigs = new EffectEngineeringRigs_2();
         
         if (engineeringRigs.getEffectEngineeringRig(typeID, effectID_Item) == null ){
             return false;
@@ -37,12 +38,14 @@ public class ChooseRig {
     }
     
     /**
+     * @deprecated 
      * Is exits?
      * @param typeID typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
      * @return boolean
      */
     private boolean isExits(int typeID){
-        EffectEngineeringRigs engineeringRigs = new EffectEngineeringRigs();
+        EffectEngineeringRigs_2 engineeringRigs = new EffectEngineeringRigs_2();
+        
         if (engineeringRigs.getEffectEngineeringRig(typeID) == null ){
             return false;
         }

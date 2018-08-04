@@ -5,7 +5,8 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.structure.starbaseStructure;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+
 
 /**
  * marketGroupID 1285 
@@ -15,10 +16,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class StarbaseStructures {
     /**
      * Get Base Structures Compression Array, Jump Bridge
-     * @return ItemRecusion
+     * @return RigRecusion
      */     
-    public final ItemRecusion getStarbaseStructures(){
-        ItemRecusion baseStructure = new ItemRecusion(1285);
+    public final RigRecusion getStarbaseStructures(){
+        RigRecusion baseStructure = new RigRecusion(1285);
         return baseStructure;
     }     
 }

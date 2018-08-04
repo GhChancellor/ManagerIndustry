@@ -11,22 +11,18 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.EffectEngineeringRigEntityJpaController;
 import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRercsionLibrary;
 import managerindustry.logic.generic.recursion.ItemRecursionA;
-import managerindustry.logic.prove.buildV3.recusionRig.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigsXXX02;
-import managerindustry.logic.prove.buildV3.recusionRig.safe.RigMarketGroupRecursion;
-import managerindustry.logic.prove.buildV3.recusionRig.safe.RigRecusion;
 
 /**
  *
  * @author lele
  */
-public class EffectEngineeringRigX2 {
+public class EffectEngineeringRigX_OLD {
     private EntityManager entityManager;
     private EffectEngineeringRigEntityJpaController effectRigEntityJpaController = 
         new EffectEngineeringRigEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));
         
-    public EffectEngineeringRigX2(EntityManager entityManager) {
+    public EffectEngineeringRigX_OLD(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
     
@@ -43,27 +39,11 @@ public class EffectEngineeringRigX2 {
         }        
     }
     
-    /**
-     * Add Effect Rigs
-     * @param StructureRig structureRig 
-     */
-    public void addEffectRigs(EffectEngineeringRigsXXX02 structureRig){
-        List<RigRecusion> rigRecusion = structureRig.getRigRecusions();
-        
-        for (RigRecusion rigRecusion_ : rigRecusion) {
-            List<RigMarketGroupRecursion> rigMarketGroups = rigRecusion_.getRigMarketGroups();
-            
-            for (RigMarketGroupRecursion effect : rigMarketGroups) {
-                EffectEngineeringRigEntity effectRigEntity = 
-                    new EffectEngineeringRigEntity(
-                    structureRig.getTypeID(), effect.getMarketGroupID() );
-                
-                addEffectRigEntity(effectRigEntity);                  
-            }
-        }
-        
-        
-        
+//    /**
+//     * Add Effect Rigs
+//     * @param StructureRig structureRig 
+//     */
+//    public void addEffectRigs(EffectEngineeringRigsXXX structureRig){
 //        List<ItemRecusion> itemRecusions = structureRig.getItemRecusions();
 //        ItemRercsionLibrary library = new ItemRercsionLibrary();
 //
@@ -76,8 +56,8 @@ public class EffectEngineeringRigX2 {
 //                EffectEngineeringRigEntity effectRigEntity = new EffectEngineeringRigEntity(structureRig.getTypeID(), effect);
 //                addEffectRigEntity(effectRigEntity);                
 //            }            
-//        }             
-    }
+//        }        
+//    }
 
     /**
      * Get Effect Rig Entity by typeId and effectID

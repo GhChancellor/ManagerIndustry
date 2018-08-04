@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.structure.deployableStructures;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 
 /**
  * marketGroupID 404
@@ -15,10 +15,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class DeployableStructures {
     /**
      * Get Personal Deployables Cargo containers, Mobile tractor unit...
-     * @return ItemRecusion
+     * @return RigRecusion
      */     
-    public final ItemRecusion getPersonalDeployables(){
-        ItemRecusion personalDeployables = new ItemRecusion(404);
+    public final RigRecusion getPersonalDeployables(){
+        RigRecusion personalDeployables = new RigRecusion(404);
         return personalDeployables;
     }   
 }

@@ -5,7 +5,8 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.structure.refineries;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+
 
 /**
  * marketGroupID 2327
@@ -15,10 +16,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class Refineries {
     /**
      * Get Refineries: Athanor, Tatara
-     * @return ItemRecusion
+     * @return RigRecusion
      */
-    public final ItemRecusion getRefineries(){
-        ItemRecusion refineries = new ItemRecusion(2327); 
+    public final RigRecusion getRefineries(){
+        RigRecusion refineries = new RigRecusion(2327); 
         return refineries;        
     }    
 }

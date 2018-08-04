@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ship.generic;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 
 /**
  * marketGroupID 6 - 1368 - 1138
@@ -15,30 +15,30 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class Cruisers {
     /**
      * Get Standard Cruisers
-     * @return ItemRecusion
+     * @return RigRecusion
      */    
-    public final ItemRecusion getStandardCruisers(){
-        ItemRecusion standardCruisers = new ItemRecusion(6);
+    public final RigRecusion getStandardCruisers(){
+        RigRecusion standardCruisers = new RigRecusion(6);
         return standardCruisers;
     } 
     
     /**
      * Get Advanced Cruisers exclude T3 Strategic cruiser
-     * @return ItemRecusion
+     * @return RigRecusion
      */
-    public final ItemRecusion getAdvancedCruisers(){
-        // Init ItemRecusion exclude T3 Strategic cruiser
-        ItemRecusion advancedCruisers = new ItemRecusion(1368, 1138); // 1138 T3 Strategic cruiser
+    public final RigRecusion getAdvancedCruisers(){
+        // Init RigRecusion exclude T3 Strategic cruiser
+        RigRecusion advancedCruisers = new RigRecusion(1368, 1138); // 1138 T3 Strategic cruiser
         
         return advancedCruisers;
     } 
     
     /**
      * Get T3 Strategic cruiser
-     * @return ItemRecusion
+     * @return RigRecusion
      */    
-    public final ItemRecusion getT3Cruisers(){
-        ItemRecusion t3Cruisers = new ItemRecusion(1138); // <----
+    public final RigRecusion getT3Cruisers(){
+        RigRecusion t3Cruisers = new RigRecusion(1138); // <----
         return t3Cruisers;
     }     
 }

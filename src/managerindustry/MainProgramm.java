@@ -18,11 +18,10 @@ import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
 import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.ChooseRig;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.prove.buildV3.recusionRig.rig.ChooseRig;
-import managerindustry.logic.prove.buildV3.recusionRig.safe.RigRecusion;
 
 /**
  *
@@ -101,16 +100,9 @@ public class MainProgramm {
     }
     
     public static void recursionItems(){
-        ItemRecusion subsystem = GroupEffectRig.getInstance().t3subsystems().getT3subsystems();        
-        subsystem.display();
-//        ChooseRig chooseRig = new ChooseRig(43921);        
-        
-// -------- 
-        RigRecusion rigRecusion = 
-            managerindustry.logic.prove.buildV3.recusionRig.rig.
-            groupEffectRig.initRigGroupSize.logic.GroupEffectRig.getInstance().
+        RigRecusion rigRecusion = GroupEffectRig.getInstance().
             t3subsystems().getT3subsystems();
-        
+                
         rigRecusion.displayRecursion();
         
 //        ChooseRig chooseRig02 = new ChooseRig(43921);

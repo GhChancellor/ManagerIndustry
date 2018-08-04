@@ -5,7 +5,9 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ammunitionCarges;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+
+
 
 /**
  * marketGroupID 11 
@@ -15,10 +17,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class AmmunitionCarges {
     /**
      * Get Ammunition Carges
-     * @return ItemRecusion
+     * @return RigRecusion
      */     
-    public final ItemRecusion getAmmunitionCarges(){
-        ItemRecusion ammunitionCarges = new ItemRecusion(11);
+    public final RigRecusion getAmmunitionCarges(){
+        RigRecusion ammunitionCarges = new RigRecusion(11);
         return ammunitionCarges;
     }    
 }

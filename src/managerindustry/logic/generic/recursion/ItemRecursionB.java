@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.generic.recursion;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.*;
+import managerindustry.logic.generic.recursion.ItemRecursionA;
 
 /**
  *

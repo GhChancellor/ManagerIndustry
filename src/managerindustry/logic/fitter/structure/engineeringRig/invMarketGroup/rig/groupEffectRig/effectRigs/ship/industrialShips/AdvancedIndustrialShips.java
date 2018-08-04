@@ -5,7 +5,8 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ship.industrialShips;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+
 
 /**
  * ADVANCED_INDUSTRIAL_SHIPS(1373)
@@ -16,10 +17,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class AdvancedIndustrialShips {
     /**
      * T2 Haulers - TransportShips
-     * @return ItemRecusion
+     * @return RigRecusion
      */
-    public final ItemRecusion getTransportShips(){
-        ItemRecusion transportShips = new ItemRecusion(629);
+    public final RigRecusion getTransportShips(){
+        RigRecusion transportShips = new RigRecusion(629);
         return transportShips;
     }     
 }

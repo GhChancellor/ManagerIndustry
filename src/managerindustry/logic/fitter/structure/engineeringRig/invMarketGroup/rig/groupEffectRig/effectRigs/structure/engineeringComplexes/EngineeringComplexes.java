@@ -5,7 +5,8 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.structure.engineeringComplexes;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+
 
 /**
  * marketGroupID 2324
@@ -15,10 +16,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class EngineeringComplexes {
     /**
      * Get Citadels: Astrahus, Fortizar
-     * @return ItemRecusion
+     * @return RigRecusion
      */
-    public final ItemRecusion getEngineeringComplexes(){
-        ItemRecusion engineeringComplexes = new ItemRecusion(2324); 
+    public final RigRecusion getEngineeringComplexes(){
+        RigRecusion engineeringComplexes = new RigRecusion(2324); 
         return engineeringComplexes;        
     }    
 }

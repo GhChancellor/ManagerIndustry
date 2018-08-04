@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.manufacture_research.components.outpostComponent;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 
 /**
  * Structure components
@@ -16,10 +16,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class OutpostComponent {
     /**
      * Get Station Components for Citadel, Engineering Complexes, Refineries
-     * @return ItemRecusion
+     * @return RigRecusion
      */     
-    public final ItemRecusion getStationComponents(){
-        ItemRecusion fuelBlocks = new ItemRecusion(1870); 
+    public final RigRecusion getStationComponents(){
+        RigRecusion fuelBlocks = new RigRecusion(1870); 
         return fuelBlocks;
     }     
 }

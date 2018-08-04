@@ -5,7 +5,8 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.shipEquipment;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+
 
 /**
  * marketGroupID 9 
@@ -15,10 +16,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class ShipEquipment {
     /**
      * Get ship Equipments / ship modules
-     * @return ItemRecusion
+     * @return RigRecusion
      */     
-    public final ItemRecusion getshipEquipments(){
-        ItemRecusion shipEquipment = new ItemRecusion(9);
+    public final RigRecusion getshipEquipments(){
+        RigRecusion shipEquipment = new RigRecusion(9);
         return shipEquipment;
     }    
 }

@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ship_ModuleModifications;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 
 /**
  * marketGroupID 1111  
@@ -15,10 +15,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class RigsShips {
     /**
      * Get Rig Ship
-     * @return ItemRecusion
+     * @return RigRecusion
      */     
-    public final ItemRecusion getRigs(){
-        ItemRecusion rigs = new ItemRecusion(1111);
+    public final RigRecusion getRigs(){
+        RigRecusion rigs = new RigRecusion(1111);
         return rigs;
     }     
 }

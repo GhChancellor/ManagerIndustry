@@ -7,9 +7,9 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.InitCommonRigGroups;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 
 /**
  *
@@ -26,7 +26,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetAmmunitionManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonAmmunitionManufacturing();
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonAmmunitionManufacturing();
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
     }
     
@@ -35,7 +35,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetBasicLargeShipManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonBasicLargeShipManufacturing();
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonBasicLargeShipManufacturing();
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);        
     }
     
@@ -44,7 +44,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetAdvancedLargeShipManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonAdvancedLargeShipManufacturing();  
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonAdvancedLargeShipManufacturing();  
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);        
     }
     
@@ -53,7 +53,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetEquipmentManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonEquipmentManufacturing();
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonEquipmentManufacturing();
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);        
     }
     
@@ -63,7 +63,9 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetCapitalShipManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+        List < RigRecusion > effectRigs = new ArrayList<>();
+        
+        
         effectRigs.add(GroupEffectRig.getInstance().ships().capitalShips().getCarriers());
         effectRigs.add(GroupEffectRig.getInstance().ships().capitalShips().getDreadnoughts());
         effectRigs.add(GroupEffectRig.getInstance().ships().capitalShips().getForceAuxiliaries());
@@ -77,7 +79,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetAdvancedComponentManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonAdvancedComponentManufacturing();
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonAdvancedComponentManufacturing();
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);        
     }
     
@@ -86,7 +88,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetAdvancedSmallShipManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonAdvancedSmallShipManufacturing();
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonAdvancedSmallShipManufacturing();
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
     }
     
@@ -95,7 +97,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetAdvancedMediumShipManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonAdvancedMediumShipManufacturing();
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonAdvancedMediumShipManufacturing();
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);        
     }
     
@@ -104,7 +106,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetDroneAndFighterManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonDroneAndFighterManufacturing();
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonDroneAndFighterManufacturing();
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);        
     }
     
@@ -113,7 +115,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetBasicSmallShipManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonBasicSmallShipManufacturing();
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonBasicSmallShipManufacturing();
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);        
     }
     
@@ -122,7 +124,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetBasicMediumShipManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonBasicMediumShipManufacturing(); 
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonBasicMediumShipManufacturing(); 
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);        
     }
     
@@ -131,7 +133,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetBasicCapitalComponentManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonBasicCapitalComponentManufacturing();
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonBasicCapitalComponentManufacturing();
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);        
     }
     
@@ -140,7 +142,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetStructureManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonStructureManufacturing();      
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonStructureManufacturing();      
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);        
     }
     
@@ -149,7 +151,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetThukkerBasicCapitalComponentManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonThukkerBasicCapitalComponentManufacturing();   
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonThukkerBasicCapitalComponentManufacturing();   
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);        
     }    
     
@@ -158,7 +160,7 @@ public class InitLargeRigGroups {
      * @param int typeId 
      */
     public void initStandupLSetThukkerAdvancedComponentManufacturing(int typeId){
-        List < ItemRecusion > effectRigs = initCommonRigGroups.initStandupCommonThukkerAdvancedComponentManufacturing();    
+        List < RigRecusion > effectRigs = initCommonRigGroups.initStandupCommonThukkerAdvancedComponentManufacturing();    
         initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);        
     }
     

@@ -7,8 +7,9 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs_2;
+
 
 /**
  *
@@ -17,32 +18,15 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class InitCommonRigGroups {
     
     public InitCommonRigGroups() {
-//        initStandupCommonEquipmentManufacturing();
-//        initStandupCommonAdvancedComponentManufacturing();
-//        initStandupCommonAdvancedLargeShipManufacturing();
-//        initStandupCommonAdvancedMediumShipManufacturing();
-//        initStandupCommonAdvancedSmallShipManufacturing();
-//        initStandupCommonAmmunitionManufacturing();
-//        initStandupCommonBasicCapitalComponentManufacturing();
-//        initStandupCommonBasicLargeShipManufacturing();
-//        initStandupCommonBasicMediumShipManufacturing();
-//        initStandupCommonBasicSmallShipManufacturing();
-//        initStandupCommonDroneAndFighterManufacturing();
-//        initStandupCommonStructureManufacturing();
-//        initStandupCommonThukkerAdvancedComponentManufacturing();
-//        initStandupCommonThukkerBasicCapitalComponentManufacturing();
-//        initStandupCommonBlueprintCopy();
-//        initStandupCommonInvention();
-//        initStandupCommonMEResearch();
-//        initStandupCommonTEResearch();
     }
     
     /**
      * Init Standup Common Equipment Manufacturing
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonEquipmentManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonEquipmentManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
+        
         
         effectRigs.add(GroupEffectRig.getInstance().shipEquipments().getshipEquipments());
         effectRigs.add(GroupEffectRig.getInstance().ship_ModuleModifications().rigs().getRigs());
@@ -55,10 +39,10 @@ public class InitCommonRigGroups {
     /**
      * @deprecated 
      * mancano i data interfaces 
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonAdvancedComponentManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonAdvancedComponentManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().advancedComponets().getAdvancedComponents() );
         effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().advancedCapitalComponets().getAdvancedCapitalComponents() );
@@ -70,10 +54,10 @@ public class InitCommonRigGroups {
     
     /**
      * Init Standup Common Advanced Large Ship Manufacturing
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonAdvancedLargeShipManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonAdvancedLargeShipManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().ships().battleships().getAdvancedBattleships() );
         effectRigs.add(GroupEffectRig.getInstance().ships().capitalShips().getJumpFreighters() );
@@ -83,10 +67,10 @@ public class InitCommonRigGroups {
     
     /**
      * Init Standup Common Advanced Medium Ship Manufacturing
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonAdvancedMediumShipManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonAdvancedMediumShipManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().ships().cruisers().getAdvancedCruisers() );
         effectRigs.add(GroupEffectRig.getInstance().ships().cruisers().getT3Cruisers() ); 
@@ -101,10 +85,10 @@ public class InitCommonRigGroups {
     
     /**
      * Init Standup Common Advanced Small Ship Manufacturing
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonAdvancedSmallShipManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonAdvancedSmallShipManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().ships().frigates().getAdvancedFrigates()  );
         effectRigs.add(GroupEffectRig.getInstance().ships().battlecruisers().getAdvancedBattlecruisers() );
@@ -115,10 +99,10 @@ public class InitCommonRigGroups {
     
     /**
      * Init Standup Common Ammunition Manufacturing
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonAmmunitionManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonAmmunitionManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().ammunitionCarges().getAmmunitionCarges() );
         
@@ -127,10 +111,10 @@ public class InitCommonRigGroups {
     
     /**
      * Init Standup Common Basic Capital Component Manufacturing
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonBasicCapitalComponentManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonBasicCapitalComponentManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().standardCapitalShipComponets().getStandardCapitalShipComponents() );
         
@@ -139,10 +123,10 @@ public class InitCommonRigGroups {
     
     /**
      * Init Standup Common Basic Large Ship Manufacturing
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonBasicLargeShipManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonBasicLargeShipManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().ships().battleships().getStandardBattleships());
         effectRigs.add(GroupEffectRig.getInstance().ships().capitalShips().getFreighters()); 
@@ -153,10 +137,10 @@ public class InitCommonRigGroups {
     
     /**
      * Init Standup Common Basic Medium Ship Manufacturing
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonBasicMediumShipManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonBasicMediumShipManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().ships().cruisers().getStandardCruisers());
         effectRigs.add(GroupEffectRig.getInstance().ships().battlecruisers().getStandardBattlecruisers());
@@ -168,10 +152,10 @@ public class InitCommonRigGroups {
     
     /**
      * Init Standup Common Basic Small Ship Manufacturing
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonBasicSmallShipManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonBasicSmallShipManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().ships().frigates().getStandardFrigates());
         effectRigs.add(GroupEffectRig.getInstance().ships().destroyers().getStandardDestroyers());
@@ -182,10 +166,10 @@ public class InitCommonRigGroups {
         
     /**
      * init Standup Common Drone And Fighter Manufacturing
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonDroneAndFighterManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonDroneAndFighterManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().droneFighters().getDroneFighters() );
         
@@ -194,10 +178,10 @@ public class InitCommonRigGroups {
     
     /**
      * Init Standup Common Structure Manufacturing
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonStructureManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonStructureManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().outpostComponent().getStationComponents() );
         effectRigs.add(GroupEffectRig.getInstance().structureEquipment().getStructureEquipment() );
@@ -216,10 +200,10 @@ public class InitCommonRigGroups {
     /**
      * @deprecated 
      * mancano ti data interfaces
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonThukkerAdvancedComponentManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonThukkerAdvancedComponentManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().advancedComponets().getAdvancedComponents() );
         effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().advancedCapitalComponets().getAdvancedCapitalComponents() );
@@ -231,10 +215,10 @@ public class InitCommonRigGroups {
 
     /**
      * Init Standup Common Thukker Basic Capital Component Manufacturing
-     * @return List < ItemRecusion >
+     * @return List < RigRecusion >
      */
-    public List < ItemRecusion > initStandupCommonThukkerBasicCapitalComponentManufacturing(){
-        List < ItemRecusion > effectRigs = new ArrayList<>();
+    public List < RigRecusion > initStandupCommonThukkerBasicCapitalComponentManufacturing(){
+        List < RigRecusion > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().standardCapitalShipComponets().getStandardCapitalShipComponents()  );    
         
@@ -244,10 +228,10 @@ public class InitCommonRigGroups {
     /**
      * Add Effect Engineering Rig to DB
      * @param int typeId
-     * @param List < ItemRecusion > effectRigs 
+     * @param List < RigRecusion > effectRigs 
      */
-    public void addEffectEngineeringRig(int typeId, List < ItemRecusion > effectRigs ){
-        EffectEngineeringRigs managerStructure = new EffectEngineeringRigs(typeId, effectRigs);
+    public void addEffectEngineeringRig(int typeId, List < RigRecusion > effectRigs ){
+        EffectEngineeringRigs_2 managerStructure = new EffectEngineeringRigs_2(typeId, effectRigs);
     }
  
 }

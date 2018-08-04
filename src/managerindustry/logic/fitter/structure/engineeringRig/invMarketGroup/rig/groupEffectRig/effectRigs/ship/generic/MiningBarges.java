@@ -5,7 +5,8 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ship.generic;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+
 
 /**
  * marketGroupID 874 - 494 
@@ -15,19 +16,19 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class MiningBarges {
     /**
      * Get Exhumers
-     * @return ItemRecusion
+     * @return RigRecusion
      */     
-    public final ItemRecusion getExhumers(){
-        ItemRecusion exhumers = new ItemRecusion(874);
+    public final RigRecusion getExhumers(){
+        RigRecusion exhumers = new RigRecusion(874);
         return exhumers;
     } 
     
     /**
      * Get Mining Barges
-     * @return ItemRecusion
+     * @return RigRecusion
      */     
-    public final ItemRecusion getMiningBarges(){
-        ItemRecusion miningBarges = new ItemRecusion(494);
+    public final RigRecusion getMiningBarges(){
+        RigRecusion miningBarges = new RigRecusion(494);
         return miningBarges;
     }     
 }

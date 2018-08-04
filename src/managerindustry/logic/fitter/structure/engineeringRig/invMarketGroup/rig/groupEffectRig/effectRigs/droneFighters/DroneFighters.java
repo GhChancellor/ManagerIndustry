@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.droneFighters;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 
 /**
  * marketGroupID 157
@@ -15,10 +15,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class DroneFighters {
     /**
      * Get Drone Fighters
-     * @return ItemRecusion
+     * @return RigRecusion
      */     
-    public final ItemRecusion getDroneFighters(){
-        ItemRecusion droneFighters = new ItemRecusion(157);
+    public final RigRecusion getDroneFighters(){
+        RigRecusion droneFighters = new RigRecusion(157);
         return droneFighters;
     }     
 }

@@ -5,7 +5,8 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ship.generic;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+
 
 /**
  * marketGroupID 391 
@@ -15,10 +16,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class Shuttles {
     /**
      * Get Shuttles
-     * @return ItemRecusion
+     * @return RigRecusion
      */     
-    public final ItemRecusion getShuttles(){
-        ItemRecusion shuttles = new ItemRecusion(391);
+    public final RigRecusion getShuttles(){
+        RigRecusion shuttles = new RigRecusion(391);
         return shuttles;
     }     
 }

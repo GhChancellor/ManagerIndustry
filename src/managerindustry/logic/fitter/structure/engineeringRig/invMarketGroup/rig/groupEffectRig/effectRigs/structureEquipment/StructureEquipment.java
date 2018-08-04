@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.structureEquipment;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 
 /**
  * marketGroupID 2202 
@@ -15,10 +15,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class StructureEquipment {
     /**
      * Get Structure Equipment / Structure modules
-     * @return ItemRecusion
+     * @return RigRecusion
      */     
-    public final ItemRecusion getStructureEquipment(){
-        ItemRecusion structureEquipment = new ItemRecusion(2202); 
+    public final RigRecusion getStructureEquipment(){
+        RigRecusion structureEquipment = new RigRecusion(2202); 
         return structureEquipment;
     }     
 }

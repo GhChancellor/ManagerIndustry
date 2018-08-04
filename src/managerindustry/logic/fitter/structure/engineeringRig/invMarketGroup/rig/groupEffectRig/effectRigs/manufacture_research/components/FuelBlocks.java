@@ -5,7 +5,8 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.manufacture_research.components;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+
 
 /**
  * marketGroupID 1870
@@ -15,10 +16,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class FuelBlocks {
     /**
      * Get Fuel Blocks for structure
-     * @return ItemRecusion
+     * @return RigRecusion
      */     
-    public final ItemRecusion getFuelBlocks(){
-        ItemRecusion fuelBlocks = new ItemRecusion(1870); 
+    public final RigRecusion getFuelBlocks(){
+        RigRecusion fuelBlocks = new RigRecusion(1870); 
         return fuelBlocks;
     }     
 }

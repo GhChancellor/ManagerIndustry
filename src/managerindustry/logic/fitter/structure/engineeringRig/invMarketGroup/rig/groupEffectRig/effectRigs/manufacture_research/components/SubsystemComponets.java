@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.manufacture_research.components;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.itemsRecursion.ItemRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 
 /**
  * marketGroupID 1147 
@@ -15,10 +15,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class SubsystemComponets {
     /**
      * Get Subsystem Components for T3 ships
-     * @return ItemRecusion
+     * @return RigRecusion
      */     
-    public final ItemRecusion getSubsystemComponents(){
-        ItemRecusion subsystemComponents = new ItemRecusion(1147); 
+    public final RigRecusion getSubsystemComponents(){
+        RigRecusion subsystemComponents = new RigRecusion(1147); 
         return subsystemComponents;
     }     
 }

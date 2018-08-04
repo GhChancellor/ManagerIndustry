@@ -10,8 +10,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.eve.InvTypes;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigMarketGroupRecursion;
+import managerindustry.logic.generic.recursion.ItemRecursionA;
+import managerindustry.logic.generic.recursion.ItemRecursionB;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.prove.buildV3.recusionRig.safe.RigMarketGroupRecursion;
 
 /**
  *
@@ -59,27 +61,68 @@ public abstract class GenericRequiredItem  < T >{
     
     /**
      * Add to map or to list
-     * @param rigMarketGroupRecursion rigMarketGroupRecursion
+     * @param rigMarketGroupRecursion_ rigMarketGroupRecursion
      * @param Converter converter 
      */
     private void rigMarketGroupRecursion(
-        RigMarketGroupRecursion rigMarketGroupRecursion, Converter converter){
-        
-        if ( rigMarketGroupRecursion.getRecursionB02s().isEmpty()){
-            List<InvTypes> parentGroupID = 
-                Manager.getInstance().db().item().invTypes().getMarketGroupID(
-                rigMarketGroupRecursion.getMarketGroupID(), true);
-            
-            for (InvTypes invTypes : parentGroupID) {
-                if (converter == Converter.List){
-                    List<Integer> list = ( List < Integer > ) ts;                    
-                    list.add( invTypes.getTypeID() ); 
-                }else{
-                    Map<Integer, Integer> map = (Map < Integer, Integer >) tm;
-                    map.put(invTypes.getTypeID(), invTypes.getTypeID());
-                }                
+        RigMarketGroupRecursion rigMarketGroupRecursion_, Converter converter){
+
+        if ( !rigMarketGroupRecursion_.getRecursionB02s().isEmpty()){
+
+            List<ItemRecursionB> recursionB02s = rigMarketGroupRecursion_.getRecursionB02s(); 
+            for (ItemRecursionB recursionB02 : recursionB02s) {
+                ItemRecursionA recursionA02 = recursionB02.getRecursionA02();
+                RigMarketGroupRecursion name = (RigMarketGroupRecursion) recursionA02;
+                
+                List<InvTypes> parentGroupIDs = 
+                    Manager.getInstance().db().item().invTypes().getMarketGroupID(name.getMarketGroupID(), true);
+                
+                System.out.println("");
             }
+            
         }
+        
+//        if ( !rigMarketGroupRecursion_.getRecursionB02s().isEmpty()){
+//            RigMarketGroupRecursion rigMarketGroupRecursion = 
+//               (RigMarketGroupRecursion) rigMarketGroupRecursion_.getRecursionB02s();
+//            
+//            List<InvTypes> parentGroupIDs = 
+//                Manager.getInstance().db().item().invTypes().getMarketGroupID(rigMarketGroupRecursion.getMarketGroupID(), true);
+//
+//            for (InvTypes invTypes : parentGroupIDs) {
+//                if (converter == Converter.List){
+//                    List<Integer> list = ( List < Integer > ) ts;                    
+//                    list.add( invTypes.getTypeID() ); 
+//                }else{
+//                    Map<Integer, Integer> map = (Map < Integer, Integer >) tm;
+//                    map.put(invTypes.getTypeID(), invTypes.getTypeID());
+//                }                
+//            }                
+//        }
+//        
+//        for (ItemRecursionB recursionB02 : rigMarketGroupRecursion_.getRecursionB02s()) {
+//            rigMarketGroupRecursion((RigMarketGroupRecursion) recursionB02.getRecursionA02(), converter);
+//        }
+
+
+// -------
+
+//        if ( !rigMarketGroupRecursion.getRecursionB02s().isEmpty()){
+//            List<InvTypes> parentGroupID = 
+//                Manager.getInstance().db().item().invTypes().getMarketGroupID(
+//                rigMarketGroupRecursion.getMarketGroupID(), true);
+//            
+//            for (InvTypes invTypes : parentGroupID) {
+//                if (converter == Converter.List){
+//                    List<Integer> list = ( List < Integer > ) ts;                    
+//                    list.add( invTypes.getTypeID() ); 
+//                }else{
+//                    Map<Integer, Integer> map = (Map < Integer, Integer >) tm;
+//                    map.put(invTypes.getTypeID(), invTypes.getTypeID());
+//                }                
+//            }
+//        }
+//        System.out.println("");
     }
     
     /**
@@ -100,3 +143,22 @@ public abstract class GenericRequiredItem  < T >{
         return Manager.getInstance().db().item().invTypes().getInvTypesById(typeId);
     }     
 }
+/*
+    private void converter(ItemRecursionA recursionA, Converter converter){
+        if ( recursionA.getRecursionB02s().isEmpty() ){
+            List<InvTypes> parentGroupID = Manager.getInstance().db().item().invTypes().getMarketGroupID(recursionA.getMarketGroupID(), true);
+            
+            for (InvTypes invTypes : parentGroupID) {
+                if (converter == Converter.List){
+                    recursionAs.add(invTypes.getTypeID());
+                }else{
+                    recursionAMap.put(invTypes.getTypeID(), invTypes.getTypeID());
+                }
+            }            
+        }
+        
+        for (ItemRecursionB object : recursionA.getRecursionB02s()) {
+            converter(object.getRecursionA02(), converter);
+        }  
+    } 
+*/
