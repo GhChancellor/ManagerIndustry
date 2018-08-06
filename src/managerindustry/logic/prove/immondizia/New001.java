@@ -7,27 +7,24 @@ package managerindustry.logic.prove.immondizia;
 
 import java.util.ArrayList;
 import java.util.List;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs_2;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 
 /**
  *
  * @author lele
  */
 public class New001 <T> {
-    private List < Integer > value = new ArrayList<>();
-    
-    public New001() {
-        value.add(1);
-        value.add(2);
-        value.add(3);
-        value.add(4);
-        a001((T) value);
-    }
 
-    public void a001(T t){
-        List < Integer > aa = (List < Integer >) t;
-        for (Integer xx : aa) {
-            System.out.println(""+ xx);
-        }
+    public New001() {
+        List < RigRecusion > effectRigs = new ArrayList<>();
+        
+        effectRigs.add(GroupEffectRig.getInstance().manufacture_research().
+            components().fuelBlocks().getFuelBlocks() ); 
+        EffectEngineeringRigs_2 managerStructure = new EffectEngineeringRigs_2(43921, effectRigs);
+        
     }
+    
 }
 

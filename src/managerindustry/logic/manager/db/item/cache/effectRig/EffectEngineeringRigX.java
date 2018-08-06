@@ -46,23 +46,37 @@ public class EffectEngineeringRigX {
     
     /**
      * Add Effect Rigs
+     * @deprecated prendire in considerazione di inviare direttamente la lista
      * @param StructureRig structureRig 
      */
     public void addEffectRigs(EffectEngineeringRigs_1 structureRig){
-        List<RigRecusion> rigRecusions = structureRig.getRigRecusions();
         
-        for (RigRecusion rigRecusion : rigRecusions) {
+        for (RigRecusion rigRecusion : structureRig.getRigRecusions() ) {
+            List<Integer> rigMarketGroups = rigRecusion.getRigMarketGroups();
             
-            List<RigMarketGroupRecursion> rigMarketGroups = rigRecusion.getRigMarketGroups();
-            
-            for (RigMarketGroupRecursion effect : rigMarketGroups) {
+            for (Integer effectId : rigMarketGroups) {
                 EffectEngineeringRigEntity effectRigEntity = 
                     new EffectEngineeringRigEntity(
-                    structureRig.getTypeID(), effect.getMarketGroupID() );
-                
-                addEffectRigEntity(effectRigEntity);                  
+                    structureRig.getTypeID(), effectId );
+                System.out.println(""+ effectId);
+//                addEffectRigEntity(effectRigEntity);                
             }
         }
+        
+//        for (RigRecusion rigRecusion : rigRecusions) {
+//            
+//            List<RigMarketGroupRecursion> rigMarketGroups = rigRecusion.getRigMarketGroups();
+//            
+//            RigMarketGroupRecursion get = rigMarketGroups.get(0);
+//            System.out.println(""+get.getMarketGroupName());
+////            for (RigMarketGroupRecursion effect : rigMarketGroups) {
+////                EffectEngineeringRigEntity effectRigEntity = 
+////                    new EffectEngineeringRigEntity(
+////                    structureRig.getTypeID(), (int) effect.getMarketGroupID() );
+////
+////                addEffectRigEntity(effectRigEntity);                  
+////            }
+//        }
         
     }
 

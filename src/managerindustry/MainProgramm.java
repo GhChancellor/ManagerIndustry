@@ -22,6 +22,7 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.manager.Manager;
+import managerindustry.logic.prove.immondizia.New001;
 
 /**
  *
@@ -100,12 +101,14 @@ public class MainProgramm {
     }
     
     public static void recursionItems(){
-        RigRecusion rigRecusion = GroupEffectRig.getInstance().
-            t3subsystems().getT3subsystems();
-                
-        rigRecusion.displayRecursion();
+//        RigRecusion rigRecusion = GroupEffectRig.getInstance().
+//            t3subsystems().getT3subsystems();
+//                
+//        rigRecusion.displayRecursion();
         
 //        ChooseRig chooseRig02 = new ChooseRig(43921);
+
+        New001 new001 = new New001();
 
 
     }

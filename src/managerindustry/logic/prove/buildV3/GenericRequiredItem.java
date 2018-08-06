@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigMarketGroupRecursion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 import managerindustry.logic.generic.recursion.ItemRecursionA;
 import managerindustry.logic.generic.recursion.ItemRecursionB;
 import managerindustry.logic.manager.Manager;
@@ -71,13 +72,27 @@ public abstract class GenericRequiredItem  < T >{
 
             List<ItemRecursionB> recursionB02s = rigMarketGroupRecursion_.getRecursionB02s(); 
             for (ItemRecursionB recursionB02 : recursionB02s) {
-                ItemRecursionA recursionA02 = recursionB02.getRecursionA02();
-                RigMarketGroupRecursion name = (RigMarketGroupRecursion) recursionA02;
+                RigMarketGroupRecursion rigMarketGroupRecursion = (RigMarketGroupRecursion) recursionB02.getRecursionA02();
                 
-                List<InvTypes> parentGroupIDs = 
-                    Manager.getInstance().db().item().invTypes().getMarketGroupID(name.getMarketGroupID(), true);
+                if (rigMarketGroupRecursion != null){
+                    if (converter == Converter.List){
+                        List<Integer> list = ( List < Integer > ) ts;                    
+                        list.add( (int) rigMarketGroupRecursion.getMarketGroupID() ); 
+                        
+                    }else{
+                        Map<Integer, Integer> map = (Map < Integer, Integer >) tm;
+                        map.put( (int) rigMarketGroupRecursion.getMarketGroupID(), 
+                                (int) rigMarketGroupRecursion.getMarketGroupID() );
+                    }    
+                }
+                if ( !rigMarketGroupRecursion.getRecursionB02s().isEmpty() ){
+                    rigMarketGroupRecursion(
+                        (RigMarketGroupRecursion) rigMarketGroupRecursion, 
+                        converter);
+                }
+//                System.out.println("");
                 
-                System.out.println("");
+                
             }
             
         }

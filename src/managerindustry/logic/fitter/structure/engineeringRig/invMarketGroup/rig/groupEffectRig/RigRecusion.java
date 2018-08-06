@@ -162,11 +162,11 @@ public class RigRecusion extends GenericRequiredItem{
 
     /**
      * Get RigMarket Groups
-     * @return List < RigMarketGroupRecursion >
+     * @return List < Integer >
      */
-    public List < RigMarketGroupRecursion > getRigMarketGroups(){
-        List<RigMarketGroupRecursion> rigMarketGroups = 
-            (List < RigMarketGroupRecursion >) getConversionToList(rigMarketGroupRecursion);
+    public List < Integer > getRigMarketGroups(){
+        List<Integer> rigMarketGroups = 
+            (List < Integer >) getConversionToList(rigMarketGroupRecursion);
         return rigMarketGroups;
     }
     
