@@ -30,7 +30,8 @@ public abstract class GenericRequiredItem  < T >{
     protected abstract void requiredItem(T t1, T t2);
     protected abstract void requiredItem(T t1, T t2, T t3);
     protected abstract void display(T t1, T t2);
-
+    protected abstract T requiredItemMoreInfo(T t1, T t2);
+    
     public GenericRequiredItem() {
     }
 
@@ -57,8 +58,18 @@ public abstract class GenericRequiredItem  < T >{
     private void converter(T t, Converter converter){
         if ( t instanceof RigMarketGroupRecursion){
             rigMarketGroupRecursion( (RigMarketGroupRecursion) t, converter);
+            return;
+        }
+        
+        if ( t instanceof RequiredMaterialRecusion){
+            rigMarketGroupRecursion( (RigMarketGroupRecursion) t, converter);
+            return;            
         }
     }    
+
+    private void requiredMaterialRecusion(T t, Converter converter){
+        
+    }
     
     /**
      * Add to map or to list
@@ -76,13 +87,13 @@ public abstract class GenericRequiredItem  < T >{
                 
                 if (rigMarketGroupRecursion != null){
                     if (converter == Converter.List){
-                        List<Integer> list = ( List < Integer > ) ts;                    
-                        list.add( (int) rigMarketGroupRecursion.getMarketGroupID() ); 
+                        List<Short> list = ( List < Short > ) ts;                    
+                        list.add( (short) rigMarketGroupRecursion.getMarketGroupID() ); 
                         
                     }else{
-                        Map<Integer, Integer> map = (Map < Integer, Integer >) tm;
-                        map.put( (int) rigMarketGroupRecursion.getMarketGroupID(), 
-                                (int) rigMarketGroupRecursion.getMarketGroupID() );
+                        Map< Short, Short> map = (Map < Short, Short >) tm;
+                        map.put( (short) rigMarketGroupRecursion.getMarketGroupID(), 
+                            (short) rigMarketGroupRecursion.getMarketGroupID() );
                     }    
                 }
                 if ( !rigMarketGroupRecursion.getRecursionB02s().isEmpty() ){
@@ -90,54 +101,8 @@ public abstract class GenericRequiredItem  < T >{
                         (RigMarketGroupRecursion) rigMarketGroupRecursion, 
                         converter);
                 }
-//                System.out.println("");
-                
-                
-            }
-            
-        }
-        
-//        if ( !rigMarketGroupRecursion_.getRecursionB02s().isEmpty()){
-//            RigMarketGroupRecursion rigMarketGroupRecursion = 
-//               (RigMarketGroupRecursion) rigMarketGroupRecursion_.getRecursionB02s();
-//            
-//            List<InvTypes> parentGroupIDs = 
-//                Manager.getInstance().db().item().invTypes().getMarketGroupID(rigMarketGroupRecursion.getMarketGroupID(), true);
-//
-//            for (InvTypes invTypes : parentGroupIDs) {
-//                if (converter == Converter.List){
-//                    List<Integer> list = ( List < Integer > ) ts;                    
-//                    list.add( invTypes.getTypeID() ); 
-//                }else{
-//                    Map<Integer, Integer> map = (Map < Integer, Integer >) tm;
-//                    map.put(invTypes.getTypeID(), invTypes.getTypeID());
-//                }                
-//            }                
-//        }
-//        
-//        for (ItemRecursionB recursionB02 : rigMarketGroupRecursion_.getRecursionB02s()) {
-//            rigMarketGroupRecursion((RigMarketGroupRecursion) recursionB02.getRecursionA02(), converter);
-//        }
-
-
-// -------
-
-//        if ( !rigMarketGroupRecursion.getRecursionB02s().isEmpty()){
-//            List<InvTypes> parentGroupID = 
-//                Manager.getInstance().db().item().invTypes().getMarketGroupID(
-//                rigMarketGroupRecursion.getMarketGroupID(), true);
-//            
-//            for (InvTypes invTypes : parentGroupID) {
-//                if (converter == Converter.List){
-//                    List<Integer> list = ( List < Integer > ) ts;                    
-//                    list.add( invTypes.getTypeID() ); 
-//                }else{
-//                    Map<Integer, Integer> map = (Map < Integer, Integer >) tm;
-//                    map.put(invTypes.getTypeID(), invTypes.getTypeID());
-//                }                
-//            }
-//        }
-//        System.out.println("");
+            }            
+        }        
     }
     
     /**

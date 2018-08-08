@@ -11,7 +11,6 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.EffectEngineeringRigEntityJpaController;
 import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigMarketGroupRecursion;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs_1;
 
@@ -45,41 +44,47 @@ public class EffectEngineeringRigX {
     }
     
     /**
+     * @deprecated 
      * Add Effect Rigs
+     * structureRig.getTypeID() is rig 
+     * effectId has effect on items of the same category
      * @deprecated prendire in considerazione di inviare direttamente la lista
      * @param StructureRig structureRig 
      */
     public void addEffectRigs(EffectEngineeringRigs_1 structureRig){
+        // 43875 Standup M-Set Structure Manufacturing Material Efficiency I for fuel blocks
+        // fuel blocks 4051 4246 4247 4312
+        
+        for (RigRecusion rigRecusion : structureRig.getRigRecusions() ) {
+            List<Integer> rigMarketGroups = rigRecusion.getRigMarketGroups();
+            
+            for (Integer effectId : rigMarketGroups) { 
+                EffectEngineeringRigEntity effectRigEntity = 
+                    new EffectEngineeringRigEntity(
+                    structureRig.getTypeID(), effectId );
+//                addEffectRigEntity(effectRigEntity);    
+            }
+        }    
+    }
+
+    public void addEffectRigsORI(EffectEngineeringRigs_1 structureRig){
+        // 43875 Standup M-Set Structure Manufacturing Material Efficiency I for fuel blocks
+        // fuel blocks 4051 4246 4247 4312
         
         for (RigRecusion rigRecusion : structureRig.getRigRecusions() ) {
             List<Integer> rigMarketGroups = rigRecusion.getRigMarketGroups();
             
             for (Integer effectId : rigMarketGroups) {
+                
+                
                 EffectEngineeringRigEntity effectRigEntity = 
                     new EffectEngineeringRigEntity(
                     structureRig.getTypeID(), effectId );
-                System.out.println(""+ effectId);
-//                addEffectRigEntity(effectRigEntity);                
+                addEffectRigEntity(effectRigEntity);    
             }
-        }
-        
-//        for (RigRecusion rigRecusion : rigRecusions) {
-//            
-//            List<RigMarketGroupRecursion> rigMarketGroups = rigRecusion.getRigMarketGroups();
-//            
-//            RigMarketGroupRecursion get = rigMarketGroups.get(0);
-//            System.out.println(""+get.getMarketGroupName());
-////            for (RigMarketGroupRecursion effect : rigMarketGroups) {
-////                EffectEngineeringRigEntity effectRigEntity = 
-////                    new EffectEngineeringRigEntity(
-////                    structureRig.getTypeID(), (int) effect.getMarketGroupID() );
-////
-////                addEffectRigEntity(effectRigEntity);                  
-////            }
-//        }
-        
+        }        
     }
-
+    
     /**
      * Get Effect Rig Entity by typeId and effectID
      * @param int typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )

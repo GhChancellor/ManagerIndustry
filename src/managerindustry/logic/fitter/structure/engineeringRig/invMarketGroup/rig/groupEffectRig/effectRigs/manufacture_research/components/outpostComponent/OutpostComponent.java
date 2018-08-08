@@ -19,7 +19,7 @@ public class OutpostComponent {
      * @return RigRecusion
      */     
     public final RigRecusion getStationComponents(){
-        RigRecusion fuelBlocks = new RigRecusion(1870); 
-        return fuelBlocks;
+        RigRecusion stationComponents = new RigRecusion(1865); 
+        return stationComponents;
     }     
 }

@@ -20,7 +20,11 @@ public class EffectEngineeringRigs_2 {
     public EffectEngineeringRigs_2() {
     }
 
-    
+    /**
+     * Effect EngineeringRigs init list List < RigRecusion >
+     * @param int typeId 
+     * @param List < RigRecusion > effectRigs 
+     */
     public EffectEngineeringRigs_2(int typeId, List < RigRecusion > effectRigs) {
         structureRig = new EffectEngineeringRigs_1(typeId, effectRigs );  
         addEffectRig();

@@ -5,8 +5,6 @@
  */
 package managerindustry.logic.generic.recursion;
 
-import managerindustry.logic.generic.recursion.ItemRecursionA;
-
 /**
  *
  * @author lele

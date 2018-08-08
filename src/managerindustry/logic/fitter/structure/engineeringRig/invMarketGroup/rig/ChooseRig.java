@@ -69,10 +69,16 @@ public class ChooseRig {
             return;
         }        
         
+        /**
+         *  it's not error
+         * Advanced Component Manufacturing / Thukker Advanced Component Manufacturing 
+         * getAdvancedComponents, getAdvancedCapitalComponents, getRam, getSubsystemComponents 
+         */
         if ( ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_1.getTypeID() == typeId ||
              ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_2.getTypeID() == typeId ||
              ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_TE_1.getTypeID() == typeId ||
-             ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_TE_1.getTypeID() == typeId ){
+             ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_TE_1.getTypeID() == typeId || 
+             ChooseEngineeringRigEnum.M_THUKKER_ADVANCED_COMPONENT.getTypeID() == typeId ){ // < it's same
             initMediumRigGroups.initStandupMSetAdvancedComponentManufacturing(typeId);
             return;
         }        
@@ -109,10 +115,17 @@ public class ChooseRig {
             return;
         }        
         
+        
+        /**
+         * it's not error
+         * Basic Capital Component Manufacturing / Thukker Basic Capital Component Manufacturing
+         * getStandardCapitalShipComponents  
+         */
         if ( ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT_ME_1.getTypeID() == typeId ||
              ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT_ME_2.getTypeID() == typeId ||
              ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT_TE_1.getTypeID() == typeId ||
-             ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT_TE_1.getTypeID() == typeId ){
+             ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT_TE_1.getTypeID() == typeId ||
+             ChooseEngineeringRigEnum.M_THUKKER_BASIC_CAPITAL.getTypeID() == typeId ){ // < it's same
             initMediumRigGroups.initStandupMSetBasicCapitalComponentManufacturing(typeId);
             return;
         }        
@@ -157,15 +170,18 @@ public class ChooseRig {
             return;
         }        
         
-        if ( ChooseEngineeringRigEnum.M_THUKKER_BASIC_CAPITAL.getTypeID() == typeId ){
-            initMediumRigGroups.initStandupMSetThukkerBasicCapitalComponentManufacturing(typeId);
-            return;
-        }
-            
-        if ( ChooseEngineeringRigEnum.M_THUKKER_ADVANCED_COMPONENT.getTypeID() == typeId ){
-            initMediumRigGroups.initStandupMSetThukkerAdvancedComponentManufacturing(typeId);
-            return;
-        }        
+
+        // ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT
+//        if ( ChooseEngineeringRigEnum.M_THUKKER_BASIC_CAPITAL.getTypeID() == typeId ){
+//            initMediumRigGroups.initStandupMSetThukkerBasicCapitalComponentManufacturing(typeId);
+//            return;
+//        }
+        
+//        // check ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_1
+//        if ( ChooseEngineeringRigEnum.M_THUKKER_ADVANCED_COMPONENT.getTypeID() == typeId ){
+//            initMediumRigGroups.initStandupMSetThukkerAdvancedComponentManufacturing(typeId);
+//            return;
+//        }        
         
         if ( ChooseEngineeringRigEnum.M_BLUEPRINT_COPY_ACCELERATOR_1.getTypeID() == typeId ||
              ChooseEngineeringRigEnum.M_BLUEPRINT_COPY_ACCELERATOR_2.getTypeID() == typeId ||

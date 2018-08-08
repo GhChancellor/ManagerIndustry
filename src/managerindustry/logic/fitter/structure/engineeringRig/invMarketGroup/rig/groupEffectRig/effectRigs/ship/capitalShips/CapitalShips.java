@@ -10,7 +10,7 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 
 /**
  * 
- * marketGroupID 1089 
+ * marketGroupID 1089 - 766 - 761 - 812 - 817 - 2271
  * parentGroupID 1381
  * @author lele
  * 

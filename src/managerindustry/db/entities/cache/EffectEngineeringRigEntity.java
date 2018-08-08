@@ -6,6 +6,7 @@
 package managerindustry.db.entities.cache;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,6 +34,7 @@ public class EffectEngineeringRigEntity implements Serializable {
     // typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
     private int typeID;
     // effectID, has effect on item to build like ammunition
+    @Column(unique = false)
     private int effectID;
 
     public EffectEngineeringRigEntity() {

@@ -18,8 +18,31 @@ public class InitMediumRigGroups {
     private InitCommonRigGroups initCommonRigGroups = new InitCommonRigGroups();
     
     public InitMediumRigGroups() {
+
+        
     }
     
+    private InitCommonRigGroups DBGinitMedium(){
+        initStandupMSetEquipmentManufacturing(0);
+        initStandupMSetAdvancedComponentManufacturing(0);
+        initStandupMSetAdvancedLargeShipManufacturing(0);
+        initStandupMSetAdvancedMediumShipManufacturing(0);
+        initStandupMSetAdvancedSmallShipManufacturing(0);
+        initStandupMSetAmmunitionManufacturing(0);
+        initStandupMSetBasicCapitalComponentManufacturing(0);
+        initStandupMSetBasicLargeShipManufacturing(0);
+        initStandupMSetBasicMediumShipManufacturing(0);
+        initStandupMSetBasicSmallShipManufacturing(0);
+        initStandupMSetDroneAndFighterManufacturing(0);
+        initStandupMSetStructureManufacturing(0);
+//        initStandupMSetThukkerAdvancedComponentManufacturing(0);
+//        initStandupMSetThukkerBasicCapitalComponentManufacturing(0);
+        initStandupMSetBlueprintCopy(0);
+        initStandupMSetInvention(0);
+        initStandupMSetMEResearch(0);
+        initStandupMSetTEResearch(0);   
+        return initCommonRigGroups;
+    }
     /**
      * Init Standup MSet Equipment Manufacturing
      * @param int typeId 

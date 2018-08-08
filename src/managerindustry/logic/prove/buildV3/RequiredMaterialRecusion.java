@@ -5,7 +5,6 @@
  */
 package managerindustry.logic.prove.buildV3;
 
-import managerindustry.logic.prove.buildV2.*;
 import managerindustry.logic.generic.recursion.ItemRecursionA;
 
 /**
@@ -44,6 +43,16 @@ public class RequiredMaterialRecusion extends ItemRecursionA {
         this.quantity = quantity;
     }
 
+    /**
+     * Init value
+     * @param int typeID
+     * @param int quantity 
+     */
+    public RequiredMaterialRecusion(int typeID, int quantity) {
+        this.typeID = typeID;
+        this.quantity = quantity;
+    }
+   
     public RequiredMaterialRecusion() {
     }
 
