@@ -6,7 +6,7 @@
 package managerindustry.logic.prove.buildV2;
 
 import java.util.List;
-import managerindustry.logic.build.MaterialEfficiencyCalculate;
+import managerindustry.logic.build.materialEfficiency.MaterialEfficiencyCalculate;
 import managerindustry.logic.generic.GenericRequiredItem;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.recursion.ItemRecursionA;

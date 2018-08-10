@@ -22,6 +22,11 @@ public class RigMarketGroupRecursion extends ItemRecursionA {
         this.marketGroupName = marketGroupName;
     }
 
+    public RigMarketGroupRecursion(short marketGroupID, short parentGroupID) {
+        this.marketGroupID = marketGroupID;
+        this.parentGroupID = parentGroupID;
+    }
+
     public RigMarketGroupRecursion() {
     }
 

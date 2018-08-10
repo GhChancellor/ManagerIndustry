@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.build;
+package managerindustry.logic.build.materialEfficiency;
 
-import managerindustry.logic.build.MaterialEfficiency;
+import managerindustry.logic.build.materialEfficiency.MaterialEfficiency;
 
 /**
  * Calculate material Efficiency

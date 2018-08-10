@@ -14,24 +14,43 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.prove.buildV3.BasicMaterialRequired;
+import managerindustry.logic.prove.buildV3.BuildItem;
 
 /**
  *
  * @author lele
  */
-public class New001 <T> {
+public class Immondizia_001 <T> {
     List < Integer > duplicate = new ArrayList<>();
     
-    public New001() {
+    public Immondizia_001() {
         baseMaterial();
     }
    
+    public void buildItem() {
+        String bpoName = "Scimitar";
+        int run = 1;
+        int job = 1;
+        byte bpoME = 0;
+        byte componentMe = 0;        
+
+        try {
+            BuildItem buildItem = new BuildItem
+                (bpoName, run, job, bpoME, componentMe, RamActivitiesEnum.MANUFACTURING);
+            buildItem.display();
+            
+        } catch (ErrorExeption e) {
+            System.out.println(""+ e.getErrorEnum());
+        }
+
+    }
+    
     public void baseMaterial() {
         try {
             BasicMaterialRequired basicMaterialRequired = new BasicMaterialRequired
                 ("scimitar", RamActivitiesEnum.MANUFACTURING);
+            basicMaterialRequired.getRequiredItems();
             
-            basicMaterialRequired.displatBasicMaterial();
         } catch (ErrorExeption e) {
             System.out.println(""+ e.getErrorEnum());
         }
@@ -51,7 +70,7 @@ public class New001 <T> {
 //        EffectEngineeringRigs_2 managerStructure = new EffectEngineeringRigs_2(43921, effectRigs);        
     }
     
-    public void setDublicate(){
+    private void setDublicate(){
         duplicate.add(1138); // Strategic Cruisers
         duplicate.add(1147); // Subsystem Components
         duplicate.add(1951); // Tactical Destroyers    

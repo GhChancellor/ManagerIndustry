@@ -22,7 +22,7 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.prove.immondizia.New001;
+import managerindustry.logic.prove.immondizia.Immondizia_001;
 
 /**
  *
@@ -34,8 +34,9 @@ public class MainProgramm {
 //        buildItem(); // << controllare
 //        jobInstallationFee(); << controllare funziona male
 //        speculation(); // << controllare funziona male
-        recursionItems();
+//        recursionItems();
 //        structure();
+        immondizia();
     }
     
     public static void buildItem(){
@@ -100,16 +101,17 @@ public class MainProgramm {
         DisplaySpeculation speculation = new DisplaySpeculation();
     }
     
+    /**
+     * @deprecated 
+     */
     public static void recursionItems(){
 //        RigRecusion rigRecusion = GroupEffectRig.getInstance().
 //            t3subsystems().getT3subsystems();
 //                
 //        rigRecusion.displayRecursion();
         
+        // IMPORTANTE qualche rig crea doppio per dinamiche di gioco, sistemalo
 //        ChooseRig chooseRig02 = new ChooseRig(43921);
-
-        New001 new001 = new New001();
-
 
     }
     
@@ -122,5 +124,10 @@ public class MainProgramm {
         
         EngineeringComplex engineeringComplex = new EngineeringComplex(PlatformEnum.RAITARU);
         engineeringComplex.displayValue();        
+    }
+    
+    public static void immondizia(){
+        Immondizia_001 immondizia_001 = new Immondizia_001();
+        immondizia_001.buildItem();
     }
 }

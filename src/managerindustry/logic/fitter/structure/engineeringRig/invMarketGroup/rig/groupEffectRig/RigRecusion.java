@@ -73,8 +73,12 @@ public class RigRecusion extends GenericRequiredItem{
             
             RigMarketGroupRecursion recusion = new RigMarketGroupRecursion(
                 marketGroups01.getMarketGroupID().shortValue(),
-                marketGroups01.getParentGroupID().shortValue(), 
-                marketGroups01.getMarketGroupName() );
+                marketGroups01.getParentGroupID().shortValue());
+
+//            Only for dbg, use this for more info on object
+//            RigMarketGroupRecursion recusion = 
+//                (RigMarketGroupRecursion) requiredItemMoreInfo(marketGroups01);
+            
             rigRecusion_.addRecursionB02( new ItemRecursionB(recusion) );
             
             // Exclude some branches ( items )
@@ -105,8 +109,12 @@ public class RigRecusion extends GenericRequiredItem{
             
             RigMarketGroupRecursion recusion = new RigMarketGroupRecursion(
                 marketGroups01.getMarketGroupID().shortValue(),
-                marketGroups01.getParentGroupID().shortValue(), 
-                marketGroups01.getMarketGroupName() );
+                marketGroups01.getParentGroupID().shortValue());
+            
+//            Only for dbg, use this for more info on object
+//            RigMarketGroupRecursion recusion = 
+//                (RigMarketGroupRecursion) requiredItemMoreInfo(marketGroups01);  
+
             rigRecusion_.addRecursionB02( new ItemRecursionB(recusion) );
             
             List<InvMarketGroups> marketGroups02 = 
@@ -121,6 +129,18 @@ public class RigRecusion extends GenericRequiredItem{
         }
     }
 
+    @Override
+    protected Object requiredItemMoreInfo(Object marketGroups01_) {
+        InvMarketGroups marketGroups01 = (InvMarketGroups) marketGroups01_;
+        
+            RigMarketGroupRecursion recusion = new RigMarketGroupRecursion(
+                marketGroups01.getMarketGroupID().shortValue(),
+                marketGroups01.getParentGroupID().shortValue(), 
+                marketGroups01.getMarketGroupName() );   
+        
+        return (RigMarketGroupRecursion) recusion;
+    }
+    
     /**
      * Display rig recursion
      */
@@ -162,14 +182,14 @@ public class RigRecusion extends GenericRequiredItem{
         }         
         
     }
-
+    
     /**
      * Get RigMarket Groups
      * @return List < Integer >
      */
     public List < Integer > getRigMarketGroups(){
         List<Integer> rigMarketGroups = 
-            (List < Integer >) getConversionToList(rigMarketGroupRecursion);
+            (List < Integer >) getObject();
         return rigMarketGroups;
     }
     
@@ -187,48 +207,22 @@ public class RigRecusion extends GenericRequiredItem{
         throw new UnsupportedOperationException("Unused"); //To change body of generated methods, choose Tools | Templates.
     }
 
-
-    
-    public void DBGdisplayRecursion(List < Integer > duplicate){
-        DBG_Dublicate(rigMarketGroupRecursion, "", duplicate);
-        
-    }
-    
-    private void DBG_Dublicate(Object t1, Object t2, List < Integer > duplicate_){
-        RigMarketGroupRecursion rigMarketGroupRecursion = (RigMarketGroupRecursion) t1;
-        String tab = (String) t2;
-        
-        for (Integer duplicate : duplicate_) {
-            int rigMarketGroupRecursionINT = (int) rigMarketGroupRecursion.getMarketGroupID();
-            
-            if (duplicate.equals(rigMarketGroupRecursionINT )  ){
-                System.out.println(tab + 
-                    rigMarketGroupRecursion.getMarketGroupName() + " " + 
-                    rigMarketGroupRecursion.getMarketGroupID() + " " + 
-                    rigMarketGroupRecursion.getParentGroupID() );   
-                System.out.println("----------");
-            }
-        }
-        
-        tab +=" ";
-
-        if ( rigMarketGroupRecursion.getRecursionB02s().isEmpty() ){
-            List<InvTypes> parentGroupID = Manager.getInstance().db().item().
-                invTypes().getMarketGroupID(rigMarketGroupRecursion.getMarketGroupID(), true);            
-            
-            for (InvTypes invTypes : parentGroupID) {
-//                System.out.println(tab + invTypes.getTypeName()+ " " + invTypes.getTypeID() );
-            }            
-        }
-        
-        for (ItemRecursionB object : rigMarketGroupRecursion.getRecursionB02s()) {
-            DBG_Dublicate(object.getRecursionA02(), tab, duplicate_);
-        }            
-    }
-
     @Override
     protected Object requiredItemMoreInfo(Object t1, Object t2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not used"); //To change body of generated methods, choose Tools | Templates.
     }
+
+    /**
+     * Get Object
+     * @return List<Integer> 
+     */
+    @Override
+    protected Object getObject() {
+        List<Integer> rigMarketGroups = 
+            (List < Integer >) getConversionToList(rigMarketGroupRecursion);
+        return rigMarketGroups;
+    }
+
+
         
 }

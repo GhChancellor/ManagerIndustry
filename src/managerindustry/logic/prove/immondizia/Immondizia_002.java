@@ -9,14 +9,14 @@ package managerindustry.logic.prove.immondizia;
  *
  * @author lele
  */
-public class New002 {
+public class Immondizia_002 {
     private int a;
 
-    public New002() {
+    public Immondizia_002() {
     
     }
 
-    public New002(int a) {
+    public Immondizia_002(int a) {
         this.a = a;
     }
 

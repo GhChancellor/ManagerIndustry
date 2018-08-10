@@ -6,7 +6,7 @@
 package managerindustry.logic.prove.buildV2;
 
 import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.prove.immondizia.New001;
+import managerindustry.logic.prove.immondizia.Immondizia_001;
 
 /**
  *
@@ -16,6 +16,6 @@ public class Main {
 
     public static void main(String[] args) throws ErrorExeption {
         ManagerBuild managerBuild = new ManagerBuild();
-//        New001 new001 = new New001();
+//        Immondizia_001 new001 = new Immondizia_001();
     }
 }

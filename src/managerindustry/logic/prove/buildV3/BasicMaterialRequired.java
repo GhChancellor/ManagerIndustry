@@ -63,13 +63,13 @@ public class BasicMaterialRequired extends GenericRequiredItem{
         for (IndustryActivityMaterials material : materials) {
             InvTypes invTypes = getInvTypesById(material.getMaterialTypeID());
             
-            RequiredMaterialRecusion requiredItemsRecursionA = 
-                new RequiredMaterialRecusion(
-                    invTypes.getTypeID(), material.getQuantity());    
+//            RequiredMaterialRecusion requiredItemsRecursionA = 
+//                new RequiredMaterialRecusion(
+//                    invTypes.getTypeID(), material.getQuantity());    
 
             // only for dbg, use this for more info on object
-            // RequiredMaterialRecusion requiredItemsRecursionA = 
-            //    requiredItemMoreInfo(invTypes, material);
+             RequiredMaterialRecusion requiredItemsRecursionA = 
+                (RequiredMaterialRecusion) requiredItemMoreInfo(invTypes, material);
             
             requiredA.addRecursionB02(new ItemRecursionB(requiredItemsRecursionA));
             
@@ -101,20 +101,15 @@ public class BasicMaterialRequired extends GenericRequiredItem{
         }  
     }
 
-    public void getRequiredItemList(){
-
+    /**
+     * Get Required Items
+     * @return List<RequiredMaterialRecusion>
+     */
+    public List<RequiredMaterialRecusion> getRequiredItems(){
+        List<RequiredMaterialRecusion> requiredMaterials = 
+            (List<RequiredMaterialRecusion>) getObject();
+        return requiredMaterials;
     }
-    
-    @Override
-    protected void requiredItem(Object t) {
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected void requiredItem(Object t1, Object t2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
 
     /**
      * Only for dbg, use this for more info on object
@@ -127,10 +122,37 @@ public class BasicMaterialRequired extends GenericRequiredItem{
         InvTypes invTypes = (InvTypes) invTypes_;
         IndustryActivityMaterials material = (IndustryActivityMaterials) material_;
         
-                RequiredMaterialRecusion requiredItemsRecursionA = 
+        RequiredMaterialRecusion requiredItemsRecursionA = 
             new RequiredMaterialRecusion(
-                    invTypes.getTypeID(), invTypes.getTypeName(), 
-                    material.getQuantity());
+                invTypes.getTypeID(), invTypes.getTypeName(), 
+                material.getQuantity());
         return (RequiredMaterialRecusion) requiredItemsRecursionA;
+    }
+
+    @Override
+    protected Object requiredItemMoreInfo(Object t1) {
+        throw new UnsupportedOperationException("Not used"); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    protected void requiredItem(Object t) {
+        
+        throw new UnsupportedOperationException("Not used"); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void requiredItem(Object t1, Object t2) {
+        throw new UnsupportedOperationException("Not used"); //To change body of generated methods, choose Tools | Templates.
+    }     
+
+    /**
+     * Get Object
+     * @return List<RequiredMaterialRecusion>
+     */
+    @Override
+    protected Object getObject() {
+        List<RequiredMaterialRecusion> requiredMaterials = 
+            getConversionToList(requiredMaterial);
+        return requiredMaterials;
     }
 }
