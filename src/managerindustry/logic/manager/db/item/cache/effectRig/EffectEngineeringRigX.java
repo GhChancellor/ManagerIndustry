@@ -54,17 +54,20 @@ public class EffectEngineeringRigX {
     public void addEffectRigs(EffectEngineeringRigs_1 structureRig){
         // 43875 Standup M-Set Structure Manufacturing Material Efficiency I for fuel blocks
         // fuel blocks 4051 4246 4247 4312
+  
+        System.err.print(" >>>> ATTENZIONE <<<< EffectEngineeringRigX > addEffectRigs DISABILITATA!!!!!!!" );
         
-        for (RigRecusion rigRecusion : structureRig.getRigRecusions() ) {
-            List<Integer> rigMarketGroups = rigRecusion.getRigMarketGroups();
-            
-            for (Integer effectId : rigMarketGroups) { 
-                EffectEngineeringRigEntity effectRigEntity = 
-                    new EffectEngineeringRigEntity(
-                    structureRig.getTypeID(), effectId );
-//                addEffectRigEntity(effectRigEntity);    
-            }
-        }    
+        
+//        for (RigRecusion rigRecusion : structureRig.getRigRecusions() ) {
+//            List<Integer> rigMarketGroups = rigRecusion.getRigMarketGroups();
+//            
+//            for (Integer effectId : rigMarketGroups) { 
+//                EffectEngineeringRigEntity effectRigEntity = 
+//                    new EffectEngineeringRigEntity(
+//                    structureRig.getTypeID(), effectId );
+////                addEffectRigEntity(effectRigEntity);    
+//            }
+//        }    
     }
 
     public void addEffectRigsORI(EffectEngineeringRigs_1 structureRig){

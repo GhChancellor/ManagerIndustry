@@ -28,6 +28,16 @@ public class BuildItem extends GenericRequiredItem{
     private ReportItem reportItem = new ReportItem();
     private RamActivitiesEnum activitiesEnum;
     
+    /**
+     * @deprecated 
+     * @param bpoName
+     * @param run
+     * @param job
+     * @param bpoME
+     * @param componentMe
+     * @param activitiesEnum
+     * @throws ErrorExeption 
+     */
     public BuildItem(String bpoName, int run, int job, byte bpoME, byte componentMe, 
         RamActivitiesEnum activitiesEnum) throws ErrorExeption {
         
@@ -39,7 +49,8 @@ public class BuildItem extends GenericRequiredItem{
         this.activitiesEnum = activitiesEnum;
         BasicMaterialRequired basicMaterialRequired = 
             new BasicMaterialRequired(bpoName, activitiesEnum);
-                
+
+        // Attenzione da armonizzare
         requiredItem(basicMaterialRequired.getRequiredItems());
     }    
     
@@ -110,34 +121,35 @@ public class BuildItem extends GenericRequiredItem{
     }
     
     public void display(){
-        display(null, null);        
+        System.err.print(" >>>>> ATTENZIONE <<<<<<  Builditem > display DISABILITATA!!!!!");
+//        display(null, null);        
     }
     
-    @Override
-    protected void display(Object t1, Object t2) {
-        List<Item> singleItems = reportItem.getSingleItems();
-
-        System.out.println("Single items");
-
-        for (Item singleItem : singleItems) {
-            System.out.println("" + singleItem.getTypeId() + " - " +
-                singleItem.getName() + " > " + 
-                singleItem.getQuanityInt() + " - " + 
-                singleItem.getQuanityDbl());
-        }        
-
-        System.out.println("---------------------------------------\n\n\n");
-        System.out.println("Total Calculated Item");
-        
-        Map<String, Item> totalCalculatedItem = reportItem.getTotalCalculatedItem();
-        for (Map.Entry<String, Item> entry : totalCalculatedItem.entrySet()) {
-            String key = entry.getKey();
-            Item value = entry.getValue();
-            System.out.println("" + value.getTypeId() + " - " + value.getName() + " > " +
-                value.getQuanityInt() + " - " + 
-                value.getQuanityDbl());  
-        }
-    }
+//    @Override
+//    protected void display(Object t1, Object t2) {
+//        List<Item> singleItems = reportItem.getSingleItems();
+//
+//        System.out.println("Single items");
+//
+//        for (Item singleItem : singleItems) {
+//            System.out.println("" + singleItem.getTypeId() + " - " +
+//                singleItem.getName() + " > " + 
+//                singleItem.getQuanityInt() + " - " + 
+//                singleItem.getQuanityDbl());
+//        }        
+//
+//        System.out.println("---------------------------------------\n\n\n");
+//        System.out.println("Total Calculated Item");
+//        
+//        Map<String, Item> totalCalculatedItem = reportItem.getTotalCalculatedItem();
+//        for (Map.Entry<String, Item> entry : totalCalculatedItem.entrySet()) {
+//            String key = entry.getKey();
+//            Item value = entry.getValue();
+//            System.out.println("" + value.getTypeId() + " - " + value.getName() + " > " +
+//                value.getQuanityInt() + " - " + 
+//                value.getQuanityDbl());  
+//        }
+//    }
     
     /**
      * Get Object

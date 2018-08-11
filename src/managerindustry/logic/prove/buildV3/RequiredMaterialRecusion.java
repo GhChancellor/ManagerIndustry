@@ -79,6 +79,5 @@ public class RequiredMaterialRecusion extends ItemRecursionA {
     public double getQuanityDbl() {
         return quanityDbl;
     }
-    
-    
+ 
 }

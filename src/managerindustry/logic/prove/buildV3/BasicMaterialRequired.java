@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.prove.buildV3;
 
+import java.util.ArrayList;
 import java.util.List;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
@@ -45,7 +46,8 @@ public class BasicMaterialRequired extends GenericRequiredItem{
     }
 
     public void displatBasicMaterial(){
-        display(requiredMaterial, "");
+        display(requiredMaterial);
+//        display(requiredMaterial, "");
     }
     
     /**
@@ -84,33 +86,53 @@ public class BasicMaterialRequired extends GenericRequiredItem{
         }
     }
     
-    @Override
-    protected void display(Object requiredItemA_, Object tab_) {
-        RequiredMaterialRecusion requiredItemA = (RequiredMaterialRecusion) requiredItemA_;
-        String tab = (String) tab_;
-        
-        if ( requiredItemA.getTypeID() != 0 )
-            System.out.println(tab + requiredItemA.getTypeID() + " " + 
-                requiredItemA.getTypeName()+ " " + 
-                requiredItemA.getQuantity());
-        
-        tab +="   ";
-   
-        for (ItemRecursionB requiredItem : requiredItemA.getRecursionB02s()) {
-            display((RequiredMaterialRecusion) requiredItem.getRecursionA02(), tab);
-        }  
-    }
+//    @Override
+//    protected void display(Object requiredItemA_, Object tab_) {
+//        RequiredMaterialRecusion requiredItemA = (RequiredMaterialRecusion) requiredItemA_;
+//        String tab = (String) tab_;
+//        
+//        if ( requiredItemA.getTypeID() != 0 )
+//            System.out.println(tab + requiredItemA.getTypeID() + " " + 
+//                requiredItemA.getTypeName()+ " " + 
+//                requiredItemA.getQuantity());
+//        
+//        tab +="   ";
+//   
+//        for (ItemRecursionB requiredItem : requiredItemA.getRecursionB02s()) {
+//            display((RequiredMaterialRecusion) requiredItem.getRecursionA02(), tab);
+//        }  
+//    }
 
     /**
+     * @deprecated 
      * Get Required Items
      * @return List<RequiredMaterialRecusion>
      */
     public List<RequiredMaterialRecusion> getRequiredItems(){
-        List<RequiredMaterialRecusion> requiredMaterials = 
-            (List<RequiredMaterialRecusion>) getObject();
-        return requiredMaterials;
+        
+        System.err.print(">>>> ATTENZIONE <<<<<< BasicMaterialRequired > getRequiredItems DISABILITATA!!!!");
+//        List<RequiredMaterialRecusion> requiredMaterials = 
+//            (List<RequiredMaterialRecusion>) getObject();
+//        return requiredMaterials;
+        return new ArrayList<>();
     }
 
+    /**
+     * Get Basic Material List
+     * @return List< RequiredMaterialRecusion >
+     */
+    public List< RequiredMaterialRecusion > getBasicMaterialList(){
+        return ( List< RequiredMaterialRecusion > ) getConversionToList(requiredMaterial); 
+    }
+    
+    /**
+     * Get Required Item
+     * @return RequiredMaterialRecusion
+     */
+    public RequiredMaterialRecusion getRequiredItem(){
+        return (RequiredMaterialRecusion) getObject();
+    }
+    
     /**
      * Only for dbg, use this for more info on object
      * @param InvTypes invTypes_
@@ -119,6 +141,8 @@ public class BasicMaterialRequired extends GenericRequiredItem{
      */
     @Override
     protected Object requiredItemMoreInfo(Object invTypes_, Object material_) {
+        System.err.print("BasicMaterialRequired > requiredItemMoreInfo is ENABLE!!!");
+        
         InvTypes invTypes = (InvTypes) invTypes_;
         IndustryActivityMaterials material = (IndustryActivityMaterials) material_;
         
@@ -147,12 +171,10 @@ public class BasicMaterialRequired extends GenericRequiredItem{
 
     /**
      * Get Object
-     * @return List<RequiredMaterialRecusion>
+     * @return Object
      */
     @Override
     protected Object getObject() {
-        List<RequiredMaterialRecusion> requiredMaterials = 
-            getConversionToList(requiredMaterial);
-        return requiredMaterials;
+        return requiredMaterial;
     }
 }
