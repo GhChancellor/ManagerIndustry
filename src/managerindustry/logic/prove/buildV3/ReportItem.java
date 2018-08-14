@@ -15,8 +15,8 @@ import java.util.Map;
  * @author lele
  */
 public class ReportItem {
-    private List < Item > singleItems = new ArrayList<>();
-    private Map < String, Item > singleItemM = new HashMap<>();
+    private Map < String, Item > singleCalculatedItemM = new HashMap<>();
+    private Map < String, Item > totalCalculatedItemM = new HashMap<>();
     private Item singleItem;
 
     public ReportItem() {
@@ -38,30 +38,30 @@ public class ReportItem {
      * @param singleItem 
      */
     private void addSingleItem(){
-        singleItems.add(singleItem);
+        singleCalculatedItemM.put(singleItem.getName(), singleItem);
     }
 
     /**
      * get Calculated material/item scimitar x 1
      * @return List<Item>
      */
-    public List<Item> getSingleItems() {
-        return singleItems;
+    public Map < String, Item > getSingleCalculatedItemM() {
+        return singleCalculatedItemM;
     }
     
     /**
      * Sum all value into map
      */
     private void totalCalculatedItem(){
-        if ( singleItemM.containsKey( singleItem.getName() )){
+        if ( totalCalculatedItemM.containsKey( singleItem.getName() )){
             Double quanityDbl = 
-                singleItemM.get( singleItem.getName() ).getQuanityDbl() + 
+                totalCalculatedItemM.get( singleItem.getName() ).getQuanityDbl() + 
                 singleItem.getQuanityDbl();
             
             singleItem.setQuanityDbl(quanityDbl);
         }
         
-        singleItemM.put( singleItem.getName(), singleItem);
+        totalCalculatedItemM.put( singleItem.getName(), singleItem);
     }
     
     /**
@@ -69,6 +69,6 @@ public class ReportItem {
      * @return Map < String, Item >
      */
     public Map < String, Item > getTotalCalculatedItem(){
-        return singleItemM;
+        return totalCalculatedItemM;
     }
 }

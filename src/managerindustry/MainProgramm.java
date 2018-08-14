@@ -110,7 +110,7 @@ public class MainProgramm {
 //                
 //        rigRecusion.displayRecursion();
         
-        // IMPORTANTE qualche rig crea doppio per dinamiche di gioco, sistemalo
+        // IMPORTANTE qualche rig crea doppione per dinamiche di gioco, sistemalo
 //        ChooseRig chooseRig02 = new ChooseRig(43921);
 
     }

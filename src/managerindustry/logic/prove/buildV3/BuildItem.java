@@ -11,12 +11,11 @@ import managerindustry.logic.build.materialEfficiency.MaterialEfficiencyCalculat
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 
-
 /**
  *
  * @author lele
  */
-public class BuildItem extends GenericRequiredItem{
+public class BuildItem{
     private MaterialEfficiencyCalculate materialEfficiencyCalculate = new MaterialEfficiencyCalculate();    
     private String bpoName;
     private int run;
@@ -29,17 +28,17 @@ public class BuildItem extends GenericRequiredItem{
     private RamActivitiesEnum activitiesEnum;
     
     /**
-     * @deprecated 
-     * @param bpoName
-     * @param run
-     * @param job
-     * @param bpoME
-     * @param componentMe
-     * @param activitiesEnum
+     * Buld Item
+     * @param String bpoName
+     * @param int run
+     * @param int job
+     * @param byte bpoME
+     * @param byte componentMe
+     * @param RamActivitiesEnum activitiesEnum
      * @throws ErrorExeption 
      */
     public BuildItem(String bpoName, int run, int job, byte bpoME, byte componentMe, 
-        RamActivitiesEnum activitiesEnum) throws ErrorExeption {
+        RamActivitiesEnum activitiesEnum) throws ErrorExeption{
         
         this.bpoName = bpoName;
         this.run = run;
@@ -51,21 +50,9 @@ public class BuildItem extends GenericRequiredItem{
             new BasicMaterialRequired(bpoName, activitiesEnum);
 
         // Attenzione da armonizzare
-        requiredItem(basicMaterialRequired.getRequiredItems());
-    }    
-    
-    /**
-     * Calculate Required Item
-     * @param List<RequiredMaterialRecusion> materialRecusions 
-     */
-    private void calculateRequiredItem(List<RequiredMaterialRecusion> materialRecusions){
-        for (RequiredMaterialRecusion materialRecusion : materialRecusions) {
-            calculateME(materialRecusion);
-            calculateQuantityMaterial();
-            addItem(materialRecusion);
-        }
+        requiredItem(basicMaterialRequired);        
     }
-     
+         
     /**
      * Add Item
      * @param RequiredMaterialRecusion materialRecusion 
@@ -107,115 +94,42 @@ public class BuildItem extends GenericRequiredItem{
                 (run, job, componentMe , materialRecusion.getQuantity() );
         }        
     }
-    
-    @Override
-    protected void requiredItem(Object materialRecusions_) {
-        List<RequiredMaterialRecusion> materialRecusions = 
-            ( List<RequiredMaterialRecusion> ) materialRecusions_;
+
+    /**
+     * Calculate required Item
+     * @param basicMaterialRequired 
+     */
+    private void requiredItem(BasicMaterialRequired basicMaterialRequired) {
+        List<RequiredMaterialRecusion> basicMaterialRequireds = 
+            basicMaterialRequired.getBasicMaterialList();
         
-        for (RequiredMaterialRecusion materialRecusion : materialRecusions) {
+        for (RequiredMaterialRecusion materialRecusion : basicMaterialRequireds) {
             calculateME(materialRecusion);
             calculateQuantityMaterial();
-            addItem(materialRecusion);            
+            addItem(materialRecusion);              
         }
     }
     
-    public void display(){
-        System.err.print(" >>>>> ATTENZIONE <<<<<<  Builditem > display DISABILITATA!!!!!");
-//        display(null, null);        
-    }
-    
-//    @Override
-//    protected void display(Object t1, Object t2) {
-//        List<Item> singleItems = reportItem.getSingleItems();
-//
-//        System.out.println("Single items");
-//
-//        for (Item singleItem : singleItems) {
-//            System.out.println("" + singleItem.getTypeId() + " - " +
-//                singleItem.getName() + " > " + 
-//                singleItem.getQuanityInt() + " - " + 
-//                singleItem.getQuanityDbl());
-//        }        
-//
-//        System.out.println("---------------------------------------\n\n\n");
-//        System.out.println("Total Calculated Item");
-//        
-//        Map<String, Item> totalCalculatedItem = reportItem.getTotalCalculatedItem();
-//        for (Map.Entry<String, Item> entry : totalCalculatedItem.entrySet()) {
-//            String key = entry.getKey();
-//            Item value = entry.getValue();
-//            System.out.println("" + value.getTypeId() + " - " + value.getName() + " > " +
-//                value.getQuanityInt() + " - " + 
-//                value.getQuanityDbl());  
-//        }
-//    }
-    
     /**
-     * Get Object
-     * @return 
+     * Display Build Item
      */
-    @Override
-    protected Object getObject() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void displayBuildItem(){
+        System.out.println("Single Items");
+        Map<String, Item> singleCalculatedItemM = reportItem.getSingleCalculatedItemM();
+        for (Map.Entry<String, Item> singleItem : singleCalculatedItemM.entrySet()) {
+            Item item = singleItem.getValue();
+            
+//            System.out.println(""+ item.getTypeId() + ": "
+//            + item.getName() + " "
+//            + item.getQuanityInt() + " - "
+//            + item.getQuanityDbl());
+            
+//            String key = item.getKey();
+//            Item value = item.getValue();
+            
+        }
+
+        
     }    
-
-    @Override
-    protected void requiredItem(Object t1, Object t2) {
-        throw new UnsupportedOperationException("Not used"); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected void requiredItem(Object t1, Object t2, Object t3) {
-        throw new UnsupportedOperationException("Not used"); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected Object requiredItemMoreInfo(Object t1) {
-        throw new UnsupportedOperationException("Not used"); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected Object requiredItemMoreInfo(Object t1, Object t2) {
-        throw new UnsupportedOperationException("Not used"); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    /*
-    public void itemDescription(){
-        // 43867 Standup M-Set Advanced Component Manufacturing Material Efficiency I
-        String bpoName = "drake Blueprint"; // Nighthawk Blueprint 
-        InvTypes invTypes = Manager.getInstance().db().item().invTypes().getInvTypesByName(bpoName);
-        
-        List < DgmTypeAttributes > dgmTypeAttributes = 
-          Manager.getInstance().db().item().dgmTypeAttributes().getTypeAttributesByTypeId(invTypes.getTypeID());
-        
-        System.out.println(""+ bpoName + " ID " + invTypes.getTypeID() );
-        
-        for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
-           
-            DgmAttributeTypes dgmAttributeTypes = 
-              Manager.getInstance().db().item().dgmAttributeTypes().getAttributeTypes(dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID());
-            
-            if (dgmTypeAttribute.getValueInt() == null) {
-                System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  +
-                " " + dgmTypeAttribute.getValueFloat() + "\n");
-            }
-            
-            if (dgmTypeAttribute.getValueFloat() == null) {
-                System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  + " " + dgmTypeAttribute.getValueInt() + "\n");                
-            }
-            
-            if (dgmAttributeTypes.getDisplayName() == null ){
-                System.out.println(""+ dgmAttributeTypes.getDescription()  + " " + dgmTypeAttribute.getValueInt() + " " + dgmTypeAttribute.getValueFloat() + "\n");
-            }
-            
-            if ( dgmAttributeTypes.getDescription() == null ){
-                System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmTypeAttribute.getValueInt() + " " + dgmTypeAttribute.getValueFloat() + "\n");                
-            }
-            
-            System.out.println(""+ dgmAttributeTypes.getDisplayName() + "\n" + dgmAttributeTypes.getDescription()  + " " +
-             + dgmAttributeTypes.getAttributeID() + " " + dgmTypeAttribute.getValueInt() + " " + dgmTypeAttribute.getValueFloat() + "\n");
-        }        
-    }    
-    */
+   
 }

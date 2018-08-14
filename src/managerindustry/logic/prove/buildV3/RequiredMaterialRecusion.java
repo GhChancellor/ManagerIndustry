@@ -79,5 +79,9 @@ public class RequiredMaterialRecusion extends ItemRecursionA {
     public double getQuanityDbl() {
         return quanityDbl;
     }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
  
 }

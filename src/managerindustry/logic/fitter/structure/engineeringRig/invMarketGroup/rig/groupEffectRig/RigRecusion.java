@@ -9,11 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.eve.InvMarketGroups;
-import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.generic.recursion.ItemRecursionB;
 import managerindustry.logic.manager.Manager;
 import managerindustry.logic.prove.buildV3.GenericRequiredItem;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 
 /**
  * Recursion rig
@@ -30,6 +28,7 @@ public class RigRecusion extends GenericRequiredItem{
     public RigRecusion(int code, int excludeCode) {
         requiredItem(code, excludeCode);
     }
+    
     /**
      * Init ItemRecusion with all tree 
      * @param int code_ 
@@ -149,43 +148,7 @@ public class RigRecusion extends GenericRequiredItem{
      */
     public void displayRecursion(){
         display(rigMarketGroupRecursion);
-//        display(rigMarketGroupRecursion, "");
     }
-    
-//    /**
-//     * Display rig recursion
-//     * @param t1
-//     * @param t2 
-//     */
-//    @Override
-//    protected void display(Object t1, Object t2) {
-//        RigMarketGroupRecursion rigMarketGroupRecursion = (RigMarketGroupRecursion) t1;
-//        String tab = (String) t2;
-//        
-//        if (rigMarketGroupRecursion.getMarketGroupID() != 0 )
-//            System.out.println(tab + 
-//                rigMarketGroupRecursion.getMarketGroupName() + " " + 
-//                rigMarketGroupRecursion.getMarketGroupID() + " " + 
-//                rigMarketGroupRecursion.getParentGroupID() );
-//        
-//        tab +=" ";
-//
-//        if ( rigMarketGroupRecursion.getRecursionB02s().isEmpty() ){
-//            List<InvTypes> parentGroupID = Manager.getInstance().db().item().
-//                invTypes().getMarketGroupID(rigMarketGroupRecursion.getMarketGroupID(), true);            
-//            
-//            for (InvTypes invTypes : parentGroupID) {
-//                System.out.println(tab + " - "+ invTypes.getTypeName()+ " " + invTypes.getTypeID() );
-//            }            
-//        }
-//        
-//        System.out.println("----------");
-//                
-//        for (ItemRecursionB object : rigMarketGroupRecursion.getRecursionB02s()) {
-//            display(object.getRecursionA02(), tab);
-//        }         
-//        
-//    }
     
     /**
      * @deprecated 

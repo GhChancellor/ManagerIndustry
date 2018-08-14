@@ -7,6 +7,7 @@ package managerindustry.logic.prove.buildV3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
@@ -41,8 +42,11 @@ public class BasicMaterialRequired extends GenericRequiredItem{
         // list material to build an item
         List< IndustryActivityMaterials> materials = 
             Manager.getInstance().db().item().industryActivityMaterials().getMaterialsID(invTypes.getTypeID(), activitiesEnum);
+
+        requiredMaterial.setTypeName(bpoName);
         
         requiredItem(materials, requiredMaterial, activitiesEnum);        
+        System.out.println("");
     }
 
     public void displatBasicMaterial(){
@@ -58,8 +62,12 @@ public class BasicMaterialRequired extends GenericRequiredItem{
      */
     @Override
     protected void requiredItem(Object materials_, Object requiredA_, Object activitiesEnum_) {
+        
         List< IndustryActivityMaterials> materials = (List< IndustryActivityMaterials>) materials_;
-        RequiredMaterialRecusion requiredA = (RequiredMaterialRecusion) requiredA_; 
+        
+        RequiredMaterialRecusion requiredA = 
+            (RequiredMaterialRecusion) requiredA_ ; 
+                
         RamActivitiesEnum activitiesEnum = ( RamActivitiesEnum ) activitiesEnum_;
         
         for (IndustryActivityMaterials material : materials) {
@@ -85,23 +93,6 @@ public class BasicMaterialRequired extends GenericRequiredItem{
                 requiredItem(neededComponents, requiredItemsRecursionA, activitiesEnum);            
         }
     }
-    
-//    @Override
-//    protected void display(Object requiredItemA_, Object tab_) {
-//        RequiredMaterialRecusion requiredItemA = (RequiredMaterialRecusion) requiredItemA_;
-//        String tab = (String) tab_;
-//        
-//        if ( requiredItemA.getTypeID() != 0 )
-//            System.out.println(tab + requiredItemA.getTypeID() + " " + 
-//                requiredItemA.getTypeName()+ " " + 
-//                requiredItemA.getQuantity());
-//        
-//        tab +="   ";
-//   
-//        for (ItemRecursionB requiredItem : requiredItemA.getRecursionB02s()) {
-//            display((RequiredMaterialRecusion) requiredItem.getRecursionA02(), tab);
-//        }  
-//    }
 
     /**
      * @deprecated 
@@ -123,6 +114,10 @@ public class BasicMaterialRequired extends GenericRequiredItem{
      */
     public List< RequiredMaterialRecusion > getBasicMaterialList(){
         return ( List< RequiredMaterialRecusion > ) getConversionToList(requiredMaterial); 
+    }
+    
+    public Map < String, RequiredMaterialRecusion > getBasicMaterialMap(){
+        return ( Map < String, RequiredMaterialRecusion > ) getConversionToMap(requiredMaterial); 
     }
     
     /**

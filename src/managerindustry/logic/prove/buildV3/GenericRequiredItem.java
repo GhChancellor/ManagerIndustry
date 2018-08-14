@@ -49,16 +49,16 @@ public abstract class GenericRequiredItem  < T >{
      * @param T t
      * @return Map<T, T>
      */
-    protected Map<T, T> getConversionToMap (T t) {
+    protected Map<T, T> getConversionToMap(T t) {
         choose(t, ChooseEnum.Map);
         return templatem;
     } 
     
     /**
-     * Show all value
+     * Show all value T is a recursion
      * @param t 
      */
-    public void display(T t){
+    protected void display(T t){
         choose(t, ChooseEnum.Display);
     }    
     
@@ -87,8 +87,8 @@ public abstract class GenericRequiredItem  < T >{
      * @param t 
      */
     private void basicMaterialRecursion
-        (RequiredMaterialRecusion materialRecusion_, ChooseEnum choose, T t ){
-        RequiredMaterialRecusion requiredItemA = (RequiredMaterialRecusion) materialRecusion_;
+        (RequiredMaterialRecusion materialRecusion, ChooseEnum choose, T t ){
+        RequiredMaterialRecusion requiredItemA = (RequiredMaterialRecusion) materialRecusion;
         String tab = (String) t;
         
         switch(choose){
@@ -97,9 +97,10 @@ public abstract class GenericRequiredItem  < T >{
                 tab += " " ;
                 break;
             case List:
-                pharseBasicMaterialToList(materialRecusion_);
+                pharseBasicMaterialToList(materialRecusion);
                 break;
             case Map:
+                pharseBasicMaterialToMap(materialRecusion);
                 break;
         }
 
@@ -107,7 +108,18 @@ public abstract class GenericRequiredItem  < T >{
             basicMaterialRecursion((RequiredMaterialRecusion) requiredItem.getRecursionA02(), choose, (T) tab );
         }
     }
-       
+    
+    /**
+     * Pharse Basic Material To Map
+     * @param RequiredMaterialRecusion materialRecusion 
+     */
+    private void pharseBasicMaterialToMap(RequiredMaterialRecusion materialRecusion){
+        Map < String, RequiredMaterialRecusion > map = 
+            ( Map < String, RequiredMaterialRecusion > ) templatem;
+        
+        map.put(materialRecusion.getTypeName(), materialRecusion);
+    }
+    
     /**
      * Display Material recursion
      * @param RequiredMaterialRecusion requiredItemA
@@ -118,6 +130,8 @@ public abstract class GenericRequiredItem  < T >{
             System.out.println(tab + requiredItemA.getTypeID() + " " + 
             requiredItemA.getTypeName()+ " " + requiredItemA.getQuantity());        
     }
+    
+    // ---------- 
     
     /**
      * Check if map, list, display
@@ -139,6 +153,7 @@ public abstract class GenericRequiredItem  < T >{
                 pharseRigRecursionToList(rigMarketGroupRecursion);
                 break;
             case Map:
+                pharseRigRecursionToMap(rigMarketGroupRecursion);
                 break;
         }        
         
@@ -148,6 +163,12 @@ public abstract class GenericRequiredItem  < T >{
         } 
     }
     
+    private void pharseRigRecursionToMap(RigMarketGroupRecursion rigMarketGroupRecursion){
+        throw new UnsupportedOperationException("Not implemented"); //To change body of generated methods, choose Tools | Templates.
+//        Map < String, RigMarketGroupRecursion > map =
+//            ( Map < String, RigMarketGroupRecursion > ) templatem;
+//        map.put(key, rigMarketGroupRecursion);
+    }
     /**
      * Display Rig Market Group Recursion
      * @param RigMarketGroupRecursion rigMarketGroupRecursion rigMarketGroupRecursion
@@ -181,8 +202,8 @@ public abstract class GenericRequiredItem  < T >{
     private void pharseRigRecursionToList
         (RigMarketGroupRecursion rigMarketGroupRecursion){
         if (rigMarketGroupRecursion != null){
-            List<Short> list = ( List < Short > ) templates;                    
-            list.add( (short) rigMarketGroupRecursion.getMarketGroupID() ); 
+            List<RigMarketGroupRecursion> list = ( List < RigMarketGroupRecursion > ) templates;                    
+            list.add( (RigMarketGroupRecursion) rigMarketGroupRecursion ); 
         }        
     }
     
@@ -198,8 +219,7 @@ public abstract class GenericRequiredItem  < T >{
             list.add( (RequiredMaterialRecusion) materialRecusion );
         }
     }
-    
-    
+        
     /**
      * Get InvTypes By Name
      * @param String bpoName
