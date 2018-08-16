@@ -83,5 +83,18 @@ public class RequiredMaterialRecusion extends ItemRecursionA {
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
- 
+
+    public void setTypeID(int typeID) {
+        this.typeID = typeID;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setQuanityDbl(double quanityDbl) {
+        this.quanityDbl = quanityDbl;
+    }
+
+    
 }

@@ -32,9 +32,9 @@ public class Immondizia_001 <T> {
     }
    
     public void buildItem() {
-        String bpoName = "Scimitar";
+        String bpoName = "scimitar";
         int run = 1;
-        int job = 2;
+        int job = 1;
         byte bpoME = 0;
         byte componentMe = 0;        
 
@@ -55,9 +55,11 @@ public class Immondizia_001 <T> {
                 ("scimitar", RamActivitiesEnum.MANUFACTURING);
 
             List<RequiredMaterialRecusion> basicMaterialList = basicMaterialRequired.getBasicMaterialList();
+            
             for (RequiredMaterialRecusion requiredMaterialRecusion : basicMaterialList) {
                 System.out.println(""+ requiredMaterialRecusion.getTypeName());
             }
+            
         } catch (ErrorExeption e) {
             System.out.println(""+ e.getErrorEnum());
         }
@@ -70,8 +72,7 @@ public class Immondizia_001 <T> {
             t3subsystems().getT3subsystems();
 
         rigRecusion.displayRecursion();
-        
-     
+
     }
     
     

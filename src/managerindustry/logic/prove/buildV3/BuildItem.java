@@ -10,6 +10,8 @@ import java.util.Map;
 import managerindustry.logic.build.materialEfficiency.MaterialEfficiencyCalculate;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
+import managerindustry.logic.generic.recursion.ItemRecursionA;
+import managerindustry.logic.generic.recursion.ItemRecursionB;
 
 /**
  *
@@ -49,20 +51,46 @@ public class BuildItem{
         BasicMaterialRequired basicMaterialRequired = 
             new BasicMaterialRequired(bpoName, activitiesEnum);
 
-        // Attenzione da armonizzare
-        requiredItem(basicMaterialRequired);        
+        requiredItem(basicMaterialRequired);
     }
-         
+    
+    private void requiredItem(BasicMaterialRequired basicMaterialRequired){
+        Map<String, RequiredMaterialRecusion> basicMaterialMap = basicMaterialRequired.getBasicMaterialMap();
+        
+        for (Map.Entry<String, RequiredMaterialRecusion> entry : basicMaterialMap.entrySet()) {
+            if ( entry.getKey() != null )
+                requiredItem003(entry.getValue());
+            
+            if ( !entry.getValue().getRecursionB02s().isEmpty() ){
+                requiredItem002( (RequiredMaterialRecusion) entry.getValue() );
+            }
+        }
+    }
+    
+    private void requiredItem002(RequiredMaterialRecusion requiredMaterialRecusion_){
+        for (ItemRecursionB requiredMaterialRecusion : requiredMaterialRecusion_.getRecursionB02s()) {
+            RequiredMaterialRecusion name = (RequiredMaterialRecusion) requiredMaterialRecusion.getRecursionA02();
+            requiredItem003(name);
+            
+            if ( !name.getRecursionB02s().isEmpty() )
+                requiredItem002(name);
+        }
+    }
+    
+    private void requiredItem003(RequiredMaterialRecusion materialRecusion){
+        calculateME(materialRecusion);
+        calculateQuantityMaterial();
+        addItem(materialRecusion);            
+    }      
+    
     /**
      * Add Item
      * @param RequiredMaterialRecusion materialRecusion 
      */
     private void addItem(RequiredMaterialRecusion materialRecusion){
-        Item singleItem = new Item(
-            materialRecusion.getTypeID(), materialRecusion.getTypeName(), 
-            singleMaterialQuantity, totalMaterialQuantity);
-
-        reportItem.addItem(singleItem);
+        materialRecusion.setQuantity(singleMaterialQuantity);
+        materialRecusion.setQuanityDbl(totalMaterialQuantity);
+        reportItem.addItem(materialRecusion);        
     }    
     
     /**
@@ -94,42 +122,22 @@ public class BuildItem{
                 (run, job, componentMe , materialRecusion.getQuantity() );
         }        
     }
-
-    /**
-     * Calculate required Item
-     * @param basicMaterialRequired 
-     */
-    private void requiredItem(BasicMaterialRequired basicMaterialRequired) {
-        List<RequiredMaterialRecusion> basicMaterialRequireds = 
-            basicMaterialRequired.getBasicMaterialList();
-        
-        for (RequiredMaterialRecusion materialRecusion : basicMaterialRequireds) {
-            calculateME(materialRecusion);
-            calculateQuantityMaterial();
-            addItem(materialRecusion);              
-        }
-    }
     
     /**
      * Display Build Item
      */
     public void displayBuildItem(){
         System.out.println("Single Items");
-        Map<String, Item> singleCalculatedItemM = reportItem.getSingleCalculatedItemM();
-        for (Map.Entry<String, Item> singleItem : singleCalculatedItemM.entrySet()) {
-            Item item = singleItem.getValue();
-            
-//            System.out.println(""+ item.getTypeId() + ": "
-//            + item.getName() + " "
-//            + item.getQuanityInt() + " - "
-//            + item.getQuanityDbl());
-            
-//            String key = item.getKey();
-//            Item value = item.getValue();
-            
-        }
-
+        Map<String, RequiredMaterialRecusion> singleCalculatedItemM = reportItem.getTotalCalculatedItemM();
         
-    }    
-   
-}
+        for (Map.Entry<String, RequiredMaterialRecusion> entry : singleCalculatedItemM.entrySet()) {
+            String key = entry.getKey();
+            RequiredMaterialRecusion value = entry.getValue();
+            System.out.println(""+ value.getTypeID() + ": "
+            + value.getTypeName() + " "
+            + value.getQuantity() + " - "
+            + value.getQuanityDbl());            
+        }           
+    }
+}    
+

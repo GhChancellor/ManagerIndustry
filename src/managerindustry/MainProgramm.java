@@ -45,7 +45,7 @@ public class MainProgramm {
         //  drake
         // 	Tritanium 2500001 -> 2500001
 	// Pyerite 612071 -> 612071
-        Build managerBuild = new Build("scimitar", 1,  1, (byte)1, (byte) 1);         
+//        Build managerBuild = new Build("scimitar", 1,  1, (byte)0, (byte) 0);         
     }
     
     /**
@@ -128,6 +128,6 @@ public class MainProgramm {
     
     public static void immondizia(){
         Immondizia_001 immondizia_001 = new Immondizia_001();
-        immondizia_001.buildItem();
+//        immondizia_001.buildItem();
     }
 }

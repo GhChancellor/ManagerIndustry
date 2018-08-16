@@ -15,9 +15,9 @@ import java.util.Map;
  * @author lele
  */
 public class ReportItem {
-    private Map < String, Item > singleCalculatedItemM = new HashMap<>();
-    private Map < String, Item > totalCalculatedItemM = new HashMap<>();
-    private Item singleItem;
+    private Map < String, RequiredMaterialRecusion > singleCalculatedItemM = new HashMap<>();
+    private Map < String, RequiredMaterialRecusion > totalCalculatedItemM = new HashMap<>();
+    private RequiredMaterialRecusion materialRecusion;
 
     public ReportItem() {
     }
@@ -26,8 +26,8 @@ public class ReportItem {
      * Add Item
      * @param Item singleItem 
      */
-    public void addItem(Item singleItem){
-        this.singleItem = singleItem;
+    public void addItem(RequiredMaterialRecusion materialRecusion){
+        this.materialRecusion = materialRecusion;
         
         addSingleItem();
         totalCalculatedItem();        
@@ -38,37 +38,31 @@ public class ReportItem {
      * @param singleItem 
      */
     private void addSingleItem(){
-        singleCalculatedItemM.put(singleItem.getName(), singleItem);
+        singleCalculatedItemM.put(materialRecusion.getTypeName(), materialRecusion);
     }
 
-    /**
-     * get Calculated material/item scimitar x 1
-     * @return List<Item>
-     */
-    public Map < String, Item > getSingleCalculatedItemM() {
-        return singleCalculatedItemM;
-    }
-    
     /**
      * Sum all value into map
      */
     private void totalCalculatedItem(){
-        if ( totalCalculatedItemM.containsKey( singleItem.getName() )){
+        if ( totalCalculatedItemM.containsKey( materialRecusion.getTypeName())){
             Double quanityDbl = 
-                totalCalculatedItemM.get( singleItem.getName() ).getQuanityDbl() + 
-                singleItem.getQuanityDbl();
+                totalCalculatedItemM.get( materialRecusion.getTypeName() ).getQuanityDbl() + 
+                materialRecusion.getQuanityDbl();
             
-            singleItem.setQuanityDbl(quanityDbl);
+            materialRecusion.setQuanityDbl(quanityDbl);
         }
         
-        totalCalculatedItemM.put( singleItem.getName(), singleItem);
+        totalCalculatedItemM.put( materialRecusion.getTypeName(), materialRecusion);
     }
-    
-    /**
-     * Get Total Calculated Item
-     * @return Map < String, Item >
-     */
-    public Map < String, Item > getTotalCalculatedItem(){
+
+    public Map<String, RequiredMaterialRecusion> getSingleCalculatedItemM() {
+        return singleCalculatedItemM;
+    }
+
+    public Map<String, RequiredMaterialRecusion> getTotalCalculatedItemM() {
         return totalCalculatedItemM;
     }
+    
+    
 }

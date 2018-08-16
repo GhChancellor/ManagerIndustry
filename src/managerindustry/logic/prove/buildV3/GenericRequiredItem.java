@@ -55,6 +55,14 @@ public abstract class GenericRequiredItem  < T >{
     } 
     
     /**
+     * Pharse Basic Material To Map
+     * @param RequiredMaterialRecusion materialRecusion 
+     */
+    private void pharseBasicMaterialToMap(RequiredMaterialRecusion materialRecusion){
+        templatem.put((T) materialRecusion.getTypeName(), (T) materialRecusion);
+    }    
+    
+    /**
      * Show all value T is a recursion
      * @param t 
      */
@@ -97,10 +105,12 @@ public abstract class GenericRequiredItem  < T >{
                 tab += " " ;
                 break;
             case List:
-                pharseBasicMaterialToList(materialRecusion);
+                if ( !materialRecusion.getRecursionB02s().isEmpty() ) 
+                    pharseBasicMaterialToList(materialRecusion);
                 break;
             case Map:
-                pharseBasicMaterialToMap(materialRecusion);
+                if ( !materialRecusion.getRecursionB02s().isEmpty() )                
+                    pharseBasicMaterialToMap(materialRecusion);
                 break;
         }
 
@@ -108,18 +118,7 @@ public abstract class GenericRequiredItem  < T >{
             basicMaterialRecursion((RequiredMaterialRecusion) requiredItem.getRecursionA02(), choose, (T) tab );
         }
     }
-    
-    /**
-     * Pharse Basic Material To Map
-     * @param RequiredMaterialRecusion materialRecusion 
-     */
-    private void pharseBasicMaterialToMap(RequiredMaterialRecusion materialRecusion){
-        Map < String, RequiredMaterialRecusion > map = 
-            ( Map < String, RequiredMaterialRecusion > ) templatem;
-        
-        map.put(materialRecusion.getTypeName(), materialRecusion);
-    }
-    
+ 
     /**
      * Display Material recursion
      * @param RequiredMaterialRecusion requiredItemA
@@ -150,10 +149,12 @@ public abstract class GenericRequiredItem  < T >{
                 tab += " " ;
                 break;
             case List:
-                pharseRigRecursionToList(rigMarketGroupRecursion);
+                if ( !rigMarketGroupRecursion.getRecursionB02s().isEmpty() )
+                    pharseRigRecursionToList(rigMarketGroupRecursion);
                 break;
             case Map:
-                pharseRigRecursionToMap(rigMarketGroupRecursion);
+                if ( !rigMarketGroupRecursion.getRecursionB02s().isEmpty() )
+                    pharseRigRecursionToMap(rigMarketGroupRecursion);
                 break;
         }        
         
@@ -165,9 +166,6 @@ public abstract class GenericRequiredItem  < T >{
     
     private void pharseRigRecursionToMap(RigMarketGroupRecursion rigMarketGroupRecursion){
         throw new UnsupportedOperationException("Not implemented"); //To change body of generated methods, choose Tools | Templates.
-//        Map < String, RigMarketGroupRecursion > map =
-//            ( Map < String, RigMarketGroupRecursion > ) templatem;
-//        map.put(key, rigMarketGroupRecursion);
     }
     /**
      * Display Rig Market Group Recursion
@@ -202,8 +200,7 @@ public abstract class GenericRequiredItem  < T >{
     private void pharseRigRecursionToList
         (RigMarketGroupRecursion rigMarketGroupRecursion){
         if (rigMarketGroupRecursion != null){
-            List<RigMarketGroupRecursion> list = ( List < RigMarketGroupRecursion > ) templates;                    
-            list.add( (RigMarketGroupRecursion) rigMarketGroupRecursion ); 
+            templates.add((T) (RigMarketGroupRecursion) rigMarketGroupRecursion);
         }        
     }
     
@@ -213,10 +210,7 @@ public abstract class GenericRequiredItem  < T >{
      */
     private void pharseBasicMaterialToList(RequiredMaterialRecusion materialRecusion){
         if (materialRecusion != null){
-            List<RequiredMaterialRecusion> list = 
-                ( List < RequiredMaterialRecusion > ) templates;     
-
-            list.add( (RequiredMaterialRecusion) materialRecusion );
+            templates.add((T) (RequiredMaterialRecusion) materialRecusion);
         }
     }
         

@@ -43,10 +43,13 @@ public class BasicMaterialRequired extends GenericRequiredItem{
         List< IndustryActivityMaterials> materials = 
             Manager.getInstance().db().item().industryActivityMaterials().getMaterialsID(invTypes.getTypeID(), activitiesEnum);
 
-        requiredMaterial.setTypeName(bpoName);
+//        requiredMaterial.setTypeName(bpoName);
         
         requiredItem(materials, requiredMaterial, activitiesEnum);        
         System.out.println("");
+    }
+
+    public BasicMaterialRequired() {
     }
 
     public void displatBasicMaterial(){

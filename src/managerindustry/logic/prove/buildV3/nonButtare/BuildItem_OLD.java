@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.buildV3;
+package managerindustry.logic.prove.buildV3.nonButtare;
 
 import java.util.List;
 import managerindustry.logic.build.materialEfficiency.MaterialEfficiencyCalculate;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
+import managerindustry.logic.prove.buildV3.BasicMaterialRequired;
+import managerindustry.logic.prove.buildV3.GenericRequiredItem;
+import managerindustry.logic.prove.buildV3.Item;
+import managerindustry.logic.prove.buildV3.ReportItem;
+import managerindustry.logic.prove.buildV3.RequiredMaterialRecusion;
 
 
 /**
@@ -62,7 +67,7 @@ public class BuildItem_OLD extends GenericRequiredItem{
             materialRecusion.getTypeID(), materialRecusion.getTypeName(), 
             singleMaterialQuantity, totalMaterialQuantity);
 
-        reportItem.addItem(singleItem);
+//        reportItem.addItem(singleItem);
     }    
     
     /**
