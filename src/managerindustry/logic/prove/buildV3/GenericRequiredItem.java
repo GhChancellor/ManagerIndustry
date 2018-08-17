@@ -15,7 +15,7 @@ import managerindustry.logic.generic.recursion.ItemRecursionB;
 import managerindustry.logic.manager.Manager;
 
 /**
- *
+ * @deprecated da dividere in singole classi rigMarketGroupRecursion e RequiredMaterialRecusion
  * @author lele
  */
 public abstract class GenericRequiredItem  < T >{
@@ -33,7 +33,7 @@ public abstract class GenericRequiredItem  < T >{
     
     public GenericRequiredItem() {
     }
-
+    
     /**
      * Get Conversion To List
      * @param T t
@@ -55,20 +55,12 @@ public abstract class GenericRequiredItem  < T >{
     } 
     
     /**
-     * Pharse Basic Material To Map
-     * @param RequiredMaterialRecusion materialRecusion 
-     */
-    private void pharseBasicMaterialToMap(RequiredMaterialRecusion materialRecusion){
-        templatem.put((T) materialRecusion.getTypeName(), (T) materialRecusion);
-    }    
-    
-    /**
      * Show all value T is a recursion
      * @param t 
      */
     protected void display(T t){
         choose(t, ChooseEnum.Display);
-    }    
+    }     
     
     /**
      * ChooseEnum if RequiredMaterialRecusion/rigMarketGroupRecursion/list/map
@@ -77,32 +69,27 @@ public abstract class GenericRequiredItem  < T >{
      */
     private void choose(T t, ChooseEnum choose){
         if ( t instanceof RequiredMaterialRecusion){
-            basicMaterialRecursion((RequiredMaterialRecusion) t, choose, (T) "");
+            basicMaterialRecursion((RequiredMaterialRecusion) t, choose);
             return;            
         }        
         
         if ( t instanceof RigMarketGroupRecursion){
-            rigMarketGroupRecursion( (RigMarketGroupRecursion) t, choose, (T) "");
+            rigMarketGroupRecursion( (RigMarketGroupRecursion) t, choose);
             return;
         }
-    }     
+    } 
 
     /**
-     * @deprecated 
-     * ??? perché ha bisogno del cast se passo l'oggetto specifico?
-     * @param RequiredMaterialRecusion materialRecusion_
+     * Basic Material Recursion
+     * @param RequiredMaterialRecusion materialRecusion
      * @param Choose choose
-     * @param t 
      */
     private void basicMaterialRecursion
-        (RequiredMaterialRecusion materialRecusion, ChooseEnum choose, T t ){
-        RequiredMaterialRecusion requiredItemA = (RequiredMaterialRecusion) materialRecusion;
-        String tab = (String) t;
-        
+        (RequiredMaterialRecusion materialRecusion, ChooseEnum choose ){
+
         switch(choose){
             case Display:                
-                displayBasicMaterialRecursion(requiredItemA, tab );
-                tab += " " ;
+                displayBasicMaterialRecursion(materialRecusion, "" );
                 break;
             case List:
                 if ( !materialRecusion.getRecursionB02s().isEmpty() ) 
@@ -112,41 +99,59 @@ public abstract class GenericRequiredItem  < T >{
                 if ( !materialRecusion.getRecursionB02s().isEmpty() )                
                     pharseBasicMaterialToMap(materialRecusion);
                 break;
-        }
-
-        for (ItemRecursionB requiredItem : requiredItemA.getRecursionB02s()) {
-            basicMaterialRecursion((RequiredMaterialRecusion) requiredItem.getRecursionA02(), choose, (T) tab );
-        }
-    }
- 
+        }            
+    }   
+    
     /**
      * Display Material recursion
      * @param RequiredMaterialRecusion requiredItemA
      * @param String tab 
      */
     private void displayBasicMaterialRecursion(RequiredMaterialRecusion requiredItemA, String tab){
-        if ( requiredItemA.getTypeID() != 0 )
+        if ( requiredItemA.getTypeID() != 0 ){
             System.out.println(tab + requiredItemA.getTypeID() + " " + 
-            requiredItemA.getTypeName()+ " " + requiredItemA.getQuantity());        
+            requiredItemA.getTypeName()+ " " + requiredItemA.getQuantity());              
+        }
+
+        tab += " ";        
+        
+        for (ItemRecursionB object : requiredItemA.getRecursionB02s()) {
+            displayBasicMaterialRecursion(
+                (RequiredMaterialRecusion) object.getRecursionA02(), tab);
+        }         
+    }        
+    
+    /**
+     * Pharse Basic Material To List
+     * @param RequiredMaterialRecusion materialRecusion 
+     */
+    private void pharseBasicMaterialToList(RequiredMaterialRecusion materialRecusion){
+        if (materialRecusion != null){
+            templates.add((T) (RequiredMaterialRecusion) materialRecusion);
+        }
     }
     
-    // ---------- 
+    /**
+     * Pharse Basic Material To Map
+     * @param RequiredMaterialRecusion materialRecusion 
+     */
+    private void pharseBasicMaterialToMap(RequiredMaterialRecusion materialRecusion){
+        templatem.put((T) materialRecusion.getTypeName(), (T) materialRecusion);
+    } 
+    
+    //----------------------------------------------
     
     /**
      * Check if map, list, display
      * @param rigMarketGroupRecursion
      * @param choose
-     * @param t 
      */
     private void rigMarketGroupRecursion(
-        RigMarketGroupRecursion rigMarketGroupRecursion, ChooseEnum choose, T t){
-        
-        String tab = (String) t;        
+        RigMarketGroupRecursion rigMarketGroupRecursion, ChooseEnum choose){  
         
         switch(choose){
             case Display:                
-                displayRigMarketGroupRecursion(rigMarketGroupRecursion, tab );
-                tab += " " ;
+                displayRigMarketGroupRecursion(rigMarketGroupRecursion, "" );
                 break;
             case List:
                 if ( !rigMarketGroupRecursion.getRecursionB02s().isEmpty() )
@@ -156,17 +161,9 @@ public abstract class GenericRequiredItem  < T >{
                 if ( !rigMarketGroupRecursion.getRecursionB02s().isEmpty() )
                     pharseRigRecursionToMap(rigMarketGroupRecursion);
                 break;
-        }        
-        
-        for (ItemRecursionB object : rigMarketGroupRecursion.getRecursionB02s()) {
-            rigMarketGroupRecursion(
-                (RigMarketGroupRecursion) object.getRecursionA02(), choose, (T) tab);
-        } 
-    }
+        }
+    }    
     
-    private void pharseRigRecursionToMap(RigMarketGroupRecursion rigMarketGroupRecursion){
-        throw new UnsupportedOperationException("Not implemented"); //To change body of generated methods, choose Tools | Templates.
-    }
     /**
      * Display Rig Market Group Recursion
      * @param RigMarketGroupRecursion rigMarketGroupRecursion rigMarketGroupRecursion
@@ -190,7 +187,13 @@ public abstract class GenericRequiredItem  < T >{
             }            
         }
 
-        System.out.println("----------");        
+        tab += " " ;
+        System.out.println("----------");         
+        
+        for (ItemRecursionB object : rigMarketGroupRecursion.getRecursionB02s()) {
+            displayRigMarketGroupRecursion(
+                (RigMarketGroupRecursion) object.getRecursionA02(), tab);
+        }         
     }
     
     /**
@@ -203,17 +206,11 @@ public abstract class GenericRequiredItem  < T >{
             templates.add((T) (RigMarketGroupRecursion) rigMarketGroupRecursion);
         }        
     }
-    
-    /**
-     * Pharse Basic Material To List
-     * @param RequiredMaterialRecusion materialRecusion 
-     */
-    private void pharseBasicMaterialToList(RequiredMaterialRecusion materialRecusion){
-        if (materialRecusion != null){
-            templates.add((T) (RequiredMaterialRecusion) materialRecusion);
-        }
+
+    private void pharseRigRecursionToMap(RigMarketGroupRecursion rigMarketGroupRecursion){
+        throw new UnsupportedOperationException("Not implemented"); //To change body of generated methods, choose Tools | Templates.
     }
-        
+    
     /**
      * Get InvTypes By Name
      * @param String bpoName

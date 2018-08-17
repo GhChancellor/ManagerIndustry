@@ -5,7 +5,6 @@
  */
 package managerindustry.logic.prove.buildV3;
 
-import managerindustry.logic.prove.buildV2.*;
 import managerindustry.logic.build.fatherclass.NameBase;
 
 /**

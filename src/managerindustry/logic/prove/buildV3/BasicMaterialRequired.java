@@ -54,7 +54,6 @@ public class BasicMaterialRequired extends GenericRequiredItem{
 
     public void displatBasicMaterial(){
         display(requiredMaterial);
-//        display(requiredMaterial, "");
     }
     
     /**

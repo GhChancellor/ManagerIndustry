@@ -33,7 +33,7 @@ public class Build {
         for (Map.Entry<String, ReportCalculatedComponentX> entry : totalCalculatedComponentXmap.entrySet()) {
             String key = entry.getKey();
             ReportCalculatedComponentX value = entry.getValue();
-            System.out.println("XXXXX" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
+            System.out.println("" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
         }            
     }
 

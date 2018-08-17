@@ -58,13 +58,15 @@ public class BuildItem{
         Map<String, RequiredMaterialRecusion> basicMaterialMap = basicMaterialRequired.getBasicMaterialMap();
         
         for (Map.Entry<String, RequiredMaterialRecusion> entry : basicMaterialMap.entrySet()) {
-            if ( entry.getKey() != null )
-                requiredItem003(entry.getValue());
-            
-            if ( !entry.getValue().getRecursionB02s().isEmpty() ){
-                requiredItem002( (RequiredMaterialRecusion) entry.getValue() );
-            }
+            String key = entry.getKey();
+            RequiredMaterialRecusion value = entry.getValue();
+            requiredItem002(value);
         }
+        
+        Map<String, RequiredMaterialRecusion> singleCalculatedItemM = reportItem.getSingleCalculatedItemM();
+        Map<String, RequiredMaterialRecusion> totalCalculatedItemM = reportItem.getTotalCalculatedItemM();
+        
+        System.out.println("");
     }
     
     private void requiredItem002(RequiredMaterialRecusion requiredMaterialRecusion_){
@@ -128,7 +130,7 @@ public class BuildItem{
      */
     public void displayBuildItem(){
         System.out.println("Single Items");
-        Map<String, RequiredMaterialRecusion> singleCalculatedItemM = reportItem.getTotalCalculatedItemM();
+        Map<String, RequiredMaterialRecusion> singleCalculatedItemM = reportItem.getSingleCalculatedItemM();
         
         for (Map.Entry<String, RequiredMaterialRecusion> entry : singleCalculatedItemM.entrySet()) {
             String key = entry.getKey();
