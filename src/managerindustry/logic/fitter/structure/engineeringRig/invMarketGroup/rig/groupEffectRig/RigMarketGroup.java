@@ -11,23 +11,23 @@ import managerindustry.logic.generic.recursion.ItemRecursionA;
  *
  * @author lele
  */
-public class RigMarketGroupRecursion extends ItemRecursionA {
+public class RigMarketGroup extends ItemRecursionA {
     private short marketGroupID;
     private short parentGroupID;
     private String marketGroupName;
 
-    public RigMarketGroupRecursion(short marketGroupID, short parentGroupID, String marketGroupName) {
+    public RigMarketGroup(short marketGroupID, short parentGroupID, String marketGroupName) {
         this.marketGroupID = marketGroupID;
         this.parentGroupID = parentGroupID;
         this.marketGroupName = marketGroupName;
     }
 
-    public RigMarketGroupRecursion(short marketGroupID, short parentGroupID) {
+    public RigMarketGroup(short marketGroupID, short parentGroupID) {
         this.marketGroupID = marketGroupID;
         this.parentGroupID = parentGroupID;
     }
 
-    public RigMarketGroupRecursion() {
+    public RigMarketGroup() {
     }
 
     public short getMarketGroupID() {

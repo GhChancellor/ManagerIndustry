@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.EffectEngineeringRigEntityJpaController;
 import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigMarketGroupRecursion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigMarketGroup;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs_1;
 
@@ -59,9 +59,9 @@ public class EffectEngineeringRigX {
         System.err.print(" >>>> ATTENZIONE <<<< EffectEngineeringRigX > addEffectRigs DISABILITATA!!!!!!!" );
         
         for (RigRecusion rigRecusion : structureRig.getRigRecusions() ) {
-            List<RigMarketGroupRecursion> groupRecursions = rigRecusion.getRigMarketGroupsList();
+            List<RigMarketGroup> groupRecursions = rigRecusion.getRigMarketGroupsList();
             
-            for (RigMarketGroupRecursion effectId : groupRecursions) {
+            for (RigMarketGroup effectId : groupRecursions) {
                 EffectEngineeringRigEntity effectRigEntity = 
                     new EffectEngineeringRigEntity(
                     structureRig.getTypeID(), effectId.getMarketGroupID() );

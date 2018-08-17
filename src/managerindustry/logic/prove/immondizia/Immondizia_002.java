@@ -10,7 +10,7 @@ import java.util.List;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.prove.buildV3.BasicMaterialRequired;
-import managerindustry.logic.prove.buildV3.GenericRequiredItem;
+import managerindustry.logic.prove.buildV3.genericRequireRecursion.GenericRequiredItem;
 import managerindustry.logic.prove.buildV3.RequiredMaterialRecusion;
 
 /**

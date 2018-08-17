@@ -25,8 +25,8 @@ public class Immondizia_001 <T> {
     
     public Immondizia_001() {
         baseMaterial();
-//        buildItem();
-//        rigRucursion();
+        buildItem();
+        rigRucursion();
 //        chooseRig();
 //        immondizia2();
     }

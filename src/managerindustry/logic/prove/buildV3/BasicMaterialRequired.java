@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.prove.buildV3;
 
+import managerindustry.logic.prove.buildV3.genericRequireRecursion.GenericRequiredItem;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

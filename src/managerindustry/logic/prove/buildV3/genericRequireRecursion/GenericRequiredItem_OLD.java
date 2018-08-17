@@ -3,22 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.buildV3;
+package managerindustry.logic.prove.buildV3.genericRequireRecursion;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.eve.InvTypes;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigMarketGroupRecursion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigMarketGroup;
 import managerindustry.logic.generic.recursion.ItemRecursionB;
 import managerindustry.logic.manager.Manager;
+import managerindustry.logic.prove.buildV3.RequiredMaterialRecusion;
 
 /**
  * @deprecated da dividere in singole classi rigMarketGroupRecursion e RequiredMaterialRecusion
  * @author lele
  */
-public abstract class GenericRequiredItem  < T >{
+public abstract class GenericRequiredItem_OLD  < T >{
     private enum ChooseEnum{List, Map, Display};
     
     private List < T > templates = new ArrayList<>();
@@ -31,7 +32,7 @@ public abstract class GenericRequiredItem  < T >{
     protected abstract T requiredItemMoreInfo(T t1, T t2);
     protected abstract T getObject();
     
-    public GenericRequiredItem() {
+    public GenericRequiredItem_OLD() {
     }
     
     /**
@@ -73,8 +74,8 @@ public abstract class GenericRequiredItem  < T >{
             return;            
         }        
         
-        if ( t instanceof RigMarketGroupRecursion){
-            rigMarketGroupRecursion( (RigMarketGroupRecursion) t, choose);
+        if ( t instanceof RigMarketGroup){
+            rigMarketGroupRecursion((RigMarketGroup) t, choose);
             return;
         }
     } 
@@ -147,7 +148,7 @@ public abstract class GenericRequiredItem  < T >{
      * @param choose
      */
     private void rigMarketGroupRecursion(
-        RigMarketGroupRecursion rigMarketGroupRecursion, ChooseEnum choose){  
+        RigMarketGroup rigMarketGroupRecursion, ChooseEnum choose){  
         
         switch(choose){
             case Display:                
@@ -170,7 +171,7 @@ public abstract class GenericRequiredItem  < T >{
      * @param String tab 
      */
     private void displayRigMarketGroupRecursion(
-        RigMarketGroupRecursion rigMarketGroupRecursion, String tab){
+        RigMarketGroup rigMarketGroupRecursion, String tab){
         
         if (rigMarketGroupRecursion.getMarketGroupID() != 0 )
             System.out.println(tab + 
@@ -191,8 +192,7 @@ public abstract class GenericRequiredItem  < T >{
         System.out.println("----------");         
         
         for (ItemRecursionB object : rigMarketGroupRecursion.getRecursionB02s()) {
-            displayRigMarketGroupRecursion(
-                (RigMarketGroupRecursion) object.getRecursionA02(), tab);
+            displayRigMarketGroupRecursion((RigMarketGroup) object.getRecursionA02(), tab);
         }         
     }
     
@@ -201,13 +201,13 @@ public abstract class GenericRequiredItem  < T >{
      * @param RigMarketGroupRecursion rigMarketGroupRecursion 
      */
     private void pharseRigRecursionToList
-        (RigMarketGroupRecursion rigMarketGroupRecursion){
+        (RigMarketGroup rigMarketGroupRecursion){
         if (rigMarketGroupRecursion != null){
-            templates.add((T) (RigMarketGroupRecursion) rigMarketGroupRecursion);
+            templates.add((T) (RigMarketGroup) rigMarketGroupRecursion);
         }        
     }
 
-    private void pharseRigRecursionToMap(RigMarketGroupRecursion rigMarketGroupRecursion){
+    private void pharseRigRecursionToMap(RigMarketGroup rigMarketGroupRecursion){
         throw new UnsupportedOperationException("Not implemented"); //To change body of generated methods, choose Tools | Templates.
     }
     
