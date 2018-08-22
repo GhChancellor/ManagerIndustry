@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.generic.recursion.ItemRecursionB;
+import managerindustry.logic.generic.recursion.ItemRecursionA;
 import managerindustry.logic.prove.buildV3.RequiredMaterialRecusion;
 
 /**
@@ -36,11 +36,11 @@ public class BasicMaterialRecursion < T >{
                 displayBasicMaterialRecursion(materialRecusion, "" );
                 break;
             case List:
-                if ( !materialRecusion.getRecursionB02s().isEmpty() ) 
+                if ( !materialRecusion.getItemRecursionAs().isEmpty() ) 
                     pharseBasicMaterialToList(materialRecusion);
                 break;
             case Map:
-                if ( !materialRecusion.getRecursionB02s().isEmpty() )                
+                if ( !materialRecusion.getItemRecursionAs().isEmpty() )                
                     pharseBasicMaterialToMap(materialRecusion);
                 break;
         }           
@@ -59,11 +59,21 @@ public class BasicMaterialRecursion < T >{
 
         tab += " ";        
         
-        for (ItemRecursionB object : requiredItemA.getRecursionB02s()) {
+        for (ItemRecursionA object : requiredItemA.getItemRecursionAs()) {
             displayBasicMaterialRecursion(
                 (RequiredMaterialRecusion) object.getRecursionA02(), tab);
         }         
     }        
+    
+//    /**
+//     * Pharse Basic Material To List
+//     * @param RequiredMaterialRecusion materialRecusion 
+//     */
+//    private void pharseBasicMaterialToList(T materialRecusion){
+//        if (materialRecusion != null){
+//            templates.add( materialRecusion );
+//        }
+//    }
     
     /**
      * Pharse Basic Material To List

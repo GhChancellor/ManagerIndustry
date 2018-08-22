@@ -9,25 +9,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * @deprecated controllare Itemrecusion B forse non serve
  * @author lele
  */
 public class ItemRecursionA {
-    private List < ItemRecursionB > recursionB02s = new ArrayList<>();
+    private List < ItemRecursionA > itemRecursionAs = new ArrayList<>();
+    private ItemRecursionA recursionA02;
+
+    public ItemRecursionA(ItemRecursionA recursionA02) {
+        this.recursionA02 = recursionA02;
+    }
 
     public ItemRecursionA() {
     }
+
+    public List<ItemRecursionA> getItemRecursionAs() {
+        return itemRecursionAs;
+    }
+
+    public void setItemRecursionAs(List<ItemRecursionA> itemRecursionAs) {
+        this.itemRecursionAs = itemRecursionAs;
+    }
+
     
-    public List<ItemRecursionB> getRecursionB02s() {
-        return recursionB02s;
+    public void addItemRecursionAs(ItemRecursionA itemRecursionA) {
+        this.itemRecursionAs.add(itemRecursionA);
     }
-
-    public void setRecursionB02s(List<ItemRecursionB> recursionB02s) {
-        this.recursionB02s = recursionB02s;
-    }
-
-    public void addRecursionB02(ItemRecursionB recursionB02) {
-        this.recursionB02s.add(recursionB02);
+    
+    public ItemRecursionA getRecursionA02() {
+        return recursionA02;
     }
     
 }

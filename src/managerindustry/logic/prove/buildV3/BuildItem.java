@@ -11,7 +11,6 @@ import managerindustry.logic.build.materialEfficiency.MaterialEfficiencyCalculat
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.recursion.ItemRecursionA;
-import managerindustry.logic.generic.recursion.ItemRecursionB;
 
 /**
  *
@@ -28,7 +27,7 @@ public class BuildItem{
     private double totalMaterialQuantity;  
     private ReportItem reportItem = new ReportItem();
     private RamActivitiesEnum activitiesEnum;
-    
+    private int XXX;
     /**
      * Buld Item
      * @param String bpoName
@@ -62,19 +61,16 @@ public class BuildItem{
             RequiredMaterialRecusion value = entry.getValue();
             requiredItem002(value);
         }
-        
-        Map<String, RequiredMaterialRecusion> singleCalculatedItemM = reportItem.getSingleCalculatedItemM();
-        Map<String, RequiredMaterialRecusion> totalCalculatedItemM = reportItem.getTotalCalculatedItemM();
-        
-        System.out.println("");
+
+//        System.out.println("");
     }
     
     private void requiredItem002(RequiredMaterialRecusion requiredMaterialRecusion_){
-        for (ItemRecursionB requiredMaterialRecusion : requiredMaterialRecusion_.getRecursionB02s()) {
+        for (ItemRecursionA requiredMaterialRecusion : requiredMaterialRecusion_.getItemRecursionAs()) {
             RequiredMaterialRecusion name = (RequiredMaterialRecusion) requiredMaterialRecusion.getRecursionA02();
             requiredItem003(name);
             
-            if ( !name.getRecursionB02s().isEmpty() )
+            if ( !name.getItemRecursionAs().isEmpty() )
                 requiredItem002(name);
         }
     }
@@ -82,7 +78,9 @@ public class BuildItem{
     private void requiredItem003(RequiredMaterialRecusion materialRecusion){
         calculateME(materialRecusion);
         calculateQuantityMaterial();
-        addItem(materialRecusion);            
+
+        System.out.println("");
+//        addItem(materialRecusion);            
     }      
     
     /**
@@ -114,14 +112,18 @@ public class BuildItem{
      * @param RequiredMaterialRecusion materialRecusion 
      */
     private void calculateME(RequiredMaterialRecusion materialRecusion){
-        if ( materialRecusion.getRecursionB02s().isEmpty()){
+
+        
+        
+        if ( materialRecusion.getItemRecursionAs().isEmpty()){
             // T1 material .. bpoME ..
             materialEfficiencyCalculate = new MaterialEfficiencyCalculate
-                (run, job, bpoME , materialRecusion.getQuantity() );
+                (XXX, job, bpoME , materialRecusion.getQuantity() );
         }else{
             // T2 component .. componentMe ..
             materialEfficiencyCalculate = new MaterialEfficiencyCalculate
                 (run, job, componentMe , materialRecusion.getQuantity() );
+            XXX = materialRecusion.getQuantity();
         }        
     }
     

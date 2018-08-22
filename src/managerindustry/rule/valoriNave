@@ -73,3 +73,143 @@ Orignale
     Ferrogel 225
     Pyerite 145328
     Ladar Sensor Cluster 263
+
+--------------------------------------------------------------------------------
+
+ 11530 Plasma Thruster 75
+  16680 Phenolic Composites 3
+  16673 Fernite Carbide 13
+  16683 Ferrogel 1
+ 11399 Morphite 90
+ 11542 Fernite Carbide Composite Armor Plate 2250
+  16673 Fernite Carbide 44
+  16678 Sylramic Fibers 11
+ 11536 Ladar Sensor Cluster 263
+  16673 Fernite Carbide 22
+  16682 Hypersynaptic Fibers 2
+  16681 Nanotransistors 1
+ 11538 Nanomechanical Microprocessor 1800
+  16680 Phenolic Composites 6
+  16673 Fernite Carbide 17
+  33361 Plasmonic Metamaterials 2
+  16681 Nanotransistors 2
+ 11555 Deflection Shield Emitter 150
+  16673 Fernite Carbide 22
+  16683 Ferrogel 1
+  16678 Sylramic Fibers 9
+ 3828 Construction Blocks 75
+ 11478 R.A.M.- Starship Tech 12
+  34 Tritanium 556
+  35 Pyerite 444
+  36 Mexallon 222
+  37 Isogen 82
+  38 Nocxium 36
+ 631 Scythe 1
+  34 Tritanium 533333
+  35 Pyerite 140000
+  36 Mexallon 34444
+  37 Isogen 8556
+  38 Nocxium 1222
+  39 Zydrine 822
+  40 Megacyte 156
+ 11548 Nuclear Reactor Unit 23
+  16673 Fernite Carbide 9
+  17317 Fermionic Condensates 2
+ 11551 Electrolytic Capacitor Unit 750
+  16673 Fernite Carbide 27
+  16681 Nanotransistors 1
+  33361 Plasmonic Metamaterials 2
+  16679 Fullerides 11
+
+--------------------------------------------------------------------------------
+
+ Subsystems 1112 955
+----------
+  Amarr Subsystems 1610 1112
+----------
+   Amarr Core Subsystems 1122 1610
+    - Legion Core - Dissolution Sequencer 45622
+    - Legion Core - Augmented Antimatter Reactor 45623
+    - Legion Core - Energy Parasitic Complex 45624
+----------
+   Amarr Defensive Subsystems 1126 1610
+    - Legion Defensive - Covert Reconfiguration 45586
+    - Legion Defensive - Augmented Plating 45587
+    - Legion Defensive - Nanobot Injector 45588
+----------
+   Amarr Offensive Subsystems 1130 1610
+    - Legion Offensive - Liquid Crystal Magnifiers 45598
+    - Legion Offensive - Assault Optimization 45599
+    - Legion Offensive - Support Processor 45600
+----------
+   Amarr Propulsion Subsystems 1134 1610
+    - Legion Propulsion - Interdiction Nullifier 45610
+    - Legion Propulsion - Intercalated Nanofibers 45611
+    - Legion Propulsion - Wake Limiter 45612
+----------
+  Caldari Subsystems 1625 1112
+----------
+   Caldari Core Subsystems 1123 1625
+    - Tengu Core - Electronic Efficiency Gate 45625
+    - Tengu Core - Augmented Graviton Reactor 45626
+    - Tengu Core - Obfuscation Manifold 45627
+----------
+   Caldari Defensive Subsystems 1127 1625
+    - Tengu Defensive - Covert Reconfiguration 45589
+    - Tengu Defensive - Supplemental Screening 45590
+    - Tengu Defensive - Amplification Node 45591
+----------
+   Caldari Offensive Subsystems 1131 1625
+    - Tengu Offensive - Accelerated Ejection Bay 45601
+    - Tengu Offensive - Magnetic Infusion Basin 45602
+    - Tengu Offensive - Support Processor 45603
+----------
+   Caldari Propulsion Subsystems 1135 1625
+    - Tengu Propulsion - Interdiction Nullifier 45613
+    - Tengu Propulsion - Chassis Optimization 45614
+    - Tengu Propulsion - Fuel Catalyst 45615
+----------
+  Minmatar Subsystems 1626 1112
+----------
+   Minmatar Core Subsystems 1125 1626
+    - Loki Core - Dissolution Sequencer 45631
+    - Loki Core - Augmented Nuclear Reactor 45632
+    - Loki Core - Immobility Drivers 45633
+----------
+   Minmatar Defensive Subsystems 1128 1626
+    - Loki Defensive - Covert Reconfiguration 45595
+    - Loki Defensive - Augmented Durability 45596
+    - Loki Defensive - Adaptive Defense Node 45597
+----------
+   Minmatar Offensive Subsystems 1133 1626
+    - Loki Offensive - Projectile Scoping Array 45607
+    - Loki Offensive - Launcher Efficiency Configuration 45608
+    - Loki Offensive - Support Processor 45609
+----------
+   Minmatar Propulsion Subsystems 1137 1626
+    - Loki Propulsion - Interdiction Nullifier 45619
+    - Loki Propulsion - Intercalated Nanofibers 45620
+    - Loki Propulsion - Wake Limiter 45621
+----------
+  Gallente Subsystems 1627 1112
+----------
+   Gallente Core Subsystems 1124 1627
+    - Proteus Core - Electronic Efficiency Gate 45628
+    - Proteus Core - Augmented Fusion Reactor 45629
+    - Proteus Core - Friction Extension Processor 45630
+----------
+   Gallente Defensive Subsystems 1129 1627
+    - Proteus Defensive - Covert Reconfiguration 45592
+    - Proteus Defensive - Augmented Plating 45593
+    - Proteus Defensive - Nanobot Injector 45594
+----------
+   Gallente Offensive Subsystems 1132 1627
+    - Proteus Offensive - Hybrid Encoding Platform 45604
+    - Proteus Offensive - Drone Synthesis Projector 45605
+    - Proteus Offensive - Support Processor 45606
+----------
+   Gallente Propulsion Subsystems 1136 1627
+    - Proteus Propulsion - Interdiction Nullifier 45616
+    - Proteus Propulsion - Hyperspatial Optimization 45617
+    - Proteus Propulsion - Localized Injectors 45618
+----------

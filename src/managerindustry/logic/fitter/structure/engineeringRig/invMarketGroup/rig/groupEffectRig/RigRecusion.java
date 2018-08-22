@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.eve.InvMarketGroups;
-import managerindustry.logic.generic.recursion.ItemRecursionB;
+import managerindustry.logic.generic.recursion.ItemRecursionA;
 import managerindustry.logic.manager.Manager;
 import managerindustry.logic.prove.buildV3.genericRequireRecursion.GenericRequiredItem;
 
@@ -79,7 +79,7 @@ public class RigRecusion extends GenericRequiredItem{
 //            RigMarketGroup recusion = 
 //                (RigMarketGroup) requiredItemMoreInfo(marketGroups01);
             
-            rigRecusion_.addRecursionB02( new ItemRecursionB(recusion) );
+            rigRecusion_.addItemRecursionAs(new ItemRecursionA(recusion));
             
             // Exclude some branches ( items )
             if (marketGroups01.getMarketGroupID() == excludeCode)
@@ -115,7 +115,7 @@ public class RigRecusion extends GenericRequiredItem{
             RigMarketGroup recusion = 
                 (RigMarketGroup) requiredItemMoreInfo(marketGroups01);  
 
-            rigRecusion_.addRecursionB02( new ItemRecursionB(recusion) );
+            rigRecusion_.addItemRecursionAs(new ItemRecursionA(recusion));
             
             List<InvMarketGroups> marketGroups02 = 
                 Manager.getInstance().db().item().invMarketGroups().getParentGroupID( 

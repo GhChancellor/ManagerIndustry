@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigMarketGroup;
-import managerindustry.logic.generic.recursion.ItemRecursionB;
+import managerindustry.logic.generic.recursion.ItemRecursionA;
 import managerindustry.logic.manager.Manager;
 
 /**
@@ -38,11 +38,11 @@ public class RigMarketGroupRecursion < T > {
                 displayRigMarketGroupRecursion(rigMarketGroupRecursion, "" );
                 break;
             case List:
-                if ( !rigMarketGroupRecursion.getRecursionB02s().isEmpty() )
+                if ( !rigMarketGroupRecursion.getItemRecursionAs().isEmpty() )
                     pharseRigRecursionToList(rigMarketGroupRecursion);
                 break;
             case Map:
-                if ( !rigMarketGroupRecursion.getRecursionB02s().isEmpty() )
+                if ( !rigMarketGroupRecursion.getItemRecursionAs().isEmpty() )
                     pharseRigRecursionToMap(rigMarketGroupRecursion);
                 break;
         }        
@@ -62,7 +62,7 @@ public class RigMarketGroupRecursion < T > {
                 rigMarketGroupRecursion.getMarketGroupID() + " " + 
                 rigMarketGroupRecursion.getParentGroupID() );
 
-        if ( rigMarketGroupRecursion.getRecursionB02s().isEmpty() ){
+        if ( rigMarketGroupRecursion.getItemRecursionAs().isEmpty() ){
             List<InvTypes> parentGroupID = Manager.getInstance().db().item().
                 invTypes().getMarketGroupID(rigMarketGroupRecursion.getMarketGroupID(), true);            
             
@@ -74,7 +74,7 @@ public class RigMarketGroupRecursion < T > {
         tab += " " ;
         System.out.println("----------");         
         
-        for (ItemRecursionB object : rigMarketGroupRecursion.getRecursionB02s()) {
+        for (ItemRecursionA object : rigMarketGroupRecursion.getItemRecursionAs()) {
             displayRigMarketGroupRecursion((RigMarketGroup) object.getRecursionA02(), tab);
         }         
     }

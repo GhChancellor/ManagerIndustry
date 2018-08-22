@@ -153,7 +153,7 @@ public enum ChooseEngineeringRigEnum{
         XL_BLUEPRINT_LABORATORY_2(37182), // Standup XL-Set Laboratory Optimization II  
         XL_BLUEPRINT_LABORATORY_1(37183), // Standup XL-Set Laboratory Optimization I          
         
-        XL_SHIP_MANUFACTURING_1(37180), // Standup XL-Set Ship Manufacturing Efficiency I
+        XL_SHIP_MANUFACTURING_1(37180, "Standup XL-Set Ship Manufacturing Efficiency I"), // Standup XL-Set Ship Manufacturing Efficiency I
         XL_SHIP_MANUFACTURING_2(37181), // Standup XL-Set Ship Manufacturing Efficiency II  
                                 
         XL_STRUCTURE_COMPONENT_1(43704), // Standup XL-Set Structure and Component Manufacturing Efficiency I 
@@ -162,12 +162,24 @@ public enum ChooseEngineeringRigEnum{
         XL_THUKKER_STRUCTURE_COMPONENT(45548); // Standup XL-Set Thukker Structure and Component Manufacturing Efficiency  
                           
         private int typeID;
+        private String description;
 
+        private ChooseEngineeringRigEnum(int typeID, String description) {
+            this.typeID = typeID;
+            this.description = description;
+        }
+        
         private ChooseEngineeringRigEnum(int typeID) {
             this.typeID = typeID;
         }
 
         public int getTypeID() {
             return typeID;
-        }        
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        
     }    

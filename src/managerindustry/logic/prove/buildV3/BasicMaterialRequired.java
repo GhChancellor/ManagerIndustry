@@ -13,7 +13,7 @@ import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.generic.recursion.ItemRecursionB;
+import managerindustry.logic.generic.recursion.ItemRecursionA;
 import managerindustry.logic.manager.Manager;
 
 /**
@@ -21,8 +21,7 @@ import managerindustry.logic.manager.Manager;
  * @author lele
  */
 public class BasicMaterialRequired extends GenericRequiredItem{
-    private RequiredMaterialRecusion requiredMaterial = new RequiredMaterialRecusion();
-    
+    private RequiredMaterialRecusion requiredMaterial = new RequiredMaterialRecusion(); 
     /**
      * 
      * @param String bpoName
@@ -44,10 +43,8 @@ public class BasicMaterialRequired extends GenericRequiredItem{
         List< IndustryActivityMaterials> materials = 
             Manager.getInstance().db().item().industryActivityMaterials().getMaterialsID(invTypes.getTypeID(), activitiesEnum);
 
-//        requiredMaterial.setTypeName(bpoName);
-        
+        requiredMaterial.setTypeName(bpoName);
         requiredItem(materials, requiredMaterial, activitiesEnum);        
-        System.out.println("");
     }
 
     public BasicMaterialRequired() {
@@ -64,12 +61,10 @@ public class BasicMaterialRequired extends GenericRequiredItem{
      * @param RamActivitiesEnum activitiesEnum_ 
      */
     @Override
-    protected void requiredItem(Object materials_, Object requiredA_, Object activitiesEnum_) {
+    protected void requiredItem(Object materials_, Object requiredA, Object activitiesEnum_) {
         
         List< IndustryActivityMaterials> materials = (List< IndustryActivityMaterials>) materials_;
         
-        RequiredMaterialRecusion requiredA = 
-            (RequiredMaterialRecusion) requiredA_ ; 
                 
         RamActivitiesEnum activitiesEnum = ( RamActivitiesEnum ) activitiesEnum_;
         
@@ -84,7 +79,7 @@ public class BasicMaterialRequired extends GenericRequiredItem{
              RequiredMaterialRecusion requiredItemsRecursionA = 
                 (RequiredMaterialRecusion) requiredItemMoreInfo(invTypes, material);
             
-            requiredA.addRecursionB02(new ItemRecursionB(requiredItemsRecursionA));
+            ((RequiredMaterialRecusion) requiredA).addItemRecursionAs(new ItemRecursionA(requiredItemsRecursionA));
             
             // get value blueprint component if necessary
             List< IndustryActivityMaterials> neededComponents = 
@@ -97,6 +92,26 @@ public class BasicMaterialRequired extends GenericRequiredItem{
         }
     }
 
+    /**
+     * Only for dbg, use this for more info on object
+     * @param InvTypes invTypes_
+     * @param IndustryActivityMaterials material_
+     * @return RequiredMaterialRecusion
+     */
+    @Override
+    protected Object requiredItemMoreInfo(Object invTypes_, Object material_) {
+        System.err.print("BasicMaterialRequired > requiredItemMoreInfo is ENABLE!!!");
+        
+        InvTypes invTypes = (InvTypes) invTypes_;
+        IndustryActivityMaterials material = (IndustryActivityMaterials) material_;
+        
+        RequiredMaterialRecusion requiredItemsRecursionA = 
+            new RequiredMaterialRecusion(
+                invTypes.getTypeID(), invTypes.getTypeName(), 
+                material.getQuantity());
+        return (RequiredMaterialRecusion) requiredItemsRecursionA;
+    }
+    
     /**
      * @deprecated 
      * Get Required Items
@@ -129,26 +144,6 @@ public class BasicMaterialRequired extends GenericRequiredItem{
      */
     public RequiredMaterialRecusion getRequiredItem(){
         return (RequiredMaterialRecusion) getObject();
-    }
-    
-    /**
-     * Only for dbg, use this for more info on object
-     * @param InvTypes invTypes_
-     * @param IndustryActivityMaterials material_
-     * @return RequiredMaterialRecusion
-     */
-    @Override
-    protected Object requiredItemMoreInfo(Object invTypes_, Object material_) {
-        System.err.print("BasicMaterialRequired > requiredItemMoreInfo is ENABLE!!!");
-        
-        InvTypes invTypes = (InvTypes) invTypes_;
-        IndustryActivityMaterials material = (IndustryActivityMaterials) material_;
-        
-        RequiredMaterialRecusion requiredItemsRecursionA = 
-            new RequiredMaterialRecusion(
-                invTypes.getTypeID(), invTypes.getTypeName(), 
-                material.getQuantity());
-        return (RequiredMaterialRecusion) requiredItemsRecursionA;
     }
 
     @Override

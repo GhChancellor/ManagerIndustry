@@ -9,7 +9,7 @@ import java.util.List;
 import managerindustry.db.entities.eve.DgmTypeAttributes;
 import managerindustry.db.entities.eve.IndustryActivitySkills;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
-import managerindustry.logic.generic.recursion.ItemRecursionB;
+import managerindustry.logic.generic.recursion.ItemRecursionA;
 import managerindustry.logic.manager.Manager;
 
 /**
@@ -60,7 +60,7 @@ public class RequiredSkill {
                 industryActivitySkill.getSkillID(), getName(industryActivitySkill.getSkillID()),
                 industryActivitySkill.getLevel().byteValue() );            
             
-            requiredA.addRecursionB02(new ItemRecursionB(requiredSkillRecusion));
+            requiredA.addItemRecursionAs(new ItemRecursionA(requiredSkillRecusion));
             
             List<IndustryActivitySkills> recursion = 
                 Manager.getInstance().db().item().industryActivitySkills().getRequiredSkill(
@@ -99,8 +99,8 @@ public class RequiredSkill {
         
         tab += tab;
         
-        for (ItemRecursionB recursionB02 : requiredSkillA.getRecursionB02s()) {
-            displayRequiredSkill_( (RequiredSkillRecusion) recursionB02.getRecursionA02(), tab);
+        for (ItemRecursionA recursionA : requiredSkillA.getItemRecursionAs()) {
+            displayRequiredSkill_( (RequiredSkillRecusion) recursionA.getRecursionA02(), tab);
         }
     }    
             
