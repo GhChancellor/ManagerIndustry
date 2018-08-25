@@ -23,4 +23,7 @@ public interface IGenericRequiredItem < A, B, C > {
     public A getObject();
     public void display();
     
+    public void pharseToMap();
+    public void pharseToList();
+        
 }

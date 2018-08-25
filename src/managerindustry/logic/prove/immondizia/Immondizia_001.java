@@ -16,6 +16,7 @@ import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.prove.buildV3.BasicMaterialRequired;
 import managerindustry.logic.prove.buildV3.BuildItem;
 import managerindustry.logic.prove.buildV3.RequiredMaterialRecusion;
+import managerindustry.logic.prove.buildV4.BasicMaterialRequiredLogic;
 
 /**
  *
@@ -54,12 +55,12 @@ public class Immondizia_001 <T> {
     public void baseMaterial_Interface(){
         
         try {
-            managerindustry.logic.prove.buildV4.BasicMaterialRequired basicMaterialRequired = 
-                new managerindustry.logic.prove.buildV4.BasicMaterialRequired("scimitar", RamActivitiesEnum.MANUFACTURING);
-            basicMaterialRequired.display();
-
-//            basicMaterialRequired.
-//            System.out.println("");
+            managerindustry.logic.prove.buildV4.BasicMaterialRequired
+                basicMaterialRequired = new managerindustry.logic.prove.buildV4.BasicMaterialRequired
+                ("Scimitar", RamActivitiesEnum.MANUFACTURING);
+//            basicMaterialRequired.display();
+            
+            System.out.println("");
         } catch (ErrorExeption e) {
             System.out.println(""+ e.getErrorEnum());        
         }
