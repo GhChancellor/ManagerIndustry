@@ -34,6 +34,11 @@ public class Immondizia_001 <T> {
 //        immondizia2();
     }
    
+    public void rigRucursion_Interface(){
+//        managerindustry.logic.prove.rigRecusionV3.RigRecusion rigRecusion =
+//            GroupEffectRig.getInstance().t3subsystems().getT3subsystems();
+    }
+    
     public void buildItem() {
         String bpoName = "scimitar";
         int run = 1;
@@ -83,12 +88,10 @@ public class Immondizia_001 <T> {
     }
     
     public void rigRucursion(){
-        
         RigRecusion rigRecusion = GroupEffectRig.getInstance().
             t3subsystems().getT3subsystems();
 
         rigRecusion.displayRecursion();
-
     }
     
     
