@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @deprecated controllare Itemrecusion B forse non serve
  * @author lele
  */
 public class ItemRecursionA {

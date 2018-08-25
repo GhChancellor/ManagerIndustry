@@ -7,6 +7,7 @@ package managerindustry.logic.prove.immondizia;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs_2;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
@@ -24,7 +25,8 @@ public class Immondizia_001 <T> {
     List < Integer > duplicate = new ArrayList<>();
     
     public Immondizia_001() {
-        baseMaterial();
+//        baseMaterial();
+        baseMaterial_Interface();
 //        buildItem();
 //        rigRucursion();
 //        chooseRig();
@@ -49,12 +51,29 @@ public class Immondizia_001 <T> {
 
     }
     
+    public void baseMaterial_Interface(){
+        
+        try {
+            managerindustry.logic.prove.buildV4.BasicMaterialRequired basicMaterialRequired = 
+                new managerindustry.logic.prove.buildV4.BasicMaterialRequired("scimitar", RamActivitiesEnum.MANUFACTURING);
+            basicMaterialRequired.display();
+
+//            basicMaterialRequired.
+//            System.out.println("");
+        } catch (ErrorExeption e) {
+            System.out.println(""+ e.getErrorEnum());        
+        }
+        
+
+    }
+    
     public void baseMaterial() {
         try {
             BasicMaterialRequired basicMaterialRequired = new BasicMaterialRequired
                 ("scimitar", RamActivitiesEnum.MANUFACTURING);
-            basicMaterialRequired.displatBasicMaterial();
-
+//            basicMaterialRequired.displatBasicMaterial();
+            Map<String, RequiredMaterialRecusion> basicMaterialMap = basicMaterialRequired.getBasicMaterialMap();
+            System.out.println("");
             
         } catch (ErrorExeption e) {
             System.out.println(""+ e.getErrorEnum());

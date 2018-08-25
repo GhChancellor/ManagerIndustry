@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.buildV3;
+package managerindustry.logic.prove.buildV4;
 
-import managerindustry.logic.prove.buildV3.genericRequireRecursion.GenericRequiredItem;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
@@ -15,6 +13,7 @@ import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.recursion.ItemRecursionA;
 import managerindustry.logic.manager.Manager;
+import managerindustry.logic.prove.buildV3.RequiredMaterialRecusion;
 
 /**
  *
@@ -46,13 +45,6 @@ public class BasicMaterialRequired extends GenericRequiredItem{
         requiredItem(materials, requiredMaterial, activitiesEnum);        
     }
 
-    public BasicMaterialRequired() {
-    }
-
-    public void displatBasicMaterial(){
-        display(requiredMaterial);
-    }
-    
     /**
      * Calculate Required Item
      * @param List< IndustryActivityMaterials> materials_
@@ -60,11 +52,10 @@ public class BasicMaterialRequired extends GenericRequiredItem{
      * @param RamActivitiesEnum activitiesEnum_ 
      */
     @Override
-    protected void requiredItem(Object materials_, Object requiredA, Object activitiesEnum_) {
+    public void requiredItem(Object materials_, Object requiredA, Object activitiesEnum_) {
         
         List< IndustryActivityMaterials> materials = (List< IndustryActivityMaterials>) materials_;
-        
-                
+                        
         RamActivitiesEnum activitiesEnum = ( RamActivitiesEnum ) activitiesEnum_;
         
         for (IndustryActivityMaterials material : materials) {
@@ -77,18 +68,25 @@ public class BasicMaterialRequired extends GenericRequiredItem{
             // only for dbg, use this for more info on object
              RequiredMaterialRecusion requiredItemsRecursionA = 
                 (RequiredMaterialRecusion) requiredItemMoreInfo(invTypes, material);
-            
+             
             ((RequiredMaterialRecusion) requiredA).addItemRecursionAs(new ItemRecursionA(requiredItemsRecursionA));
             
             // get value blueprint component if necessary
             List< IndustryActivityMaterials> neededComponents = 
               Manager.getInstance().db().item().industryActivityMaterials().
                 getMaterialNeedByName(invTypes.getTypeName() + " blueprint", activitiesEnum);
-            
-            
+                        
             if (neededComponents != null)
                 requiredItem(neededComponents, requiredItemsRecursionA, activitiesEnum);            
         }
+    }
+
+    public BasicMaterialRequired() {
+    }
+
+    @Override
+    public void display() {
+        displayBasicMaterialRecursion(requiredMaterial, "");
     }
 
     /**
@@ -98,7 +96,7 @@ public class BasicMaterialRequired extends GenericRequiredItem{
      * @return RequiredMaterialRecusion
      */
     @Override
-    protected Object requiredItemMoreInfo(Object invTypes_, Object material_) {
+    public Object requiredItemMoreInfo(Object invTypes_, Object material_) {
         System.err.print("BasicMaterialRequired > requiredItemMoreInfo is ENABLE!!!");
         
         InvTypes invTypes = (InvTypes) invTypes_;
@@ -109,64 +107,54 @@ public class BasicMaterialRequired extends GenericRequiredItem{
                 invTypes.getTypeID(), invTypes.getTypeName(), 
                 material.getQuantity());
         return (RequiredMaterialRecusion) requiredItemsRecursionA;
-    }
+    }    
+    
     
     /**
-     * @deprecated 
-     * Get Required Items
-     * @return List<RequiredMaterialRecusion>
+     * Display Material recursion
+     * @param RequiredMaterialRecusion requiredItemA
+     * @param String tab 
      */
-    public List<RequiredMaterialRecusion> getRequiredItems(){
+    private void displayBasicMaterialRecursion(RequiredMaterialRecusion requiredItemA, String tab){
+        if ( requiredItemA.getTypeID() != 0 ){
+            System.out.println(tab + requiredItemA.getTypeID() + " " + 
+            requiredItemA.getTypeName()+ " " + requiredItemA.getQuantity());              
+        }
+
+        tab += " ";        
         
-        System.err.print(">>>> ATTENZIONE <<<<<< BasicMaterialRequired > getRequiredItems DISABILITATA!!!!");
-//        List<RequiredMaterialRecusion> requiredMaterials = 
-//            (List<RequiredMaterialRecusion>) getObject();
-//        return requiredMaterials;
-        return new ArrayList<>();
-    }
-
-    /**
-     * Get Basic Material List
-     * @return List< RequiredMaterialRecusion >
-     */
-    public List< RequiredMaterialRecusion > getBasicMaterialList(){
-        return ( List< RequiredMaterialRecusion > ) getConversionToList(requiredMaterial); 
-    }
+        for (ItemRecursionA requiredItem : requiredItemA.getItemRecursionAs()) {
+            displayBasicMaterialRecursion(
+                (RequiredMaterialRecusion) requiredItem.getRecursionA02(), tab);
+        }         
+    }        
     
-    public Map < String, RequiredMaterialRecusion > getBasicMaterialMap(){
-        return ( Map < String, RequiredMaterialRecusion > ) getConversionToMap(requiredMaterial); 
+    /**
+     * Get InvTypes By Name
+     * @param String bpoName
+     * @return InvTypes
+     */
+    protected InvTypes getInvTypesByName(String bpoName) {
+        return Manager.getInstance().db().item().invTypes().getInvTypesByName(bpoName);
     }
     
     /**
-     * Get Required Item
-     * @return RequiredMaterialRecusion
+     * Get InvTypes By Id
+     * @param int typeId
+     * @return InvTypes
      */
-    public RequiredMaterialRecusion getRequiredItem(){
-        return (RequiredMaterialRecusion) getObject();
-    }
-
-    @Override
-    protected Object requiredItemMoreInfo(Object t1) {
-        throw new UnsupportedOperationException("Not used"); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    protected void requiredItem(Object t) {
-        
-        throw new UnsupportedOperationException("Not used"); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected void requiredItem(Object t1, Object t2) {
-        throw new UnsupportedOperationException("Not used"); //To change body of generated methods, choose Tools | Templates.
+    protected InvTypes getInvTypesById(int typeId) {    
+        return Manager.getInstance().db().item().invTypes().getInvTypesById(typeId);
     }     
 
-    /**
-     * Get Object
-     * @return Object
-     */
     @Override
-    protected Object getObject() {
-        return requiredMaterial;
+    protected void pharseBasicMaterialToMap(Object a1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    protected void pharseBasicMaterialToList(Object a1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
