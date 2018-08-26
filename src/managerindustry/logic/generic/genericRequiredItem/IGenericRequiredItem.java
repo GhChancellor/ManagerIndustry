@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.buildV4;
+package managerindustry.logic.generic.genericRequiredItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;

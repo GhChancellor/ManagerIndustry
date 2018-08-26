@@ -13,10 +13,9 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.prove.buildV3.BasicMaterialRequired;
-import managerindustry.logic.prove.buildV3.BuildItem;
-import managerindustry.logic.prove.buildV3.RequiredMaterialRecusion;
 import managerindustry.logic.prove.buildV4.BasicMaterialRequiredLogic;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusionLogic;
+import managerindustry.logic.prove.buildV4.BuildItem;
 
 /**
  *
@@ -26,18 +25,12 @@ public class Immondizia_001 <T> {
     List < Integer > duplicate = new ArrayList<>();
     
     public Immondizia_001() {
-//        baseMaterial();
-        baseMaterial_Interface();
-//        buildItem();
+//        baseMaterial_Interface();
+        buildItem();
 //        rigRucursion();
 //        chooseRig();
 //        immondizia2();
-    }
-   
-    public void rigRucursion_Interface(){
-//        managerindustry.logic.prove.rigRecusionV3.RigRecusion rigRecusion =
-//            GroupEffectRig.getInstance().t3subsystems().getT3subsystems();
-    }
+    }    
     
     public void buildItem() {
         String bpoName = "scimitar";
@@ -72,26 +65,13 @@ public class Immondizia_001 <T> {
         
 
     }
-    
-    public void baseMaterial() {
-        try {
-            BasicMaterialRequired basicMaterialRequired = new BasicMaterialRequired
-                ("scimitar", RamActivitiesEnum.MANUFACTURING);
-//            basicMaterialRequired.displatBasicMaterial();
-            Map<String, RequiredMaterialRecusion> basicMaterialMap = basicMaterialRequired.getBasicMaterialMap();
-            System.out.println("");
-            
-        } catch (ErrorExeption e) {
-            System.out.println(""+ e.getErrorEnum());
-        }
-
-    }
-    
+        
     public void rigRucursion(){
         RigRecusion rigRecusion = GroupEffectRig.getInstance().
             t3subsystems().getT3subsystems();
 
-        rigRecusion.displayRecursion();
+        rigRecusion.display();
+
     }
     
     
@@ -101,13 +81,13 @@ public class Immondizia_001 <T> {
         
 //        setDublicate();
         // aggiunge un " effectID 0 " da controllare
-        List < RigRecusion > effectRigs = new ArrayList<>();
-        effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().subsystemComponets().getSubsystemComponents() );
- 
-        for (RigRecusion effectRig : effectRigs) {
-            effectRig.displayRecursion();
-        }
-        EffectEngineeringRigs_2 managerStructure = new EffectEngineeringRigs_2(43921, effectRigs);   
+//        List < RigRecusion > effectRigs = new ArrayList<>();
+//        effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().subsystemComponets().getSubsystemComponents() );
+// 
+//        for (RigRecusion effectRig : effectRigs) {
+//            effectRig.displayRecursion();
+//        }
+//        EffectEngineeringRigs_2 managerStructure = new EffectEngineeringRigs_2(43921, effectRigs);   
 
     }
     private void setDublicate(){

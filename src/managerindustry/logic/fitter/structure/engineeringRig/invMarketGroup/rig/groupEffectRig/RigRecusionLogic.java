@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.rigRecusionV3;
+package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig;
 
 import java.util.List;
 import managerindustry.db.entities.eve.InvMarketGroups;
@@ -11,7 +11,7 @@ import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigMarketGroup;
 import managerindustry.logic.generic.recursion.ItemRecursionA;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.prove.buildV4.AGenericRequiredItem;
+import managerindustry.logic.generic.genericRequiredItem.AGenericRequiredItem;
 
 /**
  *

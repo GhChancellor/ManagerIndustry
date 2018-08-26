@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.prove.buildV4;
 
+import managerindustry.logic.generic.genericRequiredItem.AGenericRequiredItem;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;

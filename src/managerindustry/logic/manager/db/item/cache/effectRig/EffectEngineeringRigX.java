@@ -58,34 +58,34 @@ public class EffectEngineeringRigX {
   
         System.err.print(" >>>> ATTENZIONE <<<< EffectEngineeringRigX > addEffectRigs DISABILITATA!!!!!!!" );
         
-        for (RigRecusion rigRecusion : structureRig.getRigRecusions() ) {
-            List<RigMarketGroup> groupRecursions = rigRecusion.getRigMarketGroupsList();
-            
-            for (RigMarketGroup effectId : groupRecursions) {
-                EffectEngineeringRigEntity effectRigEntity = 
-                    new EffectEngineeringRigEntity(
-                    structureRig.getTypeID(), effectId.getMarketGroupID() );
-                addEffectRigEntity(effectRigEntity);                
-            }
-        }
+//        for (RigRecusion rigRecusion : structureRig.getRigRecusions() ) {
+//            List<RigMarketGroup> groupRecursions = rigRecusion.getRigMarketGroupsList();
+//            
+//            for (RigMarketGroup effectId : groupRecursions) {
+//                EffectEngineeringRigEntity effectRigEntity = 
+//                    new EffectEngineeringRigEntity(
+//                    structureRig.getTypeID(), effectId.getMarketGroupID() );
+//                addEffectRigEntity(effectRigEntity);                
+//            }
+//        }
     }
 
     public void addEffectRigsORI(EffectEngineeringRigs_1 structureRig){
         // 43875 Standup M-Set Structure Manufacturing Material Efficiency I for fuel blocks
         // fuel blocks 4051 4246 4247 4312
 
-        for (RigRecusion rigRecusion : structureRig.getRigRecusions() ) {
-            List<Integer> rigMarketGroups = rigRecusion.getRigMarketGroups();
-            
-            for (Integer effectId : rigMarketGroups) {
-                
-                
-                EffectEngineeringRigEntity effectRigEntity = 
-                    new EffectEngineeringRigEntity(
-                    structureRig.getTypeID(), effectId );
-                addEffectRigEntity(effectRigEntity);    
-            }
-        }        
+//        for (RigRecusion rigRecusion : structureRig.getRigRecusions() ) {
+//            List<Integer> rigMarketGroups = rigRecusion.getRigMarketGroups();
+//            
+//            for (Integer effectId : rigMarketGroups) {
+//                
+//                
+//                EffectEngineeringRigEntity effectRigEntity = 
+//                    new EffectEngineeringRigEntity(
+//                    structureRig.getTypeID(), effectId );
+//                addEffectRigEntity(effectRigEntity);    
+//            }
+//        }        
     }
     
     /**
