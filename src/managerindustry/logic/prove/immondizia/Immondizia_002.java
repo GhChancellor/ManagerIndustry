@@ -20,7 +20,11 @@ import managerindustry.logic.prove.buildV3.RequiredMaterialRecusion;
 public class Immondizia_002 {
     
     public Immondizia_002() {
-     
+        byte count01 =0;
+        for (int i = 0; i < 10; i++) {
+            count01 = (byte) ( count01 + 1);
+        }
+        System.out.println(""+ count01);
     
     }
     

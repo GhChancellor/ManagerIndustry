@@ -87,7 +87,7 @@ public abstract class AGenericRequiredItem < A, B > implements IGenericRequiredI
         map.put(a, b);
     }
     
-  @Override
+   @Override
     public void requiredItem(Object a1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -98,12 +98,38 @@ public abstract class AGenericRequiredItem < A, B > implements IGenericRequiredI
     }
 
     @Override
-    public Object requiredItemMoreInfo(Object a1) {
+    public void requiredItem(Object a1, Object b2, Object c2) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public Object requiredItemMoreInfo(Object a1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }    
 
+    @Override
+    public Object requiredItemMoreInfo(Object a1, Object b2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }    
+    
     @Override
     public Object getObject() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }        
+
+    @Override    
+    public void display(){
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override   
+    public void pharseToMap(){
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override   
+    public void pharseToList(){
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

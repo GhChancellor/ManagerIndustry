@@ -25,7 +25,7 @@ public class Immondizia_001 <T> {
     List < Integer > duplicate = new ArrayList<>();
     
     public Immondizia_001() {
-//        baseMaterial_Interface();
+//        baseMaterial();
         buildItem();
 //        rigRucursion();
 //        chooseRig();
@@ -42,7 +42,7 @@ public class Immondizia_001 <T> {
         try {
             BuildItem buildItem = new BuildItem
                 (bpoName, run, job, bpoME, componentMe, RamActivitiesEnum.MANUFACTURING);
-//            buildItem.displayBuildItem();
+//            buildItem.
             
         } catch (ErrorExeption e) {
             System.out.println(""+ e.getErrorEnum());
@@ -50,13 +50,13 @@ public class Immondizia_001 <T> {
 
     }
     
-    public void baseMaterial_Interface(){
+    public void baseMaterial(){
         
         try {
             managerindustry.logic.prove.buildV4.BasicMaterialRequired
                 basicMaterialRequired = new managerindustry.logic.prove.buildV4.BasicMaterialRequired
                 ("Scimitar", RamActivitiesEnum.MANUFACTURING);
-//            basicMaterialRequired.display();
+            basicMaterialRequired.display();
             
             System.out.println("");
         } catch (ErrorExeption e) {

@@ -17,21 +17,41 @@ import managerindustry.logic.generic.exception.ErrorExeption;
 public class BasicMaterialRequired {
     private  BasicMaterialRequiredLogic basicMaterialRequired;
     
+    /**
+     * Basic Material Required
+     * @param String bpoName
+     * @param RamActivitiesEnum activitiesEnum
+     * @throws ErrorExeption 
+     */
     public BasicMaterialRequired(String bpoName, RamActivitiesEnum activitiesEnum)
-            throws ErrorExeption {
-        
+            throws ErrorExeption {        
         this.basicMaterialRequired = new BasicMaterialRequiredLogic(bpoName, activitiesEnum);
     }
     
+    /**
+     * Display
+     */
     public void display(){
         basicMaterialRequired.display();
     }
     
-    public Map < String, BasicMaterialRequiredLogic > getMap(){
+    /**
+     * Get Map
+     * @return Map < String, RequiredMaterialRecusion >
+     */
+    public Map < String, RequiredMaterialRecusion > getMap(){
         return basicMaterialRequired.getMap();
     }
     
-    public List < BasicMaterialRequiredLogic > getList(){
+    /**
+     * Get List
+     * @return List < RequiredMaterialRecusion >
+     */
+    public List < RequiredMaterialRecusion > getList(){
         return basicMaterialRequired.getList();
+    }
+    
+    public RequiredMaterialRecusion getRequiredMaterialRecusion(){
+        return (RequiredMaterialRecusion) basicMaterialRequired.getObject();
     }
 }

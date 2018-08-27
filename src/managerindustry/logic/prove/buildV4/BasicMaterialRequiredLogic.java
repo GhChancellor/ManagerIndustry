@@ -14,7 +14,6 @@ import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.recursion.ItemRecursionA;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.prove.buildV3.RequiredMaterialRecusion;
 
 /**
  *
@@ -103,8 +102,7 @@ public class BasicMaterialRequiredLogic extends AGenericRequiredItem{
                 material.getQuantity());
         return (RequiredMaterialRecusion) requiredItemsRecursionA;
     }    
-    
-    
+
     /**
      * Display Material recursion
      * @param RequiredMaterialRecusion requiredItemA
@@ -134,13 +132,19 @@ public class BasicMaterialRequiredLogic extends AGenericRequiredItem{
         addListElement( requiredMaterial );
     }
     
-    public Map < String, BasicMaterialRequiredLogic > getMap(){
+    public Map < String, RequiredMaterialRecusion > getMap(){
         pharseToMap();
         return super.getMap();
     }
     
-    public List < BasicMaterialRequiredLogic > getList(){
+    public List < RequiredMaterialRecusion > getList(){
         pharseToList();
         return super.getList();
     }
+    
+    @Override
+    public Object getObject() {
+        return requiredMaterial;
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }     
 }
