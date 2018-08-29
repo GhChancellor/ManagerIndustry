@@ -99,9 +99,9 @@ public class RequiredSkill {
         
         tab += tab;
         
-        for (ItemRecursionA recursionA : requiredSkillA.getItemRecursionAs()) {
-            displayRequiredSkill_( (RequiredSkillRecusion) recursionA.getRecursionA02(), tab);
-        }
+//        for (ItemRecursionA recursionA : requiredSkillA.getItemRecursionAs()) {
+//            displayRequiredSkill_( (RequiredSkillRecusion) recursionA.getRecursionA02(), tab);
+//        }
     }    
             
 }

@@ -11,32 +11,31 @@ import java.util.List;
 /**
  * @author lele
  */
-public class ItemRecursionA {
-    private List < ItemRecursionA > itemRecursionAs = new ArrayList<>();
-    private ItemRecursionA recursionA02;
-
-    public ItemRecursionA(ItemRecursionA recursionA02) {
-        this.recursionA02 = recursionA02;
-    }
+public class ItemRecursionA < T > {
+    private List < T > recursionTs = new ArrayList<>();
+    private T t;
 
     public ItemRecursionA() {
-    }
-
-    public List<ItemRecursionA> getItemRecursionAs() {
-        return itemRecursionAs;
-    }
-
-    public void setItemRecursionAs(List<ItemRecursionA> itemRecursionAs) {
-        this.itemRecursionAs = itemRecursionAs;
-    }
-
+    }    
     
-    public void addItemRecursionAs(ItemRecursionA itemRecursionA) {
-        this.itemRecursionAs.add(itemRecursionA);
+    public ItemRecursionA(T t) {
+        this.t = t;
+    }
+   
+    public T getRecursionA02() {
+        return t;
+    }
+
+    public List<T> getItemRecursionAs() {
+        return recursionTs;
+    }
+
+    public void setItemRecursionAs(List<T> t) {
+        this.recursionTs = t;
     }
     
-    public ItemRecursionA getRecursionA02() {
-        return recursionA02;
+    public void addItemRecursionAs(T t) {
+        this.recursionTs.add(t);
     }
     
 }

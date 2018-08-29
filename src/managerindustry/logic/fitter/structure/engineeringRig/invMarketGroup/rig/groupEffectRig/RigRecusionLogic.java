@@ -68,7 +68,7 @@ public class RigRecusionLogic extends AGenericRequiredItem{
 //            RigMarketGroup recusion = 
 //                (RigMarketGroup) requiredItemMoreInfo(marketGroups01);
             
-            rigRecusion_.addItemRecursionAs(new ItemRecursionA(recusion));
+            rigRecusion_.addItemRecursionAs(recusion);
             
             // Exclude some branches ( items )
             if (marketGroups01.getMarketGroupID() == excludeCode)
@@ -104,7 +104,7 @@ public class RigRecusionLogic extends AGenericRequiredItem{
             RigMarketGroup recusion = 
                 (RigMarketGroup) requiredItemMoreInfo(marketGroups01);  
 
-            rigRecusion_.addItemRecursionAs(new ItemRecursionA(recusion));
+            rigRecusion_.addItemRecursionAs(recusion);
             
             List<InvMarketGroups> marketGroups02 = 
                 Manager.getInstance().db().item().invMarketGroups().getParentGroupID( 
@@ -163,8 +163,8 @@ public class RigRecusionLogic extends AGenericRequiredItem{
         tab += " " ;
         System.out.println("----------");         
         
-        for (ItemRecursionA object : rigMarketGroupRecursion.getItemRecursionAs()) {
-            displayRigMarketGroupRecursion((RigMarketGroup) object.getRecursionA02(), tab);
+        for (Object object : rigMarketGroupRecursion.getItemRecursionAs()) {
+            displayRigMarketGroupRecursion((RigMarketGroup) object, tab);
         }         
     }    
     

@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.buildV3;
+package managerindustry.logic.prove.buildV5;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import managerindustry.logic.prove.buildV5.basicMaterial.RequiredMaterialRecusion;
 
 /**
  *

@@ -5,10 +5,6 @@
  */
 package managerindustry.logic.prove.immondizia;
 
-import java.util.ArrayList;
-import java.util.List;
-import managerindustry.logic.prove.buildV3.RequiredMaterialRecusion;
-
 /**
  *
  * @author lele

@@ -7,15 +7,12 @@ package managerindustry.logic.prove.immondizia;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs_2;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.prove.buildV4.BasicMaterialRequiredLogic;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusionLogic;
-import managerindustry.logic.prove.buildV4.BuildItem;
+import managerindustry.logic.prove.buildV5.BuildItem;
+import managerindustry.logic.prove.buildV5.basicMaterial.BasicMaterialRequired;
 
 /**
  *
@@ -25,14 +22,14 @@ public class Immondizia_001 <T> {
     List < Integer > duplicate = new ArrayList<>();
     
     public Immondizia_001() {
-//        baseMaterial();
-        buildItem();
-//        rigRucursion();
+        baseMaterialV5();
+//        buildItemV5();
+        rigRucursion();
 //        chooseRig();
 //        immondizia2();
     }    
-    
-    public void buildItem() {
+        
+    public void buildItemV5() {
         String bpoName = "scimitar";
         int run = 1;
         int job = 1;
@@ -40,32 +37,26 @@ public class Immondizia_001 <T> {
         byte componentMe = 0;        
 
         try {
-            BuildItem buildItem = new BuildItem
-                (bpoName, run, job, bpoME, componentMe, RamActivitiesEnum.MANUFACTURING);
-//            buildItem.
+            BuildItem buildItem = new BuildItem(
+                bpoName, run, job, bpoME, componentMe, RamActivitiesEnum.MANUFACTURING);
+            buildItem.displayBuildItem();
             
         } catch (ErrorExeption e) {
             System.out.println(""+ e.getErrorEnum());
         }
-
     }
     
-    public void baseMaterial(){
-        
+    public void baseMaterialV5(){
         try {
-            managerindustry.logic.prove.buildV4.BasicMaterialRequired
-                basicMaterialRequired = new managerindustry.logic.prove.buildV4.BasicMaterialRequired
-                ("Scimitar", RamActivitiesEnum.MANUFACTURING);
+            BasicMaterialRequired basicMaterialRequired = 
+                new BasicMaterialRequired("scimitar", RamActivitiesEnum.MANUFACTURING);    
             basicMaterialRequired.display();
-            
-            System.out.println("");
         } catch (ErrorExeption e) {
-            System.out.println(""+ e.getErrorEnum());        
+            System.out.println(""+ e.getErrorEnum()); 
         }
-        
 
     }
-        
+           
     public void rigRucursion(){
         RigRecusion rigRecusion = GroupEffectRig.getInstance().
             t3subsystems().getT3subsystems();

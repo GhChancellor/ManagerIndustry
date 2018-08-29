@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.buildV3;
+package managerindustry.logic.prove.buildV5.basicMaterial;
 
 import managerindustry.logic.generic.recursion.ItemRecursionA;
+
 
 /**
  * @deprecated 
@@ -56,22 +57,22 @@ public class RequiredMaterialRecusion extends ItemRecursionA {
     public RequiredMaterialRecusion() {
     }
 
+    /**
+     * Get Type ID
+     * @return int
+     */
     public int getTypeID() {
         return typeID;
     }
 
-    public String getTypeName() {
-        return typeName;
-    }
-
     /**
-     * Get Quantity
-     * @return int
+     * Set Type ID
+     * @param int typeID 
      */
-    public int getQuantity() {
-        return quantity;
+    public void setTypeID(int typeID) {
+        this.typeID = typeID;
     }
-
+    
     /**
      * Get Quanity Dbl
      * @return double
@@ -80,21 +81,44 @@ public class RequiredMaterialRecusion extends ItemRecursionA {
         return quanityDbl;
     }
 
+    /**
+     * Get Type Name
+     * @return String
+     */
+    public String getTypeName() {
+        return typeName;
+    }    
+    
+    /**
+     * Set Type Name
+     * @param String typeName 
+     */
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
-
-    public void setTypeID(int typeID) {
-        this.typeID = typeID;
-    }
-
+   
+    /**
+     * Get Quantity
+     * @return int
+     */
+    public int getQuantity() {
+        return quantity;
+    }    
+    
+    /**
+     * Set Quantity
+     * @param int quantity 
+     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
+    /**
+     * Set Quanity Dbl
+     * @param double quanityDbl 
+     */
     public void setQuanityDbl(double quanityDbl) {
         this.quanityDbl = quanityDbl;
     }
 
-    
 }
