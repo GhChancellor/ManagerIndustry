@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.build;
 
-import managerindustry.logic.build.fatherclass.NameBase;
+import managerindustry.logic.generic.nameBase.NameBase;
 
 /**
  *
@@ -19,9 +19,9 @@ public class ReportCalculatedComponentX extends NameBase{
      * @param float quantity 
      */
     public ReportCalculatedComponentX(String name, int singleMaterial, double quantity) {
-        super.setName(name);
-        super.setQuanityDbl(quantity);
-        super.setQuanityInt(singleMaterial);
+        super.setTypeName(name);
+        super.setQuanityD(quantity);
+        super.setQuanityI(singleMaterial);
 
     }
     

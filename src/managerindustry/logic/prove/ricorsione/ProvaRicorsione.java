@@ -112,7 +112,7 @@ public class ProvaRicorsione {
     
 
     private void ricorsione(ComponentX componentX, String tab){
-        System.out.println(tab + componentX.getName() + " " + componentX.getQuanityInt());
+        System.out.println(tab + componentX.getTypeName() + " " + componentX.getQuanityI());
         tab += tab;
         
         for (MaterialForComponents materialForComponents : componentX.getMaterialForComponents()){

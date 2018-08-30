@@ -7,16 +7,16 @@ package managerindustry.logic.prove.buildV5;
 
 import java.util.HashMap;
 import java.util.Map;
-import managerindustry.logic.prove.buildV5.basicMaterial.RequiredMaterialRecusion;
+import managerindustry.logic.generic.nameBase.NameBase;
 
 /**
  *
  * @author lele
  */
 public class ReportItem {
-    private Map < String, RequiredMaterialRecusion > singleCalculatedItemM = new HashMap<>();
-    private Map < String, RequiredMaterialRecusion > totalCalculatedItemM = new HashMap<>();
-    private RequiredMaterialRecusion materialRecusion;
+    private Map < String, NameBase > singleCalculatedItemM = new HashMap<>();
+    private Map < String, NameBase > totalCalculatedItemM = new HashMap<>();
+    private NameBase materialRecusion;
 
     public ReportItem() {
     }
@@ -25,7 +25,7 @@ public class ReportItem {
      * Add Item
      * @param Item singleItem 
      */
-    public void addItem(RequiredMaterialRecusion materialRecusion){
+    public void addItem(NameBase materialRecusion){
         this.materialRecusion = materialRecusion;
         
         addSingleItem();
@@ -46,20 +46,20 @@ public class ReportItem {
     private void totalCalculatedItem(){
         if ( totalCalculatedItemM.containsKey( materialRecusion.getTypeName())){
             Double quanityDbl = 
-                totalCalculatedItemM.get( materialRecusion.getTypeName() ).getQuanityDbl() + 
-                materialRecusion.getQuanityDbl();
+                totalCalculatedItemM.get( materialRecusion.getTypeName() ).getQuanityD() + 
+                materialRecusion.getQuanityD();
             
-            materialRecusion.setQuanityDbl(quanityDbl);
+            materialRecusion.setQuanityD(quanityDbl);
         }
         
         totalCalculatedItemM.put( materialRecusion.getTypeName(), materialRecusion);
     }
 
-    public Map<String, RequiredMaterialRecusion> getSingleCalculatedItemM() {
+    public Map<String, NameBase> getSingleCalculatedItemM() {
         return singleCalculatedItemM;
     }
 
-    public Map<String, RequiredMaterialRecusion> getTotalCalculatedItemM() {
+    public Map<String, NameBase> getTotalCalculatedItemM() {
         return totalCalculatedItemM;
     }
     

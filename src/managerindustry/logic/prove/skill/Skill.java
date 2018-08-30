@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.prove.skill;
 
-import managerindustry.logic.build.fatherclass.NameBase;
+import managerindustry.logic.generic.nameBase.NameBase;
 
 /**
  *
@@ -18,14 +18,14 @@ public class Skill extends NameBase{
     
     public Skill(int typeId, String name, byte currentLevel, byte requiredLevel  ) {
         super.setTypeId(typeId);
-        super.setName(name);
+        super.setTypeName(name);
         this.currentLevel = currentLevel;
         this.requiredLevel = requiredLevel;
     }
     
     public Skill(int typeId, String name, byte requiredLevel ) {
         super.setTypeId(typeId);
-        super.setName(name);
+        super.setTypeName(name);
         this.requiredLevel = requiredLevel;
     }
 
@@ -36,7 +36,7 @@ public class Skill extends NameBase{
 
     public Skill(int typeId, int requiredSKillId, byte level){
         super.setTypeId(typeId);
-        super.setQuanityInt(requiredSKillId); // it's required SKill Id skill!!!!!!
+        super.setQuanityI(requiredSKillId); // it's required SKill Id skill!!!!!!
         this.requiredLevel = level;        
     }
 

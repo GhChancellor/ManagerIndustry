@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.build;
 
-import managerindustry.logic.build.fatherclass.NameBase;
+import managerindustry.logic.generic.nameBase.NameBase;
 
 /**
  * Attribute Material For Components
@@ -35,8 +35,8 @@ public class MaterialForComponents extends NameBase {
     
     public MaterialForComponents(int typeID, String typeName, int amount) {
         super.setTypeId(typeID);
-        super.setName(typeName);
-        super.setQuanityInt(amount);
+        super.setTypeName(typeName);
+        super.setQuanityI(amount);
     }    
     
 }

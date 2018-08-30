@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.tax.formulas.itemcost.baseJobCost;
 
-import managerindustry.logic.build.fatherclass.NameBase;
+import managerindustry.logic.generic.nameBase.NameBase;
 
 /**
  *
@@ -15,7 +15,7 @@ public class SingleJobCost extends NameBase{
     private float singleJobCost = 0f;
     
     public SingleJobCost( String name, float singleJobCost) {
-        super.setName(name);
+        super.setTypeName(name);
         this.singleJobCost = singleJobCost;
     }
 
@@ -26,7 +26,4 @@ public class SingleJobCost extends NameBase{
     public void setSingleJobCost(float singleJobCost) {
         this.singleJobCost = singleJobCost;
     }
-    
-    
-    
 }

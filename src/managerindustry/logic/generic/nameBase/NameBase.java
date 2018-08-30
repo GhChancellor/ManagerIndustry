@@ -3,62 +3,64 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.build.fatherclass;
+package managerindustry.logic.generic.nameBase;
+
+import managerindustry.logic.generic.recursion.ItemRecursionA;
 
 /**
  *
  * @author lele
  */
-public class NameBase {
+public class NameBase extends ItemRecursionA {
     private int typeId;
-    private String name;
-    private int quanityInt;
-    private double quanityDbl;
+    private String typeName;
+    private int quanityI;
+    private double quanityD;
 
     /**
      * Name Base
      * @param int typeId
-     * @param String name 
+     * @param String typeName 
      */
-    public NameBase(int typeId, String name) {
+    public NameBase(int typeId, String typeName) {
         this.typeId = typeId;
-        this.name = name;
+        this.typeName = typeName;
     }
 
     /**
      * Name Base
      * @param int typeId
-     * @param int quanityInt 
+     * @param int quanityI 
      */
     public NameBase(int typeId, int quanityInt) {
         this.typeId = typeId;
-        this.quanityInt = quanityInt;
+        this.quanityI = quanityInt;
     }
 
     /**
      * Name Base
      * @param int typeId
-     * @param String name
-     * @param int quanityInt 
+     * @param String typeName
+     * @param int quanityI 
      */
     public NameBase(int typeId, String name, int quanityInt) {
         this.typeId = typeId;
-        this.name = name;
-        this.quanityInt = quanityInt;
+        this.typeName = name;
+        this.quanityI = quanityInt;
     }
 
     /**
      * Name Base
      * @param int typeId
-     * @param String name
-     * @param int quanityInt
-     * @param double quanityDbl 
+     * @param String typeName
+     * @param int quanityI
+     * @param double quanityD 
      */
     public NameBase(int typeId, String name, int quanityInt, double quanityDbl) {
         this.typeId = typeId;
-        this.name = name;
-        this.quanityInt = quanityInt;
-        this.quanityDbl = quanityDbl;
+        this.typeName = name;
+        this.quanityI = quanityInt;
+        this.quanityD = quanityDbl;
     }
     
     public NameBase() {
@@ -82,49 +84,49 @@ public class NameBase {
     
     /**
      * Get Name
-     * @return String name
+     * @return String typeName
      */
-    public String getName() {
-        return name;
+    public String getTypeName() {
+        return typeName;
     }
 
     /**
      * Set Name
-     * @param String name 
+     * @param String typeName 
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
     /**
      * Get Quanity
-     * @return int quanityInt
+     * @return int quanityI
      */
-    public int getQuanityInt() {
-        return quanityInt;
+    public int getQuanityI() {
+        return quanityI;
     }
 
     /**
      * Set Quanity
-     * @param quanityInt 
+     * @param quanityI 
      */
-    public void setQuanityInt(int quanityInt) {
-        this.quanityInt = quanityInt;
+    public void setQuanityI(int quanityI) {
+        this.quanityI = quanityI;
     }
 
     /**
      * Get Quanity Float
      * @return double
      */
-    public double getQuanityDbl() {
-        return quanityDbl;
+    public double getQuanityD() {
+        return quanityD;
     }
 
     /**
      * Set Quanity Float
-     * @param Float quanityDbl 
+     * @param Float quanityD 
      */
-    public void setQuanityDbl(double quanityDbl) {
-        this.quanityDbl = quanityDbl;
+    public void setQuanityD(double quanityD) {
+        this.quanityD = quanityD;
     }    
 }

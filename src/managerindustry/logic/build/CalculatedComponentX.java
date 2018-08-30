@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.build;
 
-import managerindustry.logic.build.fatherclass.NameBase;
+import managerindustry.logic.generic.nameBase.NameBase;
 
 /**
  *
@@ -15,9 +15,9 @@ public class CalculatedComponentX extends NameBase {
 
     public CalculatedComponentX(String name, int partialQuantity, 
             double totalQuantity) {
-        super.setName(name);
-        super.setQuanityInt(partialQuantity);
-        super.setQuanityDbl(totalQuantity);
+        super.setTypeName(name);
+        super.setQuanityI(partialQuantity);
+        super.setQuanityD(totalQuantity);
     }
     
 }

@@ -78,11 +78,11 @@ public class ManagerComponentX {
      * @param TotalCalculatedComponentX totalCalculatedComponentX 
      */
     public void sumReportCalculatedComponentXMap(ReportCalculatedComponentX reportCalculatedComponentX) {
-        String nameMaterial = reportCalculatedComponentX.getName();
+        String nameMaterial = reportCalculatedComponentX.getTypeName();
         
         if ( this.reportCalculatedComponentXMap.containsKey(nameMaterial)){           
-            double value = (this.reportCalculatedComponentXMap.get(nameMaterial).getQuanityDbl() + reportCalculatedComponentX.getQuanityDbl());
-            reportCalculatedComponentX.setQuanityDbl(value);           
+            double value = (this.reportCalculatedComponentXMap.get(nameMaterial).getQuanityD() + reportCalculatedComponentX.getQuanityD());
+            reportCalculatedComponentX.setQuanityD(value);           
             this.reportCalculatedComponentXMap.put(nameMaterial, reportCalculatedComponentX );
         }else{           
             this.reportCalculatedComponentXMap.put(nameMaterial, reportCalculatedComponentX );

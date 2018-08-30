@@ -22,9 +22,9 @@ public class Immondizia_001 <T> {
     List < Integer > duplicate = new ArrayList<>();
     
     public Immondizia_001() {
-        baseMaterialV5();
-//        buildItemV5();
-        rigRucursion();
+//        baseMaterialV5();
+        buildItemV5();
+//        rigRucursion();
 //        chooseRig();
 //        immondizia2();
     }    

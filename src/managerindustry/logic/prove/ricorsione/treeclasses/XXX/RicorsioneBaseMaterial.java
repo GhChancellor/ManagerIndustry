@@ -111,10 +111,10 @@ public class RicorsioneBaseMaterial {
 
     public void diplay() {
         for (ComponentX componentX : componentXs) {
-            System.out.println("" + componentX.getName() + " " + componentX.getQuanityInt());
+            System.out.println("" + componentX.getTypeName() + " " + componentX.getQuanityI());
             List< MaterialForComponents> materialForComponents = componentX.getMaterialForComponents();
             for (MaterialForComponents materialForComponent : materialForComponents) {
-                System.out.println("" + materialForComponent.getName() + " " + materialForComponent.getQuanityInt());
+                System.out.println("" + materialForComponent.getTypeName() + " " + materialForComponent.getQuanityI());
             }
 
         }

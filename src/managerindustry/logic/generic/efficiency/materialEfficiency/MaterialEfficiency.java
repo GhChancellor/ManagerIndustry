@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.build.materialEfficiency;
+package managerindustry.logic.generic.efficiency.materialEfficiency;
 
-import managerindustry.logic.build.fatherclass.Efficiency;
-import managerindustry.logic.build.fatherclass.Efficiency;
+import managerindustry.logic.generic.efficiency.Efficiency;
+import managerindustry.logic.generic.efficiency.Efficiency;
 
 /**
  * https://community.eveonline.com/news/dev-blogs/eve-industry-all-you-want-to-know/

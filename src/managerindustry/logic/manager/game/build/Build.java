@@ -15,7 +15,7 @@ import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.build.CalculatedComponentX;
 import managerindustry.logic.build.ComponentX;
-import managerindustry.logic.build.materialEfficiency.MaterialEfficiencyCalculate;
+import managerindustry.logic.generic.efficiency.materialEfficiency.MaterialEfficiencyCalculate;
 import managerindustry.logic.build.MaterialForComponents;
 import managerindustry.logic.build.ReportCalculatedComponentX;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
@@ -33,7 +33,7 @@ public class Build {
         for (Map.Entry<String, ReportCalculatedComponentX> entry : totalCalculatedComponentXmap.entrySet()) {
             String key = entry.getKey();
             ReportCalculatedComponentX value = entry.getValue();
-            System.out.println("" + value.getName() + " " + String.format("%.0f", value.getQuanityDbl()));
+            System.out.println("" + value.getTypeName() + " " + String.format("%.0f", value.getQuanityD()));
         }            
     }
 
@@ -100,13 +100,13 @@ public class Build {
             if (material.getComponentX().getMaterialForComponents().isEmpty()){
                 // me for T1
                 MaterialEfficiencyCalculate materialEfficiencyCalculateX = 
-                 new MaterialEfficiencyCalculate(run, job, bpoME , material.getComponentX().getQuanityInt() );
+                 new MaterialEfficiencyCalculate(run, job, bpoME , material.getComponentX().getQuanityI() );
                 
                 materialEfficiencyCalculate = materialEfficiencyCalculateX;                
             }else{
                 // me for component ( t2 )
                 MaterialEfficiencyCalculate materialEfficiencyCalculateX = 
-                    new MaterialEfficiencyCalculate(run, job, componentMe , material.getComponentX().getQuanityInt() ); 
+                    new MaterialEfficiencyCalculate(run, job, componentMe , material.getComponentX().getQuanityI() ); 
                 
                 materialEfficiencyCalculate = materialEfficiencyCalculateX;
             }
@@ -120,21 +120,21 @@ public class Build {
                     materialEfficiencyCalculate.getTotalItemsMaterials(); 
             
             ComponentX componentX = new ComponentX();
-            componentX.setName(material.getComponentX().getName());
-            componentX.setQuanityInt(singleMaterial);
-            componentX.setQuanityDbl(totalMaterials);
+            componentX.setTypeName(material.getComponentX().getTypeName());
+            componentX.setQuanityI(singleMaterial);
+            componentX.setQuanityD(totalMaterials);
             dad.addMaterialForComponents( new MaterialForComponents(componentX));
             
             // Single item scimitar x 1
             CalculatedComponentX calculatedComponentX = new CalculatedComponentX
-                (material.getName(), singleMaterial, totalMaterials);            
+                (material.getTypeName(), singleMaterial, totalMaterials);            
             
             // add object values
             ManagerComponentX.getInstance().addCalculatedComponentXs(calculatedComponentX);
 
             // Put report Calculated Components
             ReportCalculatedComponentX reportCalculatedComponentX = 
-             new ReportCalculatedComponentX(material.getComponentX().getName(), singleMaterial, totalMaterials);
+             new ReportCalculatedComponentX(material.getComponentX().getTypeName(), singleMaterial, totalMaterials);
             
             // Sum all values of the items to map Scimitar x 2
             ManagerComponentX.getInstance().sumReportCalculatedComponentXMap
@@ -168,8 +168,8 @@ public class Build {
 //            System.out.println(tab + invTypes.getTypeID() + " " + invTypes.getTypeName() + " " + nameItemToBuild1.getQuantity());
 
             ComponentX componentX = new ComponentX();
-            componentX.setName(invTypes.getTypeName());
-            componentX.setQuanityInt(nameItemToBuild1.getQuantity());
+            componentX.setTypeName(invTypes.getTypeName());
+            componentX.setQuanityI(nameItemToBuild1.getQuantity());
             dad.addMaterialForComponents(new MaterialForComponents(componentX));
             
             List< IndustryActivityMaterials> neededComponents = 
@@ -183,7 +183,7 @@ public class Build {
     
     @Deprecated
     public void displayMap(ComponentX dad, String tab){
-        System.out.println(tab + dad.getName() + " " + dad.getQuanityInt() + " -> " + String.format("%.0f", dad.getQuanityDbl()) );
+        System.out.println(tab + dad.getTypeName() + " " + dad.getQuanityI() + " -> " + String.format("%.0f", dad.getQuanityD()) );
         tab += "\t";
         
         for (MaterialForComponents componentse : dad.getMaterialForComponents()) {
@@ -218,7 +218,7 @@ public class Build {
             
             MaterialEfficiencyCalculate materialEfficiencyCalculate = 
              new MaterialEfficiencyCalculate
-             (run, job, bpoME , material.getComponentX().getQuanityInt() );
+             (run, job, bpoME , material.getComponentX().getQuanityI() );
 
             // quantity material per single item 1 run
             int singleMaterial = 
@@ -229,20 +229,20 @@ public class Build {
                     materialEfficiencyCalculate.getTotalItemsMaterials(); 
             
             ComponentX componentX = new ComponentX();
-            componentX.setName(material.getComponentX().getName());
-            componentX.setQuanityInt(singleMaterial);
-            componentX.setQuanityDbl(totalMaterials);
+            componentX.setTypeName(material.getComponentX().getTypeName());
+            componentX.setQuanityI(singleMaterial);
+            componentX.setQuanityD(totalMaterials);
             
             // Single item scimitar x 1
             CalculatedComponentX calculatedComponentX = new CalculatedComponentX
-                (material.getName(), singleMaterial, totalMaterials);            
+                (material.getTypeName(), singleMaterial, totalMaterials);            
             
             // add object values
             ManagerComponentX.getInstance().addCalculatedComponentXs(calculatedComponentX);
 
             // Put report Calculated Components
             ReportCalculatedComponentX reportCalculatedComponentX = 
-             new ReportCalculatedComponentX(material.getComponentX().getName(), singleMaterial, totalMaterials);
+             new ReportCalculatedComponentX(material.getComponentX().getTypeName(), singleMaterial, totalMaterials);
             
             // Sum all values of the items to map Scimitar x 2
             ManagerComponentX.getInstance().sumReportCalculatedComponentXMap

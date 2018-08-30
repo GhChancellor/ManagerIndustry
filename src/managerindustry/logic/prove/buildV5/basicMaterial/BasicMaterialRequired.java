@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.prove.buildV5.basicMaterial;
 
+import managerindustry.logic.generic.nameBase.NameBase;
 import java.util.List;
 import java.util.Map;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
@@ -37,21 +38,21 @@ public class BasicMaterialRequired {
     
     /**
      * Get Map
-     * @return Map < String, RequiredMaterialRecusion >
+     * @return Map < String, NameBase >
      */
-    public Map < String, RequiredMaterialRecusion > getMap(){
+    public Map < String, NameBase > getMap(){
         return basicMaterialRequired.getMap();
     }
     
     /**
      * Get List
-     * @return List < RequiredMaterialRecusion >
+     * @return List < NameBase >
      */
-    public List < RequiredMaterialRecusion > getList(){
+    public List < NameBase > getList(){
         return basicMaterialRequired.getList();
     }
     
-    public RequiredMaterialRecusion getRequiredMaterialRecusion(){
-        return (RequiredMaterialRecusion) basicMaterialRequired.getObject();
+    public NameBase getRequiredMaterialRecusion(){
+        return (NameBase) basicMaterialRequired.getObject();
     }
 }

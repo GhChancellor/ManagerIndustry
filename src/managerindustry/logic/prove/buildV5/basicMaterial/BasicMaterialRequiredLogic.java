@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.prove.buildV5.basicMaterial;
 
+import managerindustry.logic.generic.nameBase.NameBase;
 import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
@@ -19,7 +20,7 @@ import managerindustry.logic.manager.Manager;
  * @author lele
  */
 public class BasicMaterialRequiredLogic extends AGenericRequiredItem{
-    private RequiredMaterialRecusion requiredMaterial = new RequiredMaterialRecusion(); 
+    private NameBase requiredMaterial = new NameBase(); 
     
     /**
      * Basic Material Required Logic
@@ -55,15 +56,15 @@ public class BasicMaterialRequiredLogic extends AGenericRequiredItem{
         for (IndustryActivityMaterials material : (List< IndustryActivityMaterials>) materials) {
             InvTypes invTypes = getInvTypesById(material.getMaterialTypeID());
         
-//            RequiredMaterialRecusion requiredItemsRecursionA = 
-//                new RequiredMaterialRecusion(
+//            NameBase requiredItemsRecursionA = 
+//                new NameBase(
 //                    invTypes.getTypeID(), material.getQuantity()); 
 
             // only for dbg, use this for more info on object
-            RequiredMaterialRecusion requiredItemsRecursionA = 
-                (RequiredMaterialRecusion) requiredItemMoreInfo(invTypes, material);
+            NameBase requiredItemsRecursionA = 
+                (NameBase) requiredItemMoreInfo(invTypes, material);
 
-            ((RequiredMaterialRecusion) requiredA).addItemRecursionAs(requiredItemsRecursionA);
+            ((NameBase) requiredA).addItemRecursionAs(requiredItemsRecursionA);
             
             // get value blueprint component if necessary
             List< IndustryActivityMaterials> neededComponents = 
@@ -87,7 +88,7 @@ public class BasicMaterialRequiredLogic extends AGenericRequiredItem{
      * Only for dbg, use this for more info on object
      * @param InvTypes invTypes_
      * @param IndustryActivityMaterials material_
-     * @return RequiredMaterialRecusion
+     * @return NameBase
      */
     @Override
     public Object requiredItemMoreInfo(Object invTypes_, Object material_) {
@@ -96,11 +97,11 @@ public class BasicMaterialRequiredLogic extends AGenericRequiredItem{
         InvTypes invTypes = (InvTypes) invTypes_;
         IndustryActivityMaterials material = (IndustryActivityMaterials) material_;
         
-        RequiredMaterialRecusion requiredItemsRecursionA = 
-            new RequiredMaterialRecusion(
+        NameBase requiredItemsRecursionA = 
+            new NameBase(
                 invTypes.getTypeID(), invTypes.getTypeName(), 
                 material.getQuantity());
-        return (RequiredMaterialRecusion) requiredItemsRecursionA;
+        return (NameBase) requiredItemsRecursionA;
     }       
     
     /**
@@ -108,25 +109,25 @@ public class BasicMaterialRequiredLogic extends AGenericRequiredItem{
      * @param RequiredMaterialRecusion requiredItemA
      * @param String tab 
      */
-    private void displayBasicMaterialRecursion(RequiredMaterialRecusion requiredItemA, String tab){
-        if ( requiredItemA.getTypeID() != 0 ){
-            System.out.println(tab + requiredItemA.getTypeID() + " " + 
-            requiredItemA.getTypeName()+ " " + requiredItemA.getQuantity());              
+    private void displayBasicMaterialRecursion(NameBase requiredItemA, String tab){
+        if ( requiredItemA.getTypeId() != 0 ){
+            System.out.println(tab + requiredItemA.getTypeId() + " " + 
+            requiredItemA.getTypeName()+ " " + requiredItemA.getQuanityI());              
         }
 
         tab += " ";                        
         
         for (Object materialRecusion : requiredItemA.getItemRecursionAs()) {
-            displayBasicMaterialRecursion((RequiredMaterialRecusion) materialRecusion, tab);
+            displayBasicMaterialRecursion((NameBase) materialRecusion, tab);
         } 
     }
     
-    public Map < String, RequiredMaterialRecusion > getMap(){
+    public Map < String, NameBase > getMap(){
         pharseToMap();
         return super.getMap();
     }
     
-    public List < RequiredMaterialRecusion > getList(){
+    public List < NameBase > getList(){
         pharseToList();
         return super.getList();
     }

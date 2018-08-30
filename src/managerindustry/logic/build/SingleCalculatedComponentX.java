@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.build;
 
-import managerindustry.logic.build.fatherclass.NameBase;
+import managerindustry.logic.generic.nameBase.NameBase;
 
 /**
  * Put single Calculated Component
@@ -18,8 +18,8 @@ public class SingleCalculatedComponentX extends NameBase{
      * @param quantity 
      */
     public SingleCalculatedComponentX(String name, int quantity) {
-        super.setName(name);
-        super.setQuanityInt(quantity);        
+        super.setTypeName(name);
+        super.setQuanityI(quantity);        
     }
     
 }

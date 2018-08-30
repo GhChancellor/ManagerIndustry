@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.build;
 
-import managerindustry.logic.build.fatherclass.NameBase;
+import managerindustry.logic.generic.nameBase.NameBase;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,20 +46,20 @@ public class ComponentX extends NameBase{
      * @param int amount 
      */
     public ComponentX(int typeID, String typeName, int amount ) {
-        super.setName(typeName);
-        super.setQuanityInt(amount);
+        super.setTypeName(typeName);
+        super.setQuanityI(amount);
         super.setTypeId(typeID);
     }
 
     public ComponentX() {
     }
     
-    public void setName(String typeName){
-        super.setName(typeName);
+    public void setTypeName(String typeName){
+        super.setTypeName(typeName);
     }
     
-    public void setQuanityInt(int amount){
-        super.setQuanityInt(amount);
+    public void setQuanityI(int amount){
+        super.setQuanityI(amount);
     }
 
     public void setTypeId(int typeID){

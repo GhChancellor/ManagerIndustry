@@ -7,11 +7,11 @@ package managerindustry.logic.prove.buildV5;
 
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.build.materialEfficiency.MaterialEfficiencyCalculate;
+import managerindustry.logic.generic.efficiency.materialEfficiency.MaterialEfficiencyCalculate;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.prove.buildV5.basicMaterial.BasicMaterialRequired;
-import managerindustry.logic.prove.buildV5.basicMaterial.RequiredMaterialRecusion;
+import managerindustry.logic.generic.nameBase.NameBase;
 
 /**
  *
@@ -22,7 +22,6 @@ public class BuildItem {
     private int singleMaterialQuantity;
     private double totalMaterialQuantity;  
     private ReportItem reportItem = new ReportItem();
-    private RamActivitiesEnum activitiesEnum;
 
     /**
      * Buld Item
@@ -37,57 +36,69 @@ public class BuildItem {
     public BuildItem(String bpoName, int run, int job, byte bpoME, byte componentMe, 
         RamActivitiesEnum activitiesEnum) throws ErrorExeption{
         
-        this.activitiesEnum = activitiesEnum;
         BasicMaterialRequired basicMaterialRequired = 
             new BasicMaterialRequired(bpoName, activitiesEnum);
 
-        requiredItem(bpoName, run, job, bpoME, componentMe, basicMaterialRequired.getRequiredMaterialRecusion().getItemRecursionAs());
+        requiredItem(bpoName, run, job, bpoME, componentMe, 
+            basicMaterialRequired.getRequiredMaterialRecusion().getItemRecursionAs());
     }    
-    
-    private void requiredItem(String bpoName, int run, int job, byte bpoME, byte componentMe, 
-            List <RequiredMaterialRecusion> requiredMaterialRecusions ){
+    /**
+     * Required Item recursion
+     * @param String bpoName
+     * @param int run
+     * @param int job
+     * @param byte bpoME
+     * @param byte componentMe
+     * @param List <NameBase> requiredMaterialRecusions 
+     */
+    private void requiredItem(String bpoName, int run, int job, byte bpoME, 
+        byte componentMe, List <NameBase> requiredMaterialRecusions ){
 
-        for (RequiredMaterialRecusion requiredMaterialRecusion : requiredMaterialRecusions) {
+        for (NameBase requiredMaterialRecusion : requiredMaterialRecusions) {
             
             calculateME(requiredMaterialRecusion, run, job, bpoME, componentMe);
             calculateQuantityMaterial();
+            addItem(requiredMaterialRecusion);
             
             if ( !requiredMaterialRecusion.getItemRecursionAs().isEmpty() ){
                 int tempJob = 1;
                 byte tempComponetMe = 1;
-                requiredItem("", materialEfficiencyCalculate.getSingleItemMaterial(), 
-                    tempJob, bpoME, componentMe, requiredMaterialRecusion.getItemRecursionAs());
+                requiredItem("", singleMaterialQuantity, tempJob, bpoME, 
+                    tempComponetMe, requiredMaterialRecusion.getItemRecursionAs());
             }
         }
-
     }
 
     /**
      * Calculate ME
-     * @param RequiredMaterialRecusion materialRecusion 
+     * @param NameBase materialRecusion
+     * @param int run
+     * @param int job
+     * @param byte bpoME
+     * @param byte componentMe 
      */
-    private void calculateME(RequiredMaterialRecusion materialRecusion, 
+    private void calculateME(NameBase materialRecusion, 
             int run, int job, byte bpoME, byte componentMe ){
         
         if ( materialRecusion.getItemRecursionAs().isEmpty()){
             // T1 material .. bpoME ..
             materialEfficiencyCalculate = new MaterialEfficiencyCalculate
-                (run, job, bpoME , materialRecusion.getQuantity() );
+                (run, job, bpoME , materialRecusion.getQuanityI() );
         }else{
             // T2 component .. componentMe ..
             materialEfficiencyCalculate = new MaterialEfficiencyCalculate
-                (run, job, componentMe , materialRecusion.getQuantity() );
+                (run, job, componentMe , materialRecusion.getQuanityI() );
         }   
     }       
     
     /**
      * Add Item
-     * @param RequiredMaterialRecusion materialRecusion 
+     * @param NameBase materialRecusion 
      */
-    private void addItem(RequiredMaterialRecusion materialRecusion){
-        materialRecusion.setQuantity(singleMaterialQuantity);
-        materialRecusion.setQuanityDbl(totalMaterialQuantity);
-//        reportItem.addItem(materialRecusion);        
+    private void addItem(NameBase materialRecusion){
+        materialRecusion.setQuanityI(singleMaterialQuantity);
+        materialRecusion.setQuanityD(totalMaterialQuantity);
+        reportItem.addItem(materialRecusion);        
     }    
     
     /**
@@ -108,7 +119,24 @@ public class BuildItem {
      * Display Build Item
      */
     public void displayBuildItem(){
-     
+        Map<String, NameBase> singleCalculatedItemM = reportItem.getSingleCalculatedItemM();
+        
+        for (Map.Entry<String, NameBase> entry : singleCalculatedItemM.entrySet()) {
+            display(entry.getValue().getItemRecursionAs());
+        }
     }    
-   
+ 
+    private void display(List <NameBase> requiredMaterialRecusions){
+        List<NameBase> requiredMaterialRecusions1 = requiredMaterialRecusions;
+        for (NameBase requiredMaterialRecusion : requiredMaterialRecusions1) {
+            System.out.println(""+ requiredMaterialRecusion.getTypeId() + " " +
+                requiredMaterialRecusion.getTypeName() + " " +
+                requiredMaterialRecusion.getQuanityI() + " > " + 
+                requiredMaterialRecusion.getQuanityD());
+         
+            if ( !requiredMaterialRecusion.getItemRecursionAs().isEmpty() ){
+                display(requiredMaterialRecusion.getItemRecursionAs());
+            }            
+        }        
+    }
 }

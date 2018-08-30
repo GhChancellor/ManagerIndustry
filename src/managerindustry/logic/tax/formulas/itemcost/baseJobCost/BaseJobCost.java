@@ -38,10 +38,10 @@ public class BaseJobCost {
 //            String key = entry.getKey();
             ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
             InvTypes invTypes = 
-             Manager.getInstance().db().item().invTypes().getInvTypesByName(totalCalculatedComponent.getName());
+             Manager.getInstance().db().item().invTypes().getInvTypesByName(totalCalculatedComponent.getTypeName());
             
             Float jobCost = 
-             JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
+             JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityI(), String.valueOf(invTypes.getTypeID()));
             
             sumJobcost += jobCost;            
             sumOfEachJobcosts.add(jobCost);
@@ -68,13 +68,13 @@ public class BaseJobCost {
             ReportCalculatedComponentX totalCalculatedComponent = entry.getValue();
             int typesId = 
                 Manager.getInstance().db().item().invTypes().getInvTypesByName
-                (totalCalculatedComponent.getName()).getTypeID();
+                (totalCalculatedComponent.getTypeName()).getTypeID();
             
 //            Float jobCost = 
 //             JobCost.getJobCostDBG(totalCalculatedComponent.getQuanityInt(), String.valueOf(invTypes.getTypeID()));
             
             Float jobCost = 
-             JobCost.getJobCost(totalCalculatedComponent.getQuanityInt(), String.valueOf(typesId));
+             JobCost.getJobCost(totalCalculatedComponent.getQuanityI(), String.valueOf(typesId));
             
             sumJobcost += jobCost;            
             sumOfEachJobcosts.add(jobCost);
