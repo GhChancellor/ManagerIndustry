@@ -11,30 +11,50 @@ import java.util.List;
 /**
  * @author lele
  */
-public class ItemRecursionA < T > {
+public class ItemRecursion < T > {
     private List < T > recursionTs = new ArrayList<>();
     private T t;
 
-    public ItemRecursionA() {
+    public ItemRecursion() {
     }    
     
-    public ItemRecursionA(T t) {
+    /**
+     * Item Recursion
+     * @param T t 
+     */
+    public ItemRecursion(T t) {
         this.t = t;
     }
    
-    public T getRecursionA02() {
+    /**
+     * Get Recursion
+     * @return T
+     */
+    public T getRecursion() {
         return t;
     }
 
-    public List<T> getItemRecursionAs() {
+    /**
+     * Get Item Recursions
+     * @return List <T>
+     */
+    public List<T> getItemRecursions() {
         return recursionTs;
     }
 
-    public void setItemRecursionAs(List<T> t) {
+    /**
+     * Set Item Recursions
+     * @param T t 
+     */
+    public void setItemRecursions(List<T> t) {
         this.recursionTs = t;
     }
     
-    public void addItemRecursionAs(T t) {
+    /**
+     * Aadd Item Recursions
+     * @param t 
+     */
+    public void addItemRecursions(T t) {
         this.recursionTs.add(t);
     }
     

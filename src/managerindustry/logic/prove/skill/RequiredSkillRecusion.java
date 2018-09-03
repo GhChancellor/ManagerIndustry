@@ -5,13 +5,13 @@
  */
 package managerindustry.logic.prove.skill;
 
-import managerindustry.logic.generic.recursion.ItemRecursionA;
+import managerindustry.logic.generic.recursion.ItemRecursion;
 
 /**
  *
  * @author lele
  */
-public class RequiredSkillRecusion extends ItemRecursionA{
+public class RequiredSkillRecusion extends ItemRecursion{
     private int typeIdSkill;
     private String nameSkill;
     

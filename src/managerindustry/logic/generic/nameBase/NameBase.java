@@ -5,13 +5,13 @@
  */
 package managerindustry.logic.generic.nameBase;
 
-import managerindustry.logic.generic.recursion.ItemRecursionA;
+import managerindustry.logic.generic.recursion.ItemRecursion;
 
 /**
  *
  * @author lele
  */
-public class NameBase extends ItemRecursionA {
+public class NameBase extends ItemRecursion {
     private int typeId;
     private String typeName;
     private int quanityI;
@@ -49,6 +49,31 @@ public class NameBase extends ItemRecursionA {
         this.quanityI = quanityInt;
     }
 
+    /**
+     * Name Base
+     * @param int typeId
+     * @param int quanityI
+     * @param double quanityD 
+     */
+    public NameBase(int typeId, int quanityI, double quanityD) {
+        this.typeId = typeId;
+        this.quanityI = quanityI;
+        this.quanityD = quanityD;
+    }
+
+    
+    
+//    /**
+//     * Name Base
+//     * @param int quanityI
+//     * @param Double quanityD 
+//     */
+//    public NameBase(int typeId, double quanityD) {
+//        this.typeId = typeId;
+//        this.quanityD = quanityD;
+//    }
+
+    
     /**
      * Name Base
      * @param int typeId

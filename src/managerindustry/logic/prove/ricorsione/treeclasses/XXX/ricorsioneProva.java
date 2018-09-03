@@ -8,7 +8,7 @@ package managerindustry.logic.prove.ricorsione.treeclasses.XXX;
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
-import managerindustry.logic.build.ComponentX;
+import managerindustry.logic.build.old.ComponentX;
 
 /**
  *

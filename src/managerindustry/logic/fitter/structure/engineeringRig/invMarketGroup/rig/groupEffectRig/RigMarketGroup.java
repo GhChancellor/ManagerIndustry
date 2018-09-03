@@ -5,13 +5,13 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig;
 
-import managerindustry.logic.generic.recursion.ItemRecursionA;
+import managerindustry.logic.generic.recursion.ItemRecursion;
 
 /**
  *
  * @author lele
  */
-public class RigMarketGroup extends ItemRecursionA {
+public class RigMarketGroup extends ItemRecursion {
     private short marketGroupID;
     private short parentGroupID;
     private String marketGroupName;

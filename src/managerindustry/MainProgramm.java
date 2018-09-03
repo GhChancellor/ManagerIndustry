@@ -6,14 +6,14 @@
 package managerindustry;
 
 import java.util.Map;
-import managerindustry.logic.build.ReportCalculatedComponentX;
+import managerindustry.logic.build.old.ReportCalculatedComponentX;
 import managerindustry.logic.generic.enumName.PlatformEnum;
 import managerindustry.logic.generic.enumName.SecurityStatusEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.gui.display.DisplaySpeculation;
-import managerindustry.logic.manager.game.build.Build;
-import managerindustry.logic.manager.game.build.ManagerComponentX;
+import managerindustry.logic.manager.game.build.old.Build_OLD;
+import managerindustry.logic.manager.game.build.old.ManagerComponentX;
 import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
@@ -21,7 +21,12 @@ import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.ChooseRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
+import managerindustry.logic.generic.enumName.RamActivitiesEnum;
+import managerindustry.logic.generic.nameBase.NameBase;
 import managerindustry.logic.manager.Manager;
+import managerindustry.logic.build.basicMaterialRequired.BasicMaterialRequired;
+import managerindustry.logic.build.buildItem.BuildItem;
+import managerindustry.logic.build.buildItem.BuildItemRequired;
 import managerindustry.logic.prove.immondizia.Immondizia_001;
 
 /**
@@ -31,21 +36,37 @@ import managerindustry.logic.prove.immondizia.Immondizia_001;
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
-//        buildItem(); // << controllare
+        buildItemV6();
+//        basicMaterial();
+        
 //        jobInstallationFee(); << controllare funziona male
 //        speculation(); // << controllare funziona male
 //        recursionItems();
 //        structure();
-        immondizia();
+
+        
+//        immondizia();
+//        old();
     }
     
-    public static void buildItem(){
+    /**
+     * @deprecated 
+     * old check before delete it
+     */
+    public static void old(){
+//        buildItem_OLD(); // << controllare
+    }
+    
+    /**
+     * @deprecated 
+     */
+    public static void buildItem_OLD(){
          // Scythe  scimitar   R.A.M.- Starship Tech   CONCORD 25000mm Steel Plates
         // riporta sempre le quantità calcolate non quelle base
         //  drake
         // 	Tritanium 2500001 -> 2500001
 	// Pyerite 612071 -> 612071
-        Build managerBuild = new Build("scimitar", 1,  1, (byte)0, (byte) 0);         
+        Build_OLD managerBuild = new Build_OLD("scimitar", 9,  8, (byte)7, (byte) 6);         
     }
     
     /**
@@ -74,8 +95,8 @@ public class MainProgramm {
         int runPerCopy = 5;
         int startLevel = 5;
         int finishLevel = 10;
-        Build managerBuildX1 = 
-                new Build(item, run, job, bpoME, componentMe);
+        Build_OLD managerBuildX1 = 
+                new Build_OLD(item, run, job, bpoME, componentMe);
                         
         Map < String, ReportCalculatedComponentX > reportCalculatedComponentXMap = 
          ManagerComponentX.getInstance().getReportCalculatedComponentXMap();
@@ -129,5 +150,41 @@ public class MainProgramm {
     public static void immondizia(){
         Immondizia_001 immondizia_001 = new Immondizia_001();
 //        immondizia_001.buildItem();
+    }
+    
+    public static void basicMaterial(){
+        try {
+            BasicMaterialRequired buildItemRequired = 
+                new BasicMaterialRequired("scimitar", RamActivitiesEnum.MANUFACTURING); 
+            buildItemRequired.display();
+            
+        } catch (ErrorExeption e) {
+            System.out.println(""+ e.getErrorEnum());  
+        }
+    }
+    
+    public static void buildItemV6() {
+        //                                   bpoName   run job   bpoME    componentMe
+        BuildItem buildItem = new BuildItem("scimitar",  9,  8, (byte) 7, (byte) 6);
+        
+        try {
+            BuildItemRequired buildItemRequired = 
+                new BuildItemRequired(buildItem, RamActivitiesEnum.MANUFACTURING);
+            buildItemRequired.display();
+            
+            Map<String, NameBase> map = buildItemRequired.getMap();
+            
+            for (Map.Entry<String, NameBase> entry : map.entrySet()) {
+                String key = entry.getKey();
+                NameBase value = entry.getValue();
+                
+                System.out.println(""+ value.getTypeId() + " " +
+                    value.getTypeName() + " - " +
+                    value.getQuanityI() + " > " +
+                    value.getQuanityD());                
+            }            
+        } catch (ErrorExeption e) {
+            System.out.println(""+ e.getErrorEnum());
+        }  
     }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager.game.build;
+package managerindustry.logic.manager.game.build.old;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,18 +13,19 @@ import managerindustry.db.entities.eve.DgmAttributeTypes;
 import managerindustry.db.entities.eve.DgmTypeAttributes;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
-import managerindustry.logic.build.CalculatedComponentX;
-import managerindustry.logic.build.ComponentX;
+import managerindustry.logic.build.old.CalculatedComponentX;
+import managerindustry.logic.build.old.ComponentX;
 import managerindustry.logic.generic.efficiency.materialEfficiency.MaterialEfficiencyCalculate;
-import managerindustry.logic.build.MaterialForComponents;
-import managerindustry.logic.build.ReportCalculatedComponentX;
+import managerindustry.logic.build.old.MaterialForComponents;
+import managerindustry.logic.build.old.ReportCalculatedComponentX;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.Manager;
 
 /**
+ * @deprecated 
  * @author lele
  */
-public class Build {
+public class Build_OLD {
     private List < ComponentX > reportMaterialForComponents = new ArrayList<>();
     private Map < String, ReportCalculatedComponentX> totalCalculatedComponentXmap = new HashMap<>();
     
@@ -37,10 +38,10 @@ public class Build {
         }            
     }
 
-    public Build() {
+    public Build_OLD() {
     }
     
-    public Build(String bpoName, int run, int job, byte bpoME, 
+    public Build_OLD(String bpoName, int run, int job, byte bpoME, 
         byte componentMe) {
        
         RamActivitiesEnum activitiesEnum = RamActivitiesEnum.MANUFACTURING;
@@ -75,11 +76,11 @@ public class Build {
     }
     
     /**
-     * Build Item, I varoli sono calcolati per ottenere la quantità di una singolo oggetto e 
-     * DOPO sono moltiplicati per gli oggetti necesserati
-     * Scimitar x 1 ME 10 
-     * * Plasma Thruster 68 
-     * * * Phenolic Composites 184 
+     * Build_OLD Item, I varoli sono calcolati per ottenere la quantità di una singolo oggetto e 
+ DOPO sono moltiplicati per gli oggetti necesserati
+ Scimitar x 1 ME 10 
+ * Plasma Thruster 68 
+ * * Phenolic Composites 184 
      * @param String bpoName
      * @param int run
      * @param int job

@@ -3,25 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.buildV5.basicMaterial;
+package managerindustry.logic.build.basicMaterialRequired;
 
-import managerindustry.logic.generic.nameBase.NameBase;
 import java.util.List;
-import java.util.Map;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.generic.genericRequiredItem.AGenericRequiredItem;
+import managerindustry.logic.generic.nameBase.NameBase;
 import managerindustry.logic.manager.Manager;
+import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterial;
 
 /**
  *
  * @author lele
  */
-public class BasicMaterialRequiredLogic extends AGenericRequiredItem{
-    private NameBase requiredMaterial = new NameBase(); 
-    
+public class BasicMaterialRequiredLogic extends RequiredMaterial{
     /**
      * Basic Material Required Logic
      * @param String bpoName
@@ -41,9 +38,8 @@ public class BasicMaterialRequiredLogic extends AGenericRequiredItem{
             Manager.getInstance().db().item().industryActivityMaterials().getMaterialsID(invTypes.getTypeID(), activitiesEnum);
 
         requiredItem(materials, requiredMaterial, activitiesEnum);        
+    } 
 
-    }    
-    
     /**
      * Calculate Required Item
      * @param List< IndustryActivityMaterials> materials_
@@ -64,24 +60,29 @@ public class BasicMaterialRequiredLogic extends AGenericRequiredItem{
             NameBase requiredItemsRecursionA = 
                 (NameBase) requiredItemMoreInfo(invTypes, material);
 
-            ((NameBase) requiredA).addItemRecursionAs(requiredItemsRecursionA);
+            ((NameBase) requiredA).addItemRecursions(requiredItemsRecursionA);
             
             // get value blueprint component if necessary
             List< IndustryActivityMaterials> neededComponents = 
-              Manager.getInstance().db().item().industryActivityMaterials().
-                getMaterialNeedByName(invTypes.getTypeName() + " blueprint", ( RamActivitiesEnum ) activitiesEnum);
+                getNeededComponents(invTypes, ( RamActivitiesEnum ) activitiesEnum);
                         
             if (neededComponents != null)
                 requiredItem(neededComponents, requiredItemsRecursionA, ( RamActivitiesEnum ) activitiesEnum);   
         }    
     }
-    
-    public BasicMaterialRequiredLogic() {
-    }
 
-    @Override
-    public void display() {
-        displayBasicMaterialRecursion(requiredMaterial, "");
+    /**
+     * 
+     * @param InvTypes invTypes
+     * @param RamActivitiesEnum activitiesEnum
+     * @return List< IndustryActivityMaterials>
+     */
+    private List< IndustryActivityMaterials> getNeededComponents(
+        InvTypes invTypes, RamActivitiesEnum activitiesEnum ){
+        
+        return Manager.getInstance().db().item().industryActivityMaterials().    
+            getMaterialNeedByName(invTypes.getTypeName() + " blueprint", 
+            activitiesEnum);        
     }
     
     /**
@@ -91,59 +92,15 @@ public class BasicMaterialRequiredLogic extends AGenericRequiredItem{
      * @return NameBase
      */
     @Override
-    public Object requiredItemMoreInfo(Object invTypes_, Object material_) {
-        System.err.print("BasicMaterialRequired > requiredItemMoreInfo is ENABLE!!!");
-        
-        InvTypes invTypes = (InvTypes) invTypes_;
-        IndustryActivityMaterials material = (IndustryActivityMaterials) material_;
-        
-        NameBase requiredItemsRecursionA = 
+    public Object requiredItemMoreInfo(Object invTypes, Object material) {
+        System.err.print("BasicMaterialRequiredLogic > requiredItemMoreInfo is ENABLE!!!");
+
+        NameBase nameBase = 
             new NameBase(
-                invTypes.getTypeID(), invTypes.getTypeName(), 
-                material.getQuantity());
-        return (NameBase) requiredItemsRecursionA;
-    }       
-    
-    /**
-     * Display Material recursion
-     * @param RequiredMaterialRecusion requiredItemA
-     * @param String tab 
-     */
-    private void displayBasicMaterialRecursion(NameBase requiredItemA, String tab){
-        if ( requiredItemA.getTypeId() != 0 ){
-            System.out.println(tab + requiredItemA.getTypeId() + " " + 
-            requiredItemA.getTypeName()+ " " + requiredItemA.getQuanityI());              
-        }
-
-        tab += " ";                        
+                ((InvTypes)invTypes).getTypeID(), 
+                ((InvTypes)invTypes).getTypeName(), 
+                ((IndustryActivityMaterials)material).getQuantity());
         
-        for (Object materialRecusion : requiredItemA.getItemRecursionAs()) {
-            displayBasicMaterialRecursion((NameBase) materialRecusion, tab);
-        } 
-    }
-    
-    public Map < String, NameBase > getMap(){
-        pharseToMap();
-        return super.getMap();
-    }
-    
-    public List < NameBase > getList(){
-        pharseToList();
-        return super.getList();
-    }
-    
-    @Override
-    public Object getObject() {
-        return requiredMaterial;
-    }  
-
-    @Override
-    public void pharseToMap() {
-        addMapElement( requiredMaterial.getTypeName(),requiredMaterial);
-    }
-
-    @Override
-    public void pharseToList() {
-        addListElement( requiredMaterial );
-    }
+        return nameBase;
+    }     
 }

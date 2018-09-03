@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Map;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
-import managerindustry.logic.build.ComponentX;
-import managerindustry.logic.build.MaterialForComponents;
+import managerindustry.logic.build.old.ComponentX;
+import managerindustry.logic.build.old.MaterialForComponents;
 
 
 /**

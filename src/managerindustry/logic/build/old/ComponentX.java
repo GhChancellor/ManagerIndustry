@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.build;
+package managerindustry.logic.build.old;
 
 import managerindustry.logic.generic.nameBase.NameBase;
 import java.util.ArrayList;

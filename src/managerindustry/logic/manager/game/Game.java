@@ -7,22 +7,30 @@ package managerindustry.logic.manager.game;
 
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
-import managerindustry.logic.manager.game.build.Build;
+import managerindustry.logic.manager.game.build.old.Build_OLD;
 import managerindustry.logic.manager.game.fitter.Fitter;
 import managerindustry.logic.prove.skill.old.Skill_OLD;
 import managerindustry.logic.manager.game.tax.SystemCost;
+import managerindustry.logic.build.buildItem.BuildItemRequired;
 
 /**
  *
  * @author lele
  */
 public class Game {
+    
+    public BuildItemRequired buildItemRequired(){
+        BuildItemRequired buildItemRequired = new BuildItemRequired();
+        return buildItemRequired;
+    }
+            
     /**
+     * @deprecated 
      * Build
-     * @return Build
+     * @return Build_OLD
      */
-    public Build build(){
-        Build build = new Build();
+    public Build_OLD build_OLD(){
+        Build_OLD build = new Build_OLD();
         return build;
     }
 

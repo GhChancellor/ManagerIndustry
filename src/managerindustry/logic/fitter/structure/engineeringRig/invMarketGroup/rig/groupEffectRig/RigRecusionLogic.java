@@ -9,7 +9,7 @@ import java.util.List;
 import managerindustry.db.entities.eve.InvMarketGroups;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigMarketGroup;
-import managerindustry.logic.generic.recursion.ItemRecursionA;
+import managerindustry.logic.generic.recursion.ItemRecursion;
 import managerindustry.logic.manager.Manager;
 import managerindustry.logic.generic.genericRequiredItem.AGenericRequiredItem;
 
@@ -68,7 +68,7 @@ public class RigRecusionLogic extends AGenericRequiredItem{
 //            RigMarketGroup recusion = 
 //                (RigMarketGroup) requiredItemMoreInfo(marketGroups01);
             
-            rigRecusion_.addItemRecursionAs(recusion);
+            rigRecusion_.addItemRecursions(recusion);
             
             // Exclude some branches ( items )
             if (marketGroups01.getMarketGroupID() == excludeCode)
@@ -104,7 +104,7 @@ public class RigRecusionLogic extends AGenericRequiredItem{
             RigMarketGroup recusion = 
                 (RigMarketGroup) requiredItemMoreInfo(marketGroups01);  
 
-            rigRecusion_.addItemRecursionAs(recusion);
+            rigRecusion_.addItemRecursions(recusion);
             
             List<InvMarketGroups> marketGroups02 = 
                 Manager.getInstance().db().item().invMarketGroups().getParentGroupID( 
@@ -151,7 +151,7 @@ public class RigRecusionLogic extends AGenericRequiredItem{
                 rigMarketGroupRecursion.getMarketGroupID() + " " + 
                 rigMarketGroupRecursion.getParentGroupID() );
 
-        if ( rigMarketGroupRecursion.getItemRecursionAs().isEmpty() ){
+        if ( rigMarketGroupRecursion.getItemRecursions().isEmpty() ){
             List<InvTypes> parentGroupID = Manager.getInstance().db().item().
                 invTypes().getMarketGroupID(rigMarketGroupRecursion.getMarketGroupID(), true);            
             
@@ -163,7 +163,7 @@ public class RigRecusionLogic extends AGenericRequiredItem{
         tab += " " ;
         System.out.println("----------");         
         
-        for (Object object : rigMarketGroupRecursion.getItemRecursionAs()) {
+        for (Object object : rigMarketGroupRecursion.getItemRecursions()) {
             displayRigMarketGroupRecursion((RigMarketGroup) object, tab);
         }         
     }    

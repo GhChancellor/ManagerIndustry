@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.manager.game.build;
+package managerindustry.logic.manager.game.build.old;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.build.CalculatedComponentX;
-import managerindustry.logic.build.ComponentX;
-import managerindustry.logic.build.ReportCalculatedComponentX;
+import managerindustry.logic.build.old.CalculatedComponentX;
+import managerindustry.logic.build.old.ComponentX;
+import managerindustry.logic.build.old.ReportCalculatedComponentX;
 
 /**
  *

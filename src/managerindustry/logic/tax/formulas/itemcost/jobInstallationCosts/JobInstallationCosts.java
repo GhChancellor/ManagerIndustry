@@ -6,7 +6,7 @@
 package managerindustry.logic.tax.formulas.itemcost.jobInstallationCosts;
 
 import java.util.Map;
-import managerindustry.logic.build.ReportCalculatedComponentX;
+import managerindustry.logic.build.old.ReportCalculatedComponentX;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.formulas.itemcost.ItemCost;
