@@ -5,6 +5,9 @@
  */
 package managerindustry.logic.generic.genericRequiredItem;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  *
  * @author lele
@@ -18,7 +21,7 @@ public interface IGenericRequiredItem < A, B, C > {
     public A getObject();
     public void display();
     
-    public void pharseToMap();
-    public void pharseToList();
+    public void convertToMap(Map <A,B> a);
+    public void convertToList(List <A> a);
         
 }

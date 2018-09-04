@@ -6,7 +6,6 @@
 package managerindustry.logic.generic.efficiency.materialEfficiency;
 
 import managerindustry.logic.generic.efficiency.Efficiency;
-import managerindustry.logic.generic.efficiency.Efficiency;
 
 /**
  * https://community.eveonline.com/news/dev-blogs/eve-industry-all-you-want-to-know/

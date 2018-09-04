@@ -3,22 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax.formulas.itemcost;
+package managerindustry.logic.prove.ItemCostNew.logic.ItemCost;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import managerindustry.logic.build.old.ReportCalculatedComponentX;
-import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
-import managerindustry.logic.tax.formulas.itemcost.baseJobCost.BaseJobCost;
-import managerindustry.logic.tax.formulas.itemcost.systemCostIndex.SystemCostIndex;
+import managerindustry.logic.generic.enumName.RamActivitiesEnum;
+import managerindustry.logic.generic.nameBase.NameBase;
 
 /**
- * https://community.eveonline.com/news/dev-blogs/eve-industry-all-you-want-to-know/
+ *
  * @author lele
  */
-public class ItemCost {   
+public class ItemCostBase {
     private final float adjustment = 1.1f;
     private final float percent = 0.02f; // 2%
     private float systemCostIndex = 0f;
@@ -29,67 +25,9 @@ public class ItemCost {
     private float facilityTaxes = 0f;
     private float totalInstallationCost = 0f;
     private List < Float > sumOfEachJobcosts = new ArrayList();     
-    private Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap;
+    private List<NameBase> nameBases = new ArrayList();  
     private String solarSystemID;
-    private String actvity;
-
-    public ItemCost() {
-    }
-
-    public ItemCost(Map<String, ReportCalculatedComponentX>  reportCalculatedComponentXMap, 
-        String solarSystemID, String actvity, int run, float facilityTax) throws SolarSystemNotExistsException, ErrorExeption{
-        
-        this.reportCalculatedComponentXMap = reportCalculatedComponentXMap;
-        this.solarSystemID = solarSystemID;
-        this.actvity = actvity;
-        this.run = run;
-        this.taxRate = facilityTax;
-        
-        // ManagerSystemCostIndex > SolarSystemCost > getCostIndexEntity() 
-//        this.systemCostIndex = SystemCostIndex.SystemCostIndexDBG(solarSystemID, actvity);
-        this.systemCostIndex = SystemCostIndex.SystemCostIndex(this.solarSystemID, this.actvity);
-
-        BaseJobCost baseJobCost = new BaseJobCost();
-        // BaseJobCost > getBaseJobCostDBG 
-//         this.baseJobCost = baseJobCost.getBaseJobCostDBG(this.reportCalculatedComponentXMap);
-        this.baseJobCost = baseJobCost.getBaseJobCost(this.reportCalculatedComponentXMap);
-        
-        this.sumOfEachJobcosts = baseJobCost.getsumOfEachJobcosts();
-    }
-    
-    /**
-     * è 10%  = 0,1 quindi se passi 0.1 nella formula NON fare " /100 "
-     * @param List < Float > sumOfEachJobcosts 
-     */
-    public void calculateFacilityTaxes(List < Float > sumOfEachJobcosts) {
-        for (Float sumOfEachJobcost : sumOfEachJobcosts) {
-            this.facilityTaxes += ( sumOfEachJobcost * getSystemCostIndex() * getAdjustment() * getRun() ) * getTaxRate(); // / 100;
-        }
-    }    
-    
-    /**
-     * CalculateTotal Installation Cost
-     */
-    public void calculateTotalInstallationCost() {
-        totalInstallationCost = jobFee + facilityTaxes;
-    }
-    
-    
-    /**
-     * Get Report Calculated ComponentX
-     * @return Map<String, ReportCalculatedComponentX>
-     */
-    public Map<String, ReportCalculatedComponentX> getReportCalculatedComponentXMap() {
-        return reportCalculatedComponentXMap;
-    }
-
-    /**
-     * Set Report Calculated ComponentX
-     * @param Map<String, ReportCalculatedComponentX> reportCalculatedComponentXMap 
-     */
-    public void setReportCalculatedComponentXMap(Map<String, ReportCalculatedComponentX> reportCalculatedComponentXMap) {
-        this.reportCalculatedComponentXMap = reportCalculatedComponentXMap;
-    }
+    private RamActivitiesEnum activitiesEnum;
 
     /**
      * Get Run
@@ -172,21 +110,21 @@ public class ItemCost {
     }
 
     /**
-     * Get Actvity
-     * @return String
+     * Get Actvity Enum
+     * @return RamActivitiesEnum
      */
-    public String getActvity() {
-        return actvity;
+    public RamActivitiesEnum getActivitiesEnum() {
+        return activitiesEnum;
     }
 
     /**
-     * Set Actvity
-     * @param String actvity 
+     * Set Actvity Enum
+     * @param RamActivitiesEnum activitiesEnum 
      */
-    public void setActvity(String actvity) {
-        this.actvity = actvity;
+    public void setActivitiesEnum(RamActivitiesEnum activitiesEnum) {
+        this.activitiesEnum = activitiesEnum;
     }
-
+    
     /**
      * Get Adjustment
      * @return float
@@ -252,6 +190,13 @@ public class ItemCost {
     }
 
     /**
+     * CalculateTotal Installation Cost
+     */
+    public void calculateTotalInstallationCost() {
+        totalInstallationCost = jobFee + facilityTaxes;
+    }
+
+    /**
      * Get Sum Of Each Job costs
      * @return List<Float>
      */
@@ -267,4 +212,21 @@ public class ItemCost {
         this.sumOfEachJobcosts = sumOfEachJobcosts;
     }
 
+    /**
+     * Get Name Bases
+     * @return List<NameBase>
+     */
+    public List<NameBase> getNameBases() {
+        return nameBases;
+    }
+
+    /**
+     * Set Name Bases
+     * @param List<NameBase> nameBases 
+     */
+    public void setNameBases(List<NameBase> nameBases) {
+        this.nameBases = nameBases;
+    }
+
+    
 }

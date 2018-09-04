@@ -15,6 +15,26 @@ import managerindustry.logic.manager.Manager;
  * @author lele
  */
 public class JobCost {
+    
+    /**
+     * Get Job Cost
+     * @param String typeId
+     * @param int baseQuantity
+     * @return float
+     * @throws ErrorExeption 
+     */
+    public static float getJobCost(String typeId, int baseQuantity) throws ErrorExeption {
+        String adjustedPrice = Manager.getInstance().db().item().price().getAdjustedPriceEntity(typeId);
+        return Float.valueOf(adjustedPrice) * baseQuantity;
+    }    
+    
+    /**
+     * @deprecated 
+     * @param baseQuantity
+     * @param typeId
+     * @return
+     * @throws ErrorExeption 
+     */
     public static float getJobCost(int baseQuantity, String typeId) throws ErrorExeption {
         String adjustedPrice = Manager.getInstance().db().item().price().getAdjustedPriceEntity(typeId);
         return Float.valueOf(adjustedPrice) * baseQuantity;

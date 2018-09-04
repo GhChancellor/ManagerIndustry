@@ -173,9 +173,9 @@ public class PriceX {
     /**
      * Get Average Price or Adjusted Price
      * @param String typePrice
-     * @param Map<String, Price > priceMap priceMap
      * @return PriceEntity
-     */    
+     * @throws ErrorExeption 
+     */
     private PriceEntity getValueAdjusted_AveragePrice(String typePrice) throws ErrorExeption{
         
         initAll(typePrice);   

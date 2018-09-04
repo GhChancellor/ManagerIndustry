@@ -167,33 +167,12 @@ public class RigRecusionLogic extends AGenericRequiredItem{
             displayRigMarketGroupRecursion((RigMarketGroup) object, tab);
         }         
     }    
-    
-    @Override
-    public void pharseToMap() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//        addMapElement(rigMarketGroupRecursion.getMarketGroupName(),rigMarketGroupRecursion);
-    }
 
     @Override
-    public void pharseToList() {
+    public List < RigRecusionLogic > getList(){
         if (rigMarketGroupRecursion != null){
             addListElement(rigMarketGroupRecursion);
         }
-    }
-
-    public List < RigRecusionLogic > getList(){
-        pharseToList();
         return super.getList();        
     }
-    
-    @Override
-    public void requiredItem(Object t1, Object b2, Object c3) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Object requiredItemMoreInfo(Object a1, Object b2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

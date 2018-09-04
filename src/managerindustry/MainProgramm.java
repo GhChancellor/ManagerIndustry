@@ -5,6 +5,7 @@
  */
 package managerindustry;
 
+import java.util.List;
 import java.util.Map;
 import managerindustry.logic.build.old.ReportCalculatedComponentX;
 import managerindustry.logic.generic.enumName.PlatformEnum;
@@ -18,15 +19,16 @@ import managerindustry.logic.solarSystem.SolarSystem;
 import managerindustry.logic.gui.display.DisplayItemCost;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
 import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.ChooseRig;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.nameBase.NameBase;
 import managerindustry.logic.manager.Manager;
 import managerindustry.logic.build.basicMaterialRequired.BasicMaterialRequired;
 import managerindustry.logic.build.buildItem.BuildItem;
 import managerindustry.logic.build.buildItem.BuildItemRequired;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
+import managerindustry.logic.prove.ItemCostNew.logic.ItemCost.ItemCost;
+import managerindustry.logic.prove.ItemCostNew.logic.ItemCost.ItemCostBase;
 import managerindustry.logic.prove.immondizia.Immondizia_001;
 
 /**
@@ -36,16 +38,15 @@ import managerindustry.logic.prove.immondizia.Immondizia_001;
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
-        buildItemV6();
+//        buildItemV6();
 //        basicMaterial();
-        
-//        jobInstallationFee(); << controllare funziona male
+        jobInstallationFee_OLD(); // << controllare funziona male
 //        speculation(); // << controllare funziona male
 //        recursionItems();
 //        structure();
 
         
-//        immondizia();
+        immondizia();
 //        old();
     }
     
@@ -68,14 +69,14 @@ public class MainProgramm {
 	// Pyerite 612071 -> 612071
         Build_OLD managerBuild = new Build_OLD("scimitar", 9,  8, (byte)7, (byte) 6);         
     }
-    
+     
     /**
      * MN Civilian Afterburner 1 = 3ISK, 2 = 7Isk  
      * Sotrentaira
      * @throws SolarSystemNotExistsException
      * @throws PriceNotExistsException 
      */
-    public static void jobInstallationFee() throws SolarSystemNotExistsException, ErrorExeption{
+    public static void jobInstallationFee_OLD() throws SolarSystemNotExistsException, ErrorExeption{
         String solarSystemID = String.valueOf( SolarSystem.getSolarSystemID("Sobaseki") ); // Sotrentaira 30001369// Isanamo 30001389
         System.out.println("Id Solar system "+ solarSystemID);
         
@@ -87,9 +88,9 @@ public class MainProgramm {
         int typeID = Manager.getInstance().db().item().invTypes().getInvTypesByName(item).getTypeID();
         System.out.println(""+ item + " ID: " + typeID );
         
-        int run = 662;
-        int job = 1;
-        byte bpoME = 5;
+        int run = 1;
+        int job = 0;
+        byte bpoME = 0;
         byte componentMe = 0;
         float taxRateStation = 0.1f;
         int runPerCopy = 5;
@@ -105,17 +106,17 @@ public class MainProgramm {
          (reportCalculatedComponentXMap, solarSystemID, "manufacturing",
           run, taxRateStation);
         
-        DisplayItemCost.calculateCopingFee
-         (reportCalculatedComponentXMap, solarSystemID, "copying", 
-          run, taxRateStation, runPerCopy);
-        
-        DisplayItemCost.calculateResearchCosts
-         (reportCalculatedComponentXMap, solarSystemID, "researching_time_efficiency", 
-          run, taxRateStation, startLevel, finishLevel);
-
-        DisplayItemCost.calculateResearchCosts
-         (reportCalculatedComponentXMap, solarSystemID, "researching_material_efficiency", 
-          run, taxRateStation, startLevel, finishLevel);        
+//        DisplayItemCost.calculateCopingFee
+//         (reportCalculatedComponentXMap, solarSystemID, "copying", 
+//          run, taxRateStation, runPerCopy);
+//        
+//        DisplayItemCost.calculateResearchCosts
+//         (reportCalculatedComponentXMap, solarSystemID, "researching_time_efficiency", 
+//          run, taxRateStation, startLevel, finishLevel);
+//
+//        DisplayItemCost.calculateResearchCosts
+//         (reportCalculatedComponentXMap, solarSystemID, "researching_material_efficiency", 
+//          run, taxRateStation, startLevel, finishLevel);        
     }
     
     public static void speculation(){
@@ -126,10 +127,10 @@ public class MainProgramm {
      * @deprecated 
      */
     public static void recursionItems(){
-//        RigRecusion rigRecusion = GroupEffectRig.getInstance().
-//            t3subsystems().getT3subsystems();
-//                
-//        rigRecusion.displayRecursion();
+        RigRecusion rigRecusion = GroupEffectRig.getInstance().
+            t3subsystems().getT3subsystems();
+                
+        rigRecusion.display();
         
         // IMPORTANTE qualche rig crea doppione per dinamiche di gioco, sistemalo
 //        ChooseRig chooseRig02 = new ChooseRig(43921);
@@ -156,7 +157,8 @@ public class MainProgramm {
         try {
             BasicMaterialRequired buildItemRequired = 
                 new BasicMaterialRequired("scimitar", RamActivitiesEnum.MANUFACTURING); 
-            buildItemRequired.display();
+            List<NameBase> list = buildItemRequired.getList();
+            System.out.println("");
             
         } catch (ErrorExeption e) {
             System.out.println(""+ e.getErrorEnum());  
@@ -165,24 +167,12 @@ public class MainProgramm {
     
     public static void buildItemV6() {
         //                                   bpoName   run job   bpoME    componentMe
-        BuildItem buildItem = new BuildItem("scimitar",  9,  8, (byte) 7, (byte) 6);
+        BuildItem buildItem = new BuildItem("scimitar",  1,  0, (byte) 0, (byte) 0);
         
         try {
             BuildItemRequired buildItemRequired = 
                 new BuildItemRequired(buildItem, RamActivitiesEnum.MANUFACTURING);
             buildItemRequired.display();
-            
-            Map<String, NameBase> map = buildItemRequired.getMap();
-            
-            for (Map.Entry<String, NameBase> entry : map.entrySet()) {
-                String key = entry.getKey();
-                NameBase value = entry.getValue();
-                
-                System.out.println(""+ value.getTypeId() + " " +
-                    value.getTypeName() + " - " +
-                    value.getQuanityI() + " > " +
-                    value.getQuanityD());                
-            }            
         } catch (ErrorExeption e) {
             System.out.println(""+ e.getErrorEnum());
         }  

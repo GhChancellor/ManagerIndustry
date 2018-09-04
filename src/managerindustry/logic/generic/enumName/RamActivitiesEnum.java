@@ -10,27 +10,37 @@ package managerindustry.logic.generic.enumName;
  * @author lele
  */
 public enum RamActivitiesEnum {
-    MANUFACTURING(1),
-    RESEARCHING_TIME_EFFICIENCY(3),
-    RESEARCHING_MATERIAL_EFFICIENCY(4),
-    COPYING(5),
-    REVERSE_ENGINEERING(7),
-    INVENTION(8),
-    REACTION(11);
+    MANUFACTURING(1, "manufacturing"),
+    RESEARCHING_TIME_EFFICIENCY(3, "researching_time_efficiency"),
+    RESEARCHING_MATERIAL_EFFICIENCY(4, "researching_material_efficiency"),
+    COPYING(5, "copying"),
+    REVERSE_ENGINEERING(7, ""),
+    INVENTION(8, ""),
+    REACTION(11, "");
     
     private int code;
     private RamActivitiesEnum RamActivitiesEnum;
-
+    private String activity;
+    
     private RamActivitiesEnum(RamActivitiesEnum ramActivitiesEnum) {
         this.RamActivitiesEnum = ramActivitiesEnum;
     }
 
+    private RamActivitiesEnum(int code, String activity) {
+        this.code = code;
+        this.activity = activity;
+    }
+    
     private RamActivitiesEnum(int code) {
         this.code = code;
     }
 
     public int getCode() {
         return code;
+    }
+
+    public String getActivity() {
+        return activity;
     }
     
 }

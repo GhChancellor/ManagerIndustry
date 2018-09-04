@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import managerindustry.db.entities.eve.InvTypes;
-import managerindustry.logic.manager.Manager;
 
 /**
  *
@@ -19,24 +17,6 @@ import managerindustry.logic.manager.Manager;
 public abstract class AGenericRequiredItem < A, B > implements IGenericRequiredItem {    
     private List < A > list = new ArrayList<>();
     private Map < A, B > map = new HashMap<>();
-    
-    /**
-     * Get InvTypes By Name
-     * @param String bpoName
-     * @return InvTypes
-     */
-    public InvTypes getInvTypesByName(String bpoName) {
-        return Manager.getInstance().db().item().invTypes().getInvTypesByName(bpoName);
-    }
-    
-    /**
-     * Get InvTypes By Id
-     * @param int typeId
-     * @return InvTypes
-     */
-    public InvTypes getInvTypesById(int typeId) {    
-        return Manager.getInstance().db().item().invTypes().getInvTypesById(typeId);
-    }    
   
     /**
      * Get List
@@ -121,15 +101,14 @@ public abstract class AGenericRequiredItem < A, B > implements IGenericRequiredI
     public void display(){
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    @Override   
-    public void pharseToMap(){
+
+    @Override
+    public void convertToMap(Map a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    @Override   
-    public void pharseToList(){
+
+    @Override
+    public void convertToList(List a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    }    
 }

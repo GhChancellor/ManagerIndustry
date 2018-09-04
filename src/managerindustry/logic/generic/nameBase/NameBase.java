@@ -60,19 +60,6 @@ public class NameBase extends ItemRecursion {
         this.quanityI = quanityI;
         this.quanityD = quanityD;
     }
-
-    
-    
-//    /**
-//     * Name Base
-//     * @param int quanityI
-//     * @param Double quanityD 
-//     */
-//    public NameBase(int typeId, double quanityD) {
-//        this.typeId = typeId;
-//        this.quanityD = quanityD;
-//    }
-
     
     /**
      * Name Base

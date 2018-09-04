@@ -52,9 +52,8 @@ public class RequiredMaterial extends AGenericRequiredItem{
      * Get Map
      * @return Map < String, NameBase >
      */
-    @Override
     public Map < String, NameBase > getMap(){
-        pharseToMap();
+        addListElement(requiredMaterial);
         return super.getMap();
     }
     
@@ -62,9 +61,8 @@ public class RequiredMaterial extends AGenericRequiredItem{
      * Get List
      * @return List < NameBase >
      */
-    @Override
     public List < NameBase > getList(){
-        pharseToList();
+        convertToList(requiredMaterial.getItemRecursions());
         return super.getList();
     }
     
@@ -77,19 +75,16 @@ public class RequiredMaterial extends AGenericRequiredItem{
         return requiredMaterial;
     }  
 
-    /**
-     * Pharse To Map
-     */
     @Override
-    public void pharseToMap() {
-        addMapElement( requiredMaterial.getTypeName(), requiredMaterial);
+    public void convertToList(List requiredMaterials) {        
+        for (NameBase requiredMaterial_ : (List <NameBase>) requiredMaterials ) {
+            if ( requiredMaterial_.getTypeId() != 0){
+                addListElement(requiredMaterial_);
+            }
+            
+            if ( !requiredMaterial_.getItemRecursions().isEmpty() ){
+                convertToList(requiredMaterial_.getItemRecursions());
+            }
+        }        
     }
-
-    /**
-     * Pharse To List
-     */
-    @Override
-    public void pharseToList() {
-        addListElement( requiredMaterial );
-    }    
 }
