@@ -5,8 +5,8 @@
  */
 package managerindustry.logic.gui.display;
 
-import managerindustry.logic.tax.speculation.BuyOrder;
-import managerindustry.logic.tax.speculation.SellOrder;
+import managerindustry.logic.tax.old.speculation.BuyOrder;
+import managerindustry.logic.tax.old.speculation.SellOrder;
 
 /**
  *
