@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.ItemCostNew.installationCost.jobInstallationCost;
+package managerindustry.logic.tax.itemcost.installationCost.jobInstallationCost;
 
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
-import managerindustry.logic.prove.ItemCostNew.installationCost.InstallationCost;
-import managerindustry.logic.prove.ItemCostNew.logic.ItemCost.ItemCostBase;
+import managerindustry.logic.tax.itemcost.logic.ItemCost.InstallationCost;
+import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCostBase;
 
 
 /**
@@ -16,18 +16,17 @@ import managerindustry.logic.prove.ItemCostNew.logic.ItemCost.ItemCostBase;
  * @author lele
  */
 public class JobInstallationCost extends InstallationCost{
-    private ItemCostBase itemCostBase;
 
     public JobInstallationCost(ItemCostBase itemCostBase) throws SolarSystemNotExistsException, ErrorExeption {
         super(itemCostBase);
-        this.itemCostBase = itemCostBase;
+        init();
     }  
-
+    
     /**
      * Calculate Job Installation Cost
      */
     @Override
-    protected void calculateJobInstallationCost() {
+    protected void calculateInstallationCost() {
         itemCostBase.setJobFee( itemCostBase.getBaseJobCost() * 
             itemCostBase.getSystemCostIndex() * itemCostBase.getRun() * 
             itemCostBase.getAdjustment() );

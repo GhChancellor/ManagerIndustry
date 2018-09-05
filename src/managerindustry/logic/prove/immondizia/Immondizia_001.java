@@ -13,8 +13,9 @@ import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.build.buildItem.BuildItem;
 import managerindustry.logic.build.buildItem.BuildItemRequired;
-import managerindustry.logic.prove.ItemCostNew.DisplayItemCost;
-import managerindustry.logic.prove.ItemCostNew.logic.ItemCost.ItemCostBase;
+import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
+import managerindustry.logic.tax.itemcost.DisplayItemCost;
+import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCostBase;
 import managerindustry.logic.solarSystem.SolarSystem;
 
 /**
@@ -23,38 +24,8 @@ import managerindustry.logic.solarSystem.SolarSystem;
  */
 public class Immondizia_001 <T> {
     List < Integer > duplicate = new ArrayList<>();
-
-    public void jobInstallationFeeV2() {
-        ItemCostBase itemCostBase = new ItemCostBase();      
-        DisplayItemCost displayItemCost = new DisplayItemCost();
-        
-        String solarSystemID = String.valueOf( SolarSystem.getSolarSystemID("Sobaseki") ); // Sotrentaira 30001369// Isanamo 30001389
-        System.out.println("Id Solar system "+ solarSystemID);
-        
-        // "1MN Civilian Afterburner", "Hammerhead I, "Punisher"
-        //                                    bpoName   run job   bpoME    componentMe
-        BuildItem buildItem = new BuildItem("Punisher",  1,  0, (byte) 0, (byte) 0);
-
-
-        try {
-            BuildItemRequired buildItemRequired = 
-                new BuildItemRequired(buildItem, RamActivitiesEnum.MANUFACTURING);
-            
-            itemCostBase.setTaxRate(0.1f);
-            itemCostBase.setSolarSystemID(solarSystemID);
-            itemCostBase.setActivitiesEnum(RamActivitiesEnum.MANUFACTURING);
-            itemCostBase.setNameBases(buildItemRequired.getList());
-            
-            displayItemCost.calculateJobInstallationCost(itemCostBase);
-            
-        } catch (ErrorExeption e) {
-            System.out.println(""+ e.getErrorEnum());
-        } 
-        
-    }
     
-    public Immondizia_001() {
-        jobInstallationFeeV2();
+    public Immondizia_001() throws ErrorExeption{
 //        rigRucursion();
 //        chooseRig();
 //        immondizia2();

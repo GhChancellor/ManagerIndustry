@@ -27,8 +27,8 @@ import managerindustry.logic.build.buildItem.BuildItem;
 import managerindustry.logic.build.buildItem.BuildItemRequired;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
-import managerindustry.logic.prove.ItemCostNew.logic.ItemCost.ItemCost;
-import managerindustry.logic.prove.ItemCostNew.logic.ItemCost.ItemCostBase;
+import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCost;
+import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCostBase;
 import managerindustry.logic.prove.immondizia.Immondizia_001;
 
 /**
@@ -40,15 +40,102 @@ public class MainProgramm {
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
 //        buildItemV6();
 //        basicMaterial();
-        jobInstallationFee_OLD(); // << controllare funziona male
-//        speculation(); // << controllare funziona male
+//        jobInstallationFeeV2();
 //        recursionItems();
 //        structure();
-
+        speculation_OLD();
         
-        immondizia();
+//        immondizia();
 //        old();
     }
+    
+    public static void jobInstallationFeeV2() throws ErrorExeption{
+        ItemCostBase itemCostBase = new ItemCostBase();      
+        managerindustry.logic.tax.itemcost.DisplayItemCost displayItemCost = new managerindustry.logic.tax.itemcost.DisplayItemCost();
+        
+        String solarSystemID = String.valueOf( SolarSystem.getSolarSystemID("Sobaseki") ); // Sotrentaira 30001369// Isanamo 30001389
+        System.out.println("Id Solar system "+ solarSystemID);
+        
+        // "1MN Civilian Afterburner", "Hammerhead I, "Punisher"
+        //                                    bpoName   run job   bpoME    componentMe
+        BuildItem buildItem = new BuildItem("Punisher",  1,  0, (byte) 0, (byte) 0);
+
+        BuildItemRequired buildItemRequired = 
+            new BuildItemRequired(buildItem, RamActivitiesEnum.MANUFACTURING);                        
+        
+        itemCostBase.setTaxRateStation(0.1f);
+        itemCostBase.setRunPerCopy(5);
+        itemCostBase.setLevelStar( (byte) 5);
+        itemCostBase.setLevelFinish( (byte) 5);
+        itemCostBase.setSolarSystemID(solarSystemID);
+        itemCostBase.setNameBases(buildItemRequired.getList());
+        
+        itemCostBase.setActivitiesEnum(RamActivitiesEnum.MANUFACTURING);
+        displayItemCost.calculateJobInstallationCost(itemCostBase);        
+        
+        itemCostBase.setActivitiesEnum(RamActivitiesEnum.COPYING);
+        displayItemCost.calculateCopyingFees(itemCostBase);
+        
+        itemCostBase.setActivitiesEnum(RamActivitiesEnum.RESEARCHING_MATERIAL_EFFICIENCY);
+        displayItemCost.calculateResearchCost(itemCostBase);        
+        
+        itemCostBase.setActivitiesEnum(RamActivitiesEnum.RESEARCHING_TIME_EFFICIENCY);
+        displayItemCost.calculateResearchCost(itemCostBase);                
+    }
+    /**
+     * @deprecated 
+     */
+    public static void recursionItems(){
+        RigRecusion rigRecusion = GroupEffectRig.getInstance().
+            t3subsystems().getT3subsystems();
+                
+        rigRecusion.display();
+        
+        // IMPORTANTE qualche rig crea doppione per dinamiche di gioco, sistemalo
+//        ChooseRig chooseRig02 = new ChooseRig(43921);
+
+    }
+    
+    public static void structure() throws ErrorExeption{
+        EngineeringRig engineeringRig = new EngineeringRig("Standup XL-Set Equipment and Consumable Manufacturing Efficiency II", SecurityStatusEnum.LOW_SEC);
+        engineeringRig.displayValue();
+        engineeringRig.displayAllValueCalculated();
+
+        System.out.println("");
+        
+        EngineeringComplex engineeringComplex = new EngineeringComplex(PlatformEnum.RAITARU);
+        engineeringComplex.displayValue();        
+    }
+
+    public static void basicMaterial(){
+        try {
+            BasicMaterialRequired buildItemRequired = 
+                new BasicMaterialRequired("scimitar", RamActivitiesEnum.MANUFACTURING); 
+            buildItemRequired.display();
+            
+        } catch (ErrorExeption e) {
+            System.out.println(""+ e.getErrorEnum());  
+        }
+    }
+    
+    public static void buildItemV6() {
+        //                                   bpoName   run job   bpoME    componentMe
+        BuildItem buildItem = new BuildItem("scimitar",  1,  0, (byte) 0, (byte) 0);
+        
+        try {
+            BuildItemRequired buildItemRequired = 
+                new BuildItemRequired(buildItem, RamActivitiesEnum.MANUFACTURING);
+            buildItemRequired.display();
+        } catch (ErrorExeption e) {
+            System.out.println(""+ e.getErrorEnum());
+        }  
+    }
+    
+    public static void immondizia() throws ErrorExeption{
+        Immondizia_001 immondizia_001 = new Immondizia_001();
+    }    
+    
+    // *****************************************************************************
     
     /**
      * @deprecated 
@@ -56,7 +143,13 @@ public class MainProgramm {
      */
     public static void old(){
 //        buildItem_OLD(); // << controllare
-    }
+//        jobInstallationFee_OLD(); // << controllare funziona male
+//        speculation_OLD();
+    }     
+    
+    public static void speculation_OLD(){
+        DisplaySpeculation speculation = new DisplaySpeculation();
+    }          
     
     /**
      * @deprecated 
@@ -106,75 +199,17 @@ public class MainProgramm {
          (reportCalculatedComponentXMap, solarSystemID, "manufacturing",
           run, taxRateStation);
         
-//        DisplayItemCost.calculateCopingFee
-//         (reportCalculatedComponentXMap, solarSystemID, "copying", 
-//          run, taxRateStation, runPerCopy);
-//        
-//        DisplayItemCost.calculateResearchCosts
-//         (reportCalculatedComponentXMap, solarSystemID, "researching_time_efficiency", 
-//          run, taxRateStation, startLevel, finishLevel);
-//
-//        DisplayItemCost.calculateResearchCosts
-//         (reportCalculatedComponentXMap, solarSystemID, "researching_material_efficiency", 
-//          run, taxRateStation, startLevel, finishLevel);        
-    }
-    
-    public static void speculation(){
-        DisplaySpeculation speculation = new DisplaySpeculation();
-    }
-    
-    /**
-     * @deprecated 
-     */
-    public static void recursionItems(){
-        RigRecusion rigRecusion = GroupEffectRig.getInstance().
-            t3subsystems().getT3subsystems();
-                
-        rigRecusion.display();
+        DisplayItemCost.calculateCopingFee
+         (reportCalculatedComponentXMap, solarSystemID, "copying", 
+          run, taxRateStation, runPerCopy);
         
-        // IMPORTANTE qualche rig crea doppione per dinamiche di gioco, sistemalo
-//        ChooseRig chooseRig02 = new ChooseRig(43921);
+        DisplayItemCost.calculateResearchCosts
+         (reportCalculatedComponentXMap, solarSystemID, "researching_time_efficiency", 
+          run, taxRateStation, startLevel, finishLevel);
 
-    }
+        DisplayItemCost.calculateResearchCosts
+         (reportCalculatedComponentXMap, solarSystemID, "researching_material_efficiency", 
+          run, taxRateStation, startLevel, finishLevel);        
+    }    
     
-    public static void structure() throws ErrorExeption{
-        EngineeringRig engineeringRig = new EngineeringRig("Standup XL-Set Equipment and Consumable Manufacturing Efficiency II", SecurityStatusEnum.LOW_SEC);
-        engineeringRig.displayValue();
-        engineeringRig.displayAllValueCalculated();
-
-        System.out.println("");
-        
-        EngineeringComplex engineeringComplex = new EngineeringComplex(PlatformEnum.RAITARU);
-        engineeringComplex.displayValue();        
-    }
-    
-    public static void immondizia(){
-        Immondizia_001 immondizia_001 = new Immondizia_001();
-//        immondizia_001.buildItem();
-    }
-    
-    public static void basicMaterial(){
-        try {
-            BasicMaterialRequired buildItemRequired = 
-                new BasicMaterialRequired("scimitar", RamActivitiesEnum.MANUFACTURING); 
-            List<NameBase> list = buildItemRequired.getList();
-            System.out.println("");
-            
-        } catch (ErrorExeption e) {
-            System.out.println(""+ e.getErrorEnum());  
-        }
-    }
-    
-    public static void buildItemV6() {
-        //                                   bpoName   run job   bpoME    componentMe
-        BuildItem buildItem = new BuildItem("scimitar",  1,  0, (byte) 0, (byte) 0);
-        
-        try {
-            BuildItemRequired buildItemRequired = 
-                new BuildItemRequired(buildItem, RamActivitiesEnum.MANUFACTURING);
-            buildItemRequired.display();
-        } catch (ErrorExeption e) {
-            System.out.println(""+ e.getErrorEnum());
-        }  
-    }
 }

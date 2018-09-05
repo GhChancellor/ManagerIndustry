@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax.formulas.itemcost.copyingFees;
+package managerindustry.logic.tax.old.itemcost.copyingFees;
 
 import java.util.Map;
 import managerindustry.logic.build.old.ReportCalculatedComponentX;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
-import managerindustry.logic.tax.formulas.itemcost.ItemCost;
+import managerindustry.logic.tax.old.itemcost.ItemCost;
 
 /**
  *

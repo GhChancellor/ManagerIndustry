@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.ItemCostNew.logic.ItemCost;
+package managerindustry.logic.tax.itemcost.logic.ItemCost;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +19,15 @@ public class ItemCostBase {
     private final float percent = 0.02f; // 2%
     private float systemCostIndex = 0f;
     private float baseJobCost = 0f;    
-    private float jobFee = 0f;
-    private float run = 1f;
-    private float taxRate = 0f;
+    private float jobFee = 0f;   
+    private float taxRateStation = 0f;
     private float facilityTaxes = 0f;
     private float totalInstallationCost = 0f;
+    
+    private int run = 1; // <----
+    private int runPerCopy;
+    private byte levelStar;
+    private byte levelFinish;
     private List < Float > sumOfEachJobcosts = new ArrayList();     
     private List<NameBase> nameBases = new ArrayList();  
     private String solarSystemID;
@@ -31,17 +35,17 @@ public class ItemCostBase {
 
     /**
      * Get Run
-     * @return float
+     * @return int
      */
-    public float getRun() {
+    public int getRun() {
         return run;
     }
 
     /**
      * Set Run
-     * @param float run 
+     * @param int run 
      */
-    public void setRun(float run) {
+    public void setRun(int run) {
         this.run = run;
     }
 
@@ -142,19 +146,19 @@ public class ItemCostBase {
     }
 
     /**
-     * Get Tax Rate
+     * Get Tax Rate Station
      * @return float
      */
-    public float getTaxRate() {
-        return taxRate;
+    public float getTaxRateStation() {
+        return taxRateStation;
     }
 
     /**
-     * Set Tax Rate
-     * @param float taxRate 
+     * Set Tax Rate Station
+     * @param float taxRateStation 
      */
-    public void setTaxRate(float taxRate) {
-        this.taxRate = taxRate;
+    public void setTaxRateStation(float taxRateStation) {
+        this.taxRateStation = taxRateStation;
     }
 
     /**
@@ -228,5 +232,51 @@ public class ItemCostBase {
         this.nameBases = nameBases;
     }
 
-    
+    /**
+     * Ge tRun Per Copy
+     * @return int
+     */
+    public int getRunPerCopy() {
+        return runPerCopy;
+    }
+
+    /**
+     * Se tRun Per Copy
+     * @param int runPerCopy 
+     */
+    public void setRunPerCopy(int runPerCopy) {
+        this.runPerCopy = runPerCopy;
+    }
+
+    /**
+     * Get Level Star
+     * @return byte
+     */
+    public byte getLevelStar() {
+        return levelStar;
+    }
+
+    /**
+     * Set Level Star
+     * @param byte levelStar 
+     */
+    public void setLevelStar(byte levelStar) {
+        this.levelStar = levelStar;
+    }
+
+    /**
+     * Get Level Finish
+     * @return byte
+     */
+    public byte getLevelFinish() {
+        return levelFinish;
+    }
+
+    /**
+     * Set Level Finish
+     * @param byte levelFinish 
+     */
+    public void setLevelFinish(byte levelFinish) {
+        this.levelFinish = levelFinish;
+    }    
 }

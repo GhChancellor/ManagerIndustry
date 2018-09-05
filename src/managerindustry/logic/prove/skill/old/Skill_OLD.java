@@ -51,7 +51,7 @@ public class Skill_OLD {
     }
 
     public Skill_OLD() {
-//        init();
+        init();
     }
 
     private void init(){

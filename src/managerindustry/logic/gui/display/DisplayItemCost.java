@@ -5,13 +5,13 @@
  */
 package managerindustry.logic.gui.display;
 
-import managerindustry.logic.tax.formulas.itemcost.jobInstallationCosts.JobInstallationCosts;
+import managerindustry.logic.tax.old.itemcost.jobInstallationCosts.JobInstallationCosts;
 import java.util.Map;
 import managerindustry.logic.build.old.ReportCalculatedComponentX;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
-import managerindustry.logic.tax.formulas.itemcost.copyingFees.CopyingFees;
-import managerindustry.logic.tax.formulas.itemcost.researchCosts.ResearchCosts;
+import managerindustry.logic.tax.old.itemcost.copyingFees.CopyingFees;
+import managerindustry.logic.tax.old.itemcost.researchCosts.ResearchCosts;
 
 /**
  *
@@ -85,7 +85,7 @@ public class DisplayItemCost{
         
         System.out.println("\nRESEARCH COST ");
         System.out.println("Start Level");
-//        researchCosts.xxx(0);
+        researchCosts.xxx(0);
         
         System.out.printf("researching_material_efficiency / researching_time_efficiency %f\n", researchCosts.getResearchCosts());
         System.out.printf("Total facilityTax %f\n", researchCosts.getFacilityTaxes() );

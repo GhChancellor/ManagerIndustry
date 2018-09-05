@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax.formulas.itemcost;
+package managerindustry.logic.tax.old.itemcost;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,8 @@ import java.util.Map;
 import managerindustry.logic.build.old.ReportCalculatedComponentX;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
-import managerindustry.logic.tax.formulas.itemcost.baseJobCost.BaseJobCost;
-import managerindustry.logic.tax.formulas.itemcost.systemCostIndex.SystemCostIndex;
+import managerindustry.logic.tax.old.itemcost.baseJobCost.BaseJobCost;
+import managerindustry.logic.tax.old.itemcost.systemCostIndex.SystemCostIndex;
 
 /**
  * https://community.eveonline.com/news/dev-blogs/eve-industry-all-you-want-to-know/

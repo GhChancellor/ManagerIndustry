@@ -27,26 +27,35 @@ public class TradeFormulas_OLD extends FormulasSkill_OLD{
      * @return float
      */
     public float calculateBrokerFee(byte brokerRelationsLevel, String station){
-//        float initTax = 0.03f;  // starting value
-//        float initTaxCorparationStanding = 0.0002f;
-//        float reduceFeePerLevel = 0.001f; // valueFloat
-//        float factionStandingTax = 0.0003f;
+        float initTax = 0.03f;  // starting value
+        float initTaxCorparationStanding = 0.0002f;
+        float reduceFeePerLevel = 0.001f; // valueFloat
+        float factionStandingTax = 0.0003f;
         
+//        brokerFee();
+
         Standing standing = new Standing(station);
-        
-        BrokerFee_OLD brokerFee = 
-            ( BrokerFee_OLD ) Manager.getInstance().game().skill().getSkillMap("Broker Relations");
-        
-        float initTax = brokerFee.getStartingValue(); // 0.03f;  // starting value
-        float initTaxCorparationStanding =  brokerFee.getInitTaxCorparationStanding();  // 0.0002f;
-        float reduceFeePerLevel = brokerFee.getValueFloat(); // 0.001f; // valueFloat
-        float factionStandingTax = brokerFee.getFactionStandingTax();  // 0.0003f;
                 
         float result = initTax - ( reduceFeePerLevel * brokerRelationsLevel ) -
          (factionStandingTax * standing.getFactionStanding()) -
          ( initTaxCorparationStanding * standing.getCorporationStanding());
 
         return result;
+    }
+    
+    /**
+     * @deprecated 
+     * non va query disabilitata, da rifare skill, 
+     * lo so float non va da nessuna parte era per aggirare l'errore
+     */
+    private void brokerFee(){
+        BrokerFee_OLD brokerFee = 
+            ( BrokerFee_OLD ) Manager.getInstance().game().skill().getSkillMap("Broker Relations");
+        
+        float initTax = brokerFee.getStartingValue(); // 0.03f;  // starting value
+        float initTaxCorparationStanding =  brokerFee.getInitTaxCorparationStanding();  // 0.0002f;
+        float reduceFeePerLevel = brokerFee.getValueFloat(); // 0.001f; // valueFloat
+        float factionStandingTax = brokerFee.getFactionStandingTax();  // 0.0003f;        
     }
     
     // 

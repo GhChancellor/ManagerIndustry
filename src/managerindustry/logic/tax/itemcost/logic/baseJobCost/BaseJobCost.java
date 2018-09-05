@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.ItemCostNew.logic.baseJobCost;
+package managerindustry.logic.tax.itemcost.logic.baseJobCost;
 
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.nameBase.NameBase;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.prove.ItemCostNew.logic.ItemCost.ItemCostBase;
+import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCostBase;
 
 /**
  *
