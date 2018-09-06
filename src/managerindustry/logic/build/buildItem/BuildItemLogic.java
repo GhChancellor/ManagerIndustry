@@ -39,19 +39,20 @@ public class BuildItemLogic extends RequiredMaterial{
         requiredItem(buildItem, requiredMaterial,
             basicMaterialRequired.getRequiredMaterialObject().getItemRecursions());
     }    
-    
+
     /**
      * Required Item recursion
      * @param BuildItem buildItem
      * @param NameBase requiredA
      * @param List <NameBase> requiredMaterialRecusions 
      */
-    private void requiredItem(BuildItem buildItem, NameBase requiredA, 
-        List <NameBase> requiredMaterialRecusions ){
+    @Override
+    public void requiredItem(Object buildItem, Object requiredA, 
+        Object requiredMaterialRecusions) {
 
-        for (NameBase requiredMaterialRecusion : requiredMaterialRecusions) {
+        for (NameBase requiredMaterialRecusion : (List <NameBase>) requiredMaterialRecusions) {
             
-            calculateME(buildItem, requiredMaterialRecusion);
+            calculateME( (BuildItem) buildItem, requiredMaterialRecusion);
             calculateQuantityMaterial();
             addItem(requiredMaterialRecusion);
 
@@ -62,17 +63,52 @@ public class BuildItemLogic extends RequiredMaterial{
             
             NameBase requiredItemsRecursionA = 
                 (NameBase) requiredItemMoreInfo(requiredMaterialRecusion);
-            requiredA.addItemRecursions(requiredItemsRecursionA);
+            ((NameBase) requiredA).addItemRecursions(requiredItemsRecursionA);
             
             if ( !requiredMaterialRecusion.getItemRecursions().isEmpty() ){
                 BuildItem buildItemSecondPassage = 
-                    getBuildItemSecondPassage(buildItem.getBpoME());
+                    getBuildItemSecondPassage( ((BuildItem) buildItem).getBpoME());
                 
                 requiredItem(buildItemSecondPassage, requiredItemsRecursionA,
                     requiredMaterialRecusion.getItemRecursions());
             }
         }
-    }    
+    }
+    
+    
+//    /**
+//     * Required Item recursion
+//     * @param BuildItem buildItem
+//     * @param NameBase requiredA
+//     * @param List <NameBase> requiredMaterialRecusions 
+//     */
+//    private void requiredItem(BuildItem buildItem, NameBase requiredA, 
+//        List <NameBase> requiredMaterialRecusions ){
+//
+//        for (NameBase requiredMaterialRecusion : requiredMaterialRecusions) {
+//            
+//            calculateME(buildItem, requiredMaterialRecusion);
+//            calculateQuantityMaterial();
+//            addItem(requiredMaterialRecusion);
+//
+////            NameBase requiredItemsRecursionA = 
+////                new NameBase(requiredMaterialRecusion.getTypeId(), 
+////                    requiredMaterialRecusion.getQuanityI(),
+////                    requiredMaterialRecusion.getQuanityD());                        
+//            
+//            NameBase requiredItemsRecursionA = 
+//                (NameBase) requiredItemMoreInfo(requiredMaterialRecusion);
+//            requiredA.addItemRecursions(requiredItemsRecursionA);
+//            
+//            if ( !requiredMaterialRecusion.getItemRecursions().isEmpty() ){
+//                BuildItem buildItemSecondPassage = 
+//                    getBuildItemSecondPassage(buildItem.getBpoME());
+//                
+//                requiredItem(buildItemSecondPassage, requiredItemsRecursionA,
+//                    requiredMaterialRecusion.getItemRecursions());
+//            }
+//        }
+//    }    
 
     /**
      * Get Build Item Second Passage

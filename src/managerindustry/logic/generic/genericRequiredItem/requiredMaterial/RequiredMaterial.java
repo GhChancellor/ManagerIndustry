@@ -75,15 +75,19 @@ public class RequiredMaterial extends AGenericRequiredItem{
         return requiredMaterial;
     }  
 
+    /**
+     * Convert to list
+     * @param List requiredMaterials 
+     */
     @Override
     public void convertToList(List requiredMaterials) {        
-        for (NameBase requiredMaterial_ : (List <NameBase>) requiredMaterials ) {
-            if ( requiredMaterial_.getTypeId() != 0){
-                addListElement(requiredMaterial_);
+        for (NameBase requiredMaterial : (List <NameBase>) requiredMaterials ) {
+            if ( requiredMaterial.getTypeId() != 0){
+                addListElement(requiredMaterial);
             }
             
-            if ( !requiredMaterial_.getItemRecursions().isEmpty() ){
-                convertToList(requiredMaterial_.getItemRecursions());
+            if ( !requiredMaterial.getItemRecursions().isEmpty() ){
+                convertToList(requiredMaterial.getItemRecursions());
             }
         }        
     }

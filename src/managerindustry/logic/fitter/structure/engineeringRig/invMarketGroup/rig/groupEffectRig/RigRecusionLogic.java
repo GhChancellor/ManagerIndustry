@@ -132,12 +132,19 @@ public class RigRecusionLogic extends AGenericRequiredItem{
         return (RigMarketGroup) recusion;
     }
 
+    /**
+     * @deprecated 
+     * modificare entity 
+     * List<InvTypes> parentGroupID = Manager.getInstance().db().item().
+            invTypes().getMarketGroupID(rigMarketGroupRecursion.getMarketGroupID(), true); 
+     */
     @Override
     public void display() {
         displayRigMarketGroupRecursion(rigMarketGroupRecursion, "");
     }
 
     /**
+     * @deprecated 
      * Display Rig Market Group Recursion
      * @param RigMarketGroupRecursion rigMarketGroupRecursion rigMarketGroupRecursion
      * @param String tab 

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import managerindustry.db.entities.eve.InvTypes;
+import managerindustry.logic.manager.Manager;
 
 /**
  *
@@ -66,6 +68,15 @@ public abstract class AGenericRequiredItem < A, B > implements IGenericRequiredI
     public void addMapElement(A a, B b){
         map.put(a, b);
     }
+    
+    /**
+     * Get InvTypes By Name
+     * @param String bpoName
+     * @return InvTypes
+     */
+    public InvTypes getInvTypesByName(String bpoName) {
+        return Manager.getInstance().db().item().invTypes().getInvTypesByName(bpoName);
+    }    
     
    @Override
     public void requiredItem(Object a1) {

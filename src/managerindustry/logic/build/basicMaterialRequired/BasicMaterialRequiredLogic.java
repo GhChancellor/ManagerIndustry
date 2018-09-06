@@ -104,14 +104,14 @@ public class BasicMaterialRequiredLogic extends RequiredMaterial{
         return nameBase;
     }     
     
-    /**
-     * Get InvTypes By Name
-     * @param String bpoName
-     * @return InvTypes
-     */
-    public InvTypes getInvTypesByName(String bpoName) {
-        return Manager.getInstance().db().item().invTypes().getInvTypesByName(bpoName);
-    }
+//    /**
+//     * Get InvTypes By Name
+//     * @param String bpoName
+//     * @return InvTypes
+//     */
+//    public InvTypes getInvTypesByName(String bpoName) {
+//        return Manager.getInstance().db().item().invTypes().getInvTypesByName(bpoName);
+//    }
     
     /**
      * Get InvTypes By Id

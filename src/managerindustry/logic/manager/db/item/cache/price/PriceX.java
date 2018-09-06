@@ -47,7 +47,6 @@ public class PriceX {
     /**
      * Get Adjusted Price
      * @param String typePrice
-     * @param Map<String, Price > priceMap priceMap
      * @return String
      */
     public String getAdjustedPriceEntity(String typePrice) throws ErrorExeption {
@@ -57,7 +56,6 @@ public class PriceX {
     /**
      * Get Average Price
      * @param String typePrice
-     * @param Map<String, Price > priceMap priceMap
      * @return String
      */
     public String getAveragePriceEntity(String typePrice) throws ErrorExeption {
@@ -110,8 +108,8 @@ public class PriceX {
     
     /**
      * Init All
-     * @param priceID
-     * @throws String SolarSystemNotExistsException 
+     * @param String priceID
+     * @throws ErrorExeption 
      */
     private void initAll(String priceID) throws ErrorExeption{
         priceEntity = getPriceEntity(typeId);
@@ -131,7 +129,7 @@ public class PriceX {
      * Update Price
      * @param boolean valueBool 
      */
-    private void updatePrice(boolean valueBool ) throws ErrorExeption{
+    private void updatePrice(boolean valueBool) throws ErrorExeption{
         if (valueBool){
             Date nowPresent = new Date();
             priceEntity.setLastUsed(nowPresent);            

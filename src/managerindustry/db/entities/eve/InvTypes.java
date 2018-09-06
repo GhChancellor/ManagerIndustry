@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "InvTypes.findByIconID", query = "SELECT i FROM InvTypes i WHERE i.iconID = :iconID")
     , @NamedQuery(name = "InvTypes.findBySoundID", query = "SELECT i FROM InvTypes i WHERE i.soundID = :soundID")
     , @NamedQuery(name = "InvTypes.findByGraphicID", query = "SELECT i FROM InvTypes i WHERE i.graphicID = :graphicID")   
-      
+        
         // DGB collocare in una posizione migliore? fa parte del gruppo invType ma recupera solo skill
 //    , @NamedQuery(name = "InvTypes.findByTypeId-Published-AttributeID",  query = 
 //     "SELECT NEW managerindustry.logic.skill.SkillX ( a.typeName, a.description, b.valueFloat, b.valueInt ) "

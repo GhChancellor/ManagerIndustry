@@ -5,11 +5,11 @@
  */
 package managerindustry.logic.manager.db.item.eve;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import managerindustry.db.entities.eve.DgmTypeAttributes;
+import managerindustry.logic.prove.skill.requiredSkillV3.Prova001;
 
 /**
  * 
@@ -76,43 +76,26 @@ public class DgmTypeAttributesX {
         
     }
     
-    /**
-     * @deprecated 
-     * Get Required Skill
-     * @param typeID
-     * @return List < DgmTypeAttributes >
-     */
-    public List < DgmTypeAttributes > getRequiredSkills(int typeID){
-        try {
-            TypedQuery < DgmTypeAttributes > requiredSkill =
-             entityManager.createNamedQuery("DgmTypeAttributes.findAttrybuteRequiredSkill", DgmTypeAttributes.class);
-            requiredSkill.setParameter("typeID", typeID);
-            return requiredSkill.getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
     
-    /**
-     * @deprecated 
-     * Get Required Skill give only attributeID 182-183-184
-     * @param typeID
-     * @return List < Integer >
-     */
-    public List < Integer > getRequiredSkillAttribute(int typeID){
-        List < DgmTypeAttributes > dgmTypeAttributes = getRequiredSkills(typeID);
-        
-        List < Integer > attributeIds = new ArrayList<>();
+//    public Prova001 getProva(int typeID){
+//        try {
+//            TypedQuery < Prova001 > typedQuery = 
+//                entityManager.createNamedQuery("DgmTypeAttributes.findAttrybuteRequiredSkill", Prova001.class);
+//
+//            typedQuery.setParameter("typeID", typeID);
+//            
+//            List<Prova001> resultList = typedQuery.getResultList();
+//            
+//            if (resultList.isEmpty()){
+//                return null;
+//            }else{
+//                return resultList.get(0);
+//            }
+//            
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }        
+//    }    
 
-        int attributeID;
-        for (DgmTypeAttributes dgmTypeAttribute : dgmTypeAttributes) {
-            attributeID = dgmTypeAttribute.getDgmTypeAttributesPK().getAttributeID();
-            
-            if (attributeID == 182 || attributeID == 183 || attributeID == 184 ){
-                attributeIds.add(dgmTypeAttribute.getValueInt());
-            }
-        }
-        return attributeIds;
-    }
 }

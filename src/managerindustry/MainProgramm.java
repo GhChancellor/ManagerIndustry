@@ -30,6 +30,7 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCost;
 import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCostBase;
 import managerindustry.logic.prove.immondizia.Immondizia_001;
+import managerindustry.logic.prove.skill.requiredSkillV2.SkillLogic;
 
 /**
  *
@@ -38,13 +39,14 @@ import managerindustry.logic.prove.immondizia.Immondizia_001;
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
-//        buildItemV6();
+        buildItemV6();
 //        basicMaterial();
 //        jobInstallationFeeV2();
+//        requiredSkill();
 //        recursionItems();
 //        structure();
-        speculation_OLD();
-        
+//        speculation_OLD();
+//        speculation();
 //        immondizia();
 //        old();
     }
@@ -96,6 +98,17 @@ public class MainProgramm {
 
     }
     
+    public static void requiredSkill(){
+        String item = "Scimitar blueprint";
+        
+        int typeID = Manager.getInstance().db().item().invTypes().getInvTypesByName(item).getTypeID();   
+        
+        SkillLogic skillLogic = new SkillLogic(typeID, RamActivitiesEnum.MANUFACTURING);
+        skillLogic.display();
+        // 11979
+        
+    }
+    
     public static void structure() throws ErrorExeption{
         EngineeringRig engineeringRig = new EngineeringRig("Standup XL-Set Equipment and Consumable Manufacturing Efficiency II", SecurityStatusEnum.LOW_SEC);
         engineeringRig.displayValue();
@@ -131,6 +144,11 @@ public class MainProgramm {
         }  
     }
     
+    public static void speculation(){
+        managerindustry.logic.tax.speculation.DisplaySpeculation displaySpeculation = 
+            new managerindustry.logic.tax.speculation.DisplaySpeculation();
+    }
+    
     public static void immondizia() throws ErrorExeption{
         Immondizia_001 immondizia_001 = new Immondizia_001();
     }    
@@ -144,11 +162,12 @@ public class MainProgramm {
     public static void old(){
 //        buildItem_OLD(); // << controllare
 //        jobInstallationFee_OLD(); // << controllare funziona male
-//        speculation_OLD();
+        speculation_OLD();
     }     
     
     public static void speculation_OLD(){
         DisplaySpeculation speculation = new DisplaySpeculation();
+        System.out.println("---------------------------------------------------\n");
     }          
     
     /**

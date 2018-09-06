@@ -3,25 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.skill.old;
+package managerindustry.logic.tax.speculation.formulas;
 
-import managerindustry.logic.manager.Manager;
-import managerindustry.logic.prove.skill.old.specificSkill.BrokerFee_OLD;
 import managerindustry.logic.standing.Standing;
 
 /**
- * https://support.eveonline.com/hc/en-us/articles/203218962-Broker-Fee-and-Sales-Tax
- * 
- * Sale Tax Accounting" skill
- * Broker Fee Broker Relations skill
- * 3% - (0.1% * BrokerRelationsLevel ) - (0.03% * FactionStanding ) - (0.02% * CorpStanding)
+ *
  * @author lele
  */
-public class TradeFormulas_OLD extends FormulasSkill_OLD{
+public class TradeFormulas extends FormulasSkill{
     
-    // Broker Relations skill
     /**
-     * Calculate Broker Fee 
+     * Calculate Broker Fee - Broker Relations skill
      * @param int brokerRelationsLevel
      * @param String station
      * @return float
@@ -49,13 +42,13 @@ public class TradeFormulas_OLD extends FormulasSkill_OLD{
      * lo so float non va da nessuna parte era per aggirare l'errore
      */
     private void brokerFee(){
-        BrokerFee_OLD brokerFee = 
-            ( BrokerFee_OLD ) Manager.getInstance().game().skill().getSkillMap("Broker Relations");
+//        BrokerFee_OLD brokerFee = 
+//            ( BrokerFee_OLD ) Manager.getInstance().game().skill().getSkillMap("Broker Relations");
         
-        float initTax = brokerFee.getStartingValue(); // 0.03f;  // starting value
-        float initTaxCorparationStanding =  brokerFee.getInitTaxCorparationStanding();  // 0.0002f;
-        float reduceFeePerLevel = brokerFee.getValueFloat(); // 0.001f; // valueFloat
-        float factionStandingTax = brokerFee.getFactionStandingTax();  // 0.0003f;        
+//        float initTax = brokerFee.getStartingValue(); // 0.03f;  // starting value
+//        float initTaxCorparationStanding =  brokerFee.getInitTaxCorparationStanding();  // 0.0002f;
+//        float reduceFeePerLevel = brokerFee.getValueFloat(); // 0.001f; // valueFloat
+//        float factionStandingTax = brokerFee.getFactionStandingTax();  // 0.0003f;        
     }
     
     // 
@@ -76,5 +69,5 @@ public class TradeFormulas_OLD extends FormulasSkill_OLD{
         
         float result = saleTransactionStart * calculateLevelPerSkill(levelSkill, reducedPrice );
         return result;
-    }
+    }    
 }

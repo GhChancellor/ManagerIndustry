@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.speculation;
+package managerindustry.logic.tax.speculation.order;
 
 import managerindustry.logic.prove.skill.old.TradeFormulas_OLD;
 
@@ -34,7 +34,14 @@ public class BuyOrder extends Tax{
     
     @Override
     public void calculateTotalPriceWithTax() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        float brokerFeeIskPerItem = 
+            getItemsTaxBrokerFee() + getTotalPriceWithoutTax();
+        
+        if ( getItemsTaxBrokerFee() < 100 ){
+            brokerFeeIskPerItem += 100;
+        }
+            
+        setTotalPriceWithTax(brokerFeeIskPerItem);
     }
     
     public float getTotalItemTaxBuyOrder() {
