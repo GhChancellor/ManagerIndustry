@@ -20,17 +20,17 @@ import managerindustry.logic.gui.display.DisplayItemCost;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
 import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
-import managerindustry.logic.generic.nameBase.NameBase;
+import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.build.basicMaterialRequired.BasicMaterialRequired;
-import managerindustry.logic.build.buildItem.BuildItem;
-import managerindustry.logic.build.buildItem.BuildItemRequired;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.build.basicMaterialRequired.MaterialRequired_Init;
+import managerindustry.logic.generic.fatherClass.BuildItem;
+import managerindustry.logic.build.buildItem.BuildItemRequired_Init;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCost;
 import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCostBase;
 import managerindustry.logic.prove.immondizia.Immondizia_001;
-import managerindustry.logic.prove.skill.requiredSkillV2.SkillLogic;
+import managerindustry.logic.prove.skill.requiredSkillV3.SkillRequired_Init;
 
 /**
  *
@@ -39,10 +39,10 @@ import managerindustry.logic.prove.skill.requiredSkillV2.SkillLogic;
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
-        buildItemV6();
+//        buildItemV6();
 //        basicMaterial();
 //        jobInstallationFeeV2();
-//        requiredSkill();
+        requiredSkill();
 //        recursionItems();
 //        structure();
 //        speculation_OLD();
@@ -62,8 +62,8 @@ public class MainProgramm {
         //                                    bpoName   run job   bpoME    componentMe
         BuildItem buildItem = new BuildItem("Punisher",  1,  0, (byte) 0, (byte) 0);
 
-        BuildItemRequired buildItemRequired = 
-            new BuildItemRequired(buildItem, RamActivitiesEnum.MANUFACTURING);                        
+        BuildItemRequired_Init buildItemRequired = 
+            new BuildItemRequired_Init(buildItem, RamActivitiesEnum.MANUFACTURING);                        
         
         itemCostBase.setTaxRateStation(0.1f);
         itemCostBase.setRunPerCopy(5);
@@ -88,7 +88,7 @@ public class MainProgramm {
      * @deprecated 
      */
     public static void recursionItems(){
-        RigRecusion rigRecusion = GroupEffectRig.getInstance().
+        RigRecusion_Init rigRecusion = GroupEffectRig.getInstance().
             t3subsystems().getT3subsystems();
                 
         rigRecusion.display();
@@ -103,8 +103,8 @@ public class MainProgramm {
         
         int typeID = Manager.getInstance().db().item().invTypes().getInvTypesByName(item).getTypeID();   
         
-        SkillLogic skillLogic = new SkillLogic(typeID, RamActivitiesEnum.MANUFACTURING);
-        skillLogic.display();
+        SkillRequired_Init required_Init = new SkillRequired_Init(3397);
+        required_Init.display();
         // 11979
         
     }
@@ -122,8 +122,8 @@ public class MainProgramm {
 
     public static void basicMaterial(){
         try {
-            BasicMaterialRequired buildItemRequired = 
-                new BasicMaterialRequired("scimitar", RamActivitiesEnum.MANUFACTURING); 
+            MaterialRequired_Init buildItemRequired = 
+                new MaterialRequired_Init("scimitar", RamActivitiesEnum.MANUFACTURING); 
             buildItemRequired.display();
             
         } catch (ErrorExeption e) {
@@ -136,8 +136,8 @@ public class MainProgramm {
         BuildItem buildItem = new BuildItem("scimitar",  1,  0, (byte) 0, (byte) 0);
         
         try {
-            BuildItemRequired buildItemRequired = 
-                new BuildItemRequired(buildItem, RamActivitiesEnum.MANUFACTURING);
+            BuildItemRequired_Init buildItemRequired = 
+                new BuildItemRequired_Init(buildItem, RamActivitiesEnum.MANUFACTURING);
             buildItemRequired.display();
         } catch (ErrorExeption e) {
             System.out.println(""+ e.getErrorEnum());

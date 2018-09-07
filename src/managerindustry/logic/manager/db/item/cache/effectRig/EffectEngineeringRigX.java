@@ -11,8 +11,8 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.EffectEngineeringRigEntityJpaController;
 import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigMarketGroup;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.generic.fatherClass.RigMarketGroup;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs_1;
 
 /**
@@ -58,7 +58,7 @@ public class EffectEngineeringRigX {
   
         System.err.print(" >>>> ATTENZIONE <<<< EffectEngineeringRigX > addEffectRigs DISABILITATA!!!!!!!" );
         
-//        for (RigRecusion rigRecusion : structureRig.getRigRecusions() ) {
+//        for (RigRecusion_Init rigRecusion : structureRig.getRigRecusions() ) {
 //            List<RigMarketGroup> groupRecursions = rigRecusion.getRigMarketGroupsList();
 //            
 //            for (RigMarketGroup effectId : groupRecursions) {
@@ -74,7 +74,7 @@ public class EffectEngineeringRigX {
         // 43875 Standup M-Set Structure Manufacturing Material Efficiency I for fuel blocks
         // fuel blocks 4051 4246 4247 4312
 
-//        for (RigRecusion rigRecusion : structureRig.getRigRecusions() ) {
+//        for (RigRecusion_Init rigRecusion : structureRig.getRigRecusions() ) {
 //            List<Integer> rigMarketGroups = rigRecusion.getRigMarketGroups();
 //            
 //            for (Integer effectId : rigMarketGroups) {

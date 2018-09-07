@@ -7,7 +7,7 @@ package managerindustry.logic.build.buildItem;
 
 import java.util.HashMap;
 import java.util.Map;
-import managerindustry.logic.generic.nameBase.NameBase;
+import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterial;
 
 /**

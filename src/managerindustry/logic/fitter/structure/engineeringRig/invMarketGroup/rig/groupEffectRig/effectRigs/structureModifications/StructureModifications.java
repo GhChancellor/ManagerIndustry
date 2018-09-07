@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.structureModifications;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 /**
  * marketGroupID 2203 
@@ -15,10 +15,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class StructureModifications {
     /**
      * Get Structure Modifications RIG
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */     
-    public final RigRecusion getStructureModifications(){
-        RigRecusion structureModifications = new RigRecusion(2203);
+    public final RigRecusion_Init getStructureModifications(){
+        RigRecusion_Init structureModifications = new RigRecusion_Init(2203);
         return structureModifications;
     }     
 }

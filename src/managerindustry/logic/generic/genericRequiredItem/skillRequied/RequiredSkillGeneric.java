@@ -3,19 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.generic.genericRequiredItem.requiredMaterial;
+package managerindustry.logic.generic.genericRequiredItem.skillRequied;
 
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.generic.fatherClass.NameBase;
 
 /**
  *
  * @author lele
  */
-public abstract class RequiredMaterialGeneric < A, B > extends RequiredMaterial{
+public abstract class RequiredSkillGeneric < A, B > extends RequiredSkill{
     public abstract void display();
     public abstract Map < A, B > getMap();
     public abstract List < B > getList();
-    public abstract A getRequiredMaterialObject();
+    public abstract A getRequiredMaterialObject();    
 }

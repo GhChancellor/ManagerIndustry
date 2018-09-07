@@ -3,18 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.skill.requiredSkillV2;
+package managerindustry.logic.generic.genericRequiredItem.skillRequied;
 
 import java.util.List;
 import java.util.Map;
 import managerindustry.logic.generic.genericRequiredItem.AGenericRequiredItem;
+import managerindustry.logic.generic.fatherClass.SkillInfo;
 
 /**
  *
  * @author lele
  */
-public class SkillRequired extends AGenericRequiredItem {
-    protected SkillBase requiredSkill = new SkillBase();
+public class RequiredSkill < A, B > extends AGenericRequiredItem {
+    protected SkillInfo requiredSkill = new SkillInfo();
+
+    public RequiredSkill() {
+    }
     
     /**
      * Display
@@ -26,39 +30,36 @@ public class SkillRequired extends AGenericRequiredItem {
     
     /**
      * Display Required Skill
-     * @param SkillBase requiredSkillA
+     * @param SkillInfo requiredSkillA
      * @param String tab 
      */
-    private void displayRequiredSkill( SkillBase requiredSkillA, String tab){
-        
+    private void displayRequiredSkill( SkillInfo requiredSkillA, String tab){        
         System.out.println("" + 
-            requiredSkillA.getTypeIdSkill() + " " +
-            requiredSkillA.getTypeNameSkill() + " - " +
-            requiredSkillA.getRequiredSKillId() + " " +
-            requiredSkillA.getRequiredSKillName() + " " +
-            requiredSkillA.getRequiredLevel() );
-        
-        tab += tab;
+            requiredSkillA.getTypeID() + " " +
+            requiredSkillA.getRequiredSkillLevel() + " " +
+            requiredSkillA.getValueInt() );
+
+        tab += " ";
         
         for (Object recursionA : requiredSkillA.getItemRecursions()) {
-            displayRequiredSkill( requiredSkillA, tab);
+            displayRequiredSkill( (SkillInfo) recursionA, tab);
         }    
     }
     
     /**
      * Get Map
-     * @return Map < String, SkillBase > 
+     * @return Map < String, SkillInfo > 
      */
-    public Map < String, SkillBase > getMap(){
+    public Map < A, B > getMap(){
         addListElement(requiredSkill);
         return super.getMap();
     }
     
     /**
-     * @deprecated finire
-     * @return List < SkillBase >
+     * Get List
+     * @return List < SkillInfo >
      */
-    public List < SkillBase > getList(){
+    public List < A > getList(){
         convertToList(requiredSkill.getItemRecursions());
         return super.getList();
     }
@@ -69,8 +70,8 @@ public class SkillRequired extends AGenericRequiredItem {
      */
     @Override
     public void convertToList(List requiredSkills) {
-        for (SkillBase skillBase : ( List < SkillBase > ) requiredSkills) {
-            if ( skillBase.getTypeIdSkill() != 0){
+        for (SkillInfo skillBase : ( List < SkillInfo > ) requiredSkills) {
+            if ( skillBase.getTypeID() != 0){
                 addListElement(skillBase);
             }
             

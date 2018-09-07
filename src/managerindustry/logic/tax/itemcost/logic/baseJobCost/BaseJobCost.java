@@ -8,7 +8,7 @@ package managerindustry.logic.tax.itemcost.logic.baseJobCost;
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.generic.nameBase.NameBase;
+import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.manager.Manager;
 import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCostBase;
 
@@ -64,7 +64,7 @@ public class BaseJobCost {
      */
     private float getJobCost(NameBase nameBase) throws ErrorExeption{    
         String adjustedPrice = Manager.getInstance().db().item().price().
-            getAdjustedPriceEntity( String.valueOf( nameBase.getTypeId() ) );
+            getAdjustedPriceEntity( String.valueOf( nameBase.getTypeID() ) );
         return Float.valueOf(adjustedPrice) * nameBase.getQuanityI();        
     }
 }

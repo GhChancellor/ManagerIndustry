@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.manufacture_research.components;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 /**
  * marketGroupID 781 
@@ -15,10 +15,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class StandardCapitalShipComponets {
     /**
      * Get Standard Capital Ship Components
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */     
-    public final RigRecusion getStandardCapitalShipComponents(){
-        RigRecusion standardCapitalShipComponents = new RigRecusion(781); 
+    public final RigRecusion_Init getStandardCapitalShipComponents(){
+        RigRecusion_Init standardCapitalShipComponents = new RigRecusion_Init(781); 
         return standardCapitalShipComponents;
     }     
 }

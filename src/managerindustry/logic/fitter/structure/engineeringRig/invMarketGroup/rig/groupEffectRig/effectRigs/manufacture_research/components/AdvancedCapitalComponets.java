@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.manufacture_research.components;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 /**
  * marketGroupID 1883
@@ -15,10 +15,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class AdvancedCapitalComponets {
     /**
      * Get Advanced Capital Components
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */     
-    public final RigRecusion getAdvancedCapitalComponents(){
-        RigRecusion advancedCapitalComponents = new RigRecusion(1883); 
+    public final RigRecusion_Init getAdvancedCapitalComponents(){
+        RigRecusion_Init advancedCapitalComponents = new RigRecusion_Init(1883); 
         return advancedCapitalComponents;
     }     
 }

@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.structure.citadels;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 /**
  * marketGroupID 2199
@@ -17,8 +17,8 @@ public class Citadels {
      * Get Citadels: Astrahus, Fortizar
      * @return 
      */
-    public final RigRecusion getCitadels(){
-        RigRecusion citadels = new RigRecusion(2199); 
+    public final RigRecusion_Init getCitadels(){
+        RigRecusion_Init citadels = new RigRecusion_Init(2199); 
         return citadels;        
     }
 }

@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ship.generic;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 
 /**
@@ -16,29 +16,29 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class Destroyers {
     /**
      * Get Standard Destroyers
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */
-    public final RigRecusion getStandardDestroyers(){
-        RigRecusion standardDestroyers = new RigRecusion(464);
+    public final RigRecusion_Init getStandardDestroyers(){
+        RigRecusion_Init standardDestroyers = new RigRecusion_Init(464);
         return standardDestroyers;
     } 
     
     /**
      * Get Advanced Destroyers
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */
-    public final RigRecusion getAdvancedDestroyers(){
-        // Init RigRecusion Exclude some branches 
-        RigRecusion advancedDestroyers = new RigRecusion(1373, 1951); //1951 Exclude T3 Destroyers
+    public final RigRecusion_Init getAdvancedDestroyers(){
+        // Init RigRecusion_Init Exclude some branches 
+        RigRecusion_Init advancedDestroyers = new RigRecusion_Init(1373, 1951); //1951 Exclude T3 Destroyers
         return advancedDestroyers;
     } 
     
     /**
      * Get T3 Destroyers
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */    
-    public final RigRecusion getT3Destroyers(){
-        RigRecusion t3Destroyers = new RigRecusion(1951); // <----
+    public final RigRecusion_Init getT3Destroyers(){
+        RigRecusion_Init t3Destroyers = new RigRecusion_Init(1951); // <----
         return t3Destroyers;
     }     
 }

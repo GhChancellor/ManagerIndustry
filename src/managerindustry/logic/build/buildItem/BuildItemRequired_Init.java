@@ -5,25 +5,26 @@
  */
 package managerindustry.logic.build.buildItem;
 
+import managerindustry.logic.generic.fatherClass.BuildItem;
 import java.util.List;
 import java.util.Map;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.generic.nameBase.NameBase;
+import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterialGeneric;
 
 /**
  *
  * @author lele
  */
-public class BuildItemRequired extends RequiredMaterialGeneric{
-    private BuildItemLogic buildItemLogic;
+public class BuildItemRequired_Init extends RequiredMaterialGeneric{
+    private BuildItem_Logic buildItemLogic;
     
-    public BuildItemRequired( BuildItem buildItem, RamActivitiesEnum activitiesEnum) throws ErrorExeption {
-        buildItemLogic = new BuildItemLogic(buildItem, activitiesEnum);
+    public BuildItemRequired_Init( BuildItem buildItem, RamActivitiesEnum activitiesEnum) throws ErrorExeption {
+        buildItemLogic = new BuildItem_Logic(buildItem, activitiesEnum);
     }
 
-    public BuildItemRequired() {
+    public BuildItemRequired_Init() {
     }
     
     /**

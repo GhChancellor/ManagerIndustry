@@ -35,9 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
        + "B.attributeID = A.dgmTypeAttributesPK.attributeID AND "
        + "A.dgmTypeAttributesPK.attributeID = :attributeID AND "
        + "C.typeID = :typeID")
-            
-//    , @NamedQuery(name = "DgmTypeAttributes.findAttrybuteRequiredSkill", query = 
-//        "SELECT NEW managerindustry.logic.prove.skill.requiredSkillV3.Prova001 ( a.dgmTypeAttributesPK.typeID, b.attributeID, b.attributeName, a.valueInt, a.valueFloat ) FROM DgmTypeAttributes a, DgmAttributeTypes b WHERE a.dgmTypeAttributesPK.attributeID = b.attributeID AND a.dgmTypeAttributesPK.typeID = :typeID") 
+
 })
 public class DgmTypeAttributes implements Serializable {
 

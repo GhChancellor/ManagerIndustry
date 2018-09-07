@@ -10,7 +10,7 @@ import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.generic.nameBase.NameBase;
+import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.manager.Manager;
 import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterial;
 
@@ -18,13 +18,13 @@ import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.Requir
  *
  * @author lele
  */
-public class BasicMaterialRequiredLogic extends RequiredMaterial{
+public class BasicMaterialRequired_Logic extends RequiredMaterial{
     /**
      * Basic Material Required Logic
      * @param String bpoName
      * @param RamActivitiesEnum activitiesEnum
      */    
-    public BasicMaterialRequiredLogic(String bpoName, RamActivitiesEnum activitiesEnum)
+    public BasicMaterialRequired_Logic(String bpoName, RamActivitiesEnum activitiesEnum)
             throws ErrorExeption {
         
         bpoName += " blueprint";

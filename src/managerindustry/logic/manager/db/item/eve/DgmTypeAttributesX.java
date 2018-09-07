@@ -5,11 +5,11 @@
  */
 package managerindustry.logic.manager.db.item.eve;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import managerindustry.db.entities.eve.DgmTypeAttributes;
-import managerindustry.logic.prove.skill.requiredSkillV3.Prova001;
 
 /**
  * 
@@ -76,26 +76,4 @@ public class DgmTypeAttributesX {
         
     }
     
-    
-//    public Prova001 getProva(int typeID){
-//        try {
-//            TypedQuery < Prova001 > typedQuery = 
-//                entityManager.createNamedQuery("DgmTypeAttributes.findAttrybuteRequiredSkill", Prova001.class);
-//
-//            typedQuery.setParameter("typeID", typeID);
-//            
-//            List<Prova001> resultList = typedQuery.getResultList();
-//            
-//            if (resultList.isEmpty()){
-//                return null;
-//            }else{
-//                return resultList.get(0);
-//            }
-//            
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }        
-//    }    
-
 }

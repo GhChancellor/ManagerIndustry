@@ -3,73 +3,73 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.generic.nameBase;
+package managerindustry.logic.generic.fatherClass;
 
-import managerindustry.logic.generic.recursion.ItemRecursion;
+import managerindustry.logic.generic.fatherClass.recursion.ItemRecursion;
 
 /**
  *
  * @author lele
  */
 public class NameBase extends ItemRecursion {
-    private int typeId;
+    private int typeID;
     private String typeName;
     private int quanityI;
     private double quanityD;
 
     /**
      * Name Base
-     * @param int typeId
+     * @param int typeID
      * @param String typeName 
      */
-    public NameBase(int typeId, String typeName) {
-        this.typeId = typeId;
+    public NameBase(int typeID, String typeName) {
+        this.typeID = typeID;
         this.typeName = typeName;
     }
 
     /**
      * Name Base
-     * @param int typeId
+     * @param int typeID
      * @param int quanityI 
      */
-    public NameBase(int typeId, int quanityInt) {
-        this.typeId = typeId;
+    public NameBase(int typeID, int quanityInt) {
+        this.typeID = typeID;
         this.quanityI = quanityInt;
     }
 
     /**
      * Name Base
-     * @param int typeId
+     * @param int typeID
      * @param String typeName
      * @param int quanityI 
      */
-    public NameBase(int typeId, String name, int quanityInt) {
-        this.typeId = typeId;
+    public NameBase(int typeID, String name, int quanityInt) {
+        this.typeID = typeID;
         this.typeName = name;
         this.quanityI = quanityInt;
     }
 
     /**
      * Name Base
-     * @param int typeId
+     * @param int typeID
      * @param int quanityI
      * @param double quanityD 
      */
-    public NameBase(int typeId, int quanityI, double quanityD) {
-        this.typeId = typeId;
+    public NameBase(int typeID, int quanityI, double quanityD) {
+        this.typeID = typeID;
         this.quanityI = quanityI;
         this.quanityD = quanityD;
     }
     
     /**
      * Name Base
-     * @param int typeId
+     * @param int typeID
      * @param String typeName
      * @param int quanityI
      * @param double quanityD 
      */
-    public NameBase(int typeId, String name, int quanityInt, double quanityDbl) {
-        this.typeId = typeId;
+    public NameBase(int typeID, String name, int quanityInt, double quanityDbl) {
+        this.typeID = typeID;
         this.typeName = name;
         this.quanityI = quanityInt;
         this.quanityD = quanityDbl;
@@ -82,16 +82,16 @@ public class NameBase extends ItemRecursion {
      * Get Id
      * @return int
      */
-    public int getTypeId() {
-        return typeId;
+    public int getTypeID() {
+        return typeID;
     }
 
     /**
      * Set Id
-     * @param typeId 
+     * @param typeID 
      */
-    public void setTypeId(int typeId) {
-        this.typeId = typeId;
+    public void setTypeID(int typeID) {
+        this.typeID = typeID;
     }
     
     /**

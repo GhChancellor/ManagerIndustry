@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ship.generic;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 
 /**
@@ -16,10 +16,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class Shuttles {
     /**
      * Get Shuttles
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */     
-    public final RigRecusion getShuttles(){
-        RigRecusion shuttles = new RigRecusion(391);
+    public final RigRecusion_Init getShuttles(){
+        RigRecusion_Init shuttles = new RigRecusion_Init(391);
         return shuttles;
     }     
 }

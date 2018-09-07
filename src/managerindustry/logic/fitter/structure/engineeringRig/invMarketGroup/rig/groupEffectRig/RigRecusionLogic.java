@@ -5,11 +5,10 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig;
 
+import managerindustry.logic.generic.fatherClass.RigMarketGroup;
 import java.util.List;
 import managerindustry.db.entities.eve.InvMarketGroups;
 import managerindustry.db.entities.eve.InvTypes;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigMarketGroup;
-import managerindustry.logic.generic.recursion.ItemRecursion;
 import managerindustry.logic.manager.Manager;
 import managerindustry.logic.generic.genericRequiredItem.AGenericRequiredItem;
 
@@ -146,6 +145,10 @@ public class RigRecusionLogic extends AGenericRequiredItem{
     /**
      * @deprecated 
      * Display Rig Market Group Recursion
+     * modificare entity 
+     * List<InvTypes> parentGroupID = Manager.getInstance().db().item().
+            invTypes().getMarketGroupID(rigMarketGroupRecursion.getMarketGroupID(), true); 
+     * 
      * @param RigMarketGroupRecursion rigMarketGroupRecursion rigMarketGroupRecursion
      * @param String tab 
      */

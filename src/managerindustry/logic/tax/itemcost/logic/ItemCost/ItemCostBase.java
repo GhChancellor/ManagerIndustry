@@ -8,7 +8,7 @@ package managerindustry.logic.tax.itemcost.logic.ItemCost;
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
-import managerindustry.logic.generic.nameBase.NameBase;
+import managerindustry.logic.generic.fatherClass.NameBase;
 
 /**
  *

@@ -7,7 +7,7 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 
 /**
@@ -17,7 +17,7 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
  */
 public class EffectEngineeringRigs_1 {
     private int typeID;
-    private List < RigRecusion > itemRecusions = new ArrayList<>();    
+    private List < RigRecusion_Init > itemRecusions = new ArrayList<>();    
 
     public EffectEngineeringRigs_1() {
     }
@@ -25,9 +25,9 @@ public class EffectEngineeringRigs_1 {
     /**
      * Add rig and add Effect
      * @param int typeId
-     * @param List < RigRecusion > itemRecusions 
+     * @param List < RigRecusion_Init > itemRecusions 
      */    
-    public EffectEngineeringRigs_1(int typeID, List < RigRecusion > rigRecusion) {
+    public EffectEngineeringRigs_1(int typeID, List < RigRecusion_Init > rigRecusion) {
         this.typeID = typeID;
         this.itemRecusions = rigRecusion;
     }
@@ -48,7 +48,7 @@ public class EffectEngineeringRigs_1 {
      * Get RigRecusions
      * @return List<RigRecusion>
      */
-    public List<RigRecusion> getRigRecusions() {
+    public List<RigRecusion_Init> getRigRecusions() {
         return itemRecusions;
     }        
 }

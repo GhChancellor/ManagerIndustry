@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.InitCommonRigGroups;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 /**
  *
@@ -26,7 +26,7 @@ public class InitXLRigGroups{
      * @param int typeId 
      */
     public void initStandupXLSetEquipmentAndConsumableManufacturing(int typeId){ 
-        List < RigRecusion > effectRigs = new ArrayList<>();
+        List < RigRecusion_Init > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().shipEquipments().getshipEquipments());
         effectRigs.add(GroupEffectRig.getInstance().structures().deployableStructures().getPersonalDeployables()); // <-- include cargo container 
@@ -41,7 +41,7 @@ public class InitXLRigGroups{
      * @param int typeId 
      */
     public void initStandupXLSetShipManufacturing(int typeId){   
-        List < RigRecusion > effectRigs = new ArrayList<>();
+        List < RigRecusion_Init > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().ships().battlecruisers().getAdvancedBattlecruisers());
         effectRigs.add(GroupEffectRig.getInstance().ships().battlecruisers().getStandardBattlecruisers());
@@ -80,7 +80,7 @@ public class InitXLRigGroups{
      * @param int typeId 
      */
     public void initStandupXLSetStructureAndComponentManufacturing(int typeId){    
-        List < RigRecusion > effectRigs = new ArrayList<>();
+        List < RigRecusion_Init > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().advancedCapitalComponets().getAdvancedCapitalComponents());
         effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().advancedComponets().getAdvancedComponents());
@@ -108,7 +108,7 @@ public class InitXLRigGroups{
      * @param int typeId 
      */
     public void initStandupXLSetThukkerStructureAndComponentManufacturing(int typeId){ 
-        List < RigRecusion > effectRigs = new ArrayList<>();
+        List < RigRecusion_Init > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().advancedCapitalComponets().getAdvancedCapitalComponents());
         effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().advancedComponets().getAdvancedComponents());

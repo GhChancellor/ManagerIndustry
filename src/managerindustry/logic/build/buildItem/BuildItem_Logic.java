@@ -5,20 +5,21 @@
  */
 package managerindustry.logic.build.buildItem;
 
+import managerindustry.logic.generic.fatherClass.BuildItem;
 import java.util.List;
 import java.util.Map;
 import managerindustry.logic.generic.efficiency.materialEfficiency.MaterialEfficiencyCalculate;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.generic.nameBase.NameBase;
-import managerindustry.logic.build.basicMaterialRequired.BasicMaterialRequired;
+import managerindustry.logic.generic.fatherClass.NameBase;
+import managerindustry.logic.build.basicMaterialRequired.MaterialRequired_Init;
 import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterial;
 
 /**
  *
  * @author lele
  */
-public class BuildItemLogic extends RequiredMaterial{
+public class BuildItem_Logic extends RequiredMaterial{
     private MaterialEfficiencyCalculate materialEfficiencyCalculate = new MaterialEfficiencyCalculate();    
     private int singleMaterialQuantity;
     private double totalMaterialQuantity;
@@ -30,11 +31,11 @@ public class BuildItemLogic extends RequiredMaterial{
      * @param RamActivitiesEnum activitiesEnum
      * @throws ErrorExeption 
      */    
-    public BuildItemLogic(BuildItem buildItem, 
+    public BuildItem_Logic(BuildItem buildItem, 
         RamActivitiesEnum activitiesEnum) throws ErrorExeption{
         
-        BasicMaterialRequired basicMaterialRequired = 
-            new BasicMaterialRequired(buildItem.getBpoName(), activitiesEnum);
+        MaterialRequired_Init basicMaterialRequired = 
+            new MaterialRequired_Init(buildItem.getBpoName(), activitiesEnum);
 
         requiredItem(buildItem, requiredMaterial,
             basicMaterialRequired.getRequiredMaterialObject().getItemRecursions());
@@ -73,42 +74,7 @@ public class BuildItemLogic extends RequiredMaterial{
                     requiredMaterialRecusion.getItemRecursions());
             }
         }
-    }
-    
-    
-//    /**
-//     * Required Item recursion
-//     * @param BuildItem buildItem
-//     * @param NameBase requiredA
-//     * @param List <NameBase> requiredMaterialRecusions 
-//     */
-//    private void requiredItem(BuildItem buildItem, NameBase requiredA, 
-//        List <NameBase> requiredMaterialRecusions ){
-//
-//        for (NameBase requiredMaterialRecusion : requiredMaterialRecusions) {
-//            
-//            calculateME(buildItem, requiredMaterialRecusion);
-//            calculateQuantityMaterial();
-//            addItem(requiredMaterialRecusion);
-//
-////            NameBase requiredItemsRecursionA = 
-////                new NameBase(requiredMaterialRecusion.getTypeId(), 
-////                    requiredMaterialRecusion.getQuanityI(),
-////                    requiredMaterialRecusion.getQuanityD());                        
-//            
-//            NameBase requiredItemsRecursionA = 
-//                (NameBase) requiredItemMoreInfo(requiredMaterialRecusion);
-//            requiredA.addItemRecursions(requiredItemsRecursionA);
-//            
-//            if ( !requiredMaterialRecusion.getItemRecursions().isEmpty() ){
-//                BuildItem buildItemSecondPassage = 
-//                    getBuildItemSecondPassage(buildItem.getBpoME());
-//                
-//                requiredItem(buildItemSecondPassage, requiredItemsRecursionA,
-//                    requiredMaterialRecusion.getItemRecursions());
-//            }
-//        }
-//    }    
+    }  
 
     /**
      * Get Build Item Second Passage
@@ -179,7 +145,7 @@ public class BuildItemLogic extends RequiredMaterial{
         System.err.print("BuildItemLogic > requiredItemMoreInfo is ENABLE!!!");
 
         NameBase nameBase = new NameBase(
-            ((NameBase)requiredMaterial).getTypeId(), 
+            ((NameBase)requiredMaterial).getTypeID(), 
             ((NameBase)requiredMaterial).getTypeName(), 
             ((NameBase)requiredMaterial).getQuanityI(), 
             ((NameBase)requiredMaterial).getQuanityD());

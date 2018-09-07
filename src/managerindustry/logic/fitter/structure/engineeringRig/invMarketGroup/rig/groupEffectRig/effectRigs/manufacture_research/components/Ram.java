@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.manufacture_research.components;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 
 /**
@@ -18,8 +18,8 @@ public class Ram {
      * Get R.A.M. ( tools )
      * @return 
      */
-    public final RigRecusion getRam(){
-        RigRecusion ram = new RigRecusion(1908); 
+    public final RigRecusion_Init getRam(){
+        RigRecusion_Init ram = new RigRecusion_Init(1908); 
         return ram;
     }        
 }

@@ -7,12 +7,12 @@ package managerindustry.logic.prove.immondizia;
 
 import java.util.ArrayList;
 import java.util.List;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.build.buildItem.BuildItem;
-import managerindustry.logic.build.buildItem.BuildItemRequired;
+import managerindustry.logic.generic.fatherClass.BuildItem;
+import managerindustry.logic.build.buildItem.BuildItemRequired_Init;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.itemcost.DisplayItemCost;
 import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCostBase;
@@ -30,9 +30,9 @@ public class Immondizia_001 <T> {
 //        chooseRig();
 //        immondizia2();
     }    
-           
+    
     public void rigRucursion(){
-        RigRecusion rigRecusion = GroupEffectRig.getInstance().
+        RigRecusion_Init rigRecusion = GroupEffectRig.getInstance().
             t3subsystems().getT3subsystems();
 
         rigRecusion.display();
@@ -46,10 +46,10 @@ public class Immondizia_001 <T> {
         
 //        setDublicate();
         // aggiunge un " effectID 0 " da controllare
-//        List < RigRecusion > effectRigs = new ArrayList<>();
+//        List < RigRecusion_Init > effectRigs = new ArrayList<>();
 //        effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().subsystemComponets().getSubsystemComponents() );
 // 
-//        for (RigRecusion effectRig : effectRigs) {
+//        for (RigRecusion_Init effectRig : effectRigs) {
 //            effectRig.displayRecursion();
 //        }
 //        EffectEngineeringRigs_2 managerStructure = new EffectEngineeringRigs_2(43921, effectRigs);   

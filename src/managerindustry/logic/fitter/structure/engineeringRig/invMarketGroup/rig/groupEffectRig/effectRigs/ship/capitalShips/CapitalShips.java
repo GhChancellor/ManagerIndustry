@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ship.capitalShips;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 
 /**
@@ -19,55 +19,55 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class CapitalShips {
     /**
      * Get Jump Freighters
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */
-    public final RigRecusion getJumpFreighters(){
-        RigRecusion jumpFreighters = new RigRecusion(1089); 
+    public final RigRecusion_Init getJumpFreighters(){
+        RigRecusion_Init jumpFreighters = new RigRecusion_Init(1089); 
         return jumpFreighters;
     }
     
     /**
      * Get Freighters
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */
-    public final RigRecusion getFreighters(){
-        RigRecusion jumpFreighters = new RigRecusion(766); 
+    public final RigRecusion_Init getFreighters(){
+        RigRecusion_Init jumpFreighters = new RigRecusion_Init(766); 
         return jumpFreighters;
     }
     
     /**
      * Get Dreadnoughts
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */    
-    public final RigRecusion getDreadnoughts(){
-        RigRecusion dreadnoughts = new RigRecusion(761); 
+    public final RigRecusion_Init getDreadnoughts(){
+        RigRecusion_Init dreadnoughts = new RigRecusion_Init(761); 
         return dreadnoughts;
     }
 
     /**
      * Get Titans
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */    
-    public final RigRecusion getTitans(){
-        RigRecusion titans = new RigRecusion(812); 
+    public final RigRecusion_Init getTitans(){
+        RigRecusion_Init titans = new RigRecusion_Init(812); 
         return titans;
     }
     
     /**
      * Get Carriers
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */    
-    public final RigRecusion getCarriers(){
-        RigRecusion carriers = new RigRecusion(817); 
+    public final RigRecusion_Init getCarriers(){
+        RigRecusion_Init carriers = new RigRecusion_Init(817); 
         return carriers;
     }
     
     /**
      * Get Force Auxiliaries
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */    
-    public final RigRecusion getForceAuxiliaries(){
-        RigRecusion forceAuxiliaries = new RigRecusion(2271); 
+    public final RigRecusion_Init getForceAuxiliaries(){
+        RigRecusion_Init forceAuxiliaries = new RigRecusion_Init(2271); 
         return forceAuxiliaries;
     }
     

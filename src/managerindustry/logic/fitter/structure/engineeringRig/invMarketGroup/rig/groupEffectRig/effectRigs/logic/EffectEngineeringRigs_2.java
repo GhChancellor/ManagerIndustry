@@ -7,9 +7,9 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 
 import java.util.List;
 import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 import managerindustry.logic.manager.Manager;
-//import managerindustry.logic.prove.buildV3.recusionRig.safe.RigRecusion;
+//import managerindustry.logic.prove.buildV3.recusionRig.safe.RigRecusion_Init;
 
 /**
  * @author lele
@@ -21,11 +21,11 @@ public class EffectEngineeringRigs_2 {
     }
 
     /**
-     * Effect EngineeringRigs init list List < RigRecusion >
+     * Effect EngineeringRigs init list List < RigRecusion_Init >
      * @param int typeId 
-     * @param List < RigRecusion > effectRigs 
+     * @param List < RigRecusion_Init > effectRigs 
      */
-    public EffectEngineeringRigs_2(int typeId, List < RigRecusion > effectRigs) {
+    public EffectEngineeringRigs_2(int typeId, List < RigRecusion_Init > effectRigs) {
         structureRig = new EffectEngineeringRigs_1(typeId, effectRigs );  
         addEffectRig();
     }

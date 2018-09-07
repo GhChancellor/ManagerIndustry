@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.tax.old.itemcost.baseJobCost;
 
-import managerindustry.logic.generic.nameBase.NameBase;
+import managerindustry.logic.generic.fatherClass.NameBase;
 
 /**
  *

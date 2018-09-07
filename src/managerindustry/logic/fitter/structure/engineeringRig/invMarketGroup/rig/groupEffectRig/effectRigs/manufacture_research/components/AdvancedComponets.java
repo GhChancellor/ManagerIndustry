@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.manufacture_research.components;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;;
 
 /**
  * marketGroupID 65  
@@ -15,10 +15,10 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class AdvancedComponets {
     /**
      * Get Advanced Components for T2 ships
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */     
-    public final RigRecusion getAdvancedComponents(){
-        RigRecusion advancedComponents = new RigRecusion(65); 
+    public final RigRecusion_Init getAdvancedComponents(){
+        RigRecusion_Init advancedComponents = new RigRecusion_Init(65); 
         return advancedComponents;
     }     
 }

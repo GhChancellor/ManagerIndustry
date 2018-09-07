@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ship.generic;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 
 /**
@@ -16,19 +16,19 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class Battleships {
     /**
      * Get Standard Battleships
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */
-    public final RigRecusion getStandardBattleships(){
-        RigRecusion standardBattleships = new RigRecusion(7);     
+    public final RigRecusion_Init getStandardBattleships(){
+        RigRecusion_Init standardBattleships = new RigRecusion_Init(7);     
         return standardBattleships;
     } 
     
     /**
      * Get Advanced Battleships
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */    
-    public final RigRecusion getAdvancedBattleships (){
-        RigRecusion advancedBattleships = new RigRecusion(1377);
+    public final RigRecusion_Init getAdvancedBattleships (){
+        RigRecusion_Init advancedBattleships = new RigRecusion_Init(1377);
         return advancedBattleships;
     }     
 }

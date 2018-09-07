@@ -10,7 +10,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import managerindustry.db.entities.eve.InvTypes;
-import managerindustry.logic.prove.skill.requiredSkillV3.Prova001;
 import managerindustry.logic.prove.skill.old.Skill_OLD;
 import managerindustry.logic.prove.skill.old.SkillX_OLD;
 

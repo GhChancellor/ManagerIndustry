@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.implants_boosters;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 
 
@@ -15,8 +15,8 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
  * @author lele
  */
 public class Implants {
-    public final RigRecusion getImplants(){
-        RigRecusion implants = new RigRecusion(27); 
+    public final RigRecusion_Init getImplants(){
+        RigRecusion_Init implants = new RigRecusion_Init(27); 
         return implants;        
     }
 }

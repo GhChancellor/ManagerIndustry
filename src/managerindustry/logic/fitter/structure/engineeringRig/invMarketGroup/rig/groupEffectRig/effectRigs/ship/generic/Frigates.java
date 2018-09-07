@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ship.generic;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 
 /**
@@ -16,19 +16,19 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class Frigates {
     /**
      * Get Standard Frigates
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */     
-    public final RigRecusion getStandardFrigates(){
-        RigRecusion standardFrigates = new RigRecusion(5);
+    public final RigRecusion_Init getStandardFrigates(){
+        RigRecusion_Init standardFrigates = new RigRecusion_Init(5);
         return standardFrigates;
     } 
     
     /**
      * Get Advanced Frigates
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */     
-    public final RigRecusion getAdvancedFrigates(){
-        RigRecusion advancedFrigates = new RigRecusion(1364);
+    public final RigRecusion_Init getAdvancedFrigates(){
+        RigRecusion_Init advancedFrigates = new RigRecusion_Init(1364);
         return advancedFrigates;
     }     
 }

@@ -9,15 +9,15 @@ import java.util.List;
 import java.util.Map;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.generic.nameBase.NameBase;
+import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterialGeneric;
 
 /**
  *
  * @author lele
  */
-public class BasicMaterialRequired extends RequiredMaterialGeneric{
-    private BasicMaterialRequiredLogic basicMaterialRequired;
+public class MaterialRequired_Init extends RequiredMaterialGeneric{
+    private BasicMaterialRequired_Logic basicMaterialRequired_Logic;
     
     /**
      * Basic Material Required
@@ -25,11 +25,13 @@ public class BasicMaterialRequired extends RequiredMaterialGeneric{
      * @param RamActivitiesEnum activitiesEnum
      * @throws ErrorExeption 
      */
-    public BasicMaterialRequired(String bpoName, RamActivitiesEnum activitiesEnum) throws ErrorExeption{
-        this.basicMaterialRequired = new BasicMaterialRequiredLogic(bpoName, activitiesEnum);
+    public MaterialRequired_Init(String bpoName, RamActivitiesEnum activitiesEnum)
+            throws ErrorExeption{
+        this.basicMaterialRequired_Logic = 
+            new BasicMaterialRequired_Logic(bpoName, activitiesEnum);
     }    
 
-    public BasicMaterialRequired() {
+    public MaterialRequired_Init() {
     }
     
     /**
@@ -37,7 +39,7 @@ public class BasicMaterialRequired extends RequiredMaterialGeneric{
      */ 
     @Override
     public void display() {
-        basicMaterialRequired.display();
+        basicMaterialRequired_Logic.display();
     }
 
     /**
@@ -46,7 +48,7 @@ public class BasicMaterialRequired extends RequiredMaterialGeneric{
      */  
     @Override
     public Map<String, NameBase> getMap() {
-        return basicMaterialRequired.getMap();
+        return basicMaterialRequired_Logic.getMap();
     }
 
     /**
@@ -55,7 +57,7 @@ public class BasicMaterialRequired extends RequiredMaterialGeneric{
      */
     @Override
     public List<NameBase> getList() {
-        return basicMaterialRequired.getList();
+        return basicMaterialRequired_Logic.getList();
     }
 
     /**
@@ -64,7 +66,7 @@ public class BasicMaterialRequired extends RequiredMaterialGeneric{
      */    
     @Override
     public NameBase getRequiredMaterialObject() {
-        return (NameBase) basicMaterialRequired.getObject();
+        return (NameBase) basicMaterialRequired_Logic.getObject();
     }
 
   

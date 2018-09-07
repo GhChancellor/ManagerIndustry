@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.ship.capitalShips;
 
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 
 
 /**
@@ -17,10 +17,10 @@ public class Ore {
     
     /**
      * Get Orca
-     * @return RigRecusion
+     * @return RigRecusion_Init
      */
-    public final RigRecusion getOre(){
-        RigRecusion ore = new RigRecusion(1048); 
+    public final RigRecusion_Init getOre(){
+        RigRecusion_Init ore = new RigRecusion_Init(1048); 
         return ore;
     }  
 }

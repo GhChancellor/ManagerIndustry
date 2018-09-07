@@ -11,7 +11,7 @@ import managerindustry.logic.manager.game.build.old.Build_OLD;
 import managerindustry.logic.manager.game.fitter.Fitter;
 import managerindustry.logic.prove.skill.old.Skill_OLD;
 import managerindustry.logic.manager.game.tax.SystemCost;
-import managerindustry.logic.build.buildItem.BuildItemRequired;
+import managerindustry.logic.build.buildItem.BuildItemRequired_Init;
 
 /**
  *
@@ -19,8 +19,8 @@ import managerindustry.logic.build.buildItem.BuildItemRequired;
  */
 public class Game {
     
-    public BuildItemRequired buildItemRequired(){
-        BuildItemRequired buildItemRequired = new BuildItemRequired();
+    public BuildItemRequired_Init buildItemRequired(){
+        BuildItemRequired_Init buildItemRequired = new BuildItemRequired_Init();
         return buildItemRequired;
     }
             

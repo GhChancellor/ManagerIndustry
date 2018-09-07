@@ -8,13 +8,13 @@ package managerindustry.logic.generic.genericRequiredItem.requiredMaterial;
 import java.util.List;
 import java.util.Map;
 import managerindustry.logic.generic.genericRequiredItem.AGenericRequiredItem;
-import managerindustry.logic.generic.nameBase.NameBase;
+import managerindustry.logic.generic.fatherClass.NameBase;
 
 /**
  *
  * @author lele
  */
-public class RequiredMaterial extends AGenericRequiredItem{
+public class RequiredMaterial < A, B > extends AGenericRequiredItem{
     protected NameBase requiredMaterial = new NameBase();
 
     public RequiredMaterial() {
@@ -34,8 +34,8 @@ public class RequiredMaterial extends AGenericRequiredItem{
      * @param String tab 
      */
     private void displayRequiredMaterial(NameBase requiredItemA, String tab){
-        if ( requiredItemA.getTypeId() != 0 ){
-            System.out.println(tab + requiredItemA.getTypeId() + " " + 
+        if ( requiredItemA.getTypeID() != 0 ){
+            System.out.println(tab + requiredItemA.getTypeID() + " " + 
             requiredItemA.getTypeName() + " - " + 
             requiredItemA.getQuanityI() + " > " + 
             requiredItemA.getQuanityD());              
@@ -52,7 +52,7 @@ public class RequiredMaterial extends AGenericRequiredItem{
      * Get Map
      * @return Map < String, NameBase >
      */
-    public Map < String, NameBase > getMap(){
+    public Map < A, B > getMap(){
         addListElement(requiredMaterial);
         return super.getMap();
     }
@@ -61,7 +61,7 @@ public class RequiredMaterial extends AGenericRequiredItem{
      * Get List
      * @return List < NameBase >
      */
-    public List < NameBase > getList(){
+    public List < A > getList(){
         convertToList(requiredMaterial.getItemRecursions());
         return super.getList();
     }
@@ -82,7 +82,7 @@ public class RequiredMaterial extends AGenericRequiredItem{
     @Override
     public void convertToList(List requiredMaterials) {        
         for (NameBase requiredMaterial : (List <NameBase>) requiredMaterials ) {
-            if ( requiredMaterial.getTypeId() != 0){
+            if ( requiredMaterial.getTypeID() != 0){
                 addListElement(requiredMaterial);
             }
             

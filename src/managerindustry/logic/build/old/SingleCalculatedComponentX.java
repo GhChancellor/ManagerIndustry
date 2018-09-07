@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.build.old;
 
-import managerindustry.logic.generic.nameBase.NameBase;
+import managerindustry.logic.generic.fatherClass.NameBase;
 
 /**
  * Put single Calculated Component
