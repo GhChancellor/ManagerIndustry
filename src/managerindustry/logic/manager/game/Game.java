@@ -9,9 +9,10 @@ import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.game.build.old.Build_OLD;
 import managerindustry.logic.manager.game.fitter.Fitter;
-import managerindustry.logic.prove.skill.old.Skill_OLD;
+
 import managerindustry.logic.manager.game.tax.SystemCost;
 import managerindustry.logic.build.buildItem.BuildItemRequired_Init;
+import managerindustry.logic.skill.skillProduction.SkillProduction;
 
 /**
  *
@@ -35,14 +36,13 @@ public class Game {
     }
 
     /**
-     * Skill_OLD
-     * @return Skill_OLD
+     * Skill Production
+     * @return SkillProduction
      */
-    public Skill_OLD skill(){
-        Skill_OLD skill = new Skill_OLD();
-        return skill;
+    public SkillProduction skillProduction(){
+        SkillProduction skillProduction = new SkillProduction();
+        return skillProduction;
     }
-    
     /**
      * @deprecated 
      * System Cost

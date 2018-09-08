@@ -5,7 +5,7 @@
  */
 package managerindustry.logic.tax.speculation.order;
 
-import managerindustry.logic.prove.skill.old.TradeFormulas_OLD;
+import managerindustry.logic.tax.speculation.formulas.TradeFormulas;
 
 /**
  *
@@ -20,7 +20,7 @@ public class BuyOrder extends Tax{
         setItemsNumber(numberItems);
         setItemSellPrice(sellPrice);
         
-        TradeFormulas_OLD tradeFormulas = new TradeFormulas_OLD();
+        TradeFormulas tradeFormulas = new TradeFormulas();
         float brokerFeeRate = tradeFormulas.calculateBrokerFee(brokerRelationsLevel, station);
         
         float brokerFeeIskPerItem = getItemTaxBrokerFee(brokerFeeRate, sellPrice);

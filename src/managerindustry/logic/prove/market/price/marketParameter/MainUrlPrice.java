@@ -6,11 +6,9 @@
 package managerindustry.logic.prove.market.price.marketParameter;
 
 import managerindustry.logic.prove.market.price.marketParameter.createQuery.MarketStatQuery;
-import managerindustry.logic.prove.market.price.marketParameter.createQuery.CreateQuery;
-import managerindustry.logic.prove.market.price.marketParameter.createQuery.parameters.RegionLimit;
 import managerindustry.logic.prove.market.price.marketParameter.createQuery.parameters.TypeID;
 import managerindustry.logic.prove.market.price.marketParameter.createQuery.parameters.UseSystem;
-import managerindustry.logic.prove.market.price.priceXML.XmlUrl;
+
 
 /**
  *

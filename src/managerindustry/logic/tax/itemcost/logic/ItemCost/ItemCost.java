@@ -8,7 +8,7 @@ package managerindustry.logic.tax.itemcost.logic.ItemCost;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.itemcost.logic.baseJobCost.BaseJobCost;
-import managerindustry.logic.tax.old.itemcost.systemCostIndex.SystemCostIndex;
+import managerindustry.logic.tax.itemcost.old.itemcost.systemCostIndex.SystemCostIndex;
 
 /**
  *

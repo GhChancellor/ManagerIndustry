@@ -41,7 +41,6 @@ public class BuildItemRequired_Init extends RequiredMaterialGeneric{
      */    
     @Override
     public Map<String, NameBase> getMap() {
-        // return buildItemLogic.getMap();
         return buildItemLogic.getTotalCalculatedItem();
     }
 

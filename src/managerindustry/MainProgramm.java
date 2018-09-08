@@ -12,7 +12,7 @@ import managerindustry.logic.generic.enumName.PlatformEnum;
 import managerindustry.logic.generic.enumName.SecurityStatusEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
-import managerindustry.logic.gui.display.DisplaySpeculation;
+
 import managerindustry.logic.manager.game.build.old.Build_OLD;
 import managerindustry.logic.manager.game.build.old.ManagerComponentX;
 import managerindustry.logic.solarSystem.SolarSystem;
@@ -30,7 +30,7 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCost;
 import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCostBase;
 import managerindustry.logic.prove.immondizia.Immondizia_001;
-import managerindustry.logic.prove.skill.requiredSkillV3.SkillRequired_Init;
+import managerindustry.logic.skill.requiredSkill.SkillRequired_Init;
 
 /**
  *
@@ -39,13 +39,12 @@ import managerindustry.logic.prove.skill.requiredSkillV3.SkillRequired_Init;
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
-//        buildItemV6();
+        buildItemV6();
 //        basicMaterial();
 //        jobInstallationFeeV2();
-        requiredSkill();
+//        requiredSkill();
 //        recursionItems();
 //        structure();
-//        speculation_OLD();
 //        speculation();
 //        immondizia();
 //        old();
@@ -110,7 +109,11 @@ public class MainProgramm {
     }
     
     public static void structure() throws ErrorExeption{
-        EngineeringRig engineeringRig = new EngineeringRig("Standup XL-Set Equipment and Consumable Manufacturing Efficiency II", SecurityStatusEnum.LOW_SEC);
+        EngineeringRig engineeringRig = 
+            new EngineeringRig(
+            "Standup XL-Set Equipment and Consumable Manufacturing Efficiency II", 
+            SecurityStatusEnum.LOW_SEC);
+        
         engineeringRig.displayValue();
         engineeringRig.displayAllValueCalculated();
 
@@ -160,15 +163,10 @@ public class MainProgramm {
      * old check before delete it
      */
     public static void old(){
+        System.out.println("*****************************************************************************\n");
 //        buildItem_OLD(); // << controllare
 //        jobInstallationFee_OLD(); // << controllare funziona male
-        speculation_OLD();
-    }     
-    
-    public static void speculation_OLD(){
-        DisplaySpeculation speculation = new DisplaySpeculation();
-        System.out.println("---------------------------------------------------\n");
-    }          
+    }         
     
     /**
      * @deprecated 
@@ -183,6 +181,7 @@ public class MainProgramm {
     }
      
     /**
+     * @deprecated 
      * MN Civilian Afterburner 1 = 3ISK, 2 = 7Isk  
      * Sotrentaira
      * @throws SolarSystemNotExistsException

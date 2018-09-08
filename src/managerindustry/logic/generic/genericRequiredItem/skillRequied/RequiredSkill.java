@@ -7,8 +7,9 @@ package managerindustry.logic.generic.genericRequiredItem.skillRequied;
 
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.generic.genericRequiredItem.AGenericRequiredItem;
 import managerindustry.logic.generic.fatherClass.SkillInfo;
+import managerindustry.logic.generic.genericRequiredItem.AGenericRequiredItem;
+
 
 /**
  *
@@ -33,22 +34,24 @@ public class RequiredSkill < A, B > extends AGenericRequiredItem {
      * @param SkillInfo requiredSkillA
      * @param String tab 
      */
-    private void displayRequiredSkill( SkillInfo requiredSkillA, String tab){        
-        System.out.println("" + 
-            requiredSkillA.getTypeID() + " " +
-            requiredSkillA.getRequiredSkillLevel() + " " +
-            requiredSkillA.getValueInt() );
+    private void displayRequiredSkill( SkillInfo requiredSkillA, String tab){ 
+        if (requiredSkillA.getTypeID() != null){
+            System.out.println("" + 
+                requiredSkillA.getTypeID() + " " +
+                requiredSkillA.getRequiredSkillLevel() + " " +
+                requiredSkillA.getValueInt() );            
+        }
 
         tab += " ";
         
         for (Object recursionA : requiredSkillA.getItemRecursions()) {
-            displayRequiredSkill( (SkillInfo) recursionA, tab);
+            displayRequiredSkill((SkillInfo) recursionA, tab);
         }    
     }
     
     /**
      * Get Map
-     * @return Map < String, SkillInfo > 
+     * @return Map < A, B > 
      */
     public Map < A, B > getMap(){
         addListElement(requiredSkill);
@@ -57,7 +60,7 @@ public class RequiredSkill < A, B > extends AGenericRequiredItem {
     
     /**
      * Get List
-     * @return List < SkillInfo >
+     * @return List < A >
      */
     public List < A > getList(){
         convertToList(requiredSkill.getItemRecursions());

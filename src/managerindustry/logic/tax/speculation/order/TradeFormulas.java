@@ -3,28 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.tax.speculation.formulas;
+package managerindustry.logic.tax.speculation.order;
 
+import managerindustry.logic.generic.fatherClass.SkillInfo;
 import managerindustry.logic.manager.Manager;
+import managerindustry.logic.skill.skillProduction.logic.ProductionFormulas;
+import managerindustry.logic.skill.skillProduction.SkillProduction;
 import managerindustry.logic.skill.skillProduction.logic.specificSkill.BrokerFee;
 import managerindustry.logic.standing.Standing;
 
 /**
- *
+ * https://support.eveonline.com/hc/en-us/articles/203218962-Broker-Fee-and-Sales-Tax
+ * 
+ * Sale Tax Accounting" skill
+ * Broker Fee Broker Relations skill
+ * 3% - (0.1% * BrokerRelationsLevel ) - (0.03% * FactionStanding ) - (0.02% * CorpStanding)
  * @author lele
  */
-public class TradeFormulas extends FormulasSkill{
+public class TradeFormulas {
     private float initTax;
     private float initTaxCorparationStanding;
     private float reduceFeePerLevel;
     private float factionStandingTax;
-
-    public TradeFormulas() {
-
-    }
-
+    
+    // Broker Relations skill
     /**
-     * Calculate Broker Fee - Broker Relations skill
+     * Calculate Broker Fee 
      * @param int brokerRelationsLevel
      * @param String station
      * @return float
@@ -35,7 +39,8 @@ public class TradeFormulas extends FormulasSkill{
 //        float reduceFeePerLevel = 0.001f; // valueFloat
 //        float factionStandingTax = 0.0003f;
         
-        initBrokerFee();
+        initBokerFee();
+
 
         Standing standing = new Standing(station);
                 
@@ -47,13 +52,11 @@ public class TradeFormulas extends FormulasSkill{
     }
     
     /**
-     * @deprecated 
-     * non va query disabilitata, da rifare skill, 
-     * lo so float non va da nessuna parte era per aggirare l'errore
+     * 
      */
-    private void initBrokerFee(){
+    private void initBokerFee(){
         BrokerFee brokerFee = 
-            ( BrokerFee ) Manager.getInstance().game().skillProduction().getSkillMap("Broker Relations");
+            (BrokerFee) Manager.getInstance().game().skillProduction().getSkillMap("Broker Relations");
         
         initTax = brokerFee.getStartingValue(); // 0.03f;  // starting value
         initTaxCorparationStanding =  brokerFee.getInitTaxCorparationStanding();  // 0.0002f;
@@ -63,21 +66,28 @@ public class TradeFormulas extends FormulasSkill{
     
     // 
     /**
+     * @deprecated 
      * Calculate Sale Tax
      * @param byte levelSkill
      * @return float
      * Accounting" skill.
      */
     public float calculateSaleTax(byte levelSkill){
+        ProductionFormulas productionFormulas = new ProductionFormulas();
         float saleTransactionStart = 0.02f; // starting value
         float reducedPrice = 0.01f; // valueFloat  
         
-//        Skill_OLD skill = Skill_OLD.getInstance().getSkillMap("Accounting");
-//        
-//        float saleTransactionStart = skill.getStartingValue(); // starting value
-//        float reducedPrice = skill.getValueFloat(); // valueFloat  
+//        SkillProduction skillProduction = new SkillProduction();
+//                
+//                skillProduction.getSkillMap("Accounting");
+//
+//        float saleTransactionStart = skillProduction.getStartingValue(); // starting value
+//        float reducedPrice = skillProduction.getValueFloat(); // valueFloat  
         
-        float result = saleTransactionStart * calculateLevelPerSkill(levelSkill, reducedPrice );
+        float result = 
+            saleTransactionStart * productionFormulas.calculateLevelPerSkill(
+            levelSkill, reducedPrice );
+        
         return result;
-    }    
+    }
 }

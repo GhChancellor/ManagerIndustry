@@ -50,7 +50,7 @@ public class RequiredMaterial < A, B > extends AGenericRequiredItem{
     
     /**
      * Get Map
-     * @return Map < String, NameBase >
+     * @return Map < A, B >
      */
     public Map < A, B > getMap(){
         addListElement(requiredMaterial);
@@ -59,7 +59,7 @@ public class RequiredMaterial < A, B > extends AGenericRequiredItem{
     
     /**
      * Get List
-     * @return List < NameBase >
+     * @return List < A >
      */
     public List < A > getList(){
         convertToList(requiredMaterial.getItemRecursions());

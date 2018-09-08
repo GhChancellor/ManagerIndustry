@@ -1,0 +1,53 @@
+    public DisplaySpeculation() {
+        int numberItem = 2;
+        SellOrder sellOrder = 
+            new SellOrder((byte) 5,(byte)  5, "station", numberItem, 100000);
+        
+        BuyOrder buyOrder = new BuyOrder((byte) 5, "station", numberItem, 90000);
+
+        displaySellOrder(sellOrder);
+        
+        displayBuyOrder(buyOrder);
+
+        speculationByBuyOrder(sellOrder, buyOrder);
+        
+        displaySpeculationByBuyOrder(
+            sellOrder.getTotalPriceWithTax(), buyOrder.getTotalPriceWithTax());
+        
+        sellOrder = new SellOrder((byte) 5,(byte)  5, "station", numberItem, 90000);
+        
+        speculationBySellOrder(sellOrder, 100000);
+        
+        displaySpeculationBySellOrder(sellOrder);
+    } 
+
+    VECCHIO speculation_OLD RISULTATO
+
+Sell order:
+Number items 2 - ItemSellPrice 100000.0
+Free tax Items 200000.0
+Broker Fee ISK
+BrokerFeeIskPerItems 4530.4 - BrokerFeeIskPerItem 2265.2
+Sale tax
+ItemTax_SaleTax 1000.0 - getItemsTax_SaleTax 2000.0
+Total Tax per Item 3265.2 - Total Tax per Items 6530.4
+TotalPriceWithTax 193469.6 - TotalPriceWithoutTax 200000.0
+
+Buy order:
+Number items 2 - ItemSellPrice 90000.0
+Free tax Items 180000.0
+Broker Fee ISK
+BrokerFeeIskPerItems 4077.37 - BrokerFeeIskPerItem 2038.68
+Total Tax per Item 92038.68
+TotalPriceWithTax 184077.38 - TotalPriceWithoutTax 180000.0
+
+Speculation By Buy Order:
+Profit 9392.219 - Min sell 95303.88 - TotalPriceWithTaxSellOrder 193469.6
+TotalPriceWithTaxBuyOrder184077.38 - Total Investment 190607.78
+
+Speculation By Sell Order:
+Numer Item 2 - SellerPrice 90000.0 - My Price 100000.0 - Free tax 180000.0
+Min sell 92938.68 - Gain item 7061.3203
+Total gain 14122.641 - Total Investment 185877.38
+
+Total Investment ha dei problemi con il secondo decimale

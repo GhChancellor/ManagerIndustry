@@ -7,7 +7,6 @@ package managerindustry.logic.generic.genericRequiredItem.requiredMaterial;
 
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.generic.fatherClass.NameBase;
 
 /**
  *
