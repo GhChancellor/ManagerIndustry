@@ -15,7 +15,7 @@ import managerindustry.logic.generic.fatherClass.BuildItem;
 import managerindustry.logic.build.buildItem.BuildItemRequired_Init;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.itemcost.DisplayItemCost;
-import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCostBase;
+import managerindustry.logic.generic.fatherClass.ItemCostBase;
 import managerindustry.logic.solarSystem.SolarSystem;
 
 /**

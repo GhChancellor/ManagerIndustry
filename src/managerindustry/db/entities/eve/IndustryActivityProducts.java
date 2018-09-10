@@ -18,10 +18,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * The outputs from a blueprints, with its various activities. 
- * Handy, when you want to be able to determine what is invented from what. 
- * Also includes the number of items created in a batch, or the number of runs 
- * from invention and reverse engineering.
+ *
  * @author lele
  */
 @Entity
@@ -34,11 +31,17 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "IndustryActivityProducts.findByProductTypeID", query = "SELECT i FROM IndustryActivityProducts i WHERE i.productTypeID = :productTypeID")
     , @NamedQuery(name = "IndustryActivityProducts.findByQuantity", query = "SELECT i FROM IndustryActivityProducts i WHERE i.quantity = :quantity")
     , @NamedQuery(name = "IndustryActivityProducts.findByFakeID", query = "SELECT i FROM IndustryActivityProducts i WHERE i.fakeID = :fakeID")
-      
-      // Get Industry Activity Products By ID and activityID
-    , @NamedQuery(name = "IndustryActivityProducts.findByTypeID_ActivityID", 
+      // Get ProductTypeID and quantity By ID and activityID
+      // From scimitar ( ship ) to scimitar blueprint  
+    , @NamedQuery(name = "IndustryActivityProducts.findProductTypeID_ByTypeID_ActivityID", 
         query = "SELECT i FROM IndustryActivityProducts i WHERE i.typeID = :typeID and i.activityID = :activityID")
+      
+    // Get typeID and quantity By productTypeID and activityID  
+    // From scimitar blueprint to scimitar ( ship )    
+    , @NamedQuery(name = "IndustryActivityProducts.findTypeID_ByProductTypeID_ByActivityID", 
+        query = "SELECT i FROM IndustryActivityProducts i WHERE i.productTypeID = :productTypeID and i.activityID = :activityID")
 })
+
 
 public class IndustryActivityProducts implements Serializable {
 
@@ -126,7 +129,7 @@ public class IndustryActivityProducts implements Serializable {
 
     @Override
     public String toString() {
-        return "managerindustry.db.entities.IndustryActivityProducts[ fakeID=" + fakeID + " ]";
+        return "managerindustry.db.entities.eve.IndustryActivityProducts[ fakeID=" + fakeID + " ]";
     }
     
 }

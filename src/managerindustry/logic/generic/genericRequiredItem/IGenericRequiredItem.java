@@ -21,7 +21,7 @@ public interface IGenericRequiredItem < A, B, C > {
     public A getObject();
     public void display();
     
-    public void convertToMap(Map <A,B> a);
-    public void convertToList(List <A> a);
+    public void convertToMap(Map < A, B > a);
+    public void convertToList(List < A > a);
         
 }

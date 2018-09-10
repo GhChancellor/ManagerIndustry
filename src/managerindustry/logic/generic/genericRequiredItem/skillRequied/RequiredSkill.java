@@ -36,10 +36,12 @@ public class RequiredSkill < A, B > extends AGenericRequiredItem {
      */
     private void displayRequiredSkill( SkillInfo requiredSkillA, String tab){ 
         if (requiredSkillA.getTypeID() != null){
-            System.out.println("" + 
-                requiredSkillA.getTypeID() + " " +
-                requiredSkillA.getRequiredSkillLevel() + " " +
-                requiredSkillA.getValueInt() );            
+            System.out.println(requiredSkillA.getTypeID() + " " +
+                requiredSkillA.getTypeName() + ": " +
+                requiredSkillA.getRequireSkillNameLevel() + " " +
+                requiredSkillA.getValueInt() + " " +
+                requiredSkillA.getRequiredSkillLevel() );            
+                
         }
 
         tab += " ";

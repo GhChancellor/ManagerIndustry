@@ -16,7 +16,7 @@ public class SkillInfo extends ItemRecursion {
     private Integer typeID;
     private Integer valueInt;
     private Integer requiredSkillLevel;
-
+    private String requireSkillNameLevel;
     private Float valueFloat;
     private String description;
     private String typeName;
@@ -30,15 +30,21 @@ public class SkillInfo extends ItemRecursion {
     /**
      * Skill Info used from SkillRequired_Logic
      * @param Integer typeID 
+     * @param String typeName
      * @param Integer childSkill
-     * @param Integer requiredSkillLevel 
-     */
-    public SkillInfo(Integer typeID, Integer childSkill, Integer requiredSkillLevel) {
+     * @param String requireSkillNameLevel
+     * @param Integer requiredSkillLevel      
+     */    
+    public SkillInfo(Integer typeID, String typeName, Integer childSkill, 
+        String requireSkillNameLevel, Integer requiredSkillLevel) {
+        
         this.typeID = typeID;
+        this.typeName = typeName;
         this.valueInt = childSkill;
+        this.requireSkillNameLevel = requireSkillNameLevel;
         this.requiredSkillLevel = requiredSkillLevel;
     }
-
+    
     /**
      * Skill Info used from SkillProduction, InvTypes.findByTypeId-Published-AttributeID 
      * SELECT NEW managerindustry.logic.generic.fatherClass.SkillInfo
@@ -163,5 +169,21 @@ public class SkillInfo extends ItemRecursion {
     public void setStartingValue(float startingValue) {
         this.startingValue = startingValue;
     }        
+
+    /**
+     * Get Require Skill Name Level
+     * @return String
+     */
+    public String getRequireSkillNameLevel() {
+        return requireSkillNameLevel;
+    }
+
+    /**
+     * Set Require Skill Name Level
+     * @param String requireSkillNameLevel 
+     */
+    public void setRequireSkillNameLevel(String requireSkillNameLevel) {
+        this.requireSkillNameLevel = requireSkillNameLevel;
+    }
     
 }

@@ -45,6 +45,7 @@ public class BuildItemRequired_Init extends RequiredMaterialGeneric{
     }
 
     /**
+     * @deprecated 
      * Get List
      * @return List < NameBase >
      */    

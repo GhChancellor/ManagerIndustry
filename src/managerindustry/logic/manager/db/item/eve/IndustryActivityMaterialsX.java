@@ -39,6 +39,9 @@ public class IndustryActivityMaterialsX {
             materialsTQ.setParameter("typeID", typeID);
             materialsTQ.setParameter("activityID", activitiesEnum.getCode());
             
+            if (materialsTQ.getResultList().isEmpty())
+                return new ArrayList<>();
+            
             return materialsTQ.getResultList();
         } catch (Exception e) {
             e.printStackTrace();

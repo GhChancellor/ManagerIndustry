@@ -58,6 +58,7 @@ public class RequiredMaterial < A, B > extends AGenericRequiredItem{
     }
     
     /**
+     * @deprecated 
      * Get List
      * @return List < A >
      */

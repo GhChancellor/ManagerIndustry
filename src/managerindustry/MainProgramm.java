@@ -28,7 +28,7 @@ import managerindustry.logic.build.buildItem.BuildItemRequired_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCost;
-import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCostBase;
+import managerindustry.logic.generic.fatherClass.ItemCostBase;
 import managerindustry.logic.prove.immondizia.Immondizia_001;
 import managerindustry.logic.skill.requiredSkill.SkillRequired_Init;
 
@@ -41,11 +41,13 @@ public class MainProgramm {
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
         buildItemV6();
 //        basicMaterial();
-//        jobInstallationFeeV2();
-//        requiredSkill();
+//        jobInstallationFeeV2(); 
+//        speculation();
+//       requiredSkill();
+
+// ----------------------------------------
 //        recursionItems();
 //        structure();
-//        speculation();
 //        immondizia();
 //        old();
     }
@@ -98,12 +100,32 @@ public class MainProgramm {
     }
     
     public static void requiredSkill(){
-        String item = "Scimitar blueprint";
-        
+//        String item = "Advanced Medium Ship Construction";
+        String item = "nanite engineering";
+
         int typeID = Manager.getInstance().db().item().invTypes().getInvTypesByName(item).getTypeID();   
         
-        SkillRequired_Init required_Init = new SkillRequired_Init(3397);
-        required_Init.display();
+        SkillRequired_Init required_Init = new SkillRequired_Init(typeID);
+        required_Init.display();        
+
+        
+//        BuildItem buildItem = new BuildItem("scimitar",  1,  0, (byte) 0, (byte) 0);
+//        
+//        try {
+//            BuildItemRequired_Init buildItemRequired = 
+//                new BuildItemRequired_Init(buildItem, RamActivitiesEnum.MANUFACTURING);
+//
+//            SkillRequired_Init required_Init = new SkillRequired_Init(
+//                required_Init. );            
+//            required_Init.display();
+//        } catch (ErrorExeption e) {
+//            System.out.println(""+ e.getErrorEnum());
+//        }  
+        
+        
+        
+        
+
         // 11979
         
     }
@@ -136,7 +158,7 @@ public class MainProgramm {
     
     public static void buildItemV6() {
         //                                   bpoName   run job   bpoME    componentMe
-        BuildItem buildItem = new BuildItem("scimitar",  1,  0, (byte) 0, (byte) 0);
+        BuildItem buildItem = new BuildItem("scimitar",  1,  1, (byte) 0, (byte) 0);
         
         try {
             BuildItemRequired_Init buildItemRequired = 
@@ -164,7 +186,7 @@ public class MainProgramm {
      */
     public static void old(){
         System.out.println("*****************************************************************************\n");
-//        buildItem_OLD(); // << controllare
+        buildItem_OLD(); // << controllare
 //        jobInstallationFee_OLD(); // << controllare funziona male
     }         
     
@@ -177,7 +199,7 @@ public class MainProgramm {
         //  drake
         // 	Tritanium 2500001 -> 2500001
 	// Pyerite 612071 -> 612071
-        Build_OLD managerBuild = new Build_OLD("scimitar", 9,  8, (byte)7, (byte) 6);         
+        Build_OLD managerBuild = new Build_OLD("scimitar", 1,  1, (byte) 0, (byte) 0);         
     }
      
     /**

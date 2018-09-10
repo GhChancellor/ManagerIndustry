@@ -23,20 +23,25 @@ public class IndustryActivityProductsX {
     }
     
     /**
-     * Get Industry Activity Products By ID and activityID
+     * Get ProductTypeID and quantity from typeID 
+     * From scimitar ( ship ) to scimitar blueprint 
      * @param int typeID
      * @param RamActivitiesEnum ramActivitiesEnum
      * @return IndustryActivityProducts
      */
-    public IndustryActivityProducts getIndustryActivityProductsByID(int typeID, RamActivitiesEnum ramActivitiesEnum){
+    public IndustryActivityProducts getProductTypeID_ByTypeID_ByActivityID(
+            int typeID, RamActivitiesEnum ramActivitiesEnum){
         try {
             TypedQuery < IndustryActivityProducts > typedQuery = 
-                entityManager.createNamedQuery("IndustryActivityProducts.findByTypeID_ActivityID", IndustryActivityProducts.class);
+                entityManager.createNamedQuery(
+                "IndustryActivityProducts.findProductTypeID_ByTypeID_ActivityID", 
+                IndustryActivityProducts.class);
             
             typedQuery.setParameter("typeID", typeID);
             typedQuery.setParameter("activityID", ramActivitiesEnum.getCode());
             
-            List< IndustryActivityProducts > industryActivityProducts = typedQuery.getResultList();
+            List< IndustryActivityProducts > industryActivityProducts = 
+                typedQuery.getResultList();
             
             if (industryActivityProducts.isEmpty()){
                 return null;
@@ -49,4 +54,39 @@ public class IndustryActivityProductsX {
             return null;
         }
     }
+    
+    /**
+     * Get typeID and quantity By productTypeID and activityID
+     * From scimitar blueprint to scimitar ( ship )
+     * @param int productTypeID
+     * @param RamActivitiesEnum ramActivitiesEnum
+     * @return IndustryActivityProducts
+     */
+    public IndustryActivityProducts getTypeID_ByProductId_ByActivityId(
+            int typeID, RamActivitiesEnum ramActivitiesEnum){
+        try {
+            TypedQuery < IndustryActivityProducts > typedQuery = 
+                entityManager.createNamedQuery(
+                "IndustryActivityProducts.findTypeID_ByProductTypeID_ByActivityID", 
+                IndustryActivityProducts.class);
+            
+            typedQuery.setParameter("productTypeID", typeID);
+            typedQuery.setParameter("activityID", ramActivitiesEnum.getCode());
+            
+            List< IndustryActivityProducts > industryActivityProducts = 
+                typedQuery.getResultList();
+            
+            if (industryActivityProducts.isEmpty()){
+                return null;
+            }else{
+                return industryActivityProducts.get(0);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    
 }

@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.tax.itemcost.logic.ItemCost;
 
+import managerindustry.logic.generic.fatherClass.ItemCostBase;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.itemcost.logic.baseJobCost.BaseJobCost;

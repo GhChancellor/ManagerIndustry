@@ -78,6 +78,15 @@ public abstract class AGenericRequiredItem < A, B > implements IGenericRequiredI
         return Manager.getInstance().db().item().invTypes().getInvTypesByName(bpoName);
     }    
     
+    /**
+     * Get Inv Types By Id
+     * @param typeID
+     * @return InvTypes
+     */
+    public InvTypes getInvTypesById(int typeID){
+        return Manager.getInstance().db().item().invTypes().getInvTypesById(typeID);
+    }
+    
    @Override
     public void requiredItem(Object a1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -20,8 +20,8 @@ public class SkillRequired_Init extends RequiredSkillGeneric{
     public SkillRequired_Init() {
     }
     
-    public SkillRequired_Init(int typeID) {
-        this.skillRequiredLogic = new SkillRequired_Logic(typeID);
+    public SkillRequired_Init(int typeId) {
+        this.skillRequiredLogic = new SkillRequired_Logic(typeId);
     }
     
     @Override

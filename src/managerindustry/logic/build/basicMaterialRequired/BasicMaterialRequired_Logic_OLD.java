@@ -20,14 +20,14 @@ import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.Requir
  *
  * @author lele
  */
-public class BasicMaterialRequired_Logic extends RequiredMaterial{
+public class BasicMaterialRequired_Logic_OLD extends RequiredMaterial{
     private RamActivitiesEnum activitiesEnum;
     
     /**
      * Basic Material Required Logic
      * @param String bpoName     
      */    
-    public BasicMaterialRequired_Logic(String bpoName,
+    public BasicMaterialRequired_Logic_OLD(String bpoName,
             RamActivitiesEnum activitiesEnum) throws ErrorExeption {      
         this.activitiesEnum = activitiesEnum;
         
@@ -50,7 +50,7 @@ public class BasicMaterialRequired_Logic extends RequiredMaterial{
         if ( invTypes == null )
             throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.ITEM_NOT_EXITS);
         
-        // typeId From ProductTypeID ( "scyhte" + " blueprint" )
+        // typeId From ProductTypeID
         IndustryActivityProducts typeIdFromProductTypeID = 
             getTypeIdFromProductTypeID(invTypes);
         
@@ -109,18 +109,6 @@ public class BasicMaterialRequired_Logic extends RequiredMaterial{
         }    
     }
     
-    private void item(InvTypes invTypes, 
-        IndustryActivityMaterials material, Object requiredA){
-        NameBase requiredItemsRecursionA = 
-            (NameBase) requiredItemMoreInfo(invTypes, material);
-
-        ((NameBase) requiredA).addItemRecursions(requiredItemsRecursionA);        
-    }        
-    
-    private void skill(){
-        
-    }
-        
     /**
      * Only for dbg, use this for more info on object
      * @param InvTypes invTypes_
@@ -164,26 +152,3 @@ public class BasicMaterialRequired_Logic extends RequiredMaterial{
     }    
     
 }
-
-/*
-  SELECT * FROM industryActivityMaterials where industryActivityMaterials.activityID=1 and
-  	industryActivityMaterials.typeID=11979;
-  
-  -- from scythe blueprint to scythe ship
-  SELECT * FROM industryActivityProducts where industryActivityProducts.activityID=1 and
-  	industryActivityProducts.typeID=11979;
-    
-  SELECT * FROM industryActivitySkills WHERE industryActivitySkills.activityID=1 AND
-    industryActivitySkills.typeID=11979;
-
-  SELECT * FROM dgmTypeAttributes, dgmAttributeTypes where 
-    dgmTypeAttributes.attributeID = dgmAttributeTypes.attributeID AND
-    dgmTypeAttributes.typeID=3397; -- 3397
-    
-  SELECT * FROM dgmTypeAttributes, dgmAttributeTypes where 
-    dgmTypeAttributes.attributeID = dgmAttributeTypes.attributeID AND
-    dgmTypeAttributes.typeID=3392; -- 3397
-
-SELECT * FROM invTypes WHERE invTypes.typeID=11979;
-SELECT * FROM invTypes WHERE invTypes.typeName="Advanced medium ship construction";
-*/
