@@ -31,7 +31,14 @@ public class BasicMaterialRequired_Logic extends RequiredMaterial{
             RamActivitiesEnum activitiesEnum) throws ErrorExeption {      
         this.activitiesEnum = activitiesEnum;
         
-        requiredItem( getMaterials(bpoName), requiredMaterial);        
+        // id of item
+        InvTypes invTypes = getInvTypesByName(bpoName);
+        
+        // Item not exits
+        if ( invTypes == null )
+            throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.ITEM_NOT_EXITS);        
+        
+        requiredItem( getMaterials(invTypes), requiredMaterial);        
     } 
 
     /**
@@ -40,43 +47,28 @@ public class BasicMaterialRequired_Logic extends RequiredMaterial{
      * @return List< IndustryActivityMaterials >
      * @throws ErrorExeption 
      */
-    private List< IndustryActivityMaterials > getMaterials (String bpoName) 
-            throws ErrorExeption{
-        
-        // id of item
-        InvTypes invTypes = getInvTypesByName(bpoName);
-        
-        // Item not exits
-        if ( invTypes == null )
-            throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.ITEM_NOT_EXITS);
-        
-        // typeId From ProductTypeID ( "scyhte" + " blueprint" )
+    private List< IndustryActivityMaterials > getMaterials (InvTypes invTypes){
+ 
+        // typeId From ProductTypeID
         IndustryActivityProducts typeIdFromProductTypeID = 
-            getTypeIdFromProductTypeID(invTypes);
+            getTypeIdFromProductTypeID(invTypes.getTypeID(), activitiesEnum);
         
-        // list material to build an item
-        List< IndustryActivityMaterials > materials = 
-            Manager.getInstance().db().item().industryActivityMaterials().
-            getMaterialsID(typeIdFromProductTypeID.getTypeID(), activitiesEnum);        
+        if ( typeIdFromProductTypeID == null)
+            return new ArrayList<>();
         
-        return materials;
+        return getMaterialsID_(typeIdFromProductTypeID.getTypeID());
     }
     
     /**
-     * 
-     * @param InvTypes invTypes     
-     * @return List< IndustryActivityMaterials>
+     * @deprecated trova un nome
+     * getMaterialsID_
+     * @param int typeID
+     * @return List< IndustryActivityMaterials >
      */
-    private List< IndustryActivityMaterials> getNeededComponents(
-            InvTypes invTypes ){
-   
-        IndustryActivityProducts productTypeID = getTypeIdFromProductTypeID(invTypes);
-        if ( productTypeID == null)
-            return new ArrayList<>();
-        
+    private List< IndustryActivityMaterials > getMaterialsID_(int typeID){
         return Manager.getInstance().db().item().industryActivityMaterials().
-            getMaterialsID(productTypeID.getTypeID(), activitiesEnum );       
-    }            
+            getMaterialsID(typeID, activitiesEnum);
+    }             
             
     /**
      * Calculate Required Item
@@ -101,7 +93,7 @@ public class BasicMaterialRequired_Logic extends RequiredMaterial{
             
             // get value blueprint component if necessary
             List< IndustryActivityMaterials> neededComponents = 
-                getNeededComponents(invTypes);
+                getMaterials(invTypes);
                         
             if (neededComponents != null){
                 requiredItem(neededComponents, requiredItemsRecursionA);   
@@ -109,18 +101,6 @@ public class BasicMaterialRequired_Logic extends RequiredMaterial{
         }    
     }
     
-    private void item(InvTypes invTypes, 
-        IndustryActivityMaterials material, Object requiredA){
-        NameBase requiredItemsRecursionA = 
-            (NameBase) requiredItemMoreInfo(invTypes, material);
-
-        ((NameBase) requiredA).addItemRecursions(requiredItemsRecursionA);        
-    }        
-    
-    private void skill(){
-        
-    }
-        
     /**
      * Only for dbg, use this for more info on object
      * @param InvTypes invTypes_
@@ -139,51 +119,4 @@ public class BasicMaterialRequired_Logic extends RequiredMaterial{
         
         return nameBase;
     }     
-    
-    /**
-     * Get typeId from ProductTypeID ( from item blueprint to item )
-     * From scimitar blueprint to scimitar ( ship ) 
-     * @param InvTypes invTypes     
-     * @return IndustryActivityProducts
-     */
-    private IndustryActivityProducts getTypeIdFromProductTypeID(InvTypes invTypes){
-        
-        return Manager.getInstance().db().item().industryActivityProducts().
-            getTypeID_ByProductId_ByActivityId(invTypes.getTypeID(), activitiesEnum);
-    }
-    
-    /**
-     * Get ProductTypeID from typeID ( from item to item blueprint )
-     * From scimitar ( ship ) to scimitar blueprint
-     * @param InvTypes invTypes     
-     * @return IndustryActivityProducts
-     */
-    private IndustryActivityProducts getProductTypeID(InvTypes invTypes){        
-        return Manager.getInstance().db().item().industryActivityProducts().
-            getProductTypeID_ByTypeID_ByActivityID(invTypes.getTypeID(), activitiesEnum);
-    }    
-    
 }
-
-/*
-  SELECT * FROM industryActivityMaterials where industryActivityMaterials.activityID=1 and
-  	industryActivityMaterials.typeID=11979;
-  
-  -- from scythe blueprint to scythe ship
-  SELECT * FROM industryActivityProducts where industryActivityProducts.activityID=1 and
-  	industryActivityProducts.typeID=11979;
-    
-  SELECT * FROM industryActivitySkills WHERE industryActivitySkills.activityID=1 AND
-    industryActivitySkills.typeID=11979;
-
-  SELECT * FROM dgmTypeAttributes, dgmAttributeTypes where 
-    dgmTypeAttributes.attributeID = dgmAttributeTypes.attributeID AND
-    dgmTypeAttributes.typeID=3397; -- 3397
-    
-  SELECT * FROM dgmTypeAttributes, dgmAttributeTypes where 
-    dgmTypeAttributes.attributeID = dgmAttributeTypes.attributeID AND
-    dgmTypeAttributes.typeID=3392; -- 3397
-
-SELECT * FROM invTypes WHERE invTypes.typeID=11979;
-SELECT * FROM invTypes WHERE invTypes.typeName="Advanced medium ship construction";
-*/

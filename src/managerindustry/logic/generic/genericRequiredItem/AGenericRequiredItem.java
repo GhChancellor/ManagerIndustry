@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import managerindustry.db.entities.eve.IndustryActivityProducts;
 import managerindustry.db.entities.eve.InvTypes;
+import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.Manager;
 
 /**
@@ -86,6 +88,32 @@ public abstract class AGenericRequiredItem < A, B > implements IGenericRequiredI
     public InvTypes getInvTypesById(int typeID){
         return Manager.getInstance().db().item().invTypes().getInvTypesById(typeID);
     }
+    
+    /**
+     * Get typeId from ProductTypeID ( from item blueprint to item )
+     * From scimitar blueprint to scimitar ( ship ) 
+     * @param InvTypes invTypes     
+     * @return IndustryActivityProducts
+     */
+    public IndustryActivityProducts getTypeIdFromProductTypeID(
+            int typeID, RamActivitiesEnum activitiesEnum){
+        
+        return Manager.getInstance().db().item().industryActivityProducts().
+            getTypeID_ByProductId_ByActivityId(typeID, activitiesEnum);
+    }
+    
+    /**
+     * Get ProductTypeID from typeID ( from item to item blueprint )
+     * From scimitar ( ship ) to scimitar blueprint
+     * @param InvTypes invTypes     
+     * @return IndustryActivityProducts
+     */
+    public IndustryActivityProducts getProductTypeID(
+            int typeID, RamActivitiesEnum activitiesEnum){        
+        
+        return Manager.getInstance().db().item().industryActivityProducts().
+            getProductTypeID_ByTypeID_ByActivityID(typeID, activitiesEnum);
+    }     
     
    @Override
     public void requiredItem(Object a1) {

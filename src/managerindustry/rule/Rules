@@ -32,6 +32,20 @@
 
     --------------------------------------------------------------
 
+  -- from scythe blueprint to scythe ship
+  SELECT * FROM industryActivityProducts where industryActivityProducts.activityID=1 and
+  	industryActivityProducts.typeID=11979;
+  	
+  SELECT * FROM industryActivitySkills WHERE industryActivitySkills.activityID=1 AND
+    industryActivitySkills.typeID=11979;
+    
+  SELECT * FROM dgmTypeAttributes, dgmAttributeTypes where 
+    dgmTypeAttributes.attributeID = dgmAttributeTypes.attributeID AND
+    dgmTypeAttributes.typeID=3397; -- 3397    
+
+    --------------------------------------------------------------------
+
+
     SELECT invTypes.typeName, invTypes.description, dgmAttributeTypes.attributeID, dgmAttributeTypes.attributeName, dgmTypeAttributes.valueInt, dgmTypeAttributes.valueFloat
     FROM invTypes, dgmTypeAttributes, dgmAttributeTypes where 
     invTypes.typeID = dgmTypeAttributes.typeID and dgmTypeAttributes.attributeID = dgmAttributeTypes.attributeID and
