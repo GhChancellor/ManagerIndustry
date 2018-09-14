@@ -7,6 +7,7 @@ package managerindustry.logic.skill.requiredSkill;
 
 import java.util.List;
 import java.util.Map;
+import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.fatherClass.SkillInfo;
 import managerindustry.logic.generic.genericRequiredItem.skillRequied.RequiredSkillGeneric;
 
@@ -20,8 +21,8 @@ public class SkillRequired_Init extends RequiredSkillGeneric{
     public SkillRequired_Init() {
     }
     
-    public SkillRequired_Init(int typeId) {
-        this.skillRequiredLogic = new SkillRequired_Logic(typeId);
+    public SkillRequired_Init(int typeId, RamActivitiesEnum activitiesEnum) {
+        this.skillRequiredLogic = new SkillRequired_Logic(typeId, activitiesEnum);
     }
     
     @Override

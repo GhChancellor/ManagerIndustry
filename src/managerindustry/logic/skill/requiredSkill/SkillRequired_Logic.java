@@ -9,6 +9,8 @@ import managerindustry.logic.generic.genericRequiredItem.skillRequied.RequiredSk
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.db.entities.eve.DgmTypeAttributes;
+import managerindustry.db.entities.eve.IndustryActivitySkills;
+import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.generic.fatherClass.SkillInfo;
 import managerindustry.logic.manager.Manager;
@@ -47,15 +49,31 @@ public class SkillRequired_Logic extends RequiredSkill{
 
     private NameBase pharseSkill = new NameBase();
     
-    public SkillRequired_Logic(int i){
-        List<SkillInfo> skillInfos = getSkillAttribute(i);
-        requiredItem(skillInfos, requiredSkill);
+    public SkillRequired_Logic(int i, RamActivitiesEnum activitiesEnum ){
+        List<IndustryActivitySkills> requiredSkill_ = getRequiredSkill(i, activitiesEnum);    
+        
+        for (IndustryActivitySkills industryActivitySkills : requiredSkill_) {
+            List<SkillInfo> skillInfos = getSkillAttribute(industryActivitySkills.getSkillID());            
+            requiredItem(skillInfos, requiredSkill); 
+        }
     }   
-     
+    
+    /**
+     * Get Required Skill
+     * @param int typeID
+     * @param RamActivitiesEnum activitiesEnum
+     * @return 
+     */
+    private List < IndustryActivitySkills > getRequiredSkill(
+        int typeID, RamActivitiesEnum activitiesEnum){
+        return Manager.getInstance().db().item().industryActivitySkills().
+            getRequiredSkill(typeID, activitiesEnum);
+    }
+    
     /**
      * Required Item
-     * @param Object skillInfos
-     * @param Object skillInfo 
+     * @param List<SkillInfo>  skillInfos
+     * @param SkillInfo skillInfo 
      */
     @Override
     public void requiredItem(Object skillInfos, Object skillInfoA) {

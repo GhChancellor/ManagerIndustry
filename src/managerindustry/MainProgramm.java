@@ -39,11 +39,11 @@ import managerindustry.logic.skill.requiredSkill.SkillRequired_Init;
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
-        buildItemV6();
+//        buildItemV6();
 //        basicMaterial();
 //        jobInstallationFeeV2(); 
 //        speculation();
-//       requiredSkill();
+       requiredSkill();
 
 // ----------------------------------------
 //        recursionItems();
@@ -100,34 +100,18 @@ public class MainProgramm {
     }
     
     public static void requiredSkill(){
-//        String item = "Advanced Medium Ship Construction";
-        String item = "nanite engineering";
+        BuildItem buildItem = new BuildItem("scimitar",  1,  0, (byte) 0, (byte) 0);
+        
+        try {
+            BuildItemRequired_Init buildItemRequired = 
+                new BuildItemRequired_Init(buildItem, RamActivitiesEnum.MANUFACTURING);
 
-        int typeID = Manager.getInstance().db().item().invTypes().getInvTypesByName(item).getTypeID();   
-        
-        SkillRequired_Init required_Init = new SkillRequired_Init(typeID);
-        required_Init.display();        
-
-        
-//        BuildItem buildItem = new BuildItem("scimitar",  1,  0, (byte) 0, (byte) 0);
-//        
-//        try {
-//            BuildItemRequired_Init buildItemRequired = 
-//                new BuildItemRequired_Init(buildItem, RamActivitiesEnum.MANUFACTURING);
-//
-//            SkillRequired_Init required_Init = new SkillRequired_Init(
-//                required_Init. );            
-//            required_Init.display();
-//        } catch (ErrorExeption e) {
-//            System.out.println(""+ e.getErrorEnum());
-//        }  
-        
-        
-        
-        
-
-        // 11979
-        
+            SkillRequired_Init required_Init = new SkillRequired_Init(
+                     );            
+            required_Init.display();
+        } catch (ErrorExeption e) {
+            System.out.println(""+ e.getErrorEnum());
+        }         
     }
     
     public static void structure() throws ErrorExeption{

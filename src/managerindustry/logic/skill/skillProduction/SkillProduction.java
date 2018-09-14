@@ -5,11 +5,11 @@
  */
 package managerindustry.logic.skill.skillProduction;
 
+import managerindustry.logic.skill.skillProduction.logic.specificSkill.BrokerFee;
 import java.util.HashMap;
 import java.util.Map;
 import managerindustry.logic.generic.fatherClass.SkillInfo;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.skill.skillProduction.logic.specificSkill.BrokerFee;
 
 /**
  * @deprecated 

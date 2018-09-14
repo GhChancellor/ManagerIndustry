@@ -35,10 +35,12 @@
   -- from scythe blueprint to scythe ship
   SELECT * FROM industryActivityProducts where industryActivityProducts.activityID=1 and
   	industryActivityProducts.typeID=11979;
-  	
+  
+  -- get all skills
   SELECT * FROM industryActivitySkills WHERE industryActivitySkills.activityID=1 AND
     industryActivitySkills.typeID=11979;
     
+  -- value skills
   SELECT * FROM dgmTypeAttributes, dgmAttributeTypes where 
     dgmTypeAttributes.attributeID = dgmAttributeTypes.attributeID AND
     dgmTypeAttributes.typeID=3397; -- 3397    

@@ -28,7 +28,7 @@ public class IndustryActivitySkillsX {
      * @param ramActivitiesEnum
      * @return IndustryActivitySkills
      */
-    public List < IndustryActivitySkills > getRequiredSkill( int typeID, RamActivitiesEnum activitiesEnum){
+    public List < IndustryActivitySkills > getRequiredSkill( int typeID, RamActivitiesEnum activitiesEnum ){
         try {
             TypedQuery < IndustryActivitySkills > requiredSkill = 
              entityManager.createNamedQuery("IndustryActivitySkills.findByTypeID", IndustryActivitySkills.class);
@@ -42,6 +42,4 @@ public class IndustryActivitySkillsX {
             return null;
         }
     }  
-
 }
-//     private EntityManager entityManager;

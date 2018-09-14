@@ -5,10 +5,8 @@
  */
 package managerindustry.logic.tax.speculation.order;
 
-import managerindustry.logic.generic.fatherClass.SkillInfo;
 import managerindustry.logic.manager.Manager;
 import managerindustry.logic.skill.skillProduction.logic.ProductionFormulas;
-import managerindustry.logic.skill.skillProduction.SkillProduction;
 import managerindustry.logic.skill.skillProduction.logic.specificSkill.BrokerFee;
 import managerindustry.logic.standing.Standing;
 

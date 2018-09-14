@@ -40,7 +40,9 @@ public class RigRecusionLogic extends AGenericRequiredItem{
     
     @Override
     public void requiredItem(Object code, Object excludeCode) {
-        List<InvMarketGroups> parentGroupIDs = Manager.getInstance().db().item().invMarketGroups().getMarketGroupID( ( int ) code);
+        List<InvMarketGroups> parentGroupIDs = 
+            Manager.getInstance().db().item().invMarketGroups().getMarketGroupID( ( int ) code);
+        
         RigMarketGroup rigMarketGroupRecursion = new RigMarketGroup();
         
         // Exclude some branches
@@ -143,12 +145,7 @@ public class RigRecusionLogic extends AGenericRequiredItem{
     }
 
     /**
-     * @deprecated 
      * Display Rig Market Group Recursion
-     * modificare entity 
-     * List<InvTypes> parentGroupID = Manager.getInstance().db().item().
-            invTypes().getMarketGroupID(rigMarketGroupRecursion.getMarketGroupID(), true); 
-     * 
      * @param RigMarketGroupRecursion rigMarketGroupRecursion rigMarketGroupRecursion
      * @param String tab 
      */

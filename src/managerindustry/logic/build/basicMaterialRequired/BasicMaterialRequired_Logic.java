@@ -26,6 +26,8 @@ public class BasicMaterialRequired_Logic extends RequiredMaterial{
     /**
      * Basic Material Required Logic
      * @param String bpoName     
+     * @param RamActivitiesEnum activitiesEnum
+     * @exception ErrorExeption
      */    
     public BasicMaterialRequired_Logic(String bpoName,
             RamActivitiesEnum activitiesEnum) throws ErrorExeption {      
