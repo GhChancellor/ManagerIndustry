@@ -6,32 +6,14 @@
 package managerindustry.logic.generic.efficiency.materialEfficiency;
 
 import managerindustry.logic.generic.efficiency.materialEfficiency.MaterialEfficiency;
+import managerindustry.logic.generic.fatherClass.NameBase;
 
 /**
  * Calculate material Efficiency
  * @author lele
  */
-public class MaterialEfficiencyCalculate {
-    private static final float platformModifier = 1;    
-    private int singleItemMaterial;
-    private double totalItemsMaterials;
-  
-    /**
-     * Get Single Item Material
-     * @return int
-     */
-    public int getSingleItemMaterial(){
-        return singleItemMaterial;
-    }
+public class MaterialEfficiencyCalculate extends NameBase{
     
-    /**
-     * Get Total Item Material
-     * @return float
-     */
-    public double getTotalItemsMaterials(){
-        return totalItemsMaterials;
-    }
-
     /**
      * Init - Calculate Material Efficiency
      * job * Math.ceil( ((quantityBaseMarial * run) * materialEfficiencyRate) * platformModifier );
@@ -39,28 +21,33 @@ public class MaterialEfficiencyCalculate {
      * @param int job
      * @byte int bpoME or componentMe 
      * @param int quantityBaseMarial 
-     */
-    public MaterialEfficiencyCalculate( int run, int job, byte bpoME, int quantityBaseMarial ) {
-        double materialEfficiencyRate = new MaterialEfficiency(bpoME).getRateBpo();
-                
-//        // quando il valore è 1 non si fanno calcoli su ME
-//        // WHen value is 1 not calculated ME
-        if ( quantityBaseMarial == 1 ){
-            singleItemMaterial = quantityBaseMarial;
-            totalItemsMaterials = job * singleItemMaterial * run;
+     */    
+    public MaterialEfficiencyCalculate( float run, int job, byte bpoME, 
+            int baseQuantityMarial ) {
+        
+        float materialEfficiencyRate = new MaterialEfficiency(bpoME).getRateBpo();
+
+        baseQuantity = baseQuantityMarial;
+        /*
+         quando il valore è 1 non si fanno calcoli su ME
+         WHen value is 1 not calculated ME        
+        */
+        if ( baseQuantityMarial == 1 ){
+            singleItemQuantity = baseQuantity;
+            totalItemsQuantity = job * singleItemQuantity * run;
             return;
         }
-        
-        // Calculate ME by One Object
-        Double itemMaterialDbl = Math.ceil(quantityBaseMarial * materialEfficiencyRate * platformModifier);
-        singleItemMaterial = itemMaterialDbl.intValue();
-        
-        // Calculate ME all items
-        itemMaterialDbl = job * Math.ceil( ((quantityBaseMarial * run) * materialEfficiencyRate) * platformModifier );
-        totalItemsMaterials = itemMaterialDbl;        
+
+//        // Calculate ME by One Object       
+        singleItemQuantity = 
+            ( int ) Math.ceil(baseQuantity * materialEfficiencyRate );
+
+//      // Calculate ME all items
+        totalItemsQuantity = 
+            ( float ) ( job * Math.ceil( ((baseQuantity * run) * materialEfficiencyRate) ) );            
     }
 
     public MaterialEfficiencyCalculate() {
     }
-    
+        
 }

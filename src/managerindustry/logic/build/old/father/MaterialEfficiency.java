@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.generic.efficiency.materialEfficiency;
-
-import managerindustry.logic.generic.fatherClass.Efficiency;
+package managerindustry.logic.build.old.father;
 
 /**
  * https://community.eveonline.com/news/dev-blogs/eve-industry-all-you-want-to-know/
@@ -26,7 +24,7 @@ public class MaterialEfficiency extends Efficiency {
      * @return float
      */
     @Override
-    protected float calculateRateBpo() {
+    protected double calculateRateBpo() {
         return getBaseValue() - ( getLevel().floatValue() / 100 )  ;
     }
     

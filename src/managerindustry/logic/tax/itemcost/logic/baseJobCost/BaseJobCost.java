@@ -65,6 +65,6 @@ public class BaseJobCost {
     private float getJobCost(NameBase nameBase) throws ErrorExeption{    
         String adjustedPrice = Manager.getInstance().db().item().price().
             getAdjustedPriceEntity( String.valueOf( nameBase.getTypeID() ) );
-        return Float.valueOf(adjustedPrice) * nameBase.getQuanityI();        
+        return Float.valueOf(adjustedPrice) * nameBase.getBaseQuantity();        
     }
 }

@@ -14,8 +14,9 @@ import managerindustry.logic.generic.fatherClass.recursion.ItemRecursion;
 public class NameBase extends ItemRecursion {
     private int typeID;
     private String typeName;
-    private int quanityI;
-    private double quanityD;
+    protected int baseQuantity;
+    protected long singleItemQuantity;
+    protected float totalItemsQuantity;
 
     /**
      * Name Base
@@ -30,49 +31,65 @@ public class NameBase extends ItemRecursion {
     /**
      * Name Base
      * @param int typeID
-     * @param int quanityI 
+     * @param int baseQuantity 
      */
-    public NameBase(int typeID, int quanityInt) {
+    public NameBase(int typeID, int baseQuantity) {
         this.typeID = typeID;
-        this.quanityI = quanityInt;
+        this.baseQuantity = baseQuantity;
     }
 
     /**
      * Name Base
      * @param int typeID
      * @param String typeName
-     * @param int quanityI 
+     * @param int baseQuantity 
      */
-    public NameBase(int typeID, String name, int quanityInt) {
+    public NameBase(int typeID, String name, int baseQuantity) {
         this.typeID = typeID;
         this.typeName = name;
-        this.quanityI = quanityInt;
+        this.baseQuantity = baseQuantity;
     }
 
     /**
      * Name Base
      * @param int typeID
-     * @param int quanityI
-     * @param double quanityD 
+     * @param int baseQuantity
+     * @param long singleItemQuantity 
      */
-    public NameBase(int typeID, int quanityI, double quanityD) {
+    public NameBase(int typeID, int quanityI, long singleItemQuantity) {
         this.typeID = typeID;
-        this.quanityI = quanityI;
-        this.quanityD = quanityD;
+        this.baseQuantity = quanityI;
+        this.singleItemQuantity = singleItemQuantity;
     }
     
     /**
      * Name Base
      * @param int typeID
      * @param String typeName
-     * @param int quanityI
-     * @param double quanityD 
+     * @param int baseQuantity
+     * @param long singleItemQuantity 
      */
-    public NameBase(int typeID, String name, int quanityInt, double quanityDbl) {
+    public NameBase(int typeID, String name, int quanityInt, long singleItemQuantity) {
         this.typeID = typeID;
         this.typeName = name;
-        this.quanityI = quanityInt;
-        this.quanityD = quanityDbl;
+        this.baseQuantity = quanityInt;
+        this.singleItemQuantity = singleItemQuantity;
+    }
+
+        /**
+     * Name Base
+     * @param int typeID
+     * @param String typeName
+     * @param int baseQuantity
+     * @param long singleItemQuantity 
+     * @param float totalItemsQuantity
+     */
+    public NameBase(int typeID, String typeName, int baseQuantity, long singleItemQuantity, float totalItemsQuantity) {
+        this.typeID = typeID;
+        this.typeName = typeName;
+        this.baseQuantity = baseQuantity;
+        this.singleItemQuantity = singleItemQuantity;
+        this.totalItemsQuantity = totalItemsQuantity;
     }
     
     public NameBase() {
@@ -112,33 +129,50 @@ public class NameBase extends ItemRecursion {
 
     /**
      * Get Quanity
-     * @return int quanityI
+     * @return int baseQuantity
      */
-    public int getQuanityI() {
-        return quanityI;
+    public int getBaseQuantity() {
+        return baseQuantity;
     }
 
     /**
      * Set Quanity
-     * @param quanityI 
+     * @param baseQuantity 
      */
-    public void setQuanityI(int quanityI) {
-        this.quanityI = quanityI;
+    public void setBaseQuantity(int baseQuantity) {
+        this.baseQuantity = baseQuantity;
     }
 
     /**
-     * Get Quanity Float
-     * @return double
+     * Get Quanity 
+     * @return long
      */
-    public double getQuanityD() {
-        return quanityD;
+    public long getSingleItemQuantity() {
+        return singleItemQuantity;
     }
 
     /**
-     * Set Quanity Float
-     * @param Float quanityD 
+     * Set Quanity 
+     * @param Float singleItemQuantity 
      */
-    public void setQuanityD(double quanityD) {
-        this.quanityD = quanityD;
+    public void setSingleItemQuantity(long singleItemQuantity) {
+        this.singleItemQuantity = singleItemQuantity;
     }    
+
+    /**
+     * Get Total Items Quantity
+     * @return float
+     */
+    public float getTotalItemsQuantity() {
+        return totalItemsQuantity;
+    }
+
+    /**
+     * Set Total Items Quantity
+     * @param float totalItemsQuantity 
+     */
+    public void setTotalItemsQuantity(float totalItemsQuantity) {
+        this.totalItemsQuantity = totalItemsQuantity;
+    }
+    
 }

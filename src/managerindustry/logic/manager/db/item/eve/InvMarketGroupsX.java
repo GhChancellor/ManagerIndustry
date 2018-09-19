@@ -10,7 +10,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import managerindustry.db.entities.eve.InvMarketGroups;
-import managerindustry.db.entities.eve.InvTypes;
+import managerindustry.logic.manager.Manager;
 
 /**
  *
@@ -19,8 +19,8 @@ import managerindustry.db.entities.eve.InvTypes;
 public class InvMarketGroupsX {
     private EntityManager entityManager;
 
-    public InvMarketGroupsX(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public InvMarketGroupsX() {
+        entityManager = Manager.getInstance().db().getEntityManager();
     }    
     
     /**

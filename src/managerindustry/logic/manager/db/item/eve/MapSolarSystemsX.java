@@ -6,6 +6,7 @@
 package managerindustry.logic.manager.db.item.eve;
 
 import javax.persistence.EntityManager;
+import managerindustry.logic.manager.Manager;
 
 /**
  *
@@ -14,8 +15,8 @@ import javax.persistence.EntityManager;
 public class MapSolarSystemsX {
     private EntityManager entityManager;
 
-    public MapSolarSystemsX(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public MapSolarSystemsX() {
+        entityManager = Manager.getInstance().db().getEntityManager();
     }
     
 //    public MapSolarSystems getMapSolarSystems_SolarSystem(String name){

@@ -13,6 +13,7 @@ import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.UserApiEntityJpaController;
 import managerindustry.db.controllers.exceptions.NonexistentEntityException;
 import managerindustry.db.entities.user.UserApiEntity;
+import managerindustry.logic.manager.Manager;
 //import managerindustry.logic.manager.managerDB.ManagerSQLUser;
 
 /**
@@ -30,10 +31,7 @@ public class SqlUser {
 //     (Persistence.createEntityManagerFactory("ManagerIndustryPU"));   
 
     public SqlUser() {
-    }
-
-    public SqlUser(EntityManager entityManager) {
-        this.entityManager = entityManager;
+        entityManager = Manager.getInstance().db().getEntityManager();
     }
     
     /**

@@ -11,9 +11,8 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.EffectEngineeringRigEntityJpaController;
 import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
-import managerindustry.logic.generic.fatherClass.RigMarketGroup;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs_1;
+import managerindustry.logic.manager.Manager;
 
 /**
  *
@@ -24,12 +23,9 @@ public class EffectEngineeringRigX {
     private EffectEngineeringRigEntityJpaController effectRigEntityJpaController = 
         new EffectEngineeringRigEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));
         
-    public EffectEngineeringRigX(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }    
-
     public EffectEngineeringRigX() {
-    }
+        entityManager = Manager.getInstance().db().getEntityManager();
+    }    
     
     /**
      * Add Effect Rig Entity

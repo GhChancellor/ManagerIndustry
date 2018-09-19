@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.generic.fatherClass;
+package managerindustry.logic.build.old.father;
+
+import managerindustry.logic.generic.fatherClass.*;
 
 /**
  *
@@ -13,7 +15,7 @@ public abstract class Efficiency {
     private String name;
     private float ratePercent;
     private Byte level;
-    private final float baseValue = 1f; 
+    private final double baseValue = 1f; 
 
     public Efficiency() {
     
@@ -24,7 +26,7 @@ public abstract class Efficiency {
      * Di base è 1
      * @return float
      */
-    public float getBaseValue() {
+    public double getBaseValue() {
         return baseValue;
     }
         
@@ -76,9 +78,9 @@ public abstract class Efficiency {
         this.level = level;
     }
 
-    public float getRateBpo(){
+    public double getRateBpo(){
         return calculateRateBpo();
     }
 
-    protected abstract float calculateRateBpo(); 
+    protected abstract double calculateRateBpo(); 
 }

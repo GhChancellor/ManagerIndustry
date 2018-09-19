@@ -6,6 +6,7 @@
 package managerindustry.logic.manager.db.item.user;
 
 import javax.persistence.EntityManager;
+import managerindustry.logic.manager.Manager;
 import managerindustry.logic.manager.db.item.user.login.LoginSql;
 import managerindustry.logic.manager.db.item.user.sqlUser.SqlUser;
 
@@ -16,8 +17,8 @@ import managerindustry.logic.manager.db.item.user.sqlUser.SqlUser;
 public class User {
     private EntityManager entityManager;
 
-    public User(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public User() {
+        entityManager = Manager.getInstance().db().getEntityManager();
     }
 
     /**
@@ -25,8 +26,7 @@ public class User {
      * @return SqlUser
      */    
     public SqlUser sqlUser(){
-        SqlUser sqlUser = new SqlUser(entityManager);
-        return sqlUser;
+        return new SqlUser();
     }    
     
     /**
@@ -34,7 +34,6 @@ public class User {
      * @return LoginSql
      */
     public LoginSql loginSql(){
-        LoginSql loginSql = new LoginSql();
-        return loginSql;
+        return new LoginSql();
     }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import managerindustry.db.entities.eve.DgmTypeAttributes;
+import managerindustry.logic.manager.Manager;
 
 /**
  * 
@@ -18,8 +19,8 @@ import managerindustry.db.entities.eve.DgmTypeAttributes;
 public class DgmTypeAttributesX {
     private EntityManager entityManager;
 
-    public DgmTypeAttributesX(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public DgmTypeAttributesX() {
+        entityManager = Manager.getInstance().db().getEntityManager();
     }
     
     /**

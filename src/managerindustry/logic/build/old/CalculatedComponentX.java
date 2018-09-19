@@ -5,7 +5,8 @@
  */
 package managerindustry.logic.build.old;
 
-import managerindustry.logic.generic.fatherClass.NameBase;
+import managerindustry.logic.build.old.father.NameBase;
+
 
 /**
  *

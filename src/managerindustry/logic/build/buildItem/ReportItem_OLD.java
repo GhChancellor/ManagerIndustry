@@ -5,8 +5,7 @@
  */
 package managerindustry.logic.build.buildItem;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterial;
@@ -15,11 +14,10 @@ import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.Requir
  *
  * @author lele
  */
-public class ReportItem extends RequiredMaterial{
+public class ReportItem_OLD extends RequiredMaterial{
 //    private NameBase materialRecusion;    
-//    private List < NameBase > nameBases = new ArrayList<>();
-//    
-//    public ReportItem() {
+//
+//    public ReportItem_OLD() {
 //    }
 //        
 //    /**
@@ -28,7 +26,6 @@ public class ReportItem extends RequiredMaterial{
 //     */
 //    public void addItem(NameBase materialRecusion){
 //        this.materialRecusion = materialRecusion;
-//        nameBases.add(materialRecusion);
 //        totalCalculatedItem();        
 //    }    
 //    
@@ -54,19 +51,5 @@ public class ReportItem extends RequiredMaterial{
 //    public Map<String, NameBase> getTotalCalculatedItem(){
 //        return getMap();
 //    }
-//
-//    public List<NameBase> getNameBases() {
-//        return nameBases;
-//    }
-//
-//    public void setNameBases(List<NameBase> nameBases) {
-//        this.nameBases = nameBases;
-//    }
-//    
-//    public void addNameBases(NameBase nameBases) {
-//        this.nameBases.add(nameBases);
-//    }
 
-    
-    
 }

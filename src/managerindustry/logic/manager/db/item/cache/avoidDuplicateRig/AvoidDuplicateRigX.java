@@ -11,6 +11,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.AvoidDuplicateRigEntityJpaController;
 import managerindustry.db.entities.cache.AvoidDuplicateRigEntity;
+import managerindustry.logic.manager.Manager;
 
 /**
  * da valutare gli enum
@@ -64,8 +65,8 @@ public class AvoidDuplicateRigX {
         
     }
     
-    public AvoidDuplicateRigX(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public AvoidDuplicateRigX() {
+        entityManager = Manager.getInstance().db().getEntityManager();
     }
     
     public void addEffectRigs(AvoidDuplicateRigEntity avoidDuplicateRigEntity){

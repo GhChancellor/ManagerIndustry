@@ -21,8 +21,8 @@ import managerindustry.logic.manager.Manager;
 public class IndustryActivityMaterialsX {
     private EntityManager entityManager;
 
-    public IndustryActivityMaterialsX(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public IndustryActivityMaterialsX() {
+        entityManager = Manager.getInstance().db().getEntityManager();
     }
     
     /**

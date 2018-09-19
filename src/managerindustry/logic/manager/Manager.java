@@ -20,19 +20,24 @@ public class Manager {
     private EntityManager entityManager = 
         Persistence.createEntityManagerFactory("ManagerIndustryPU").createEntityManager();
     
+    private Db db = null;
+    
     public static Manager getInstance(){
         if ( instance == null )
             instance = new Manager();
         return instance;
     }
-    
+
+    public Manager() {
+        this.db = new Db(entityManager);
+    }
+
     /**
      * Manager DB
      * @return Db
      */
     public Db db(){
-        Db managerDB = new Db(entityManager);
-        return managerDB;
+        return db;
     }
     
     /**

@@ -15,9 +15,9 @@ import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.build.old.CalculatedComponentX;
 import managerindustry.logic.build.old.ComponentX;
-import managerindustry.logic.generic.efficiency.materialEfficiency.MaterialEfficiencyCalculate;
 import managerindustry.logic.build.old.MaterialForComponents;
 import managerindustry.logic.build.old.ReportCalculatedComponentX;
+import managerindustry.logic.build.old.father.MaterialEfficiencyCalculate;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.Manager;
 

@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import managerindustry.db.entities.eve.IndustryBlueprints;
+import managerindustry.logic.manager.Manager;
 
 /**
  *
@@ -17,8 +18,8 @@ import managerindustry.db.entities.eve.IndustryBlueprints;
 public class IndustryBlueprintsX {
     private EntityManager entityManager;
 
-    public IndustryBlueprintsX(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public IndustryBlueprintsX() {
+        entityManager = Manager.getInstance().db().getEntityManager();
     }
     
     public IndustryBlueprints getMaxProductionLimit(int typeId){

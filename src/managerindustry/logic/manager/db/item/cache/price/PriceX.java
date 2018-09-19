@@ -31,16 +31,9 @@ public class PriceX {
     private PriceEntity priceEntity = new PriceEntity();
     private Map<String, Price > priceMap = new HashMap<>();
     private String typeId = null;
-//    private static PriceX instance = null;
-//    
-//    public static PriceX getInstance() throws PriceNotExistsException{
-//        if ( instance == null )
-//            instance = new PriceX();
-//        return instance;        
-//    }
 
-    public PriceX(EntityManager entityManager) throws ErrorExeption {
-        this.entityManager = entityManager;
+    public PriceX() throws ErrorExeption {
+        entityManager = Manager.getInstance().db().getEntityManager();
         initPriceDB();
     }
 

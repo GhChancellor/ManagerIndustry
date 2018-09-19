@@ -39,11 +39,11 @@ import managerindustry.logic.skill.requiredSkill.SkillRequired_Init;
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
-//        buildItemV6();
+        buildItemV6();
 //        basicMaterial();
 //        jobInstallationFeeV2(); 
 //        speculation();
-       requiredSkill();
+//        requiredSkill();
 
 // ----------------------------------------
 //        recursionItems();
@@ -100,18 +100,11 @@ public class MainProgramm {
     }
     
     public static void requiredSkill(){
-        BuildItem buildItem = new BuildItem("scimitar",  1,  0, (byte) 0, (byte) 0);
+        int typeId = Manager.getInstance().db().item().invTypes().getInvTypesByName("Scimitar blueprint").getTypeID();
         
-        try {
-            BuildItemRequired_Init buildItemRequired = 
-                new BuildItemRequired_Init(buildItem, RamActivitiesEnum.MANUFACTURING);
-
-            SkillRequired_Init required_Init = new SkillRequired_Init(
-                     );            
-            required_Init.display();
-        } catch (ErrorExeption e) {
-            System.out.println(""+ e.getErrorEnum());
-        }         
+        SkillRequired_Init required_Init = new SkillRequired_Init(
+            typeId, RamActivitiesEnum.MANUFACTURING);            
+        required_Init.display();
     }
     
     public static void structure() throws ErrorExeption{
@@ -140,9 +133,13 @@ public class MainProgramm {
         }
     }
     
+    /**
+     * sopra i 100m di materiale è leggermente impreciso, aumentare la precisione
+     * gli arrotandenti devono essere più precisi
+     */
     public static void buildItemV6() {
         //                                   bpoName   run job   bpoME    componentMe
-        BuildItem buildItem = new BuildItem("scimitar",  1,  1, (byte) 0, (byte) 0);
+        BuildItem buildItem = new BuildItem("dominix",  1,  1, (byte) 10, (byte) 0);
         
         try {
             BuildItemRequired_Init buildItemRequired = 

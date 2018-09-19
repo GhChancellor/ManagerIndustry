@@ -29,19 +29,13 @@ import managerindustry.logic.manager.db.item.eve.MapSolarSystemsX;
  * @author lele
  */
 public class Item {
-    private EntityManager entityManager;
 
-    public Item(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-    
     /**
      * Get all values of the InvTypes ( entities )
      * @return InvTypesX
      */
     public InvTypesX invTypes(){
-        InvTypesX invTypesX = new InvTypesX(entityManager);
-        return invTypesX;
+        return new InvTypesX();
     }
     
     /**
@@ -49,8 +43,7 @@ public class Item {
      * @return InvNamesX
      */
     public InvNamesX invNames(){
-        InvNamesX invNamesX = new InvNamesX(entityManager);
-        return invNamesX;
+        return new InvNamesX();
     }
     
     /**
@@ -58,8 +51,7 @@ public class Item {
      * @return DgmAttributeTypesX
      */
     public DgmAttributeTypesX dgmAttributeTypes(){
-        DgmAttributeTypesX dgmAttributeTypesX = new DgmAttributeTypesX(entityManager);
-        return dgmAttributeTypesX;
+        return new DgmAttributeTypesX();
     }
     
     /**
@@ -67,8 +59,7 @@ public class Item {
      * @return DgmTypeAttributesX
      */
     public DgmTypeAttributesX dgmTypeAttributes(){
-        DgmTypeAttributesX dgmTypeAttributesX = new DgmTypeAttributesX(entityManager);
-        return dgmTypeAttributesX;
+        return new DgmTypeAttributesX();
     }
     
     /**
@@ -76,9 +67,7 @@ public class Item {
      * @return IndustryActivityMaterialsX
      */
     public IndustryActivityMaterialsX industryActivityMaterials(){
-        IndustryActivityMaterialsX industryActivityMaterialsX = 
-          new IndustryActivityMaterialsX(entityManager);
-        return industryActivityMaterialsX;
+        return new IndustryActivityMaterialsX();
     }
     
     /**
@@ -86,8 +75,7 @@ public class Item {
      * @return MapSolarSystemsX
      */
     public MapSolarSystemsX mapSolarSystems(){
-        MapSolarSystemsX mapSolarSystemsX = new MapSolarSystemsX(entityManager);
-        return mapSolarSystemsX;
+        return new MapSolarSystemsX();
     }
     
     /**
@@ -95,8 +83,7 @@ public class Item {
      * @return TaxSolarSystem
      */    
     public TaxSolarSystem taxSolarSystem(){
-        TaxSolarSystem taxSolarSystem = new TaxSolarSystem(entityManager);
-        return taxSolarSystem;
+        return new TaxSolarSystem();
     }
     
     /**
@@ -104,8 +91,7 @@ public class Item {
      * @return PriceX
      */
     public PriceX price() throws ErrorExeption{
-        PriceX price = new PriceX(entityManager);
-        return price;
+        return new PriceX();
     }
     
     /**
@@ -113,8 +99,7 @@ public class Item {
      * @return IndustryBlueprintsX
      */
     public IndustryBlueprintsX industryBlueprints(){
-        IndustryBlueprintsX industryBlueprintsX = new IndustryBlueprintsX(entityManager);
-        return industryBlueprintsX;
+        return new IndustryBlueprintsX();
     }
     
     /**
@@ -122,9 +107,7 @@ public class Item {
      * @return IndustryActivitySkillsX
      */
     public IndustryActivitySkillsX industryActivitySkills(){
-        IndustryActivitySkillsX industryActivitySkillsX = 
-            new IndustryActivitySkillsX(entityManager);
-        return industryActivitySkillsX;
+        return new IndustryActivitySkillsX();
     }
     
     /**
@@ -132,8 +115,7 @@ public class Item {
      * @return InvMarketGroupsX
      */    
     public InvMarketGroupsX invMarketGroups(){
-        InvMarketGroupsX invMarketGroups = new InvMarketGroupsX(entityManager);
-        return invMarketGroups;
+        return new InvMarketGroupsX();
     }
     
     /**
@@ -141,8 +123,7 @@ public class Item {
      * @return IndustryActivityX
      */
     public IndustryActivityX industryActivity(){
-        IndustryActivityX industryActivityX = new IndustryActivityX(entityManager);
-        return industryActivityX;
+        return new IndustryActivityX();
     }
     
     /**
@@ -150,9 +131,7 @@ public class Item {
      * @return IndustryActivityProductsX
      */
     public IndustryActivityProductsX industryActivityProducts(){
-        IndustryActivityProductsX industryActivityProductsX = 
-            new IndustryActivityProductsX(entityManager);
-        return industryActivityProductsX;
+        return new IndustryActivityProductsX();
     }
     
     /**
@@ -160,13 +139,7 @@ public class Item {
      * @return EffectEngineeringRigX
      */
     public EffectEngineeringRigX effectRig(){
-        EffectEngineeringRigX effectRigX = new EffectEngineeringRigX(entityManager);
-        return effectRigX;
-    }
-    
-    public EffectEngineeringRigX effectRigX2(){
-        EffectEngineeringRigX effectRigX = new EffectEngineeringRigX(entityManager);
-        return effectRigX;
+        return new EffectEngineeringRigX();
     }
     
     /**
@@ -174,7 +147,6 @@ public class Item {
      * @return AvoidDuplicateRigX
      */
     public AvoidDuplicateRigX avoidDuplicateRigEntity(){
-        AvoidDuplicateRigX avoidDuplicateRigX = new AvoidDuplicateRigX(entityManager);
-        return avoidDuplicateRigX;
+        return new AvoidDuplicateRigX();
     }    
 }

@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import managerindustry.db.entities.eve.IndustryActivity;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
+import managerindustry.logic.manager.Manager;
 
 /**
  *
@@ -18,8 +19,8 @@ import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 public class IndustryActivityX {
     private EntityManager entityManager;
 
-    public IndustryActivityX(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public IndustryActivityX() {
+        entityManager = Manager.getInstance().db().getEntityManager();
     }
     
     public IndustryActivity getIndustryActivity(int typeID, RamActivitiesEnum ramActivitiesEnum){

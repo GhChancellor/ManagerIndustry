@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.generic.fatherClass.SkillInfo;
+import managerindustry.logic.manager.Manager;
 
 /**
  * SELECT * FROM industryDB.invTypes where invTypes.typeName = "scythe blueprint"; -- scythe typeID 976 scimitar 11979
@@ -24,10 +25,11 @@ import managerindustry.logic.generic.fatherClass.SkillInfo;
  */
 public class InvTypesX {
     private EntityManager entityManager;
-    
-    public InvTypesX(EntityManager entityManager) {
-        this.entityManager = entityManager;
+
+    public InvTypesX() {
+        entityManager = Manager.getInstance().db().getEntityManager();
     }
+    
     
     /**
      * Get value skill like description or name....

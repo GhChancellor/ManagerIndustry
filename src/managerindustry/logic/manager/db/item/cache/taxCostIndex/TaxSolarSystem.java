@@ -13,6 +13,7 @@ import managerindustry.db.controllers.TaxCostIndexEntityJpaController;
 import managerindustry.db.controllers.TaxSolarSystemEntityJpaController;
 import managerindustry.db.entities.cache.TaxCostIndexEntity;
 import managerindustry.db.entities.cache.TaxSolarSystemEntity;
+import managerindustry.logic.manager.Manager;
 
 /**
  *
@@ -27,8 +28,8 @@ public class TaxSolarSystem {
     private TaxCostIndexEntityJpaController taxCostIndexEntityJpaController = 
      new TaxCostIndexEntityJpaController(Persistence.createEntityManagerFactory("ManagerIndustryPU"));
     
-    public TaxSolarSystem(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public TaxSolarSystem() {
+        entityManager = Manager.getInstance().db().getEntityManager();
     }
     
     /**

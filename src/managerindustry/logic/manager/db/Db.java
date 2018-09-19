@@ -20,13 +20,16 @@ public class Db {
         this.entityManager = entityManager;        
     }
 
+    public EntityManager getEntityManager(){
+        return entityManager;
+    }
+    
     /**
      * Item
      * @return Item
      */
     public Item item(){
-        Item item = new Item(entityManager);
-        return item;
+        return new Item();
     }
     
     /**
@@ -34,7 +37,6 @@ public class Db {
      * @return User
      */
     public User user(){
-        User user = new User(entityManager);
-        return user;
+        return new User();
     }
 }

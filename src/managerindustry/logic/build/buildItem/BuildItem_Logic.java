@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.build.buildItem;
 
+import java.util.HashMap;
 import managerindustry.logic.generic.fatherClass.BuildItem;
 import java.util.List;
 import java.util.Map;
@@ -21,8 +22,9 @@ import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.Requir
  */
 public class BuildItem_Logic extends RequiredMaterial{
     private MaterialEfficiencyCalculate materialEfficiencyCalculate = new MaterialEfficiencyCalculate();    
-    private int singleMaterialQuantity;
-    private double totalMaterialQuantity;
+    private int baseQuantity;;
+    private long singleMaterialQuantity;
+    private float totalMaterialQuantity;
     private ReportItem reportItem = new ReportItem();
     
     /**
@@ -39,6 +41,7 @@ public class BuildItem_Logic extends RequiredMaterial{
 
         requiredItem(buildItem, requiredMaterial,
             basicMaterialRequired.getRequiredMaterialObject().getItemRecursions());
+        System.out.println("");
     }    
 
     /**
@@ -102,12 +105,12 @@ public class BuildItem_Logic extends RequiredMaterial{
             // T1 material .. bpoME ..
             materialEfficiencyCalculate = new MaterialEfficiencyCalculate
                 (buildItem.getRun(), buildItem.getJob(), 
-                    buildItem.getBpoME(), materialRecusion.getQuanityI() );
+                    buildItem.getBpoME(), materialRecusion.getBaseQuantity() );
         }else{
             // T2 component .. componentMe ..
             materialEfficiencyCalculate = new MaterialEfficiencyCalculate
                 (buildItem.getRun(), buildItem.getJob(),
-                    buildItem.getComponentMe(), materialRecusion.getQuanityI() );
+                    buildItem.getComponentMe(), materialRecusion.getBaseQuantity() );
         }   
     }       
     
@@ -116,20 +119,24 @@ public class BuildItem_Logic extends RequiredMaterial{
      * @param NameBase materialRecusion 
      */
     private void addItem(NameBase materialRecusion){
-        materialRecusion.setQuanityI(singleMaterialQuantity);
-        materialRecusion.setQuanityD(totalMaterialQuantity);
-        reportItem.addItem(materialRecusion);        
+        materialRecusion.setBaseQuantity(baseQuantity);
+        materialRecusion.setSingleItemQuantity(singleMaterialQuantity);
+        materialRecusion.setTotalItemsQuantity(totalMaterialQuantity);
+   
     }    
     
     /**
      * Calculate Quantity Material
      */
     private void calculateQuantityMaterial(){
+        // base Quantity
+        baseQuantity = materialEfficiencyCalculate.getBaseQuantity();
+        
         // quantity material per single item 1 run
-        singleMaterialQuantity = materialEfficiencyCalculate.getSingleItemMaterial();
+        singleMaterialQuantity = materialEfficiencyCalculate.getSingleItemQuantity();
            
         // quantity material per all items 1 run
-        totalMaterialQuantity = materialEfficiencyCalculate.getTotalItemsMaterials();         
+        totalMaterialQuantity = materialEfficiencyCalculate.getTotalItemsQuantity();         
         
         // destroy object
         materialEfficiencyCalculate = null;        
@@ -147,16 +154,19 @@ public class BuildItem_Logic extends RequiredMaterial{
         NameBase nameBase = new NameBase(
             ((NameBase)requiredMaterial).getTypeID(), 
             ((NameBase)requiredMaterial).getTypeName(), 
-            ((NameBase)requiredMaterial).getQuanityI(), 
-            ((NameBase)requiredMaterial).getQuanityD());
+            ((NameBase)requiredMaterial).getBaseQuantity(), 
+            ((NameBase)requiredMaterial).getSingleItemQuantity(),
+            ((NameBase)requiredMaterial).getTotalItemsQuantity() );
 
         return nameBase;
     }    
     
     /**
+     * @deprecated 
      * Sum all value into map
      */
     public Map<String, NameBase> getTotalCalculatedItem(){    
-        return reportItem.getTotalCalculatedItem();
+        return new HashMap<>();
+        // return reportItem.getTotalCalculatedItem();
     }
 }

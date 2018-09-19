@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import managerindustry.db.entities.eve.InvNames;
+import managerindustry.logic.manager.Manager;
 
 /**
  *
@@ -17,8 +18,8 @@ import managerindustry.db.entities.eve.InvNames;
 public class InvNamesX {
     private EntityManager entityManager;    
 
-    public InvNamesX(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public InvNamesX() {
+        entityManager = Manager.getInstance().db().getEntityManager();
     }
 
     /**
