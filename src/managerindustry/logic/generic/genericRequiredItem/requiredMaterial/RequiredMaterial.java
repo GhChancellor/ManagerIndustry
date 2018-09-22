@@ -34,30 +34,13 @@ public class RequiredMaterial < A, B > extends AGenericRequiredItem{
      * @param String tab 
      */
     private void displayRequiredMaterial(NameBase requiredItemA, String tab){
-        
         if ( requiredItemA.getTypeID() != 0 ){
-            System.out.printf( tab + requiredItemA.getTypeID() + " " + 
+            System.out.println(tab + requiredItemA.getTypeID() + " " + 
             requiredItemA.getTypeName() + " - " + 
-            requiredItemA.getBaseQuantity() + " > " + 
-            requiredItemA.getSingleItemQuantity() +  " > " +
-            "%f\n", + requiredItemA.getTotalItemsQuantity() );               
+            requiredItemA.getBaseQuantity()+ " > " + 
+            requiredItemA.getSingleItemQuantity() + " > " + 
+            requiredItemA.getTotalItemsQuantity() );              
         }
-
-//        if ( requiredItemA.getTypeID() != 0 ){
-//            System.out.println(tab + requiredItemA.getTypeID() + " " + 
-//            requiredItemA.getTypeName() + " - " + 
-//            requiredItemA.getBaseQuantity()+ " > " + 
-//            requiredItemA.getSingleItemQuantity() + " > " + 
-//            requiredItemA.getTotalItemsQuantity() );              
-//        }
-
-//        if ( requiredItemA.getTypeID() != 0 ){
-//            System.out.println(tab + requiredItemA.getTypeID() + " " + 
-//            requiredItemA.getTypeName() + " - " + 
-//            requiredItemA.getBaseQuantity()+ " > " + 
-//            requiredItemA.getSingleItemQuantity() + " > " + 
-//            requiredItemA.getTotalItemsQuantity() );              
-//        }
 
         tab += " ";                        
         

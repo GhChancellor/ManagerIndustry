@@ -15,8 +15,8 @@ public class NameBase extends ItemRecursion {
     private int typeID;
     private String typeName;
     protected int baseQuantity;
-    protected long singleItemQuantity;
-    protected float totalItemsQuantity;
+    protected int singleItemQuantity;
+    protected long totalItemsQuantity;
 
     /**
      * Name Base
@@ -54,9 +54,9 @@ public class NameBase extends ItemRecursion {
      * Name Base
      * @param int typeID
      * @param int baseQuantity
-     * @param long singleItemQuantity 
+     * @param int singleItemQuantity 
      */
-    public NameBase(int typeID, int quanityI, long singleItemQuantity) {
+    public NameBase(int typeID, int quanityI, int singleItemQuantity) {
         this.typeID = typeID;
         this.baseQuantity = quanityI;
         this.singleItemQuantity = singleItemQuantity;
@@ -67,9 +67,9 @@ public class NameBase extends ItemRecursion {
      * @param int typeID
      * @param String typeName
      * @param int baseQuantity
-     * @param long singleItemQuantity 
+     * @param int singleItemQuantity 
      */
-    public NameBase(int typeID, String name, int quanityInt, long singleItemQuantity) {
+    public NameBase(int typeID, String name, int quanityInt, int singleItemQuantity) {
         this.typeID = typeID;
         this.typeName = name;
         this.baseQuantity = quanityInt;
@@ -81,10 +81,10 @@ public class NameBase extends ItemRecursion {
      * @param int typeID
      * @param String typeName
      * @param int baseQuantity
-     * @param long singleItemQuantity 
-     * @param float totalItemsQuantity
+     * @param int singleItemQuantity 
+     * @param long totalItemsQuantity
      */
-    public NameBase(int typeID, String typeName, int baseQuantity, long singleItemQuantity, float totalItemsQuantity) {
+    public NameBase(int typeID, String typeName, int baseQuantity, int singleItemQuantity, long totalItemsQuantity) {
         this.typeID = typeID;
         this.typeName = typeName;
         this.baseQuantity = baseQuantity;
@@ -145,9 +145,9 @@ public class NameBase extends ItemRecursion {
 
     /**
      * Get Quanity 
-     * @return long
+     * @return int
      */
-    public long getSingleItemQuantity() {
+    public int getSingleItemQuantity() {
         return singleItemQuantity;
     }
 
@@ -155,23 +155,23 @@ public class NameBase extends ItemRecursion {
      * Set Quanity 
      * @param Float singleItemQuantity 
      */
-    public void setSingleItemQuantity(long singleItemQuantity) {
+    public void setSingleItemQuantity(int singleItemQuantity) {
         this.singleItemQuantity = singleItemQuantity;
     }    
 
     /**
      * Get Total Items Quantity
-     * @return float
+     * @return long
      */
-    public float getTotalItemsQuantity() {
+    public long getTotalItemsQuantity() {
         return totalItemsQuantity;
     }
 
     /**
      * Set Total Items Quantity
-     * @param float totalItemsQuantity 
+     * @param long totalItemsQuantity 
      */
-    public void setTotalItemsQuantity(float totalItemsQuantity) {
+    public void setTotalItemsQuantity(long totalItemsQuantity) {
         this.totalItemsQuantity = totalItemsQuantity;
     }
     

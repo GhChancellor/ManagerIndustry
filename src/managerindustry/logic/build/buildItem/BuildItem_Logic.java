@@ -23,8 +23,8 @@ import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.Requir
 public class BuildItem_Logic extends RequiredMaterial{
     private MaterialEfficiencyCalculate materialEfficiencyCalculate = new MaterialEfficiencyCalculate();    
     private int baseQuantity;;
-    private long singleMaterialQuantity;
-    private float totalMaterialQuantity;
+    private int singleMaterialQuantity;
+    private long totalMaterialQuantity;
     private ReportItem reportItem = new ReportItem();
     
     /**
@@ -136,7 +136,8 @@ public class BuildItem_Logic extends RequiredMaterial{
         singleMaterialQuantity = materialEfficiencyCalculate.getSingleItemQuantity();
            
         // quantity material per all items 1 run
-        totalMaterialQuantity = materialEfficiencyCalculate.getTotalItemsQuantity();         
+        totalMaterialQuantity = 
+            materialEfficiencyCalculate.getTotalItemsQuantity();         
         
         // destroy object
         materialEfficiencyCalculate = null;        

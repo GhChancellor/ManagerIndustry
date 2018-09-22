@@ -11,12 +11,12 @@ package managerindustry.logic.generic.fatherClass;
  */
 public class BuildItem {
     private String bpoName;
-    private float run;
+    private int run;
     private int job;
     private byte bpoME;
     private byte componentMe;
 
-    public BuildItem(String bpoName, float run, int job, byte bpoME, byte componentMe) {
+    public BuildItem(String bpoName, int run, int job, byte bpoME, byte componentMe) {
         this.bpoName = bpoName;
         this.run = run;
         this.job = job;
@@ -42,9 +42,9 @@ public class BuildItem {
 
     /**
      * Get Run
-     * @return float
+     * @return int
      */
-    public float getRun() {
+    public int getRun() {
         return run;
     }
 
@@ -52,7 +52,7 @@ public class BuildItem {
      * Set Run
      * @param int run 
      */
-    public void setRun(float run) {
+    public void setRun(int run) {
         this.run = run;
     }
 

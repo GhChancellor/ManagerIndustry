@@ -139,7 +139,7 @@ public class MainProgramm {
      */
     public static void buildItemV6() {
         //                                   bpoName   run job   bpoME    componentMe
-        BuildItem buildItem = new BuildItem("dominix",  1,  1, (byte) 10, (byte) 0);
+        BuildItem buildItem = new BuildItem("scimitar",  1,  1, (byte) 0, (byte) 0);
         
         try {
             BuildItemRequired_Init buildItemRequired = 
