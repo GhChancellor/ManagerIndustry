@@ -21,7 +21,7 @@ import managerindustry.logic.prove.efficiency.MaterialEfficiency;
  *
  * @author lele
  */
-public class BuildItem_Logic extends RequiredMaterial{
+public class BuildItem_Logic_OLD extends RequiredMaterial{
     private MaterialEfficiencyCalculate materialEfficiencyCalculate = new MaterialEfficiencyCalculate();    
     // private MaterialEfficiency materialEfficiencyCalculate = new MaterialEfficiency( (byte) 0 , 1f, 1f, 1f);
     private int baseQuantity;;
@@ -35,7 +35,7 @@ public class BuildItem_Logic extends RequiredMaterial{
      * @param RamActivitiesEnum activitiesEnum
      * @throws ErrorExeption 
      */    
-    public BuildItem_Logic(BuildItem buildItem, 
+    public BuildItem_Logic_OLD(BuildItem buildItem, 
         RamActivitiesEnum activitiesEnum) throws ErrorExeption{
         
         MaterialRequired_Init basicMaterialRequired = 
