@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.skill.skillProduction;
+package managerindustry.logic.skill.old.skillProduction;
 
-import managerindustry.logic.skill.skillProduction.logic.specificSkill.BrokerFee;
+import managerindustry.logic.skill.old.skillProduction.logic.specificSkill.BrokerFee;
 import java.util.HashMap;
 import java.util.Map;
 import managerindustry.logic.generic.fatherClass.SkillInfo;
@@ -28,6 +28,7 @@ public class SkillProduction {
 
     private enum SkillProductionEnum{
         INDUSTRY(3380),
+        ADVANCED_INDUSTRY(3388),
         ADVANCED_SMALL_SHIP_CONSTRUCTION(3395),
         ADVANCED_MEDIUM_SHIP_CONSTRUCTION(3397),
         ADVANCED_LARGE_SHIP_CONSTRUCTION(3398),
@@ -56,6 +57,7 @@ public class SkillProduction {
 
     private void init(){
         initSkill(SkillProductionEnum.INDUSTRY, true, 440); // 440 attributeID
+        initSkill(SkillProductionEnum.ADVANCED_INDUSTRY, true, 1982); // 1982 attributeID
         initSkill(SkillProductionEnum.ADVANCED_SMALL_SHIP_CONSTRUCTION, true, 1982); // 1982 attributeID
         initSkill(SkillProductionEnum.ADVANCED_MEDIUM_SHIP_CONSTRUCTION, true, 1982); // 1982 attributeID
         initSkill(SkillProductionEnum.ADVANCED_LARGE_SHIP_CONSTRUCTION, true, 1982); // 1982 attributeID

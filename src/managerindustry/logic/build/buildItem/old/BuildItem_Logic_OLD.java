@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.build.buildItem;
+package managerindustry.logic.build.buildItem.old;
 
 import java.util.HashMap;
 import managerindustry.logic.generic.fatherClass.BuildItem;
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.generic.efficiency.materialEfficiency.MaterialEfficiencyCalculate;
+import managerindustry.logic.build.buildItem.old.materialEfficiency.MaterialEfficiencyCalculate;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.build.basicMaterialRequired.MaterialRequired_Init;
+import managerindustry.logic.build.buildItem.ReportItem;
 import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterial;
-import managerindustry.logic.prove.efficiency.MaterialEfficiency;
 
 /**
  *
@@ -23,7 +23,7 @@ import managerindustry.logic.prove.efficiency.MaterialEfficiency;
  */
 public class BuildItem_Logic_OLD extends RequiredMaterial{
     private MaterialEfficiencyCalculate materialEfficiencyCalculate = new MaterialEfficiencyCalculate();    
-    // private MaterialEfficiency materialEfficiencyCalculate = new MaterialEfficiency( (byte) 0 , 1f, 1f, 1f);
+//    private MaterialEfficiency materialEfficiencyCalculate = new MaterialEfficiency( (byte) 0 , 1f, 1f, 1f);
     private int baseQuantity;;
     private int singleMaterialQuantity;
     private long totalMaterialQuantity;

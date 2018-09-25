@@ -6,8 +6,8 @@
 package managerindustry.logic.tax.speculation.order;
 
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.skill.skillProduction.logic.ProductionFormulas;
-import managerindustry.logic.skill.skillProduction.logic.specificSkill.BrokerFee;
+import managerindustry.logic.skill.old.skillProduction.logic.ProductionFormulas;
+import managerindustry.logic.skill.old.skillProduction.logic.specificSkill.BrokerFee;
 import managerindustry.logic.standing.Standing;
 
 /**

@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.efficiency;
+package managerindustry.logic.generic.efficiency;
+
+import managerindustry.logic.generic.fatherClass.Efficiency;
 
 /**
  *

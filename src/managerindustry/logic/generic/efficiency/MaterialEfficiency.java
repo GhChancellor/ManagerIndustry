@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.efficiency;
+package managerindustry.logic.generic.efficiency;
 
-import managerindustry.logic.generic.efficiency.materialEfficiency.MaterialEfficiencyCalculate;
-import managerindustry.logic.generic.fatherClass.NameBase;
+import managerindustry.logic.generic.fatherClass.Efficiency;
 
 /**
  * Material Efficiency Research, ME 1-10 == 1-10%
@@ -19,7 +18,6 @@ import managerindustry.logic.generic.fatherClass.NameBase;
  */
 public class MaterialEfficiency extends Efficiency{
     private float materialEfficiencyRate;
-    private NameBase nameBase = new MaterialEfficiencyCalculate();
    
     /**
      * Material Efficiency
@@ -45,27 +43,25 @@ public class MaterialEfficiency extends Efficiency{
      */    
     public void materialEfficiencyCalculate(int run, int job, byte bpoME, 
             int baseQuantityMarial){
-        nameBase.setBaseQuantity(baseQuantityMarial);
         
+        baseQuantity = baseQuantityMarial;
         /*
          quando il valore è 1 non si fanno calcoli su ME
          WHen value is 1 not calculated ME        
-        */        
+        */
         if ( baseQuantityMarial == 1 ){
-            nameBase.setSingleItemQuantity( nameBase.getSingleItemQuantity() );
-            nameBase.setTotalItemsQuantity( job * 
-                nameBase.getSingleItemQuantity() * run );
+            singleItemQuantity = baseQuantity;
+            totalItemsQuantity = job * singleItemQuantity * run;
             return;
         }
-        
+
         /* Calculate ME by One Object */
-        nameBase.setSingleItemQuantity( 
-            ( int ) Math.ceil( nameBase.getBaseQuantity() * materialEfficiencyRate ) );
-        
+        singleItemQuantity = 
+            ( int ) Math.ceil(baseQuantity * materialEfficiencyRate );
+
         /* Calculate ME all items */
-        nameBase.setTotalItemsQuantity( 
-            ( long ) (job * Math.ceil( nameBase.getBaseQuantity() * 
-                materialEfficiencyRate * run) ));
+        totalItemsQuantity = 
+            ( long ) ( job * Math.ceil( ((baseQuantity * run) * materialEfficiencyRate) ) );  
         
     }
     
@@ -76,28 +72,5 @@ public class MaterialEfficiency extends Efficiency{
         materialEfficiencyRate = efficiencyResearchRate * structureMultiplier * 
             securityStatusMultiplier;
     }
-    
-    /**
-     * Get Quanity
-     * @return int baseQuantity
-     */
-    public int getBaseQuantity() {
-        return nameBase.getBaseQuantity();
-    }
-    
-    /**
-     * Get Quanity 
-     * @return int
-     */
-    public int getSingleItemQuantity() {
-        return nameBase.getSingleItemQuantity();
-    }  
-    
-    /**
-     * Get Total Items Quantity
-     * @return long
-     */
-    public long getTotalItemsQuantity() {
-        return nameBase.getTotalItemsQuantity();
-    }    
+
 }

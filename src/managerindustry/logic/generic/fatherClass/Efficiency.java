@@ -6,79 +6,114 @@
 package managerindustry.logic.generic.fatherClass;
 
 /**
- *
+ * https://forums.eveonline.com/t/math-is-hard-between-eve-and-the-sheets/70360/2
+ * https://community.eveonline.com/news/dev-blogs/eve-industry-all-you-want-to-know/
+ * 
  * @author lele
  */
-public abstract class Efficiency {
-    private String name;
-    private float ratePercent;
-    private Byte level;
-    private final float baseValue = 1f; 
-
-    public Efficiency() {
+public class Efficiency extends NameBase{
+    private Byte bpoLevel;
+    protected float efficiencyResearchRate;
     
-    }
+    protected float structureMultiplier; 
+    private float structureRate;
+    
+    private float engineeringRigMultiplier;
+    private float engineeringRigRate;
+    
+    protected float securityStatusMultiplier;
+    private float securityStatusRate;
+    
+    protected float implantMultiplier;
+    private float implantRate;        
+    
+    private final float baseValue = 1f;    
 
     /**
-     * DBG non come chiamarlo per il momento
-     * Di base è 1
-     * @return float
+     * Material Efficiency
+     * @param Byte bpoLevel
+     * @param float structureRate
+     * @param float engineeringRigRate
+     * @param float securityStatusRate 
      */
-    public float getBaseValue() {
-        return baseValue;
-    }
+    public Efficiency(byte bpoLevel, float structureRate, float engineeringRigRate, 
+            float securityStatusRate) {
         
+        this.bpoLevel = bpoLevel;
+        this.structureRate = structureRate;
+        this.engineeringRigRate = engineeringRigRate;
+        this.securityStatusRate = securityStatusRate;
+        
+        meResearchRate();
+        structureMultiplier();
+        engineeringRigMultiplier();
+        securityMultiplier();        
+    }
+    
     /**
-     * Get Name
-     * @return String
-     */
-    public String getName() {
-        return name;
+     * Time Efficiency
+     * @param Byte bpoLevel
+     * @param float structureRate
+     * @param float engineeringRigRate
+     * @param float securityStatusRate 
+     */    
+    public Efficiency(byte bpoLevel, float structureRate, float engineeringRigRate, 
+            float securityStatusRate, float implantRate) {
+        
+        this.bpoLevel = bpoLevel;
+        this.structureRate = structureRate;
+        this.engineeringRigRate = engineeringRigRate;
+        this.securityStatusRate = securityStatusRate;     
+        this.implantRate = implantRate;
+        
+        teResearchRate();
+        structureMultiplier();
+        engineeringRigMultiplier();
+        securityMultiplier();
+        implantMultiplier();
+    }    
+    
+    private void teResearchRate(){
+        efficiencyResearchRate = baseValue - (( bpoLevel.floatValue() / 100 ) * 2);
     }
-
+    
     /**
-     * Set Name
-     * @param String name 
+     * calculate Material effiency Research
      */
-    public void setName(String name) {
-        this.name = name;
+    private void meResearchRate(){
+        efficiencyResearchRate = baseValue - ( bpoLevel.floatValue() / 100 );
     }
-
+    
     /**
-     * Get Rate Percent
-     * @return float
+     * calculate structure Multiplier
      */
-    public float getRatePercent() {
-        return ratePercent;
-    }
+    private void structureMultiplier(){
+        if ( structureRate == 1f ){
+            structureMultiplier = 1f;
+            return;
+        }
 
+        structureMultiplier = baseValue - structureRate;
+    }
+    
     /**
-     * Set Rate Percent
-     * @param float ratePercent 
+     * calculate engineering Rig Multiplier
      */
-    public void setRatePercent(float ratePercent) {
-        this.ratePercent = ratePercent;
+    private void engineeringRigMultiplier(){
+        engineeringRigMultiplier = baseValue - engineeringRigRate;
     }
-
+    
     /**
-     * Get Level
-     * @return int
+     * calculate security Multiplier
      */
-    public Integer getLevel() {
-        return level.intValue();
-    }
-
+    private void securityMultiplier(){
+        securityStatusMultiplier = baseValue - ( engineeringRigMultiplier * securityStatusRate );
+    }    
+    
     /**
-     * Set Level
-     * @param int level 
+     * calculate implant Multiplier
      */
-    public void setLevel(byte level) {
-        this.level = level;
+    private void implantMultiplier(){
+        implantMultiplier = baseValue - implantRate;
     }
-
-    public float getRateBpo(){
-        return calculateRateBpo();
-    }
-
-    protected abstract float calculateRateBpo(); 
 }

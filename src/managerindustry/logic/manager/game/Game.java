@@ -12,7 +12,7 @@ import managerindustry.logic.manager.game.fitter.Fitter;
 
 import managerindustry.logic.manager.game.tax.SystemCost;
 import managerindustry.logic.build.buildItem.BuildItemRequired_Init;
-import managerindustry.logic.skill.skillProduction.SkillProduction;
+import managerindustry.logic.skill.old.skillProduction.SkillProduction;
 
 /**
  *

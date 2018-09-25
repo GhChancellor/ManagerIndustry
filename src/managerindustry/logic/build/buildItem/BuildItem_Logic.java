@@ -9,21 +9,21 @@ import java.util.HashMap;
 import managerindustry.logic.generic.fatherClass.BuildItem;
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.generic.efficiency.materialEfficiency.MaterialEfficiencyCalculate;
+
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.build.basicMaterialRequired.MaterialRequired_Init;
 import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterial;
-import managerindustry.logic.prove.efficiency.MaterialEfficiency;
+import managerindustry.logic.generic.efficiency.MaterialEfficiency;
+
 
 /**
  *
  * @author lele
  */
-public class BuildItem_Logic extends RequiredMaterial{
-    private MaterialEfficiencyCalculate materialEfficiencyCalculate = new MaterialEfficiencyCalculate();    
-    // private MaterialEfficiency materialEfficiencyCalculate = new MaterialEfficiency( (byte) 0 , 1f, 1f, 1f);
+public class BuildItem_Logic extends RequiredMaterial{ 
+    private MaterialEfficiency materialEfficiencyCalculate = new MaterialEfficiency( (byte) 0 , 1f, 1f, 1f);
     private int baseQuantity;;
     private int singleMaterialQuantity;
     private long totalMaterialQuantity;
@@ -40,7 +40,7 @@ public class BuildItem_Logic extends RequiredMaterial{
         
         MaterialRequired_Init basicMaterialRequired = 
             new MaterialRequired_Init(buildItem.getBpoName(), activitiesEnum);
-
+        
         requiredItem(buildItem, requiredMaterial,
             basicMaterialRequired.getRequiredMaterialObject().getItemRecursions());
         System.out.println("");
@@ -105,12 +105,12 @@ public class BuildItem_Logic extends RequiredMaterial{
         
         if ( materialRecusion.getItemRecursions().isEmpty()){
             // T1 material .. bpoME ..
-            materialEfficiencyCalculate = new MaterialEfficiencyCalculate
+            materialEfficiencyCalculate.materialEfficiencyCalculate
                 (buildItem.getRun(), buildItem.getJob(), 
                     buildItem.getBpoME(), materialRecusion.getBaseQuantity() );
         }else{
             // T2 component .. componentMe ..
-            materialEfficiencyCalculate = new MaterialEfficiencyCalculate
+            materialEfficiencyCalculate.materialEfficiencyCalculate
                 (buildItem.getRun(), buildItem.getJob(),
                     buildItem.getComponentMe(), materialRecusion.getBaseQuantity() );
         }   
@@ -139,9 +139,7 @@ public class BuildItem_Logic extends RequiredMaterial{
         // quantity material per all items 1 run
         totalMaterialQuantity = 
             materialEfficiencyCalculate.getTotalItemsQuantity();         
-        
-        // destroy object
-        materialEfficiencyCalculate = null;        
+
     }     
     
     /**

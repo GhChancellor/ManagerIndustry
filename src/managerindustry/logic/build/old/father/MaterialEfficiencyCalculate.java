@@ -5,8 +5,7 @@
  */
 package managerindustry.logic.build.old.father;
 
-import managerindustry.logic.generic.efficiency.materialEfficiency.*;
-import managerindustry.logic.generic.efficiency.materialEfficiency.MaterialEfficiency;
+import managerindustry.logic.build.buildItem.old.materialEfficiency.MaterialEfficiency;
 
 /**
  * Calculate material Efficiency

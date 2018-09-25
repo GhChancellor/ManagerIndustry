@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.skill.skillProduction.logic;
+package managerindustry.logic.skill.old.skillProduction.logic;
 
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.fatherClass.SkillInfo;
