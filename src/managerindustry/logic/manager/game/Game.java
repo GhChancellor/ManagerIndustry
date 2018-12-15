@@ -11,8 +11,8 @@ import managerindustry.logic.manager.game.build.old.Build_OLD;
 import managerindustry.logic.manager.game.fitter.Fitter;
 
 import managerindustry.logic.manager.game.tax.SystemCost;
-import managerindustry.logic.build.buildItem.BuildItemRequired_Init;
-import managerindustry.logic.skill.old.skillProduction.SkillProduction;
+import managerindustry.logic.build.production.buildItem.BuildItemRequired_Init;
+import managerindustry.logic.build.skill.old.skillProduction.SkillProduction;
 
 /**
  *

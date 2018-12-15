@@ -11,7 +11,9 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.EffectEngineeringRigEntityJpaController;
 import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs_1;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRig;
+import managerindustry.logic.generic.fatherClass.RigMarketGroup;
 import managerindustry.logic.manager.Manager;
 
 /**
@@ -48,28 +50,30 @@ public class EffectEngineeringRigX {
      * @deprecated prendire in considerazione di inviare direttamente la lista
      * @param StructureRig structureRig 
      */
-    public void addEffectRigs(EffectEngineeringRigs_1 structureRig){
+    public void addEffectRigs(EffectEngineeringRig structureRig){
         // 43875 Standup M-Set Structure Manufacturing Material Efficiency I for fuel blocks
         // fuel blocks 4051 4246 4247 4312
   
-        System.err.print(" >>>> ATTENZIONE <<<< EffectEngineeringRigX > addEffectRigs DISABILITATA!!!!!!!" );
+//        System.err.print(" >>>> ATTENZIONE <<<< EffectEngineeringRigX > addEffectRigs DISABILITATA!!!!!!!" );
         
-//        for (RigRecusion_Init rigRecusion : structureRig.getRigRecusions() ) {
-//            List<RigMarketGroup> groupRecursions = rigRecusion.getRigMarketGroupsList();
-//            
-//            for (RigMarketGroup effectId : groupRecursions) {
-//                EffectEngineeringRigEntity effectRigEntity = 
-//                    new EffectEngineeringRigEntity(
-//                    structureRig.getTypeID(), effectId.getMarketGroupID() );
-//                addEffectRigEntity(effectRigEntity);                
-//            }
-//        }
+        for (RigRecusion_Init rigRecusion : structureRig.getRigRecusions() ) {
+            List<RigMarketGroup> groupRecursions = rigRecusion.getList(); // .getRigMarketGroupsList();
+            
+            for (RigMarketGroup effectId : groupRecursions) {
+                EffectEngineeringRigEntity effectRigEntity = 
+                    new EffectEngineeringRigEntity(
+                    structureRig.getRigTypeID(), effectId.getMarketGroupID() );
+                
+                addEffectRigEntity(effectRigEntity);                
+            }
+        }
     }
 
-    public void addEffectRigsORI(EffectEngineeringRigs_1 structureRig){
+    public void addEffectRigsORI(EffectEngineeringRig structureRig){
         // 43875 Standup M-Set Structure Manufacturing Material Efficiency I for fuel blocks
         // fuel blocks 4051 4246 4247 4312
 
+//        System.err.print(" >>>> ATTENZIONE <<<< EffectEngineeringRigX > addEffectRigs DISABILITATA!!!!!!!");        
 //        for (RigRecusion_Init rigRecusion : structureRig.getRigRecusions() ) {
 //            List<Integer> rigMarketGroups = rigRecusion.getRigMarketGroups();
 //            
@@ -90,12 +94,12 @@ public class EffectEngineeringRigX {
      * @param int effectID, has effect on item to build like ammunition
      * @return EffectEngineeringRigEntity
      */
-    public EffectEngineeringRigEntity getEffectEngineeringRigEntity(int typeID, int effectID){
+    public EffectEngineeringRigEntity getEffectEngineeringRigEntity(int rigTypeID, int effectID){
         try {
             TypedQuery < EffectEngineeringRigEntity > effectsTQ = 
                 entityManager.createNamedQuery("EffectEngineeringRigEntity.getByEffectID_ByID", EffectEngineeringRigEntity.class);
 
-            effectsTQ.setParameter("typeID", typeID );
+            effectsTQ.setParameter("typeID", rigTypeID );
             effectsTQ.setParameter("effectID", effectID );            
             
             List<EffectEngineeringRigEntity> resultList = effectsTQ.getResultList();
@@ -112,16 +116,16 @@ public class EffectEngineeringRigX {
     }
     
     /**
-     * Get Effect Engineering Rig entity by typeId
-     * @param typeID typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
+     * Get Effect Engineering Rig typeId
+     * @param rigTypeID typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
      * @return EffectEngineeringRigEntity
      */
-    public EffectEngineeringRigEntity getEffectEngineeringRigEntity(int typeID){
+    public EffectEngineeringRigEntity getEffectEngineeringRigEntity(int rigTypeID){
         try {
             TypedQuery < EffectEngineeringRigEntity > effectsTQ = 
                 entityManager.createNamedQuery("EffectEngineeringRigEntity.getByID", EffectEngineeringRigEntity.class);
 
-            effectsTQ.setParameter("typeID", typeID );           
+            effectsTQ.setParameter("typeID", rigTypeID );           
             List<EffectEngineeringRigEntity> resultList = effectsTQ.getResultList();
             
             if ( resultList.isEmpty()){

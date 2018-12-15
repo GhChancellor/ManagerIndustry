@@ -18,7 +18,9 @@ import managerindustry.logic.manager.Manager;
  *
  * @author lele
  */
-public abstract class AGenericRequiredItem < A, B > implements IGenericRequiredItem {    
+public abstract class AGenericRequiredItem < A, B, C > 
+        implements IGenericRequiredItem  {    
+    
     private List < A > list = new ArrayList<>();
     private Map < A, B > map = new HashMap<>();
   
@@ -114,8 +116,17 @@ public abstract class AGenericRequiredItem < A, B > implements IGenericRequiredI
         return Manager.getInstance().db().item().industryActivityProducts().
             getProductTypeID_ByTypeID_ByActivityID(typeID, activitiesEnum);
     }     
-    
-   @Override
+
+    /**
+     * Get Object
+     * @return Object
+     */
+    @Override
+    public Object getObject() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }      
+
+    @Override
     public void requiredItem(Object a1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -126,35 +137,25 @@ public abstract class AGenericRequiredItem < A, B > implements IGenericRequiredI
     }
 
     @Override
-    public void requiredItem(Object a1, Object b2, Object c2) {
+    public void requiredItem(Object t1, Object b2, Object c3) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     @Override
     public Object requiredItemMoreInfo(Object a1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
+    }
 
     @Override
     public Object requiredItemMoreInfo(Object a1, Object b2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
-    
-    @Override
-    public Object getObject() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }        
-
-    @Override    
-    public void display(){
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void convertToMap(Map a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    }    
+    
     @Override
     public void convertToList(List a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

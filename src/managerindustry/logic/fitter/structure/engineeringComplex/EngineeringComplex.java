@@ -37,7 +37,6 @@ public class EngineeringComplex extends BaseStructure{
     }   
     
     private String nameEngineeringComplex;
-    // DBG il Double è più che suffiencente
     private float reductionManufacturingMaterial; // 2600
     private float reductionManufacturingScienceJobTime; // 2602
     private float reductionManufacturingScienceJobIskCost; // 2601

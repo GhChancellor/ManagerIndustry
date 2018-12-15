@@ -176,10 +176,12 @@ public class RigRecusionLogic extends AGenericRequiredItem{
     }    
 
     @Override
-    public List < RigRecusionLogic > getList(){
+    public List < RigMarketGroup > getList(){
         if (rigMarketGroupRecursion != null){
             addListElement(rigMarketGroupRecursion);
         }
         return super.getList();        
     }
+
+
 }

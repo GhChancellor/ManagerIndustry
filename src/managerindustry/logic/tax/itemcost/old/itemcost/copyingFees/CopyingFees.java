@@ -6,7 +6,7 @@
 package managerindustry.logic.tax.itemcost.old.itemcost.copyingFees;
 
 import java.util.Map;
-import managerindustry.logic.build.old.ReportCalculatedComponentX;
+import managerindustry.logic.build.production.old.ReportCalculatedComponentX;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.itemcost.old.itemcost.ItemCost;

@@ -8,7 +8,7 @@ package managerindustry.logic.tax.itemcost.old.itemcost;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.build.old.ReportCalculatedComponentX;
+import managerindustry.logic.build.production.old.ReportCalculatedComponentX;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.tax.itemcost.old.itemcost.baseJobCost.BaseJobCost;

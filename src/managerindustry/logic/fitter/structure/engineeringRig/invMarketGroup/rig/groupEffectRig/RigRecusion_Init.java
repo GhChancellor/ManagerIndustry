@@ -7,6 +7,7 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 
 import java.util.List;
 import java.util.Map;
+import managerindustry.logic.generic.fatherClass.RigMarketGroup;
 import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterialGeneric;
 
 /**
@@ -28,12 +29,7 @@ public class RigRecusion_Init extends RequiredMaterialGeneric{
     public void display() {
         recusionLogic.display();
     }
-
-    @Override
-    public List < RigRecusionLogic > getList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
-    
+   
     @Override
     public Map getMap() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -42,6 +38,11 @@ public class RigRecusion_Init extends RequiredMaterialGeneric{
     @Override
     public Object getRequiredMaterialObject() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List < RigMarketGroup > getList() {
+        return recusionLogic.getList();
     }
 
 

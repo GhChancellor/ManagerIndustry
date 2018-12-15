@@ -8,7 +8,7 @@ package managerindustry.logic.generic.fatherClass;
 import managerindustry.logic.generic.fatherClass.recursion.ItemRecursion;
 
 /**
- *
+ * Skill info like id level etc...
  * @author lele
  */
 public class SkillInfo extends ItemRecursion {

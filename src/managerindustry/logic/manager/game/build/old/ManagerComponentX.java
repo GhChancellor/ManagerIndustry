@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.build.old.CalculatedComponentX;
-import managerindustry.logic.build.old.ComponentX;
-import managerindustry.logic.build.old.ReportCalculatedComponentX;
+import managerindustry.logic.build.production.old.CalculatedComponentX;
+import managerindustry.logic.build.production.old.ComponentX;
+import managerindustry.logic.build.production.old.ReportCalculatedComponentX;
 
 /**
  *

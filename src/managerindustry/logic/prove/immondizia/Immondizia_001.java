@@ -7,16 +7,10 @@ package managerindustry.logic.prove.immondizia;
 
 import java.util.ArrayList;
 import java.util.List;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.ChooseRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
-import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
-import managerindustry.logic.generic.fatherClass.BuildItem;
-import managerindustry.logic.build.buildItem.BuildItemRequired_Init;
-import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
-import managerindustry.logic.tax.itemcost.DisplayItemCost;
-import managerindustry.logic.generic.fatherClass.ItemCostBase;
-import managerindustry.logic.solarSystem.SolarSystem;
 
 /**
  *
@@ -27,7 +21,7 @@ public class Immondizia_001 <T> {
     
     public Immondizia_001() throws ErrorExeption{
 //        rigRucursion();
-//        chooseRig();
+        chooseRig();
 //        immondizia2();
     }    
     
@@ -42,7 +36,7 @@ public class Immondizia_001 <T> {
     
     private void chooseRig(){
         // IMPORTANTE qualche rig crea doppione per dinamiche di gioco, sistemalo
-//        ChooseRig chooseRig02 = new ChooseRig(43921);        
+        ChooseRig chooseRig02 = new ChooseRig(43921);        
         
 //        setDublicate();
         // aggiunge un " effectID 0 " da controllare

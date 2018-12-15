@@ -8,7 +8,7 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs_2;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRigs_Logic;
 
 
 /**
@@ -274,11 +274,11 @@ public class InitCommonRigGroups {
     
     /**
      * Add Effect Engineering Rig to DB
-     * @param int typeId
+     * @param int rigTypeId
      * @param List < RigRecusion_Init > effectRigs 
      */
-    public void addEffectEngineeringRig(int typeId, List < RigRecusion_Init > effectRigs ){
-        EffectEngineeringRigs_2 managerStructure = new EffectEngineeringRigs_2(typeId, effectRigs);
+    public void addEffectEngineeringRig(int rigTypeID, List < RigRecusion_Init > effectRigs ){
+        EffectEngineeringRigs_Logic managerStructure = new EffectEngineeringRigs_Logic(rigTypeID, effectRigs);
     }
  
 }

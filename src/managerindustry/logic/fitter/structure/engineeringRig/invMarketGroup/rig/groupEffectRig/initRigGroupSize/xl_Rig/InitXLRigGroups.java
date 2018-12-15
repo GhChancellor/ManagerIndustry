@@ -23,9 +23,9 @@ public class InitXLRigGroups{
     
     /**
      * Get Standup XL Set Equipment And Consumable Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupXLSetEquipmentAndConsumableManufacturing(int typeId){ 
+    public void initStandupXLSetEquipmentAndConsumableManufacturing(int rigTypeID){ 
         List < RigRecusion_Init > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().shipEquipments().getshipEquipments());
@@ -33,14 +33,14 @@ public class InitXLRigGroups{
         effectRigs.add(GroupEffectRig.getInstance().ammunitionCarges().getAmmunitionCarges() );
         effectRigs.add(GroupEffectRig.getInstance().droneFighters().getDroneFighters() );
       
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);
     }    
     
     /**
      * Get Standup XL Set Ship Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupXLSetShipManufacturing(int typeId){   
+    public void initStandupXLSetShipManufacturing(int rigTypeID){   
         List < RigRecusion_Init > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().ships().battlecruisers().getAdvancedBattlecruisers());
@@ -72,14 +72,14 @@ public class InitXLRigGroups{
         
         effectRigs.add(GroupEffectRig.getInstance().ships().shuttles().getShuttles());
         
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);            
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);            
     }    
     
     /**
      * Get Standup XL Set Structure And Component Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupXLSetStructureAndComponentManufacturing(int typeId){    
+    public void initStandupXLSetStructureAndComponentManufacturing(int rigTypeID){    
         List < RigRecusion_Init > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().advancedCapitalComponets().getAdvancedCapitalComponents());
@@ -100,14 +100,14 @@ public class InitXLRigGroups{
         
         effectRigs.add(GroupEffectRig.getInstance().structures().starbaseStructures().getStarbaseStructures() );   
         
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);            
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);            
     }    
     
     /**
      * Get Standup XL Set Thukker Structure And Component Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupXLSetThukkerStructureAndComponentManufacturing(int typeId){ 
+    public void initStandupXLSetThukkerStructureAndComponentManufacturing(int rigTypeID){ 
         List < RigRecusion_Init > effectRigs = new ArrayList<>();
         
         effectRigs.add(GroupEffectRig.getInstance().manufacture_research().components().advancedCapitalComponets().getAdvancedCapitalComponents());
@@ -128,15 +128,15 @@ public class InitXLRigGroups{
         
         effectRigs.add(GroupEffectRig.getInstance().structures().starbaseStructures().getStarbaseStructures() );  
         
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);             
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);             
     }       
     
     /**
      * Get Standup XL Set Laboratory
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupXLSetLaboratory(int typeId){      
+    public void initStandupXLSetLaboratory(int rigTypeID){      
         // new ArrayList<>() must be empty
-        initCommonRigGroups.addEffectEngineeringRig(typeId, new ArrayList<>());             
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, new ArrayList<>());             
     }        
 }

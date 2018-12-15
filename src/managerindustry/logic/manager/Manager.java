@@ -45,8 +45,7 @@ public class Manager {
      * @return ApiEsi
      */
     public ApiEsi apiEsi(){
-        ApiEsi apiEsi = new ApiEsi();
-        return apiEsi;
+        return new ApiEsi();
     }
     
     /**
@@ -54,8 +53,7 @@ public class Manager {
      * @return Game
      */
     public Game game(){
-        Game game = new Game();
-        return game;
+        return new Game();
     }
     
         

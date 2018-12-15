@@ -7,7 +7,7 @@ package managerindustry;
 
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.build.old.ReportCalculatedComponentX;
+import managerindustry.logic.build.production.old.ReportCalculatedComponentX;
 import managerindustry.logic.generic.enumName.PlatformEnum;
 import managerindustry.logic.generic.enumName.SecurityStatusEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
@@ -22,15 +22,15 @@ import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.build.basicMaterialRequired.MaterialRequired_Init;
+import managerindustry.logic.build.production.basicMaterialRequired.MaterialRequired_Init;
 import managerindustry.logic.generic.fatherClass.BuildItem;
-import managerindustry.logic.build.buildItem.BuildItemRequired_Init;
+import managerindustry.logic.build.production.buildItem.BuildItemRequired_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCost;
 import managerindustry.logic.generic.fatherClass.ItemCostBase;
 import managerindustry.logic.prove.immondizia.Immondizia_001;
-import managerindustry.logic.skill.requiredSkill.SkillRequired_Init;
+import managerindustry.logic.build.skill.requiredSkill.SkillRequired_Init;
 
 /**
  *
@@ -40,15 +40,15 @@ public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
         buildItemV6();
-//        basicMaterial();
-//        jobInstallationFeeV2(); 
-//        speculation();
-//        requiredSkill();
+        basicMaterial();
+        jobInstallationFeeV2(); 
+        speculation();
+        requiredSkill();
 
 // ----------------------------------------
 //        recursionItems();
 //        structure();
-//        immondizia();
+        immondizia();
 //        old();
     }
     
@@ -139,7 +139,7 @@ public class MainProgramm {
      */
     public static void buildItemV6() {
         //                                   bpoName   run job   bpoME    componentMe
-        BuildItem buildItem = new BuildItem("scimitar",  1, 1, (byte) 0, (byte) 0);
+        BuildItem buildItem = new BuildItem("drake",  1, 1, (byte) 0, (byte) 0);
         
         try {
             BuildItemRequired_Init buildItemRequired = 

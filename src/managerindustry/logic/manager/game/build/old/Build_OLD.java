@@ -13,11 +13,11 @@ import managerindustry.db.entities.eve.DgmAttributeTypes;
 import managerindustry.db.entities.eve.DgmTypeAttributes;
 import managerindustry.db.entities.eve.IndustryActivityMaterials;
 import managerindustry.db.entities.eve.InvTypes;
-import managerindustry.logic.build.old.CalculatedComponentX;
-import managerindustry.logic.build.old.ComponentX;
-import managerindustry.logic.build.old.MaterialForComponents;
-import managerindustry.logic.build.old.ReportCalculatedComponentX;
-import managerindustry.logic.build.old.father.MaterialEfficiencyCalculate;
+import managerindustry.logic.build.production.old.CalculatedComponentX;
+import managerindustry.logic.build.production.old.ComponentX;
+import managerindustry.logic.build.production.old.MaterialForComponents;
+import managerindustry.logic.build.production.old.ReportCalculatedComponentX;
+import managerindustry.logic.build.production.old.father.MaterialEfficiencyCalculate;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.manager.Manager;
 

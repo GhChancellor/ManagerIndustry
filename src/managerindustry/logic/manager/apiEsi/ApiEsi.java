@@ -20,8 +20,7 @@ public class ApiEsi {
      * @return Skill
      */
     public Skill skill() {
-        Skill skillJson = new Skill();
-        return skillJson;
+        return new Skill();
     }
     
     /**
@@ -29,8 +28,7 @@ public class ApiEsi {
      * @return Industry
      */
     public Industry industry(){
-        Industry industry = new Industry();
-        return industry;
+        return new Industry();
     }
    
     /**
@@ -38,7 +36,6 @@ public class ApiEsi {
      * @return Market
      */
     public Market market(){
-        Market market = new Market();
-        return market;
+        return new Market();
     }
 }

@@ -14,7 +14,7 @@ import managerindustry.logic.generic.fatherClass.NameBase;
  *
  * @author lele
  */
-public class RequiredMaterial < A, B > extends AGenericRequiredItem{
+public class RequiredMaterial < B, C > extends AGenericRequiredItem < NameBase, B, C >{
     protected NameBase requiredMaterial = new NameBase();
 
     public RequiredMaterial() {
@@ -53,7 +53,7 @@ public class RequiredMaterial < A, B > extends AGenericRequiredItem{
      * Get Map
      * @return Map < A, B >
      */
-    public Map < A, B > getMap(){
+    public Map < NameBase, B > getMap(){
         addListElement(requiredMaterial);
         return super.getMap();
     }
@@ -63,7 +63,7 @@ public class RequiredMaterial < A, B > extends AGenericRequiredItem{
      * Get List
      * @return List < A >
      */
-    public List < A > getList(){
+    public List < NameBase > getList(){
         convertToList(requiredMaterial.getItemRecursions());
         return super.getList();
     }
@@ -73,7 +73,7 @@ public class RequiredMaterial < A, B > extends AGenericRequiredItem{
      * @return Object
      */
     @Override
-    public Object getObject() {
+    public NameBase getObject() {
         return requiredMaterial;
     }  
 
@@ -93,4 +93,6 @@ public class RequiredMaterial < A, B > extends AGenericRequiredItem{
             }
         }        
     }
+
+
 }

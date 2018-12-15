@@ -131,7 +131,7 @@ public class AvoidDuplicateRig {
             Manager.getInstance().db().item().avoidDuplicateRigEntity().getAvoidDuplicateRig(
             AvoidDuplicateRigX.NamedQueryEnum.QUERY_1, 
             Parameter.PARAMETER_1, 
-            ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_1.getTypeID());
+            ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_1.getRigTypeID());
         
         if ( avoidDuplicateRigEntity == null){
             initDB();
@@ -153,216 +153,216 @@ public class AvoidDuplicateRig {
      */
     private void initDB(){
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_ADVANCED_COMPONENT_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_AMMUNITION_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_AMMUNITION_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_AMMUNITION_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_AMMUNITION_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_AMMUNITION_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_AMMUNITION_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_AMMUNITION_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_AMMUNITION_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_ADVANCED_LARGE_SHIP_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_ADVANCED_LARGE_SHIP_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_ADVANCED_LARGE_SHIP_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_ADVANCED_LARGE_SHIP_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_ADVANCED_LARGE_SHIP_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_ADVANCED_LARGE_SHIP_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_ADVANCED_LARGE_SHIP_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_ADVANCED_LARGE_SHIP_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_ADVANCED_MEDIUM_SHIP_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_ADVANCED_MEDIUM_SHIP_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_ADVANCED_MEDIUM_SHIP_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_ADVANCED_MEDIUM_SHIP_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_ADVANCED_MEDIUM_SHIP_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_ADVANCED_MEDIUM_SHIP_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_ADVANCED_MEDIUM_SHIP_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_ADVANCED_MEDIUM_SHIP_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_ADVANCED_SMALL_SHIP_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_ADVANCED_SMALL_SHIP_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_ADVANCED_SMALL_SHIP_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_ADVANCED_SMALL_SHIP_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_ADVANCED_SMALL_SHIP_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_ADVANCED_SMALL_SHIP_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_ADVANCED_SMALL_SHIP_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_ADVANCED_SMALL_SHIP_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BASIC_CAPITAL_COMPONENT_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BASIC_LARGE_SHIP_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BASIC_LARGE_SHIP_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BASIC_LARGE_SHIP_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BASIC_LARGE_SHIP_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BASIC_LARGE_SHIP_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BASIC_LARGE_SHIP_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BASIC_LARGE_SHIP_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BASIC_LARGE_SHIP_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BASIC_MEDIUM_SHIP_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BASIC_MEDIUM_SHIP_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BASIC_MEDIUM_SHIP_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BASIC_MEDIUM_SHIP_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BASIC_MEDIUM_SHIP_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BASIC_MEDIUM_SHIP_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BASIC_MEDIUM_SHIP_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BASIC_MEDIUM_SHIP_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BASIC_SMALL_SHIP_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BASIC_SMALL_SHIP_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BASIC_SMALL_SHIP_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BASIC_SMALL_SHIP_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BASIC_SMALL_SHIP_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BASIC_SMALL_SHIP_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BASIC_SMALL_SHIP_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BASIC_SMALL_SHIP_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BLUEPRINT_COPY_ACCELERATOR_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BLUEPRINT_COPY_ACCELERATOR_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BLUEPRINT_COPY_ACCELERATOR_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BLUEPRINT_COPY_ACCELERATOR_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BLUEPRINT_COPY_COST_OPTIMIZATION_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BLUEPRINT_COPY_COST_OPTIMIZATION_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BLUEPRINT_COPY_COST_OPTIMIZATION_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BLUEPRINT_COPY_COST_OPTIMIZATION_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BLUEPRINT_INVENTION_ACCELERATOR_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BLUEPRINT_INVENTION_ACCELERATOR_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BLUEPRINT_INVENTION_ACCELERATOR_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BLUEPRINT_INVENTION_ACCELERATOR_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BLUEPRINT_INVENTION_COST_OPTIMIZATION_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BLUEPRINT_INVENTION_COST_OPTIMIZATION_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BLUEPRINT_INVENTION_COST_OPTIMIZATION_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BLUEPRINT_INVENTION_COST_OPTIMIZATION_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_ACCELERATOR_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_ACCELERATOR_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_ACCELERATOR_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_ACCELERATOR_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_COST_OPTIMIZATION_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_COST_OPTIMIZATION_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_COST_OPTIMIZATION_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_COST_OPTIMIZATION_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_ACCELERATOR_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_ACCELERATOR_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_ACCELERATOR_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_ACCELERATOR_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_COST_OPTIMIZATION_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_COST_OPTIMIZATION_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_COST_OPTIMIZATION_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_BLUEPRINT_RESEARCH_COST_OPTIMIZATION_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_DRONE_FIGHTER_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_DRONE_FIGHTER_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_DRONE_FIGHTER_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_DRONE_FIGHTER_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_DRONE_FIGHTER_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_DRONE_FIGHTER_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_DRONE_FIGHTER_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_DRONE_FIGHTER_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_EQUIPMENT_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_EQUIPMENT_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_EQUIPMENT_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_EQUIPMENT_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_EQUIPMENT_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_EQUIPMENT_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_EQUIPMENT_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_EQUIPMENT_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_STRUCTURE_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_STRUCTURE_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_STRUCTURE_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_STRUCTURE_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.M_STRUCTURE_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.M_STRUCTURE_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.M_STRUCTURE_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.M_STRUCTURE_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_ADVANCED_COMPONENT_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_ADVANCED_COMPONENT_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_ADVANCED_COMPONENT_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_ADVANCED_COMPONENT_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_ADVANCED_LARGE_SHIP_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_ADVANCED_LARGE_SHIP_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_ADVANCED_LARGE_SHIP_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_ADVANCED_LARGE_SHIP_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_AMMUNITION_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_AMMUNITION_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_AMMUNITION_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_AMMUNITION_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_BASIC_LARGE_SHIP_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_BASIC_LARGE_SHIP_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_BASIC_LARGE_SHIP_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_BASIC_LARGE_SHIP_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_ADVANCED_MEDIUM_SHIP_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_ADVANCED_MEDIUM_SHIP_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_ADVANCED_MEDIUM_SHIP_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_ADVANCED_MEDIUM_SHIP_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_ADVANCED_SMALL_SHIP_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_ADVANCED_SMALL_SHIP_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_ADVANCED_SMALL_SHIP_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_ADVANCED_SMALL_SHIP_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_BASIC_CAPITAL_COMPONENT_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_BASIC_CAPITAL_COMPONENT_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_BASIC_CAPITAL_COMPONENT_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_BASIC_CAPITAL_COMPONENT_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_BASIC_MEDIUM_SHIP_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_BASIC_MEDIUM_SHIP_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_BASIC_MEDIUM_SHIP_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_BASIC_MEDIUM_SHIP_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_BASIC_SMALL_SHIP_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_BASIC_SMALL_SHIP_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_BASIC_SMALL_SHIP_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_BASIC_SMALL_SHIP_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_BLUEPRINT_INVENTION_OPTIMIZATION_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_BLUEPRINT_INVENTION_OPTIMIZATION_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_BLUEPRINT_INVENTION_OPTIMIZATION_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_BLUEPRINT_INVENTION_OPTIMIZATION_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_BLUEPRINT_RESEARCH_OPTIMIZATION_ME_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_BLUEPRINT_RESEARCH_OPTIMIZATION_ME_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_BLUEPRINT_RESEARCH_OPTIMIZATION_ME_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_BLUEPRINT_RESEARCH_OPTIMIZATION_ME_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_BLUEPRINT_RESEARCH_OPTIMIZATION_TE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_BLUEPRINT_RESEARCH_OPTIMIZATION_TE_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_BLUEPRINT_RESEARCH_OPTIMIZATION_TE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_BLUEPRINT_RESEARCH_OPTIMIZATION_TE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_BLUEPRINT_COPY_OPTIMIZATION_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_BLUEPRINT_COPY_OPTIMIZATION_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_BLUEPRINT_COPY_OPTIMIZATION_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_BLUEPRINT_COPY_OPTIMIZATION_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_CAPITAL_SHIP_2.getTypeID(), 
-             ChooseEngineeringRigEnum.L_CAPITAL_SHIP_1.getTypeID());
+            (ChooseEngineeringRigEnum.L_CAPITAL_SHIP_2.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_CAPITAL_SHIP_1.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_DRONE_FIGHTER_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_DRONE_FIGHTER_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_DRONE_FIGHTER_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_DRONE_FIGHTER_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_EQUIPMENT_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_EQUIPMENT_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_EQUIPMENT_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_EQUIPMENT_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.L_STRUCTURE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.L_STRUCTURE_2.getTypeID());
+            (ChooseEngineeringRigEnum.L_STRUCTURE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.L_STRUCTURE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.XL_EQUIPMENT_CONSUMABLE_1.getTypeID(), 
-             ChooseEngineeringRigEnum.XL_EQUIPMENT_CONSUMABLE_2.getTypeID());
+            (ChooseEngineeringRigEnum.XL_EQUIPMENT_CONSUMABLE_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.XL_EQUIPMENT_CONSUMABLE_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.XL_BLUEPRINT_LABORATORY_2.getTypeID(), 
-             ChooseEngineeringRigEnum.XL_BLUEPRINT_LABORATORY_1.getTypeID());
+            (ChooseEngineeringRigEnum.XL_BLUEPRINT_LABORATORY_2.getRigTypeID(), 
+             ChooseEngineeringRigEnum.XL_BLUEPRINT_LABORATORY_1.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.XL_SHIP_MANUFACTURING_1.getTypeID(), 
-             ChooseEngineeringRigEnum.XL_SHIP_MANUFACTURING_2.getTypeID());
+            (ChooseEngineeringRigEnum.XL_SHIP_MANUFACTURING_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.XL_SHIP_MANUFACTURING_2.getRigTypeID());
         
         createIncompatibleObject
-            (ChooseEngineeringRigEnum.XL_STRUCTURE_COMPONENT_1.getTypeID(), 
-             ChooseEngineeringRigEnum.XL_STRUCTURE_COMPONENT_2.getTypeID());        
+            (ChooseEngineeringRigEnum.XL_STRUCTURE_COMPONENT_1.getRigTypeID(), 
+             ChooseEngineeringRigEnum.XL_STRUCTURE_COMPONENT_2.getRigTypeID());        
     }    
 
 }

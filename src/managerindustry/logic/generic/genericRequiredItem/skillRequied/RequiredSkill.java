@@ -94,4 +94,5 @@ public class RequiredSkill < A, B > extends AGenericRequiredItem {
     public Object getObject() {
         return requiredSkill;
     }      
+
 }

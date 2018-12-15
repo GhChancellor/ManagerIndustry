@@ -159,22 +159,22 @@ public enum ChooseEngineeringRigEnum{
         XL_STRUCTURE_COMPONENT_1(43704), // Standup XL-Set Structure and Component Manufacturing Efficiency I 
         XL_STRUCTURE_COMPONENT_2(43705), // Standup XL-Set Structure and Component Manufacturing Efficiency II 
                                 
-        XL_THUKKER_STRUCTURE_COMPONENT(45548); // Standup XL-Set Thukker Structure and Component Manufacturing Efficiency  
+        XL_THUKKER_STRUCTURE_COMPONENT(45548); // Standup XL-Set Thukker Structure and Component Manufacturing Efficiency  // Standup XL-Set Thukker Structure and Component Manufacturing Efficiency  
                           
-        private int typeID;
+        private int rigTypeID;
         private String description;
 
-        private ChooseEngineeringRigEnum(int typeID, String description) {
-            this.typeID = typeID;
+        private ChooseEngineeringRigEnum(int rigTypeID, String description) {
+            this.rigTypeID = rigTypeID;
             this.description = description;
         }
         
-        private ChooseEngineeringRigEnum(int typeID) {
-            this.typeID = typeID;
+        private ChooseEngineeringRigEnum(int rigTypeID) {
+            this.rigTypeID = rigTypeID;
         }
 
-        public int getTypeID() {
-            return typeID;
+        public int getRigTypeID() {
+            return rigTypeID;
         }
 
         public String getDescription() {

@@ -45,170 +45,170 @@ public class InitMediumRigGroups {
     }
     /**
      * Init Standup MSet Equipment Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetEquipmentManufacturing(int typeId){
+    public void initStandupMSetEquipmentManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonEquipmentManufacturing();
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);
     }
       
     /**
      * @deprecated 
      * mancano i data interfaces 
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetAdvancedComponentManufacturing(int typeId){
+    public void initStandupMSetAdvancedComponentManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonAdvancedComponentManufacturing(); 
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs); 
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs); 
     }
     
     /**
      * Init Standup MSet Advanced Large Ship Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetAdvancedLargeShipManufacturing(int typeId){
+    public void initStandupMSetAdvancedLargeShipManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonAdvancedLargeShipManufacturing(); 
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);
     }
     
     /**
      * Init Standup MSet Advanced Medium Ship Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetAdvancedMediumShipManufacturing(int typeId){
+    public void initStandupMSetAdvancedMediumShipManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonAdvancedMediumShipManufacturing();  
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);
     }
     
     /**
      * Init Standup MSet Advanced Small Ship Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetAdvancedSmallShipManufacturing(int typeId){
+    public void initStandupMSetAdvancedSmallShipManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonAdvancedSmallShipManufacturing(); 
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);
     }
     
     /**
      * Init Standup MSet Ammunition Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetAmmunitionManufacturing(int typeId){
+    public void initStandupMSetAmmunitionManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonAmmunitionManufacturing(); 
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);
     }
     
     /**
      * Init Standup MSet Basic Capital Component Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetBasicCapitalComponentManufacturing(int typeId){
+    public void initStandupMSetBasicCapitalComponentManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonBasicCapitalComponentManufacturing(); 
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);
     }
     
     /**
      * Init Standup MSet Basic Large Ship Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetBasicLargeShipManufacturing(int typeId){
+    public void initStandupMSetBasicLargeShipManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonBasicLargeShipManufacturing(); 
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);
     }
     
     /**
      * Init Standup MSet Basic Medium Ship Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetBasicMediumShipManufacturing(int typeId){
+    public void initStandupMSetBasicMediumShipManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonBasicMediumShipManufacturing();   
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);
     }
     
     /**
      * Init Standup MSet Basic Small Ship Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetBasicSmallShipManufacturing(int typeId){
+    public void initStandupMSetBasicSmallShipManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonBasicSmallShipManufacturing(); 
-        initCommonRigGroups.addEffectEngineeringRig(typeId,effectRigs);
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID,effectRigs);
     }
         
     /**
      * init Standup MSet Drone And Fighter Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetDroneAndFighterManufacturing(int typeId){
+    public void initStandupMSetDroneAndFighterManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonDroneAndFighterManufacturing(); 
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);
     }
     
     /**
      * Init Standup MSet Structure Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetStructureManufacturing(int typeId){
+    public void initStandupMSetStructureManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonStructureManufacturing();  
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);
     }    
     
     /**
      * @deprecated 
      * mancano ti data interfaces
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetThukkerAdvancedComponentManufacturing(int typeId){
+    public void initStandupMSetThukkerAdvancedComponentManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonThukkerAdvancedComponentManufacturing();     
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);
     }
 
     /**
      * Init Standup MSet Thukker Basic Capital Component Manufacturing
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetThukkerBasicCapitalComponentManufacturing(int typeId){
+    public void initStandupMSetThukkerBasicCapitalComponentManufacturing(int rigTypeID){
         List < RigRecusion_Init > effectRigs = initCommonRigGroups.initStandupCommonThukkerBasicCapitalComponentManufacturing();   
-        initCommonRigGroups.addEffectEngineeringRig(typeId, effectRigs);       
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, effectRigs);       
     }
     
     /**
      * Init Standup MSet Blueprint Copy 
      * bonuses apply to all blueprints
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetBlueprintCopy(int typeId){
+    public void initStandupMSetBlueprintCopy(int rigTypeID){
         // new ArrayList<>() must be empty
-        initCommonRigGroups.addEffectEngineeringRig(typeId, new ArrayList<>());
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, new ArrayList<>());
     }    
     
     /**
      * Init Standup MSet Invention
      * bonuses apply to all blueprints
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetInvention(int typeId){
+    public void initStandupMSetInvention(int rigTypeID){
         // new ArrayList<>() must be empty
-        initCommonRigGroups.addEffectEngineeringRig(typeId, new ArrayList<>());
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, new ArrayList<>());
     }
     
     /**
      * Init Standup MSet ME Research
      * bonuses apply to all blueprints
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetMEResearch(int typeId){
+    public void initStandupMSetMEResearch(int rigTypeID){
         // new ArrayList<>() must be empty
-        initCommonRigGroups.addEffectEngineeringRig(typeId, new ArrayList<>());
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, new ArrayList<>());
     }
     
     /**
      * Init Standup MSet TE Research
      * bonuses apply to all blueprints
-     * @param int typeId 
+     * @param int rigTypeID 
      */
-    public void initStandupMSetTEResearch(int typeId){
+    public void initStandupMSetTEResearch(int rigTypeID){
         // new ArrayList<>() must be empty               
-        initCommonRigGroups.addEffectEngineeringRig(typeId, new ArrayList<>());        
+        initCommonRigGroups.addEffectEngineeringRig(rigTypeID, new ArrayList<>());        
     }    
  
 }
