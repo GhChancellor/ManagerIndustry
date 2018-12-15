@@ -11,7 +11,7 @@ import managerindustry.logic.generic.fatherClass.recursion.ItemRecursion;
  *
  * @author lele
  */
-public class NameBase extends ItemRecursion {
+public class NameBase extends ItemRecursion < NameBase > {
     private int typeID;
     private String typeName;
     protected int baseQuantity;

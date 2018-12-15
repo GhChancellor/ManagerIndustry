@@ -9,7 +9,7 @@ package managerindustry.logic.prove.recursion_object.genericRequiredItem;
  *
  * @author lele
  */
-public interface IRequiredMaterialGeneric < A >{
+public interface IGenericlRequestV2 < A >{
     public void display();
     public A getRequiredMaterialObject();    
 }

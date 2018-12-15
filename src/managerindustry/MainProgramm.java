@@ -39,11 +39,11 @@ import managerindustry.logic.build.skill.requiredSkill.SkillRequired_Init;
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
-        buildItemV6();
-        basicMaterial();
-        jobInstallationFeeV2(); 
-        speculation();
-        requiredSkill();
+//        buildItemV6();
+//        basicMaterial();
+//        jobInstallationFeeV2(); 
+//        speculation();
+//        requiredSkill();
 
 // ----------------------------------------
 //        recursionItems();

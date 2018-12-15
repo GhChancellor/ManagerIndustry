@@ -9,12 +9,12 @@ package managerindustry.logic.prove.recursion_object.genericRequiredItem;
  *
  * @author lele
  */
-public interface IGenericRequiredItem < A, B, C >{
+public interface IGenericItemRequiredV2 < A, B, C, E, F >{
     public void requiredItem(A a1);
     public void requiredItem(A a1, B b2);
     public void requiredItem(A a1, B b2, C c3);
-    public A requiredItemMoreInfo(A a1);
-    public A requiredItemMoreInfo(A a1, B b2);
+    public A requiredItemMoreInfo(E e1);
+    public A requiredItemMoreInfo(E e1, F f1);
     public A getObject();
     public void display();    
 }
