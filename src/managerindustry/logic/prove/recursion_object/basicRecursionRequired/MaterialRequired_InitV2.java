@@ -46,7 +46,7 @@ public class MaterialRequired_InitV2 implements IGenericlRequestV2  {
      */    
     @Override
     public NameBase getRequiredMaterialObject() {
-        return basicMaterialRequired_Logic.getObject();
+        return (NameBase) basicMaterialRequired_Logic.getObject();
     }
     
 }

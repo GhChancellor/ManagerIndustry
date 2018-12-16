@@ -21,7 +21,10 @@ import managerindustry.logic.prove.recursion_object.genericRequiredItem.required
  *
  * @author lele
  */
-public class BasicMaterialRequired_LogicV2 extends RequiredMaterialV2{
+public class BasicMaterialRequired_LogicV2 < C > 
+        extends RequiredMaterialV2 < NameBase, List<IndustryActivityMaterials>, 
+                C, InvTypes, IndustryActivityMaterials>{
+    
     private RamActivitiesEnum activitiesEnum;
     
     /**
@@ -41,7 +44,7 @@ public class BasicMaterialRequired_LogicV2 extends RequiredMaterialV2{
         if ( invTypes == null )
             throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.ITEM_NOT_EXITS);        
         
-        requiredItem( getMaterials(invTypes), requiredMaterial);        
+        requiredItem( requiredMaterial, getMaterials(invTypes) );        
     } 
 
     /**
@@ -79,7 +82,7 @@ public class BasicMaterialRequired_LogicV2 extends RequiredMaterialV2{
      * @param RequiredMaterialRecusion requiredA_ 
      */
     @Override
-    public void requiredItem(Object materials, Object requiredA) {
+    public void requiredItem(NameBase requiredA, List< IndustryActivityMaterials> materials) {
         
         for (IndustryActivityMaterials material : (List< IndustryActivityMaterials>) materials) {
             InvTypes invTypes = getInvTypesById(material.getMaterialTypeID());
@@ -90,16 +93,19 @@ public class BasicMaterialRequired_LogicV2 extends RequiredMaterialV2{
 
             // only for dbg, use this for more info on object
             NameBase requiredItemsRecursionA = 
-                (NameBase) requiredItemMoreInfo(invTypes, material);
+                requiredItemMoreInfo(invTypes, material);
 
-            ((NameBase) requiredA).addItemRecursions(requiredItemsRecursionA);
-            
+//            NameBase requiredItemsRecursionA = 
+//                (NameBase) requiredItemMoreInfo(invTypes, material);
+//
+            requiredA.addItemRecursions(requiredItemsRecursionA);
+
             // get value blueprint component if necessary
             List< IndustryActivityMaterials> neededComponents = 
                 getMaterials(invTypes);
                         
             if (neededComponents != null){
-                requiredItem(neededComponents, requiredItemsRecursionA);   
+                requiredItem(requiredItemsRecursionA, neededComponents );   
             }
         }    
     }
@@ -111,14 +117,13 @@ public class BasicMaterialRequired_LogicV2 extends RequiredMaterialV2{
      * @return NameBase
      */
     @Override
-    public Object requiredItemMoreInfo(Object invTypes, Object material) {
+    public NameBase requiredItemMoreInfo(InvTypes invTypes, IndustryActivityMaterials material) {
         System.err.print("BasicMaterialRequiredLogic > requiredItemMoreInfo is ENABLE!!!");
 
-        NameBase nameBase = 
-            new NameBase(
-                ((InvTypes)invTypes).getTypeID(), 
-                ((InvTypes)invTypes).getTypeName(), 
-                ((IndustryActivityMaterials)material).getQuantity());
+        NameBase nameBase = new NameBase(
+                invTypes.getTypeID(), 
+                invTypes.getTypeName(), 
+                material.getQuantity());
         
         return nameBase;
     }     

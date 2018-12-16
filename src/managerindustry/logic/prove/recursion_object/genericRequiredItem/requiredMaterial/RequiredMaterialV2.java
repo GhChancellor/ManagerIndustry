@@ -14,7 +14,7 @@ import managerindustry.logic.prove.recursion_object.genericRequiredItem.AGeneric
  *
  * @author lele
  */
-public class RequiredMaterialV2 < B, C, E, F > extends AGenericItemRequiredV2 < NameBase, B, C, E, F >{
+public class RequiredMaterialV2 < A, B, C, E, F > extends AGenericItemRequiredV2 < A, B, C, E, F >{
     protected NameBase requiredMaterial = new NameBase();
 
     public RequiredMaterialV2() {
@@ -50,32 +50,32 @@ public class RequiredMaterialV2 < B, C, E, F > extends AGenericItemRequiredV2 < 
     }   
 
     @Override
-    public void requiredItem(NameBase a1) {
+    public void requiredItem(A a1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void requiredItem(NameBase a1, B b2) {
+    public void requiredItem(A a1, B b2) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void requiredItem(NameBase a1, B b2, C c3) {
+    public void requiredItem(A a1, B b2, C c3) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public NameBase getObject() {
+    public A requiredItemMoreInfo(E e1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public NameBase requiredItemMoreInfo(E e1) {
+    public A requiredItemMoreInfo(E e1, F f1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public NameBase requiredItemMoreInfo(E e1, F f1) {
+    public A getObject() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
