@@ -62,16 +62,15 @@ public class BasicMaterialRequired_LogicV2 < C >
         if ( typeIdFromProductTypeID == null)
             return new ArrayList<>();
         
-        return getMaterialsID_(typeIdFromProductTypeID.getTypeID());
+        return getMaterialsID(typeIdFromProductTypeID.getTypeID());
     }
     
     /**
-     * @deprecated trova un nome
-     * getMaterialsID_
+     * Get Materials ID
      * @param int typeID
      * @return List< IndustryActivityMaterials >
      */
-    private List< IndustryActivityMaterials > getMaterialsID_(int typeID){
+    private List< IndustryActivityMaterials > getMaterialsID(int typeID){
         return Manager.getInstance().db().item().industryActivityMaterials().
             getMaterialsID(typeID, activitiesEnum);
     }             
@@ -84,12 +83,8 @@ public class BasicMaterialRequired_LogicV2 < C >
     @Override
     public void requiredItem(NameBase requiredA, List< IndustryActivityMaterials> materials) {
         
-        for (IndustryActivityMaterials material : (List< IndustryActivityMaterials>) materials) {
+        for (IndustryActivityMaterials material : materials) {
             InvTypes invTypes = getInvTypesById(material.getMaterialTypeID());
-        
-//            NameBase requiredItemsRecursionA = 
-//                new NameBase(
-//                    invTypes.getTypeID(), material.getQuantity()); 
 
             // only for dbg, use this for more info on object
             NameBase requiredItemsRecursionA = 
@@ -121,9 +116,9 @@ public class BasicMaterialRequired_LogicV2 < C >
         System.err.print("BasicMaterialRequiredLogic > requiredItemMoreInfo is ENABLE!!!");
 
         NameBase nameBase = new NameBase(
-                invTypes.getTypeID(), 
-                invTypes.getTypeName(), 
-                material.getQuantity());
+            invTypes.getTypeID(), 
+            invTypes.getTypeName(), 
+            material.getQuantity());
         
         return nameBase;
     }     

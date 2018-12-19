@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.build.production.buildItem;
+package managerindustry.logic.build.production.buildItem.old;
 
 import java.util.HashMap;
 import managerindustry.logic.generic.fatherClass.BuildItem;
@@ -13,7 +13,8 @@ import java.util.Map;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.fatherClass.NameBase;
-import managerindustry.logic.build.production.basicMaterialRequired.MaterialRequired_Init;
+import managerindustry.logic.build.production.basicMaterialRequired.old.MaterialRequired_Init;
+import managerindustry.logic.build.production.buildItem.ReportItem;
 import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterial;
 import managerindustry.logic.build.skill.efficiency.MaterialEfficiency;
 

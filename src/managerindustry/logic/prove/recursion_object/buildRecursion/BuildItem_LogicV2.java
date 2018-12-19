@@ -3,27 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.build.production.buildItem.old;
+package managerindustry.logic.prove.recursion_object.buildRecursion;
 
 import java.util.HashMap;
-import managerindustry.logic.generic.fatherClass.BuildItem;
 import java.util.List;
 import java.util.Map;
-import managerindustry.logic.build.production.buildItem.old.materialEfficiency.MaterialEfficiencyCalculate;
+import managerindustry.logic.build.production.basicMaterialRequired.old.MaterialRequired_Init;
+import managerindustry.logic.build.production.buildItem.ReportItem;
+import managerindustry.logic.build.skill.efficiency.MaterialEfficiency;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
+import managerindustry.logic.generic.fatherClass.BuildItem;
 import managerindustry.logic.generic.fatherClass.NameBase;
-import managerindustry.logic.build.production.basicMaterialRequired.MaterialRequired_Init;
-import managerindustry.logic.build.production.buildItem.ReportItem;
-import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterial;
+import managerindustry.logic.prove.recursion_object.genericRequiredItem.requiredMaterial.RequiredMaterialV2;
 
 /**
  *
  * @author lele
  */
-public class BuildItem_Logic_OLD extends RequiredMaterial{
-    private MaterialEfficiencyCalculate materialEfficiencyCalculate = new MaterialEfficiencyCalculate();    
-//    private MaterialEfficiency materialEfficiencyCalculate = new MaterialEfficiency( (byte) 0 , 1f, 1f, 1f);
+public class BuildItem_LogicV2 < F > extends 
+        RequiredMaterialV2 < NameBase, List <NameBase>, BuildItem, NameBase, F > {
+    
+    private MaterialEfficiency materialEfficiencyCalculate = new MaterialEfficiency( (byte) 0 , 1f, 1f, 1f);
     private int baseQuantity;;
     private int singleMaterialQuantity;
     private long totalMaterialQuantity;
@@ -35,14 +36,16 @@ public class BuildItem_Logic_OLD extends RequiredMaterial{
      * @param RamActivitiesEnum activitiesEnum
      * @throws ErrorExeption 
      */    
-    public BuildItem_Logic_OLD(BuildItem buildItem, 
+    public BuildItem_LogicV2(BuildItem buildItem, 
         RamActivitiesEnum activitiesEnum) throws ErrorExeption{
         
         MaterialRequired_Init basicMaterialRequired = 
             new MaterialRequired_Init(buildItem.getBpoName(), activitiesEnum);
-
-        requiredItem(buildItem, requiredMaterial,
-            basicMaterialRequired.getRequiredMaterialObject().getItemRecursions());
+        
+        requiredItem(requiredMaterial, 
+            basicMaterialRequired.getRequiredMaterialObject().getItemRecursions(), 
+            buildItem);
+        
         System.out.println("");
     }    
 
@@ -53,30 +56,27 @@ public class BuildItem_Logic_OLD extends RequiredMaterial{
      * @param List <NameBase> requiredMaterialRecusions 
      */
     @Override
-    public void requiredItem(Object buildItem, Object requiredA, 
-        Object requiredMaterialRecusions) {
+    public void requiredItem(NameBase requiredA, 
+            List <NameBase> requiredMaterialRecusions, BuildItem buildItem) {
 
-        for (NameBase requiredMaterialRecusion : (List <NameBase>) requiredMaterialRecusions) {
+        for (NameBase requiredMaterialRecusion : requiredMaterialRecusions) {
             
-            calculateME( (BuildItem) buildItem, requiredMaterialRecusion);
+            calculateME( buildItem, requiredMaterialRecusion);
             calculateQuantityMaterial();
-            addItem(requiredMaterialRecusion);
-
-//            NameBase requiredItemsRecursionA = 
-//                new NameBase(requiredMaterialRecusion.getTypeId(), 
-//                    requiredMaterialRecusion.getQuanityI(),
-//                    requiredMaterialRecusion.getQuanityD());                        
+            addItem(requiredMaterialRecusion);                 
             
             NameBase requiredItemsRecursionA = 
-                (NameBase) requiredItemMoreInfo(requiredMaterialRecusion);
-            ((NameBase) requiredA).addItemRecursions(requiredItemsRecursionA);
+                requiredItemMoreInfo(requiredMaterialRecusion);            
+      
+            requiredA.addItemRecursions(requiredItemsRecursionA);
             
             if ( !requiredMaterialRecusion.getItemRecursions().isEmpty() ){
                 BuildItem buildItemSecondPassage = 
-                    getBuildItemSecondPassage( ((BuildItem) buildItem).getBpoME());
+                    getBuildItemSecondPassage( buildItem.getBpoME());
                 
-                requiredItem(buildItemSecondPassage, requiredItemsRecursionA,
-                    requiredMaterialRecusion.getItemRecursions());
+                requiredItem( requiredItemsRecursionA, 
+                    requiredMaterialRecusion.getItemRecursions(), buildItemSecondPassage);
+
             }
         }
     }  
@@ -105,12 +105,12 @@ public class BuildItem_Logic_OLD extends RequiredMaterial{
         
         if ( materialRecusion.getItemRecursions().isEmpty()){
             // T1 material .. bpoME ..
-            materialEfficiencyCalculate = new MaterialEfficiencyCalculate
+            materialEfficiencyCalculate.materialEfficiencyCalculate
                 (buildItem.getRun(), buildItem.getJob(), 
                     buildItem.getBpoME(), materialRecusion.getBaseQuantity() );
         }else{
             // T2 component .. componentMe ..
-            materialEfficiencyCalculate = new MaterialEfficiencyCalculate
+            materialEfficiencyCalculate.materialEfficiencyCalculate
                 (buildItem.getRun(), buildItem.getJob(),
                     buildItem.getComponentMe(), materialRecusion.getBaseQuantity() );
         }   
@@ -139,9 +139,7 @@ public class BuildItem_Logic_OLD extends RequiredMaterial{
         // quantity material per all items 1 run
         totalMaterialQuantity = 
             materialEfficiencyCalculate.getTotalItemsQuantity();         
-        
-        // destroy object
-        materialEfficiencyCalculate = null;        
+
     }     
     
     /**
@@ -150,15 +148,15 @@ public class BuildItem_Logic_OLD extends RequiredMaterial{
      * @return Object
      */
     @Override
-    public Object requiredItemMoreInfo(Object requiredMaterial) {
+    public NameBase requiredItemMoreInfo(NameBase requiredMaterial) {
         System.err.print("BuildItemLogic > requiredItemMoreInfo is ENABLE!!!");
 
         NameBase nameBase = new NameBase(
-            ((NameBase)requiredMaterial).getTypeID(), 
-            ((NameBase)requiredMaterial).getTypeName(), 
-            ((NameBase)requiredMaterial).getBaseQuantity(), 
-            ((NameBase)requiredMaterial).getSingleItemQuantity(),
-            ((NameBase)requiredMaterial).getTotalItemsQuantity() );
+            requiredMaterial.getTypeID(),
+            requiredMaterial.getTypeName(), 
+            requiredMaterial.getBaseQuantity(),    
+            requiredMaterial.getSingleItemQuantity(),
+            requiredMaterial.getTotalItemsQuantity());
 
         return nameBase;
     }    
@@ -170,5 +168,5 @@ public class BuildItem_Logic_OLD extends RequiredMaterial{
     public Map<String, NameBase> getTotalCalculatedItem(){    
         return new HashMap<>();
         // return reportItem.getTotalCalculatedItem();
-    }
+    }    
 }

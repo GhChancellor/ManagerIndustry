@@ -8,7 +8,7 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.InitCommonRigGroups;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.old.RigRecusion_Init;
 
 /**
  *

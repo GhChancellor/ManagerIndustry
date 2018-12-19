@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.build.production.buildItem;
+package managerindustry.logic.build.production.buildItem.old;
 
 import managerindustry.logic.generic.fatherClass.BuildItem;
 import java.util.List;

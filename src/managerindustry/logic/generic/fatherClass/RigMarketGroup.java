@@ -11,7 +11,7 @@ import managerindustry.logic.generic.fatherClass.recursion.ItemRecursion;
  *
  * @author lele
  */
-public class RigMarketGroup extends ItemRecursion {
+public class RigMarketGroup extends ItemRecursion < RigMarketGroup >{
     private short marketGroupID;
     private short parentGroupID;
     private String marketGroupName;

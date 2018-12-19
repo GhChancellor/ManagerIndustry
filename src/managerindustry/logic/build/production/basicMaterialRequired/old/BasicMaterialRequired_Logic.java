@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.build.production.basicMaterialRequired;
+package managerindustry.logic.build.production.basicMaterialRequired.old;
 
 import java.util.ArrayList;
 import java.util.List;
