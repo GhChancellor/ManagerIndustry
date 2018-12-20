@@ -5,21 +5,19 @@
  */
 package managerindustry.logic.prove.recursion_object.genericRequiredItem.requiredMaterial;
 
-
-import managerindustry.logic.generic.fatherClass.NameBase;
+import managerindustry.logic.generic.fatherClass.SkillInfo;
 import managerindustry.logic.prove.recursion_object.genericRequiredItem.AGenericItemRequiredV2;
-
 
 /**
  *
  * @author lele
  */
-public class RequiredMaterialV2 < A, B, C, D, E, F, G > 
+public class RequiredSkillV2 < A, B, C, D, E, F, G > 
     extends AGenericItemRequiredV2 < A, B, C, D, E, F, G > {
-    
-    protected NameBase requiredMaterial = new NameBase();
 
-    public RequiredMaterialV2() {
+    protected SkillInfo requiredSkill = new SkillInfo();
+
+    public RequiredSkillV2() {
     }
     
     /**
@@ -27,30 +25,31 @@ public class RequiredMaterialV2 < A, B, C, D, E, F, G >
      */
     @Override
     public void display() {
-        displayRequiredMaterial(requiredMaterial, "");
-    }   
+        displayRequiredSkill(requiredSkill, "");
+    }  
     
     /**
-     * Display Material recursion
-     * @param RequiredMaterialRecusion requiredItemA
+     * Display Required Skill
+     * @param SkillInfo requiredSkillA
      * @param String tab 
      */
-    private void displayRequiredMaterial(NameBase requiredItemA, String tab){
-        if ( requiredItemA.getTypeID() != 0 ){
-            System.out.println(tab + requiredItemA.getTypeID() + " " + 
-            requiredItemA.getTypeName() + " - " + 
-            requiredItemA.getBaseQuantity()+ " > " + 
-            requiredItemA.getSingleItemQuantity() + " > " + 
-            requiredItemA.getTotalItemsQuantity() );              
+    private void displayRequiredSkill( SkillInfo requiredSkillA, String tab){ 
+        if (requiredSkillA.getTypeID() != null){
+            System.out.println(requiredSkillA.getTypeID() + " " +
+                requiredSkillA.getTypeName() + ": " +
+                requiredSkillA.getRequireSkillNameLevel() + " " +
+                requiredSkillA.getValueInt() + " " +
+                requiredSkillA.getRequiredSkillLevel() );            
+                
         }
 
-        tab += " ";                        
+        tab += " ";
         
-        for (NameBase materialRecusion : requiredItemA.getItemRecursions()) {
-            displayRequiredMaterial( materialRecusion, tab);
-        } 
-    }   
-
+        for (Object recursionA : requiredSkillA.getItemRecursions()) {
+            displayRequiredSkill((SkillInfo) recursionA, tab);
+        }    
+    }    
+    
     @Override
     public void requiredItem(A a1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -80,5 +79,5 @@ public class RequiredMaterialV2 < A, B, C, D, E, F, G >
     public G getObject() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }

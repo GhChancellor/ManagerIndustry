@@ -21,8 +21,8 @@ import managerindustry.logic.prove.recursion_object.genericRequiredItem.required
  *
  * @author lele
  */
-public class BuildItem_LogicV2 < F > extends 
-        RequiredMaterialV2 < NameBase, List <NameBase>, BuildItem, NameBase, F > {
+public class BuildItem_LogicV2 < E, G > extends 
+        RequiredMaterialV2 < NameBase, List <NameBase>, BuildItem, NameBase, E, NameBase, G > {
     
     private MaterialEfficiency materialEfficiencyCalculate = new MaterialEfficiency( (byte) 0 , 1f, 1f, 1f);
     private int baseQuantity;;

@@ -16,8 +16,9 @@ import managerindustry.logic.prove.recursion_object.genericRequiredItem.required
  *
  * @author lele
  */
-public class RigRecusionLogicV2 < A, B, C, E, F > 
-        extends RequiredMaterialV2 < A, B, C, E, F > {
+public class RigRecusionLogicV2 < C, E, G > 
+    extends RequiredMaterialV2 < Integer, Integer, C, InvMarketGroups, 
+        E, RigMarketGroup, G > {
 
     private RigMarketGroup rigMarketGroupRecursion = new RigMarketGroup();
 
@@ -30,9 +31,9 @@ public class RigRecusionLogicV2 < A, B, C, E, F >
     }
     
     @Override
-    public void requiredItem(Object code) {
+    public void requiredItem(Integer code) {
         List<InvMarketGroups> parentGroupIDs = 
-            Manager.getInstance().db().item().invMarketGroups().getMarketGroupID( ( int ) code);
+            Manager.getInstance().db().item().invMarketGroups().getMarketGroupID(code);
         
         RigMarketGroup rigMarketGroupRecursion = new RigMarketGroup();
         
@@ -41,14 +42,14 @@ public class RigRecusionLogicV2 < A, B, C, E, F >
     }
     
     @Override
-    public void requiredItem(Object code, Object excludeCode) {
+    public void requiredItem(Integer code, Integer excludeCode) {
         List<InvMarketGroups> parentGroupIDs = 
-            Manager.getInstance().db().item().invMarketGroups().getMarketGroupID( ( int ) code);
+            Manager.getInstance().db().item().invMarketGroups().getMarketGroupID(code);
         
         RigMarketGroup rigMarketGroupRecursion = new RigMarketGroup();
         
         // Exclude some branches
-        recusionExcludeTree(parentGroupIDs, rigMarketGroupRecursion,( int ) excludeCode ); 
+        recusionExcludeTree(parentGroupIDs, rigMarketGroupRecursion, excludeCode ); 
         this.rigMarketGroupRecursion = rigMarketGroupRecursion; 
     }
 
@@ -94,20 +95,16 @@ public class RigRecusionLogicV2 < A, B, C, E, F >
      * @param List<InvMarketGroups> invMarketGroups
      * @param RigMarketGroupRecursion rigRecusion_ 
      */
-    private void recusionAllBranches(List<InvMarketGroups> invMarketGroups, RigMarketGroup rigRecusion_ ){
+    private void recusionAllBranches(List<InvMarketGroups> invMarketGroups, RigMarketGroup rigRecusion ){
         for (InvMarketGroups marketGroups01 : invMarketGroups) {        
             if (marketGroups01.getParentGroupID() == null)
                 marketGroups01.setParentGroupID(-1);
-            
-//            RigMarketGroup recusion = new RigMarketGroup(
-//                marketGroups01.getMarketGroupID().shortValue(),
-//                marketGroups01.getParentGroupID().shortValue());
             
 //            Only for dbg, use this for more info on object
             RigMarketGroup recusion = 
                 (RigMarketGroup) requiredItemMoreInfo(marketGroups01);  
 
-            rigRecusion_.addItemRecursions(recusion);
+            rigRecusion.addItemRecursions(recusion);
             
             List<InvMarketGroups> marketGroups02 = 
                 Manager.getInstance().db().item().invMarketGroups().getParentGroupID( 
@@ -122,17 +119,15 @@ public class RigRecusionLogicV2 < A, B, C, E, F >
     }
     
     @Override
-    public Object requiredItemMoreInfo(Object marketGroups01_) {
+    public RigMarketGroup requiredItemMoreInfo(InvMarketGroups marketGroups01) {
         System.err.print("RigRecusion > requiredItemMoreInfo is ENABLE!!!");
         
-        InvMarketGroups marketGroups01 = (InvMarketGroups) marketGroups01_;
+        RigMarketGroup recusion = new RigMarketGroup(
+            marketGroups01.getMarketGroupID().shortValue(),
+            marketGroups01.getParentGroupID().shortValue(), 
+            marketGroups01.getMarketGroupName() );   
         
-            RigMarketGroup recusion = new RigMarketGroup(
-                marketGroups01.getMarketGroupID().shortValue(),
-                marketGroups01.getParentGroupID().shortValue(), 
-                marketGroups01.getMarketGroupName() );   
-        
-        return (RigMarketGroup) recusion;
+        return recusion;
     }
 
     /**

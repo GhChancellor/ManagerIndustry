@@ -14,8 +14,8 @@ import managerindustry.logic.manager.Manager;
  *
  * @author lele
  */
-public abstract class AGenericItemRequiredV2 < A, B, C, E, F > 
-        implements IGenericItemRequiredV2 < A, B, C, E, F > {    
+public abstract class AGenericItemRequiredV2 < A, B, C, D, E, F, G > 
+        implements IGenericItemRequiredV2 < A, B, C, D, E, F, G > {    
     
     /**
      * Get InvTypes By Name

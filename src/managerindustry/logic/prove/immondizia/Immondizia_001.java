@@ -7,12 +7,14 @@ package managerindustry.logic.prove.immondizia;
 
 import java.util.ArrayList;
 import java.util.List;
+import managerindustry.logic.build.skill.requiredSkill.SkillRequired_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.ChooseRig;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.old.RigRecusion_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.fatherClass.BuildItem;
+import managerindustry.logic.manager.Manager;
 import managerindustry.logic.prove.recursion_object.basicRecursionRequired.MaterialRequired_InitV2;
 import managerindustry.logic.prove.recursion_object.buildRecursion.BuildItemRequired_InitV2;
 
@@ -24,18 +26,28 @@ public class Immondizia_001 <T> {
     List < Integer > duplicate = new ArrayList<>();
     
     public Immondizia_001() throws ErrorExeption{
+        System.out.println("\n\n\n");
 //        basicMaterialV2();
-        buildItem();
+//        buildItem();
 //        rigRucursion();
 //        chooseRig();
 //        immondizia2();
+        requiredSkill();
+    }    
+    
+    public void requiredSkill(){
+        int typeId = Manager.getInstance().db().item().invTypes().getInvTypesByName("Scimitar blueprint").getTypeID();
+        
+        SkillRequired_Init required_Init = new SkillRequired_Init(
+            typeId, RamActivitiesEnum.MANUFACTURING);            
+        required_Init.display();
     }    
     
     public void buildItem(){
         
         System.out.println("\n\n\n\n");
         //                                   bpoName   run job   bpoME    componentMe
-        BuildItem buildItem = new BuildItem("scimitar",  2, 1, (byte) 10, (byte) 10);
+        BuildItem buildItem = new BuildItem("scimitar",  2, 1, (byte) 0, (byte) 0);
         
         try {
             BuildItemRequired_InitV2 buildItemRequired = 

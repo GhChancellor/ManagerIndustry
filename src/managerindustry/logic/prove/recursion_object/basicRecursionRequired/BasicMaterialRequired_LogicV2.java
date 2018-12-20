@@ -21,9 +21,9 @@ import managerindustry.logic.prove.recursion_object.genericRequiredItem.required
  *
  * @author lele
  */
-public class BasicMaterialRequired_LogicV2 < C > 
+public class BasicMaterialRequired_LogicV2 < C, G > 
         extends RequiredMaterialV2 < NameBase, List<IndustryActivityMaterials>, 
-                C, InvTypes, IndustryActivityMaterials>{
+                C, InvTypes, IndustryActivityMaterials, NameBase, G >{
     
     private RamActivitiesEnum activitiesEnum;
     
