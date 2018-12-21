@@ -5,21 +5,22 @@
  */
 package managerindustry.logic.build.skill.requiredSkill;
 
-import managerindustry.logic.generic.genericRequiredItem.skillRequied.RequiredSkill;
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.db.entities.eve.DgmTypeAttributes;
 import managerindustry.db.entities.eve.IndustryActivitySkills;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
-import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.generic.fatherClass.SkillInfo;
 import managerindustry.logic.manager.Manager;
+import managerindustry.logic.generic.genericRequiredItem.skillRequied.RequiredSkill;
 
 /**
  *
  * @author lele
  */
-public class SkillRequired_Logic extends RequiredSkill{
+public class SkillRequired_Logic < C, D, E, F > 
+    extends RequiredSkill < List<SkillInfo>, SkillInfo, C, D, E, F, SkillInfo >{
+    
     private enum SkillEnum{
         PRIMARY_SKILL(182, 277),
         SECONDARY_SKILL(183, 278), 
@@ -46,8 +47,6 @@ public class SkillRequired_Logic extends RequiredSkill{
             return attributeID_2;
         }        
     }
-
-    private NameBase pharseSkill = new NameBase();
     
     public SkillRequired_Logic(int typeId, RamActivitiesEnum activitiesEnum ){
         
@@ -83,15 +82,15 @@ public class SkillRequired_Logic extends RequiredSkill{
      * @param SkillInfo skillInfo 
      */
     @Override
-    public void requiredItem(Object skillInfos, Object skillInfoA) {
+    public void requiredItem(List<SkillInfo> skillInfos, SkillInfo skillInfo_) {
         
-        for (SkillInfo skillInfo_ : ( List<SkillInfo> ) skillInfos) {
-            ((SkillInfo) skillInfoA).addItemRecursions(skillInfo_);
+        for (SkillInfo skillInfo : skillInfos) {
+            skillInfo_.addItemRecursions(skillInfo);
              
-            List<SkillInfo> skillInfoB = getSkillAttribute(skillInfo_.getValueInt());
+            List<SkillInfo> skillInfoB = getSkillAttribute(skillInfo.getValueInt());
             
             if ( skillInfoB != null ){
-                requiredItem( skillInfoB , skillInfo_);
+                requiredItem( skillInfoB , skillInfo);
             }
         }
     }     
@@ -188,5 +187,12 @@ public class SkillRequired_Logic extends RequiredSkill{
                 getTypeAttributesByTypeId_ByAttributeID(typeID, skillRequired);
         
         return dgmTypeAttributes;
-    }    
+    }      
+
+    @Override
+    public SkillInfo getObject() {
+        return requiredSkill;
+    }
+    
+    
 }

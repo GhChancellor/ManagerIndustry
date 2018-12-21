@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.recursion_object.rigRecursion;
+package managerindustry.logic.generic.genericRequiredItem;
 
 /**
  *
  * @author lele
  */
-public class RigRecusion_InitV2 {
-    
+public interface IGenericlRequest < A >{
+    public void display();
+    public A getRequiredMaterialObject();    
 }

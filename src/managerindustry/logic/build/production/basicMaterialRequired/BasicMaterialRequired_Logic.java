@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.build.production.basicMaterialRequired.old;
+package managerindustry.logic.build.production.basicMaterialRequired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +16,15 @@ import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.manager.Manager;
 import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterial;
 
+
 /**
  *
  * @author lele
  */
-public class BasicMaterialRequired_Logic extends RequiredMaterial{
+public class BasicMaterialRequired_Logic < C, G > 
+        extends RequiredMaterial < NameBase, List<IndustryActivityMaterials>, 
+                C, InvTypes, IndustryActivityMaterials, NameBase, NameBase >{
+    
     private RamActivitiesEnum activitiesEnum;
     
     /**
@@ -40,7 +44,7 @@ public class BasicMaterialRequired_Logic extends RequiredMaterial{
         if ( invTypes == null )
             throw new ErrorExeption(ErrorExeption.ErrorExeptionEnum.ITEM_NOT_EXITS);        
         
-        requiredItem( getMaterials(invTypes), requiredMaterial);        
+        requiredItem( requiredMaterial, getMaterials(invTypes) );        
     } 
 
     /**
@@ -58,16 +62,15 @@ public class BasicMaterialRequired_Logic extends RequiredMaterial{
         if ( typeIdFromProductTypeID == null)
             return new ArrayList<>();
         
-        return getMaterialsID_(typeIdFromProductTypeID.getTypeID());
+        return getMaterialsID(typeIdFromProductTypeID.getTypeID());
     }
     
     /**
-     * @deprecated trova un nome
-     * getMaterialsID_
+     * Get Materials ID
      * @param int typeID
      * @return List< IndustryActivityMaterials >
      */
-    private List< IndustryActivityMaterials > getMaterialsID_(int typeID){
+    private List< IndustryActivityMaterials > getMaterialsID(int typeID){
         return Manager.getInstance().db().item().industryActivityMaterials().
             getMaterialsID(typeID, activitiesEnum);
     }             
@@ -78,27 +81,25 @@ public class BasicMaterialRequired_Logic extends RequiredMaterial{
      * @param RequiredMaterialRecusion requiredA_ 
      */
     @Override
-    public void requiredItem(Object materials, Object requiredA) {
-        
-        for (IndustryActivityMaterials material : (List< IndustryActivityMaterials>) materials) {
+    public void requiredItem(NameBase requiredA, List< IndustryActivityMaterials> materials) {        
+        for (IndustryActivityMaterials material : materials) {
             InvTypes invTypes = getInvTypesById(material.getMaterialTypeID());
-        
-//            NameBase requiredItemsRecursionA = 
-//                new NameBase(
-//                    invTypes.getTypeID(), material.getQuantity()); 
 
             // only for dbg, use this for more info on object
             NameBase requiredItemsRecursionA = 
-                (NameBase) requiredItemMoreInfo(invTypes, material);
+                requiredItemMoreInfo(invTypes, material);
 
-            ((NameBase) requiredA).addItemRecursions(requiredItemsRecursionA);
-            
+//            NameBase requiredItemsRecursionA = 
+//                (NameBase) requiredItemMoreInfo(invTypes, material);
+//
+            requiredA.addItemRecursions(requiredItemsRecursionA);
+
             // get value blueprint component if necessary
             List< IndustryActivityMaterials> neededComponents = 
                 getMaterials(invTypes);
                         
             if (neededComponents != null){
-                requiredItem(neededComponents, requiredItemsRecursionA);   
+                requiredItem(requiredItemsRecursionA, neededComponents );   
             }
         }    
     }
@@ -110,15 +111,21 @@ public class BasicMaterialRequired_Logic extends RequiredMaterial{
      * @return NameBase
      */
     @Override
-    public Object requiredItemMoreInfo(Object invTypes, Object material) {
+    public NameBase requiredItemMoreInfo(InvTypes invTypes, IndustryActivityMaterials material) {
         System.err.print("BasicMaterialRequiredLogic > requiredItemMoreInfo is ENABLE!!!");
 
-        NameBase nameBase = 
-            new NameBase(
-                ((InvTypes)invTypes).getTypeID(), 
-                ((InvTypes)invTypes).getTypeName(), 
-                ((IndustryActivityMaterials)material).getQuantity());
+        NameBase nameBase = new NameBase(
+            invTypes.getTypeID(), 
+            invTypes.getTypeName(), 
+            material.getQuantity());
         
         return nameBase;
     }     
+
+    @Override
+    public NameBase getObject() {
+        return requiredMaterial;
+    }
+    
+    
 }

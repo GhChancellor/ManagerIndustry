@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.build.production.basicMaterialRequired.old;
+package managerindustry.logic.build.production.basicMaterialRequired;
 
-import java.util.List;
-import java.util.Map;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.fatherClass.NameBase;
-import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterialGeneric;
+import managerindustry.logic.generic.genericRequiredItem.IGenericlRequest;
 
 /**
  *
  * @author lele
  */
-public class MaterialRequired_Init extends RequiredMaterialGeneric{
+public class MaterialRequired_Init implements IGenericlRequest  {
     private BasicMaterialRequired_Logic basicMaterialRequired_Logic;
     
     /**
@@ -43,32 +41,12 @@ public class MaterialRequired_Init extends RequiredMaterialGeneric{
     }
 
     /**
-     * Get Map
-     * @return Map < String, NameBase >
-     */  
-    @Override
-    public Map<String, NameBase> getMap() {
-        return basicMaterialRequired_Logic.getMap();
-    }
-
-    /**
-     * Get List
-     * @return List < NameBase >
-     */
-    @Override
-    public List<NameBase> getList() {
-        return basicMaterialRequired_Logic.getList();
-    }
-
-    /**
      * Get Required Material Object
      * @return NameBase
      */    
     @Override
     public NameBase getRequiredMaterialObject() {
-        return (NameBase) basicMaterialRequired_Logic.getObject();
+        return basicMaterialRequired_Logic.getObject();
     }
-
-  
     
 }

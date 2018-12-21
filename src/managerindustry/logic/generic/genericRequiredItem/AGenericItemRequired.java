@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.recursion_object.genericRequiredItem;
+package managerindustry.logic.generic.genericRequiredItem;
 
 import managerindustry.db.entities.eve.IndustryActivityProducts;
 import managerindustry.db.entities.eve.InvTypes;
@@ -14,8 +14,8 @@ import managerindustry.logic.manager.Manager;
  *
  * @author lele
  */
-public abstract class AGenericItemRequiredV2 < A, B, C, D, E, F, G > 
-        implements IGenericItemRequiredV2 < A, B, C, D, E, F, G > {    
+public abstract class AGenericItemRequired < A, B, C, D, E, F, G > 
+        implements IGenericItemRequired < A, B, C, D, E, F, G > {    
     
     /**
      * Get InvTypes By Name

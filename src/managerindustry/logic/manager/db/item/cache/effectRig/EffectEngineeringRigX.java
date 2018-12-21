@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import managerindustry.db.controllers.EffectEngineeringRigEntityJpaController;
 import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.old.RigRecusion_Init;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.effectRigs.logic.EffectEngineeringRig;
 import managerindustry.logic.generic.fatherClass.RigMarketGroup;
 import managerindustry.logic.manager.Manager;
@@ -54,19 +54,19 @@ public class EffectEngineeringRigX {
         // 43875 Standup M-Set Structure Manufacturing Material Efficiency I for fuel blocks
         // fuel blocks 4051 4246 4247 4312
   
-//        System.err.print(" >>>> ATTENZIONE <<<< EffectEngineeringRigX > addEffectRigs DISABILITATA!!!!!!!" );
+        System.err.print(" >>>> ATTENZIONE <<<< EffectEngineeringRigX > addEffectRigs DISABILITATA!!!!!!!" );
         
-        for (RigRecusion_Init rigRecusion : structureRig.getRigRecusions() ) {
-            List<RigMarketGroup> groupRecursions = rigRecusion.getList(); // .getRigMarketGroupsList();
-            
-            for (RigMarketGroup effectId : groupRecursions) {
-                EffectEngineeringRigEntity effectRigEntity = 
-                    new EffectEngineeringRigEntity(
-                    structureRig.getRigTypeID(), effectId.getMarketGroupID() );
-                
-                addEffectRigEntity(effectRigEntity);                
-            }
-        }
+//        for (RigRecusion_Init rigRecusion : structureRig.getRigRecusions() ) {
+//            List<RigMarketGroup> groupRecursions = rigRecusion.getList(); // .getRigMarketGroupsList();
+//            
+//            for (RigMarketGroup effectId : groupRecursions) {
+//                EffectEngineeringRigEntity effectRigEntity = 
+//                    new EffectEngineeringRigEntity(
+//                    structureRig.getRigTypeID(), effectId.getMarketGroupID() );
+//                
+//                addEffectRigEntity(effectRigEntity);                
+//            }
+//        }
     }
 
     public void addEffectRigsORI(EffectEngineeringRig structureRig){

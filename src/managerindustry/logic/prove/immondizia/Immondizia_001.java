@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import managerindustry.logic.build.skill.requiredSkill.SkillRequired_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.ChooseRig;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.old.RigRecusion_Init;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.fatherClass.BuildItem;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.prove.recursion_object.basicRecursionRequired.MaterialRequired_InitV2;
-import managerindustry.logic.prove.recursion_object.buildRecursion.BuildItemRequired_InitV2;
+import managerindustry.logic.build.production.basicMaterialRequired.MaterialRequired_Init;
+import managerindustry.logic.build.production.buildItem.BuildItemRequired_Init;
 
 /**
  *
@@ -50,8 +50,8 @@ public class Immondizia_001 <T> {
         BuildItem buildItem = new BuildItem("scimitar",  2, 1, (byte) 0, (byte) 0);
         
         try {
-            BuildItemRequired_InitV2 buildItemRequired = 
-                new BuildItemRequired_InitV2(buildItem, RamActivitiesEnum.MANUFACTURING);
+            BuildItemRequired_Init buildItemRequired = 
+                new BuildItemRequired_Init(buildItem, RamActivitiesEnum.MANUFACTURING);
             buildItemRequired.display();
         } catch (ErrorExeption e) {
             System.out.println(""+ e.getErrorEnum());
@@ -60,8 +60,8 @@ public class Immondizia_001 <T> {
     
     public void basicMaterialV2(){
         try {
-            MaterialRequired_InitV2 buildItemRequired = 
-                new MaterialRequired_InitV2("scimitar", RamActivitiesEnum.MANUFACTURING); 
+            MaterialRequired_Init buildItemRequired = 
+                new MaterialRequired_Init("scimitar", RamActivitiesEnum.MANUFACTURING); 
             buildItemRequired.display();
             
         } catch (ErrorExeption e) {

@@ -5,17 +5,15 @@
  */
 package managerindustry.logic.build.skill.requiredSkill;
 
-import java.util.List;
-import java.util.Map;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.fatherClass.SkillInfo;
-import managerindustry.logic.generic.genericRequiredItem.skillRequied.RequiredSkillGeneric;
+import managerindustry.logic.generic.genericRequiredItem.IGenericlRequest;
 
 /**
  *
  * @author lele
  */
-public class SkillRequired_Init extends RequiredSkillGeneric{
+public class SkillRequired_Init implements IGenericlRequest < SkillInfo > {
     private SkillRequired_Logic skillRequiredLogic;
 
     public SkillRequired_Init() {
@@ -31,18 +29,7 @@ public class SkillRequired_Init extends RequiredSkillGeneric{
     }
 
     @Override
-    public Map < String, SkillInfo > getMap() {
-        return skillRequiredLogic.getMap();
-    }
-
-    @Override
-    public List < SkillInfo > getList() {
-        return skillRequiredLogic.getList();
-    }
-
-    @Override
     public SkillInfo getRequiredMaterialObject() {
-        return (SkillInfo) skillRequiredLogic.getObject();
-    }
-    
+        return skillRequiredLogic.getObject();
+    }    
 }

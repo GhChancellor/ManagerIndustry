@@ -3,20 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.old;
+package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig;
 
-import managerindustry.logic.generic.fatherClass.RigMarketGroup;
 import java.util.List;
 import managerindustry.db.entities.eve.InvMarketGroups;
 import managerindustry.db.entities.eve.InvTypes;
+import managerindustry.logic.generic.fatherClass.RigMarketGroup;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.generic.genericRequiredItem.AGenericRequiredItem;
+import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterial;
 
 /**
  *
  * @author lele
  */
-public class RigRecusionLogic extends AGenericRequiredItem{
+public class RigRecusionLogic < C, E, G > 
+    extends RequiredMaterial < Integer, Integer, C, InvMarketGroups, 
+        E, RigMarketGroup, RigMarketGroup > {
+
     private RigMarketGroup rigMarketGroupRecursion = new RigMarketGroup();
 
     public RigRecusionLogic(int code) {
@@ -28,9 +31,9 @@ public class RigRecusionLogic extends AGenericRequiredItem{
     }
     
     @Override
-    public void requiredItem(Object code) {
+    public void requiredItem(Integer code) {
         List<InvMarketGroups> parentGroupIDs = 
-            Manager.getInstance().db().item().invMarketGroups().getMarketGroupID( ( int ) code);
+            Manager.getInstance().db().item().invMarketGroups().getMarketGroupID(code);
         
         RigMarketGroup rigMarketGroupRecursion = new RigMarketGroup();
         
@@ -39,14 +42,14 @@ public class RigRecusionLogic extends AGenericRequiredItem{
     }
     
     @Override
-    public void requiredItem(Object code, Object excludeCode) {
+    public void requiredItem(Integer code, Integer excludeCode) {
         List<InvMarketGroups> parentGroupIDs = 
-            Manager.getInstance().db().item().invMarketGroups().getMarketGroupID( ( int ) code);
+            Manager.getInstance().db().item().invMarketGroups().getMarketGroupID(code);
         
         RigMarketGroup rigMarketGroupRecursion = new RigMarketGroup();
         
         // Exclude some branches
-        recusionExcludeTree(parentGroupIDs, rigMarketGroupRecursion,( int ) excludeCode ); 
+        recusionExcludeTree(parentGroupIDs, rigMarketGroupRecursion, excludeCode ); 
         this.rigMarketGroupRecursion = rigMarketGroupRecursion; 
     }
 
@@ -92,20 +95,16 @@ public class RigRecusionLogic extends AGenericRequiredItem{
      * @param List<InvMarketGroups> invMarketGroups
      * @param RigMarketGroupRecursion rigRecusion_ 
      */
-    private void recusionAllBranches(List<InvMarketGroups> invMarketGroups, RigMarketGroup rigRecusion_ ){
+    private void recusionAllBranches(List<InvMarketGroups> invMarketGroups, RigMarketGroup rigRecusion ){
         for (InvMarketGroups marketGroups01 : invMarketGroups) {        
             if (marketGroups01.getParentGroupID() == null)
                 marketGroups01.setParentGroupID(-1);
-            
-//            RigMarketGroup recusion = new RigMarketGroup(
-//                marketGroups01.getMarketGroupID().shortValue(),
-//                marketGroups01.getParentGroupID().shortValue());
             
 //            Only for dbg, use this for more info on object
             RigMarketGroup recusion = 
                 (RigMarketGroup) requiredItemMoreInfo(marketGroups01);  
 
-            rigRecusion_.addItemRecursions(recusion);
+            rigRecusion.addItemRecursions(recusion);
             
             List<InvMarketGroups> marketGroups02 = 
                 Manager.getInstance().db().item().invMarketGroups().getParentGroupID( 
@@ -120,17 +119,15 @@ public class RigRecusionLogic extends AGenericRequiredItem{
     }
     
     @Override
-    public Object requiredItemMoreInfo(Object marketGroups01_) {
+    public RigMarketGroup requiredItemMoreInfo(InvMarketGroups marketGroups01) {
         System.err.print("RigRecusion > requiredItemMoreInfo is ENABLE!!!");
         
-        InvMarketGroups marketGroups01 = (InvMarketGroups) marketGroups01_;
+        RigMarketGroup recusion = new RigMarketGroup(
+            marketGroups01.getMarketGroupID().shortValue(),
+            marketGroups01.getParentGroupID().shortValue(), 
+            marketGroups01.getMarketGroupName() );   
         
-            RigMarketGroup recusion = new RigMarketGroup(
-                marketGroups01.getMarketGroupID().shortValue(),
-                marketGroups01.getParentGroupID().shortValue(), 
-                marketGroups01.getMarketGroupName() );   
-        
-        return (RigMarketGroup) recusion;
+        return recusion;
     }
 
     /**
@@ -163,7 +160,8 @@ public class RigRecusionLogic extends AGenericRequiredItem{
                 invTypes().getMarketGroupID(rigMarketGroupRecursion.getMarketGroupID(), true);            
             
             for (InvTypes invTypes : parentGroupID) {
-                System.out.println(tab + " - "+ invTypes.getTypeName()+ " " + invTypes.getTypeID() );
+                System.out.println(tab + " - "+ invTypes.getTypeName()+ " " + 
+                    invTypes.getTypeID() );
             }            
         }
 
@@ -176,12 +174,8 @@ public class RigRecusionLogic extends AGenericRequiredItem{
     }    
 
     @Override
-    public List < RigMarketGroup > getList(){
-        if (rigMarketGroupRecursion != null){
-            addListElement(rigMarketGroupRecursion);
-        }
-        return super.getList();        
+    public RigMarketGroup getObject() {
+        return rigMarketGroupRecursion;
     }
-
-
+    
 }

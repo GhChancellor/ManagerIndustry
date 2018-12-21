@@ -5,17 +5,16 @@
  */
 package managerindustry.logic.generic.genericRequiredItem.skillRequied;
 
-import java.util.List;
-import java.util.Map;
 import managerindustry.logic.generic.fatherClass.SkillInfo;
-import managerindustry.logic.generic.genericRequiredItem.AGenericRequiredItem;
-
+import managerindustry.logic.generic.genericRequiredItem.AGenericItemRequired;
 
 /**
  *
  * @author lele
  */
-public class RequiredSkill < A, B > extends AGenericRequiredItem {
+public class RequiredSkill < A, B, C, D, E, F, G > 
+    extends AGenericItemRequired < A, B, C, D, E, F, G > {
+
     protected SkillInfo requiredSkill = new SkillInfo();
 
     public RequiredSkill() {
@@ -34,65 +33,51 @@ public class RequiredSkill < A, B > extends AGenericRequiredItem {
      * @param SkillInfo requiredSkillA
      * @param String tab 
      */
-    private void displayRequiredSkill( SkillInfo requiredSkillA, String tab){ 
-        if (requiredSkillA.getTypeID() != null){
-            System.out.println(requiredSkillA.getTypeID() + " " +
-                requiredSkillA.getTypeName() + ": " +
-                requiredSkillA.getRequireSkillNameLevel() + " " +
-                requiredSkillA.getValueInt() + " " +
-                requiredSkillA.getRequiredSkillLevel() );            
+    private void displayRequiredSkill( SkillInfo requiredSkill, String tab){ 
+        if (requiredSkill.getTypeID() != null){
+            System.out.println(requiredSkill.getTypeID() + " " +
+                requiredSkill.getTypeName() + ": " +
+                requiredSkill.getRequireSkillNameLevel() + " " +
+                requiredSkill.getValueInt() + " " +
+                requiredSkill.getRequiredSkillLevel() );            
                 
         }
 
         tab += " ";
         
-        for (Object recursionA : requiredSkillA.getItemRecursions()) {
+        for (Object recursionA : requiredSkill.getItemRecursions()) {
             displayRequiredSkill((SkillInfo) recursionA, tab);
         }    
-    }
+    }    
     
-    /**
-     * Get Map
-     * @return Map < A, B > 
-     */
-    public Map < A, B > getMap(){
-        addListElement(requiredSkill);
-        return super.getMap();
-    }
-    
-    /**
-     * Get List
-     * @return List < A >
-     */
-    public List < A > getList(){
-        convertToList(requiredSkill.getItemRecursions());
-        return super.getList();
+    @Override
+    public void requiredItem(A a1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     * Convert to list
-     * @param List requiredSkills 
-     */
     @Override
-    public void convertToList(List requiredSkills) {
-        for (SkillInfo skillBase : ( List < SkillInfo > ) requiredSkills) {
-            if ( skillBase.getTypeID() != 0){
-                addListElement(skillBase);
-            }
-            
-            if ( !requiredSkill.getItemRecursions().isEmpty() ){
-                convertToList(requiredSkill.getItemRecursions());
-            }
-        }
+    public void requiredItem(A a1, B b2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-       
-    /**
-     * Get Object
-     * @return Object
-     */
-    @Override
-    public Object getObject() {
-        return requiredSkill;
-    }      
 
+    @Override
+    public void requiredItem(A a1, B b2, C c3) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public F requiredItemMoreInfo(D d1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public F requiredItemMoreInfo(D d1, E e1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public G getObject() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

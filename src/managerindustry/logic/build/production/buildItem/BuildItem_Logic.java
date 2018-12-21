@@ -3,28 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.recursion_object.buildRecursion;
+package managerindustry.logic.build.production.buildItem;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import managerindustry.logic.build.production.basicMaterialRequired.old.MaterialRequired_Init;
-import managerindustry.logic.build.production.buildItem.ReportItem;
+import managerindustry.logic.build.production.basicMaterialRequired.MaterialRequired_Init;
 import managerindustry.logic.build.skill.efficiency.MaterialEfficiency;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.fatherClass.BuildItem;
 import managerindustry.logic.generic.fatherClass.NameBase;
-import managerindustry.logic.prove.recursion_object.genericRequiredItem.requiredMaterial.RequiredMaterialV2;
+import managerindustry.logic.generic.genericRequiredItem.requiredMaterial.RequiredMaterial;
+import org.eclipse.persistence.internal.queries.ReportItem;
 
 /**
  *
  * @author lele
  */
-public class BuildItem_LogicV2 < E, G > extends 
-        RequiredMaterialV2 < NameBase, List <NameBase>, BuildItem, NameBase, E, NameBase, G > {
+public class BuildItem_Logic < E, G > extends 
+        RequiredMaterial < NameBase, List <NameBase>, BuildItem, NameBase, E, NameBase, G > {
     
-    private MaterialEfficiency materialEfficiencyCalculate = new MaterialEfficiency( (byte) 0 , 1f, 1f, 1f);
+    private MaterialEfficiency materialEfficiencyCalculate = 
+        new MaterialEfficiency( (byte) 0 , 1f, 1f, 1f);
     private int baseQuantity;;
     private int singleMaterialQuantity;
     private long totalMaterialQuantity;
@@ -36,7 +35,7 @@ public class BuildItem_LogicV2 < E, G > extends
      * @param RamActivitiesEnum activitiesEnum
      * @throws ErrorExeption 
      */    
-    public BuildItem_LogicV2(BuildItem buildItem, 
+    public BuildItem_Logic(BuildItem buildItem, 
         RamActivitiesEnum activitiesEnum) throws ErrorExeption{
         
         MaterialRequired_Init basicMaterialRequired = 
@@ -45,8 +44,6 @@ public class BuildItem_LogicV2 < E, G > extends
         requiredItem(requiredMaterial, 
             basicMaterialRequired.getRequiredMaterialObject().getItemRecursions(), 
             buildItem);
-        
-        System.out.println("");
     }    
 
     /**
@@ -76,7 +73,6 @@ public class BuildItem_LogicV2 < E, G > extends
                 
                 requiredItem( requiredItemsRecursionA, 
                     requiredMaterialRecusion.getItemRecursions(), buildItemSecondPassage);
-
             }
         }
     }  
@@ -139,7 +135,6 @@ public class BuildItem_LogicV2 < E, G > extends
         // quantity material per all items 1 run
         totalMaterialQuantity = 
             materialEfficiencyCalculate.getTotalItemsQuantity();         
-
     }     
     
     /**
@@ -160,13 +155,5 @@ public class BuildItem_LogicV2 < E, G > extends
 
         return nameBase;
     }    
-    
-    /**
-     * @deprecated 
-     * Sum all value into map
-     */
-    public Map<String, NameBase> getTotalCalculatedItem(){    
-        return new HashMap<>();
-        // return reportItem.getTotalCalculatedItem();
-    }    
+      
 }

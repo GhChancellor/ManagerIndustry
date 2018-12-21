@@ -5,7 +5,6 @@
  */
 package managerindustry;
 
-import java.util.List;
 import java.util.Map;
 import managerindustry.logic.build.production.old.ReportCalculatedComponentX;
 import managerindustry.logic.generic.enumName.PlatformEnum;
@@ -20,17 +19,16 @@ import managerindustry.logic.gui.display.DisplayItemCost;
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
 import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
-import managerindustry.logic.generic.fatherClass.NameBase;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.build.production.basicMaterialRequired.old.MaterialRequired_Init;
+import managerindustry.logic.build.production.basicMaterialRequired.MaterialRequired_Init;
 import managerindustry.logic.generic.fatherClass.BuildItem;
-import managerindustry.logic.build.production.buildItem.old.BuildItemRequired_Init;
-import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.old.RigRecusion_Init;
+import managerindustry.logic.build.production.buildItem.BuildItemRequired_Init;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.initRigGroupSize.logic.GroupEffectRig;
-import managerindustry.logic.tax.itemcost.logic.ItemCost.ItemCost;
 import managerindustry.logic.generic.fatherClass.ItemCostBase;
 import managerindustry.logic.prove.immondizia.Immondizia_001;
 import managerindustry.logic.build.skill.requiredSkill.SkillRequired_Init;
+import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.ChooseRig;
 
 /**
  *
@@ -39,16 +37,16 @@ import managerindustry.logic.build.skill.requiredSkill.SkillRequired_Init;
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
-//        buildItemV6();
-//        basicMaterial();
+        buildItemV6();
+        basicMaterial();
 //        jobInstallationFeeV2(); 
 //        speculation();
         requiredSkill();
 
 // ----------------------------------------
-//        recursionItems();
+        recursionItems();
 //        structure();
-        immondizia();
+//        immondizia();
 //        old();
     }
     
@@ -71,7 +69,8 @@ public class MainProgramm {
         itemCostBase.setLevelStar( (byte) 5);
         itemCostBase.setLevelFinish( (byte) 5);
         itemCostBase.setSolarSystemID(solarSystemID);
-        itemCostBase.setNameBases(buildItemRequired.getList());
+        // prima esisteva una lista controlla se può servire
+//        itemCostBase.setNameBases(buildItemRequired.getList());
         
         itemCostBase.setActivitiesEnum(RamActivitiesEnum.MANUFACTURING);
         displayItemCost.calculateJobInstallationCost(itemCostBase);        
@@ -95,7 +94,7 @@ public class MainProgramm {
         rigRecusion.display();
         
         // IMPORTANTE qualche rig crea doppione per dinamiche di gioco, sistemalo
-//        ChooseRig chooseRig02 = new ChooseRig(43921);
+//        ChooseRig chooseRig = new ChooseRig(43921);
 
     }
     

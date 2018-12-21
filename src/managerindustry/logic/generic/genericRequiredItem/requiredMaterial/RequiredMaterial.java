@@ -5,16 +5,18 @@
  */
 package managerindustry.logic.generic.genericRequiredItem.requiredMaterial;
 
-import java.util.List;
-import java.util.Map;
-import managerindustry.logic.generic.genericRequiredItem.AGenericRequiredItem;
+
 import managerindustry.logic.generic.fatherClass.NameBase;
+import managerindustry.logic.generic.genericRequiredItem.AGenericItemRequired;
+
 
 /**
  *
  * @author lele
  */
-public class RequiredMaterial < B, C > extends AGenericRequiredItem < NameBase, B, C >{
+public class RequiredMaterial < A, B, C, D, E, F, G > 
+    extends AGenericItemRequired < A, B, C, D, E, F, G > {
+    
     protected NameBase requiredMaterial = new NameBase();
 
     public RequiredMaterial() {
@@ -44,55 +46,39 @@ public class RequiredMaterial < B, C > extends AGenericRequiredItem < NameBase, 
 
         tab += " ";                        
         
-        for (Object materialRecusion : requiredItemA.getItemRecursions()) {
-            displayRequiredMaterial((NameBase) materialRecusion, tab);
+        for (NameBase materialRecusion : requiredItemA.getItemRecursions()) {
+            displayRequiredMaterial( materialRecusion, tab);
         } 
-    }
-    
-    /**
-     * Get Map
-     * @return Map < A, B >
-     */
-    public Map < NameBase, B > getMap(){
-        addListElement(requiredMaterial);
-        return super.getMap();
-    }
-    
-    /**
-     * @deprecated 
-     * Get List
-     * @return List < A >
-     */
-    public List < NameBase > getList(){
-        convertToList(requiredMaterial.getItemRecursions());
-        return super.getList();
-    }
-    
-    /**
-     * Get Object
-     * @return Object
-     */
-    @Override
-    public NameBase getObject() {
-        return requiredMaterial;
-    }  
+    }   
 
-    /**
-     * Convert to list
-     * @param List requiredMaterials 
-     */
     @Override
-    public void convertToList(List requiredMaterials) {        
-        for (NameBase requiredMaterial : (List <NameBase>) requiredMaterials ) {
-            if ( requiredMaterial.getTypeID() != 0){
-                addListElement(requiredMaterial);
-            }
-            
-            if ( !requiredMaterial.getItemRecursions().isEmpty() ){
-                convertToList(requiredMaterial.getItemRecursions());
-            }
-        }        
+    public void requiredItem(A a1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void requiredItem(A a1, B b2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void requiredItem(A a1, B b2, C c3) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public F requiredItemMoreInfo(D d1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public F requiredItemMoreInfo(D d1, E e1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public G getObject() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
