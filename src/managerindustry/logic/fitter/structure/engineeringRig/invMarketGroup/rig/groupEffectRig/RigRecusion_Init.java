@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig;
 
+import java.util.List;
 import managerindustry.logic.generic.fatherClass.RigMarketGroup;
 import managerindustry.logic.generic.genericRequiredItem.IGenericlRequest;
 
@@ -34,4 +35,7 @@ public class RigRecusion_Init implements IGenericlRequest <RigMarketGroup>{
         return recusionLogic.getObject();
     }
     
+    public List<RigMarketGroup> getList(){
+        
+    }
 }

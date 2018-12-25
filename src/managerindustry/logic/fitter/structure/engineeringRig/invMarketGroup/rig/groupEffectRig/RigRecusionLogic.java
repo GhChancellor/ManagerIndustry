@@ -5,6 +5,7 @@
  */
 package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig;
 
+import java.util.ArrayList;
 import java.util.List;
 import managerindustry.db.entities.eve.InvMarketGroups;
 import managerindustry.db.entities.eve.InvTypes;
@@ -21,7 +22,11 @@ public class RigRecusionLogic < C, E, G >
         E, RigMarketGroup, RigMarketGroup > {
 
     private RigMarketGroup rigMarketGroupRecursion = new RigMarketGroup();
+    private List < Integer > rigMarketGroupRecursions = new ArrayList<Integer>();
 
+    public RigRecusionLogic() {
+    }
+            
     public RigRecusionLogic(int code) {
         requiredItem(code);
     }
@@ -168,8 +173,8 @@ public class RigRecusionLogic < C, E, G >
         tab += " " ;
         System.out.println("----------");         
         
-        for (Object object : rigMarketGroupRecursion.getItemRecursions()) {
-            displayRigMarketGroupRecursion((RigMarketGroup) object, tab);
+        for (RigMarketGroup marketGroup : rigMarketGroupRecursion.getItemRecursions()) {
+            displayRigMarketGroupRecursion( marketGroup, tab);
         }         
     }    
 
@@ -178,4 +183,23 @@ public class RigRecusionLogic < C, E, G >
         return rigMarketGroupRecursion;
     }
     
+    public List < Integer > getList(){
+        return rigMarketGroupRecursions;
+    }
+    
+    private void createList(RigMarketGroup rigMarketGroupRecursion){
+        
+        if ( rigMarketGroupRecursion.getItemRecursions().isEmpty() ){
+            List<InvTypes> parentGroupID = Manager.getInstance().db().item().
+                invTypes().getMarketGroupID(rigMarketGroupRecursion.getMarketGroupID(), true);            
+            
+            for (InvTypes invTypes : parentGroupID) {
+                rigMarketGroupRecursions.add(invTypes.getTypeID());
+            }            
+        }
+        
+        for (RigMarketGroup object : rigMarketGroupRecursion.getItemRecursions()) {
+            createList(object);
+        }         
+    }
 }

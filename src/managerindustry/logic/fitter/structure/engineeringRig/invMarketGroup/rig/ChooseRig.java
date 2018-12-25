@@ -21,7 +21,7 @@ public class ChooseRig {
     private InitXLRigGroups initXLRigGroups = new InitXLRigGroups();
     
     /**
-     * @deprecated 
+     * @deprecated Unused
      * Get Effect Rig and his effect
      * @param int typeID is enginnering rig like Standup M-Set Blueprint Copy Accelerator II
      * @param int effectID has effect on item to build like ammunition
