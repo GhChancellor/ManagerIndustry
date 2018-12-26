@@ -30,9 +30,9 @@ public class Immondizia_001 <T> {
 //        basicMaterialV2();
 //        buildItem();
 //        rigRucursion();
-//        chooseRig();
+        chooseRig();
 //        immondizia2();
-        requiredSkill();
+//        requiredSkill();
     }    
     
     public void requiredSkill(){
@@ -70,8 +70,8 @@ public class Immondizia_001 <T> {
     }
     
     public void rigRucursion(){
-        RigRecusion_Init rigRecusion = GroupEffectRig.getInstance().
-            t3subsystems().getT3subsystems();
+        RigRecusion_Init rigRecusion = 
+            GroupEffectRig.getInstance().shipEquipments().getshipEquipments();
 
         rigRecusion.display();
 
@@ -80,7 +80,10 @@ public class Immondizia_001 <T> {
     
     private void chooseRig(){
         // IMPORTANTE qualche rig crea doppione per dinamiche di gioco, sistemalo
-        ChooseRig chooseRig02 = new ChooseRig(43921);        
+        ChooseRig chooseRig02 = new ChooseRig(43921);       
+        
+         System.out.println(""+ chooseRig02.isEffectEngineeringRig(43921,588));
+        
         
 //        setDublicate();
         // aggiunge un " effectID 0 " da controllare

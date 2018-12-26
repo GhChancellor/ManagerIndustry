@@ -30,7 +30,7 @@ public class RigMarketGroup extends ItemRecursion < RigMarketGroup >{
     public RigMarketGroup() {
     }
 
-    public short getMarketGroupID() {
+    public Short getMarketGroupID() {
         return marketGroupID;
     }
 

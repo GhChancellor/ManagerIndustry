@@ -21,16 +21,15 @@ public class ChooseRig {
     private InitXLRigGroups initXLRigGroups = new InitXLRigGroups();
     
     /**
-     * @deprecated Unused
      * Get Effect Rig and his effect
      * @param int typeID is enginnering rig like Standup M-Set Blueprint Copy Accelerator II
      * @param int effectID has effect on item to build like ammunition
      * @return boolean
      */
-    public boolean isEffectEngineeringRig(int typeID, int effectID_Item){
+    public boolean isEffectEngineeringRig(int rigTypeID, int effectID_Item){
         EffectEngineeringRigs_Logic engineeringRigs = new EffectEngineeringRigs_Logic();
         
-        if (engineeringRigs.getEffectEngineeringRig(typeID, effectID_Item) == null ){
+        if (engineeringRigs.getEffectEngineeringRig(rigTypeID, effectID_Item) == null ){
             return false;
         }
         

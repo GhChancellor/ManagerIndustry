@@ -37,16 +37,16 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
-        buildItemV6();
-        basicMaterial();
+//        buildItemV6();
+//        basicMaterial();
 //        jobInstallationFeeV2(); 
 //        speculation();
-        requiredSkill();
+//        requiredSkill();
 
 // ----------------------------------------
-        recursionItems();
+//        recursionItems();
 //        structure();
-//        immondizia();
+        immondizia();
 //        old();
     }
     

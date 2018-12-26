@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.db.entities.cache;
+package managerindustry.db.entities.cache.old;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -21,60 +21,60 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "EffectEngineeringRigEntity.getByEffectID_ByID", 
-        query = "SELECT a FROM EffectEngineeringRigEntity a WHERE a.rigTypeID= :rigTypeID AND a.groupEffectID = :groupEffectID"),
-    @NamedQuery(name = "EffectEngineeringRigEntity.getByID", query = "SELECT a FROM EffectEngineeringRigEntity a WHERE a.rigTypeID= :rigTypeID")
+        query = "SELECT a FROM EffectEngineeringRigEntity a WHERE a.typeID= :typeID AND a.effectID = :effectID"),
+    @NamedQuery(name = "EffectEngineeringRigEntity.getByID", query = "SELECT a FROM EffectEngineeringRigEntity a WHERE a.typeID= :typeID")
 })
 
-public class EffectEngineeringRigEntity implements Serializable {
+public class EffectEngineeringRigEntity_OLD implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    // rigTypeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
-    private int rigTypeID;
-    // groupEffectID, has effect on item to build like ammunition
+    // typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
+    private int typeID;
+    // effectID, has effect on item to build like ammunition
     @Column(unique = false)
-    private int groupEffectID;
+    private int effectID;
 
-    public EffectEngineeringRigEntity() {
+    public EffectEngineeringRigEntity_OLD() {
     }
 
-    public EffectEngineeringRigEntity(int typeID, int effectID) {
-        this.rigTypeID = typeID;
-        this.groupEffectID = effectID;
+    public EffectEngineeringRigEntity_OLD(int typeID, int effectID) {
+        this.typeID = typeID;
+        this.effectID = effectID;
     }
     
     /**
-     * Get rigTypeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
+     * Get typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
      * @return int
      */
-    public int getRigTypeID() {
-        return rigTypeID;
+    public int getTypeID() {
+        return typeID;
     }
 
     /**
-     * Set rigTypeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
-     * @param int rigTypeID 
+     * Set typeID is enginnering rig ( Standup M-Set Blueprint Copy Accelerator II )
+     * @param int typeID 
      */
-    public void setRigTypeID(int rigTypeID) {
-        this.rigTypeID = rigTypeID;
+    public void setTypeID(int typeID) {
+        this.typeID = typeID;
     }
 
     /**
-     * Get groupEffectID has effect on item to build like ammunition
+     * Get effectID has effect on item to build like ammunition
      * @return int
      */
-    public int getGroupEffectID() {
-        return groupEffectID;
+    public int getEffectID() {
+        return effectID;
     }
 
     /**
-     * Set groupEffectID, has effect on item to build like ammunition
-     * @param int groupEffectID 
+     * Set effectID, has effect on item to build like ammunition
+     * @param int effectID 
      */
-    public void setGroupEffectID(int groupEffectID) {
-        this.groupEffectID = groupEffectID;
+    public void setEffectID(int effectID) {
+        this.effectID = effectID;
     }
     
     public Long getId() {
@@ -95,10 +95,10 @@ public class EffectEngineeringRigEntity implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof EffectEngineeringRigEntity)) {
+        if (!(object instanceof EffectEngineeringRigEntity_OLD)) {
             return false;
         }
-        EffectEngineeringRigEntity other = (EffectEngineeringRigEntity) object;
+        EffectEngineeringRigEntity_OLD other = (EffectEngineeringRigEntity_OLD) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

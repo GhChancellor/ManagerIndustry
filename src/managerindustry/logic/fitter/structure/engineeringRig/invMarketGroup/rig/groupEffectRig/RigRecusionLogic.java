@@ -22,7 +22,7 @@ public class RigRecusionLogic < C, E, G >
         E, RigMarketGroup, RigMarketGroup > {
 
     private RigMarketGroup rigMarketGroupRecursion = new RigMarketGroup();
-    private List < Integer > rigMarketGroupRecursions = new ArrayList<Integer>();
+    private List < Integer > rigMarketGroupRecursions = new ArrayList<>();
 
     public RigRecusionLogic() {
     }
@@ -68,14 +68,14 @@ public class RigRecusionLogic < C, E, G >
         for (InvMarketGroups marketGroups01 : invMarketGroups) {        
             if (marketGroups01.getParentGroupID() == null)
                 marketGroups01.setParentGroupID(-1);
+
+           /* Only for dbg, use this for more info on object */
+//            RigMarketGroup recusion = 
+//                requiredItemMoreInfo(marketGroups01);
             
             RigMarketGroup recusion = new RigMarketGroup(
                 marketGroups01.getMarketGroupID().shortValue(),
                 marketGroups01.getParentGroupID().shortValue());
-
-//            Only for dbg, use this for more info on object
-//            RigMarketGroup recusion = 
-//                (RigMarketGroup) requiredItemMoreInfo(marketGroups01);
             
             rigRecusion_.addItemRecursions(recusion);
             
@@ -105,10 +105,13 @@ public class RigRecusionLogic < C, E, G >
             if (marketGroups01.getParentGroupID() == null)
                 marketGroups01.setParentGroupID(-1);
             
-//            Only for dbg, use this for more info on object
-            RigMarketGroup recusion = 
-                (RigMarketGroup) requiredItemMoreInfo(marketGroups01);  
+           /* Only for dbg, use this for more info on object */
+            RigMarketGroup recusion = requiredItemMoreInfo(marketGroups01);  
 
+//            RigMarketGroup recusion = new RigMarketGroup(
+//                marketGroups01.getMarketGroupID().shortValue(),
+//                marketGroups01.getParentGroupID().shortValue());            
+            
             rigRecusion.addItemRecursions(recusion);
             
             List<InvMarketGroups> marketGroups02 = 
@@ -184,22 +187,17 @@ public class RigRecusionLogic < C, E, G >
     }
     
     public List < Integer > getList(){
+        convertToList(rigMarketGroupRecursion);
         return rigMarketGroupRecursions;
     }
     
-    private void createList(RigMarketGroup rigMarketGroupRecursion){
-        
+    private void convertToList(RigMarketGroup rigMarketGroupRecursion){
         if ( rigMarketGroupRecursion.getItemRecursions().isEmpty() ){
-            List<InvTypes> parentGroupID = Manager.getInstance().db().item().
-                invTypes().getMarketGroupID(rigMarketGroupRecursion.getMarketGroupID(), true);            
-            
-            for (InvTypes invTypes : parentGroupID) {
-                rigMarketGroupRecursions.add(invTypes.getTypeID());
-            }            
+            rigMarketGroupRecursions.add(rigMarketGroupRecursion.getMarketGroupID().intValue());
         }
-        
+
         for (RigMarketGroup object : rigMarketGroupRecursion.getItemRecursions()) {
-            createList(object);
+            convertToList(object);
         }         
     }
 }

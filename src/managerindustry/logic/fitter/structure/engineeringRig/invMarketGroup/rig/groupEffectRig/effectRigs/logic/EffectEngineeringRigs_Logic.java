@@ -7,6 +7,7 @@ package managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig
 
 import java.util.List;
 import managerindustry.db.entities.cache.EffectEngineeringRigEntity;
+import managerindustry.db.entities.eve.InvTypes;
 import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.groupEffectRig.RigRecusion_Init;
 import managerindustry.logic.manager.Manager;
 //import managerindustry.logic.prove.buildV3.recusionRig.safe.RigRecusion_Init;
@@ -40,11 +41,19 @@ public class EffectEngineeringRigs_Logic {
     /**
      * Get Effect Rig and his effect
      * @param int rigTypeID
-     * @param int effectID 
+     * @param int effectID_Item 
      * @return getEffectEngineeringRig
      */
-    public EffectEngineeringRigEntity getEffectEngineeringRig(int rigTypeID, int effectID){
-        return Manager.getInstance().db().item().effectRig().getEffectEngineeringRigEntity(rigTypeID, effectID);
+    public EffectEngineeringRigEntity getEffectEngineeringRig(int rigTypeID, int effectID_Item){
+        InvTypes groupEffectID = 
+            Manager.getInstance().db().item().invTypes().getInvTypesById(effectID_Item);
+
+        if (groupEffectID == null || 
+            groupEffectID.getMarketGroupID() == null )
+                return null;
+        
+        return Manager.getInstance().db().item().effectRig().
+            getEffectEngineeringRigEntity(rigTypeID, groupEffectID.getMarketGroupID());
     }
     
     /**

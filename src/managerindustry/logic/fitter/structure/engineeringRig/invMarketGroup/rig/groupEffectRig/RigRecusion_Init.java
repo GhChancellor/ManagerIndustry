@@ -35,7 +35,7 @@ public class RigRecusion_Init implements IGenericlRequest <RigMarketGroup>{
         return recusionLogic.getObject();
     }
     
-    public List<RigMarketGroup> getList(){
-        
+    public List<Integer> getList(){
+        return recusionLogic.getList();
     }
 }
