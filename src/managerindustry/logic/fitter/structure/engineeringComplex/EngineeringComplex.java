@@ -49,31 +49,31 @@ public class EngineeringComplex extends BaseStructure{
     public EngineeringComplex(PlatformEnum nameEngineeringComplex) {
         int typeId = Manager.getInstance().db().item().invTypes().getInvTypesByName(nameEngineeringComplex.getName()).getTypeID();
         
-        // MANUFACTURING_MATERIAL
+        /* MANUFACTURING_MATERIAL */
         reductionManufacturingMaterial = 
             getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.MANUFACTURING_MATERIAL.getCode()); // 2600  
         
-        // MANUFACTURING_SCIENCE_JOB_ISK_COST
+        /* MANUFACTURING_SCIENCE_JOB_ISK_COST */
         reductionManufacturingScienceJobTime = 
             getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.MANUFACTURING_SCIENCE_JOB_ISK_COST.getCode()); // 2601  
         
-        // MANUFACTURING_SCIENCE_JOB_TIME
+        /* MANUFACTURING_SCIENCE_JOB_TIME */
         reductionManufacturingScienceJobIskCost = 
             getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.MANUFACTURING_SCIENCE_JOB_TIME.getCode()); // 2602
         
-        // FUEL_CONSUMPTIOM
+        /* FUEL_CONSUMPTIOM */
         reductionFuelConsumption =
             getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.FUEL_CONSUMPTIOM.getCode()); // 2339
         
-        // MAX_CALIBRATION_COMPLEX 
+        /* MAX_CALIBRATION_COMPLEX */
         maxCalibrationComplex =
             getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.MAX_CALIBRATION_COMPLEX.getCode()); // 1132
         
-        // RIG_SLOTS
+        /* RIG_SLOTS */
         maxRigSlot =
             getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.RIG_SLOTS.getCode()); // 1137
         
-        // RIG_SIZE
+        /* RIG_SIZE */
         rigSize =
             getDgmTypeAttributes(typeId, ATTRIBUTE_ID_ENUM.RIG_SIZE.getCode()); // 1547        
         

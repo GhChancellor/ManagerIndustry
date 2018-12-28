@@ -18,6 +18,9 @@ import managerindustry.logic.generic.fatherClass.Efficiency;
  */
 public class MaterialEfficiency extends Efficiency{
     private float materialEfficiencyRate;
+
+    public MaterialEfficiency() {
+    }
    
     /**
      * Material Efficiency
@@ -62,14 +65,13 @@ public class MaterialEfficiency extends Efficiency{
         /* Calculate ME all items */
         totalItemsQuantity = 
             ( long ) ( job * Math.ceil( ((baseQuantity * run) * materialEfficiencyRate) ) );  
-        
     }
     
     /**
      * calculate Material Efficiency Rate
      */
     private void calculateMaterialEfficiencyRate(){
-        materialEfficiencyRate = efficiencyResearchRate * structureMultiplier * 
+        materialEfficiencyRate = materialEffiencyResearchRate * structureMultiplier * 
             securityStatusMultiplier;
     }
 

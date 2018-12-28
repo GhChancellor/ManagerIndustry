@@ -37,7 +37,7 @@ import managerindustry.logic.fitter.structure.engineeringRig.invMarketGroup.rig.
 public class MainProgramm {
 
     public static void main(String[] args) throws SolarSystemNotExistsException, ErrorExeption{
-//        buildItemV6();
+        buildItemV6();
 //        basicMaterial();
 //        jobInstallationFeeV2(); 
 //        speculation();
@@ -46,7 +46,7 @@ public class MainProgramm {
 // ----------------------------------------
 //        recursionItems();
 //        structure();
-        immondizia();
+//        immondizia();
 //        old();
     }
     
@@ -88,13 +88,14 @@ public class MainProgramm {
      * @deprecated 
      */
     public static void recursionItems(){
-        RigRecusion_Init rigRecusion = GroupEffectRig.getInstance().
-            t3subsystems().getT3subsystems();
-                
-        rigRecusion.display();
+        ChooseRig chooseRig02 = new ChooseRig(43921);       
         
-        // IMPORTANTE qualche rig crea doppione per dinamiche di gioco, sistemalo
-//        ChooseRig chooseRig = new ChooseRig(43921);
+        System.out.println(""+ chooseRig02.isEffectEngineeringRig(43921,588));
+
+//        RigRecusion_Init rigRecusion = GroupEffectRig.getInstance().
+//            t3subsystems().getT3subsystems();
+//                
+//        rigRecusion.display();
 
     }
     
@@ -137,8 +138,10 @@ public class MainProgramm {
      * gli arrotandenti devono essere più precisi
      */
     public static void buildItemV6() {
+        
+        
         //                                   bpoName   run job   bpoME    componentMe
-        BuildItem buildItem = new BuildItem("scimitar",  2, 1, (byte) 10, (byte) 10);
+        BuildItem buildItem = new BuildItem("scimitar",  1, 1, (byte) 10, (byte) 10);
         
         try {
             BuildItemRequired_Init buildItemRequired = 

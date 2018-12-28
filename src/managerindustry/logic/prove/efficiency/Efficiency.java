@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.generic.fatherClass;
+package managerindustry.logic.prove.efficiency;
+
+import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
+import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
+import managerindustry.logic.generic.fatherClass.BuildItem;
+import managerindustry.logic.generic.fatherClass.NameBase;
 
 /**
  * https://forums.eveonline.com/t/math-is-hard-between-eve-and-the-sheets/70360/2
@@ -36,6 +41,10 @@ public class Efficiency extends NameBase{
     private Byte bpoLevel;
     protected float timeEffiencyResearchRate;
     protected float materialEffiencyResearchRate;
+    protected float costBonus;
+    
+    
+    
     
     protected float structureMultiplier; 
     private float structureRate;
@@ -53,75 +62,42 @@ public class Efficiency extends NameBase{
 
     public Efficiency() {
     }
-
-    /**
-     * Material Efficiency
-     * @param Byte bpoLevel
-     * @param float structureRate
-     * @param float engineeringRigRate
-     * @param float securityStatusRate 
-     */
-    public Efficiency(byte bpoLevel, float structureRate, float engineeringRigRate, 
-            float securityStatusRate) {
-        
-        this.bpoLevel = bpoLevel;
-        this.structureRate = structureRate;
-        this.engineeringRigRate = engineeringRigRate;
-        this.securityStatusRate = securityStatusRate;
-        
-        materialEffiencyResearchRate();
-        structureMultiplier();
-        engineeringRigMultiplier();
-        securityMultiplier();        
-    }
-    
-    /**
-     * Time Efficiency
-     * @param Byte bpoLevel
-     * @param float structureRate
-     * @param float engineeringRigRate
-     * @param float securityStatusRate 
-     */    
-    public Efficiency(byte bpoLevel, float structureRate, float engineeringRigRate, 
-            float securityStatusRate, float implantRate) {
-        
-        this.bpoLevel = bpoLevel;
-        this.structureRate = structureRate;
-        this.engineeringRigRate = engineeringRigRate;
-        this.securityStatusRate = securityStatusRate;     
-        this.implantRate = implantRate;
-                
-        timeEffiencyResearchRate();
-        structureMultiplier();
-        engineeringRigMultiplier();
-        securityMultiplier();
-        implantMultiplier();
-    }    
-    
-    /**
-     * Time Effiency Research Rate
-     */
-    private void timeEffiencyResearchRate(){
-        timeEffiencyResearchRate = baseValue - (( bpoLevel.floatValue() / 100 ) * 2);
-    }
     
     /**
      * calculate Material effiency Research
-     */
-    private void materialEffiencyResearchRate(){
+     */    
+    protected void materialEffiencyResearchRate(BuildItem buildItem,
+            NameBase materialRecusion, EngineeringRig engineeringRig, 
+            EngineeringComplex engineeringComplex){
+        
+        this.bpoLevel = buildItem.getBpoME();
         materialEffiencyResearchRate = baseValue - ( bpoLevel.floatValue() / 100 );
-    }
+    }     
+    
+//    /**
+//     * Time Effiency Research Rate
+//     */
+//    protected void timeEffiencyResearchRate(byte bpoLevel, float structureRate, 
+//            float engineeringRigRate, float securityStatusRate){
+//        
+//        this.bpoLevel = bpoLevel;
+//        timeEffiencyResearchRate = baseValue - (( this.bpoLevel.floatValue() / 100 ) * 2);
+//        
+//        genericInit(structureRate, engineeringRigRate, securityStatusRate);
+//        implantMultiplier();
+//    }
     
     /**
      * calculate structure Multiplier
      */
-    private void structureMultiplier(){
-        if ( structureRate == 1f ){
+    private void engineeringComplexMultiplier(EngineeringComplex engineeringComplex){
+        if ( engineeringComplex.getReductionManufacturingMaterial() == 0 ){
             structureMultiplier = 1f;
             return;
         }
 
-        structureMultiplier = baseValue - structureRate;
+        structureMultiplier = 
+            engineeringComplex.getReductionManufacturingMaterial();
     }
     
     /**
@@ -143,5 +119,17 @@ public class Efficiency extends NameBase{
      */
     private void implantMultiplier(){
         implantMultiplier = baseValue - implantRate;
+    }    
+    
+    private void genericInit(float structureRate, float engineeringRigRate, 
+            float securityStatusRate){
+        
+        this.structureRate = structureRate;
+        this.engineeringRigRate = engineeringRigRate;
+        this.securityStatusRate = securityStatusRate;  
+        
+//        engineeringComplexMultiplier();
+        engineeringRigMultiplier();
+        securityMultiplier();
     }
 }

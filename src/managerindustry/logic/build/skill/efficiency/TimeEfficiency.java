@@ -29,7 +29,7 @@ public class TimeEfficiency extends Efficiency {
      * @return float
      */
     public float getProductionTime(){
-        return efficiencyResearchRate * structureMultiplier * securityStatusMultiplier * implantMultiplier;
+        return timeEffiencyResearchRate * structureMultiplier * securityStatusMultiplier * implantMultiplier;
     }
 
     public void getResearchTime(){

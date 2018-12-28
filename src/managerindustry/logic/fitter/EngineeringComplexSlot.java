@@ -23,7 +23,7 @@ import managerindustry.logic.fitter.structure.logic.StructureLibrary;
 public class EngineeringComplexSlot {
     private EngineeringComplex engineeringComplex;
     
-    private Map< /* typeId */ Integer , MaxGroupFitted > maxGroupFittedMap = new HashMap<>();
+    private Map< /* rigTypeId */ Integer , MaxGroupFitted > maxGroupFittedMap = new HashMap<>();
     
     private float currentCalibration = 0;
     private byte engineeringComplex_CurrentSlot = 0;
@@ -135,7 +135,7 @@ public class EngineeringComplexSlot {
      * @param EngineeringRig engineeringRigs
      * @throws ErrorExeption 
      */
-    public void removeRig(EngineeringRig engineeringRigs) throws ErrorExeption{    
+    void removeRig(EngineeringRig engineeringRigs) throws ErrorExeption{    
         managerError(engineeringRigs, EngineeringRigEnum.REMOVE );
         
         if (maxGroupFittedMap.containsKey(engineeringRigs.getTypeID())){

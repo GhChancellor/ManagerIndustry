@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.build.production.buildItem;
+package managerindustry.logic.prove.efficiency;
+
 
 import java.util.List;
 import managerindustry.logic.build.production.basicMaterialRequired.MaterialRequired_Init;
-import managerindustry.logic.build.skill.efficiency.MaterialEfficiency;
+
+import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
+import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.fatherClass.BuildItem;
@@ -22,13 +25,15 @@ import org.eclipse.persistence.internal.queries.ReportItem;
 public class BuildItem_Logic < E, G > extends 
         RequiredMaterial < NameBase, List <NameBase>, BuildItem, NameBase, E, NameBase, G > {
     
-    private MaterialEfficiency materialEfficiencyCalculate = 
-        new MaterialEfficiency( (byte) 0 , 1f, 1f, 1f);
+    private MaterialEfficiency materialEfficiency = 
+        new MaterialEfficiency();
 
     private int baseQuantity;;
     private int singleMaterialQuantity;
     private long totalMaterialQuantity;
     private ReportItem reportItem = new ReportItem();
+    private EngineeringRig engineeringRig;
+    private EngineeringComplex engineeringComplex;
     
     /**
      * Buld Item Logic
@@ -37,7 +42,11 @@ public class BuildItem_Logic < E, G > extends
      * @throws ErrorExeption 
      */    
     public BuildItem_Logic(BuildItem buildItem, 
-        RamActivitiesEnum activitiesEnum) throws ErrorExeption{
+        RamActivitiesEnum activitiesEnum, EngineeringRig engineeringRig, 
+            EngineeringComplex engineeringComplex) throws ErrorExeption{
+        
+        this.engineeringRig = engineeringRig;
+        this.engineeringComplex = engineeringComplex;
         
         MaterialRequired_Init basicMaterialRequired = 
             new MaterialRequired_Init(buildItem.getBpoName(), activitiesEnum);
@@ -106,14 +115,13 @@ public class BuildItem_Logic < E, G > extends
         
         if ( materialRecusion.getItemRecursions().isEmpty()){
             // T1 material .. bpoME ..
-            materialEfficiencyCalculate.materialEfficiencyCalculate
-                (buildItem.getRun(), buildItem.getJob(), 
-                    buildItem.getBpoME(), materialRecusion.getBaseQuantity() );            
+            materialEfficiency = new MaterialEfficiency(
+                buildItem, true, materialRecusion, engineeringRig, engineeringComplex);
+         
         }else{
             // T2 component .. componentMe ..
-            materialEfficiencyCalculate.materialEfficiencyCalculate
-                (buildItem.getRun(), buildItem.getJob(),
-                    buildItem.getComponentMe(), materialRecusion.getBaseQuantity() );
+            materialEfficiency = new MaterialEfficiency(
+                buildItem, true, materialRecusion, engineeringRig, engineeringComplex);
         }   
     }       
     
@@ -131,16 +139,15 @@ public class BuildItem_Logic < E, G > extends
      * Calculate Quantity Material
      */
     private void calculateQuantityMaterial(){
-        // base Quantity
-        baseQuantity = materialEfficiencyCalculate.getBaseQuantity();
+        /* base Quantity */
+        baseQuantity = materialEfficiency.getBaseQuantity();
         
-        // quantity material per single item 1 run
-        singleMaterialQuantity = materialEfficiencyCalculate.getSingleItemQuantity();
+        /* quantity material per single item 1 run */
+        singleMaterialQuantity = materialEfficiency.getSingleItemQuantity();
            
-        // quantity material per all items 1 run
+        /* quantity material per all items 1 run */
         totalMaterialQuantity = 
-            materialEfficiencyCalculate.getTotalItemsQuantity();      
-        System.out.println("");
+            materialEfficiency.getTotalItemsQuantity();      
     }     
     
     /**

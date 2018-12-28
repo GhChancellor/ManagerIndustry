@@ -35,34 +35,34 @@ public class EngineeringRig extends BaseStructure{
     public EngineeringRig(String nameRig, SecurityStatusEnum securityStatusEnum) throws ErrorExeption {
         typeID = Manager.getInstance().db().item().invTypes().getInvTypesByName(nameRig).getTypeID();
         
-        // Init and add to db if not exits
+        /* Init and add to db if not exits */
         ChooseRig chooseRig = new ChooseRig(typeID);
         
-        // RIG_TIME_EFFICIENCY
+        /* RIG_TIME_EFFICIENCY */
         timeEfficiency = 
             getDgmTypeAttributes(typeID, RuleBonusRigEnum.RIG_TIME_EFFICIENCY.getCode()); // 2593
         
-        // RIG_MATERIAL_EFFICIENCY
+        /* RIG_MATERIAL_EFFICIENCY */
         materialEfficiency = 
             getDgmTypeAttributes(typeID, RuleBonusRigEnum.RIG_MATERIAL_EFFICIENCY.getCode()); // 2594 
                 
-        // RIG_COST_BONUS
+        /* RIG_COST_BONUS */
         costBonus = 
             getDgmTypeAttributes(typeID, RuleBonusRigEnum.RIG_COST_BONUS.getCode()); // 2595 
         
-        // CALIBRATION
+        /* CALIBRATION */
         calibration = 
             getDgmTypeAttributes(typeID, RuleBonusRigEnum.CALIBRATION.getCode()); // 1153 
         
-        // MAX_GROUP_FITTED
+        /* MAX_GROUP_FITTED */
         maxGroupFitted = 
             getDgmTypeAttributes(typeID, RuleBonusRigEnum.MAX_GROUP_FITTED.getCode()); // 1544 
         
-        // SecurityStatus
+        /* Security Status */
         securityStatusBonus = 
             getDgmTypeAttributes(typeID, getSecurityStatus(securityStatusEnum).getCode() ); // HI 2355, Low 2356, Null 2357
 
-        // Rig Size
+        /* Rig Size */
         rigSize = getDgmTypeAttributes(typeID, RuleBonusRigEnum.RIG_SIZE.getCode()); // Rig size 1547();
         
         calculedBonus();     

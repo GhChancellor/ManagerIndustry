@@ -76,7 +76,7 @@ public class BuildItem {
      * Get Bpo ME
      * @return byte
      */
-    public byte getBpoME() {
+    public Byte getBpoME() {
         return bpoME;
     }
 
@@ -92,7 +92,7 @@ public class BuildItem {
      * Get Component Me
      * @return byte
      */
-    public byte getComponentMe() {
+    public Byte getComponentMe() {
         return componentMe;
     }
 
