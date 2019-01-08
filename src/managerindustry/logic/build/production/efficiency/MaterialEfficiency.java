@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managerindustry.logic.prove.efficiency;
+package managerindustry.logic.build.production.efficiency;
 
 import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
 import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
@@ -14,10 +14,12 @@ import managerindustry.logic.generic.fatherClass.NameBase;
 /**
  * https://forums.eveonline.com/t/math-is-hard-between-eve-and-the-sheets/70360/2
  * https://community.eveonline.com/news/dev-blogs/eve-industry-all-you-want-to-know/
+ * https://www.eveonline.com/article/building-dreams-introducing-engineering-complexes/
+ * 
  * Material Efficiency Formula
     Material Efficiency Research, ME 1-10 == 1-10%
     Basic Structure ME multiplier: 0.01 == 1%
-    Rig ME multiplier: 2% (T1) and 2.4% (T2)
+    Rig ME multiplier: 2% (T1) and 2.4% (T2) == 0,02 or 0,024
     Security Multiplier: 1, 1.9 or 2.1 == Highsec, Lowsec or Null/WH
 * 
     Minerals Needed = Roundup(BaseMinerals * ((1 - ME-Reserch) * (1 - BS_ME) * (1 - (RigME * SM))))
@@ -28,10 +30,10 @@ import managerindustry.logic.generic.fatherClass.NameBase;
     * Time Efficiency Formula
         Time Efficiency Research, TE 2-20 == 2-20%
         Basic Structure TE multiplier: 0.15, 0.2 and 0.3 == 15, 20 and 30%
-        Rig TE multiplier: 20% (T1) or 24% (T2)
+        Rig TE multiplier: 20% (T1) or 24% (T2) = 0.2 or 0.24
         Security Multiplier: 1, 1.9 or 2.1 == Highsec, Lowsec or Null/WH
         Implant Multiplier: 0.01, 0.02 or 0.04 == 1%, 2% or 4%
-        Job Time = Roundup(BaseJobTime * ((1 - TE-Reserch) * (1 - BS_TE) * (1 - IM) * (1 - (RigME * SeM))))
+        Job Time = Roundup(BaseJobTime * ((1 - TE-Reserch) * (1 - BS_TE) * (1 - IM) * (1 - (RigME * SM))))
 * 
     Example T2 Sotiyo in Null/WH: Job Time = Roundup(BaseJobTime * (0.8 * 0.7 * 0.96 * (1 - (0.24 * 2.1)))) = Roundup(BaseJobTime * 0,2666496)
 
@@ -53,10 +55,10 @@ public class MaterialEfficiency extends NameBase {
         this.engineeringRig = null;
         this.engineeringComplex = null;
     }
-
+    
     public MaterialEfficiency(BuildItem buildItem, boolean bpoME,
-            NameBase materialRecusion, EngineeringRig engineeringRig, 
-            EngineeringComplex engineeringComplex) {
+            NameBase materialRecusion, EngineeringComplex engineeringComplex, 
+            EngineeringRig engineeringRig) {
         
         this.bpoME = bpoME;
         this.buildItem = buildItem;
@@ -102,10 +104,16 @@ public class MaterialEfficiency extends NameBase {
      * calculate Material Efficiency Rate
      */
     private void calculateMaterialEfficiencyRate(){
-        materialEfficiencyRate = 
-            getMaterialEffiencyResearchRate() * 
-            engineeringComplex.getReductionManufacturingMaterial() * 
-            engineeringRig.getMaterialEfficiency_SecurityStatus();
+        if (engineeringComplex == null){
+            materialEfficiencyRate = getMaterialEffiencyResearchRate();
+        }else{
+            materialEfficiencyRate = 
+                getMaterialEffiencyResearchRate() * 
+                engineeringComplex.getReductionManufacturingMaterial() * 
+                engineeringRig.getMaterialEfficiency_SecurityStatus();
+        }
+        
+
     }    
     
     /**

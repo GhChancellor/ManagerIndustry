@@ -8,8 +8,10 @@ package managerindustry.logic.tax.itemcost.logic.ItemCost;
 import managerindustry.logic.generic.fatherClass.ItemCostBase;
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
+import managerindustry.logic.solarSystem.SolarSystem;
+import static managerindustry.logic.solarSystem.SolarSystem.SystemCostIndex;
 import managerindustry.logic.tax.itemcost.logic.baseJobCost.BaseJobCost;
-import managerindustry.logic.tax.itemcost.old.itemcost.systemCostIndex.SystemCostIndex;
+
 
 /**
  *
@@ -28,7 +30,7 @@ public class ItemCost {
         itemCostBase = itemCostBase_;
         
         // SystemCostIndex.SystemCostIndex da unificare 
-        itemCostBase.setSystemCostIndex( SystemCostIndex.SystemCostIndex(
+        itemCostBase.setSystemCostIndex( SolarSystem.SystemCostIndex(
             itemCostBase.getSolarSystemID(), 
             itemCostBase.getActivitiesEnum().getActivity() ));  
         

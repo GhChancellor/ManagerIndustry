@@ -7,7 +7,6 @@ package managerindustry.logic.manager.game;
 
 import managerindustry.logic.generic.exception.ErrorExeption;
 import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
-import managerindustry.logic.manager.game.build.old.Build_OLD;
 import managerindustry.logic.manager.game.fitter.Fitter;
 
 import managerindustry.logic.manager.game.tax.SystemCost;
@@ -23,16 +22,6 @@ public class Game {
     public BuildItemRequired_Init buildItemRequired(){
         BuildItemRequired_Init buildItemRequired = new BuildItemRequired_Init();
         return buildItemRequired;
-    }
-            
-    /**
-     * @deprecated 
-     * Build
-     * @return Build_OLD
-     */
-    public Build_OLD build_OLD(){
-        Build_OLD build = new Build_OLD();
-        return build;
     }
 
     /**

@@ -8,7 +8,6 @@ package managerindustry.logic.generic.fatherClass;
 import java.util.ArrayList;
 import java.util.List;
 import managerindustry.logic.generic.enumName.RamActivitiesEnum;
-import managerindustry.logic.generic.fatherClass.NameBase;
 
 /**
  *

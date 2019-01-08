@@ -6,8 +6,8 @@
 package managerindustry.logic.solarSystem;
 
 import managerindustry.db.entities.eve.InvNames;
+import managerindustry.logic.generic.exception.SolarSystemNotExistsException;
 import managerindustry.logic.manager.Manager;
-import managerindustry.logic.manager.db.Db;
 
 /**
  * Name and ID of solar system, moon etc
@@ -27,8 +27,14 @@ public class SolarSystem {
         return invNames.getItemID();
     }
     
-//    public static String getSolarSystemName(int solarSystemID){
-//        
-//    }
+    /**
+     * @param String solarSystemID
+     * @param String actvity
+     * @return float
+     * @throws SolarSystemNotExistsException 
+    */
+    public static float SystemCostIndex(String solarSystemID, String actvity) throws SolarSystemNotExistsException{
+        return Manager.getInstance().game().systemCost().getCostIndexEntity(solarSystemID, actvity);
+    }
     
 }

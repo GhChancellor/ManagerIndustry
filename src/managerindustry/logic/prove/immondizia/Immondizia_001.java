@@ -17,6 +17,10 @@ import managerindustry.logic.generic.fatherClass.BuildItem;
 import managerindustry.logic.manager.Manager;
 import managerindustry.logic.build.production.basicMaterialRequired.MaterialRequired_Init;
 import managerindustry.logic.build.production.buildItem.BuildItemRequired_Init;
+import managerindustry.logic.fitter.structure.engineeringComplex.EngineeringComplex;
+import managerindustry.logic.fitter.structure.engineeringRig.EngineeringRig;
+import managerindustry.logic.generic.enumName.PlatformEnum;
+import managerindustry.logic.generic.enumName.SecurityStatusEnum;
 
 /**
  *
@@ -27,13 +31,41 @@ public class Immondizia_001 <T> {
     
     public Immondizia_001() throws ErrorExeption{
         System.out.println("\n\n\n");
+        buildItemX();
 //        basicMaterialV2();
 //        buildItem();
 //        rigRucursion();
-        chooseRig();
+//        chooseRig();
 //        immondizia2();
 //        requiredSkill();
     }    
+    
+    public void buildItemX() {        
+        System.out.println("\n\n\n\n");
+        //                                   bpoName   run job   bpoME    componentMe
+        BuildItem buildItem = new BuildItem("drake",  1, 1, (byte) 0, (byte) 0);        
+        
+//        Standup M-Set Basic Medium Ship Manufacturing Material Efficiency I
+//        Standup XL-Set Equipment and Consumable Manufacturing Efficiency II
+        try {
+         EngineeringRig engineeringRig = 
+            new EngineeringRig(
+            "Standup M-Set Basic Medium Ship Manufacturing Material Efficiency I", 
+            SecurityStatusEnum.HI_SEC);
+           
+            EngineeringComplex engineeringComplex = 
+                new EngineeringComplex(PlatformEnum.SOTIYO);
+            
+            managerindustry.logic.build.production.buildItem.BuildItemRequired_Init 
+                buildItemRequired = new managerindustry.logic.build.production.buildItem.BuildItemRequired_Init
+                (buildItem, RamActivitiesEnum.MANUFACTURING, engineeringComplex, engineeringRig);   
+            
+            buildItemRequired.display();
+        } catch (Exception e) {
+            System.out.println("errore");
+        }   
+        
+    }
     
     public void requiredSkill(){
         int typeId = Manager.getInstance().db().item().invTypes().getInvTypesByName("Scimitar blueprint").getTypeID();
@@ -51,7 +83,7 @@ public class Immondizia_001 <T> {
         
         try {
             BuildItemRequired_Init buildItemRequired = 
-                new BuildItemRequired_Init(buildItem, RamActivitiesEnum.MANUFACTURING);
+                new BuildItemRequired_Init(buildItem, RamActivitiesEnum.MANUFACTURING, null, null);
             buildItemRequired.display();
         } catch (ErrorExeption e) {
             System.out.println(""+ e.getErrorEnum());
@@ -80,9 +112,9 @@ public class Immondizia_001 <T> {
     
     private void chooseRig(){
         // IMPORTANTE qualche rig crea doppione per dinamiche di gioco, sistemalo
-        ChooseRig chooseRig02 = new ChooseRig(43921);       
+        ChooseRig chooseRig02 = new ChooseRig(37146);       
         
-         System.out.println(""+ chooseRig02.isEffectEngineeringRig(43921,588));
+//         System.out.println(""+ chooseRig02.isEffectEngineeringRig(37146,24698));
         
         
 //        setDublicate();

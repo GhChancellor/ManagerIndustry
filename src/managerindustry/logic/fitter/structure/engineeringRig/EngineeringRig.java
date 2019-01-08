@@ -13,10 +13,36 @@ import managerindustry.logic.fitter.structure.logic.BaseStructure;
 import managerindustry.logic.manager.Manager;
 
 /**
+ * https://forums.eveonline.com/t/math-is-hard-between-eve-and-the-sheets/70360/2
+ * https://community.eveonline.com/news/dev-blogs/eve-industry-all-you-want-to-know/
  * https://www.eveonline.com/article/building-dreams-introducing-engineering-complexes/
+ * 
+ * Material Efficiency Formula
+    Material Efficiency Research, ME 1-10 == 1-10%
+    Basic Structure ME multiplier: 0.01 == 1%
+    Rig ME multiplier: 2% (T1) and 2.4% (T2) == 0,02 or 0,024
+    Security Multiplier: 1, 1.9 or 2.1 == Highsec, Lowsec or Null/WH
+* 
+    Minerals Needed = Roundup(BaseMinerals * ((1 - ME-Reserch) * (1 - BS_ME) * (1 - (RigME * SM))))
+    Example T2 Sotiyo in Null/WH: Mineral Needed = Roundup(BaseMenirals * (0.9 * 0.99 * 0.9496)) = Roundup(BaseMinerals * 0.8461)
+
+    note: Total ME reduction is 15.39% approximate
+* 
+    * Time Efficiency Formula
+        Time Efficiency Research, TE 2-20 == 2-20%
+        Basic Structure TE multiplier: 0.15, 0.2 and 0.3 == 15, 20 and 30%
+        Rig TE multiplier: 20% (T1) or 24% (T2) = 0.2 or 0.24
+        Security Multiplier: 1, 1.9 or 2.1 == Highsec, Lowsec or Null/WH
+        Implant Multiplier: 0.01, 0.02 or 0.04 == 1%, 2% or 4%
+        Job Time = Roundup(BaseJobTime * ((1 - TE-Reserch) * (1 - BS_TE) * (1 - IM) * (1 - (RigME * SM))))
+* 
+    Example T2 Sotiyo in Null/WH: Job Time = Roundup(BaseJobTime * (0.8 * 0.7 * 0.96 * (1 - (0.24 * 2.1)))) = Roundup(BaseJobTime * 0,2666496)
+
+    note: Total TE reduction is 73.34% approximatel
  * @author lele
  */
 public class EngineeringRig extends BaseStructure{
+    private final float baseValue = 1.0f;    
     private float calibration; // CALIBRATION 1153
     private float securityStatusBonus; // HI 2355, Low 2356, Null 2357    
     private float materialEfficiency; // RIG_MATERIAL_EFFICIENCY(2594)
@@ -70,23 +96,44 @@ public class EngineeringRig extends BaseStructure{
 
     /**
      * Calculed Secury Status With Rig
+     * il database da un val
      * value rig = materialEfficiency * securityStatusBonus
      */
     @Override
     protected void calculedBonus() {
-        byte numberOfDecimals = 2;
+//        byte numberOfDecimals = 2;
         
-        if ( materialEfficiency != 0)
+        if ( materialEfficiency != 0){
+            /* il database da un valore di -2 (negativo) invece di 2 (positivo) */
+            materialEfficiency = -materialEfficiency;
+
             materialEfficiency_SecurityStatus = 
-                truncateToDecimal(materialEfficiency * securityStatusBonus, numberOfDecimals);
+                baseValue - (((materialEfficiency / 100 ) *  securityStatusBonus )  );                    
+        }
+
         
-        if ( timeEfficiency != 0)
-            timeEfficiency_SecurityStatus = 
-                truncateToDecimal(timeEfficiency * securityStatusBonus, numberOfDecimals);
-        
-        if ( costBonus != 0)
-            costBonus_SecurityStatus = 
-                truncateToDecimal(costBonus * securityStatusBonus, numberOfDecimals);
+//        if ( materialEfficiency != 0){
+//            materialEfficiency = -materialEfficiency;
+//        
+//            tempValue = baseValue - (((materialEfficiency / 100 ) *  securityStatusBonus )  );        
+//            materialEfficiency_SecurityStatus = 
+//                truncateToDecimal(tempValue, numberOfDecimals);            
+//        }
+
+
+//        if ( timeEfficiency != 0){
+//            tempValue = baseValue - (timeEfficiency * securityStatusBonus);
+//            timeEfficiency_SecurityStatus = 
+//                truncateToDecimal(tempValue, numberOfDecimals);           
+//        }
+//
+//        
+//        if ( costBonus != 0){
+//            tempValue = baseValue - (costBonus * securityStatusBonus);
+//            costBonus_SecurityStatus = 
+//                truncateToDecimal(tempValue * securityStatusBonus, numberOfDecimals);            
+//        }
+
     }
     
     @Override
